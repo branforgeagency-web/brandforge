@@ -1,0 +1,431 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Inter:wght@700;800;900&family=JetBrains+Mono:wght@400;600;700&family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+
+/* ==========================================================================
+   BRANDFORGE DESIGN SYSTEM RESET & VARIABLES
+   ========================================================================== */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --color-primary: #EF4136;
+  --color-primary-glow: rgba(239, 65, 54, 0.45);
+  --color-accent-orange: #FF6B00;
+  --color-accent-gold: #FFB800;
+  --color-accent-cyan: #00F0FF;
+  --color-bg-obsidian: #030305;
+  --color-bg-card: #0B0B0C;
+  --color-bg-card-hover: #141416;
+  --color-text-main: #FFFFFF;
+  --color-text-sub: #94A3B8;
+  --color-border-glow: rgba(239, 65, 54, 0.25);
+  --font-heading: 'Outfit', sans-serif;
+  --font-body: 'Plus Jakarta Sans', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--color-bg-obsidian);
+  color: var(--color-text-main);
+  font-family: var(--font-body);
+  overflow-x: hidden;
+  cursor: default;
+}
+
+/* CUSTOM MAGNETIC CURSOR COMPONENT */
+.custom-cursor-dot {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 8px;
+  height: 8px;
+  background-color: #EF4136;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 99999;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 0 10px #EF4136, 0 0 20px #EF4136;
+}
+
+.custom-cursor-ring {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 36px;
+  height: 36px;
+  border: 1.5px solid rgba(239, 65, 54, 0.6);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 99998;
+  transform: translate(-50%, -50%);
+  transition: width 0.2s ease, height 0.2s ease, border-color 0.2s ease, background-color 0.2s ease;
+}
+
+.custom-cursor-ring.active {
+  width: 56px;
+  height: 56px;
+  border-color: #EF4136;
+  background-color: rgba(239, 65, 54, 0.1);
+}
+
+/* FULL-SCREEN STACKED EDITORIAL 12 SERVICES CARDS */
+.stacked-services-scroll-container {
+  position: relative;
+  width: 100%;
+  height: 480vh; /* 4 Rows x 1.2 viewport scroll distance */
+  background-color: #030305;
+}
+
+.stacked-services-sticky-stage {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.stacked-stage-bg.dark-stage {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(120% 120% at 50% 50%, #0D0A12 0%, #050408 60%, #030305 100%);
+  overflow: hidden;
+}
+
+/* HUGE BLURRED BACKGROUND TYPOGRAPHY */
+.stacked-bg-typography {
+  position: absolute;
+  inset: -10%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  pointer-events: none;
+  user-select: none;
+  opacity: 0.06;
+  filter: blur(1px);
+}
+
+.stacked-bg-typography .bg-line {
+  font-family: 'Outfit', sans-serif;
+  font-size: clamp(8rem, 18vw, 24rem);
+  font-weight: 900;
+  line-height: 0.82;
+  white-space: nowrap;
+  letter-spacing: -0.05em;
+  color: #FFFFFF;
+  will-change: transform;
+}
+
+/* VERTICAL RED SIDE LABEL */
+.stacked-side-label-red {
+  position: absolute;
+  top: 50%;
+  left: 36px;
+  transform: translateY(-50%) rotate(-90deg);
+  transform-origin: left center;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  color: #EF4136;
+  z-index: 20;
+  pointer-events: none;
+}
+
+.side-red-dot {
+  width: 8px;
+  height: 8px;
+  background: #EF4136;
+  border-radius: 50%;
+  box-shadow: 0 0 12px #EF4136;
+}
+
+/* 3D CARDS PERSPECTIVE STAGE (3 CARDS PER ROW) */
+.stacked-cards-3d-stage {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  perspective: 1100px;
+  transform-style: preserve-3d;
+}
+
+.stacked-row-3cards {
+  position: absolute;
+  width: 100%;
+  max-width: 1340px;
+  padding: 0 32px;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(18px, 2.2vw, 32px);
+  will-change: transform, opacity;
+  transform-origin: center center;
+}
+
+/* HIGH-CONTRAST & ULTRA-VISIBLE SERVICE CARDS */
+.editorial-service-card-3col {
+  border-radius: 24px;
+  padding: clamp(24px, 2.6vw, 36px);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: clamp(340px, 48vh, 460px);
+  cursor: pointer;
+  overflow: hidden;
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.35s ease, border-color 0.35s ease;
+}
+
+.editorial-service-card-3col:hover {
+  transform: translateY(-10px) scale(1.025);
+}
+
+/* RED CARD STYLING - HIGH VISIBILITY */
+.card-theme-red {
+  background: linear-gradient(135deg, #EF4136 0%, #BF342B 100%);
+  color: #FFFFFF;
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  box-shadow: 0 18px 45px rgba(255, 59, 48, 0.4);
+}
+
+.card-theme-red:hover {
+  box-shadow: 0 30px 65px rgba(255, 59, 48, 0.7);
+  border-color: #FFFFFF;
+}
+
+.card-theme-red .editorial-card-title {
+  color: #FFFFFF;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.card-theme-red .editorial-card-desc {
+  color: #FFFFFF;
+  font-weight: 500;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.25);
+}
+
+.card-theme-red .editorial-tag-item {
+  background: rgba(255, 255, 255, 0.28);
+  color: #FFFFFF;
+  font-weight: 800;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.card-theme-red .editorial-card-num {
+  color: #FFFFFF;
+  text-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+}
+
+.card-theme-red .editorial-card-footer {
+  border-top: 1px solid rgba(255, 255, 255, 0.35);
+}
+
+/* BLACK CARD STYLING - HIGH VISIBILITY & CRISP CONTRAST */
+.card-theme-black {
+  background: linear-gradient(135deg, #16171B 0%, #090A0C 100%);
+  color: #FFFFFF;
+  border: 1.5px solid rgba(239, 65, 54, 0.5);
+  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.85), inset 0 1px 1px rgba(255, 255, 255, 0.1);
+}
+
+.card-theme-black:hover {
+  box-shadow: 0 30px 65px rgba(239, 65, 54, 0.45), 0 0 30px rgba(239, 65, 54, 0.25);
+  border-color: #EF4136;
+}
+
+.card-theme-black .editorial-card-title {
+  color: #FFFFFF;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.8);
+}
+
+.card-theme-black .editorial-card-desc {
+  color: #F1F5F9;
+  font-weight: 500;
+  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.8);
+}
+
+.card-theme-black .editorial-tag-item {
+  background: rgba(239, 65, 54, 0.18);
+  color: #EF4136;
+  font-weight: 800;
+  border: 1px solid rgba(239, 65, 54, 0.45);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.card-theme-black .editorial-card-num {
+  color: #EF4136;
+  text-shadow: 0 0 18px rgba(239, 65, 54, 0.7);
+}
+
+.card-theme-black .editorial-card-footer {
+  border-top: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+/* CARD COMMON HEADER & FOOTER */
+.editorial-card-header {
+  margin-bottom: 16px;
+}
+
+.editorial-card-title {
+  font-family: 'Outfit', sans-serif;
+  font-size: clamp(1.3rem, 1.9vw, 1.65rem);
+  font-weight: 900;
+  line-height: 1.12;
+  letter-spacing: -0.025em;
+  margin: 0;
+}
+
+.editorial-card-desc {
+  font-size: clamp(0.92rem, 1.1vw, 1.02rem);
+  line-height: 1.6;
+  margin-bottom: 24px;
+}
+
+.editorial-card-footer {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 16px;
+  padding-top: 18px;
+}
+
+.editorial-tags-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.editorial-tag-item {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72rem;
+  padding: 5px 12px;
+  border-radius: 9999px;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+}
+
+.editorial-card-num {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: clamp(2.4rem, 3.8vw, 3.2rem);
+  font-weight: 900;
+  line-height: 0.8;
+  letter-spacing: -0.05em;
+}
+
+/* BOTTOM-RIGHT PROGRESS INDICATOR */
+.stacked-progress-indicator.dark-progress {
+  position: absolute;
+  bottom: 40px;
+  right: 48px;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #94A3B8;
+  letter-spacing: 0.1em;
+}
+
+.progress-bar-track {
+  width: 140px;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 9999px;
+  overflow: hidden;
+}
+
+.progress-bar-fill {
+  height: 100%;
+  background: #EF4136;
+  box-shadow: 0 0 10px #EF4136;
+  transition: width 0.3s ease;
+}
+
+/* RESPONSIVE & MOBILE OVERRIDES */
+@media (max-width: 1200px) {
+  .stacked-row-3cards {
+    padding: 0 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .stacked-services-scroll-container {
+    height: auto !important;
+  }
+
+  .stacked-services-sticky-stage {
+    position: relative !important;
+    height: auto !important;
+    overflow: visible !important;
+  }
+
+  .stacked-stage-bg.dark-stage {
+    height: auto !important;
+    padding: 60px 16px !important;
+  }
+
+  .stacked-cards-3d-stage {
+    position: relative !important;
+    perspective: none !important;
+    transform-style: flat !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 20px !important;
+  }
+
+  .stacked-row-3cards {
+    position: relative !important;
+    transform: none !important;
+    opacity: 1 !important;
+    grid-template-columns: 1fr !important;
+    padding: 0 !important;
+    gap: 20px !important;
+  }
+
+  .editorial-service-card-3col {
+    min-height: auto !important;
+    padding: 26px 22px !important;
+  }
+
+  .editorial-card-title {
+    font-size: 1.35rem !important;
+  }
+
+  .editorial-card-desc {
+    font-size: 0.96rem !important;
+    line-height: 1.55 !important;
+  }
+
+  .editorial-card-num {
+    font-size: 2.2rem !important;
+  }
+
+  .stacked-side-label-red {
+    display: none !important;
+  }
+
+  .stacked-progress-indicator {
+    display: none !important;
+  }
+}
+
+/* HIDE CUSTOM CURSOR FOLLOWER ON TOUCH/MOBILE DEVICES FOR SMOOTH TOUCH SCROLL */
+@media (pointer: coarse), (max-width: 768px) {
+  .custom-cursor-dot, .custom-cursor-ring {
+    display: none !important;
+  }
+}

@@ -25,10 +25,8 @@ export default function FloatingContactButtons({
     if (isLaunching) return;
     setIsLaunching(true);
 
-    window.scrollTo({ top: 0, behavior: "smooth" });
-
     if (onOpenModal) {
-      setTimeout(() => onOpenModal(), 1400);
+      setTimeout(() => onOpenModal(), 800);
     }
 
     setTimeout(() => {
@@ -48,37 +46,51 @@ export default function FloatingContactButtons({
           animate={
             isLaunching
               ? {
-                  scale: [1, 1.5, 1.5, 1.5],
-                  y: [0, 0, -1500, -1500],
-                  rotate: [0, -3, 3, 0],
+                  scale: [1, 1.35, 1.35, 1],
+                  y: [0, 0, -1400, -1400],
+                  rotate: [0, -2, 2, 0],
                 }
               : {
-                  scale: 1,
-                  y: 0,
-                  rotate: 0,
+                  y: [-7, 7],
+                  rotate: [-1.8, 1.8],
                 }
           }
           transition={
             isLaunching
               ? {
-                  duration: 3.0,
-                  times: [0, 0.25, 0.9, 1],
-                  ease: [0.35, 0, 0.45, 1],
+                  duration: 2.8,
+                  times: [0, 0.2, 0.85, 1],
+                  ease: [0.25, 0.1, 0.25, 1],
                 }
-              : { duration: 0.5 }
+              : {
+                  duration: 2.6,
+                  repeat: Infinity,
+                  repeatType: "reverse",
+                  ease: "easeInOut",
+                }
           }
         >
           <motion.button
             type="button"
             className={`bf-float-btn btn-rocket ${isLaunching ? "is-ignited" : ""}`}
             onClick={handleRocketLaunch}
-            aria-label="Launch rocket to top"
-            whileTap={{ scale: 0.94 }}
+            aria-label="Launch rocket and open contact modal"
+            whileHover={{ scale: 1.12 }}
+            whileTap={{ scale: 0.92 }}
+            transition={{ type: "spring", stiffness: 350, damping: 22 }}
           >
             <img src="/rocket.png" alt="Rocket" className="bf-rocket-img" />
+
+            {/* IDLE SMALL THRUSTER FLAME EFFECT */}
+            {!isLaunching && (
+              <div className="bf-idle-rocket-flame" aria-hidden="true">
+                <span className="idle-flame-core" />
+                <span className="idle-flame-glow" />
+              </div>
+            )}
           </motion.button>
 
-          {/* THRUSTER FLAME & SMOKE PLUME EFFECT */}
+          {/* LAUNCH THRUSTER FLAME & SMOKE PLUME EFFECT */}
           <AnimatePresence>
             {isLaunching && (
               <motion.div
@@ -203,6 +215,7 @@ const styles = `
     display: flex;
     flex-direction: column;
     align-items: center;
+    will-change: transform;
   }
 
   .bf-float-btn.btn-rocket {
@@ -216,6 +229,7 @@ const styles = `
     overflow: visible;
     position: relative;
     z-index: 2;
+    will-change: transform;
   }
 
   .bf-float-btn.btn-rocket:hover {
@@ -266,6 +280,49 @@ const styles = `
     background: linear-gradient(180deg, rgba(239, 65, 54, 0.9) 0%, rgba(255, 77, 77, 0.4) 70%, transparent 100%);
     border-radius: 999px;
     animation: flamePulse 0.2s ease-in-out infinite alternate;
+  }
+
+  .bf-idle-rocket-flame {
+    position: absolute;
+    bottom: -6px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 16px;
+    height: 22px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  .idle-flame-core {
+    width: 9px;
+    height: 18px;
+    background: linear-gradient(180deg, #FFFFFF 0%, #FFB800 45%, #EF4136 100%);
+    border-radius: 999px;
+    box-shadow: 0 0 10px rgba(239, 65, 54, 0.9), 0 0 6px rgba(255, 184, 0, 0.8);
+    animation: idleFlameFlicker 0.15s ease-in-out infinite alternate;
+  }
+
+  .idle-flame-glow {
+    position: absolute;
+    top: 2px;
+    width: 16px;
+    height: 24px;
+    background: radial-gradient(circle, rgba(239, 65, 54, 0.7) 0%, rgba(255, 184, 0, 0.35) 60%, transparent 100%);
+    border-radius: 50%;
+    animation: idleFlameGlowPulse 0.25s ease-in-out infinite alternate;
+  }
+
+  @keyframes idleFlameFlicker {
+    0% { transform: scaleX(0.85) scaleY(0.9); opacity: 0.85; }
+    100% { transform: scaleX(1.2) scaleY(1.2); opacity: 1; }
+  }
+
+  @keyframes idleFlameGlowPulse {
+    0% { transform: scale(0.85); opacity: 0.6; }
+    100% { transform: scale(1.25); opacity: 0.95; }
   }
 
   @keyframes flameFlicker {

@@ -1,13 +1,14 @@
-import React from "react";
-import { motion } from "framer-motion";
-import PlumeFieldSection from "./PlumeFieldSection";
+import React, { useLayoutEffect, useRef } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-const DEFAULT_IMAGE =
-  "https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&w=2200&q=90";
+const DEFAULT_IMAGES = [
+  "https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&w=2200&q=90",
+];
 
 export default function RiftStageHero({
   onOpenModal,
-  leadImage = DEFAULT_IMAGE,
+  leadImage = DEFAULT_IMAGES[0],
   openingTitle = "WE FORGE DOMINANT BRANDS & HYPER SCALED MEDIA",
   panels = [
     {
@@ -20,46 +21,149 @@ export default function RiftStageHero({
     },
   ],
 }) {
+  const rootRef = useRef(null);
+  const stageRef = useRef(null);
+  const underlayRef = useRef(null);
+  const leadRef = useRef(null);
+  const shadeRef = useRef(null);
+  const flashRef = useRef(null);
+  const leftCopyRef = useRef(null);
+  const rightCopyRef = useRef(null);
+  const scrollCueRef = useRef(null);
+
+  useLayoutEffect(() => {
+    const root = rootRef.current;
+    const stage = stageRef.current;
+    const underlay = underlayRef.current;
+    const lead = leadRef.current;
+    const shade = shadeRef.current;
+    const flash = flashRef.current;
+    const leftCopy = leftCopyRef.current;
+    const rightCopy = rightCopyRef.current;
+    const scrollCue = scrollCueRef.current;
+
+    if (
+      !root ||
+      !stage ||
+      !underlay ||
+      !lead ||
+      !shade ||
+      !flash ||
+      !leftCopy ||
+      !rightCopy
+    ) {
+      return;
+    }
+
+    gsap.registerPlugin(ScrollTrigger);
+
+    const context = gsap.context(() => {
+      gsap.set(leftCopy, { xPercent: -18, opacity: 0 });
+      gsap.set(rightCopy, { xPercent: 18, opacity: 0 });
+
+      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        gsap.set(lead, { display: "none" });
+        return;
+      }
+
+      const sequence = gsap.timeline({
+        defaults: { ease: "none" },
+        scrollTrigger: {
+          trigger: stage,
+          start: "top top",
+          end: "+=320%",
+          scrub: 0.9,
+          pin: true,
+          anticipatePin: 1,
+          invalidateOnRefresh: true,
+        },
+      });
+
+      sequence
+        .to(
+          lead,
+          {
+            clipPath: "inset(0% 48.5% 0% 48.5%)",
+            duration: 1,
+          },
+          0
+        )
+        .to(shade, { opacity: 0.88, duration: 1 }, 0)
+        .to(
+          leftCopy,
+          { xPercent: 0, opacity: 1, duration: 0.8, ease: "power3.out" },
+          0.18
+        )
+        .to(
+          rightCopy,
+          { xPercent: 0, opacity: 1, duration: 0.8, ease: "power3.out" },
+          0.18
+        )
+        .to(lead, { rotation: 68, duration: 0.8 }, 1)
+        .to(
+          lead,
+          {
+            scale: 0,
+            rotation: 105,
+            duration: 0.9,
+            ease: "power2.in",
+          },
+          1.8
+        )
+        .to(flash, { opacity: 1, duration: 0.18 }, 1.8)
+        /* TEXT PANELS SLIDE OUT AND VANISH */
+        .to(
+          leftCopy,
+          { xPercent: 120, opacity: 0, duration: 0.85, ease: "power2.in" },
+          2.15
+        )
+        .to(
+          rightCopy,
+          { xPercent: -120, opacity: 0, duration: 0.85, ease: "power2.in" },
+          2.15
+        );
+    }, root);
+
+    return () => context.revert();
+  }, []);
+
   return (
-    <div className="rr-root">
+    <div ref={rootRef} className="rr-root">
       <style>{styles}</style>
 
-      {/* STAGE CONTAINER WITH REAL-TIME GPU FLUID SIMULATION */}
-      <div className="rr-stage-hero">
-        <div className="rr-fluid-layer">
-          <PlumeFieldSection onOpenModal={onOpenModal} />
-        </div>
-      </div>
+      <div className="rr-content">
+        <section ref={stageRef} className="rr-stage">
+          {/* PART 2: UNDERLAY PANELS FOR BRAND STATEMENTS */}
+          <div ref={underlayRef} className="rr-underlay" aria-hidden="true">
+            <article className="rr-panel rr-panel-left">
+              <div ref={leftCopyRef} className="rr-panel-copy">
+                <span>{panels[0].eyebrow}</span>
+                <p>{panels[0].text}</p>
+              </div>
+            </article>
 
-      {/* STRATEGY UNDERLAY PANELS */}
-      <div className="rr-underlay-wrap">
-        <div className="rr-underlay">
-          <article className="rr-panel rr-panel-left">
-            <motion.div
-              className="rr-panel-copy"
-              initial={{ opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: false }}
-              transition={{ duration: 0.8 }}
-            >
-              <span>{panels[0].eyebrow}</span>
-              <p>{panels[0].text}</p>
-            </motion.div>
-          </article>
+            <article className="rr-panel rr-panel-right">
+              <div ref={rightCopyRef} className="rr-panel-copy">
+                <span>{panels[1].eyebrow}</span>
+                <p>{panels[1].text}</p>
+              </div>
+            </article>
+          </div>
 
-          <article className="rr-panel rr-panel-right">
-            <motion.div
-              className="rr-panel-copy"
-              initial={{ opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: false }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-            >
-              <span>{panels[1].eyebrow}</span>
-              <p>{panels[1].text}</p>
-            </motion.div>
-          </article>
-        </div>
+          {/* PART 1: LEAD OVERLAY WITH HERO IMAGE & OPENING TITLE */}
+          <div ref={leadRef} className="rr-lead">
+            <img src={leadImage} alt="BrandForge Digital Hero" draggable={false} />
+            <div className="rr-image-vignette" />
+            <h1>{openingTitle}</h1>
+            <div ref={shadeRef} className="rr-shade" />
+            <div ref={flashRef} className="rr-flash" />
+          </div>
+
+          <div ref={scrollCueRef} className="rr-scroll-cue" aria-hidden="true">
+            <span>Scroll to reveal</span>
+            <i />
+          </div>
+        </section>
       </div>
     </div>
   );
@@ -82,47 +186,8 @@ const styles = `
   font-family: "Plus Jakarta Sans", sans-serif;
 }
 
-.rr-stage-hero {
-  position: relative;
-  width: 100%;
-  min-height: 100vh;
-  overflow: hidden;
-  background: var(--ink);
-}
-
-.rr-bg-layer {
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-}
-
-.rr-hero-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  opacity: 0.32;
-  filter: contrast(1.15) brightness(0.85);
-}
-
-.rr-fluid-layer {
-  position: absolute;
-  inset: 0;
-  z-index: 2;
-}
-
 .rr-root * {
   box-sizing: border-box;
-}
-
-.rr-root.rr-embedded {
-  height: 100vh;
-  overflow-y: auto;
-  overscroll-behavior: contain;
-  scrollbar-width: none;
-}
-
-.rr-root.rr-embedded::-webkit-scrollbar {
-  display: none;
 }
 
 .rr-content {
@@ -139,17 +204,29 @@ const styles = `
 }
 
 .rr-underlay,
-.rr-finale,
 .rr-lead {
   position: absolute;
   inset: 0;
+}
+
+.rr-finale {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
 }
 
 .rr-underlay {
   z-index: 1;
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  background: var(--ink);
+  background:
+    radial-gradient(circle at 50% 50%, rgba(239, 65, 54, 0.08), transparent 34%),
+    var(--ink);
   color: var(--paper);
 }
 
@@ -200,7 +277,7 @@ const styles = `
 .rr-panel-copy span,
 .rr-scroll-cue span {
   display: block;
-  font-size: 0.7rem;
+  font-size: 0.75rem;
   font-weight: 700;
   letter-spacing: 0.18em;
   text-transform: uppercase;
@@ -220,17 +297,38 @@ const styles = `
   margin: 0;
   font-size: clamp(0.9rem, 1.2vw, 1.15rem);
   line-height: 1.55;
-  color: rgba(255, 255, 255, 0.85);
-  font-weight: 600;
+  color: rgba(255, 255, 255, 0.82);
   text-transform: uppercase;
 }
 
 .rr-finale {
   z-index: 2;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  background: var(--ink);
+}
+
+.rr-finale::after {
+  content: "";
   position: absolute;
   inset: 0;
+  z-index: 1;
+  background: linear-gradient(90deg, rgba(6, 5, 9, 0.34), rgba(6, 5, 9, 0.08), rgba(6, 5, 9, 0.42));
+  pointer-events: none;
+}
+
+.rr-finale-image {
+  min-width: 0;
   overflow: hidden;
-  background: var(--ink);
+  will-change: clip-path;
+}
+
+.rr-finale-top {
+  clip-path: inset(0% 0% 100% 0%);
+}
+
+.rr-finale-bottom {
+  clip-path: inset(100% 0% 0% 0%);
 }
 
 .rr-root img {
@@ -239,6 +337,44 @@ const styles = `
   display: block;
   object-fit: cover;
   user-select: none;
+}
+
+.rr-finale-top img {
+  object-position: center 35%;
+}
+
+.rr-finale-bottom img {
+  object-position: center 58%;
+}
+
+.rr-final-title {
+  position: absolute;
+  z-index: 2;
+  top: 50%;
+  left: 50%;
+  width: min(92%, 1050px);
+  margin: 0;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  font-family: "Outfit", sans-serif;
+  font-size: clamp(3.0rem, 8.5vw, 9.5rem);
+  font-weight: 900;
+  line-height: 0.86;
+  letter-spacing: -0.03em;
+  text-transform: uppercase;
+  text-wrap: balance;
+  color: var(--paper);
+  text-shadow: 0 10px 40px rgba(0, 0, 0, 0.9);
+}
+
+.rr-line-mask {
+  display: block;
+  overflow: hidden;
+}
+
+.rr-line {
+  display: block;
+  will-change: transform, opacity;
 }
 
 .rr-lead {
@@ -250,39 +386,12 @@ const styles = `
   will-change: clip-path, transform;
 }
 
-.rr-lead h1 {
-  position: absolute;
-  z-index: 2;
-  left: 50%;
-  bottom: clamp(2rem, 5vw, 5rem);
-  width: min(94%, 1400px);
-  margin: 0;
-  transform: translateX(-50%);
-  text-align: center;
-  font-family: "Outfit", sans-serif;
-  font-size: clamp(3.0rem, 8.5vw, 9.5rem);
-  font-weight: 900;
-  line-height: 0.86;
-  letter-spacing: -0.03em;
-  text-transform: uppercase;
-  text-wrap: balance;
-  color: #FFFFFF;
-  text-shadow: 0 10px 40px rgba(0, 0, 0, 0.9);
-}
-
 .rr-image-vignette,
 .rr-shade,
 .rr-flash {
   position: absolute;
   inset: 0;
   pointer-events: none;
-}
-
-.rr-image-vignette {
-  z-index: 1;
-  background:
-    linear-gradient(180deg, rgba(6, 5, 9, 0.25) 30%, rgba(6, 5, 9, 0.9) 100%),
-    radial-gradient(circle at 50% 40%, transparent 20%, rgba(6, 5, 9, 0.6) 100%);
 }
 
 .rr-shade {
@@ -357,8 +466,12 @@ const styles = `
     width: min(90%, 24rem);
   }
 
-  .rr-lead h1 {
-    bottom: 12vh;
+  .rr-finale {
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(2, minmax(0, 1fr));
+  }
+
+  .rr-final-title {
     font-size: clamp(3.0rem, 14vw, 5.5rem);
   }
 

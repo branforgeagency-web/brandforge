@@ -1,5 +1,6 @@
 import React from 'react';
 import RiftStageHero from '../components/RiftStageHero';
+import BrandForgeFluidSection from '../components/BrandForgeFluidSection';
 import BrandForgeAboutUsSection from '../components/BrandForgeAboutUsSection';
 import BrandForgeProcessBoard from '../components/BrandForgeProcessBoard';
 import StackedServicesSection from '../components/StackedServicesSection';
@@ -12,9 +13,14 @@ import BrandForgeFAQ from '../components/BrandForgeFAQ';
 export default function HomePage({ onOpenModal, navigate }) {
   return (
     <>
-      {/* RIFT STAGE HERO SECTION WITH REVEALED GPU FLUID SIMULATION */}
+      {/* RIFT STAGE HERO SECTION */}
       <div id="hero">
         <RiftStageHero onOpenModal={onOpenModal} />
+      </div>
+
+      {/* BRANDFORGE REAL-TIME GPU FLUID FIELD SECTION */}
+      <div id="fluid-field">
+        <BrandForgeFluidSection onOpenModal={onOpenModal} />
       </div>
 
       {/* ABOUT US SECTION WITH DYNAMIC FLUID ORGANIC BLOB & PARALLAX SCROLL */}

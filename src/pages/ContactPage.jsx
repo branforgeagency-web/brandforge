@@ -348,21 +348,24 @@ const styles = `
     --red: #EF4136;
     --border: rgba(239, 65, 54, 0.3);
 
+    width: 100%;
     min-height: 100vh;
     min-height: 100svh;
-    overflow: hidden;
+    overflow-x: hidden;
     color: var(--text);
     background: var(--background);
     font-family: "Outfit", "Plus Jakarta Sans", sans-serif;
     padding-top: 80px;
+    box-sizing: border-box;
   }
 
   .contact-layout {
-    width: min(1360px, 100%);
+    width: 100%;
+    max-width: 100%;
     min-height: calc(100vh - 80px);
-    margin: 0 auto;
+    margin: 0;
     display: grid;
-    grid-template-columns: minmax(0, 1.05fr) minmax(440px, 0.95fr);
+    grid-template-columns: 1fr 1fr;
   }
 
   .visual-panel {
@@ -394,7 +397,7 @@ const styles = `
     min-height: 100%;
     display: flex;
     flex-direction: column;
-    padding: clamp(34px, 6vh, 70px) clamp(35px, 5vw, 74px) clamp(28px, 5vh, 54px);
+    padding: clamp(34px, 5vh, 60px) clamp(35px, 5vw, 80px) clamp(28px, 5vh, 50px);
   }
 
   .brand,
@@ -410,8 +413,9 @@ const styles = `
   }
 
   .hero-content {
-    width: min(520px, 92%);
-    margin-top: clamp(40px, 8vh, 80px);
+    width: 100%;
+    max-width: 640px;
+    margin-top: clamp(30px, 6vh, 60px);
   }
 
   .eyebrow {
@@ -423,7 +427,7 @@ const styles = `
   }
 
   .hero-content h1 {
-    max-width: 510px;
+    max-width: 600px;
     margin: 0;
     font-size: clamp(40px, 4.8vw, 66px);
     font-weight: 900;
@@ -438,7 +442,7 @@ const styles = `
   }
 
   .hero-description {
-    max-width: 470px;
+    max-width: 560px;
     margin: 20px 0 0;
     color: rgba(255, 255, 255, 0.8);
     font-size: 14.5px;
@@ -446,7 +450,8 @@ const styles = `
   }
 
   .feature-list {
-    width: min(480px, 95%);
+    width: 100%;
+    max-width: 580px;
     display: grid;
     gap: 18px;
     margin-top: auto;
@@ -480,7 +485,7 @@ const styles = `
   }
 
   .feature-item p {
-    max-width: 350px;
+    max-width: 480px;
     margin: 0;
     color: rgba(255, 255, 255, 0.65);
     font-size: 12px;
@@ -494,17 +499,23 @@ const styles = `
   }
 
   .form-panel {
-    display: grid;
-    place-items: center;
-    padding: 30px clamp(20px, 4vw, 60px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 30px clamp(24px, 4vw, 70px);
+    box-sizing: border-box;
   }
 
   .login-card {
-    width: min(100%, 540px);
-    padding: clamp(28px, 4vh, 44px) clamp(24px, 3.5vw, 42px);
+    width: 100%;
+    max-width: 620px;
+    padding: clamp(28px, 4vh, 48px) clamp(28px, 4vw, 50px);
     border: 1px solid var(--border);
     border-radius: 20px;
     background: #0A0A0C;
+    box-sizing: border-box;
   }
 
   .mobile-brand {

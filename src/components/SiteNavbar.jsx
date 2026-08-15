@@ -7,6 +7,7 @@ import {
   Users,
   Layers3,
   Cpu,
+  Phone,
   ArrowUpRight,
   Menu,
   X,
@@ -514,6 +515,7 @@ const NAVIGATION_ITEMS = [
   { label: "Who We Are", to: "/about", icon: Users },
   { label: "Services", to: "/#stacked-services", icon: Layers3 },
   { label: "Process", to: "/#process-board", icon: Cpu },
+  { label: "Contact", to: "/contact", icon: Phone },
 ];
 
 export default function SiteNavbar({ path, navigate, onOpenModal }) {
@@ -670,15 +672,22 @@ const styles = /* css */ `
     pointer-events: auto;
     display: flex;
     width: min(1040px, calc(100vw - 32px));
-    height: 76px;
+    height: 72px;
     align-items: center;
     justify-content: space-between;
     gap: 20px;
-    padding: 8px 18px 8px 12px;
-    border: 1px solid rgba(239, 65, 54, 0.3);
+    padding: 8px 18px 8px 14px;
+    border: 1px solid rgba(255, 255, 255, 0.35);
     border-radius: 999px;
-    background: #000000;
-    transition: background 0.35s ease, border-color 0.35s ease;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.16) 0%, rgba(255, 255, 255, 0.05) 50%, rgba(239, 65, 54, 0.08) 100%);
+    backdrop-filter: blur(28px) saturate(220%);
+    -webkit-backdrop-filter: blur(28px) saturate(220%);
+    box-shadow:
+      inset 1.5px 1.5px 3px rgba(255, 255, 255, 0.7),
+      inset -1.5px -1.5px 4px rgba(0, 0, 0, 0.4),
+      0 20px 50px rgba(0, 0, 0, 0.5),
+      0 0 35px rgba(239, 65, 54, 0.2);
+    transition: background 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
   }
 
   .liquid-nav__bar::after {
@@ -686,16 +695,16 @@ const styles = /* css */ `
     inset: 1px;
     border-radius: inherit;
     content: "";
-    background: linear-gradient(105deg, rgba(239, 65, 54, 0.08), transparent 25%, transparent 75%, rgba(239, 65, 54, 0.05));
+    background: linear-gradient(105deg, rgba(255, 255, 255, 0.15), transparent 35%, transparent 65%, rgba(239, 65, 54, 0.12));
     pointer-events: none;
   }
 
   .liquid-nav__orb-wrap {
     position: relative;
     z-index: 2;
-    flex: 0 0 60px;
-    width: 60px;
-    height: 60px;
+    flex: 0 0 56px;
+    width: 56px;
+    height: 56px;
   }
 
   .liquid-nav__orb {
@@ -720,8 +729,7 @@ const styles = /* css */ `
     z-index: 0;
     inset: 12%;
     border-radius: 50%;
-      transparent 80%
-    );
+    background: radial-gradient(circle, rgba(239, 65, 54, 0.5) 0%, transparent 80%);
     opacity: 0.56;
     filter: blur(12px);
     animation: liquid-nav-breathe 3.4s ease-in-out infinite;
@@ -738,25 +746,31 @@ const styles = /* css */ `
   .liquid-nav__item {
     position: relative;
     display: inline-flex;
-    height: 48px;
+    height: 44px;
     align-items: center;
     justify-content: center;
     gap: 8px;
     overflow: hidden;
     padding: 0 18px;
-    border: 1px solid rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.2);
     border-radius: 999px;
     outline: none;
-    color: rgba(255, 255, 255, 0.7);
-    background: rgba(255, 255, 255, 0.03);
+    color: rgba(255, 255, 255, 0.85);
+    background: rgba(255, 255, 255, 0.06);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
     font-family: "Plus Jakarta Sans", sans-serif;
     font-size: 0.88rem;
     font-weight: 700;
     cursor: pointer;
+    box-shadow:
+      inset 1px 1px 2px rgba(255, 255, 255, 0.4),
+      inset -1px -1px 2px rgba(0, 0, 0, 0.3);
     transition:
       color 300ms ease,
       border-color 300ms ease,
       background 300ms ease,
+      box-shadow 300ms ease,
       transform 300ms ease;
   }
 
@@ -779,7 +793,7 @@ const styles = /* css */ `
     left: -45%;
     width: 42%;
     height: 340%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.15), transparent);
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.25), transparent);
     opacity: 0;
     pointer-events: none;
     transform: rotate(16deg);
@@ -787,9 +801,12 @@ const styles = /* css */ `
   }
 
   .liquid-nav__item:hover {
-    border-color: rgba(239, 65, 54, 0.4);
+    border-color: rgba(255, 255, 255, 0.45);
     color: #FFFFFF;
-    background: rgba(239, 65, 54, 0.12);
+    background: rgba(255, 255, 255, 0.14);
+    box-shadow:
+      inset 1.5px 1.5px 3px rgba(255, 255, 255, 0.6),
+      0 4px 20px rgba(239, 65, 54, 0.25);
     transform: translateY(-2px);
   }
 
@@ -804,9 +821,13 @@ const styles = /* css */ `
   }
 
   .liquid-nav__item.is-active {
-    border-color: rgba(239, 65, 54, 0.6);
     color: #FFFFFF;
-    background: #EF4136;
+    background: linear-gradient(135deg, rgba(239, 65, 54, 0.45) 0%, rgba(255, 255, 255, 0.2) 100%);
+    border-color: rgba(255, 255, 255, 0.6);
+    box-shadow:
+      inset 1.5px 1.5px 3px rgba(255, 255, 255, 0.8),
+      inset -1px -1px 3px rgba(0, 0, 0, 0.3),
+      0 6px 20px rgba(239, 65, 54, 0.45);
   }
 
   .liquid-nav__item.is-active svg {

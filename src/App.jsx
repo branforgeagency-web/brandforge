@@ -5,6 +5,7 @@ import TransformationModal from './components/TransformationModal';
 import FloatingContactButtons from './components/FloatingContactButtons';
 import HomePage from './pages/HomePage';
 import AboutPage from './pages/AboutPage';
+import ContactPage from './pages/ContactPage';
 import useRoute from './useRoute';
 
 export default function App() {
@@ -23,6 +24,8 @@ export default function App() {
       {/* ROUTES */}
       {path === '/about' ? (
         <AboutPage onOpenModal={openModal} />
+      ) : path === '/contact' ? (
+        <ContactPage onOpenModal={openModal} />
       ) : (
         <HomePage onOpenModal={openModal} navigate={navigate} />
       )}

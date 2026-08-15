@@ -13,7 +13,7 @@ import BrandForgeFAQ from '../components/BrandForgeFAQ';
 export default function HomePage({ onOpenModal, navigate }) {
   return (
     <>
-      {/* RIFT STAGE HERO SECTION */}
+      {/* RIFT STAGE HERO SECTION WITH 3D HYPERSPEED BANNER OVERLAY */}
       <div id="hero">
         <RiftStageHero onOpenModal={onOpenModal} />
       </div>

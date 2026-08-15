@@ -1,15 +1,10 @@
 import React, { useLayoutEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-
-const DEFAULT_IMAGES = [
-  "https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&w=2200&q=90",
-];
+import BrandForgeBannerSection from "./BrandForgeBannerSection";
 
 export default function RiftStageHero({
   onOpenModal,
-  leadImage = DEFAULT_IMAGES[0],
-  openingTitle = "WE FORGE DOMINANT BRANDS & HYPER SCALED MEDIA",
   panels = [
     {
       eyebrow: "BRAND INSTINCT",
@@ -34,18 +29,15 @@ export default function RiftStageHero({
   useLayoutEffect(() => {
     const root = rootRef.current;
     const stage = stageRef.current;
-    const underlay = underlayRef.current;
     const lead = leadRef.current;
     const shade = shadeRef.current;
     const flash = flashRef.current;
     const leftCopy = leftCopyRef.current;
     const rightCopy = rightCopyRef.current;
-    const scrollCue = scrollCueRef.current;
 
     if (
       !root ||
       !stage ||
-      !underlay ||
       !lead ||
       !shade ||
       !flash ||
@@ -133,8 +125,8 @@ export default function RiftStageHero({
 
       <div className="rr-content">
         <section ref={stageRef} className="rr-stage">
-          {/* PART 2: UNDERLAY PANELS FOR BRAND STATEMENTS */}
-          <div ref={underlayRef} className="rr-underlay" aria-hidden="true">
+          {/* UNDERLAY PANELS FOR BRAND STATEMENTS */}
+          <div ref={underlayRef} className="rr-underlay">
             <article className="rr-panel rr-panel-left">
               <div ref={leftCopyRef} className="rr-panel-copy">
                 <span>{panels[0].eyebrow}</span>
@@ -150,11 +142,9 @@ export default function RiftStageHero({
             </article>
           </div>
 
-          {/* PART 1: LEAD OVERLAY WITH HERO IMAGE & OPENING TITLE */}
+          {/* FIRST SECTION: BRANDFORGE 3D HYPERSPEED BANNER OVERLAY */}
           <div ref={leadRef} className="rr-lead">
-            <img src={leadImage} alt="BrandForge Digital Hero" draggable={false} />
-            <div className="rr-image-vignette" />
-            <h1>{openingTitle}</h1>
+            <BrandForgeBannerSection onOpenModal={onOpenModal} />
             <div ref={shadeRef} className="rr-shade" />
             <div ref={flashRef} className="rr-flash" />
           </div>

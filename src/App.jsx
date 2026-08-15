@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import CustomCursor from './components/CustomCursor';
 import SiteNavbar from './components/SiteNavbar';
 import TransformationModal from './components/TransformationModal';
+import FloatingContactButtons from './components/FloatingContactButtons';
 import HomePage from './pages/HomePage';
 import AboutPage from './pages/AboutPage';
 import useRoute from './useRoute';
@@ -23,8 +24,11 @@ export default function App() {
       {path === '/about' ? (
         <AboutPage onOpenModal={openModal} />
       ) : (
-        <HomePage onOpenModal={openModal} />
+        <HomePage onOpenModal={openModal} navigate={navigate} />
       )}
+
+      {/* FLOATING WHATSAPP, CALL & ROCKET LAUNCHER BUTTONS (LOWER RIGHT) */}
+      <FloatingContactButtons onOpenModal={openModal} />
 
       {/* HIGH-TECH TRANSFORMATION MODAL */}
       <TransformationModal

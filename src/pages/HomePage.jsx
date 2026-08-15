@@ -1,17 +1,25 @@
 import React from 'react';
+import RiftStageHero from '../components/RiftStageHero';
+import BrandForgeAboutUsSection from '../components/BrandForgeAboutUsSection';
 import BrandForgeProcessBoard from '../components/BrandForgeProcessBoard';
 import StackedServicesSection from '../components/StackedServicesSection';
+import BrandForgeOrbitGallerySection from '../components/BrandForgeOrbitGallerySection';
+import BrandForgeClientMarqueeStrip from '../components/BrandForgeClientMarqueeStrip';
 import BrandForgeTestimonialsSection from '../components/BrandForgeTestimonialsSection';
 import BrandForgeAnimatedFooter from '../components/BrandForgeAnimatedFooter';
 import BrandForgeFAQ from '../components/BrandForgeFAQ';
-import PlumeFieldSection from '../components/PlumeFieldSection';
 
-export default function HomePage({ onOpenModal }) {
+export default function HomePage({ onOpenModal, navigate }) {
   return (
     <>
-      {/* GPU FLUID PLUME FIELD HERO SECTION */}
+      {/* RIFT STAGE HERO SECTION WITH REVEALED GPU FLUID SIMULATION */}
       <div id="hero">
-        <PlumeFieldSection />
+        <RiftStageHero onOpenModal={onOpenModal} />
+      </div>
+
+      {/* ABOUT US SECTION WITH DYNAMIC FLUID ORGANIC BLOB & PARALLAX SCROLL */}
+      <div id="about-us">
+        <BrandForgeAboutUsSection onOpenModal={onOpenModal} navigate={navigate} />
       </div>
 
       {/* HOW WE WORK — PROCESS BOARD */}
@@ -22,6 +30,16 @@ export default function HomePage({ onOpenModal }) {
       {/* FULL-SCREEN SCROLL-DRIVEN STACKED EDITORIAL 12 SERVICES CARDS */}
       <div id="stacked-services">
         <StackedServicesSection onSelectService={onOpenModal} />
+      </div>
+
+      {/* INTERACTIVE ORBIT SCRUB GALLERY — GLIMPSE OF CREATIVE EXCELLENCE */}
+      <div id="gallery">
+        <BrandForgeOrbitGallerySection onOpenModal={onOpenModal} />
+      </div>
+
+      {/* FULL-WIDTH WHITE MARQUEE STRIP WITH LOOPING CLIENT & MEDIA LOGOS */}
+      <div id="client-marquee">
+        <BrandForgeClientMarqueeStrip onOpenModal={onOpenModal} />
       </div>
 
       {/* BRANDFORGE TESTIMONIALS SECTION */}

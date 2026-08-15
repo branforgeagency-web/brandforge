@@ -598,16 +598,17 @@ const styles = `
   display: inline-block;
 }
 
-/* GIANT SCROLL-EXPANDING BRANDFORGE LOGO IMAGE */
+/* BRANDFORGE FOOTER LOGO IMAGE */
 .bf-giant-footer-logo {
   width: 100%;
-  max-width: 980px;
+  max-width: 420px;
   height: auto;
-  margin: 50px auto 30px;
+  margin: 40px auto 25px;
   display: block;
   user-select: none;
   pointer-events: none;
   object-fit: contain;
+  opacity: 0.95;
   will-change: transform, opacity;
 }
 

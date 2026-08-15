@@ -12,10 +12,12 @@ export default function CustomCursor() {
 
       const target = e.target;
       if (
-        target.closest('button') ||
-        target.closest('a') ||
-        target.closest('[data-interactive]') ||
-        target.closest('.service-card')
+        target &&
+        typeof target.closest === 'function' &&
+        (target.closest('button') ||
+          target.closest('a') ||
+          target.closest('[data-interactive]') ||
+          target.closest('.service-card'))
       ) {
         setIsHovered(true);
       } else {

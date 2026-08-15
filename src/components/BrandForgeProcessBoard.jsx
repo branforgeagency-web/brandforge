@@ -212,7 +212,16 @@ function ParticleCanvas() {
 /* ─── Pin Icon ─── */
 function PinIcon({ color }) {
   return (
-    <svg aria-hidden="true" viewBox="0 0 24 24" style={{ width: 28, height: 28, fill: color, margin: "0 auto 20px" }}>
+    <svg
+      aria-hidden="true"
+      viewBox="0 0 24 24"
+      style={{
+        width: 44,
+        height: 44,
+        fill: color,
+        display: "block",
+      }}
+    >
       <path d="M16 3a1 1 0 0 1 .117 1.993L16 5v4.764l1.894 3.789c.054.108.088.22.1.331L18 14v2a1 1 0 0 1-.883.993L17 17h-4v4a1 1 0 0 1-1.993.117L11 21v-4H7a1 1 0 0 1-.993-.883L6 16v-2c0-.117.02-.23.06-.34l.046-.107L8 9.762V5a1 1 0 0 1-.117-1.993L8 3h8Z" />
     </svg>
   );
@@ -221,6 +230,7 @@ function PinIcon({ color }) {
 /* ─── Process Card ─── */
 function ProcessCard({ step, index, placement, isMobile }) {
   const isRed = step.accent === "red";
+  const isLeft = index % 2 === 0;
 
   const cardStyle = isMobile
     ? { position: "relative", width: "100%", marginBottom: 28 }
@@ -246,11 +256,34 @@ function ProcessCard({ step, index, placement, isMobile }) {
         borderRadius: 24,
         border: isRed ? "1px solid rgba(255,255,255,0.15)" : "1px solid #e5e7eb",
         background: isRed ? "#EF4136" : "#FFFFFF",
-        padding: 8,
+        padding: "12px 10px 10px",
         boxShadow: isRed ? "0 8px 32px rgba(239, 65, 54,0.3)" : "0 8px 24px rgba(0,0,0,0.5)",
         cursor: "default",
+        position: "relative",
       }}>
-        <PinIcon color={isRed ? "#FFFFFF" : "#EF4136"} />
+        {/* ANIMATED PUSH PIN DROPPING & PINNING INTO TOP-LEFT OR TOP-RIGHT CORNER ON SCROLL */}
+        <motion.div
+          initial={{ opacity: 0, y: -65, scale: 1.4 }}
+          whileInView={{ opacity: 1, y: 0, scale: 1 }}
+          viewport={{ once: false, amount: 0.3 }}
+          transition={{
+            duration: 1.25,
+            delay: index * 0.2 + 0.35,
+            ease: [0.16, 1, 0.3, 1],
+          }}
+          style={{
+            display: "flex",
+            justifyContent: isLeft ? "flex-start" : "flex-end",
+            width: "100%",
+            marginTop: -22,
+            marginBottom: 4,
+            paddingLeft: isLeft ? 12 : 0,
+            paddingRight: !isLeft ? 12 : 0,
+            transform: isLeft ? "rotate(-10deg)" : "rotate(10deg)",
+          }}
+        >
+          <PinIcon color={isRed ? "#FFFFFF" : "#EF4136"} />
+        </motion.div>
 
         <div style={{
           borderRadius: 16,

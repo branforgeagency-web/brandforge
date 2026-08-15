@@ -1,4 +1,253 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
+
+const PARTICLE_COLORS = [
+  { r: 239, g: 65,  b: 54  }, // Crimson Red
+  { r: 255, g: 77,  b: 77  }, // Electric Red
+  { r: 255, g: 255, b: 255 }, // White
+  { r: 191, g: 52,  b: 43  }, // Deep Crimson
+];
+
+function KexsioCanvasBackground() {
+  const canvasRef = useRef(null);
+
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) return undefined;
+    const ctx = canvas.getContext("2d");
+    if (!ctx) return undefined;
+
+    let animationFrameId = 0;
+    let particles = [];
+    let canvasWidth = 0;
+    let canvasHeight = 0;
+    let pixelRatio = 1;
+
+    const mouse = {
+      x: null,
+      y: null,
+      radius: 190,
+    };
+
+    class Particle {
+      constructor(x, y, velocityX, velocityY, size, color) {
+        this.x = x;
+        this.y = y;
+        this.velocityX = velocityX;
+        this.velocityY = velocityY;
+        this.size = size;
+        this.color = color;
+      }
+
+      draw() {
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+
+        const particleGlow = ctx.createRadialGradient(
+          this.x,
+          this.y,
+          0,
+          this.x,
+          this.y,
+          this.size * 4,
+        );
+
+        particleGlow.addColorStop(
+          0,
+          `rgba(${this.color.r}, ${this.color.g}, ${this.color.b}, 1)`,
+        );
+
+        particleGlow.addColorStop(
+          0.35,
+          `rgba(${this.color.r}, ${this.color.g}, ${this.color.b}, 0.75)`,
+        );
+
+        particleGlow.addColorStop(
+          1,
+          `rgba(${this.color.r}, ${this.color.g}, ${this.color.b}, 0)`,
+        );
+
+        ctx.fillStyle = particleGlow;
+        ctx.fill();
+      }
+
+      update() {
+        if (this.x >= canvasWidth || this.x <= 0) {
+          this.velocityX *= -1;
+        }
+
+        if (this.y >= canvasHeight || this.y <= 0) {
+          this.velocityY *= -1;
+        }
+
+        if (mouse.x !== null && mouse.y !== null) {
+          const dx = mouse.x - this.x;
+          const dy = mouse.y - this.y;
+          const distance = Math.sqrt(dx * dx + dy * dy);
+
+          if (distance > 0 && distance < mouse.radius) {
+            const force = (mouse.radius - distance) / mouse.radius;
+            const forceX = dx / distance;
+            const forceY = dy / distance;
+
+            this.x -= forceX * force * 4.5;
+            this.y -= forceY * force * 4.5;
+          }
+        }
+
+        this.x += this.velocityX;
+        this.y += this.velocityY;
+
+        this.draw();
+      }
+    }
+
+    const createParticles = () => {
+      particles = [];
+
+      const responsiveDivider = canvasWidth < 768 ? 15000 : 10500;
+      const particleCount = Math.min(
+        165,
+        Math.max(
+          45,
+          Math.floor((canvasWidth * canvasHeight) / responsiveDivider),
+        ),
+      );
+
+      for (let index = 0; index < particleCount; index += 1) {
+        const size = Math.random() * 1.8 + 0.9;
+        const x = Math.random() * canvasWidth;
+        const y = Math.random() * canvasHeight;
+        const velocityX = Math.random() * 0.42 - 0.21;
+        const velocityY = Math.random() * 0.42 - 0.21;
+
+        const color =
+          PARTICLE_COLORS[
+            Math.floor(Math.random() * PARTICLE_COLORS.length)
+          ];
+
+        particles.push(
+          new Particle(
+            x,
+            y,
+            velocityX,
+            velocityY,
+            size,
+            color,
+          ),
+        );
+      }
+    };
+
+    const resizeCanvas = () => {
+      if (!canvas.parentElement) return;
+      const parent = canvas.parentElement;
+      canvasWidth = parent.offsetWidth;
+      canvasHeight = parent.offsetHeight;
+      pixelRatio = Math.min(window.devicePixelRatio || 1, 2);
+
+      canvas.width = canvasWidth * pixelRatio;
+      canvas.height = canvasHeight * pixelRatio;
+
+      canvas.style.width = `${canvasWidth}px`;
+      canvas.style.height = `${canvasHeight}px`;
+
+      ctx.setTransform(pixelRatio, 0, 0, pixelRatio, 0, 0);
+
+      createParticles();
+    };
+
+    const connectParticles = () => {
+      const maxDistance = canvasWidth < 768 ? 105 : 145;
+      const maxDistanceSquared = maxDistance * maxDistance;
+
+      for (let a = 0; a < particles.length; a += 1) {
+        for (let b = a + 1; b < particles.length; b += 1) {
+          const dx = particles[a].x - particles[b].x;
+          const dy = particles[a].y - particles[b].y;
+          const distanceSquared = dx * dx + dy * dy;
+
+          if (distanceSquared > maxDistanceSquared) continue;
+
+          const opacity =
+            0.58 * (1 - distanceSquared / maxDistanceSquared);
+
+          const startColor = particles[a].color;
+          const endColor = particles[b].color;
+
+          const lineGradient = ctx.createLinearGradient(
+            particles[a].x,
+            particles[a].y,
+            particles[b].x,
+            particles[b].y,
+          );
+
+          lineGradient.addColorStop(
+            0,
+            `rgba(${startColor.r}, ${startColor.g}, ${startColor.b}, ${opacity})`,
+          );
+
+          lineGradient.addColorStop(
+            1,
+            `rgba(${endColor.r}, ${endColor.g}, ${endColor.b}, ${opacity})`,
+          );
+
+          ctx.beginPath();
+          ctx.moveTo(particles[a].x, particles[a].y);
+          ctx.lineTo(particles[b].x, particles[b].y);
+          ctx.strokeStyle = lineGradient;
+          ctx.lineWidth = 0.85;
+          ctx.stroke();
+        }
+      }
+    };
+
+    const animate = () => {
+      ctx.clearRect(0, 0, canvasWidth, canvasHeight);
+
+      particles.forEach((particle) => {
+        particle.update();
+      });
+
+      connectParticles();
+
+      animationFrameId = window.requestAnimationFrame(animate);
+    };
+
+    const handleMouseMove = (event) => {
+      const rect = canvas.getBoundingClientRect();
+      mouse.x = event.clientX - rect.left;
+      mouse.y = event.clientY - rect.top;
+    };
+
+    const handleMouseLeave = () => {
+      mouse.x = null;
+      mouse.y = null;
+    };
+
+    resizeCanvas();
+    animate();
+
+    window.addEventListener("resize", resizeCanvas);
+    window.addEventListener("mousemove", handleMouseMove);
+    document.addEventListener("mouseleave", handleMouseLeave);
+
+    return () => {
+      window.cancelAnimationFrame(animationFrameId);
+
+      window.removeEventListener("resize", resizeCanvas);
+      window.removeEventListener("mousemove", handleMouseMove);
+      document.removeEventListener("mouseleave", handleMouseLeave);
+    };
+  }, []);
+
+  return (
+    <canvas
+      ref={canvasRef}
+      className="kexsio-canvas"
+      aria-hidden="true"
+    />
+  );
+}
 
 const REVIEWS = [
   {
@@ -9,8 +258,8 @@ const REVIEWS = [
     quote:
       "BrandForge helped us translate the ThoughtSpace experience — train, work, create, grow — into a digital presence that finally feels like our space.",
     logo: "/client-thoughtspace.png",
-    cardBg: "#14111D",
-    accentColor: "#EF4136", // Crimson
+    cardBg: "#EF4136", // Vibrant Crimson Red Card
+    accentColor: "#FFFFFF", // Bold White Speech Bubble Border
   },
   {
     name: "Sonic Prints",
@@ -20,8 +269,8 @@ const REVIEWS = [
     quote:
       "Our brand finally looks as sharp as our print work. BrandForge gave Sonic Prints an identity that stands out and holds up across every touchpoint.",
     logo: "/client-sonicprints.png",
-    cardBg: "#191219",
-    accentColor: "#FF4D4D", // Electric Red
+    cardBg: "#EF4136", // Vibrant Crimson Red Card
+    accentColor: "#FFFFFF", // Bold White Speech Bubble Border
   },
   {
     name: "ThoughtFlows",
@@ -31,8 +280,8 @@ const REVIEWS = [
     quote:
       "BrandForge helped ThoughtFlows reach more students actively searching for medical coding training, with a brand presence that matches our position as a leading academy.",
     logo: "/client-thoughtflows.png",
-    cardBg: "#101624",
-    accentColor: "#3892FF", // Cyan Sky Blue
+    cardBg: "#EF4136", // Vibrant Crimson Red Card
+    accentColor: "#FFFFFF", // Bold White Speech Bubble Border
   },
   {
     name: "TalentEra",
@@ -42,8 +291,8 @@ const REVIEWS = [
     quote:
       "BrandForge gave TalentEra a brand that feels like what it promises — a new era of hiring. Clean, confident, and built to help us stand out to every candidate.",
     logo: "/client-talentera.png",
-    cardBg: "#0E1A16",
-    accentColor: "#00E676", // Emerald Green
+    cardBg: "#EF4136", // Vibrant Crimson Red Card
+    accentColor: "#FFFFFF", // Bold White Speech Bubble Border
   },
 ];
 
@@ -70,6 +319,8 @@ export default function BrandForgeTestimonialsSection({ onOpenModal }) {
   return (
     <section className="bf-paperclip-testimonials">
       <style>{styles}</style>
+      <KexsioCanvasBackground />
+      <div className="kexsio-overlay" />
 
       {/* Header */}
       <div className="bf-test-header">
@@ -155,7 +406,7 @@ const styles = `
     position: relative;
     width: 100%;
     padding: clamp(50px, 6vw, 90px) 20px;
-    background: #060509;
+    background: #000000;
     font-family: "Outfit", "Inter", sans-serif;
     display: flex;
     flex-direction: column;
@@ -163,9 +414,35 @@ const styles = `
     justify-content: center;
     overflow: hidden;
     color: #FFFFFF;
+    isolation: isolate;
+  }
+
+  .kexsio-canvas {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+  }
+
+  .kexsio-overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    background:
+      radial-gradient(
+        circle at center,
+        transparent 10%,
+        rgba(0, 0, 0, 0.18) 56%,
+        rgba(0, 0, 0, 0.72) 100%
+      );
   }
 
   .bf-test-header {
+    position: relative;
+    z-index: 5;
     text-align: center;
     max-width: 760px;
     margin-bottom: clamp(45px, 6vh, 65px);
@@ -188,7 +465,6 @@ const styles = `
     height: 7px;
     border-radius: 50%;
     background: #EF4136;
-    box-shadow: 0 0 10px rgba(239, 65, 54, 0.6);
   }
 
   .bf-test-header h2 {
@@ -211,6 +487,7 @@ const styles = `
 
   .bf-test-stage {
     position: relative;
+    z-index: 5;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -218,22 +495,21 @@ const styles = `
     max-width: 540px;
   }
 
-  /* ── DARK THEME SPEECH BUBBLE POLAROID CARD WITH LOGO COLOR ACCENT ── */
+  /* ── VIBRANT RED SPEECH BUBBLE POLAROID CARD WITH BOLD WHITE BORDER ── */
   .testimonial {
-    width: 480px;
+    width: 490px;
     max-width: 100%;
-    height: 310px;
-    background: var(--card-bg, #14111D);
+    min-height: 310px;
+    background: #EF4136;
     padding: 2.8em 2.4em 1.8em 2.4em;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: flex-start;
     position: relative;
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6), 0 0 40px var(--card-accent, #EF4136);
-    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.65);
-    border-radius: 14px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 20px 45px rgba(0, 0, 0, 0.5);
+    border-radius: 16px;
+    border: none;
     transition: background 0.5s ease, border-color 0.5s ease;
     animation: cardAppear 0.5s cubic-bezier(0.16, 1, 0.3, 1);
   }
@@ -245,13 +521,13 @@ const styles = `
 
   .testimonial:after {
     content: "";
-    border: 7px solid var(--card-accent, #EF4136);
+    border: 7px solid #FFFFFF;
     border-radius: 44px;
-    width: 88%;
+    width: 90%;
     height: 124%;
     position: absolute;
     z-index: 0;
-    left: 1.2em;
+    left: 1.1em;
     top: -1.8em;
     pointer-events: none;
     transition: border-color 0.5s ease;
@@ -267,7 +543,7 @@ const styles = `
     height: 0;
     border-style: solid;
     border-width: 60px 85px 0 0;
-    border-color: var(--card-accent, #EF4136) transparent transparent transparent;
+    border-color: #FFFFFF transparent transparent transparent;
     transition: border-color 0.5s ease;
   }
 
@@ -276,8 +552,8 @@ const styles = `
     font-size: 2.5em;
     width: 38px;
     height: 38px;
-    background: var(--card-accent, #EF4136);
-    color: #FFFFFF;
+    background: #FFFFFF;
+    color: #EF4136;
     text-align: center;
     line-height: 1.2;
     z-index: 5;
@@ -299,8 +575,8 @@ const styles = `
   .quote-text-wrapper {
     position: relative;
     z-index: 2;
-    width: 60%;
-    height: 150px;
+    width: 62%;
+    min-height: 140px;
     display: flex;
     align-items: center;
     overflow: hidden;
@@ -325,25 +601,24 @@ const styles = `
     justify-content: space-between;
   }
 
-  /* RATING STARS MATCHING LOGO ACCENT */
+  /* RATING STARS MATCHING BOLD WHITE THEME */
   .rating-stars {
-    color: var(--card-accent, #EF4136);
+    color: #FFFFFF;
     font-weight: 900;
-    font-size: 0.95rem;
+    font-size: 1rem;
     letter-spacing: 0.08em;
-    transition: color 0.5s ease;
   }
 
   .rating-stars strong {
     color: #FFFFFF;
-    font-size: 0.9rem;
+    font-size: 0.95rem;
     margin-left: 5px;
   }
 
   .source span {
     display: inline-block;
     font-weight: 800;
-    font-size: 0.95em;
+    font-size: 0.98em;
     color: #FFFFFF;
   }
 
@@ -351,7 +626,7 @@ const styles = `
     content: "\\2014 ";
     display: inline;
     margin-right: 4px;
-    color: var(--card-accent, #EF4136);
+    color: #FFFFFF;
   }
 
   /* POLAROID FRAME WITH LIGHT BG FOR CLIENT LOGO */
@@ -361,6 +636,18 @@ const styles = `
     top: 0.6em;
     right: 1.2em;
     z-index: 4;
+    animation: logoCardPopIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+
+  @keyframes logoCardPopIn {
+    0% {
+      transform: rotate(-5deg) translateY(35px) scale(1.2);
+      opacity: 0;
+    }
+    100% {
+      transform: rotate(-5deg) translateY(0) scale(1);
+      opacity: 1;
+    }
   }
 
   .polaroid-frame {
@@ -381,9 +668,10 @@ const styles = `
     object-fit: contain;
   }
 
+  /* STRICT CRIMSON RED PAPER CLIP FOR ALL CARDS */
   .clip {
-    border: 2px solid var(--card-accent, #EF4136);
-    border-right: none;
+    border: 3px solid #EF4136 !important;
+    border-right: none !important;
     height: 72px;
     width: 18px;
     position: absolute;
@@ -391,7 +679,23 @@ const styles = `
     top: -16%;
     border-radius: 22px;
     z-index: 10;
-    transition: border-color 0.5s ease;
+    filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.4));
+    animation: paperClipSnapDown 0.55s cubic-bezier(0.2, 0.8, 0.2, 1.25) 0.22s both;
+  }
+
+  @keyframes paperClipSnapDown {
+    0% {
+      transform: translateY(-48px);
+      opacity: 0;
+    }
+    75% {
+      transform: translateY(5px);
+      opacity: 1;
+    }
+    100% {
+      transform: translateY(0);
+      opacity: 1;
+    }
   }
 
   .clip:before {
@@ -401,12 +705,11 @@ const styles = `
     right: 0;
     height: 9px;
     width: 14px;
-    border: 2px solid var(--card-accent, #EF4136);
-    border-bottom: none;
+    border: 3px solid #EF4136 !important;
+    border-bottom: none !important;
     border-top-left-radius: 22px;
     border-top-right-radius: 22px;
     z-index: 99;
-    transition: border-color 0.5s ease;
   }
 
   .clip:after {
@@ -416,12 +719,11 @@ const styles = `
     right: 0;
     height: 38px;
     width: 14px;
-    border: 2px solid var(--card-accent, #EF4136);
-    border-top: none;
+    border: 3px solid #EF4136 !important;
+    border-top: none !important;
     border-bottom-left-radius: 22px;
     border-bottom-right-radius: 22px;
     z-index: 99;
-    transition: border-color 0.5s ease;
   }
 
   /* Carousel Controls */

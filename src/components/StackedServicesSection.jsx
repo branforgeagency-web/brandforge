@@ -190,18 +190,19 @@ export default function StackedServicesSection({ onSelectService }) {
         stageRef.current.style.setProperty("--progress", currentRef.current.toFixed(4));
       }
 
-      // 3D Card Stack Physics Animation matching exact user-provided scroll story code
+      // 3D Card Stack Physics Animation — continuous tight card stacking with crisp cards
       cardRefs.current.forEach((card, index) => {
         if (!card) return;
         const delta = index - scene;
         const capped = clamp(delta, -1.4, 1.65);
-        const y = capped < 0 ? capped * 160 : capped * 127;
-        const rotation = capped < 0 ? capped * 7 : capped * 8.5;
-        const scale = capped < 0 ? 1 - Math.min(Math.abs(capped), 1) * 0.085 : 1 - Math.min(capped, 1) * 0.055;
-        const opacity = delta < -0.82 ? clamp((delta + 1.16) / 0.34, 0, 1) : delta > 1.16 ? clamp((1.55 - delta) / 0.39, 0, 1) : 1;
+        const y = capped < 0 ? capped * 120 : capped * 32;
+        const rotation = capped < 0 ? capped * 5 : capped * 6;
+        const scale = capped < 0 ? 1 - Math.min(Math.abs(capped), 1) * 0.06 : 1 - Math.min(capped, 1) * 0.04;
+        const opacity = delta < -0.85 ? clamp((delta + 1.16) / 0.31, 0, 1) : delta > 1.2 ? clamp((1.55 - delta) / 0.35, 0, 1) : 1;
 
         card.style.transform = `translate3d(-50%, calc(-50% + ${y}%), 0) rotate(${rotation}deg) scale(${scale})`;
         card.style.opacity = opacity.toFixed(3);
+        card.style.filter = "none";
         card.style.zIndex = 50 - Math.round(Math.abs(delta) * 10) + index;
       });
 
@@ -327,7 +328,7 @@ export default function StackedServicesSection({ onSelectService }) {
 const styles = `
 .scroll-story {
   position: relative;
-  height: 430vh;
+  height: 520vh;
   background: #030305;
 }
 

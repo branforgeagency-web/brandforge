@@ -2,7 +2,7 @@ import { useEffect, useRef } from "react";
 import * as THREE from "three";
 
 /* ───────────────────────────────────────────────────────────────────────────
-   PLUME — Real-Time WebGL GPU Fluid Hero (Clean Hero without Chrome Hints)
+   PLUME — Real-Time WebGL GPU Fluid Hero
    ─────────────────────────────────────────────────────────────────────────── */
 
 const CONFIG = {
@@ -12,8 +12,8 @@ const CONFIG = {
   pressureIterations: 40,
   velocityDissipation: 0.95,
   dyeDissipation: 0.95,
-  splatRadius: 0.3,
-  forceStrength: 8.5,
+  splatRadius: 0.38,
+  forceStrength: 9.5,
   pressureDecay: 0.75,
 };
 
@@ -51,19 +51,44 @@ const SHADERS = {
     VERT,
     `${P} ${S}
     uniform sampler2D uVelocity, uCurl; uniform vec2 texel; uniform float strength, dt; varying vec2 vUv;
-    void main(){ vec2 L=vUv-vec2(texel.x,0.0),R=vUv+vec2(texel.x,0.0),T=vUv+vec2(0.0,texel.y),B=vUv-vec2(0.0,texel.y); vec2 f = normalize(vec2(abs(texture2D(uCurl,T).x)-abs(texture2D(uCurl,B).x), abs(texture2D(uCurl,R).x)-abs(texture2D(uCurl,L).x))+0.0001) * strength * texture2D(uCurl,vUv).x; gl_FragColor = vec4(texture2D(uVelocity,vUv).xy + f*dt, 0.0, 1.0); }`,
+    void main(){
+      float C = texture2D(uCurl, vUv).x;
+      float L = texture2D(uCurl, vUv - vec2(texel.x,0.0)).x;
+      float R = texture2D(uCurl, vUv + vec2(texel.x,0.0)).x;
+      float T = texture2D(uCurl, vUv + vec2(0.0,texel.y)).x;
+      float B = texture2D(uCurl, vUv - vec2(0.0,texel.y)).x;
+      vec2 force = 0.5 * vec2(abs(T)-abs(B), abs(R)-abs(L));
+      float l = length(force);
+      force = l > 0.0001 ? (force/l) * C * strength : vec2(0.0);
+      vec2 vel = texture2D(uVelocity, vUv).xy;
+      gl_FragColor = vec4(vel + force * dt, 0.0, 1.0);
+    }`,
   ],
   pressure: [
     VERT,
     `${P} ${S}
     uniform sampler2D uPressure, uDivergence; uniform vec2 texel; varying vec2 vUv;
-    void main(){ vec2 L=clamp(vUv-vec2(texel.x,0.0),0.0,1.0),R=clamp(vUv+vec2(texel.x,0.0),0.0,1.0),T=clamp(vUv+vec2(0.0,texel.y),0.0,1.0),B=clamp(vUv-vec2(0.0,texel.y),0.0,1.0); gl_FragColor = vec4((texture2D(uPressure,L).x+texture2D(uPressure,R).x+texture2D(uPressure,T).x+texture2D(uPressure,B).x-texture2D(uDivergence,vUv).x)*0.25,0.0,0.0,1.0); }`,
+    void main(){
+      float L=texture2D(uPressure, vUv-vec2(texel.x,0.0)).x;
+      float R=texture2D(uPressure, vUv+vec2(texel.x,0.0)).x;
+      float T=texture2D(uPressure, vUv+vec2(0.0,texel.y)).x;
+      float B=texture2D(uPressure, vUv-vec2(0.0,texel.y)).x;
+      float div=texture2D(uDivergence, vUv).x;
+      gl_FragColor = vec4(0.25 * (L + R + T + B - div), 0.0, 0.0, 1.0);
+    }`,
   ],
   gradientSubtract: [
     VERT,
     `${P} ${S}
     uniform sampler2D uPressure, uVelocity; uniform vec2 texel; varying vec2 vUv;
-    void main(){ float pL=texture2D(uPressure,clamp(vUv-vec2(texel.x,0.0),0.0,1.0)).x, pR=texture2D(uPressure,clamp(vUv+vec2(texel.x,0.0),0.0,1.0)).x, pT=texture2D(uPressure,clamp(vUv+vec2(0.0,texel.y),0.0,1.0)).x, pB=texture2D(uPressure,clamp(vUv-vec2(0.0,texel.y),0.0,1.0)).x; gl_FragColor = vec4(texture2D(uVelocity,vUv).xy - vec2(pR-pL, pT-pB), 0.0, 1.0); }`,
+    void main(){
+      float L=texture2D(uPressure, vUv-vec2(texel.x,0.0)).x;
+      float R=texture2D(uPressure, vUv+vec2(texel.x,0.0)).x;
+      float T=texture2D(uPressure, vUv+vec2(0.0,texel.y)).x;
+      float B=texture2D(uPressure, vUv-vec2(0.0,texel.y)).x;
+      vec2 vel=texture2D(uVelocity, vUv).xy;
+      gl_FragColor = vec4(vel - vec2(R-L, T-B), 0.0, 1.0);
+    }`,
   ],
   clear: [
     VERT,
@@ -100,6 +125,7 @@ const css = `
   position:relative;
   width:100%;
   min-height:100vh;
+  min-height:100dvh;
   overflow:hidden;
   background:#060509;
   font-family:'DM Mono',ui-monospace,monospace;
@@ -109,12 +135,12 @@ const css = `
 .pl-hero{
   position:absolute;
   inset:0;
-  z-index:1;
+  z-index:5;
   display:flex;
   flex-direction:column;
   justify-content:center;
-  padding:2rem;
-  opacity:0;
+  padding: clamp(2rem, 5vw, 4rem);
+  opacity:1;
   pointer-events:none;
 }
 .pl-hero h1{
@@ -123,22 +149,163 @@ const css = `
   color:#FFFFFF;
   font-family:'Outfit', 'Inter', system-ui, sans-serif;
   font-weight:900;
-  font-size:clamp(3.0rem, 9.2vw, 13.0rem);
-  line-height:0.88;
+  font-size:clamp(2.8rem, 8vw, 10.5rem);
+  line-height:0.92;
   letter-spacing:-0.04em;
+  text-shadow: 0 4px 30px rgba(0, 0, 0, 0.8);
+}
+.pl-hero h1 span.red-text {
+  color: #EF4136;
 }
 .pl-hero h1:nth-child(1){align-self:flex-start;}
-.pl-hero h1:nth-child(2){align-self:flex-end;}
-.pl-hero h1:nth-child(3){align-self:center;}
+.pl-hero h1:nth-child(2){align-self:flex-end;text-align:right;}
+.pl-hero h1:nth-child(3){align-self:center;text-align:center;}
 
 .pl-canvas{
   position:absolute;
   inset:0;
-  z-index:3;
+  z-index:2;
   display:block;
   width:100%;
   height:100%;
   pointer-events:none;
+}
+
+.pl-cta-wrap {
+  position: absolute;
+  bottom: clamp(2rem, 6vh, 4.5rem);
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+  pointer-events: auto;
+}
+
+.pl-cosmic-btn {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 16.5rem;
+  height: 3.5rem;
+  overflow: hidden;
+  background-size: 300% 300%;
+  cursor: pointer;
+  backdrop-filter: blur(1rem);
+  border-radius: 5rem;
+  transition: 0.5s;
+  animation: pl_gradient_301 5s ease infinite;
+  border: double 4px transparent;
+  background-image: linear-gradient(#060509, #060509),
+    linear-gradient(
+      137.48deg,
+      #EF4136 10%,
+      #FF4D4D 45%,
+      #FFFFFF 67%,
+      #BF342B 87%
+    );
+  background-origin: border-box;
+  background-clip: content-box, border-box;
+  box-shadow: none;
+}
+
+.pl-container-stars {
+  position: absolute;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  transition: 0.5s;
+  backdrop-filter: blur(1rem);
+  border-radius: 5rem;
+}
+
+.pl-cosmic-btn strong {
+  z-index: 2;
+  font-family: "Outfit", "Inter", sans-serif;
+  font-size: 12.5px;
+  font-weight: 900;
+  letter-spacing: 4px;
+  color: #ffffff;
+  text-transform: uppercase;
+}
+
+.pl-cosmic-btn:hover .pl-container-stars {
+  z-index: 1;
+  background-color: #060509;
+}
+
+.pl-cosmic-btn:hover {
+  transform: scale(1.08);
+  box-shadow: none;
+}
+
+.pl-cosmic-btn:active {
+  border: double 4px #EF4136;
+  background-origin: border-box;
+  background-clip: content-box, border-box;
+  animation: none;
+}
+
+.pl-stars {
+  position: relative;
+  background: transparent;
+  width: 200rem;
+  height: 200rem;
+}
+
+.pl-stars::after {
+  content: "";
+  position: absolute;
+  top: -10rem;
+  left: -100rem;
+  width: 100%;
+  height: 100%;
+  animation: pl_animStarRotate 90s linear infinite;
+  background-image: radial-gradient(#ffffff 1px, transparent 1%);
+  background-size: 50px 50px;
+}
+
+.pl-stars::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -50%;
+  width: 170%;
+  height: 500%;
+  animation: pl_animStar 60s linear infinite;
+  background-image: radial-gradient(#ffffff 1px, transparent 1%);
+  background-size: 50px 50px;
+  opacity: 0.5;
+}
+
+@keyframes pl_animStar {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-135rem);
+  }
+}
+
+@keyframes pl_animStarRotate {
+  from {
+    transform: rotate(360deg);
+  }
+  to {
+    transform: rotate(0);
+  }
+}
+
+@keyframes pl_gradient_301 {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
 @media (max-width:1000px){
@@ -146,7 +313,7 @@ const css = `
 }
 `;
 
-export default function PlumeFieldSection() {
+export default function PlumeFieldSection({ onOpenModal }) {
   const rootRef = useRef(null);
   const canvasRef = useRef(null);
 
@@ -158,8 +325,14 @@ export default function PlumeFieldSection() {
     const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     if (reduce) return;
 
-    const renderer = new THREE.WebGLRenderer({ canvas, alpha: false });
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    let renderer;
+    try {
+      renderer = new THREE.WebGLRenderer({ canvas, alpha: true, failIfMajorPerformanceCaveat: false });
+      renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    } catch (err) {
+      console.warn("WebGL initialization skipped:", err);
+      return;
+    }
 
     const sizeOf = () => {
       const r = root.getBoundingClientRect();
@@ -183,25 +356,33 @@ export default function PlumeFieldSection() {
       textCtx.fillStyle = "#FFFFFF";
 
       const lines = ["FORGE DIGITAL BRANDS.", "SCALE MEDIA & ROAS.", "BRANDFORGE AGENCY."];
-      const fontSize = Math.min(width * 0.076, 145 * dpr);
+      const isMobile = width < 768 * dpr;
+      const fontSize = isMobile ? Math.min(width * 0.078, 54 * dpr) : Math.min(width * 0.076, 145 * dpr);
       textCtx.font = `900 ${fontSize}px 'Outfit', 'Inter', sans-serif`;
       textCtx.textBaseline = "middle";
 
-      const padding = 32 * dpr;
+      const padding = isMobile ? 16 * dpr : 32 * dpr;
       const centerY = height / 2;
-      const lineGap = fontSize * 0.88;
+      const lineGap = fontSize * (isMobile ? 1.15 : 0.88);
 
-      // Line 1: Left
-      textCtx.textAlign = "left";
-      textCtx.fillText(lines[0], padding, centerY - lineGap);
+      if (isMobile) {
+        textCtx.textAlign = "center";
+        textCtx.fillText(lines[0], width / 2, centerY - lineGap);
+        textCtx.fillText(lines[1], width / 2, centerY);
+        textCtx.fillText(lines[2], width / 2, centerY + lineGap);
+      } else {
+        // Line 1: Left
+        textCtx.textAlign = "left";
+        textCtx.fillText(lines[0], padding, centerY - lineGap);
 
-      // Line 2: Right
-      textCtx.textAlign = "right";
-      textCtx.fillText(lines[1], width - padding, centerY);
+        // Line 2: Right
+        textCtx.textAlign = "right";
+        textCtx.fillText(lines[1], width - padding, centerY);
 
-      // Line 3: Center
-      textCtx.textAlign = "center";
-      textCtx.fillText(lines[2], width / 2, centerY + lineGap);
+        // Line 3: Center
+        textCtx.textAlign = "center";
+        textCtx.fillText(lines[2], width / 2, centerY + lineGap);
+      }
     };
 
     renderTextTexture();
@@ -321,7 +502,15 @@ export default function PlumeFieldSection() {
       moveTo(e.clientX, e.clientY);
     };
 
+    const onTouchMove = (e) => {
+      if (e.touches && e.touches[0]) {
+        moveTo(e.touches[0].clientX, e.touches[0].clientY);
+      }
+    };
+
     window.addEventListener("pointermove", onPointer);
+    window.addEventListener("touchmove", onTouchMove, { passive: true });
+    window.addEventListener("touchstart", onTouchMove, { passive: true });
 
     const splat = (x, y, vx, vy) => {
       set(mats.splat, {
@@ -337,7 +526,7 @@ export default function PlumeFieldSection() {
       velocity.swap();
       set(mats.splat, {
         uTarget: dye.read.texture,
-        color: new THREE.Vector3(3.5, 3.5, 3.5),
+        color: new THREE.Vector3(4.5, 4.5, 4.5),
       });
       pass(mats.splat, dye.write);
       dye.swap();
@@ -406,6 +595,17 @@ export default function PlumeFieldSection() {
       pass(mats.display, null);
     };
 
+    // Initial vibrant ambient fluid splats
+    for (let i = 0; i < 6; i++) {
+      setTimeout(() => {
+        const rx = 0.2 + Math.random() * 0.6;
+        const ry = 0.2 + Math.random() * 0.6;
+        const rvx = (Math.random() - 0.5) * 16;
+        const rvy = (Math.random() - 0.5) * 16;
+        splat(rx, ry, rvx, rvy);
+      }, i * 180);
+    }
+
     let raf = 0;
     let last = performance.now();
     const loop = () => {
@@ -417,6 +617,17 @@ export default function PlumeFieldSection() {
         splat(mouse.x, mouse.y, mouse.vx, mouse.vy);
         mouse.moved = false;
       }
+
+      // Continuous ambient fluid motion wave
+      const t = now * 0.0012;
+      if (Math.random() < 0.28) {
+        const ax = 0.5 + Math.sin(t * 1.6) * 0.38;
+        const ay = 0.5 + Math.cos(t * 1.2) * 0.32;
+        const avx = Math.cos(t * 2.1) * 10.0;
+        const avy = Math.sin(t * 1.7) * 10.0;
+        splat(ax, ay, avx, avy);
+      }
+
       simulate(dt);
       render();
       raf = requestAnimationFrame(loop);
@@ -441,6 +652,8 @@ export default function PlumeFieldSection() {
     return () => {
       cancelAnimationFrame(raf);
       window.removeEventListener("pointermove", onPointer);
+      window.removeEventListener("touchmove", onTouchMove);
+      window.removeEventListener("touchstart", onTouchMove);
       window.removeEventListener("resize", onResize);
       textTexture.dispose();
       renderer.dispose();
@@ -458,13 +671,21 @@ export default function PlumeFieldSection() {
     <section className="pl-root" ref={rootRef}>
       <style>{css}</style>
 
-      <div className="pl-hero" aria-hidden="true">
-        <h1>FORGE DIGITAL BRANDS.</h1>
-        <h1>SCALE MEDIA & ROAS.</h1>
-        <h1>BRANDFORGE AGENCY.</h1>
-      </div>
-
       <canvas className="pl-canvas" ref={canvasRef} />
+
+      {/* CTA BUTTON AT BOTTOM */}
+      <div className="pl-cta-wrap">
+        <button
+          type="button"
+          className="pl-cosmic-btn"
+          onClick={onOpenModal}
+        >
+          <strong>FORGE YOUR BRAND</strong>
+          <div className="pl-container-stars">
+            <div className="pl-stars" />
+          </div>
+        </button>
+      </div>
     </section>
   );
 }

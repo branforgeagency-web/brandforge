@@ -1074,9 +1074,7 @@ const styles = `
     position: absolute;
     inset: 0;
     pointer-events: none;
-    background:
-      radial-gradient(circle at 50% 50%, rgba(2, 1, 4, 0.45) 15%, rgba(2, 1, 4, 0.92) 80%),
-      linear-gradient(180deg, rgba(2, 1, 4, 0.88) 0%, transparent 25%, transparent 68%, #020104 100%);
+    background: linear-gradient(180deg, rgba(2, 1, 4, 0.6) 0%, transparent 20%, transparent 80%, #020104 100%);
     z-index: 2;
   }
 

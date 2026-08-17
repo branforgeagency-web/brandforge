@@ -23,15 +23,20 @@ export default function useRoute() {
     return () => window.removeEventListener("hashchange", onHashChange);
   }, []);
 
-  // Scroll to top whenever the page changes
+  // Scroll to top whenever the page changes (including Lenis scroll engine reset)
   useEffect(() => {
     window.scrollTo(0, 0);
+    if (window.__lenis) {
+      window.__lenis.scrollTo(0, { immediate: true });
+    }
   }, [path]);
 
   const navigate = useCallback((to) => {
+    window.scrollTo(0, 0);
+    if (window.__lenis) {
+      window.__lenis.scrollTo(0, { immediate: true });
+    }
     if (window.location.hash === `#${to}`) {
-      // Already there — still reset scroll for a fresh visit
-      window.scrollTo(0, 0);
       return;
     }
     window.location.hash = to;

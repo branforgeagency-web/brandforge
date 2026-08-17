@@ -522,16 +522,22 @@ export default function SiteNavbar({ path, navigate, onOpenModal }) {
   const [scrolledPastHero, setScrolledPastHero] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
 
+  const isLightLandingPage = path?.startsWith("/services/");
+
   useEffect(() => {
     const onScroll = () => {
-      // Calculate hero / banner section height threshold
+      // Calculate hero / banner section height threshold (only hide on home page)
+      if (isLightLandingPage) {
+        setScrolledPastHero(false);
+        return;
+      }
       const heroThreshold = Math.min(window.innerHeight * 0.75, 650);
       setScrolledPastHero(window.scrollY > heroThreshold);
     };
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+  }, [isLightLandingPage]);
 
   useEffect(() => {
     setMenuOpen(false);
@@ -557,10 +563,10 @@ export default function SiteNavbar({ path, navigate, onOpenModal }) {
   };
 
   return (
-    <header className={`liquid-nav__root ${scrolledPastHero ? "is-hidden" : ""}`}>
+    <header className={`liquid-nav__root ${scrolledPastHero && !isLightLandingPage ? "is-hidden" : ""}`}>
       <style>{styles}</style>
 
-      <nav className="liquid-nav__bar" aria-label="Primary navigation">
+      <nav className={`liquid-nav__bar ${isLightLandingPage ? "is-dark-landing-bar" : ""}`} aria-label="Primary navigation">
         {/* LIQUID 3D ORB CONTAINER */}
         <div className="liquid-nav__orb-wrap" onClick={() => go("/")} style={{ cursor: "pointer" }}>
           <LiquidOrbCanvas />
@@ -688,6 +694,18 @@ const styles = /* css */ `
       0 20px 50px rgba(0, 0, 0, 0.5),
       0 0 35px rgba(239, 65, 54, 0.2);
     transition: background 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
+  }
+
+  .liquid-nav__bar.is-dark-landing-bar {
+    background: rgba(10, 10, 14, 0.94) !important;
+    border: 1px solid rgba(255, 255, 255, 0.25) !important;
+    box-shadow:
+      inset 1.5px 1.5px 3px rgba(255, 255, 255, 0.4),
+      inset -1.5px -1.5px 4px rgba(0, 0, 0, 0.6),
+      0 20px 50px rgba(0, 0, 0, 0.4),
+      0 0 35px rgba(239, 65, 54, 0.35) !important;
+    backdrop-filter: blur(28px) saturate(220%) !important;
+    -webkit-backdrop-filter: blur(28px) saturate(220%) !important;
   }
 
   .liquid-nav__bar::after {

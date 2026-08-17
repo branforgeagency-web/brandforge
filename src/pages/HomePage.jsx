@@ -35,7 +35,7 @@ export default function HomePage({ onOpenModal, navigate }) {
 
       {/* FULL-SCREEN SCROLL-DRIVEN STACKED EDITORIAL 12 SERVICES CARDS */}
       <div id="stacked-services">
-        <StackedServicesSection onSelectService={onOpenModal} />
+        <StackedServicesSection onSelectService={onOpenModal} navigate={navigate} />
       </div>
 
       {/* INTERACTIVE ORBIT SCRUB GALLERY — GLIMPSE OF CREATIVE EXCELLENCE */}

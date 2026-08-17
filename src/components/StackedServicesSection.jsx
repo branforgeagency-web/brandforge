@@ -21,6 +21,7 @@ import {
 // 12 BrandForge Digital Marketing Services
 const services = [
   {
+    slug: "seo-geo",
     eyebrow: "SEO & GEO /",
     title: "SEARCH DOMINANCE",
     description: "We shape clear search strategies that help ambitious brands capture generative AI queries and search grid supremacy.",
@@ -32,6 +33,7 @@ const services = [
     accentTag: "rgba(255, 255, 255, 0.2)",
   },
   {
+    slug: "paid-media",
     eyebrow: "PAID MEDIA /",
     title: "AD SCALING",
     description: "We tell high-converting stories across Meta, Google, TikTok, and LinkedIn that connect emotionally and scale ROAS.",
@@ -43,6 +45,7 @@ const services = [
     accentTag: "rgba(239, 65, 54, 0.25)",
   },
   {
+    slug: "web-foundry",
     eyebrow: "WEB FOUNDRY /",
     title: "3D EXPERIENCE",
     description: "We build sub-second web platforms and 3D visual worlds that turn visitor attention into lasting enterprise revenue.",
@@ -54,6 +57,7 @@ const services = [
     accentTag: "rgba(15, 23, 42, 0.12)",
   },
   {
+    slug: "viral-social",
     eyebrow: "VIRAL SOCIAL /",
     title: "BRAND REACH",
     description: "We build social engines and viral content loops designed to travel rapidly across screens and modern digital culture.",
@@ -65,6 +69,7 @@ const services = [
     accentTag: "rgba(239, 65, 54, 0.25)",
   },
   {
+    slug: "influencer-network",
     eyebrow: "INFLUENCER /",
     title: "CREATOR NETWORK",
     description: "We connect your brand with high-converting creators and key opinion leaders for explosive viral authority.",
@@ -76,6 +81,7 @@ const services = [
     accentTag: "rgba(255, 255, 255, 0.2)",
   },
   {
+    slug: "content-smithy",
     eyebrow: "CONTENT /",
     title: "STORY SMITHY",
     description: "We craft high-impact authority storytelling and editorial copy designed to convert prospects into enterprise clients.",
@@ -87,6 +93,7 @@ const services = [
     accentTag: "rgba(15, 23, 42, 0.12)",
   },
   {
+    slug: "inbox-edge",
     eyebrow: "INBOX EDGE /",
     title: "RETENTION FUNNELS",
     description: "We build automated lifecycle email sequences that maximize deliverability and customer lifetime value (LTV).",
@@ -98,6 +105,7 @@ const services = [
     accentTag: "rgba(239, 65, 54, 0.25)",
   },
   {
+    slug: "brand-anvil",
     eyebrow: "BRAND ANVIL /",
     title: "GROWTH ARCHITECTURE",
     description: "We engineer comprehensive 360° growth blueprints and unit economics optimization for market leadership.",
@@ -109,6 +117,7 @@ const services = [
     accentTag: "rgba(255, 255, 255, 0.2)",
   },
   {
+    slug: "visual-id",
     eyebrow: "IDENTITY FORGE /",
     title: "VISUAL ID DESIGN",
     description: "We command instant market authority through logo forging, 3D motion graphics, and cohesive design systems.",
@@ -120,6 +129,7 @@ const services = [
     accentTag: "rgba(15, 23, 42, 0.12)",
   },
   {
+    slug: "commercial-video",
     eyebrow: "REEL FORGE /",
     title: "COMMERCIAL VIDEO",
     description: "We produce high-converting commercial video ads, 3D motion clips, and product spotlight showreels.",
@@ -131,6 +141,7 @@ const services = [
     accentTag: "rgba(239, 65, 54, 0.25)",
   },
   {
+    slug: "cro-revenue",
     eyebrow: "INSIGHT FURNACE /",
     title: "CRO REVENUE LIFT",
     description: "We run data-driven A/B testing and checkout friction removal to double conversion rates without extra ad spend.",
@@ -142,6 +153,7 @@ const services = [
     accentTag: "rgba(255, 255, 255, 0.2)",
   },
   {
+    slug: "reputation-shield",
     eyebrow: "REPUTATION SHIELD /",
     title: "GLOBAL PR ENGINE",
     description: "We deploy proactive review growth engines, press release networks, and crisis PR defense across global channels.",
@@ -156,7 +168,7 @@ const services = [
 
 const clamp = (value, min, max) => Math.min(Math.max(value, min), max);
 
-export default function StackedServicesSection({ onSelectService }) {
+export default function StackedServicesSection({ onSelectService, navigate }) {
   const sectionRef = useRef(null);
   const stageRef = useRef(null);
   const wordsRef = useRef([]);
@@ -168,6 +180,14 @@ export default function StackedServicesSection({ onSelectService }) {
   const targetRef = useRef(0);
   const currentRef = useRef(0);
   const animFrameRef = useRef(null);
+
+  const handleCardClick = (service) => {
+    if (navigate) {
+      navigate(`/services/${service.slug}`);
+    } else if (onSelectService) {
+      onSelectService();
+    }
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -262,7 +282,7 @@ export default function StackedServicesSection({ onSelectService }) {
                   backgroundColor: service.color,
                   color: service.textColor,
                 }}
-                onClick={onSelectService}
+                onClick={() => handleCardClick(service)}
               >
                 <div className="card-cyber-border" />
                 <div className="card-shine" aria-hidden="true" />
@@ -293,7 +313,7 @@ export default function StackedServicesSection({ onSelectService }) {
                     <span className="card-number" style={{ color: service.color === "#EF4136" ? "#FFFFFF" : "#EF4136" }}>
                       {service.number}
                     </span>
-                    <button className="card-action-btn" onClick={onSelectService}>
+                    <button className="card-action-btn" onClick={(e) => { e.stopPropagation(); handleCardClick(service); }}>
                       <span>FORGE</span>
                       <ArrowRight size={14} />
                     </button>

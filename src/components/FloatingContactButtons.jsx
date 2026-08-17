@@ -5,15 +5,16 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Phone } from "lucide-react";
 
 export default function FloatingContactButtons({
-  phoneNumber = "+919876543210",
-  whatsappNumber = "919876543210",
+  phoneNumber = "+91 81222 41364",
+  whatsappNumber = "918122241364",
   whatsappMessage = "Hi BrandForge, I would like to enquire about your branding & marketing services.",
   onOpenModal,
 }) {
   const [isLaunching, setIsLaunching] = useState(false);
 
   const handleCall = () => {
-    window.open(`tel:${phoneNumber}`, "_self");
+    const rawNumber = phoneNumber.replace(/[^0-9+]/g, "");
+    window.open(`tel:${rawNumber}`, "_self");
   };
 
   const handleWhatsApp = () => {

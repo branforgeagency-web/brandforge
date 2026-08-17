@@ -43,12 +43,12 @@ const FEATURES = [
 const CONTACT_INFO = [
   {
     icon: Phone,
-    label: "+91 98765 43210",
-    subtext: "Direct Strategy Line",
+    label: "+91 81222 41364",
+    subtext: "Direct Strategy Line / WhatsApp",
   },
   {
     icon: Mail,
-    label: "hello@brandforge.agency",
+    label: "brandforge@gmail.com",
     subtext: "24/7 Response Time",
   },
   {
@@ -239,7 +239,7 @@ export default function ContactPage() {
                   type="tel"
                   value={mobile}
                   onChange={(e) => setMobile(e.target.value)}
-                  placeholder="+91 98765 43210"
+                  placeholder="+91 81222 41364"
                   required
                 />
               </div>

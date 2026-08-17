@@ -514,7 +514,6 @@ const NAVIGATION_ITEMS = [
   { label: "Home", to: "/", icon: Home },
   { label: "Who We Are", to: "/about", icon: Users },
   { label: "Services", to: "/#stacked-services", icon: Layers3 },
-  { label: "Process", to: "/#process-board", icon: Cpu },
   { label: "Contact", to: "/contact", icon: Phone },
 ];
 
@@ -567,9 +566,9 @@ export default function SiteNavbar({ path, navigate, onOpenModal }) {
       <style>{styles}</style>
 
       <nav className={`liquid-nav__bar ${isLightLandingPage ? "is-dark-landing-bar" : ""}`} aria-label="Primary navigation">
-        {/* LIQUID 3D ORB CONTAINER */}
-        <div className="liquid-nav__orb-wrap" onClick={() => go("/")} style={{ cursor: "pointer" }}>
-          <LiquidOrbCanvas />
+        {/* BRANDFORGE COMPANY LOGO */}
+        <div className="liquid-nav__brand-logo" onClick={() => go("/")} style={{ cursor: "pointer" }}>
+          <img src="/brandforge-logo.png" alt="BrandForge Logo" className="liquid-nav__logo-img" />
         </div>
 
         {/* NAVIGATION RAIL ITEMS */}
@@ -717,12 +716,25 @@ const styles = /* css */ `
     pointer-events: none;
   }
 
-  .liquid-nav__orb-wrap {
+  .liquid-nav__brand-logo {
     position: relative;
     z-index: 2;
-    flex: 0 0 56px;
-    width: 56px;
-    height: 56px;
+    display: flex;
+    align-items: center;
+    padding-left: 6px;
+    padding-right: 8px;
+  }
+
+  .liquid-nav__logo-img {
+    height: 38px;
+    width: auto;
+    object-fit: contain;
+    filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.4));
+    transition: transform 0.25s ease;
+  }
+
+  .liquid-nav__brand-logo:hover .liquid-nav__logo-img {
+    transform: scale(1.06);
   }
 
   .liquid-nav__orb {

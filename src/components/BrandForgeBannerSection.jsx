@@ -38,9 +38,9 @@ const defaultOptions = {
   carShiftX: [-0.8, 0.8],
   carFloorSeparation: [0, 5],
   colors: {
-    roadColor: 0x060509,
-    islandColor: 0x0a0a0c,
-    background: 0x060509,
+    roadColor: 0x020104,
+    islandColor: 0x060508,
+    background: 0x020104,
     shoulderLines: 0xef4136,
     brokenLines: 0xffffff,
     leftCars: [0xef4136, 0xd9382e, 0xff5548],
@@ -990,9 +990,9 @@ export default function BrandForgeBannerSection({ onOpenModal }) {
       ...defaultOptions,
       distortion: distortions["turbulentDistortion"],
       colors: {
-        roadColor: 0x060509,
-        islandColor: 0x0a0a0c,
-        background: 0x060509,
+        roadColor: 0x020104,
+        islandColor: 0x060508,
+        background: 0x020104,
         shoulderLines: 0xef4136,
         brokenLines: 0xffffff,
         leftCars: [0xef4136, 0xd9382e, 0xff5548],
@@ -1008,6 +1008,7 @@ export default function BrandForgeBannerSection({ onOpenModal }) {
     return () => {
       if (appRef.current) {
         appRef.current.dispose();
+        appRef.current = null;
       }
     };
   }, []);
@@ -1050,7 +1051,7 @@ const styles = `
     height: 100vh;
     height: 100svh;
     min-height: 780px;
-    background: #060509;
+    background: #020104;
     overflow: hidden;
     font-family: 'Outfit', 'Plus Jakarta Sans', sans-serif;
   }
@@ -1074,8 +1075,8 @@ const styles = `
     inset: 0;
     pointer-events: none;
     background:
-      radial-gradient(circle at 50% 50%, transparent 35%, rgba(6, 5, 9, 0.72) 85%),
-      linear-gradient(180deg, rgba(6, 5, 9, 0.65) 0%, transparent 30%, transparent 70%, #060509 100%);
+      radial-gradient(circle at 50% 50%, rgba(2, 1, 4, 0.45) 15%, rgba(2, 1, 4, 0.92) 80%),
+      linear-gradient(180deg, rgba(2, 1, 4, 0.88) 0%, transparent 25%, transparent 68%, #020104 100%);
     z-index: 2;
   }
 

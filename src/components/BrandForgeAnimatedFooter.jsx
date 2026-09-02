@@ -5,6 +5,48 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { ArrowUpRight, Zap, Sparkles, Send } from "lucide-react";
 import Particles from "./Particles";
 
+const InstagramIcon = (props) => (
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}>
+    <rect width="20" height="20" x="2" y="2" rx="5" ry="5"/>
+    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+    <line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/>
+  </svg>
+);
+
+const LinkedinIcon = (props) => (
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}>
+    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+    <rect width="4" height="12" x="2" y="9"/>
+    <circle cx="4" cy="4" r="2"/>
+  </svg>
+);
+
+const TwitterIcon = (props) => (
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}>
+    <path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"/>
+  </svg>
+);
+
+const YoutubeIcon = (props) => (
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}>
+    <path d="M2.5 17a24.12 24.12 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.56 49.56 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.12 24.12 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.56 49.56 0 0 1-16.2 0A2 2 0 0 1 2.5 17z"/>
+    <polygon points="10 15 15 12 10 9 10 15"/>
+  </svg>
+);
+
+const FacebookIcon = (props) => (
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}>
+    <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+  </svg>
+);
+
+const WhatsappIcon = (props) => (
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}>
+    <path d="M3 21l1.65-3.8a9 9 0 1 1 3.4 2.9L3 21"/>
+    <path d="M14 16c-1.5 0-3-1-4.5-2.5S7 10.5 7 9c0-.6.3-1.1.7-1.4.3-.3.7-.4 1.1-.4.3 0 .6.1.8.4l1.2 1.8c.2.3.2.7 0 1-.2.3-.5.5-.8.8 0 0 1 2 3 3 .3-.3.5-.6.8-.8.3-.2.7-.2 1 0l1.8 1.2c.3.2.4.5.4.8 0 .4-.1.8-.4 1.1-.3.4-.8.7-1.4.7z"/>
+  </svg>
+);
+
 const MARQUEE_ITEMS = [
   "SEARCH & GEO SUPREMACY",
   "SUB-SECOND 3D WEBGL",
@@ -180,11 +222,11 @@ export default function BrandForgeAnimatedFooter({ onOpenModal }) {
           >
             <h4 className="col-title">SERVICES</h4>
             <ul className="footer-link-list">
-              <li><a href="#stacked-services">Search & GEO Supremacy</a></li>
-              <li><a href="#stacked-services">Sub-Second 3D Web Foundry</a></li>
-              <li><a href="#stacked-services">Paid Media & ROAS Scaling</a></li>
-              <li><a href="#stacked-services">Viral Creator Network</a></li>
-              <li><a href="#stacked-services">CRO Revenue Lift Engine</a></li>
+              <li><a href="#/services/seo-geo">Search & GEO Supremacy</a></li>
+              <li><a href="#/services/web-foundry">3D Web Development</a></li>
+              <li><a href="#/services/paid-media">Paid Media Scaling</a></li>
+              <li><a href="#/services/viral-social">Viral Social Network</a></li>
+              <li><a href="#/services/cro-revenue">CRO Revenue Engine</a></li>
             </ul>
           </motion.div>
 
@@ -198,15 +240,15 @@ export default function BrandForgeAnimatedFooter({ onOpenModal }) {
           >
             <h4 className="col-title">CAPABILITIES</h4>
             <ul className="footer-link-list">
-              <li><a href="#stacked-services">Generative AI Search</a></li>
-              <li><a href="#stacked-services">WebGL 3D Motion</a></li>
-              <li><a href="#stacked-services">Meta & TikTok Ad Funnels</a></li>
-              <li><a href="#stacked-services">Klaviyo Retention Loops</a></li>
-              <li><a href="#stacked-services">Enterprise Brand Forging</a></li>
+              <li><a href="#/services/brand-anvil">Brand Growth Architecture</a></li>
+              <li><a href="#/services/visual-id">Visual Identity Forge</a></li>
+              <li><a href="#/services/commercial-video">Commercial Video Production</a></li>
+              <li><a href="#/services/inbox-edge">Inbox Retention Loops</a></li>
+              <li><a href="#/services/reputation-shield">Reputation Shield PR</a></li>
             </ul>
           </motion.div>
 
-          {/* COL 4: CONNECT & SOCIAL */}
+          {/* COL 4: CONNECT & SOCIAL MEDIA */}
           <motion.div
             className="footer-col"
             initial={{ opacity: 0, x: 50 }}
@@ -215,12 +257,25 @@ export default function BrandForgeAnimatedFooter({ onOpenModal }) {
             transition={{ duration: 0.8, delay: 0.4, ease: SMOOTH_EASE }}
           >
             <h4 className="col-title">CONNECT</h4>
-            <ul className="footer-link-list">
-              <li><a href="https://twitter.com" target="_blank" rel="noreferrer">TWITTER / X ↗</a></li>
-              <li><a href="https://linkedin.com" target="_blank" rel="noreferrer">LINKEDIN ↗</a></li>
-              <li><a href="https://github.com" target="_blank" rel="noreferrer">GITHUB ↗</a></li>
-              <li><a href="https://discord.com" target="_blank" rel="noreferrer">DISCORD ↗</a></li>
-              <li><a href="https://instagram.com" target="_blank" rel="noreferrer">INSTAGRAM ↗</a></li>
+            
+            {/* SOCIAL MEDIA ICON BUTTONS */}
+            <div className="footer-social-icons-grid">
+              <a href="https://www.instagram.com/the_brandforge_digital?igsi=YjR1N3prdzJocTdx" target="_blank" rel="noreferrer" className="social-icon-btn" aria-label="Instagram">
+                <InstagramIcon />
+              </a>
+              <a href="https://wa.me/919384576852" target="_blank" rel="noreferrer" className="social-icon-btn" aria-label="WhatsApp">
+                <WhatsappIcon />
+              </a>
+              <a href="mailto:brandforgedigitalmarketing@gmail.com" className="social-icon-btn" aria-label="Email Us">
+                <Send size={18} />
+              </a>
+            </div>
+
+            <ul className="footer-link-list" style={{ marginTop: "16px" }}>
+              <li><a href="https://www.instagram.com/the_brandforge_digital?igsi=YjR1N3prdzJocTdx" target="_blank" rel="noreferrer">INSTAGRAM ↗</a></li>
+              <li><a href="https://wa.me/919384576852" target="_blank" rel="noreferrer">WHATSAPP ↗</a></li>
+              <li><a href="mailto:brandforgedigitalmarketing@gmail.com">EMAIL US ↗</a></li>
+              <li><a href="tel:+919384576852">CALL NOW ↗</a></li>
             </ul>
           </motion.div>
 
@@ -573,6 +628,37 @@ const styles = `
   letter-spacing: 0.15em;
   color: #EF4136;
   margin-bottom: 20px;
+}
+
+/* SOCIAL MEDIA ICON PILLS */
+.footer-social-icons-grid {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 16px;
+}
+
+.social-icon-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  color: #94A3B8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.social-icon-btn:hover {
+  background: #EF4136;
+  border-color: #EF4136;
+  color: #FFFFFF;
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(239, 65, 54, 0.4);
 }
 
 .footer-link-list {

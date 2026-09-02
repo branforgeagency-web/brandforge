@@ -54,8 +54,31 @@ export default function TransformationModal({ isOpen, onClose }) {
 
     try {
       setStatus("loading");
-      await wait(750);
+      await fetch("https://formsubmit.co/ajax/brandforgedigitalmarketing@gmail.com", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Accept": "application/json",
+        },
+        body: JSON.stringify({
+          Name: name,
+          Email: email,
+          Mobile: mobile,
+          Service: service,
+          Message: message,
+          _subject: `⚡ New BrandForge Lead: ${name} (${service})`,
+        }),
+      });
 
+      setStatus("success");
+      await wait(1800);
+      setName("");
+      setEmail("");
+      setMobile("");
+      setMessage("");
+      onClose();
+    } catch (err) {
+      console.error(err);
       setStatus("success");
       await wait(1800);
       onClose();

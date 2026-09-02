@@ -682,27 +682,23 @@ const styles = /* css */ `
     justify-content: space-between;
     gap: 20px;
     padding: 8px 18px 8px 14px;
-    border: 1px solid rgba(255, 255, 255, 0.35);
+    border: 1px solid rgba(255, 255, 255, 0.25);
     border-radius: 999px;
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.16) 0%, rgba(255, 255, 255, 0.05) 50%, rgba(239, 65, 54, 0.08) 100%);
+    background: rgba(10, 10, 14, 0.88);
     backdrop-filter: blur(28px) saturate(220%);
     -webkit-backdrop-filter: blur(28px) saturate(220%);
     box-shadow:
-      inset 1.5px 1.5px 3px rgba(255, 255, 255, 0.7),
-      inset -1.5px -1.5px 4px rgba(0, 0, 0, 0.4),
-      0 20px 50px rgba(0, 0, 0, 0.5),
-      0 0 35px rgba(239, 65, 54, 0.2);
+      inset 1px 1px 2px rgba(255, 255, 255, 0.2),
+      0 12px 35px rgba(0, 0, 0, 0.4);
     transition: background 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
   }
 
   .liquid-nav__bar.is-dark-landing-bar {
-    background: rgba(10, 10, 14, 0.94) !important;
-    border: 1px solid rgba(255, 255, 255, 0.25) !important;
+    background: rgba(10, 10, 14, 0.96) !important;
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
     box-shadow:
-      inset 1.5px 1.5px 3px rgba(255, 255, 255, 0.4),
-      inset -1.5px -1.5px 4px rgba(0, 0, 0, 0.6),
-      0 20px 50px rgba(0, 0, 0, 0.4),
-      0 0 35px rgba(239, 65, 54, 0.35) !important;
+      inset 1px 1px 2px rgba(255, 255, 255, 0.2),
+      0 12px 35px rgba(0, 0, 0, 0.5) !important;
     backdrop-filter: blur(28px) saturate(220%) !important;
     -webkit-backdrop-filter: blur(28px) saturate(220%) !important;
   }
@@ -712,7 +708,7 @@ const styles = /* css */ `
     inset: 1px;
     border-radius: inherit;
     content: "";
-    background: linear-gradient(105deg, rgba(255, 255, 255, 0.15), transparent 35%, transparent 65%, rgba(239, 65, 54, 0.12));
+    background: linear-gradient(105deg, rgba(255, 255, 255, 0.08), transparent 50%);
     pointer-events: none;
   }
 

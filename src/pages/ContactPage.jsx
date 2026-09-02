@@ -43,12 +43,12 @@ const FEATURES = [
 const CONTACT_INFO = [
   {
     icon: Phone,
-    label: "+91 81222 41364",
+    label: "+91 93845 76852",
     subtext: "Direct Strategy Line / WhatsApp",
   },
   {
     icon: Mail,
-    label: "brandforge@gmail.com",
+    label: "brandforgedigitalmarketing@gmail.com",
     subtext: "24/7 Response Time",
   },
   {
@@ -76,7 +76,7 @@ export default function ContactPage() {
   const [message, setMessage] = useState("");
   const [status, setStatus] = useState("idle");
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
 
     if (!name.trim()) {
@@ -101,14 +101,37 @@ export default function ContactPage() {
 
     setStatus("submitting");
 
-    setTimeout(() => {
+    try {
+      await fetch("https://formsubmit.co/ajax/brandforgedigitalmarketing@gmail.com", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Accept": "application/json",
+        },
+        body: JSON.stringify({
+          Name: name,
+          Email: email,
+          Mobile: mobile,
+          Service: service,
+          Message: message,
+          _subject: `⚡ New Contact Page Lead: ${name} (${service})`,
+        }),
+      });
       setStatus("success");
       setName("");
       setEmail("");
       setMobile("");
       setService("Select a Service");
       setMessage("");
-    }, 1200);
+    } catch (err) {
+      console.error(err);
+      setStatus("success");
+      setName("");
+      setEmail("");
+      setMobile("");
+      setService("Select a Service");
+      setMessage("");
+    }
   };
 
   return (
@@ -239,7 +262,7 @@ export default function ContactPage() {
                   type="tel"
                   value={mobile}
                   onChange={(e) => setMobile(e.target.value)}
-                  placeholder="+91 81222 41364"
+                  placeholder="+91 93845 76852"
                   required
                 />
               </div>

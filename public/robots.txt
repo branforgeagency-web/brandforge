@@ -1,0 +1,5 @@
+# BrandForge Robots.txt
+User-agent: *
+Allow: /
+
+Sitemap: https://brandforge.agency/sitemap.xml

@@ -4,8 +4,26 @@ import { X, Send } from 'lucide-react';
 export default function AuditModal({ isOpen, onClose }) {
   if (!isOpen) return null;
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    const formData = new FormData(e.target);
+    const data = Object.fromEntries(formData.entries());
+
+    try {
+      await fetch("https://formsubmit.co/ajax/brandforgedigitalmarketing@gmail.com", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Accept": "application/json",
+        },
+        body: JSON.stringify({
+          ...data,
+          _subject: `⚡ New Free Audit Request from ${data.name || data.email || 'Website Visitor'}`
+        })
+      });
+    } catch (err) {
+      console.error(err);
+    }
     alert('⚡ STRATEGY AUDIT SUBMITTED! A BrandForge senior strategist will contact you within 2 hours.');
     onClose();
   };
@@ -27,22 +45,22 @@ export default function AuditModal({ isOpen, onClose }) {
           <div className="form-grid">
             <div className="input-wrap">
               <label>FULL NAME</label>
-              <input type="text" required placeholder="Alex Mercer" />
+              <input type="text" name="name" required placeholder="Alex Mercer" />
             </div>
             <div className="input-wrap">
               <label>WORK EMAIL</label>
-              <input type="email" required placeholder="alex@company.com" />
+              <input type="email" name="email" required placeholder="alex@company.com" />
             </div>
           </div>
 
           <div className="input-wrap">
             <label>WEBSITE URL / BRAND</label>
-            <input type="text" required placeholder="https://yourbrand.com" />
+            <input type="text" name="website" required placeholder="https://yourbrand.com" />
           </div>
 
           <div className="input-wrap">
             <label>MONTHLY MARKETING BUDGET</label>
-            <select required defaultValue="">
+            <select name="budget" required defaultValue="">
               <option value="" disabled>Select Monthly Ad Spend Range...</option>
               <option value="5k-10k">$5,000 - $10,000 / mo</option>
               <option value="10k-25k">$10,000 - $25,000 / mo</option>

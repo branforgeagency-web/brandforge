@@ -2,4 +2,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://brandforge.agency/sitemap.xml
+Sitemap: https://www.brandforgeagency.in/sitemap.xml

@@ -10,23 +10,34 @@ import {
   ArrowUpRight,
   Menu,
   X,
+  ChevronDown,
 } from "lucide-react";
 
 /* ───────────────────────────────────────────────────────────────────────────
-   BRANDFORGE SITE NAVBAR (SIMPLE, SLEEK & PROFESSIONAL)
-   Clean, minimalist agency navigation bar with glassmorphic pill backdrop.
+   BRANDFORGE SITE NAVBAR (FULLY RESPONSIVE MOBILE DRAWER)
+   Sleek glassmorphic floating bar with robust vertical mobile navigation.
    ─────────────────────────────────────────────────────────────────────────── */
 
 const NAVIGATION_ITEMS = [
   { label: "Home", to: "/", icon: Home },
   { label: "Who We Are", to: "/about", icon: Users },
-  { label: "Services", to: "/#stacked-services", icon: Layers3 },
+  { label: "Services", to: "/#stacked-services", icon: Layers3, isServices: true },
   { label: "Contact", to: "/contact", icon: Phone },
+];
+
+const MOBILE_SERVICES = [
+  { label: "SEO & GEO Supremacy", slug: "seo-geo" },
+  { label: "Website Development", slug: "web-dev" },
+  { label: "Paid Media Scaling", slug: "paid-media" },
+  { label: "Performance Marketing", slug: "performance-marketing" },
+  { label: "Social Media Dominance", slug: "social-media" },
+  { label: "Branding & Identity", slug: "branding-identity" },
 ];
 
 export default function SiteNavbar({ path, navigate, onOpenModal }) {
   const [scrolledPastHero, setScrolledPastHero] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
 
   const isLightLandingPage = path?.startsWith("/services/");
 
@@ -47,6 +58,7 @@ export default function SiteNavbar({ path, navigate, onOpenModal }) {
 
   useEffect(() => {
     setMenuOpen(false);
+    setMobileServicesOpen(false);
   }, [path]);
 
   const go = (to) => {
@@ -66,6 +78,7 @@ export default function SiteNavbar({ path, navigate, onOpenModal }) {
       navigate(to);
     }
     setMenuOpen(false);
+    setMobileServicesOpen(false);
   };
 
   return (
@@ -78,7 +91,7 @@ export default function SiteNavbar({ path, navigate, onOpenModal }) {
           <img src="/brandforge-logo.png" alt="BrandForge Logo" className="liquid-nav__logo-img" />
         </div>
 
-        {/* NAVIGATION ITEMS */}
+        {/* DESKTOP NAVIGATION RAIL */}
         <div className="liquid-nav__rail">
           {NAVIGATION_ITEMS.map(({ label, to, icon: Icon }) => {
             const isActive = path === to || (label === "Services" && path.startsWith("/services/"));
@@ -98,7 +111,7 @@ export default function SiteNavbar({ path, navigate, onOpenModal }) {
           })}
         </div>
 
-        {/* CTA ACTION & MOBILE MENU TOGGLE */}
+        {/* CTA ACTION & MOBILE HAMBURGER BUTTON */}
         <div className="liquid-nav__actions">
           <button type="button" className="liquid-nav__cta" onClick={onOpenModal}>
             <span>LET'S TALK</span>
@@ -111,7 +124,7 @@ export default function SiteNavbar({ path, navigate, onOpenModal }) {
             onClick={() => setMenuOpen((o) => !o)}
             aria-label={menuOpen ? "Close menu" : "Open menu"}
           >
-            {menuOpen ? <X size={20} /> : <Menu size={20} />}
+            {menuOpen ? <X size={22} /> : <Menu size={22} />}
           </button>
         </div>
       </nav>
@@ -121,35 +134,79 @@ export default function SiteNavbar({ path, navigate, onOpenModal }) {
         {menuOpen && (
           <motion.div
             className="liquid-nav__mobile"
-            initial={{ opacity: 0, y: -10 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -10 }}
-            transition={{ duration: 0.25 }}
+            initial={{ opacity: 0, y: -12, scale: 0.98 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: -12, scale: 0.98 }}
+            transition={{ duration: 0.25, ease: "easeOut" }}
           >
-            {NAVIGATION_ITEMS.map(({ label, to, icon: Icon }) => (
-              <button
-                key={label}
-                type="button"
-                className={`liquid-nav__mobile-link ${path === to ? "is-active" : ""}`}
-                onClick={() => go(to)}
-              >
-                <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
-                  <Icon size={16} />
-                  <span>{label}</span>
+            {NAVIGATION_ITEMS.map(({ label, to, icon: Icon, isServices }) => (
+              <React.Fragment key={label}>
+                <div
+                  className={`liquid-nav__mobile-link ${path === to ? "is-active" : ""}`}
+                  onClick={() => {
+                    if (isServices) {
+                      setMobileServicesOpen((prev) => !prev);
+                    } else {
+                      go(to);
+                    }
+                  }}
+                >
+                  <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
+                    <Icon size={18} className="mob-icon" />
+                    <span>{label}</span>
+                  </div>
+                  {isServices ? (
+                    <ChevronDown
+                      size={18}
+                      style={{
+                        transform: mobileServicesOpen ? "rotate(180deg)" : "rotate(0deg)",
+                        transition: "transform 0.25s ease",
+                      }}
+                    />
+                  ) : (
+                    <ArrowUpRight size={15} style={{ opacity: 0.5 }} />
+                  )}
                 </div>
-              </button>
+
+                {/* NESTED MOBILE SERVICES SUBMENU */}
+                {isServices && mobileServicesOpen && (
+                  <div className="liquid-nav__mobile-sub">
+                    <button
+                      type="button"
+                      className="sub-item view-all"
+                      onClick={() => go("/#stacked-services")}
+                    >
+                      ⚡ View All 12 Services
+                    </button>
+                    {MOBILE_SERVICES.map((srv) => (
+                      <button
+                        key={srv.slug}
+                        type="button"
+                        className={`sub-item ${path === `/services/${srv.slug}` ? "is-active" : ""}`}
+                        onClick={() => go(`/services/${srv.slug}`)}
+                      >
+                        <span>{srv.label}</span>
+                        <ArrowUpRight size={13} />
+                      </button>
+                    ))}
+                  </div>
+                )}
+              </React.Fragment>
             ))}
-            <button
-              type="button"
-              className="liquid-nav__mobile-cta"
-              onClick={() => {
-                setMenuOpen(false);
-                onOpenModal();
-              }}
-            >
-              <span>LET'S TALK</span>
-              <ArrowUpRight size={15} />
-            </button>
+
+            <div className="liquid-nav__mobile-cta-wrap">
+              <button
+                type="button"
+                className="liquid-nav__mobile-cta"
+                onClick={() => {
+                  setMenuOpen(false);
+                  onOpenModal();
+                }}
+              >
+                <span>LET'S TALK NOW</span>
+                <ArrowUpRight size={16} />
+              </button>
+            </div>
           </motion.div>
         )}
       </AnimatePresence>
@@ -167,7 +224,8 @@ const styles = /* css */ `
     right: 0;
     z-index: 100;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
     padding: 0 16px;
     pointer-events: none;
     transition: transform 0.4s ease, opacity 0.3s ease;
@@ -188,12 +246,12 @@ const styles = /* css */ `
     justify-content: space-between;
     gap: 16px;
     padding: 6px 16px;
-    border: 1px solid rgba(255, 255, 255, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.18);
     border-radius: 999px;
-    background: rgba(10, 10, 14, 0.9);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+    background: rgba(10, 10, 14, 0.92);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.45);
   }
 
   .liquid-nav__brand-logo {
@@ -293,54 +351,126 @@ const styles = /* css */ `
   .liquid-nav__burger {
     display: none;
     pointer-events: auto;
-    background: rgba(255, 255, 255, 0.08);
-    border: 1px solid rgba(255, 255, 255, 0.12);
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
     border-radius: 50%;
-    width: 40px;
-    height: 40px;
+    width: 42px;
+    height: 42px;
     align-items: center;
     justify-content: center;
     color: #FFFFFF;
     cursor: pointer;
+    transition: background 0.2s ease;
   }
 
+  .liquid-nav__burger:hover {
+    background: rgba(239, 65, 54, 0.25);
+    border-color: #EF4136;
+  }
+
+  /* MOBILE DRAWER STYLES */
   .liquid-nav__mobile {
-    margin-top: 8px;
+    margin-top: 10px;
     width: min(980px, calc(100vw - 32px));
     pointer-events: auto;
     overflow: hidden;
-    background: #0A0A0C;
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    border-radius: 20px;
-    padding: 10px 0;
+    background: rgba(10, 10, 14, 0.96);
+    backdrop-filter: blur(28px);
+    -webkit-backdrop-filter: blur(28px);
+    border: 1.5px solid rgba(239, 65, 54, 0.35);
+    border-radius: 24px;
+    padding: 10px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7);
+    box-sizing: border-box;
   }
 
-  .liquid-nav__mobile-link,
-  .liquid-nav__mobile-cta {
+  .liquid-nav__mobile-link {
     display: flex;
     align-items: center;
     justify-content: space-between;
     width: 100%;
-    padding: 12px 20px;
-    background: none;
-    border: 0;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    padding: 14px 18px;
+    background: transparent;
+    border-radius: 14px;
     font-family: "Plus Jakarta Sans", sans-serif;
-    font-size: 0.9rem;
+    font-size: 0.95rem;
     font-weight: 700;
-    color: rgba(255, 255, 255, 0.8);
+    color: #FFFFFF;
     cursor: pointer;
-    text-align: left;
+    transition: background 0.2s ease;
+    box-sizing: border-box;
   }
 
-  .liquid-nav__mobile-link.is-active {
+  .liquid-nav__mobile-link:hover, .liquid-nav__mobile-link.is-active {
+    background: rgba(239, 65, 54, 0.15);
     color: #EF4136;
+  }
+
+  .mob-icon {
+    color: #EF4136;
+  }
+
+  .liquid-nav__mobile-sub {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding: 6px 12px 10px 36px;
+  }
+
+  .sub-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 14px;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    color: rgba(255, 255, 255, 0.85);
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    text-align: left;
+    transition: background 0.2s ease, color 0.2s ease;
+  }
+
+  .sub-item.view-all {
+    color: #EF4136;
+    font-weight: 800;
+    background: rgba(239, 65, 54, 0.1);
+    border-color: rgba(239, 65, 54, 0.25);
+  }
+
+  .sub-item:hover, .sub-item.is-active {
+    background: rgba(239, 65, 54, 0.2);
+    color: #FFFFFF;
+    border-color: rgba(239, 65, 54, 0.4);
+  }
+
+  .liquid-nav__mobile-cta-wrap {
+    padding: 8px 6px 4px;
   }
 
   .liquid-nav__mobile-cta {
-    color: #EF4136;
-    border-bottom: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+    height: 48px;
+    background: #EF4136;
+    color: #FFFFFF;
+    border: none;
+    border-radius: 14px;
+    font-family: "Outfit", sans-serif;
+    font-size: 0.9rem;
     font-weight: 800;
+    letter-spacing: 0.04em;
+    cursor: pointer;
+    transition: background 0.2s ease;
+  }
+
+  .liquid-nav__mobile-cta:hover {
+    background: #d8342a;
   }
 
   @media (max-width: 768px) {

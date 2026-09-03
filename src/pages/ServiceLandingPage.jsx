@@ -72,6 +72,7 @@ export default function ServiceLandingPage({ slug = "seo-geo", onOpenModal, navi
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.6 }}
               >
+                <img src="/rocket.png" alt="Rocket PNG Icon" className="sg-badge-png-icon" />
                 <Icon size={14} className="sg-badge-icon" />
                 <span>{data.eyebrow}</span>
                 <Sparkles size={14} className="sg-badge-sparkle" />
@@ -198,6 +199,34 @@ export default function ServiceLandingPage({ slug = "seo-geo", onOpenModal, navi
 
           </div>
 
+          {/* BIG WIDESCREEN HERO VISUAL SHOWCASE FRAME WITH TRANSPARENT PNG ICONS */}
+          <motion.div
+            className="sg-big-visual-frame"
+            initial={{ opacity: 0, y: 35, scale: 0.97 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            transition={{ duration: 0.8, delay: 0.3 }}
+          >
+            <div className="visual-glass-overlay" />
+            <img src="/jugg_jugg_mockup_1786784296597.jpg" alt="Service Platform Mockup" className="big-visual-img" />
+
+            {/* FLOATING BIG TRANSPARENT PNG ICONS & METRIC BADGES */}
+            <div className="floating-badge top-left">
+              <img src="/rocket.png" alt="Big Rocket PNG" className="big-floating-png" />
+              <div>
+                <strong>SUB-SECOND LOAD</strong>
+                <span>100/100 Core Web Vitals</span>
+              </div>
+            </div>
+
+            <div className="floating-badge bottom-right">
+              <img src="/fire-flame.png" alt="Big Flame PNG" className="big-floating-png" />
+              <div>
+                <strong>+340% ROAS SCALE</strong>
+                <span>Enterprise Growth Engine</span>
+              </div>
+            </div>
+          </motion.div>
+
           {/* CARDLESS TYPOGRAPHIC METRICS STRIP */}
           <div className="sg-metrics-strip">
             {data.metrics.map((m, idx) => (
@@ -214,6 +243,17 @@ export default function ServiceLandingPage({ slug = "seo-geo", onOpenModal, navi
                 <div className="sg-metric-sub">{m.desc}</div>
               </motion.div>
             ))}
+          </div>
+
+          {/* TRANSPARENT PNG CLIENT LOGOS PROOF STREAM */}
+          <div className="sg-client-png-strip">
+            <span className="strip-title">TRUSTED BY CATEGORY LEADERS</span>
+            <div className="strip-logos">
+              <img src="/client-sonicprints.png" alt="Sonic Prints" className="png-client-logo" />
+              <img src="/client-thoughtflows.png" alt="ThoughtFlows" className="png-client-logo" />
+              <img src="/client-talentera.png" alt="Talentera" className="png-client-logo" />
+              <img src="/client-thoughtspace.png" alt="ThoughtSpace" className="png-client-logo" />
+            </div>
           </div>
         </div>
       </header>
@@ -286,6 +326,10 @@ export default function ServiceLandingPage({ slug = "seo-geo", onOpenModal, navi
                 >
                   <div className="sg-pillar-head">
                     <div className="sg-pillar-num">0{idx + 1}</div>
+                    <div className="sg-big-pillar-icon">
+                      <PillarIcon size={24} className="pillar-lucide-icon" />
+                      <img src={idx % 2 === 0 ? "/fire-flame.png" : "/rocket.png"} alt="Big PNG Icon" className="pillar-png-icon" />
+                    </div>
                     <div className="sg-pillar-title-group">
                       <div className="sg-pillar-tag-inline">{p.tag}</div>
                       <h3>{p.title}</h3>
@@ -308,6 +352,7 @@ export default function ServiceLandingPage({ slug = "seo-geo", onOpenModal, navi
                         <div className="sg-pillar-deliv-wrap">
                           {p.deliverables.map((d) => (
                             <span key={d} className="sg-deliv-tag">
+                              <img src="/fire-flame.png" alt="Flame PNG Icon" className="png-deliv-icon" />
                               <CheckCircle2 size={13} />
                               {d}
                             </span>
@@ -600,7 +645,105 @@ const styles = `
     transition: background 0.25s ease;
   }
 
-  .sg-form-btn:hover { background: #d8342a; }
+  /* BIG WIDESCREEN HERO VISUAL SHOWCASE FRAME STYLES */
+  .sg-big-visual-frame {
+    position: relative;
+    width: 100%;
+    height: clamp(280px, 35vw, 440px);
+    margin-top: 50px;
+    border-radius: 28px;
+    overflow: hidden;
+    border: 1.5px solid rgba(239, 65, 54, 0.4);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.7), 0 0 40px rgba(239, 65, 54, 0.2);
+  }
+
+  .big-visual-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.9) contrast(1.1);
+  }
+
+  .visual-glass-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, transparent 40%, rgba(10, 10, 12, 0.85) 100%);
+    pointer-events: none;
+  }
+
+  .floating-badge {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 12px 20px;
+    border-radius: 20px;
+    background: rgba(10, 10, 14, 0.85);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(16px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    z-index: 5;
+  }
+
+  .floating-badge.top-left {
+    top: 24px;
+    left: 24px;
+  }
+
+  .floating-badge.bottom-right {
+    bottom: 24px;
+    right: 24px;
+  }
+
+  .big-floating-png {
+    width: 36px;
+    height: 36px;
+    object-fit: contain;
+    filter: drop-shadow(0 0 8px rgba(239, 65, 54, 0.8));
+  }
+
+  .floating-badge strong {
+    display: block;
+    font-size: 13px;
+    font-weight: 900;
+    color: #FFFFFF;
+    font-family: "Outfit", sans-serif;
+  }
+
+  .floating-badge span {
+    font-size: 11px;
+    color: rgba(255, 255, 255, 0.65);
+  }
+
+  /* LARGE PILLAR ICON BADGES */
+  .sg-big-pillar-icon {
+    position: relative;
+    width: 52px;
+    height: 52px;
+    border-radius: 16px;
+    background: rgba(239, 65, 54, 0.12);
+    border: 1.5px solid rgba(239, 65, 54, 0.35);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 20px;
+    flex-shrink: 0;
+    box-shadow: 0 0 20px rgba(239, 65, 54, 0.2);
+  }
+
+  .pillar-lucide-icon {
+    color: #EF4136;
+  }
+
+  .pillar-png-icon {
+    position: absolute;
+    bottom: -6px;
+    right: -6px;
+    width: 22px;
+    height: 22px;
+    object-fit: contain;
+    filter: drop-shadow(0 0 4px rgba(239, 65, 54, 0.8));
+  }
 
   /* CARDLESS METRICS STRIP */
   .sg-metrics-strip {
@@ -626,6 +769,61 @@ const styles = `
     font-size: 14px;
     font-weight: 800;
     color: #FFFFFF;
+  }
+
+  .sg-badge-png-icon {
+    height: 18px;
+    width: 18px;
+    object-fit: contain;
+    filter: drop-shadow(0 0 6px rgba(239, 65, 54, 0.6));
+  }
+
+  .png-deliv-icon {
+    height: 14px;
+    width: 14px;
+    object-fit: contain;
+    margin-right: 2px;
+  }
+
+  /* TRANSPARENT PNG CLIENT LOGOS PROOF STREAM */
+  .sg-client-png-strip {
+    margin-top: 48px;
+    padding-top: 32px;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 18px;
+  }
+
+  .strip-title {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.14em;
+    color: rgba(255, 255, 255, 0.45);
+    text-transform: uppercase;
+  }
+
+  .strip-logos {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: clamp(24px, 5vw, 60px);
+    flex-wrap: wrap;
+  }
+
+  .png-client-logo {
+    height: 28px;
+    width: auto;
+    object-fit: contain;
+    filter: brightness(0) invert(1) opacity(0.75);
+    transition: opacity 0.25s ease, filter 0.25s ease, transform 0.25s ease;
+  }
+
+  .png-client-logo:hover {
+    filter: brightness(0) invert(1) opacity(1);
+    transform: scale(1.08);
   }
 
   .sg-metric-sub {

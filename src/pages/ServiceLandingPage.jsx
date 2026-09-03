@@ -68,11 +68,11 @@ export default function ServiceLandingPage({ slug = "seo-geo", onOpenModal, navi
             <div className="sg-hero-left">
               <motion.div
                 className="sg-badge"
-                initial={{ opacity: 0, x: -25 }}
-                animate={{ opacity: 1, x: 0 }}
+                initial={{ opacity: 0, x: -40 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: false, amount: 0.2 }}
                 transition={{ duration: 0.6 }}
               >
-                <img src="/rocket.png" alt="Rocket PNG Icon" className="sg-badge-png-icon" />
                 <Icon size={14} className="sg-badge-icon" />
                 <span>{data.eyebrow}</span>
                 <Sparkles size={14} className="sg-badge-sparkle" />
@@ -80,8 +80,9 @@ export default function ServiceLandingPage({ slug = "seo-geo", onOpenModal, navi
 
               <motion.h1
                 className="sg-hero-title"
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
+                initial={{ opacity: 0, y: 40, scale: 0.95 }}
+                whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                viewport={{ once: false, amount: 0.2 }}
                 transition={{ duration: 0.8, delay: 0.1 }}
               >
                 {data.slug === "seo-geo" ? (
@@ -96,7 +97,8 @@ export default function ServiceLandingPage({ slug = "seo-geo", onOpenModal, navi
               <motion.p
                 className="sg-hero-desc"
                 initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: false, amount: 0.2 }}
                 transition={{ duration: 0.8, delay: 0.2 }}
               >
                 {data.subtitle}
@@ -105,7 +107,8 @@ export default function ServiceLandingPage({ slug = "seo-geo", onOpenModal, navi
               <motion.div
                 className="sg-hero-actions"
                 initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: false, amount: 0.2 }}
                 transition={{ duration: 0.8, delay: 0.3 }}
               >
                 <button className="sg-btn primary" onClick={onOpenModal}>
@@ -119,8 +122,9 @@ export default function ServiceLandingPage({ slug = "seo-geo", onOpenModal, navi
             {/* RIGHT COLUMN: CARDLESS MINIMALIST INLINE LEAD FORM */}
             <motion.div
               className="sg-hero-right"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, x: 40, scale: 0.96 }}
+              whileInView={{ opacity: 1, x: 0, scale: 1 }}
+              viewport={{ once: false, amount: 0.2 }}
               transition={{ duration: 0.9, delay: 0.2 }}
             >
               <div className="sg-inline-form-wrap">
@@ -233,9 +237,9 @@ export default function ServiceLandingPage({ slug = "seo-geo", onOpenModal, navi
               <motion.div
                 key={m.label}
                 className="sg-metric-item"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
+                initial={{ opacity: 0, y: 35, scale: 0.92 }}
+                whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                viewport={{ once: false, amount: 0.2 }}
                 transition={{ duration: 0.5, delay: idx * 0.1 }}
               >
                 <span className="sg-metric-val">{m.value}</span>
@@ -246,7 +250,13 @@ export default function ServiceLandingPage({ slug = "seo-geo", onOpenModal, navi
           </div>
 
           {/* TRANSPARENT PNG CLIENT LOGOS PROOF STREAM */}
-          <div className="sg-client-png-strip">
+          <motion.div
+            className="sg-client-png-strip"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: false, amount: 0.2 }}
+            transition={{ duration: 0.7 }}
+          >
             <span className="strip-title">TRUSTED BY CATEGORY LEADERS</span>
             <div className="strip-logos">
               <img src="/client-sonicprints.png" alt="Sonic Prints" className="png-client-logo" style={{ transform: "scale(1.4)" }} />
@@ -254,27 +264,33 @@ export default function ServiceLandingPage({ slug = "seo-geo", onOpenModal, navi
               <img src="/client-talentera.png" alt="Talentera" className="png-client-logo" style={{ transform: "scale(1.0)" }} />
               <img src="/client-thoughtspace.png" alt="ThoughtSpace" className="png-client-logo" style={{ transform: "scale(1.4)" }} />
             </div>
-          </div>
+          </motion.div>
         </div>
       </header>
 
       {/* CARDLESS EDITORIAL COMPARISON MATRIX */}
       <section className="sg-section sg-comparison-section">
         <div className="sg-container">
-          <div className="sg-section-header text-center">
+          <motion.div
+            className="sg-section-header text-center"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: false, amount: 0.2 }}
+            transition={{ duration: 0.7 }}
+          >
             <span className="sg-section-tag">{data.matrixTag}</span>
             <h2 className="sg-section-title">{data.matrixTitle}</h2>
             <p className="sg-section-subtitle">{data.matrixSubtitle}</p>
-          </div>
+          </motion.div>
 
           <div className="sg-matrix-stream">
             {data.matrixRows.map((row, idx) => (
               <motion.div
                 key={row.feature}
                 className="sg-matrix-row"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
+                initial={{ opacity: 0, x: idx % 2 === 0 ? -40 : 40 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: false, amount: 0.2 }}
                 transition={{ duration: 0.6, delay: idx * 0.08 }}
               >
                 <div className="sg-row-feature">
@@ -301,13 +317,19 @@ export default function ServiceLandingPage({ slug = "seo-geo", onOpenModal, navi
       {/* CARDLESS INTERACTIVE 6-PILLAR LIST STREAM */}
       <section className="sg-section sg-pillars-section">
         <div className="sg-container">
-          <div className="sg-section-header text-center">
+          <motion.div
+            className="sg-section-header text-center"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: false, amount: 0.2 }}
+            transition={{ duration: 0.7 }}
+          >
             <span className="sg-section-tag">6-PILLAR SYSTEM</span>
             <h2 className="sg-section-title">THE <span>BRANDFORGE {data.number} FORGE</span></h2>
             <p className="sg-section-subtitle">
               Every system is engineered to capture market intent, build category authority, and scale pipeline.
             </p>
-          </div>
+          </motion.div>
 
           <div className="sg-pillars-list">
             {data.pillars.map((p, idx) => {
@@ -318,9 +340,9 @@ export default function ServiceLandingPage({ slug = "seo-geo", onOpenModal, navi
                 <motion.div
                   key={p.title}
                   className={`sg-pillar-row ${isOpen ? "is-active" : ""}`}
-                  initial={{ opacity: 0, y: 25 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
+                  initial={{ opacity: 0, x: -35, y: 15 }}
+                  whileInView={{ opacity: 1, x: 0, y: 0 }}
+                  viewport={{ once: false, amount: 0.2 }}
                   transition={{ duration: 0.6, delay: idx * 0.08 }}
                   onClick={() => setActivePillar(isOpen ? null : idx)}
                 >
@@ -328,7 +350,6 @@ export default function ServiceLandingPage({ slug = "seo-geo", onOpenModal, navi
                     <div className="sg-pillar-num">0{idx + 1}</div>
                     <div className="sg-big-pillar-icon">
                       <PillarIcon size={24} className="pillar-lucide-icon" />
-                      <img src={idx % 2 === 0 ? "/fire-flame.png" : "/rocket.png"} alt="Big PNG Icon" className="pillar-png-icon" />
                     </div>
                     <div className="sg-pillar-title-group">
                       <div className="sg-pillar-tag-inline">{p.tag}</div>
@@ -352,7 +373,6 @@ export default function ServiceLandingPage({ slug = "seo-geo", onOpenModal, navi
                         <div className="sg-pillar-deliv-wrap">
                           {p.deliverables.map((d) => (
                             <span key={d} className="sg-deliv-tag">
-                              <img src="/fire-flame.png" alt="Flame PNG Icon" className="png-deliv-icon" />
                               <CheckCircle2 size={13} />
                               {d}
                             </span>
@@ -371,11 +391,17 @@ export default function ServiceLandingPage({ slug = "seo-geo", onOpenModal, navi
       {/* CARDLESS HORIZONTAL TIMELINE PROCESS THREAD */}
       <section className="sg-section sg-process-sec">
         <div className="sg-container">
-          <div className="sg-section-header text-center">
+          <motion.div
+            className="sg-section-header text-center"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: false, amount: 0.2 }}
+            transition={{ duration: 0.7 }}
+          >
             <span className="sg-section-tag">EXECUTION ROADMAP</span>
             <h2 className="sg-section-title">4-STEP <span>ENGINEERING BLUEPRINT</span></h2>
             <p className="sg-section-subtitle">How we take your project from initial strategy blueprint to live market dominance.</p>
-          </div>
+          </motion.div>
 
           <div className="sg-timeline-stream">
             <div className="sg-timeline-line" />
@@ -388,9 +414,9 @@ export default function ServiceLandingPage({ slug = "seo-geo", onOpenModal, navi
               <motion.div
                 key={step.num}
                 className="sg-timeline-step"
-                initial={{ opacity: 0, y: 25 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
+                initial={{ opacity: 0, y: 35, scale: 0.88 }}
+                whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                viewport={{ once: false, amount: 0.2 }}
                 transition={{ duration: 0.6, delay: sIdx * 0.12 }}
               >
                 <div className="sg-node-dot">{step.num}</div>
@@ -405,16 +431,26 @@ export default function ServiceLandingPage({ slug = "seo-geo", onOpenModal, navi
       {/* CARDLESS FAQ ACCORDION LIST */}
       <section className="sg-section sg-faq-section">
         <div className="sg-container">
-          <div className="sg-section-header text-center">
+          <motion.div
+            className="sg-section-header text-center"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: false, amount: 0.2 }}
+            transition={{ duration: 0.7 }}
+          >
             <span className="sg-section-tag">ANSWERS & CLARITY</span>
             <h2 className="sg-section-title">FREQUENTLY ASKED <span>QUESTIONS</span></h2>
-          </div>
+          </motion.div>
 
           <div className="sg-faq-stream">
             {data.faqs.map((faq, idx) => (
-              <div
+              <motion.div
                 key={faq.q}
                 className={`sg-faq-row ${activeFaq === idx ? "is-open" : ""}`}
+                initial={{ opacity: 0, y: 25 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: false, amount: 0.2 }}
+                transition={{ duration: 0.5, delay: idx * 0.06 }}
                 onClick={() => setActiveFaq(activeFaq === idx ? null : idx)}
               >
                 <div className="sg-faq-q">
@@ -434,7 +470,7 @@ export default function ServiceLandingPage({ slug = "seo-geo", onOpenModal, navi
                     </motion.div>
                   )}
                 </AnimatePresence>
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>
@@ -443,7 +479,13 @@ export default function ServiceLandingPage({ slug = "seo-geo", onOpenModal, navi
       {/* BOTTOM BANNER CTA */}
       <section className="sg-bottom-cta">
         <div className="sg-container">
-          <div className="sg-cta-box-cardless">
+          <motion.div
+            className="sg-cta-box-cardless"
+            initial={{ opacity: 0, y: 45, scale: 0.93 }}
+            whileInView={{ opacity: 1, y: 0, scale: 1 }}
+            viewport={{ once: false, amount: 0.2 }}
+            transition={{ duration: 0.8 }}
+          >
             <h2>READY TO FORGE <span>{data.eyebrow}?</span></h2>
             <p>Get a comprehensive strategy audit delivered to your inbox within 24 hours.</p>
             <div className="sg-cta-actions">
@@ -453,7 +495,7 @@ export default function ServiceLandingPage({ slug = "seo-geo", onOpenModal, navi
                 <ArrowRight size={16} />
               </button>
             </div>
-          </div>
+          </motion.div>
         </div>
       </section>
 
@@ -471,7 +513,7 @@ const styles = `
     color: #FFFFFF;
     font-family: "Plus Jakarta Sans", sans-serif;
     overflow-x: hidden;
-    padding-top: 80px;
+    padding-top: 110px;
     position: relative;
     z-index: 1;
   }
@@ -490,13 +532,15 @@ const styles = `
   .sg-marquee-bar {
     background: rgba(10, 10, 12, 0.85);
     backdrop-filter: blur(12px);
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     color: #FFFFFF;
-    padding: 10px 0;
+    padding: 12px 0;
+    margin-top: 8px;
     overflow: hidden;
     white-space: nowrap;
     font-family: "Outfit", sans-serif;
-    font-size: 0.8rem;
+    font-size: 0.82rem;
     font-weight: 800;
     letter-spacing: 0.08em;
     position: relative;

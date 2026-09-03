@@ -197,7 +197,9 @@ export default function StackedServicesSection({ onSelectService, navigate }) {
     };
 
     const render = () => {
-      currentRef.current += (targetRef.current - currentRef.current) * 0.1;
+      const isMobile = typeof window !== "undefined" && window.innerWidth <= 768;
+      const lerpSpeed = isMobile ? 0.055 : 0.065;
+      currentRef.current += (targetRef.current - currentRef.current) * lerpSpeed;
       if (Math.abs(targetRef.current - currentRef.current) < 0.0001) {
         currentRef.current = targetRef.current;
       }
@@ -352,7 +354,7 @@ export default function StackedServicesSection({ onSelectService, navigate }) {
 const styles = `
 .scroll-story {
   position: relative;
-  height: 480vh;
+  height: 680vh;
   background: #030305;
 }
 
@@ -708,8 +710,12 @@ const styles = `
   transform-origin: left;
 }
 
+@media (max-width: 1024px) {
+  .scroll-story { height: 750vh; }
+}
+
 @media (max-width: 768px) {
-  .scroll-story { height: 380vh; }
+  .scroll-story { height: 850vh; }
   .showcase { width: 100vw; height: 100vh; }
   .background-type { filter: blur(5px); opacity: 0.65; }
   .word-1 { top: 6%; left: 2%; font-size: clamp(38px, 14cqw, 90px); }

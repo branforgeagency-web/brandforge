@@ -36,6 +36,22 @@ body {
   font-family: var(--font-body);
   overflow-x: hidden;
   cursor: default;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* HARDWARE ACCELERATION & COMPOSITING UTILITIES */
+.service-card,
+.bf-card,
+.custom-cursor-dot,
+.custom-cursor-ring,
+.pl-canvas,
+.stage,
+.showcase,
+.word {
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  will-change: transform;
 }
 
 /* CUSTOM MAGNETIC CURSOR COMPONENT */

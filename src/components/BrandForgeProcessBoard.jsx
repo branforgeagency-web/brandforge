@@ -113,7 +113,7 @@ function ParticleCanvas() {
 
     const spawn = () => {
       particles = [];
-      const count = Math.min(160, Math.max(50, Math.floor((W * H) / 11000)));
+      const count = Math.min(70, Math.max(25, Math.floor((W * H) / 20000)));
       for (let i = 0; i < count; i++) {
         particles.push(new Particle(
           Math.random() * W, Math.random() * H,
@@ -140,23 +140,19 @@ function ParticleCanvas() {
     };
 
     const connect = () => {
-      const maxD = 130, maxD2 = maxD * maxD;
+      const maxD = 110, maxD2 = maxD * maxD;
+      ctx.lineWidth = 0.75;
       for (let a = 0; a < particles.length; a++) {
         for (let b = a + 1; b < particles.length; b++) {
           const dx = particles[a].x - particles[b].x;
           const dy = particles[a].y - particles[b].y;
           const d2 = dx * dx + dy * dy;
           if (d2 > maxD2) continue;
-          const op = 0.5 * (1 - d2 / maxD2);
-          const lg = ctx.createLinearGradient(particles[a].x, particles[a].y, particles[b].x, particles[b].y);
-          const ca = particles[a].color, cb = particles[b].color;
-          lg.addColorStop(0, `rgba(${ca.r},${ca.g},${ca.b},${op})`);
-          lg.addColorStop(1, `rgba(${cb.r},${cb.g},${cb.b},${op})`);
+          const op = (0.32 * (1 - d2 / maxD2)).toFixed(2);
           ctx.beginPath();
           ctx.moveTo(particles[a].x, particles[a].y);
           ctx.lineTo(particles[b].x, particles[b].y);
-          ctx.strokeStyle = lg;
-          ctx.lineWidth = 0.8;
+          ctx.strokeStyle = `rgba(239, 65, 54, ${op})`;
           ctx.stroke();
         }
       }

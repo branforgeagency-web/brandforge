@@ -527,11 +527,12 @@ export default function SiteNavbar({ path, navigate, onOpenModal }) {
     const onScroll = () => {
       // Calculate hero / banner section height threshold (only hide on home page)
       if (isLightLandingPage) {
-        setScrolledPastHero(false);
+        setScrolledPastHero((prev) => (prev ? false : prev));
         return;
       }
       const heroThreshold = Math.min(window.innerHeight * 0.75, 650);
-      setScrolledPastHero(window.scrollY > heroThreshold);
+      const isPast = window.scrollY > heroThreshold;
+      setScrolledPastHero((prev) => (prev !== isPast ? isPast : prev));
     };
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });

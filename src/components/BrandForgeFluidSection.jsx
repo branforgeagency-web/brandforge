@@ -8,10 +8,10 @@ import { motion } from "framer-motion";
    ─────────────────────────────────────────────────────────────────────────── */
 
 const CONFIG = {
-  simResolution: 256,
-  dyeResolution: 1024,
-  curl: 50,
-  pressureIterations: 40,
+  simResolution: 160,
+  dyeResolution: 512,
+  curl: 35,
+  pressureIterations: 18,
   velocityDissipation: 0.95,
   dyeDissipation: 0.95,
   splatRadius: 0.3,

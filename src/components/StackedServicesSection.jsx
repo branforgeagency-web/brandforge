@@ -173,9 +173,8 @@ export default function StackedServicesSection({ onSelectService, navigate }) {
   const stageRef = useRef(null);
   const wordsRef = useRef([]);
   const cardRefs = useRef([]);
-
-  const [currentIndex, setCurrentIndex] = useState("01");
-  const [progressVal, setProgressVal] = useState(0);
+  const currentIndexRef = useRef(null);
+  const progressLineRef = useRef(null);
 
   const targetRef = useRef(0);
   const currentRef = useRef(0);
@@ -198,13 +197,16 @@ export default function StackedServicesSection({ onSelectService, navigate }) {
     };
 
     const render = () => {
-      currentRef.current += (targetRef.current - currentRef.current) * 0.095;
+      currentRef.current += (targetRef.current - currentRef.current) * 0.1;
       if (Math.abs(targetRef.current - currentRef.current) < 0.0001) {
         currentRef.current = targetRef.current;
       }
 
       const scene = currentRef.current * (services.length - 1);
-      setProgressVal(currentRef.current);
+
+      if (progressLineRef.current) {
+        progressLineRef.current.style.transform = `scaleX(${currentRef.current.toFixed(4)})`;
+      }
 
       if (stageRef.current) {
         stageRef.current.style.setProperty("--progress", currentRef.current.toFixed(4));
@@ -235,7 +237,9 @@ export default function StackedServicesSection({ onSelectService, navigate }) {
       });
 
       const activeNum = String(Math.round(scene) + 1).padStart(2, "0");
-      setCurrentIndex(activeNum);
+      if (currentIndexRef.current && currentIndexRef.current.textContent !== activeNum) {
+        currentIndexRef.current.textContent = activeNum;
+      }
 
       animFrameRef.current = requestAnimationFrame(render);
     };
@@ -332,9 +336,9 @@ export default function StackedServicesSection({ onSelectService, navigate }) {
 
           {/* SCROLL INDEX PROGRESS INDICATOR */}
           <div className="scroll-index" aria-hidden="true">
-            <span className="current-index">{currentIndex}</span>
+            <span ref={currentIndexRef} className="current-index">01</span>
             <i className="progress-track-bar">
-              <span className="progress-fill-line" style={{ transform: `scaleX(${progressVal})` }} />
+              <span ref={progressLineRef} className="progress-fill-line" style={{ transform: `scaleX(0)` }} />
             </i>
             <span>12</span>
           </div>
@@ -348,7 +352,7 @@ export default function StackedServicesSection({ onSelectService, navigate }) {
 const styles = `
 .scroll-story {
   position: relative;
-  height: 520vh;
+  height: 480vh;
   background: #030305;
 }
 

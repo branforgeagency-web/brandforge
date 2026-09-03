@@ -7,10 +7,10 @@ gsap.registerPlugin(ScrollTrigger);
 
 export default function SmoothScrollProvider({ children }) {
   useEffect(() => {
-    // Initialize Lenis smooth scrolling engine — tuned for immediate responsive stopping with zero coasting lag
+    // Initialize Lenis smooth scrolling engine — tuned for fast, responsive, smooth scrolling
     const lenis = new Lenis({
-      duration: 0.5,
-      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -18 * t)),
+      duration: 0.8,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       orientation: "vertical",
       gestureOrientation: "vertical",
       smoothWheel: true,

@@ -9,15 +9,14 @@ import {
   ArrowRight,
   CheckCircle2,
   ChevronDown,
-  Phone,
-  Sliders,
 } from "lucide-react";
 import { servicesData } from "../data/servicesData";
 import BrandForgeAnimatedFooter from "../components/BrandForgeAnimatedFooter";
+import BrandForgeLiquidMetalBackground from "../components/BrandForgeLiquidMetalBackground";
 
 /* ───────────────────────────────────────────────────────────────────────────
-   DYNAMIC SERVICE LANDING PAGE COMPONENT (ALL 12 SERVICES)
-   Renders Light Theme with Red (#EF4136) & Black (#0A0A0C) Accents.
+   DYNAMIC SERVICE LANDING PAGE COMPONENT (CARDLESS & LIQUID METAL SHADER)
+   100% Cardless design — Liquid metal wave shader, metallic sheen, embers.
    ─────────────────────────────────────────────────────────────────────────── */
 
 export default function ServiceLandingPage({ slug = "seo-geo", onOpenModal, navigate }) {
@@ -31,17 +30,16 @@ export default function ServiceLandingPage({ slug = "seo-geo", onOpenModal, navi
   }, [slug]);
 
   const [activeFaq, setActiveFaq] = useState(null);
-  const [metricSlider, setMetricSlider] = useState(25000);
-
-  // Dynamic calculated estimates
-  const estimatedRevenueLift = Math.round(metricSlider * 4.2);
-  const dominancePercentage = Math.min(98, Math.round(48 + (metricSlider / 50000) * 32));
+  const [activePillar, setActivePillar] = useState(0);
 
   const Icon = data.icon || Search;
 
   return (
     <div className="sg-page-root">
       <style>{styles}</style>
+
+      {/* THREE.JS LIQUID METAL SHADER & SPARKS BACKGROUND */}
+      <BrandForgeLiquidMetalBackground />
 
       {/* ANIMATED MARQUEE TICKER STRIP */}
       <div className="sg-marquee-bar">
@@ -59,7 +57,7 @@ export default function ServiceLandingPage({ slug = "seo-geo", onOpenModal, navi
         </div>
       </div>
 
-      {/* HERO BANNER SECTION WITH LEFT-ALIGNED CONTENT & HIGH-CONVERTING LEAD FORM */}
+      {/* HERO BANNER SECTION WITH CARDLESS INLINE LEAD CAPTURE */}
       <header className="sg-hero">
         <div className="sg-hero-glow" />
 
@@ -117,14 +115,14 @@ export default function ServiceLandingPage({ slug = "seo-geo", onOpenModal, navi
               </motion.div>
             </div>
 
-            {/* RIGHT COLUMN: HIGH-CONVERTING DROP US A MESSAGE LEAD FORM */}
+            {/* RIGHT COLUMN: CARDLESS MINIMALIST INLINE LEAD FORM */}
             <motion.div
               className="sg-hero-right"
-              initial={{ opacity: 0, scale: 0.95, y: 20 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.9, delay: 0.2 }}
             >
-              <div className="sg-form-card">
+              <div className="sg-inline-form-wrap">
                 <div className="sg-form-header">
                   <Sparkles size={18} className="sg-form-sparkle" />
                   <h3>Drop Us a Message</h3>
@@ -156,23 +154,23 @@ export default function ServiceLandingPage({ slug = "seo-geo", onOpenModal, navi
                   formEl.reset();
                 }}>
                   <div className="sg-field-row">
-                    <input type="text" name="name" required placeholder="Name *" className="sg-input" />
+                    <input type="text" name="name" required placeholder="Your Full Name *" className="sg-input-line" />
                   </div>
 
                   <div className="sg-field-grid">
-                    <select name="country_code" className="sg-select country-code" defaultValue="+91">
+                    <select name="country_code" className="sg-select-line country-code" defaultValue="+91">
                       <option value="+91">🇮🇳 +91</option>
                       <option value="+1">🇺🇸 +1</option>
                       <option value="+44">🇬🇧 +44</option>
                       <option value="+971">🇦🇪 +971</option>
                       <option value="+65">🇸🇬 +65</option>
                     </select>
-                    <input type="tel" name="phone" required placeholder="Phone No *" className="sg-input" />
+                    <input type="tel" name="phone" required placeholder="Phone / WhatsApp *" className="sg-input-line" />
                   </div>
 
                   <div className="sg-field-grid">
-                    <input type="email" name="email" required placeholder="Email *" className="sg-input" />
-                    <select name="service" className="sg-select" defaultValue={data.eyebrow}>
+                    <input type="email" name="email" required placeholder="Work Email *" className="sg-input-line" />
+                    <select name="service" className="sg-select-line" defaultValue={data.eyebrow}>
                       <option value={data.eyebrow}>{data.eyebrow}</option>
                       <option value="Website Development">Website Development</option>
                       <option value="Paid Media Scaling">Paid Media Scaling</option>
@@ -181,12 +179,12 @@ export default function ServiceLandingPage({ slug = "seo-geo", onOpenModal, navi
                   </div>
 
                   <div className="sg-field-grid">
-                    <input type="text" name="business" required placeholder="Which Business do you have? *" className="sg-input" />
-                    <input type="text" name="location" required placeholder="Location / City *" className="sg-input" />
+                    <input type="text" name="business" required placeholder="Business Name *" className="sg-input-line" />
+                    <input type="text" name="location" required placeholder="City / Country *" className="sg-input-line" />
                   </div>
 
                   <div className="sg-field-row">
-                    <textarea name="message" rows="3" required placeholder="Message / Project Scope *" className="sg-textarea" />
+                    <textarea name="message" rows="2" required placeholder="Message / Target Outcome *" className="sg-textarea-line" />
                   </div>
 
                   <button type="submit" className="sg-form-btn">
@@ -200,20 +198,18 @@ export default function ServiceLandingPage({ slug = "seo-geo", onOpenModal, navi
 
           </div>
 
-          {/* ANIMATED METRICS STRIP */}
-          <div className="sg-metrics-grid">
+          {/* CARDLESS TYPOGRAPHIC METRICS STRIP */}
+          <div className="sg-metrics-strip">
             {data.metrics.map((m, idx) => (
               <motion.div
                 key={m.label}
-                className="sg-metric-card"
-                initial={{ opacity: 0, y: 30 }}
+                className="sg-metric-item"
+                initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: idx * 0.1 }}
-                whileHover={{ scale: 1.04, y: -6 }}
+                transition={{ duration: 0.5, delay: idx * 0.1 }}
               >
-                <div className="sg-metric-glow" />
-                <div className="sg-metric-val">{m.value}</div>
+                <span className="sg-metric-val">{m.value}</span>
                 <div className="sg-metric-lbl">{m.label}</div>
                 <div className="sg-metric-sub">{m.desc}</div>
               </motion.div>
@@ -222,7 +218,7 @@ export default function ServiceLandingPage({ slug = "seo-geo", onOpenModal, navi
         </div>
       </header>
 
-      {/* COMPARISON MATRIX SECTION — CREATIVE DYNAMIC PARADIGM SHIFT */}
+      {/* CARDLESS EDITORIAL COMPARISON MATRIX */}
       <section className="sg-section sg-comparison-section">
         <div className="sg-container">
           <div className="sg-section-header text-center">
@@ -231,24 +227,24 @@ export default function ServiceLandingPage({ slug = "seo-geo", onOpenModal, navi
             <p className="sg-section-subtitle">{data.matrixSubtitle}</p>
           </div>
 
-          <div className="sg-matrix-grid">
+          <div className="sg-matrix-stream">
             {data.matrixRows.map((row, idx) => (
               <motion.div
                 key={row.feature}
-                className="sg-matrix-card"
-                initial={{ opacity: 0, x: idx % 2 === 0 ? -30 : 30 }}
-                whileInView={{ opacity: 1, x: 0 }}
+                className="sg-matrix-row"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.7, delay: idx * 0.1 }}
-                whileHover={{ y: -4 }}
+                transition={{ duration: 0.6, delay: idx * 0.08 }}
               >
-                <div className="sg-matrix-feat">
+                <div className="sg-row-feature">
                   <Sparkles size={16} className="feat-icon" />
                   <span>{row.feature}</span>
                 </div>
-                <div className="sg-matrix-cols">
+                
+                <div className="sg-row-compare">
                   <div className="sg-col-trad">
-                    <span className="sg-col-lbl">TRADITIONAL APPROACH</span>
+                    <span className="sg-col-lbl">OLD TRADITIONAL AGENCY</span>
                     <p>{row.traditional}</p>
                   </div>
                   <div className="sg-col-geo">
@@ -262,7 +258,7 @@ export default function ServiceLandingPage({ slug = "seo-geo", onOpenModal, navi
         </div>
       </section>
 
-      {/* CREATIVE 6-PILLAR ANIMATED SYSTEM */}
+      {/* CARDLESS INTERACTIVE 6-PILLAR LIST STREAM */}
       <section className="sg-section sg-pillars-section">
         <div className="sg-container">
           <div className="sg-section-header text-center">
@@ -273,39 +269,53 @@ export default function ServiceLandingPage({ slug = "seo-geo", onOpenModal, navi
             </p>
           </div>
 
-          <div className="sg-pillars-grid">
+          <div className="sg-pillars-list">
             {data.pillars.map((p, idx) => {
               const PillarIcon = p.icon || Zap;
+              const isOpen = activePillar === idx;
+
               return (
                 <motion.div
                   key={p.title}
-                  className="sg-pillar-card"
-                  initial={{ opacity: 0, y: 40 }}
+                  className={`sg-pillar-row ${isOpen ? "is-active" : ""}`}
+                  initial={{ opacity: 0, y: 25 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  transition={{ duration: 0.7, delay: idx * 0.1 }}
-                  whileHover={{ y: -8, scale: 1.02 }}
+                  transition={{ duration: 0.6, delay: idx * 0.08 }}
+                  onClick={() => setActivePillar(isOpen ? null : idx)}
                 >
-                  <div className="sg-pillar-card-edge-glow" />
-                  
-                  <div className="sg-pillar-top">
-                    <div className="sg-pillar-icon">
-                      <PillarIcon size={24} />
+                  <div className="sg-pillar-head">
+                    <div className="sg-pillar-num">0{idx + 1}</div>
+                    <div className="sg-pillar-title-group">
+                      <div className="sg-pillar-tag-inline">{p.tag}</div>
+                      <h3>{p.title}</h3>
                     </div>
-                    <span className="sg-pillar-tag">{p.tag}</span>
+                    <div className="sg-pillar-toggle">
+                      <ChevronDown size={20} className={`toggle-icon ${isOpen ? "open" : ""}`} />
+                    </div>
                   </div>
 
-                  <h3 className="sg-pillar-title">{p.title}</h3>
-                  <p className="sg-pillar-desc">{p.description}</p>
-
-                  <ul className="sg-pillar-list">
-                    {p.deliverables.map((d) => (
-                      <li key={d}>
-                        <CheckCircle2 size={14} className="sg-check" />
-                        <span>{d}</span>
-                      </li>
-                    ))}
-                  </ul>
+                  <AnimatePresence>
+                    {isOpen && (
+                      <motion.div
+                        className="sg-pillar-body"
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: "auto", opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        transition={{ duration: 0.4 }}
+                      >
+                        <p>{p.description}</p>
+                        <div className="sg-pillar-deliv-wrap">
+                          {p.deliverables.map((d) => (
+                            <span key={d} className="sg-deliv-tag">
+                              <CheckCircle2 size={13} />
+                              {d}
+                            </span>
+                          ))}
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
                 </motion.div>
               );
             })}
@@ -313,7 +323,7 @@ export default function ServiceLandingPage({ slug = "seo-geo", onOpenModal, navi
         </div>
       </section>
 
-      {/* ANIMATED EXECUTION BLUEPRINT / PROCESS FLOW */}
+      {/* CARDLESS HORIZONTAL TIMELINE PROCESS THREAD */}
       <section className="sg-section sg-process-sec">
         <div className="sg-container">
           <div className="sg-section-header text-center">
@@ -322,7 +332,8 @@ export default function ServiceLandingPage({ slug = "seo-geo", onOpenModal, navi
             <p className="sg-section-subtitle">How we take your project from initial strategy blueprint to live market dominance.</p>
           </div>
 
-          <div className="sg-process-grid">
+          <div className="sg-timeline-stream">
+            <div className="sg-timeline-line" />
             {[
               { num: "01", title: "STRATEGY ARCHITECTURE", desc: "120-point diagnostic audit, competitor teardowns & roadmap alignment." },
               { num: "02", title: "UI/UX & PROTOTYPING", desc: "Custom 3D visual design tokens, glassmorphic UX & conversion triggers." },
@@ -331,25 +342,22 @@ export default function ServiceLandingPage({ slug = "seo-geo", onOpenModal, navi
             ].map((step, sIdx) => (
               <motion.div
                 key={step.num}
-                className="sg-process-card"
-                initial={{ opacity: 0, y: 30 }}
+                className="sg-timeline-step"
+                initial={{ opacity: 0, y: 25 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: sIdx * 0.12 }}
-                whileHover={{ y: -6 }}
               >
-                <div className="sg-step-num">{step.num}</div>
-                <h4 className="sg-step-title">{step.title}</h4>
-                <p className="sg-step-desc">{step.desc}</p>
+                <div className="sg-node-dot">{step.num}</div>
+                <h4>{step.title}</h4>
+                <p>{step.desc}</p>
               </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-
-
-      {/* FREQUENTLY ASKED QUESTIONS — LIGHT THEME */}
+      {/* CARDLESS FAQ ACCORDION LIST */}
       <section className="sg-section sg-faq-section">
         <div className="sg-container">
           <div className="sg-section-header text-center">
@@ -357,11 +365,11 @@ export default function ServiceLandingPage({ slug = "seo-geo", onOpenModal, navi
             <h2 className="sg-section-title">FREQUENTLY ASKED <span>QUESTIONS</span></h2>
           </div>
 
-          <div className="sg-faq-list">
+          <div className="sg-faq-stream">
             {data.faqs.map((faq, idx) => (
               <div
                 key={faq.q}
-                className={`sg-faq-item ${activeFaq === idx ? "is-open" : ""}`}
+                className={`sg-faq-row ${activeFaq === idx ? "is-open" : ""}`}
                 onClick={() => setActiveFaq(activeFaq === idx ? null : idx)}
               >
                 <div className="sg-faq-q">
@@ -390,8 +398,7 @@ export default function ServiceLandingPage({ slug = "seo-geo", onOpenModal, navi
       {/* BOTTOM BANNER CTA */}
       <section className="sg-bottom-cta">
         <div className="sg-container">
-          <div className="sg-cta-box">
-            <div className="sg-cta-aura" />
+          <div className="sg-cta-box-cardless">
             <h2>READY TO FORGE <span>{data.eyebrow}?</span></h2>
             <p>Get a comprehensive strategy audit delivered to your inbox within 24 hours.</p>
             <div className="sg-cta-actions">
@@ -399,10 +406,6 @@ export default function ServiceLandingPage({ slug = "seo-geo", onOpenModal, navi
                 <Zap size={16} />
                 <span>REQUEST FREE STRATEGY AUDIT</span>
                 <ArrowRight size={16} />
-              </button>
-              <button className="sg-btn secondary" onClick={() => navigate("/contact")}>
-                <Phone size={16} />
-                <span>TALK TO A GROWTH ENGINEER</span>
               </button>
             </div>
           </div>
@@ -416,985 +419,531 @@ export default function ServiceLandingPage({ slug = "seo-geo", onOpenModal, navi
 }
 
 const styles = `
-  .sg-marquee-bar {
-    width: 100%;
-    overflow: hidden;
-    background: #0A0A0C;
+  @import url("https://fonts.googleapis.com/css2?family=Outfit:wght@700;800;900&family=Plus+Jakarta+Sans:wght@500;600;700;800&family=JetBrains+Mono:wght@700;800&display=swap");
+
+  .sg-page-root {
+    background: #000000;
     color: #FFFFFF;
-    padding: 12px 0;
-    border-bottom: 1px solid rgba(239, 65, 54, 0.3);
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 11.5px;
+    font-family: "Plus Jakarta Sans", sans-serif;
+    overflow-x: hidden;
+    padding-top: 80px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .sg-container {
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 0 clamp(20px, 4vw, 40px);
+    position: relative;
+    z-index: 2;
+  }
+
+  .text-center { text-align: center; }
+
+  /* TICKER STRIP */
+  .sg-marquee-bar {
+    background: rgba(10, 10, 12, 0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    color: #FFFFFF;
+    padding: 10px 0;
+    overflow: hidden;
+    white-space: nowrap;
+    font-family: "Outfit", sans-serif;
+    font-size: 0.8rem;
     font-weight: 800;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    position: relative;
+    z-index: 5;
   }
 
   .sg-marquee-track {
-    display: flex;
-    align-items: center;
-    gap: 36px;
-    white-space: nowrap;
-    width: max-content;
-    animation: sgMarquee 28s linear infinite;
+    display: inline-flex;
+    gap: 30px;
+    animation: sgMarquee 35s linear infinite;
   }
 
-  .sg-marquee-track span {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    color: rgba(255, 255, 255, 0.9);
-  }
+  .sg-marquee-track span { color: #EF4136; }
 
   @keyframes sgMarquee {
     0% { transform: translateX(0); }
     100% { transform: translateX(-50%); }
   }
 
-  .sg-page-root {
-    position: relative;
-    width: 100%;
-    background: #F8F9FA;
-    color: #0A0A0C;
-    font-family: 'Outfit', 'Plus Jakarta Sans', sans-serif;
-    overflow-x: hidden;
-    padding-top: 80px;
-  }
-
-  .sg-container {
-    width: min(1240px, calc(100vw - 48px));
-    margin: 0 auto;
-  }
-
+  /* HERO BANNER — CARDLESS */
   .sg-hero {
     position: relative;
-    padding: clamp(40px, 6vw, 80px) 0 clamp(40px, 6vw, 70px);
-    text-align: left;
-  }
-
-  .sg-hero-grid {
-    display: grid;
-    grid-template-columns: 1.15fr 0.85fr;
-    gap: clamp(32px, 4vw, 64px);
-    align-items: center;
-    margin-bottom: 56px;
-  }
-
-  .sg-hero-left {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
+    padding: clamp(40px, 6vw, 80px) 0 clamp(60px, 8vw, 100px);
+    background: transparent;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   }
 
   .sg-hero-glow {
     position: absolute;
-    top: -10%;
+    top: -100px;
     left: 20%;
-    width: 650px;
-    height: 420px;
-    border-radius: 50%;
-    background: radial-gradient(circle, rgba(239, 65, 54, 0.14) 0%, transparent 70%);
-    filter: blur(60px);
+    width: 600px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(239, 65, 54, 0.15) 0%, transparent 70%);
+    filter: blur(80px);
     pointer-events: none;
-    z-index: 0;
+  }
+
+  .sg-hero-grid {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: clamp(32px, 5vw, 64px);
+    align-items: center;
   }
 
   .sg-badge {
     display: inline-flex;
     align-items: center;
-    gap: 10px;
-    padding: 8px 20px;
-    border-radius: 100px;
-    background: #FFFFFF;
+    gap: 8px;
+    padding: 6px 16px;
+    border-radius: 999px;
+    background: rgba(239, 65, 54, 0.12);
     border: 1px solid rgba(239, 65, 54, 0.35);
-    box-shadow: 0 4px 16px rgba(239, 65, 54, 0.1);
-    color: #0A0A0C;
-    font-size: 11.5px;
-    font-weight: 800;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    margin-bottom: 24px;
-  }
-
-  .sg-badge-icon, .sg-badge-sparkle {
     color: #EF4136;
+    font-size: 0.82rem;
+    font-weight: 800;
+    margin-bottom: 20px;
+    text-transform: uppercase;
   }
 
   .sg-hero-title {
+    font-family: "Outfit", sans-serif;
+    font-size: clamp(34px, 5vw, 68px);
+    font-weight: 900;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    color: #FFFFFF;
     margin: 0 0 20px;
-    font-size: clamp(36px, 5.8vw, 76px);
-    font-weight: 950;
-    line-height: 0.98;
-    letter-spacing: -0.04em;
-    text-transform: uppercase;
-    color: #0A0A0C;
   }
 
-  .sg-hero-title span {
-    color: #EF4136;
-    text-shadow: 0 4px 24px rgba(239, 65, 54, 0.2);
-  }
+  .sg-hero-title span { color: #EF4136; }
 
   .sg-hero-desc {
-    max-width: 620px;
+    font-size: clamp(16px, 1.8vw, 19px);
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.78);
     margin: 0 0 32px;
-    color: #475569;
-    font-size: clamp(15px, 1.4vw, 18px);
-    line-height: 1.65;
-    font-weight: 500;
-    text-align: left;
   }
 
-  .sg-hero-actions {
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    gap: 16px;
-    flex-wrap: wrap;
-  }
+  .sg-hero-actions { display: flex; gap: 14px; }
 
-  /* DROP US A MESSAGE LEAD FORM (VDIGTECH INSPIRED) */
-  .sg-hero-right {
-    position: relative;
-    width: 100%;
-  }
-
-  .sg-form-card {
-    position: relative;
-    background: #0A0A0C;
-    border: 1.5px solid #EF4136;
-    border-radius: 24px;
-    padding: clamp(24px, 3vw, 32px);
-    color: #FFFFFF;
-    box-shadow: 0 20px 50px rgba(10, 10, 12, 0.25);
-  }
-
-  .sg-form-header {
-    text-align: center;
-    margin-bottom: 20px;
-  }
-
-  .sg-form-sparkle {
-    color: #EF4136;
-    margin-bottom: 4px;
+  /* CARDLESS INLINE FORM */
+  .sg-inline-form-wrap {
+    padding: 10px 0;
   }
 
   .sg-form-header h3 {
-    margin: 0 0 4px;
     font-size: 22px;
     font-weight: 900;
+    margin: 0 0 4px;
     color: #FFFFFF;
-    letter-spacing: -0.02em;
   }
 
   .sg-form-header p {
-    margin: 0;
-    font-size: 12.5px;
-    color: #94A3B8;
-  }
-
-  .sg-lead-form {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-  }
-
-  .sg-field-row {
-    width: 100%;
-  }
-
-  .sg-field-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
-  }
-
-  .sg-input, .sg-select, .sg-textarea {
-    width: 100%;
-    background: #141418;
-    border: 1px solid rgba(255, 255, 255, 0.14);
-    border-radius: 10px;
-    padding: 10px 14px;
-    color: #FFFFFF;
-    font-family: inherit;
     font-size: 13px;
+    color: rgba(255, 255, 255, 0.65);
+    margin: 0 0 24px;
+  }
+
+  .sg-lead-form { display: flex; flex-direction: column; gap: 16px; }
+
+  .sg-field-row { width: 100%; }
+
+  .sg-field-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+
+  .sg-input-line, .sg-select-line, .sg-textarea-line {
+    width: 100%;
+    padding: 12px 0;
+    background: transparent;
+    border: none;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.25);
+    color: #FFFFFF;
+    font-size: 14px;
+    font-weight: 600;
     outline: none;
-    transition: border-color 0.2s ease;
+    transition: border-color 0.25s ease;
+    font-family: inherit;
     box-sizing: border-box;
   }
 
-  .sg-select {
-    appearance: none;
-    cursor: pointer;
-  }
-
-  .sg-select option {
+  .sg-select-line option {
     background: #0A0A0C;
     color: #FFFFFF;
   }
 
-  .sg-input::placeholder, .sg-textarea::placeholder {
-    color: rgba(255, 255, 255, 0.45);
-  }
-
-  .sg-input:focus, .sg-select:focus, .sg-textarea:focus {
-    border-color: #EF4136;
-  }
-
-  .sg-textarea {
-    resize: none;
+  .sg-input-line:focus, .sg-select-line:focus, .sg-textarea-line:focus {
+    border-bottom-color: #EF4136;
   }
 
   .sg-form-btn {
-    width: 100%;
-    height: 48px;
-    border: none;
-    border-radius: 10px;
-    background: #EF4136;
-    color: #FFFFFF;
-    font-size: 13px;
-    font-weight: 800;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    margin-top: 4px;
-    transition: background 0.25s ease, transform 0.25s ease;
-    box-shadow: 0 8px 24px rgba(239, 65, 54, 0.35);
-  }
-
-  .sg-form-btn:hover {
-    background: #D9382E;
-    transform: translateY(-2px);
-    box-shadow: 0 12px 30px rgba(239, 65, 54, 0.5);
-  }
-    background-image: radial-gradient(rgba(239, 65, 54, 0.15) 1px, transparent 1px);
-    background-size: 18px 18px;
-    opacity: 0.6;
-    pointer-events: none;
-  }
-
-  .sg-visual-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding-bottom: 18px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    margin-bottom: 24px;
-  }
-
-  .sg-visual-dots {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-  }
-
-  .sg-visual-dots .dot {
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-  }
-
-  .sg-visual-dots .dot.red { background: #EF4136; box-shadow: 0 0 8px #EF4136; }
-  .sg-visual-dots .dot.dark { background: rgba(255, 255, 255, 0.2); }
-
-  .sg-visual-tag {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 10.5px;
-    font-weight: 800;
-    letter-spacing: 0.14em;
-    color: #EF4136;
-  }
-
-  .sg-visual-body {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    margin-bottom: 24px;
-  }
-
-  .sg-visual-icon-wrap {
-    width: 72px;
-    height: 72px;
-    border-radius: 20px;
-    background: rgba(239, 65, 54, 0.16);
-    border: 1.5px solid rgba(239, 65, 54, 0.4);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #EF4136;
-    box-shadow: 0 0 20px rgba(239, 65, 54, 0.25);
-  }
-
-  .sg-visual-info {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-  }
-
-  .sg-vinfo-title {
-    font-size: 20px;
-    font-weight: 900;
-    letter-spacing: -0.02em;
-    color: #FFFFFF;
-  }
-
-  .sg-vinfo-sub {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 11px;
-    color: rgba(255, 255, 255, 0.6);
-    letter-spacing: 0.05em;
-  }
-
-  .sg-visual-stat-strip {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 12px;
-    background: rgba(255, 255, 255, 0.04);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    border-radius: 16px;
-    padding: 14px 16px;
-  }
-
-  .sg-vstat {
-    display: flex;
-    flex-direction: column;
-    gap: 2px;
-  }
-
-  .sg-vstat .lbl {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 9.5px;
-    font-weight: 700;
-    color: rgba(255, 255, 255, 0.5);
-    letter-spacing: 0.08em;
-  }
-
-  .sg-vstat .val {
-    font-size: 20px;
-    font-weight: 900;
-    color: #FFFFFF;
-  }
-
-  .sg-vstat .val.red {
-    color: #EF4136;
-  }
-
-  .sg-visual-footer {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding-top: 16px;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-  }
-
-  .sg-vf-status {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 10px;
-    font-weight: 700;
-    color: #10B981;
-    letter-spacing: 0.08em;
-  }
-
-  .sg-vf-badge {
-    font-size: 14px;
-    font-weight: 900;
-    color: #EF4136;
-  }
-
-  .sg-btn {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    gap: 10px;
+    gap: 8px;
     height: 52px;
-    padding: 0 28px;
-    border-radius: 12px;
-    font-family: inherit;
-    font-size: 13px;
-    font-weight: 800;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    cursor: pointer;
-    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-  }
-
-  .sg-btn.primary {
-    border: none;
+    width: 100%;
+    margin-top: 10px;
     background: #EF4136;
     color: #FFFFFF;
-    box-shadow: 0 12px 32px rgba(239, 65, 54, 0.35);
-  }
-
-  .sg-btn.primary:hover {
-    background: #D9382E;
-    transform: translateY(-2px);
-    box-shadow: 0 16px 42px rgba(239, 65, 54, 0.55);
-  }
-
-  .sg-btn.secondary {
-    border: 1px solid #0A0A0C;
-    background: #0A0A0C;
-    color: #FFFFFF;
-    box-shadow: 0 10px 25px rgba(10, 10, 12, 0.15);
-  }
-
-  .sg-btn.secondary:hover {
-    background: #1A1A1E;
-    border-color: #EF4136;
-    transform: translateY(-2px);
-    box-shadow: 0 14px 35px rgba(239, 65, 54, 0.25);
-  }
-
-  .sg-btn.full {
-    width: 100%;
-  }
-
-  /* ANIMATED 4-STEP PROCESS ROADMAP */
-  .sg-process-sec {
-    background: #0A0A0C;
-    color: #FFFFFF;
-    border-top: 1px solid rgba(239, 65, 54, 0.3);
-    border-bottom: 1px solid rgba(239, 65, 54, 0.3);
-  }
-
-  .sg-process-sec .sg-section-title {
-    color: #FFFFFF;
-  }
-
-  .sg-process-sec .sg-section-subtitle {
-    color: #94A3B8;
-  }
-
-  .sg-process-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 20px;
-    margin-top: 40px;
-  }
-
-  @media (max-width: 992px) {
-    .sg-process-grid {
-      grid-template-columns: repeat(2, 1fr);
-    }
-  }
-
-  @media (max-width: 576px) {
-    .sg-process-grid {
-      grid-template-columns: 1fr;
-    }
-  }
-
-  .sg-process-card {
-    position: relative;
-    background: #141418;
-    border: 1px solid rgba(255, 255, 255, 0.12);
-    border-radius: 20px;
-    padding: 28px 24px;
-    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-  }
-
-  .sg-process-card:hover {
-    border-color: #EF4136;
-    background: #1A1A22;
-    box-shadow: 0 16px 40px rgba(239, 65, 54, 0.25);
-  }
-
-  .sg-step-num {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 36px;
-    font-weight: 900;
-    color: #EF4136;
-    line-height: 1;
-    margin-bottom: 16px;
-    opacity: 0.9;
-  }
-
-  .sg-step-title {
-    font-size: 15px;
+    border: none;
+    border-radius: 12px;
+    font-size: 0.9rem;
     font-weight: 800;
-    letter-spacing: -0.01em;
-    color: #FFFFFF;
-    margin: 0 0 10px;
-    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    cursor: pointer;
+    transition: background 0.25s ease;
   }
 
-  .sg-step-desc {
-    font-size: 13px;
-    color: #94A3B8;
-    line-height: 1.6;
-    margin: 0;
-  }
+  .sg-form-btn:hover { background: #d8342a; }
 
-  /* METRICS GRID — LIGHT THEME */
-  .sg-metrics-grid {
+  /* CARDLESS METRICS STRIP */
+  .sg-metrics-strip {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 20px;
-    margin-top: 20px;
-  }
-
-  .sg-metric-card {
-    background: #FFFFFF;
-    border: 1px solid rgba(15, 23, 42, 0.08);
-    border-radius: 20px;
-    padding: 24px 20px;
-    text-align: center;
-    box-shadow: 0 10px 30px rgba(15, 23, 42, 0.04);
-    transition: all 0.3s ease;
-  }
-
-  .sg-metric-card:hover {
-    border-color: rgba(239, 65, 54, 0.4);
-    transform: translateY(-4px);
-    box-shadow: 0 16px 40px rgba(239, 65, 54, 0.12);
+    margin-top: 60px;
+    padding-top: 40px;
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
   }
 
   .sg-metric-val {
-    font-size: clamp(28px, 3vw, 42px);
+    font-family: "Outfit", sans-serif;
+    font-size: clamp(28px, 3.5vw, 46px);
     font-weight: 900;
     color: #EF4136;
-    letter-spacing: -0.03em;
+    line-height: 1;
+    display: block;
     margin-bottom: 6px;
   }
 
   .sg-metric-lbl {
     font-size: 14px;
     font-weight: 800;
-    color: #0A0A0C;
-    margin-bottom: 4px;
+    color: #FFFFFF;
   }
 
   .sg-metric-sub {
     font-size: 12px;
-    color: #64748B;
-    font-weight: 500;
+    color: rgba(255, 255, 255, 0.65);
   }
 
-  /* SECTIONS COMMON */
-  .sg-section {
-    padding: clamp(60px, 8vw, 100px) 0;
-  }
-
-  .sg-section-header {
-    margin-bottom: 48px;
-  }
-
-  .sg-section-header.text-center {
-    text-align: center;
-  }
+  /* CARDLESS COMPARISON STREAM */
+  .sg-section { padding: clamp(60px, 8vw, 100px) 0; }
 
   .sg-section-tag {
-    display: inline-block;
-    color: #EF4136;
-    font-size: 12px;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 11px;
     font-weight: 800;
-    letter-spacing: 0.16em;
+    letter-spacing: 0.12em;
+    color: #EF4136;
     text-transform: uppercase;
-    margin-bottom: 12px;
+    display: block;
+    margin-bottom: 8px;
   }
 
   .sg-section-title {
-    margin: 0 0 16px;
-    font-size: clamp(26px, 3.8vw, 44px);
+    font-family: "Outfit", sans-serif;
+    font-size: clamp(28px, 4vw, 48px);
     font-weight: 900;
-    letter-spacing: -0.03em;
-    text-transform: uppercase;
-    color: #0A0A0C;
+    color: #FFFFFF;
+    margin: 0 0 12px;
   }
 
-  .sg-section-title span {
-    color: #EF4136;
-  }
+  .sg-section-title span { color: #EF4136; }
 
   .sg-section-subtitle {
-    max-width: 680px;
-    margin: 0 auto;
-    color: #475569;
-    font-size: 15px;
-    line-height: 1.6;
-    font-weight: 500;
+    font-size: 16px;
+    color: rgba(255, 255, 255, 0.72);
+    max-width: 620px;
+    margin: 0 auto 50px;
   }
 
-  /* COMPARISON MATRIX — LIGHT THEME */
-  .sg-matrix-grid {
+  .sg-matrix-stream {
     display: flex;
     flex-direction: column;
-    gap: 16px;
   }
 
-  .sg-matrix-card {
-    background: #FFFFFF;
-    border: 1px solid rgba(15, 23, 42, 0.08);
-    border-radius: 20px;
-    padding: 24px 30px;
+  .sg-matrix-row {
+    padding: 24px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
     display: grid;
     grid-template-columns: 240px 1fr;
-    gap: 24px;
+    gap: 30px;
     align-items: center;
-    box-shadow: 0 8px 25px rgba(15, 23, 42, 0.04);
   }
 
-  .sg-matrix-feat {
-    font-size: 15px;
+  .sg-row-feature {
+    display: flex;
+    align-items: center;
+    gap: 10px;
     font-weight: 800;
-    color: #0A0A0C;
+    color: #FFFFFF;
   }
 
-  .sg-matrix-cols {
+  .sg-row-feature .feat-icon { color: #EF4136; }
+
+  .sg-row-compare {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 24px;
-  }
-
-  .sg-col-trad {
-    background: #F1F5F9;
-    border: 1px solid #E2E8F0;
-    border-radius: 14px;
-    padding: 16px 20px;
-    color: #0A0A0C;
-  }
-
-  .sg-col-geo {
-    background: rgba(239, 65, 54, 0.06);
-    border: 1px solid rgba(239, 65, 54, 0.3);
-    border-radius: 14px;
-    padding: 16px 20px;
-    color: #0A0A0C;
+    gap: 30px;
   }
 
   .sg-col-lbl {
-    display: block;
-    font-size: 11px;
+    font-size: 10px;
     font-weight: 800;
     letter-spacing: 0.1em;
-    margin-bottom: 6px;
-    color: #64748B;
+    color: rgba(255, 255, 255, 0.45);
+    display: block;
+    margin-bottom: 4px;
   }
 
-  .sg-col-geo .sg-col-lbl {
-    color: #EF4136;
-  }
+  .sg-col-trad p { color: rgba(255, 255, 255, 0.6); margin: 0; font-size: 14px; }
 
-  .sg-col-trad p, .sg-col-geo p {
-    margin: 0;
-    font-size: 13.5px;
-    line-height: 1.45;
-    font-weight: 600;
-  }
+  .sg-col-geo p { color: #EF4136; margin: 0; font-size: 14px; font-weight: 700; }
 
-  /* PILLARS GRID — LIGHT THEME */
-  .sg-pillars-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 24px;
-  }
-
-  .sg-pillar-card {
-    background: #FFFFFF;
-    border: 1px solid rgba(15, 23, 42, 0.08);
-    border-radius: 24px;
-    padding: 32px 28px;
+  /* CARDLESS PILLARS ACCORDION STREAM */
+  .sg-pillars-list {
     display: flex;
     flex-direction: column;
-    box-shadow: 0 10px 30px rgba(15, 23, 42, 0.04);
-    transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
   }
 
-  .sg-pillar-card:hover {
-    border-color: rgba(239, 65, 54, 0.5);
-    transform: translateY(-6px);
-    box-shadow: 0 20px 45px rgba(239, 65, 54, 0.15);
+  .sg-pillar-row {
+    border-bottom: 1.5px solid rgba(255, 255, 255, 0.15);
+    padding: 24px 0;
+    cursor: pointer;
+    transition: border-bottom-color 0.25s ease;
   }
 
-  .sg-pillar-top {
+  .sg-pillar-row.is-active, .sg-pillar-row:hover {
+    border-bottom-color: #EF4136;
+  }
+
+  .sg-pillar-head {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin-bottom: 20px;
   }
 
-  .sg-pillar-icon {
+  .sg-pillar-num {
+    font-family: "Outfit", sans-serif;
+    font-size: 28px;
+    font-weight: 900;
+    color: #EF4136;
+    width: 60px;
+  }
+
+  .sg-pillar-title-group {
+    flex: 1;
+  }
+
+  .sg-pillar-tag-inline {
+    font-size: 11px;
+    font-weight: 800;
+    color: rgba(255, 255, 255, 0.5);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .sg-pillar-title-group h3 {
+    font-size: 22px;
+    font-weight: 800;
+    margin: 2px 0 0;
+    color: #FFFFFF;
+  }
+
+  .toggle-icon {
+    color: #FFFFFF;
+    transition: transform 0.3s ease;
+  }
+
+  .toggle-icon.open { transform: rotate(180deg); color: #EF4136; }
+
+  .sg-pillar-body {
+    padding-left: 60px;
+    padding-top: 16px;
+  }
+
+  .sg-pillar-body p {
+    font-size: 15px;
+    color: rgba(255, 255, 255, 0.75);
+    max-width: 700px;
+    margin: 0 0 16px;
+  }
+
+  .sg-pillar-deliv-wrap {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .sg-deliv-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 13px;
+    font-weight: 700;
+    color: #FFFFFF;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    padding: 6px 14px;
+    border-radius: 999px;
+  }
+
+  /* CARDLESS HORIZONTAL TIMELINE */
+  .sg-timeline-stream {
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+    margin-top: 40px;
+  }
+
+  .sg-timeline-line {
+    position: absolute;
+    top: 24px;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: rgba(255, 255, 255, 0.15);
+    z-index: 1;
+  }
+
+  .sg-timeline-step {
+    position: relative;
+    z-index: 2;
+  }
+
+  .sg-node-dot {
     width: 48px;
     height: 48px;
-    border-radius: 14px;
-    background: rgba(239, 65, 54, 0.12);
-    border: 1px solid rgba(239, 65, 54, 0.3);
-    color: #EF4136;
+    border-radius: 50%;
+    background: #EF4136;
+    color: #FFFFFF;
     display: flex;
     align-items: center;
     justify-content: center;
-  }
-
-  .sg-pillar-tag {
-    font-size: 11px;
-    font-weight: 800;
-    letter-spacing: 0.14em;
-    color: #64748B;
-  }
-
-  .sg-pillar-title {
-    margin: 0 0 12px;
-    font-size: 20px;
-    font-weight: 800;
-    line-height: 1.25;
-    color: #0A0A0C;
-  }
-
-  .sg-pillar-desc {
-    margin: 0 0 24px;
-    font-size: 13.5px;
-    line-height: 1.6;
-    color: #475569;
-    flex-grow: 1;
-    font-weight: 500;
-  }
-
-  .sg-pillar-list {
-    margin: 0;
-    padding: 0;
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    border-top: 1px solid rgba(15, 23, 42, 0.08);
-    padding-top: 18px;
-  }
-
-  .sg-pillar-list li {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    font-size: 12.5px;
-    font-weight: 700;
-    color: #0A0A0C;
-  }
-
-  .sg-check {
-    color: #EF4136;
-    flex-shrink: 0;
-  }
-
-  /* CALCULATOR SECTION — HIGH CONTRAST OBSIDIAN CARD ACCENT */
-  .sg-calc-card {
-    background: linear-gradient(135deg, #0A0A0C 0%, #16161B 100%);
-    border: 1.5px solid rgba(239, 65, 54, 0.4);
-    border-radius: 32px;
-    padding: clamp(32px, 4vw, 56px);
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 48px;
-    color: #FFFFFF;
-    box-shadow: 0 30px 80px rgba(10, 10, 12, 0.25);
-  }
-
-  .sg-calc-card .sg-section-title {
-    color: #FFFFFF;
-  }
-
-  .sg-calc-desc {
-    color: rgba(255, 255, 255, 0.78);
-    font-size: 14.5px;
-    line-height: 1.6;
-    margin-bottom: 32px;
-  }
-
-  .sg-slider-wrap {
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.12);
-    border-radius: 20px;
-    padding: 24px;
-  }
-
-  .sg-slider-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 16px;
-    font-size: 14px;
-  }
-
-  .sg-slider-header strong {
-    color: #EF4136;
-    font-size: 18px;
-  }
-
-  .sg-range-input {
-    width: 100%;
-    accent-color: #EF4136;
-    height: 8px;
-    border-radius: 4px;
-    cursor: pointer;
-  }
-
-  .sg-slider-labels {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 10px;
-    font-size: 11px;
-    color: rgba(255, 255, 255, 0.5);
-  }
-
-  .sg-calc-right {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    gap: 20px;
-  }
-
-  .sg-res-box {
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.12);
-    border-radius: 20px;
-    padding: 20px 24px;
-  }
-
-  .sg-res-lbl {
-    font-size: 12px;
-    font-weight: 700;
-    color: rgba(255, 255, 255, 0.6);
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-  }
-
-  .sg-res-val {
-    font-size: clamp(28px, 3vw, 40px);
+    font-family: "Outfit", sans-serif;
     font-weight: 900;
+    font-size: 16px;
+    margin-bottom: 20px;
+    box-shadow: 0 0 0 6px #000000;
+  }
+
+  .sg-timeline-step h4 {
+    font-size: 16px;
+    font-weight: 800;
+    margin: 0 0 8px;
     color: #FFFFFF;
-    margin-top: 4px;
   }
 
-  .sg-res-val.red {
-    color: #EF4136;
+  .sg-timeline-step p {
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.65);
+    line-height: 1.5;
+    margin: 0;
   }
 
-  /* FAQ SECTION — LIGHT THEME */
-  .sg-faq-list {
-    max-width: 840px;
+  /* CARDLESS FAQ */
+  .sg-faq-stream {
+    max-width: 800px;
     margin: 0 auto;
     display: flex;
     flex-direction: column;
-    gap: 16px;
   }
 
-  .sg-faq-item {
-    background: #FFFFFF;
-    border: 1px solid rgba(15, 23, 42, 0.08);
-    border-radius: 20px;
-    padding: 24px 28px;
+  .sg-faq-row {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+    padding: 20px 0;
     cursor: pointer;
-    box-shadow: 0 6px 20px rgba(15, 23, 42, 0.03);
-    transition: all 0.3s ease;
-  }
-
-  .sg-faq-item.is-open {
-    border-color: rgba(239, 65, 54, 0.5);
-    box-shadow: 0 12px 30px rgba(239, 65, 54, 0.1);
   }
 
   .sg-faq-q {
     display: flex;
-    align-items: center;
     justify-content: space-between;
+    align-items: center;
     font-size: 17px;
     font-weight: 800;
-    gap: 16px;
-    color: #0A0A0C;
-  }
-
-  .sg-faq-arrow {
-    color: #EF4136;
-    transition: transform 0.3s ease;
-  }
-
-  .sg-faq-item.is-open .sg-faq-arrow {
-    transform: rotate(180deg);
-  }
-
-  .sg-faq-a {
-    overflow: hidden;
+    color: #FFFFFF;
   }
 
   .sg-faq-a p {
-    margin: 16px 0 0;
-    font-size: 14.5px;
-    line-height: 1.65;
-    color: #475569;
-    font-weight: 500;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 14px;
+    line-height: 1.6;
+    margin: 12px 0 0;
   }
 
-  /* BOTTOM CTA — LIGHT THEME */
+  /* CARDLESS CTA */
   .sg-bottom-cta {
+    background: rgba(10, 10, 12, 0.85);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    color: #FFFFFF;
     padding: clamp(60px, 8vw, 100px) 0;
-  }
-
-  .sg-cta-box {
-    position: relative;
-    background: linear-gradient(135deg, #FFFFFF 0%, #F1F5F9 100%);
-    border: 1.5px solid rgba(239, 65, 54, 0.3);
-    border-radius: 32px;
-    padding: clamp(40px, 6vw, 64px);
     text-align: center;
-    overflow: hidden;
-    box-shadow: 0 20px 50px rgba(15, 23, 42, 0.06);
   }
 
-  .sg-cta-aura {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 500px;
-    height: 300px;
-    background: radial-gradient(circle, rgba(239, 65, 54, 0.15) 0%, transparent 70%);
-    filter: blur(50px);
-    pointer-events: none;
-  }
-
-  .sg-cta-box h2 {
-    margin: 0 0 16px;
-    font-size: clamp(26px, 4vw, 48px);
+  .sg-cta-box-cardless h2 {
+    font-family: "Outfit", sans-serif;
+    font-size: clamp(32px, 5vw, 64px);
     font-weight: 900;
-    text-transform: uppercase;
-    color: #0A0A0C;
+    margin: 0 0 16px;
   }
 
-  .sg-cta-box h2 span {
-    color: #EF4136;
+  .sg-cta-box-cardless h2 span { color: #EF4136; }
+
+  .sg-cta-box-cardless p {
+    font-size: 17px;
+    color: rgba(255, 255, 255, 0.7);
+    margin: 0 auto 36px;
+    max-width: 600px;
   }
 
-  .sg-cta-box p {
-    max-width: 560px;
-    margin: 0 auto 32px;
-    color: #475569;
-    font-size: 16px;
-    font-weight: 500;
-  }
-
-  .sg-cta-actions {
-    display: flex;
+  .sg-btn {
+    display: inline-flex;
     align-items: center;
-    justify-content: center;
-    gap: 16px;
-    flex-wrap: wrap;
+    gap: 10px;
+    padding: 16px 36px;
+    border-radius: 999px;
+    font-size: 0.95rem;
+    font-weight: 800;
+    cursor: pointer;
+    border: none;
+    transition: transform 0.25s ease, background 0.25s ease;
   }
 
-  /* RESPONSIVE */
+  .sg-btn.primary {
+    background: #EF4136;
+    color: #FFFFFF;
+  }
+
+  .sg-btn.primary:hover {
+    background: #d8342a;
+    transform: translateY(-2px);
+  }
+
   @media (max-width: 992px) {
-    .sg-metrics-grid { grid-template-columns: repeat(2, 1fr); }
-    .sg-pillars-grid { grid-template-columns: repeat(2, 1fr); }
-    .sg-matrix-card { grid-template-columns: 1fr; gap: 12px; }
-    .sg-calc-card { grid-template-columns: 1fr; }
+    .sg-hero-grid { grid-template-columns: 1fr; }
+    .sg-metrics-strip { grid-template-columns: repeat(2, 1fr); }
+    .sg-timeline-stream { grid-template-columns: repeat(2, 1fr); gap: 40px 20px; }
+    .sg-timeline-line { display: none; }
+  @media (max-width: 992px) {
+    .sg-hero-grid { grid-template-columns: 1fr; }
+    .sg-metrics-strip { grid-template-columns: repeat(2, 1fr); }
+    .sg-timeline-stream { grid-template-columns: repeat(2, 1fr); gap: 40px 20px; }
+    .sg-timeline-line { display: none; }
+    .sg-matrix-row { grid-template-columns: 1fr; gap: 10px; }
   }
 
   @media (max-width: 600px) {
-    .sg-metrics-grid { grid-template-columns: 1fr; }
-    .sg-pillars-grid { grid-template-columns: 1fr; }
-    .sg-matrix-cols { grid-template-columns: 1fr; }
-    .sg-hero-actions { flex-direction: column; }
-    .sg-btn { width: 100%; }
+    .sg-metrics-strip { grid-template-columns: 1fr; }
+    .sg-timeline-stream { grid-template-columns: 1fr; }
+    .sg-field-grid { grid-template-columns: 1fr; }
+    .sg-col-compare { grid-template-columns: 1fr; }
   }
 `;

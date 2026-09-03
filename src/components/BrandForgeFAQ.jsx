@@ -4,34 +4,46 @@ import { motion } from "framer-motion";
 /* ─── FAQ Data (5 items) ─── */
 const FAQ_DATA = [
   {
-    question: "What services does BrandForge offer?",
+    question: "I've wasted money on marketing before. How is BrandForge any different?",
     answer:
-      "We provide a full-spectrum digital growth suite — from SEO & paid advertising to social media management, content marketing, web design, brand strategy, email automation, and conversion rate optimization. Every service is tailored to your unique business goals.",
-    tag: "Core Suite",
+      "Most agencies bill you for activity. We're built for outcomes. Every rupee is tied to a goal — leads, sales, rankings — and reported back so you see exactly what it earned. If it doesn't move the business, we don't do it.",
+    tag: "Outcomes First",
   },
   {
-    question: "How long before I see real results?",
+    question: "I don't understand SEO, ads, all this technical stuff. Will that be a problem?",
     answer:
-      "Most clients see measurable improvements within 30–60 days for paid channels. Organic strategies like SEO typically show compounding returns in 3–6 months. We set realistic milestones and keep you updated with transparent performance dashboards from day one.",
-    tag: "Timeline & ROI",
+      "That's exactly why you hire us. You run your business; we run the growth engine. No jargon, no homework — just clear updates on what matters: more visitors, more leads, more customers.",
+    tag: "No Complexity",
   },
   {
-    question: "What makes BrandForge different from other agencies?",
+    question: "How much do I need to spend to actually see results?",
     answer:
-      "We don't do cookie-cutter. Every strategy is custom-built using proprietary data frameworks, real-time analytics, and a dedicated growth team assigned to your brand. Our results-first model means we only win when you win.",
-    tag: "Our Difference",
+      "Enough to compete, never more than you should. We scope your budget to your goals and put every part of it where it drives the most return. After one call, you'll know precisely what's realistic and what it'll deliver.",
+    tag: "Budget & ROI",
   },
   {
-    question: "How does your pricing work?",
+    question: "How soon will I start seeing results?",
     answer:
-      "We offer flexible pricing tiers based on scope, channels, and goals. Every engagement starts with a free strategy session where we map out your needs and recommend the right plan. No hidden fees, no long-term lock-ins.",
-    tag: "Flexible Plans",
+      "Paid ads can bring leads in weeks. SEO and content compound over three to six months into growth that doesn't switch off when you stop paying. We commit to clear timelines from day one and hit them.",
+    tag: "Timelines",
   },
   {
-    question: "How do I get started with BrandForge?",
+    question: "My business is small. Am I too small for BrandForge?",
     answer:
-      "It's simple — book a free 30-minute strategy call. We'll analyze your current digital presence, identify growth opportunities, and present a custom action plan. No commitment required. Let's build something extraordinary together.",
-    tag: "Quick Start",
+      "Every category leader started smaller. What matters is ambition, not size. Start with what moves you fastest — a website, local SEO, a campaign — and scale into the full team as you grow.",
+    tag: "Ambition",
+  },
+  {
+    question: "Do you only work with businesses in Coimbatore?",
+    answer:
+      "We're a digital marketing agency in Coimbatore, so local clients get us in the room fast — but we forge brands across Tamil Nadu and India. Same strategy, same results, wherever you are.",
+    tag: "Coimbatore & Beyond",
+  },
+  {
+    question: "I'm interested but not sure where to start. What's the first step?",
+    answer:
+      "Book a strategy call. We'll pinpoint where digital marketing will move your business most and show you the plan to get there. You'll leave the call clearer on your growth than most agencies leave you after months.",
+    tag: "First Step",
   },
 ];
 

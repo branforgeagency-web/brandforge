@@ -249,10 +249,10 @@ export default function ServiceLandingPage({ slug = "seo-geo", onOpenModal, navi
           <div className="sg-client-png-strip">
             <span className="strip-title">TRUSTED BY CATEGORY LEADERS</span>
             <div className="strip-logos">
-              <img src="/client-sonicprints.png" alt="Sonic Prints" className="png-client-logo" />
-              <img src="/client-thoughtflows.png" alt="ThoughtFlows" className="png-client-logo" />
-              <img src="/client-talentera.png" alt="Talentera" className="png-client-logo" />
-              <img src="/client-thoughtspace.png" alt="ThoughtSpace" className="png-client-logo" />
+              <img src="/client-sonicprints.png" alt="Sonic Prints" className="png-client-logo" style={{ transform: "scale(1.4)" }} />
+              <img src="/client-thoughtflows.png" alt="ThoughtFlows" className="png-client-logo" style={{ transform: "scale(1.35)" }} />
+              <img src="/client-talentera.png" alt="Talentera" className="png-client-logo" style={{ transform: "scale(1.0)" }} />
+              <img src="/client-thoughtspace.png" alt="ThoughtSpace" className="png-client-logo" style={{ transform: "scale(1.4)" }} />
             </div>
           </div>
         </div>
@@ -787,21 +787,21 @@ const styles = `
 
   /* TRANSPARENT PNG CLIENT LOGOS PROOF STREAM */
   .sg-client-png-strip {
-    margin-top: 48px;
-    padding-top: 32px;
-    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    margin-top: 40px;
+    padding-top: 28px;
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 18px;
+    gap: 20px;
   }
 
   .strip-title {
-    font-family: "JetBrains Mono", monospace;
-    font-size: 11px;
+    font-family: "Outfit", sans-serif;
+    font-size: 12px;
     font-weight: 800;
-    letter-spacing: 0.14em;
-    color: rgba(255, 255, 255, 0.45);
+    letter-spacing: 0.18em;
+    color: rgba(255, 255, 255, 0.65);
     text-transform: uppercase;
   }
 
@@ -809,21 +809,31 @@ const styles = `
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: clamp(24px, 5vw, 60px);
-    flex-wrap: wrap;
+    gap: clamp(16px, 4vw, 48px);
+    flex-wrap: nowrap;
+    width: 100%;
+    overflow-x: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    padding: 10px 0;
+  }
+
+  .strip-logos::-webkit-scrollbar {
+    display: none;
   }
 
   .png-client-logo {
-    height: 28px;
+    height: clamp(38px, 4.5vw, 56px);
+    max-width: 180px;
     width: auto;
     object-fit: contain;
-    filter: brightness(0) invert(1) opacity(0.75);
+    flex-shrink: 0;
+    filter: brightness(0) invert(1) opacity(0.9) drop-shadow(0 2px 10px rgba(255, 255, 255, 0.25));
     transition: opacity 0.25s ease, filter 0.25s ease, transform 0.25s ease;
   }
 
   .png-client-logo:hover {
-    filter: brightness(0) invert(1) opacity(1);
-    transform: scale(1.08);
+    filter: brightness(0) invert(1) opacity(1) drop-shadow(0 6px 20px rgba(239, 65, 54, 0.7));
   }
 
   .sg-metric-sub {

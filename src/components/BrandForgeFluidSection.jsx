@@ -392,7 +392,8 @@ export default function BrandForgeFluidSection({ onOpenModal }) {
       <div className="pl-hero">
         <h1>FORGE DIGITAL BRANDS.</h1>
         <h1>SCALE MEDIA & ROAS.</h1>
-        <h1>BRANDFORGE AGENCY.</h1>
+        <h1>DIGITAL MARKETING AGENCY</h1>
+        <h1>IN COIMBATORE.</h1>
       </div>
 
       <canvas className="pl-canvas" ref={canvasRef} />
@@ -437,7 +438,8 @@ const css = `
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: clamp(1.5rem, 5vw, 4rem);
+  gap: clamp(4px, 1vh, 12px);
+  padding: clamp(2rem, 5vw, 5rem);
   width: 100%;
   box-sizing: border-box;
 }
@@ -448,10 +450,15 @@ const css = `
   color: #FFFFFF;
   font-family: 'Outfit', sans-serif;
   font-weight: 900;
-  font-size: clamp(2.2rem, 5.8vw, 5.8rem);
-  line-height: 0.95;
-  letter-spacing: -0.03em;
-  text-shadow: 0 10px 40px rgba(0, 0, 0, 0.9);
+  font-size: clamp(1.8rem, 4.3vw, 4.8rem);
+  line-height: 1.0;
+  letter-spacing: -0.025em;
+  text-shadow: 0 10px 40px rgba(0, 0, 0, 0.95);
+  white-space: nowrap;
+}
+
+.pl-hero h1:nth-child(1) {
+  align-self: flex-start;
 }
 
 .pl-hero h1:nth-child(2) {
@@ -459,19 +466,25 @@ const css = `
 }
 
 .pl-hero h1:nth-child(3) {
-  align-self: center;
+  align-self: flex-start;
+  margin-left: clamp(1rem, 5vw, 6rem);
+}
+
+.pl-hero h1:nth-child(4) {
+  align-self: flex-end;
+  margin-right: clamp(1rem, 5vw, 6rem);
 }
 
 .pl-logo-layer {
   position: absolute;
-  inset: 0;
+  bottom: clamp(35px, 6vh, 70px);
+  left: 50%;
+  transform: translateX(-50%);
   z-index: 10;
   pointer-events: none;
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding-top: clamp(14rem, 28vw, 24rem);
 }
 
 .pl-logo-wrap {
@@ -482,7 +495,7 @@ const css = `
 }
 
 .pl-brand-logo {
-  height: clamp(38px, 5.5vw, 72px);
+  height: clamp(32px, 4vw, 54px);
   width: auto;
   object-fit: contain;
   filter: drop-shadow(0 10px 30px rgba(0, 0, 0, 0.95));

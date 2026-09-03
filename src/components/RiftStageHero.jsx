@@ -8,11 +8,11 @@ export default function RiftStageHero({
   panels = [
     {
       eyebrow: "BRAND INSTINCT",
-      text: "A REVOLUTIONARY SIGNAL BEGINS WITH A BOLD CREATIVE INSTINCT — SHAPING IDENTITY INTO MARKET DOMINANCE.",
+      text: "BrandForge shapes bold brand identity into market dominance — a digital marketing agency in Coimbatore built to make you unignorable.",
     },
     {
       eyebrow: "ROAS LIFT",
-      text: "HYPER-SCALE AD CAMPAIGNS AND SUB-SECOND 3D WEB EXPERIENCES BUILT FOR MAXIMUM REVENUE.",
+      text: "Hyper-scale ad campaigns and sub-second 3D web experiences, engineered in Coimbatore for maximum revenue and ROAS.",
     },
   ],
 }) {

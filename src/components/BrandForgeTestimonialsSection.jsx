@@ -289,7 +289,7 @@ const REVIEWS = [
     role: "Talent Acquisition Platform",
     rating: "5.0",
     quote:
-      "BrandForge gave TalentEra a brand that feels like what it promises — a new era of hiring. Clean, confident, and built to help us stand out to every candidate.",
+      "From strategy to launch, BrandForge just got it. They turned TalentEra into a brand that stands out in a crowded hiring market.",
     logo: "/client-talentera.png",
     cardBg: "#EF4136", // Vibrant Crimson Red Card
     accentColor: "#FFFFFF", // Bold White Speech Bubble Border
@@ -328,7 +328,7 @@ export default function BrandForgeTestimonialsSection({ onOpenModal }) {
           <span className="bf-test-dot" /> Client Success Stories
         </div>
         <h2>BRANDS THAT FORGED MARKET DOMINANCE</h2>
-        <p>Real quotes from market-leading enterprise clients.</p>
+        <p>See why brands trust BrandForge, a digital marketing agency in Coimbatore, to grow their presence and results.</p>
       </div>
 
       {/* Testimonial Card Stage */}

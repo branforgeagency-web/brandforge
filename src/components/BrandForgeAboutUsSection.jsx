@@ -330,13 +330,13 @@ export default function BrandForgeAboutUsSection({ onOpenModal, navigate }) {
 
           <div className="bf-about-seo-body">
             <p>
-              Digital marketing isn't about doing everything available—it's about knowing what your business needs and where effort makes the biggest difference. At BrandForge, we start by understanding your business, your audience, your competition, and your core growth goals.
+              Good marketing isn't about doing everything. It's about knowing what your business actually needs — and putting the effort where it moves the needle. So we start by understanding you: your audience, your competition, and the growth you're chasing.
             </p>
             <p>
-              Our experienced team brings practical experience working across 20+ clients to unite strategy, creativity, and execution into one seamless engine. Whether improving search visibility, driving lead generation, or building brand equity, we focus on what scales your business.
+              We're a digital marketing agency in Coimbatore that's worked with 20+ brands across education, healthcare, and D2C, bringing strategy, creativity, and execution together instead of handing you off between teams. Whether it's search visibility, lead generation, or brand equity, we focus on what grows the business — not what fills a report.
             </p>
             <blockquote className="bf-about-quote-tagline">
-              “The right strategy starts with understanding.”
+              "The right strategy starts with understanding."
             </blockquote>
           </div>
 

@@ -14,35 +14,35 @@ const STEPS = [
     number: "01",
     title: "Discovery & Deep Dive",
     description:
-      "We start by listening. We analyze your business goals, target audience, current digital footprint, and unique value proposition — building a crystal-clear picture of your market position.",
+      "We start by listening. We dig into your goals, your audience, your competition, and where you stand online right now — so we know exactly what we're working with.",
     accent: "red",
   },
   {
     number: "02",
     title: "Strategy & Blueprinting",
     description:
-      "One size doesn't fit all. We craft a data-backed, tailored strategy spanning SEO, paid ads, content, and social — mapped to your exact ROI targets and timelines.",
+      "No templates. We build a data-backed digital marketing plan across SEO, paid ads, content, and social, mapped to your actual ROI targets and timeline.",
     accent: "neutral",
   },
   {
     number: "03",
     title: "Creative Execution & Launch",
     description:
-      "Our designers, copywriters, and media buyers craft high-converting campaigns, stunning creatives, and optimized infrastructure — flawlessly deployed across all platforms.",
+      "Our designers, writers, and media buyers turn the plan into high-converting campaigns and creative, then ship it live across every platform that matters.",
     accent: "red",
   },
   {
     number: "04",
     title: "Optimization & Scaling",
     description:
-      "We continuously monitor live performance metrics, run A/B tests, and optimize bids and messaging — driving lower acquisition costs and maximum ROAS.",
+      "We watch the live numbers, run A/B tests, and tune bids and messaging to bring acquisition costs down and ROAS up.",
     accent: "neutral",
   },
   {
     number: "05",
     title: "Growth & Reporting",
     description:
-      "You're never in the dark. Clear performance reports and strategic reviews keep you updated on wins, insights, and next-phase growth for sustainable scaling.",
+      "You always know where things stand. Clear reports and regular reviews keep you on top of wins, insights, and what's next.",
     accent: "red",
   },
 ];
@@ -429,7 +429,7 @@ export default function BrandForgeProcessBoard() {
             maxWidth: 560,
             margin: "0 auto",
           }}>
-            Impactful digital growth isn't luck — it's the product of a precise, tested process that turns your vision into measurable success.
+            Real digital marketing growth isn't luck. It comes from a tested process that turns your vision into results you can measure.
           </p>
         </motion.div>
 

@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1200" height="850" viewBox="0 0 1200 850" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Outfit:wght@800;900&amp;family=Plus+Jakarta+Sans:wght@700;800&amp;display=swap");
+      .text-bold { font-family: "Outfit", sans-serif; font-weight: 900; }
+      .text-sub { font-family: "Plus Jakarta Sans", sans-serif; font-weight: 800; }
+    </style>
+  </defs>
+
+  <!-- DASHBOARD BACKGROUND FRAME -->
+  <rect x="320" y="160" width="560" height="420" rx="20" stroke="#EF4136" stroke-width="4" stroke-dasharray="12 6" fill="none" />
+
+  <!-- ANALYTICS BAR CHART (TOP RIGHT WINDOW) -->
+  <g transform="translate(680, 100)">
+    <rect x="0" y="0" width="220" height="130" rx="12" stroke="#FFFFFF" stroke-width="3" fill="#0A0A0C" />
+    <circle cx="20" cy="18" r="4" fill="#EF4136" />
+    <circle cx="34" cy="18" r="4" fill="#FFFFFF" />
+    <circle cx="48" cy="18" r="4" fill="rgba(255,255,255,0.4)" />
+    <line x1="15" y1="32" x2="205" y2="32" stroke="rgba(255,255,255,0.2)" stroke-width="1.5" />
+    <!-- Bars -->
+    <rect x="30" y="60" width="16" height="50" rx="3" fill="#EF4136" />
+    <rect x="58" y="45" width="16" height="65" rx="3" fill="#FFFFFF" />
+    <rect x="86" y="70" width="16" height="40" rx="3" fill="#EF4136" />
+    <rect x="114" y="40" width="16" height="70" rx="3" fill="#FFFFFF" />
+    <rect x="142" y="55" width="16" height="55" rx="3" fill="#EF4136" />
+    <rect x="170" y="30" width="16" height="80" rx="3" fill="#FFFFFF" />
+  </g>
+
+  <!-- CENTER MEGAPHONE LOUDSPEAKER -->
+  <g transform="translate(600, 380)">
+    <!-- Sound Wave Arc Lines -->
+    <path d="M 120 -60 Q 170 0 120 60 M 145 -85 Q 210 0 145 85 M 170 -110 Q 250 0 170 110" stroke="#EF4136" stroke-width="4.5" stroke-linecap="round" fill="none" stroke-dasharray="10 4" />
+    
+    <!-- Megaphone Cone -->
+    <path d="M -80 -25 L 70 -75 L 70 75 L -80 25 Z" fill="#EF4136" stroke="#FFFFFF" stroke-width="4" stroke-linejoin="round" />
+    <ellipse cx="70" cy="0" rx="20" ry="75" fill="#FFFFFF" stroke="#EF4136" stroke-width="4" />
+    <ellipse cx="70" cy="0" rx="10" ry="45" fill="#0A0A0C" stroke="#EF4136" stroke-width="2" />
+    
+    <!-- Megaphone Base & Handle -->
+    <path d="M -80 -25 L -130 -40 C -145 -45, -155 -30, -155 -10 L -155 10 C -155 30, -145 45, -130 40 L -80 25 Z" fill="#FFFFFF" stroke="#EF4136" stroke-width="4" />
+    <rect x="-70" y="25" width="40" height="90" rx="10" transform="rotate(-15 -70 25)" fill="#EF4136" stroke="#FFFFFF" stroke-width="4" />
+    <rect x="-60" y="105" width="28" height="20" rx="6" transform="rotate(-15 -60 105)" fill="#FFFFFF" />
+  </g>
+
+  <!-- FLOATING SOCIAL CHANNEL CIRCLES -->
+  <!-- Facebook 'f' -->
+  <g transform="translate(580, 160)">
+    <circle cx="0" cy="0" r="34" fill="#EF4136" stroke="#FFFFFF" stroke-width="3" />
+    <text x="0" y="12" class="text-bold" font-size="42" fill="#FFFFFF" text-anchor="middle">f</text>
+  </g>
+
+  <!-- WhatsApp Circle -->
+  <g transform="translate(420, 220)">
+    <circle cx="0" cy="0" r="32" fill="#FFFFFF" stroke="#EF4136" stroke-width="3" />
+    <path d="M -12 -8 C -12 6, 6 14, 12 10 M -4 14 L -12 18 L -8 10" stroke="#EF4136" stroke-width="4" stroke-linecap="round" fill="none" />
+  </g>
+
+  <!-- Instagram Camera Circle -->
+  <g transform="translate(860, 360)">
+    <circle cx="0" cy="0" r="36" fill="#EF4136" stroke="#FFFFFF" stroke-width="3" />
+    <rect x="-16" y="-16" width="32" height="32" rx="8" stroke="#FFFFFF" stroke-width="3" fill="none" />
+    <circle cx="0" cy="0" r="8" stroke="#FFFFFF" stroke-width="3" fill="none" />
+    <circle cx="8" cy="-8" r="2.5" fill="#FFFFFF" />
+  </g>
+
+  <!-- Twitter / X Bird Circle -->
+  <g transform="translate(710, 520)">
+    <circle cx="0" cy="0" r="30" fill="#FFFFFF" stroke="#EF4136" stroke-width="3" />
+    <path d="M -12 8 Q -4 -12 14 -10 Q 0 4 -12 8 Z" fill="#EF4136" />
+  </g>
+
+  <!-- Dollar Coin Sign Circle -->
+  <g transform="translate(520, 540)">
+    <circle cx="0" cy="0" r="38" fill="#EF4136" stroke="#FFFFFF" stroke-width="3.5" />
+    <text x="0" y="14" class="text-bold" font-size="44" fill="#FFFFFF" text-anchor="middle">$</text>
+  </g>
+
+  <!-- PERCENTAGE LIFT BADGES -->
+  <g transform="translate(380, 290)">
+    <text x="0" y="0" class="text-bold" font-size="24" fill="#EF4136">▲ 10%</text>
+  </g>
+  <g transform="translate(780, 480)">
+    <text x="0" y="0" class="text-bold" font-size="26" fill="#EF4136">▲ 20%</text>
+  </g>
+
+  <!-- COIN STACKS AT BOTTOM -->
+  <g transform="translate(520, 670)">
+    <!-- Stack 1 -->
+    <ellipse cx="0" cy="40" rx="55" ry="14" fill="#EF4136" stroke="#FFFFFF" stroke-width="3" />
+    <ellipse cx="0" cy="25" rx="55" ry="14" fill="#EF4136" stroke="#FFFFFF" stroke-width="3" />
+    <ellipse cx="0" cy="10" rx="55" ry="14" fill="#EF4136" stroke="#FFFFFF" stroke-width="3" />
+    <ellipse cx="0" cy="-5" rx="55" ry="14" fill="#FFFFFF" stroke="#EF4136" stroke-width="3" />
+    <text x="0" y="0" class="text-bold" font-size="16" fill="#EF4136" text-anchor="middle">$</text>
+
+    <!-- Stack 2 -->
+    <ellipse cx="75" cy="50" rx="45" ry="12" fill="#FFFFFF" stroke="#EF4136" stroke-width="3" />
+    <ellipse cx="75" cy="36" rx="45" ry="12" fill="#EF4136" stroke="#FFFFFF" stroke-width="3" />
+    <ellipse cx="75" cy="22" rx="45" ry="12" fill="#FFFFFF" stroke="#EF4136" stroke-width="3" />
+  </g>
+
+  <!-- LEFT STRATEGIST FIGURE (MAN POINTING) -->
+  <g transform="translate(200, 520)">
+    <!-- Head & Hair -->
+    <circle cx="0" cy="-190" r="28" fill="#FFFFFF" stroke="#EF4136" stroke-width="3" />
+    <!-- Torso / Suit Shirt -->
+    <path d="M -35 -150 L 35 -150 L 25 -20 L -25 -20 Z" fill="#FFFFFF" stroke="#EF4136" stroke-width="3.5" />
+    <!-- Tie -->
+    <polygon points="0,-150 -8,-140 0,-70 8,-140" fill="#EF4136" />
+    <!-- Legs / Pants -->
+    <path d="M -25 -20 L -35 170 L -10 170 L -5 30 L 5 30 L 10 170 L 35 170 L 25 -20 Z" fill="#0A0A0C" stroke="#FFFFFF" stroke-width="3" />
+    <!-- Arm Pointing Right -->
+    <path d="M 25 -140 L 90 -110 L 130 -110" stroke="#EF4136" stroke-width="6" stroke-linecap="round" fill="none" />
+  </g>
+
+  <!-- RIGHT GROWTH MARKETER FIGURE (WOMAN WITH LAPTOP) -->
+  <g transform="translate(1000, 560)">
+    <!-- Sitting Seat -->
+    <rect x="-40" y="40" width="80" height="90" rx="10" fill="#0A0A0C" stroke="#EF4136" stroke-width="3" />
+    <!-- Head & Hair -->
+    <circle cx="0" cy="-160" r="26" fill="#FFFFFF" stroke="#EF4136" stroke-width="3" />
+    <!-- Torso / Top -->
+    <path d="M -30 -125 L 30 -125 L 22 0 L -22 0 Z" fill="#EF4136" stroke="#FFFFFF" stroke-width="3" />
+    <!-- Laptop -->
+    <path d="M -60 -40 L 0 -40 L -10 0 L -70 0 Z" fill="#FFFFFF" stroke="#EF4136" stroke-width="3" />
+    <!-- Legs Sitting -->
+    <path d="M -22 0 L -60 50 L -60 140 M 22 0 L -30 50 L -30 140" stroke="#FFFFFF" stroke-width="8" stroke-linecap="round" fill="none" />
+    <!-- Arm to Laptop -->
+    <path d="M -15 -110 L -45 -45 L -20 -40" stroke="#FFFFFF" stroke-width="5" stroke-linecap="round" fill="none" />
+  </g>
+
+  <!-- QUESTION MARK ACCENT (FAR LEFT) -->
+  <g transform="translate(80, 480)">
+    <text x="0" y="0" class="text-bold" font-size="110" fill="#FFFFFF">?</text>
+  </g>
+
+  <!-- SPEECH BUBBLES -->
+  <g transform="translate(160, 240)">
+    <circle cx="0" cy="0" r="30" fill="#FFFFFF" stroke="#EF4136" stroke-width="3" />
+    <circle cx="-10" cy="0" r="3" fill="#EF4136" />
+    <circle cx="0" cy="0" r="3" fill="#EF4136" />
+    <circle cx="10" cy="0" r="3" fill="#EF4136" />
+  </g>
+  <g transform="translate(940, 270)">
+    <rect x="-35" y="-20" width="70" height="40" rx="15" fill="#EF4136" stroke="#FFFFFF" stroke-width="3" />
+    <circle cx="-12" cy="0" r="3" fill="#FFFFFF" />
+    <circle cx="0" cy="0" r="3" fill="#FFFFFF" />
+    <circle cx="12" cy="0" r="3" fill="#FFFFFF" />
+  </g>
+
+</svg>

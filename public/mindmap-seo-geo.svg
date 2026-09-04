@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1200" height="750" viewBox="0 0 1200 750" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Outfit:wght@800;900&amp;family=Plus+Jakarta+Sans:wght@700;800&amp;display=swap");
+      .crimson { stroke: #EF4136; fill: none; }
+      .crimson-fill { fill: #EF4136; }
+      .white { stroke: #FFFFFF; fill: none; }
+      .white-fill { fill: #FFFFFF; }
+      .sketch-text-big { font-family: "Outfit", sans-serif; font-weight: 900; font-size: 110px; fill: #EF4136; letter-spacing: 4px; }
+      .sketch-text-sub { font-family: "Outfit", sans-serif; font-weight: 800; font-size: 42px; fill: #FFFFFF; letter-spacing: 1px; }
+      .sketch-label { font-family: "Outfit", sans-serif; font-weight: 800; font-size: 26px; fill: #FFFFFF; letter-spacing: 2px; }
+      .sketch-label-crimson { font-family: "Outfit", sans-serif; font-weight: 800; font-size: 26px; fill: #EF4136; letter-spacing: 2px; }
+    </style>
+  </defs>
+
+  <!-- CENTRAL BOLD HAND-DRAWN "SEO" & "Search Engine Optimization" -->
+  <g transform="translate(600, 410)" text-anchor="middle">
+    <!-- Hatching effect / Scribble lines behind SEO -->
+    <path d="M -160 -80 L 160 30 M -140 -90 L 180 20 M -170 -60 L 150 40 M -120 -100 L 190 10" stroke="rgba(239, 65, 54, 0.35)" stroke-width="3" />
+    
+    <text class="sketch-text-big" y="0">SEO</text>
+    <text class="sketch-text-sub" y="55">Search Engine Optimization</text>
+    
+    <!-- Curved under-line sketch -->
+    <path d="M -240 75 Q 0 95 240 75" stroke="#EF4136" stroke-width="4" stroke-linecap="round" stroke-dasharray="15 5 5 5" fill="none" />
+  </g>
+
+  <!-- TOP LEFT: WEB MONITOR + MOUSE + DOTS -->
+  <g transform="translate(180, 160)">
+    <!-- 3 Sketch Dots -->
+    <circle cx="-50" cy="-60" r="4" fill="#EF4136" />
+    <circle cx="-35" cy="-75" r="5" fill="#FFFFFF" />
+    <circle cx="-20" cy="-65" r="3.5" fill="#EF4136" />
+
+    <!-- Monitor Box -->
+    <rect x="-80" y="-45" width="140" height="90" rx="12" stroke="#EF4136" stroke-width="5" fill="none" />
+    <rect x="-70" y="-35" width="120" height="70" rx="6" stroke="#FFFFFF" stroke-width="2" fill="none" stroke-dasharray="6 3" />
+    <text x="-10" y="10" font-family="'Outfit', sans-serif" font-weight="900" font-size="34" fill="#FFFFFF" text-anchor="middle">WEB</text>
+    <!-- Stand -->
+    <path d="M -25 45 L -25 60 L 5 60 L 5 45 M -45 60 L 25 60" stroke="#EF4136" stroke-width="4" stroke-linecap="round" fill="none" />
+    
+    <!-- Mouse & Curly Cable -->
+    <rect x="75" y="10" width="30" height="45" rx="15" stroke="#FFFFFF" stroke-width="3.5" fill="none" />
+    <line x1="90" y1="10" x2="90" y2="25" stroke="#EF4136" stroke-width="2.5" />
+    <path d="M 90 10 C 90 -20, 45 -10, 55 -35 C 60 -50, 40 -40, 20 -40" stroke="#FFFFFF" stroke-width="2.5" fill="none" stroke-dasharray="4 2" />
+
+    <!-- Connector Arc to Center -->
+    <path d="M 90 60 Q 220 120 310 180" stroke="#EF4136" stroke-width="3" stroke-dasharray="6 4" fill="none" />
+  </g>
+
+  <!-- TOP CENTER: MAGNIFYING GLASS + BEAKER + ANALYSIS -->
+  <g transform="translate(580, 140)">
+    <!-- Magnifying Glass -->
+    <circle cx="-60" cy="-30" r="28" stroke="#FFFFFF" stroke-width="4.5" fill="none" />
+    <line x1="-40" y1="-10" x2="-10" y2="20" stroke="#EF4136" stroke-width="6" stroke-linecap="round" />
+
+    <!-- Beaker Flask -->
+    <path d="M 40 -50 L 60 -50 M 50 -50 L 50 -20 L 80 30 C 85 40, 75 50, 60 50 L 20 50 C 5 50, -5 40, 0 30 L 30 -20 L 30 -50" stroke="#EF4136" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="none" />
+    <!-- Liquid & Bubbles -->
+    <path d="M 12 15 Q 40 25 68 15" stroke="#FFFFFF" stroke-width="3" fill="none" />
+    <circle cx="35" cy="-5" r="4" fill="#FFFFFF" />
+    <circle cx="50" cy="-15" r="3" fill="#EF4136" />
+    <circle cx="42" cy="-30" r="2" fill="#FFFFFF" />
+
+    <!-- Text "ANALYSIS" -->
+    <text x="10" y="85" class="sketch-label" text-anchor="middle">ANALYSIS</text>
+
+    <!-- Connector Arc to Center -->
+    <path d="M 10 95 Q 10 160 20 200" stroke="#FFFFFF" stroke-width="3" stroke-dasharray="5 4" fill="none" />
+  </g>
+
+  <!-- TOP RIGHT: SITE ARCHITECTURE (TREE DIAGRAM) -->
+  <g transform="translate(1000, 150)">
+    <text x="0" y="-45" class="sketch-label-crimson" text-anchor="middle">SITE ARCHITECTURE</text>
+    
+    <!-- Tree Nodes -->
+    <rect x="-20" y="-20" width="40" height="30" rx="4" stroke="#FFFFFF" stroke-width="3" fill="none" />
+    <line x1="0" y1="10" x2="0" y2="30" stroke="#EF4136" stroke-width="3" />
+    <line x1="-70" y1="30" x2="70" y2="30" stroke="#EF4136" stroke-width="3" />
+    
+    <line x1="-70" y1="30" x2="-70" y2="45" stroke="#EF4136" stroke-width="3" />
+    <line x1="0" y1="30" x2="0" y2="45" stroke="#EF4136" stroke-width="3" />
+    <line x1="70" y1="30" x2="70" y2="45" stroke="#EF4136" stroke-width="3" />
+
+    <rect x="-90" y="45" width="40" height="30" rx="4" stroke="#FFFFFF" stroke-width="3" fill="none" />
+    <rect x="-20" y="45" width="40" height="30" rx="4" stroke="#EF4136" stroke-width="3" fill="none" />
+    <rect x="50" y="45" width="40" height="30" rx="4" stroke="#FFFFFF" stroke-width="3" fill="none" />
+
+    <!-- Connector Arc to Center -->
+    <path d="M -80 75 Q -180 150 -260 210" stroke="#EF4136" stroke-width="3" stroke-dasharray="6 4" fill="none" />
+  </g>
+
+  <!-- MIDDLE RIGHT: CONTENT + ISOMETRIC PAPERS STACK -->
+  <g transform="translate(1010, 450)">
+    <text x="0" y="-45" class="sketch-label" text-anchor="middle">CONTENT</text>
+
+    <!-- Isometric Stack of Papers (Transparent Fills) -->
+    <g transform="translate(-50, -20)">
+      <!-- Paper 3 (Bottom) -->
+      <path d="M 0 40 L 50 15 L 100 40 L 50 65 Z" stroke="rgba(255,255,255,0.4)" stroke-width="3" fill="none" />
+      <!-- Paper 2 (Middle) -->
+      <path d="M 0 25 L 50 0 L 100 25 L 50 50 Z" stroke="#EF4136" stroke-width="3" fill="none" />
+      <!-- Paper 1 (Top) -->
+      <path d="M 0 10 L 50 -15 L 100 10 L 50 35 Z" stroke="#FFFFFF" stroke-width="3.5" fill="none" />
+      <line x1="25" y1="10" x2="65" y2="-10" stroke="#EF4136" stroke-width="2" />
+      <line x1="35" y1="18" x2="75" y2="-2" stroke="#FFFFFF" stroke-width="2" />
+    </g>
+
+    <!-- Connector Arc to Center -->
+    <path d="M -70 20 Q -160 0 -240 -30" stroke="#FFFFFF" stroke-width="3" stroke-dasharray="5 4" fill="none" />
+  </g>
+
+  <!-- BOTTOM RIGHT: PENCILS & ACCENT DOTS -->
+  <g transform="translate(1060, 630)">
+    <!-- Pencil 1 -->
+    <g transform="rotate(-40)">
+      <rect x="0" y="0" width="22" height="100" rx="3" stroke="#EF4136" stroke-width="3" fill="none" />
+      <polygon points="0,0 11,-25 22,0" stroke="#EF4136" stroke-width="3" fill="#EF4136" />
+      <line x1="0" y1="75" x2="22" y2="75" stroke="#FFFFFF" stroke-width="2" />
+    </g>
+    <!-- Pencil 2 -->
+    <g transform="translate(-40, 20) rotate(-40)">
+      <rect x="0" y="0" width="22" height="100" rx="3" stroke="#FFFFFF" stroke-width="3" fill="none" />
+      <polygon points="0,0 11,-25 22,0" stroke="#FFFFFF" stroke-width="3" fill="#FFFFFF" />
+      <line x1="0" y1="75" x2="22" y2="75" stroke="#EF4136" stroke-width="2" />
+    </g>
+    <!-- Dots -->
+    <circle cx="-70" cy="-10" r="4" fill="#EF4136" />
+    <circle cx="-60" cy="10" r="3" fill="#FFFFFF" />
+  </g>
+
+  <!-- BOTTOM LEFT-CENTER: TRAFFIC (SKETCHY OVAL) -->
+  <g transform="translate(260, 610)">
+    <ellipse cx="0" cy="0" rx="110" ry="40" stroke="#EF4136" stroke-width="4.5" stroke-dasharray="12 4 4 4" fill="none" />
+    <text x="0" y="10" class="sketch-label" text-anchor="middle" font-size="34">TRAFFIC</text>
+
+    <!-- Connector Arc to Center -->
+    <path d="M 60 -30 Q 180 -90 260 -130" stroke="#EF4136" stroke-width="3" stroke-dasharray="6 4" fill="none" />
+  </g>
+
+  <!-- MIDDLE LEFT: ONPAGE / OFFPAGE + CHECKMARK -->
+  <g transform="translate(190, 410)">
+    <!-- Checkmark Circle -->
+    <circle cx="-80" cy="-15" r="22" stroke="#EF4136" stroke-width="4" fill="none" />
+    <path d="M -92 -15 L -84 -5 L -68 -25" stroke="#FFFFFF" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" fill="none" />
+
+    <!-- Text -->
+    <text x="-40" y="-15" class="sketch-label" text-anchor="start">ONPAGE</text>
+    <text x="-40" y="20" class="sketch-label-crimson" text-anchor="start">OFFPAGE</text>
+
+    <!-- Connector Arc to Center -->
+    <path d="M 110 0 Q 210 0 270 0" stroke="#FFFFFF" stroke-width="3" stroke-dasharray="5 4" fill="none" />
+  </g>
+
+</svg>

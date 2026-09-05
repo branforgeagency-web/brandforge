@@ -9,6 +9,12 @@ import {
   ArrowRight,
   CheckCircle2,
   ChevronDown,
+  Globe,
+  ShieldCheck,
+  Users,
+  PenTool,
+  BarChart3,
+  Cpu,
 } from "lucide-react";
 import { servicesData } from "../data/servicesData";
 import BrandForgeAnimatedFooter from "../components/BrandForgeAnimatedFooter";
@@ -27,7 +33,19 @@ export default function ServiceLandingPage({ slug = "seo-geo", onOpenModal, navi
     if (window.__lenis) {
       window.__lenis.scrollTo(0, { immediate: true });
     }
-  }, [slug]);
+    if (data.metaTitle) {
+      document.title = data.metaTitle;
+    }
+    if (data.metaDescription) {
+      let metaDesc = document.querySelector('meta[name="description"]');
+      if (!metaDesc) {
+        metaDesc = document.createElement('meta');
+        metaDesc.name = 'description';
+        document.head.appendChild(metaDesc);
+      }
+      metaDesc.setAttribute('content', data.metaDescription);
+    }
+  }, [slug, data]);
 
   const [activeFaq, setActiveFaq] = useState(null);
   const [activePillar, setActivePillar] = useState(0);
@@ -58,7 +76,19 @@ export default function ServiceLandingPage({ slug = "seo-geo", onOpenModal, navi
       </div>
 
       {/* HERO BANNER SECTION WITH CARDLESS INLINE LEAD CAPTURE */}
-      <header className="sg-hero">
+      <header
+        className={`sg-hero ${data.bannerBg ? "has-banner-bg" : ""}`}
+        style={
+          data.bannerBg
+            ? {
+                backgroundImage: `linear-gradient(180deg, rgba(0, 0, 0, 0.72) 0%, rgba(5, 5, 8, 0.85) 50%, rgba(0, 0, 0, 0.98) 100%), url(${data.bannerBg})`,
+                backgroundSize: "cover",
+                backgroundPosition: "center top",
+                backgroundRepeat: "no-repeat",
+              }
+            : undefined
+        }
+      >
         <div className="sg-hero-glow" />
 
         <div className="sg-container">
@@ -86,7 +116,7 @@ export default function ServiceLandingPage({ slug = "seo-geo", onOpenModal, navi
                 transition={{ duration: 0.8, delay: 0.1 }}
               >
                 {data.slug === "seo-geo" ? (
-                  <>SEO & <span>GEO</span></>
+                  <>Best SEO Company in Coimbatore for <span>Google & AI Search Rankings</span></>
                 ) : data.title.includes("/") ? (
                   <>{data.title.split("/")[0]} / <span>{data.title.split("/")[1]}</span></>
                 ) : (
@@ -94,15 +124,29 @@ export default function ServiceLandingPage({ slug = "seo-geo", onOpenModal, navi
                 )}
               </motion.h1>
 
-              <motion.p
+              <motion.div
                 className="sg-hero-desc"
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: false, amount: 0.2 }}
                 transition={{ duration: 0.8, delay: 0.2 }}
               >
-                {data.subtitle}
-              </motion.p>
+                {Array.isArray(data.subtitle) ? (
+                  data.subtitle.map((para, i) => (
+                    <p key={i} className="sg-hero-desc-para">
+                      {para}
+                    </p>
+                  ))
+                ) : typeof data.subtitle === "string" && data.subtitle.includes("\n\n") ? (
+                  data.subtitle.split("\n\n").map((para, i) => (
+                    <p key={i} className="sg-hero-desc-para">
+                      {para}
+                    </p>
+                  ))
+                ) : (
+                  <p className="sg-hero-desc-para">{data.subtitle}</p>
+                )}
+              </motion.div>
 
               <motion.div
                 className="sg-hero-actions"
@@ -113,7 +157,7 @@ export default function ServiceLandingPage({ slug = "seo-geo", onOpenModal, navi
               >
                 <button className="sg-btn primary" onClick={onOpenModal}>
                   <Zap size={16} />
-                  <span>START FREE {data.number} AUDIT</span>
+                  <span>{data.heroButtonText || `START FREE ${data.number} AUDIT`}</span>
                   <ArrowRight size={16} />
                 </button>
               </motion.div>
@@ -203,33 +247,7 @@ export default function ServiceLandingPage({ slug = "seo-geo", onOpenModal, navi
 
           </div>
 
-          {/* BIG WIDESCREEN HERO VISUAL SHOWCASE FRAME WITH TRANSPARENT PNG ICONS */}
-          <motion.div
-            className="sg-big-visual-frame"
-            initial={{ opacity: 0, y: 35, scale: 0.97 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            transition={{ duration: 0.8, delay: 0.3 }}
-          >
-            <div className="visual-glass-overlay" />
-            <img src="/jugg_jugg_mockup_1786784296597.jpg" alt="Service Platform Mockup" className="big-visual-img" />
 
-            {/* FLOATING BIG TRANSPARENT PNG ICONS & METRIC BADGES */}
-            <div className="floating-badge top-left">
-              <img src="/rocket.png" alt="Big Rocket PNG" className="big-floating-png" />
-              <div>
-                <strong>SUB-SECOND LOAD</strong>
-                <span>100/100 Core Web Vitals</span>
-              </div>
-            </div>
-
-            <div className="floating-badge bottom-right">
-              <img src="/fire-flame.png" alt="Big Flame PNG" className="big-floating-png" />
-              <div>
-                <strong>+340% ROAS SCALE</strong>
-                <span>Enterprise Growth Engine</span>
-              </div>
-            </div>
-          </motion.div>
 
           {/* CARDLESS TYPOGRAPHIC METRICS STRIP */}
           <div className="sg-metrics-strip">
@@ -267,6 +285,52 @@ export default function ServiceLandingPage({ slug = "seo-geo", onOpenModal, navi
           </motion.div>
         </div>
       </header>
+
+      {/* WHY BUSINESSES CHOOSE BRAND FORGE SECTION */}
+      {data.whyChooseUs && (
+        <section className="sg-section sg-why-section">
+          <div className="sg-container">
+            <div className="sg-why-grid">
+              
+              {/* LEFT: HEADING, DESCRIPTION & LEAD-IN */}
+              <motion.div
+                className="sg-why-left"
+                initial={{ opacity: 0, x: -40 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: false, amount: 0.2 }}
+                transition={{ duration: 0.7 }}
+              >
+                <span className="sg-section-tag">{data.whyChooseUs.tag || "LOCAL SEO AUTHORITY"}</span>
+                <h2 className="sg-why-title">{data.whyChooseUs.title}</h2>
+                <p className="sg-why-desc">{data.whyChooseUs.description}</p>
+                <p className="sg-why-leadin">{data.whyChooseUs.leadIn}</p>
+              </motion.div>
+
+              {/* RIGHT: FEATURE CARDS / POINTS */}
+              <div className="sg-why-points-grid">
+                {data.whyChooseUs.points.map((point, idx) => (
+                  <motion.div
+                    key={idx}
+                    className="sg-why-point-card"
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: false, amount: 0.2 }}
+                    transition={{ duration: 0.5, delay: idx * 0.1 }}
+                  >
+                    <div className="sg-why-point-icon">
+                      <CheckCircle2 size={18} className="check-icon" />
+                    </div>
+                    <div className="sg-why-point-content">
+                      <p>{typeof point === "string" ? point : point.text}</p>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* CARDLESS EDITORIAL COMPARISON MATRIX */}
       <section className="sg-section sg-comparison-section">
@@ -324,10 +388,16 @@ export default function ServiceLandingPage({ slug = "seo-geo", onOpenModal, navi
             viewport={{ once: false, amount: 0.2 }}
             transition={{ duration: 0.7 }}
           >
-            <span className="sg-section-tag">6-PILLAR SYSTEM</span>
-            <h2 className="sg-section-title">THE <span>BRANDFORGE {data.number} FORGE</span></h2>
+            <span className="sg-section-tag">{data.pillarsTag || "6-PILLAR SYSTEM"}</span>
+            <h2 className="sg-section-title">
+              {data.pillarsTitle ? (
+                data.pillarsTitle
+              ) : (
+                <>THE <span>BRANDFORGE {data.number} FORGE</span></>
+              )}
+            </h2>
             <p className="sg-section-subtitle">
-              Every system is engineered to capture market intent, build category authority, and scale pipeline.
+              {data.pillarsSubtitle || "Every system is engineered to capture market intent, build category authority, and scale pipeline."}
             </p>
           </motion.div>
 
@@ -370,6 +440,11 @@ export default function ServiceLandingPage({ slug = "seo-geo", onOpenModal, navi
                         transition={{ duration: 0.4 }}
                       >
                         <p>{p.description}</p>
+                        {p.callout && (
+                          <div className="sg-pillar-callout" style={{ margin: "14px 0 16px", padding: "12px 16px", borderRadius: "12px", background: "rgba(239, 65, 54, 0.08)", borderLeft: "3px solid #EF4136", color: "rgba(255, 255, 255, 0.9)", fontSize: "14px", fontStyle: "italic", lineHeight: 1.6 }}>
+                            {p.callout}
+                          </div>
+                        )}
                         <div className="sg-pillar-deliv-wrap">
                           {p.deliverables.map((d) => (
                             <span key={d} className="sg-deliv-tag">
@@ -427,6 +502,49 @@ export default function ServiceLandingPage({ slug = "seo-geo", onOpenModal, navi
           </div>
         </div>
       </section>
+
+      {/* WHAT MAKES OUR COMPANY DIFFERENT SECTION */}
+      {data.differentiators && (
+        <section className="sg-section sg-diff-section">
+          <div className="sg-container">
+            <motion.div
+              className="sg-section-header text-center"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: false, amount: 0.2 }}
+              transition={{ duration: 0.7 }}
+            >
+              <span className="sg-section-tag">{data.differentiators.tag || "THE BRANDFORGE ADVANTAGE"}</span>
+              <h2 className="sg-section-title">{data.differentiators.title}</h2>
+              {data.differentiators.subtitle && (
+                <p className="sg-section-subtitle">{data.differentiators.subtitle}</p>
+              )}
+            </motion.div>
+
+            <div className="sg-diff-grid">
+              {data.differentiators.items.map((item, idx) => {
+                const DiffIcon = item.icon || Sparkles;
+                return (
+                  <motion.div
+                    key={item.title}
+                    className="sg-diff-card"
+                    initial={{ opacity: 0, y: 35 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: false, amount: 0.2 }}
+                    transition={{ duration: 0.6, delay: idx * 0.1 }}
+                  >
+                    <div className="sg-diff-icon-wrap">
+                      <DiffIcon size={24} className="diff-lucide-icon" />
+                    </div>
+                    <h3>{item.title}</h3>
+                    <p>{item.description}</p>
+                  </motion.div>
+                );
+              })}
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* CARDLESS FAQ ACCORDION LIST */}
       <section className="sg-section sg-faq-section">
@@ -486,12 +604,26 @@ export default function ServiceLandingPage({ slug = "seo-geo", onOpenModal, navi
             viewport={{ once: false, amount: 0.2 }}
             transition={{ duration: 0.8 }}
           >
-            <h2>READY TO FORGE <span>{data.eyebrow}?</span></h2>
-            <p>Get a comprehensive strategy audit delivered to your inbox within 24 hours.</p>
+            <h2>
+              {data.bottomCta?.title ? (
+                <>
+                  {data.bottomCta.title.includes("—") ? (
+                    <>{data.bottomCta.title.split("—")[0]} — <span>{data.bottomCta.title.split("—")[1]}</span></>
+                  ) : (
+                    data.bottomCta.title
+                  )}
+                </>
+              ) : (
+                <>READY TO FORGE <span>{data.eyebrow}?</span></>
+              )}
+            </h2>
+            <p>
+              {data.bottomCta?.subtitle || "Get a comprehensive strategy audit delivered to your inbox within 24 hours."}
+            </p>
             <div className="sg-cta-actions">
               <button className="sg-btn primary" onClick={onOpenModal}>
                 <Zap size={16} />
-                <span>REQUEST FREE STRATEGY AUDIT</span>
+                <span>{data.bottomCta?.buttonText || "REQUEST FREE STRATEGY AUDIT"}</span>
                 <ArrowRight size={16} />
               </button>
             </div>
@@ -614,33 +746,103 @@ const styles = `
   .sg-hero-title span { color: #EF4136; }
 
   .sg-hero-desc {
-    font-size: clamp(16px, 1.8vw, 19px);
-    line-height: 1.6;
-    color: rgba(255, 255, 255, 0.78);
+    font-size: clamp(15px, 1.6vw, 18px);
+    line-height: 1.65;
+    color: rgba(255, 255, 255, 0.82);
     margin: 0 0 32px;
+  }
+
+  .sg-hero-desc-para {
+    margin: 0 0 16px;
+  }
+
+  .sg-hero-desc-para:last-child {
+    margin-bottom: 0;
   }
 
   .sg-hero-actions { display: flex; gap: 14px; }
 
-  /* CARDLESS INLINE FORM */
+  /* HIGH-TECH GLOWING GLASS FORM BACKGROUND EFFECT (BORDERLESS) */
   .sg-inline-form-wrap {
-    padding: 10px 0;
+    position: relative;
+    padding: clamp(24px, 3vw, 36px) clamp(20px, 2.5vw, 32px);
+    background: linear-gradient(135deg, rgba(18, 18, 24, 0.82) 0%, rgba(8, 8, 12, 0.92) 100%);
+    border-radius: 24px;
+    border: none;
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    box-shadow: 
+      0 20px 50px rgba(0, 0, 0, 0.8),
+      0 0 40px rgba(239, 65, 54, 0.12),
+      inset 0 0 20px rgba(239, 65, 54, 0.04);
+    overflow: hidden;
+    transition: all 0.35s ease;
+  }
+
+  .sg-inline-form-wrap:hover {
+    box-shadow: 
+      0 25px 60px rgba(0, 0, 0, 0.9),
+      0 0 50px rgba(239, 65, 54, 0.2),
+      inset 0 0 30px rgba(239, 65, 54, 0.06);
+  }
+
+  .sg-inline-form-wrap::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 160px;
+    height: 160px;
+    background: radial-gradient(circle, rgba(239, 65, 54, 0.25) 0%, transparent 70%);
+    filter: blur(30px);
+    pointer-events: none;
+  }
+
+  .sg-inline-form-wrap::after {
+    content: "";
+    position: absolute;
+    bottom: -40px;
+    left: -40px;
+    width: 140px;
+    height: 140px;
+    background: radial-gradient(circle, rgba(239, 65, 54, 0.15) 0%, transparent 70%);
+    filter: blur(35px);
+    pointer-events: none;
+  }
+
+  .sg-form-header {
+    position: relative;
+    z-index: 2;
+  }
+
+  .sg-form-sparkle {
+    color: #EF4136;
+    margin-bottom: 8px;
+    filter: drop-shadow(0 0 8px rgba(239, 65, 54, 0.8));
   }
 
   .sg-form-header h3 {
-    font-size: 22px;
+    font-size: clamp(20px, 2.2vw, 24px);
     font-weight: 900;
-    margin: 0 0 4px;
+    margin: 0 0 6px;
     color: #FFFFFF;
+    letter-spacing: -0.01em;
   }
 
   .sg-form-header p {
     font-size: 13px;
-    color: rgba(255, 255, 255, 0.65);
+    color: rgba(255, 255, 255, 0.7);
     margin: 0 0 24px;
+    font-weight: 500;
   }
 
-  .sg-lead-form { display: flex; flex-direction: column; gap: 16px; }
+  .sg-lead-form {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
 
   .sg-field-row { width: 100%; }
 
@@ -648,17 +850,22 @@ const styles = `
 
   .sg-input-line, .sg-select-line, .sg-textarea-line {
     width: 100%;
-    padding: 12px 0;
-    background: transparent;
-    border: none;
-    border-bottom: 2px solid rgba(255, 255, 255, 0.25);
+    padding: 12px 14px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 10px;
     color: #FFFFFF;
-    font-size: 14px;
+    font-size: 13.5px;
     font-weight: 600;
     outline: none;
-    transition: border-color 0.25s ease;
+    transition: all 0.25s ease;
     font-family: inherit;
     box-sizing: border-box;
+  }
+
+  .sg-input-line::placeholder, .sg-textarea-line::placeholder {
+    color: rgba(255, 255, 255, 0.45);
+    font-weight: 500;
   }
 
   .sg-select-line option {
@@ -667,26 +874,35 @@ const styles = `
   }
 
   .sg-input-line:focus, .sg-select-line:focus, .sg-textarea-line:focus {
-    border-bottom-color: #EF4136;
+    background: rgba(239, 65, 54, 0.06);
+    border-color: #EF4136;
+    box-shadow: 0 0 16px rgba(239, 65, 54, 0.35), inset 0 0 8px rgba(239, 65, 54, 0.1);
   }
 
   .sg-form-btn {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    gap: 8px;
+    gap: 10px;
     height: 52px;
     width: 100%;
-    margin-top: 10px;
-    background: #EF4136;
+    margin-top: 8px;
+    background: linear-gradient(135deg, #EF4136 0%, #D9382E 100%);
     color: #FFFFFF;
     border: none;
     border-radius: 12px;
-    font-size: 0.9rem;
+    font-size: 0.92rem;
     font-weight: 800;
     letter-spacing: 0.05em;
     cursor: pointer;
-    transition: background 0.25s ease;
+    box-shadow: 0 10px 25px rgba(239, 65, 54, 0.45);
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .sg-form-btn:hover {
+    background: linear-gradient(135deg, #FF5548 0%, #EF4136 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 14px 35px rgba(239, 65, 54, 0.65);
   }
 
   /* BIG WIDESCREEN HERO VISUAL SHOWCASE FRAME STYLES */
@@ -883,6 +1099,170 @@ const styles = `
   .sg-metric-sub {
     font-size: 12px;
     color: rgba(255, 255, 255, 0.65);
+  }
+
+  /* WHY BUSINESSES CHOOSE BRAND FORGE SECTION */
+  .sg-why-section {
+    position: relative;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    background: linear-gradient(180deg, rgba(239, 65, 54, 0.03) 0%, rgba(10, 10, 14, 0.4) 100%);
+  }
+
+  .sg-why-grid {
+    display: grid;
+    grid-template-columns: 1.15fr 1fr;
+    gap: clamp(36px, 5vw, 64px);
+    align-items: center;
+  }
+
+  .sg-why-title {
+    font-family: "Outfit", sans-serif;
+    font-size: clamp(26px, 3.5vw, 42px);
+    font-weight: 900;
+    line-height: 1.15;
+    color: #FFFFFF;
+    margin: 0 0 18px;
+    letter-spacing: -0.01em;
+  }
+
+  .sg-why-desc {
+    font-size: clamp(15px, 1.5vw, 17px);
+    line-height: 1.7;
+    color: rgba(255, 255, 255, 0.8);
+    margin: 0 0 20px;
+  }
+
+  .sg-why-leadin {
+    font-size: 15px;
+    font-weight: 700;
+    color: #FFFFFF;
+    letter-spacing: 0.01em;
+    margin: 0;
+  }
+
+  .sg-why-points-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .sg-why-point-card {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 18px 22px;
+    border-radius: 16px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(12px);
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .sg-why-point-card:hover {
+    border-color: rgba(239, 65, 54, 0.5);
+    background: rgba(239, 65, 54, 0.08);
+    transform: translateX(6px);
+  }
+
+  .sg-why-point-icon {
+    width: 38px;
+    height: 38px;
+    border-radius: 10px;
+    background: rgba(239, 65, 54, 0.15);
+    border: 1px solid rgba(239, 65, 54, 0.35);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .sg-why-point-icon .check-icon {
+    color: #EF4136;
+  }
+
+  .sg-why-point-content p {
+    font-size: clamp(14px, 1.3vw, 16px);
+    font-weight: 600;
+    line-height: 1.5;
+    color: #FFFFFF;
+    margin: 0;
+  }
+
+  @media (max-width: 920px) {
+    .sg-why-grid {
+      grid-template-columns: 1fr;
+      gap: 32px;
+    }
+  }
+
+  /* WHAT MAKES US DIFFERENT SECTION */
+  .sg-diff-section {
+    position: relative;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    background: linear-gradient(180deg, rgba(239, 65, 54, 0.02) 0%, rgba(10, 10, 14, 0.5) 100%);
+  }
+
+  .sg-diff-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+
+  .sg-diff-card {
+    padding: 32px 28px;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.09);
+    backdrop-filter: blur(14px);
+    transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .sg-diff-card:hover {
+    border-color: rgba(239, 65, 54, 0.45);
+    background: rgba(239, 65, 54, 0.06);
+    transform: translateY(-5px);
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.6), 0 0 30px rgba(239, 65, 54, 0.15);
+  }
+
+  .sg-diff-icon-wrap {
+    width: 48px;
+    height: 48px;
+    border-radius: 14px;
+    background: rgba(239, 65, 54, 0.15);
+    border: 1px solid rgba(239, 65, 54, 0.35);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 4px;
+  }
+
+  .sg-diff-icon-wrap .diff-lucide-icon {
+    color: #EF4136;
+  }
+
+  .sg-diff-card h3 {
+    font-family: "Outfit", sans-serif;
+    font-size: 20px;
+    font-weight: 800;
+    color: #FFFFFF;
+    margin: 0;
+  }
+
+  .sg-diff-card p {
+    font-size: 14.5px;
+    line-height: 1.65;
+    color: rgba(255, 255, 255, 0.75);
+    margin: 0;
+  }
+
+  @media (max-width: 768px) {
+    .sg-diff-grid {
+      grid-template-columns: 1fr;
+    }
   }
 
   /* CARDLESS COMPARISON STREAM */

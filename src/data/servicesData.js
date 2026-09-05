@@ -29,10 +29,18 @@ import {
 export const servicesData = {
   "seo-geo": {
     slug: "seo-geo",
+    urlSlug: "/seo-company-coimbatore",
+    metaTitle: "SEO Company in Coimbatore | SEO & GEO Services – Brand Forge",
+    metaDescription: "Brand Forge is a trusted SEO company in Coimbatore offering SEO, GEO (Generative Engine Optimization), and local search services to help businesses rank higher on Google and AI search engines.",
     number: "01",
-    eyebrow: "GENERATIVE ENGINE OPTIMIZATION & SEARCH DOMINANCE",
-    title: "DOMINATE AI SEARCH ENGINES & GOOGLE ORGANIC GRIDS",
-    subtitle: "Position your brand as the #1 recommended answer across ChatGPT, Perplexity, Google SGE, and Claude — while capturing permanent #1 positions on traditional search engines.",
+    eyebrow: "SEO Company in Coimbatore | SEO & GEO Services by Brand Forge",
+    title: "Best SEO Company in Coimbatore for Google & AI Search Rankings",
+    heroButtonText: "Get a Free SEO Audit →",
+    subtitle: [
+      "If you're searching for an SEO company in Coimbatore that actually understands how people search today, you're in the right place. Search has split into two paths — Google's traditional results and AI-generated answers from tools like ChatGPT, Gemini, and Perplexity. Brand Forge is a Coimbatore-based SEO agency built to win both.",
+      "We work with businesses across Coimbatore — from local service providers to education institutions and D2C brands — to improve organic visibility through proven SEO strategy combined with GEO Services (Generative Engine Optimization), so you show up wherever your customers are actually searching."
+    ],
+    bannerBg: "/banner-seo-geo-bg.jpg",
     icon: Search,
     metrics: [
       { value: "+340%", label: "Organic Revenue Lift", desc: "Average L12M increase across client portfolio" },
@@ -40,6 +48,18 @@ export const servicesData = {
       { value: "sub-200ms", label: "Core Web Vitals", desc: "100/100 Lighthouse performance benchmark" },
       { value: "10x", label: "GEO Search Dominance", desc: "Faster indexing across AI LLM Knowledge Graphs" },
     ],
+    whyChooseUs: {
+      tag: "WHY CHOOSE BRAND FORGE",
+      title: "Why Businesses in Coimbatore Choose Brand Forge as Their SEO Company",
+      description: "Coimbatore's digital market is growing fast, and so is the competition for search visibility. As a local SEO company in Coimbatore, we combine on-ground market knowledge with data-driven SEO practices to help businesses rank for the keywords that actually bring in customers — not just traffic.",
+      leadIn: "Our approach covers the full picture of modern search visibility:",
+      points: [
+        "Ranking on Google's organic search results",
+        "Appearing in Google's Local Pack and Maps for “near me” searches",
+        "Getting cited by AI search engines and AI Overviews through GEO Services",
+        "Building long-term organic authority, not short-lived ranking spikes"
+      ]
+    },
     matrixTag: "PARADIGM SHIFT",
     matrixTitle: "THE EVOLUTION FROM SEO TO GEO",
     matrixSubtitle: "Search is no longer just typing keywords into a box. Millions of buyers now ask AI assistants for direct brand recommendations.",
@@ -49,20 +69,129 @@ export const servicesData = {
       { feature: "Search Output Format", traditional: "10 Blue Links & Ad Banners", brandforge: "Direct Conversational AI Answers & Recommended Citations" },
       { feature: "User Conversion", traditional: "Multi-click browsing loop", brandforge: "Immediate single-prompt purchase decision" },
     ],
+    pillarsTag: "OUR FULL SERVICE SPECTRUM",
+    pillarsTitle: "Our SEO & GEO Services in Coimbatore",
+    pillarsSubtitle: "As a full-service SEO company in Coimbatore, we handle every layer of organic search visibility and generative AI answers.",
     pillars: [
-      { icon: Cpu, tag: "GEO SYSTEM", title: "AI Knowledge Graph Ingestion", description: "Format and inject your brand entity into ChatGPT, Perplexity, Claude, and Gemini training sets.", deliverables: ["Entity Schema Graphing", "LLM Training Vectors", "AI Brand Citation Lock"] },
-      { icon: Database, tag: "SCALE", title: "Programmatic Content Factory", description: "High-precision content architecture that deploys thousands of high-intent search landing pages.", deliverables: ["Hyper-Targeted Buyer Prompts", "Zero-Bloat Page Yield", "Automated Semantic Clusters"] },
-      { icon: Zap, tag: "SPEED", title: "Sub-200ms Technical Speed Engine", description: "Refactor web architecture for instantaneous page loads and 100/100 Core Web Vitals.", deliverables: ["Edge CDN Caching", "Asset Compression", "JS/CSS Refactoring"] },
-      { icon: BarChart3, tag: "ANALYTICS", title: "Real-Time GEO & LLM Tracker", description: "Monitor brand citation frequency, sentiment score, and market share inside conversational AI models.", deliverables: ["ChatGPT Share-of-Voice", "Perplexity Citation Matrix", "Competitor Steal Rate"] },
-      { icon: Layers, tag: "AUTHORITY", title: "High-Authority Backlink Network", description: "White-hat editorial placements and digital PR outreach on tier-1 publications.", deliverables: ["Editorial Tier-1 Links", "Digital PR Wire", "Organic Trust Signals"] },
-      { icon: TrendingUp, tag: "REVENUE", title: "Conversion-Rate Integrated SEO", description: "Optimize search landing pages with friction removal and psychological conversion cues.", deliverables: ["Frictionless Funnel UX", "A/B Testing Loops", "Immediate Lead Capture"] },
+      {
+        icon: Search,
+        tag: "FULL-SERVICE SEO",
+        title: "Search Engine Optimization (SEO)",
+        description: "As a full-service SEO company in Coimbatore, we handle every layer of organic search visibility:",
+        deliverables: [
+          "Technical SEO — site speed, crawlability, indexing, Core Web Vitals, mobile optimization",
+          "On-page SEO — keyword-optimized titles, meta descriptions, header structure, internal linking",
+          "Keyword research — identifying high-intent local and industry keywords your customers actually search",
+          "Content strategy & optimization — content built around real search intent, not keyword stuffing",
+          "Local SEO — Google Business Profile optimization, NAP consistency, local citations for Coimbatore-based searches",
+          "Link building — earning authoritative backlinks that build long-term domain trust",
+          "SEO reporting — transparent, monthly ranking and traffic reports"
+        ]
+      },
+      {
+        icon: Cpu,
+        tag: "GEO SYSTEM",
+        title: "GEO Services (Generative Engine Optimization)",
+        description: "Search isn't limited to Google anymore. Our GEO Services help your brand get discovered and cited inside AI-generated answers:",
+        callout: "Think of GEO as the natural evolution of SEO — the goal is still visibility, but the destination has expanded from search result pages to AI-generated answers.",
+        deliverables: [
+          "Structuring content so AI search engines can accurately extract and cite your information",
+          "Building topical authority around your core services and expertise",
+          "Implementing structured data and schema markup that helps AI models understand your business",
+          "Creating clear, quotable, fact-based content that AI engines prefer to reference",
+          "Tracking your brand's visibility across AI Overviews, ChatGPT, and other generative search tools",
+          "Aligning GEO Services with traditional SEO so both channels reinforce each other, rather than competing for resources"
+        ]
+      },
+      {
+        icon: Globe,
+        tag: "LOCAL VISIBILITY",
+        title: "Local SEO & Google Business Profile Management",
+        description: "For Coimbatore-based businesses, local search visibility is often the fastest path to real customers. We optimize:",
+        deliverables: [
+          "Google Business Profile listings, categories, and photos",
+          "Review generation and management",
+          "Local citation consistency across directories",
+          "Location-specific landing pages for multi-branch businesses"
+        ]
+      },
+      {
+        icon: PenTool,
+        tag: "USEFUL CONTENT",
+        title: "Content Marketing",
+        description: "Search engines and AI engines both reward genuinely useful content. We create content that reads naturally for your audience while satisfying the technical structure search engines and AI models look for — no robotic, keyword-stuffed writing.",
+        deliverables: [
+          "Search engines and AI engines both reward genuinely useful content.",
+          "We create content that reads naturally for your audience while satisfying the technical structure search engines and AI models look for — no robotic, keyword-stuffed writing."
+        ]
+      },
+      {
+        icon: BarChart3,
+        tag: "TRANSPARENT ROADMAP",
+        title: "SEO Strategy & Reporting",
+        description: "Every engagement includes a clear roadmap and monthly performance reporting, so you always know what's working, what's next, and why.",
+        deliverables: [
+          "Every engagement includes a clear roadmap and monthly performance reporting, so you always know what's working, what's next, and why."
+        ]
+      }
     ],
+    differentiators: {
+      tag: "THE BRANDFORGE ADVANTAGE",
+      title: "What Makes Our SEO Company Different",
+      items: [
+        {
+          title: "SEO and GEO under one roof",
+          description: "most agencies in Coimbatore are still purely Google-focused; we're already optimizing for the AI search shift",
+          icon: Zap
+        },
+        {
+          title: "Local market understanding",
+          description: "we know how Coimbatore audiences search and behave online",
+          icon: Globe
+        },
+        {
+          title: "Transparent process",
+          description: "no black-box reporting, no vague promises",
+          icon: ShieldCheck
+        },
+        {
+          title: "Content built for humans first",
+          description: "because that's still what ranks best, on Google and on AI engines",
+          icon: Users
+        }
+      ]
+    },
     faqs: [
-      { q: "What is Generative Engine Optimization (GEO) vs Traditional SEO?", a: "Generative Engine Optimization (GEO) optimizes your brand entity so AI engines like ChatGPT, Perplexity, and Gemini cite your brand as the #1 recommended answer when users ask conversational buying questions." },
-      { q: "How fast will we see measurable results from GEO?", a: "Technical SEO speed upgrades show ranking boosts in 14-30 days. Full AI Knowledge Graph ingestion and GEO citation dominance achieve market leadership in 60-90 days." },
-      { q: "Do you audit and fix existing Google search penalties?", a: "Yes. Our senior technical SEO engineers conduct a 120-point diagnostic audit covering crawl budgets, canonicalization, indexation bloat, and link profile cleanup." },
-      { q: "How do you track brand citations inside ChatGPT and Perplexity?", a: "We deploy proprietary AI monitoring scripts that execute daily synthetic buyer prompts across all major LLMs to track citation presence, recommendation order, and sentiment alignment." },
+      {
+        q: "What does an SEO company in Coimbatore do?",
+        a: "An SEO company improves your website's visibility on search engines through technical optimization, content strategy, local SEO, and authority building, helping the right customers find your business organically."
+      },
+      {
+        q: "What is GEO (Generative Engine Optimization) and why does it matter now?",
+        a: "GEO is the practice of optimizing content so AI search tools like ChatGPT, Gemini, and Google AI Overviews can find, understand, and cite your business in their answers. As more search behavior shifts to AI assistants, GEO is becoming as essential as traditional SEO."
+      },
+      {
+        q: "How is GEO different from traditional SEO?",
+        a: "Traditional SEO targets ranking positions on search engine results pages. GEO targets being cited or referenced inside AI-generated answers. The strategies overlap but require different content structuring — we run both together for maximum visibility."
+      },
+      {
+        q: "How long does SEO take to show results in Coimbatore's competitive market?",
+        a: "Most businesses see measurable ranking and traffic movement within 3-4 months, with stronger, compounding results over 6-12 months, depending on competition level and starting domain authority."
+      },
+      {
+        q: "Do you only work with Coimbatore-based businesses?",
+        a: "We're based in Coimbatore and specialize in local SEO here, but we also work with clients across Tamil Nadu and pan-India."
+      },
+      {
+        q: "Can content alone get my website to rank on page 1?",
+        a: "Strong content is essential but works alongside technical SEO health and backlink authority. As your SEO company, we make sure all three are aligned — content doesn't operate in isolation."
+      }
     ],
+    bottomCta: {
+      title: "Get Found on Google and AI Search — Starting Today",
+      subtitle: "Get a free audit of where your website currently stands, both on traditional search and emerging AI search engines.",
+      buttonText: "Book Your Free Consultation →"
+    }
   },
 
   "paid-media": {
@@ -483,3 +612,5 @@ export const servicesData = {
     ],
   },
 };
+
+servicesData["seo-company-coimbatore"] = servicesData["seo-geo"];

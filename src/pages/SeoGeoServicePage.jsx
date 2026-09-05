@@ -37,52 +37,101 @@ const metrics = [
 
 const pillars = [
   {
+    icon: Search,
+    tag: "CORE SEO",
+    title: "Search Engine Optimization (SEO)",
+    description:
+      "As a full-service SEO company in Coimbatore, we handle every layer of organic search visibility to dominate high-intent keywords and drive consistent revenue.",
+    deliverables: [
+      "Technical SEO — site speed, crawlability, indexing, Core Web Vitals, mobile optimization",
+      "On-page SEO — keyword-optimized titles, meta descriptions, header structure, internal linking",
+      "Keyword research — identifying high-intent local and industry keywords your customers actually search",
+      "Content strategy & optimization — content built around real search intent, not keyword stuffing",
+      "Local SEO — Google Business Profile optimization, NAP consistency, local citations for Coimbatore-based searches",
+      "Link building — earning authoritative backlinks that build long-term domain trust",
+      "SEO reporting — transparent, monthly ranking and traffic reports"
+    ],
+  },
+  {
     icon: Cpu,
     tag: "GEO SYSTEM",
-    title: "AI Knowledge Graph Ingestion",
+    title: "GEO Services (Generative Engine Optimization)",
     description:
-      "We format, structure, and inject your brand entity directly into the training sets and real-time search indices of ChatGPT, Perplexity, Claude, and Google Gemini.",
-    deliverables: ["Entity Schema Graphing", "LLM Training Vectors", "AI Brand Citation Lock"],
+      "Search isn't limited to Google anymore. Our GEO Services help your brand get discovered and cited inside AI-generated answers across ChatGPT, Gemini, Perplexity, and AI Overviews. Think of GEO as the natural evolution of SEO — the goal is still visibility, but the destination has expanded from search result pages to AI-generated answers.",
+    deliverables: [
+      "Structuring content so AI search engines can accurately extract and cite your information",
+      "Building topical authority around your core services and expertise",
+      "Implementing structured data and schema markup that helps AI models understand your business",
+      "Creating clear, quotable, fact-based content that AI engines prefer to reference",
+      "Tracking your brand's visibility across AI Overviews, ChatGPT, and other generative search tools",
+      "Aligning GEO Services with traditional SEO so both channels reinforce each other, rather than competing for resources"
+    ],
   },
   {
-    icon: Database,
-    tag: "SCALE",
-    title: "Programmatic Content Factory",
+    icon: Globe,
+    tag: "LOCAL DOMINANCE",
+    title: "Local SEO & Google Business Profile Management",
     description:
-      "Automated, high-precision content architecture that deploys thousands of high-intent search landing pages tailored to specific buying prompts.",
-    deliverables: ["Hyper-Targeted Buyer Prompts", "Zero-Bloat Page Yield", "Automated Semantic Clusters"],
+      "For Coimbatore-based businesses, local search visibility is often the fastest path to real customers. We optimize your local presence for maximum foot traffic, phone inquiries, and local high-intent conversions.",
+    deliverables: [
+      "Google Business Profile listings, categories, and photos",
+      "Review generation and reputation management",
+      "Local citation consistency across directories",
+      "Location-specific landing pages for multi-branch businesses"
+    ],
   },
   {
-    icon: Zap,
-    tag: "SPEED",
-    title: "Sub-200ms Technical Speed Engine",
+    icon: PenTool,
+    tag: "HUMAN-FIRST CONTENT",
+    title: "Content Marketing",
     description:
-      "Google penalizes slow sites. We refactor your web architecture for instantaneous page loads, zero layout shifts, and 100/100 Core Web Vitals.",
-    deliverables: ["Edge CDN Caching", "Asset Compression", "JS/CSS Refactoring"],
+      "Search engines and AI engines both reward genuinely useful content. We create content that reads naturally for your audience while satisfying the technical structure search engines and AI models look for — no robotic, keyword-stuffed writing.",
+    deliverables: [
+      "Audience-First Editorial Copywriting",
+      "Semantic Keyword & Entity Optimization",
+      "Technical Content Architecture",
+      "Zero Keyword-Stuffing Writing Guarantee"
+    ],
   },
   {
     icon: BarChart3,
-    tag: "ANALYTICS",
-    title: "Real-Time GEO & LLM Tracker",
+    tag: "TRANSPARENT ROADMAP",
+    title: "SEO Strategy & Reporting",
     description:
-      "Traditional rank trackers are obsolete. We monitor your brand’s citation frequency, sentiment score, and market share inside conversational AI models.",
-    deliverables: ["ChatGPT Share-of-Voice", "Perplexity Citation Matrix", "Competitor Steal Rate"],
+      "Every engagement includes a clear roadmap and monthly performance reporting, so you always know what's working, what's next, and why.",
+    deliverables: [
+      "Transparent Monthly Ranking & Traffic Reports",
+      "High-Intent Keyword Movement Tracking",
+      "Quarterly Strategic Execution Roadmaps",
+      "Conversion Attribution & Lead Analytics"
+    ],
+  },
+];
+
+const differentiators = [
+  {
+    title: "SEO and GEO Under One Roof",
+    description:
+      "Most agencies in Coimbatore are still purely Google-focused; we're already optimizing for the AI search shift across ChatGPT, Gemini, and Perplexity.",
+    icon: Zap,
   },
   {
-    icon: Layers,
-    tag: "AUTHORITY",
-    title: "High-Authority Backlink Network",
+    title: "Local Market Understanding",
     description:
-      "White-hat editorial placements and digital PR outreach on tier-1 publications that build permanent domain authority and trust signals.",
-    deliverables: ["Editorial Tier-1 Links", "Digital PR Wire", "Organic Trust Signals"],
+      "We know how Coimbatore audiences search and behave online — from manufacturing and healthcare to education institutions and D2C brands.",
+    icon: Globe,
   },
   {
-    icon: TrendingUp,
-    tag: "REVENUE",
-    title: "Conversion-Rate Integrated SEO",
+    title: "Transparent Process",
     description:
-      "Traffic without revenue is vanity. We optimize every search landing page with high-friction removal and psychological conversion cues.",
-    deliverables: ["Frictionless Funnel UX", "A/B Testing Loops", "Immediate Lead Capture"],
+      "No black-box reporting, no vague promises. Transparent monthly progress reports and direct strategic alignment.",
+    icon: ShieldCheck,
+  },
+  {
+    title: "Content Built for Humans First",
+    description:
+      "No robotic, keyword-stuffed writing. Genuine, authoritative content that provides real value — because that's still what ranks best on Google and AI engines.",
+    icon: Users,
   },
 ];
 
@@ -111,20 +160,28 @@ const comparisonData = [
 
 const faqs = [
   {
-    q: "What is Generative Engine Optimization (GEO) vs Traditional SEO?",
-    a: "Traditional SEO focuses on ranking web pages in Google's traditional 10-blue-links results. Generative Engine Optimization (GEO) is the next evolution: it optimizes your brand entity so AI engines like ChatGPT, Perplexity, Claude, and Google Gemini SGE synthesize and cite your brand as the #1 recommended answer when users ask conversational buying questions.",
+    q: "What does an SEO company in Coimbatore do?",
+    a: "An SEO company improves your website's visibility on search engines through technical optimization, content strategy, local SEO, and authority building, helping the right customers find your business organically.",
   },
   {
-    q: "How fast will we see measurable results from GEO & SEO optimization?",
-    a: "Technical SEO speed upgrades and Core Web Vitals refactoring show ranking boosts within 14 to 30 days. Full AI Knowledge Graph ingestion and GEO citation dominance typically achieve market leadership within 60 to 90 days.",
+    q: "What is GEO (Generative Engine Optimization) and why does it matter now?",
+    a: "GEO is the practice of optimizing content so AI search tools like ChatGPT, Gemini, and Google AI Overviews can find, understand, and cite your business in their answers. As more search behavior shifts to AI assistants, GEO is becoming as essential as traditional SEO.",
   },
   {
-    q: "Do you audit and fix existing Google search penalties or technical debt?",
-    a: "Yes. Our senior technical SEO engineers conduct a comprehensive 120-point diagnostic audit covering crawl budgets, canonicalization, indexation bloat, mobile usability, and link profile cleanup.",
+    q: "How is GEO different from traditional SEO?",
+    a: "Traditional SEO targets ranking positions on search engine results pages. GEO targets being cited or referenced inside AI-generated answers. The strategies overlap but require different content structuring — we run both together for maximum visibility.",
   },
   {
-    q: "How do you track brand citations inside ChatGPT and Perplexity?",
-    a: "We deploy proprietary AI monitoring scripts that execute daily synthetic buyer prompts across all major LLMs. We track citation presence, recommendation order, sentiment alignment, and direct URL attribution.",
+    q: "How long does SEO take to show results in Coimbatore's competitive market?",
+    a: "Most businesses see measurable ranking and traffic movement within 3-4 months, with stronger, compounding results over 6-12 months, depending on competition level and starting domain authority.",
+  },
+  {
+    q: "Do you only work with Coimbatore-based businesses?",
+    a: "We're based in Coimbatore and specialize in local SEO here, but we also work with clients across Tamil Nadu and pan-India.",
+  },
+  {
+    q: "Can content alone get my website to rank on page 1?",
+    a: "Strong content is essential but works alongside technical SEO health and backlink authority. As your SEO company, we make sure all three are aligned — content doesn't operate in isolation.",
   },
 ];
 
@@ -134,6 +191,14 @@ export default function SeoGeoServicePage({ onOpenModal, navigate }) {
     if (window.__lenis) {
       window.__lenis.scrollTo(0, { immediate: true });
     }
+    document.title = "SEO Company in Coimbatore | SEO & GEO Services – Brand Forge";
+    let metaDesc = document.querySelector('meta[name="description"]');
+    if (!metaDesc) {
+      metaDesc = document.createElement('meta');
+      metaDesc.name = 'description';
+      document.head.appendChild(metaDesc);
+    }
+    metaDesc.setAttribute('content', "Brand Forge is a trusted SEO company in Coimbatore offering SEO, GEO (Generative Engine Optimization), and local search services to help businesses rank higher on Google and AI search engines.");
   }, []);
 
   const [activeFaq, setActiveFaq] = useState(null);
@@ -148,7 +213,15 @@ export default function SeoGeoServicePage({ onOpenModal, navigate }) {
       <style>{styles}</style>
 
       {/* HERO SECTION WITH GLOWING RADIAL AURA */}
-      <header className="sg-hero">
+      <header
+        className="sg-hero has-banner-bg"
+        style={{
+          backgroundImage: `linear-gradient(180deg, rgba(0, 0, 0, 0.75) 0%, rgba(5, 5, 8, 0.88) 60%, rgba(0, 0, 0, 0.98) 100%), url(/banner-seo-geo-bg.jpg)`,
+          backgroundSize: "cover",
+          backgroundPosition: "center top",
+          backgroundRepeat: "no-repeat",
+        }}
+      >
         <div className="sg-hero-glow" />
 
         <div className="sg-container">
@@ -159,7 +232,7 @@ export default function SeoGeoServicePage({ onOpenModal, navigate }) {
             transition={{ duration: 0.6 }}
           >
             <Search size={14} className="sg-badge-icon" />
-            <span>GENERATIVE ENGINE OPTIMIZATION & SEARCH DOMINANCE</span>
+            <span>SEO Company in Coimbatore | SEO & GEO Services by Brand Forge</span>
             <Sparkles size={14} className="sg-badge-sparkle" />
           </motion.div>
 
@@ -169,17 +242,22 @@ export default function SeoGeoServicePage({ onOpenModal, navigate }) {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.1 }}
           >
-            DOMINATE AI SEARCH ENGINES & <span>GOOGLE ORGANIC GRIDS</span>
+            Best SEO Company in Coimbatore for <span>Google & AI Search Rankings</span>
           </motion.h1>
 
-          <motion.p
+          <motion.div
             className="sg-hero-desc"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            Position your brand as the #1 recommended answer across ChatGPT, Perplexity, Google SGE, and Claude — while capturing permanent #1 positions on traditional search engines.
-          </motion.p>
+            <p className="sg-hero-desc-para">
+              If you're searching for an SEO company in Coimbatore that actually understands how people search today, you're in the right place. Search has split into two paths — Google's traditional results and AI-generated answers from tools like ChatGPT, Gemini, and Perplexity. Brand Forge is a Coimbatore-based SEO agency built to win both.
+            </p>
+            <p className="sg-hero-desc-para">
+              We work with businesses across Coimbatore — from local service providers to education institutions and D2C brands — to improve organic visibility through proven SEO strategy combined with GEO Services (Generative Engine Optimization), so you show up wherever your customers are actually searching.
+            </p>
+          </motion.div>
 
           <motion.div
             className="sg-hero-actions"
@@ -189,8 +267,7 @@ export default function SeoGeoServicePage({ onOpenModal, navigate }) {
           >
             <button className="sg-btn primary" onClick={onOpenModal}>
               <Zap size={16} />
-              <span>START FREE SEO & GEO AUDIT</span>
-              <ArrowRight size={16} />
+              <span>Get a Free SEO Audit →</span>
             </button>
 
             <button
@@ -224,6 +301,57 @@ export default function SeoGeoServicePage({ onOpenModal, navigate }) {
         </div>
       </header>
 
+      {/* WHY BUSINESSES IN COIMBATORE CHOOSE BRAND FORGE */}
+      <section className="sg-section sg-why-section">
+        <div className="sg-container">
+          <div className="sg-why-grid">
+            
+            {/* LEFT: HEADING, DESCRIPTION & LEAD-IN */}
+            <motion.div
+              className="sg-why-left"
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: false, amount: 0.2 }}
+              transition={{ duration: 0.7 }}
+            >
+              <span className="sg-section-tag">WHY CHOOSE BRAND FORGE</span>
+              <h2 className="sg-why-title">Why Businesses in Coimbatore Choose Brand Forge as Their SEO Company</h2>
+              <p className="sg-why-desc">
+                Coimbatore's digital market is growing fast, and so is the competition for search visibility. As a local SEO company in Coimbatore, we combine on-ground market knowledge with data-driven SEO practices to help businesses rank for the keywords that actually bring in customers — not just traffic.
+              </p>
+              <p className="sg-why-leadin">Our approach covers the full picture of modern search visibility:</p>
+            </motion.div>
+
+            {/* RIGHT: FEATURE CARDS / POINTS */}
+            <div className="sg-why-points-grid">
+              {[
+                "Ranking on Google's organic search results",
+                "Appearing in Google's Local Pack and Maps for “near me” searches",
+                "Getting cited by AI search engines and AI Overviews through GEO Services",
+                "Building long-term organic authority, not short-lived ranking spikes",
+              ].map((point, idx) => (
+                <motion.div
+                  key={idx}
+                  className="sg-why-point-card"
+                  initial={{ opacity: 0, y: 25 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: false, amount: 0.2 }}
+                  transition={{ duration: 0.5, delay: idx * 0.1 }}
+                >
+                  <div className="sg-why-point-icon">
+                    <CheckCircle2 size={18} className="check-icon" />
+                  </div>
+                  <div className="sg-why-point-content">
+                    <p>{point}</p>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+
+          </div>
+        </div>
+      </section>
+
       {/* SEO vs GEO COMPARISON MATRIX SECTION */}
       <section className="sg-section sg-comparison-section">
         <div className="sg-container">
@@ -255,14 +383,14 @@ export default function SeoGeoServicePage({ onOpenModal, navigate }) {
         </div>
       </section>
 
-      {/* 6 CORE PILLARS OF BRANDFORGE SEO & GEO */}
+      {/* 5 CORE PILLARS OF OUR SEO & GEO SERVICES IN COIMBATORE */}
       <section className="sg-section sg-pillars-section">
         <div className="sg-container">
-          <div className="sg-section-header">
-            <span className="sg-section-tag">6-PILLAR ENGINE</span>
-            <h2 className="sg-section-title">OUR FULL-STACK <span>SEO & GEO FORGE</span></h2>
+          <div className="sg-section-header text-center">
+            <span className="sg-section-tag">OUR FULL SERVICE SPECTRUM</span>
+            <h2 className="sg-section-title">Our SEO & GEO Services in <span>Coimbatore</span></h2>
             <p className="sg-section-subtitle">
-              Every system is engineered to capture intent, build domain authority, and scale pipeline.
+              From foundational technical architecture and local Google Maps optimization to generative AI citations — we engineer complete search authority.
             </p>
           </div>
 
@@ -280,6 +408,11 @@ export default function SeoGeoServicePage({ onOpenModal, navigate }) {
 
                   <h3 className="sg-pillar-title">{p.title}</h3>
                   <p className="sg-pillar-desc">{p.description}</p>
+                  {p.callout && (
+                    <div style={{ margin: "10px 0 14px", padding: "10px 14px", borderRadius: "10px", background: "rgba(239, 65, 54, 0.08)", borderLeft: "3px solid #EF4136", color: "#0A0A0C", fontSize: "13px", fontStyle: "italic", lineHeight: 1.5 }}>
+                      "{p.callout}"
+                    </div>
+                  )}
 
                   <ul className="sg-pillar-list">
                     {p.deliverables.map((d) => (
@@ -349,6 +482,34 @@ export default function SeoGeoServicePage({ onOpenModal, navigate }) {
         </div>
       </section>
 
+      {/* WHAT MAKES OUR SEO COMPANY DIFFERENT */}
+      <section className="sg-section sg-diff-section">
+        <div className="sg-container">
+          <div className="sg-section-header text-center">
+            <span className="sg-section-tag">THE BRANDFORGE ADVANTAGE</span>
+            <h2 className="sg-section-title">What Makes Our SEO Company <span>Different</span></h2>
+            <p className="sg-section-subtitle">
+              Why forward-thinking Coimbatore brands trust Brand Forge over traditional digital agencies.
+            </p>
+          </div>
+
+          <div className="sg-diff-grid">
+            {differentiators.map((item, idx) => {
+              const DiffIcon = item.icon || Sparkles;
+              return (
+                <div key={item.title} className="sg-diff-card">
+                  <div className="sg-diff-icon-wrap">
+                    <DiffIcon size={22} className="diff-lucide-icon" />
+                  </div>
+                  <h3>{item.title}</h3>
+                  <p>{item.description}</p>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
       {/* FREQUENTLY ASKED QUESTIONS */}
       <section className="sg-section sg-faq-section">
         <div className="sg-container">
@@ -392,13 +553,12 @@ export default function SeoGeoServicePage({ onOpenModal, navigate }) {
         <div className="sg-container">
           <div className="sg-cta-box">
             <div className="sg-cta-aura" />
-            <h2>READY TO DOMINATE <span>AI & GOOGLE SEARCH?</span></h2>
-            <p>Get a comprehensive 120-point SEO & GEO Audit delivered to your inbox in 24 hours.</p>
+            <h2>Get Found on Google and AI Search — <span>Starting Today</span></h2>
+            <p>Get a free audit of where your website currently stands, both on traditional search and emerging AI search engines.</p>
             <div className="sg-cta-actions">
               <button className="sg-btn primary" onClick={onOpenModal}>
                 <Zap size={16} />
-                <span>REQUEST FREE AUDIT NOW</span>
-                <ArrowRight size={16} />
+                <span>Book Your Free Consultation →</span>
               </button>
               <button className="sg-btn secondary" onClick={() => navigate("/contact")}>
                 <Phone size={16} />
@@ -494,6 +654,14 @@ const styles = `
     font-size: clamp(15px, 1.4vw, 18px);
     line-height: 1.6;
     font-weight: 500;
+  }
+
+  .sg-hero-desc-para {
+    margin: 0 0 16px;
+  }
+
+  .sg-hero-desc-para:last-child {
+    margin-bottom: 0;
   }
 
   .sg-hero-actions {
@@ -596,6 +764,171 @@ const styles = `
     font-size: 12px;
     color: #64748B;
     font-weight: 500;
+  }
+
+  /* WHY BUSINESSES IN COIMBATORE CHOOSE BRAND FORGE */
+  .sg-why-section {
+    position: relative;
+    border-top: 1px solid rgba(15, 23, 42, 0.08);
+    border-bottom: 1px solid rgba(15, 23, 42, 0.08);
+    background: linear-gradient(180deg, rgba(239, 65, 54, 0.03) 0%, rgba(248, 250, 252, 0.8) 100%);
+  }
+
+  .sg-why-grid {
+    display: grid;
+    grid-template-columns: 1.15fr 1fr;
+    gap: clamp(36px, 5vw, 64px);
+    align-items: center;
+  }
+
+  .sg-why-title {
+    font-family: "Outfit", sans-serif;
+    font-size: clamp(26px, 3.5vw, 42px);
+    font-weight: 900;
+    line-height: 1.15;
+    color: #0A0A0C;
+    margin: 0 0 18px;
+    letter-spacing: -0.01em;
+  }
+
+  .sg-why-desc {
+    font-size: clamp(15px, 1.5vw, 17px);
+    line-height: 1.7;
+    color: #475569;
+    margin: 0 0 20px;
+    font-weight: 500;
+  }
+
+  .sg-why-leadin {
+    font-size: 15px;
+    font-weight: 700;
+    color: #0A0A0C;
+    letter-spacing: 0.01em;
+    margin: 0;
+  }
+
+  .sg-why-points-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .sg-why-point-card {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 18px 22px;
+    border-radius: 16px;
+    background: #FFFFFF;
+    border: 1px solid rgba(15, 23, 42, 0.08);
+    box-shadow: 0 8px 24px rgba(15, 23, 42, 0.04);
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .sg-why-point-card:hover {
+    border-color: rgba(239, 65, 54, 0.4);
+    transform: translateX(6px);
+    box-shadow: 0 12px 30px rgba(239, 65, 54, 0.1);
+  }
+
+  .sg-why-point-icon {
+    width: 38px;
+    height: 38px;
+    border-radius: 10px;
+    background: rgba(239, 65, 54, 0.1);
+    border: 1px solid rgba(239, 65, 54, 0.25);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .sg-why-point-icon .check-icon {
+    color: #EF4136;
+  }
+
+  .sg-why-point-content p {
+    font-size: clamp(14px, 1.3vw, 16px);
+    font-weight: 600;
+    line-height: 1.5;
+    color: #0A0A0C;
+    margin: 0;
+  }
+
+  @media (max-width: 920px) {
+    .sg-why-grid {
+      grid-template-columns: 1fr;
+      gap: 32px;
+    }
+  }
+
+  /* WHAT MAKES OUR SEO COMPANY DIFFERENT */
+  .sg-diff-section {
+    position: relative;
+    border-top: 1px solid rgba(15, 23, 42, 0.08);
+    background: #FFFFFF;
+  }
+
+  .sg-diff-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+
+  .sg-diff-card {
+    padding: 32px 28px;
+    border-radius: 20px;
+    background: #F8F9FA;
+    border: 1px solid rgba(15, 23, 42, 0.08);
+    box-shadow: 0 10px 30px rgba(15, 23, 42, 0.03);
+    transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .sg-diff-card:hover {
+    border-color: rgba(239, 65, 54, 0.4);
+    transform: translateY(-5px);
+    box-shadow: 0 16px 40px rgba(239, 65, 54, 0.12);
+  }
+
+  .sg-diff-icon-wrap {
+    width: 48px;
+    height: 48px;
+    border-radius: 14px;
+    background: rgba(239, 65, 54, 0.1);
+    border: 1px solid rgba(239, 65, 54, 0.25);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 4px;
+  }
+
+  .sg-diff-icon-wrap .diff-lucide-icon {
+    color: #EF4136;
+  }
+
+  .sg-diff-card h3 {
+    font-family: "Outfit", sans-serif;
+    font-size: 20px;
+    font-weight: 800;
+    color: #0A0A0C;
+    margin: 0;
+  }
+
+  .sg-diff-card p {
+    font-size: 14.5px;
+    line-height: 1.65;
+    color: #475569;
+    margin: 0;
+    font-weight: 500;
+  }
+
+  @media (max-width: 768px) {
+    .sg-diff-grid {
+      grid-template-columns: 1fr;
+    }
   }
 
   /* SECTIONS COMMON */

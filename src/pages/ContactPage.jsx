@@ -399,7 +399,7 @@ const styles = `
     color: var(--text);
     background: #040306;
     font-family: "Outfit", "Plus Jakarta Sans", sans-serif;
-    padding-top: 80px;
+    padding-top: 0;
     box-sizing: border-box;
   }
 
@@ -409,7 +409,8 @@ const styles = `
     overflow: hidden;
     width: 100%;
     max-width: 100%;
-    min-height: calc(100vh - 80px);
+    min-height: 100vh;
+    min-height: 100svh;
     margin: 0;
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -462,7 +463,8 @@ const styles = `
     min-height: 100%;
     display: flex;
     flex-direction: column;
-    padding: clamp(34px, 5vh, 60px) clamp(35px, 5vw, 80px) clamp(28px, 5vh, 50px);
+    padding: clamp(105px, 13vh, 135px) clamp(35px, 5vw, 80px) clamp(35px, 5vh, 50px);
+    box-sizing: border-box;
   }
 
   .brand,
@@ -572,7 +574,7 @@ const styles = `
     justify-content: center;
     align-items: center;
     width: 100%;
-    padding: 30px clamp(24px, 4vw, 70px);
+    padding: clamp(105px, 13vh, 135px) clamp(24px, 4vw, 70px) clamp(35px, 5vh, 50px);
     box-sizing: border-box;
     position: relative;
     background: transparent;
@@ -856,7 +858,7 @@ const styles = `
 
     .visual-content {
       min-height: auto;
-      padding: 32px 24px 16px;
+      padding: 95px 24px 16px;
     }
 
     .brand {
@@ -925,11 +927,11 @@ const styles = `
 
   @media (max-width: 580px) {
     .contact-page {
-      padding-top: 72px;
+      padding-top: 0;
     }
 
     .visual-content {
-      padding: 20px 16px 14px;
+      padding: 85px 16px 14px;
     }
 
     .brand-logo-img {

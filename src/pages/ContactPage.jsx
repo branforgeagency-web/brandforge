@@ -1,6 +1,5 @@
-"use client";
-
 import React, { useState } from "react";
+import BrandForgeAnimatedFooter from "../components/BrandForgeAnimatedFooter";
 import {
   ArrowRight,
   Building2,
@@ -356,6 +355,9 @@ export default function ContactPage() {
           </form>
         </section>
       </section>
+
+      {/* FOOTER WITH COMPREHENSIVE INTERNAL LINKS FOR SEO */}
+      <BrandForgeAnimatedFooter onOpenModal={onOpenModal} />
     </main>
   );
 }

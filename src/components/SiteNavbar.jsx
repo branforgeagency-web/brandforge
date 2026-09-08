@@ -87,9 +87,20 @@ export default function SiteNavbar({ path, navigate, onOpenModal }) {
 
       <nav className="liquid-nav__bar" aria-label="Primary navigation">
         {/* BRANDFORGE LOGO */}
-        <div className="liquid-nav__brand-logo" onClick={() => go("/")} style={{ cursor: "pointer" }}>
+        <a
+          href="/"
+          className="liquid-nav__brand-logo"
+          onClick={(e) => {
+            if (!e.ctrlKey && !e.metaKey) {
+              e.preventDefault();
+              go("/");
+            }
+          }}
+          style={{ cursor: "pointer", textDecoration: "none" }}
+          aria-label="BrandForge Home"
+        >
           <img src="/brandforge-logo.png" alt="BrandForge Logo" className="liquid-nav__logo-img" />
-        </div>
+        </a>
 
         {/* DESKTOP NAVIGATION RAIL */}
         <div className="liquid-nav__rail">
@@ -97,16 +108,21 @@ export default function SiteNavbar({ path, navigate, onOpenModal }) {
             const isActive = path === to || (label === "Services" && path.startsWith("/services/"));
 
             return (
-              <button
+              <a
                 key={label}
-                type="button"
+                href={to}
                 className={`liquid-nav__item${isActive ? " is-active" : ""}`}
                 aria-current={isActive ? "page" : undefined}
-                onClick={() => go(to)}
+                onClick={(e) => {
+                  if (!e.ctrlKey && !e.metaKey) {
+                    e.preventDefault();
+                    go(to);
+                  }
+                }}
               >
                 <Icon aria-hidden="true" size={15} />
                 <span>{label}</span>
-              </button>
+              </a>
             );
           })}
         </div>
@@ -141,13 +157,18 @@ export default function SiteNavbar({ path, navigate, onOpenModal }) {
           >
             {NAVIGATION_ITEMS.map(({ label, to, icon: Icon, isServices }) => (
               <React.Fragment key={label}>
-                <div
+                <a
+                  href={to}
                   className={`liquid-nav__mobile-link ${path === to ? "is-active" : ""}`}
-                  onClick={() => {
+                  onClick={(e) => {
                     if (isServices) {
+                      e.preventDefault();
                       setMobileServicesOpen((prev) => !prev);
                     } else {
-                      go(to);
+                      if (!e.ctrlKey && !e.metaKey) {
+                        e.preventDefault();
+                        go(to);
+                      }
                     }
                   }}
                 >
@@ -166,28 +187,38 @@ export default function SiteNavbar({ path, navigate, onOpenModal }) {
                   ) : (
                     <ArrowUpRight size={15} style={{ opacity: 0.5 }} />
                   )}
-                </div>
+                </a>
 
                 {/* NESTED MOBILE SERVICES SUBMENU */}
                 {isServices && mobileServicesOpen && (
                   <div className="liquid-nav__mobile-sub">
-                    <button
-                      type="button"
+                    <a
+                      href="/#stacked-services"
                       className="sub-item view-all"
-                      onClick={() => go("/#stacked-services")}
+                      onClick={(e) => {
+                        if (!e.ctrlKey && !e.metaKey) {
+                          e.preventDefault();
+                          go("/#stacked-services");
+                        }
+                      }}
                     >
                       ⚡ View All 12 Services
-                    </button>
+                    </a>
                     {MOBILE_SERVICES.map((srv) => (
-                      <button
+                      <a
                         key={srv.slug}
-                        type="button"
+                        href={`/services/${srv.slug}`}
                         className={`sub-item ${path === `/services/${srv.slug}` ? "is-active" : ""}`}
-                        onClick={() => go(`/services/${srv.slug}`)}
+                        onClick={(e) => {
+                          if (!e.ctrlKey && !e.metaKey) {
+                            e.preventDefault();
+                            go(`/services/${srv.slug}`);
+                          }
+                        }}
                       >
                         <span>{srv.label}</span>
                         <ArrowUpRight size={13} />
-                      </button>
+                      </a>
                     ))}
                   </div>
                 )}
@@ -286,6 +317,7 @@ const styles = /* css */ `
     border: 1px solid transparent;
     border-radius: 999px;
     outline: none;
+    text-decoration: none;
     color: rgba(255, 255, 255, 0.75);
     background: transparent;
     font-family: "Plus Jakarta Sans", sans-serif;
@@ -396,6 +428,7 @@ const styles = /* css */ `
     font-size: 0.95rem;
     font-weight: 700;
     color: #FFFFFF;
+    text-decoration: none;
     cursor: pointer;
     transition: background 0.2s ease;
     box-sizing: border-box;
@@ -426,6 +459,7 @@ const styles = /* css */ `
     background: rgba(255, 255, 255, 0.04);
     border: 1px solid rgba(255, 255, 255, 0.08);
     color: rgba(255, 255, 255, 0.85);
+    text-decoration: none;
     font-size: 0.85rem;
     font-weight: 600;
     cursor: pointer;

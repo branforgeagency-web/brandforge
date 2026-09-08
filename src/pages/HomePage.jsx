@@ -2,6 +2,7 @@ import React from 'react';
 import RiftStageHero from '../components/RiftStageHero';
 import BrandForgeFluidSection from '../components/BrandForgeFluidSection';
 import BrandForgeAboutUsSection from '../components/BrandForgeAboutUsSection';
+import BrandForgeRatingsTrustStrip from '../components/BrandForgeRatingsTrustStrip';
 import BrandForgeProcessBoard from '../components/BrandForgeProcessBoard';
 import StackedServicesSection from '../components/StackedServicesSection';
 import BrandForgeOrbitGallerySection from '../components/BrandForgeOrbitGallerySection';
@@ -27,6 +28,9 @@ export default function HomePage({ onOpenModal, navigate }) {
       <div id="about-us">
         <BrandForgeAboutUsSection onOpenModal={onOpenModal} navigate={navigate} />
       </div>
+
+      {/* VERIFIED CLIENT RATINGS & TRUST STRIP */}
+      <BrandForgeRatingsTrustStrip />
 
       {/* HOW WE WORK — PROCESS BOARD */}
       <div id="process-board">

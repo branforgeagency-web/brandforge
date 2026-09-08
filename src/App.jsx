@@ -33,6 +33,8 @@ export default function App() {
           <ContactPage onOpenModal={openModal} />
         ) : path === '/seo-company-coimbatore' ? (
           <ServiceLandingPage slug="seo-geo" onOpenModal={openModal} navigate={navigate} />
+        ) : path === '/ppc-company-coimbatore' ? (
+          <ServiceLandingPage slug="paid-media" onOpenModal={openModal} navigate={navigate} />
         ) : serviceSlug ? (
           <ServiceLandingPage slug={serviceSlug} onOpenModal={openModal} navigate={navigate} />
         ) : (

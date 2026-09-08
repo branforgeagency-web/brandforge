@@ -196,40 +196,223 @@ export const servicesData = {
 
   "paid-media": {
     slug: "paid-media",
+    urlSlug: "/ppc-company-coimbatore",
+    metaTitle: "PPC Company in Coimbatore | Google & Meta Ads | BrandForge",
+    metaDescription: "Looking for a PPC company in Coimbatore? BrandForge runs Google, Meta, YouTube & lead-gen ads that convert. Get a free ad account audit this week.",
     number: "02",
-    eyebrow: "PAID MEDIA / AD SCALING ENGINE",
-    title: "SCALE HIGH-ROAS PERFORMANCE CAMPAIGNS ACROSS ALL CHANNELS",
-    subtitle: "We engineer high-converting ad funnels across Meta, Google Ads, TikTok, and LinkedIn that connect emotionally and double return on ad spend.",
+    eyebrow: "PPC Company in Coimbatore | Google & Meta Ads by BrandForge",
+    title: "PPC Company in Coimbatore That Turns Ad Spend Into Real Leads",
+    heroButtonText: "Get a Free Ad Account Audit →",
+    subtitle: [
+      "Most businesses in Coimbatore don't have an ads problem — they have a wasted budget problem. If you're paying for clicks that never turn into customers, that's a targeting and tracking issue, not a reason to give up on paid ads.",
+      "BrandForge is a PPC company in Coimbatore built for one outcome: turning every rupee of ad spend into measurable leads and sales. Our paid media studio, Ignition Ads, plans and manages campaigns across Google, Meta, YouTube, and more — with proper tracking wired in from day one."
+    ],
+    bannerBg: "/banner-paid-media.jpg",
     icon: Megaphone,
     metrics: [
+      { value: "₹420 → ₹95", label: "Cost-Per-Lead Cut", desc: "Average 77% drop in CPL across accounts" },
       { value: "4.8x", label: "Average Blended ROAS", desc: "Direct response media efficiency benchmark" },
-      { value: "$45M+", label: "Ad Spend Managed", desc: "Proven track record in high-velocity media buying" },
-      { value: "-38%", label: "Customer Acquisition Cost", desc: "Reduction in CAC through creative iteration" },
-      { value: "98.4%", label: "Ad Account Retention", desc: "Long-term scaling partnership performance" },
+      { value: "₹45M+", label: "Ad Spend Managed", desc: "Google Ads & Meta Blueprint certified team" },
+      { value: "100%", label: "Conversion Tracking", desc: "GA4, Meta CAPI & call tracking wired before spend" },
     ],
+    whyChooseUs: {
+      tag: "FAST ACCOUNTABLE GROWTH",
+      title: "Why PPC Brings Faster Results Than SEO",
+      description: "SEO builds long-term authority. Paid ads bring leads this week. For local service businesses, coaching institutes, clinics, and online stores across Coimbatore and Tamil Nadu, that speed is the whole point.",
+      leadIn: "Done right, PPC is the most accountable marketing you can run — every result is a number you can check:",
+      points: [
+        "You appear at the top of Google the day you launch",
+        "You reach exact audiences by location, age, interest, and intent",
+        "You see your real cost per lead, not guesswork",
+        "You scale what works and cut what doesn't, fast"
+      ]
+    },
     matrixTag: "MEDIA REVOLUTION",
-    matrixTitle: "OLD PERFORMANCE ADS VS BRANDFORGE AD SCALING",
-    matrixSubtitle: "Stop burning budget on generic agency ads. We combine predictive AI bidding with high-velocity creative testing.",
+    matrixTitle: "OLD TRADITIONAL AGENCIES VS BRANDFORGE AD SCALING",
+    matrixSubtitle: "Stop burning budget on generic agency ads. We combine in-house scroll-stopping creative with predictive AI bidding and full tracking.",
     matrixRows: [
-      { feature: "Creative Strategy", traditional: "Single static image fatigue", brandforge: "Dynamic 15-variant video & UGC testing matrix" },
-      { feature: "Bidding Architecture", traditional: "Manual campaign budget burn", brandforge: "AI-driven algorithmic bid caps & value optimization" },
-      { feature: "Attribution Accuracy", traditional: "Broken pixel tracking post-iOS14", brandforge: "Server-side CAPI + first-party data attribution" },
-      { feature: "Funnel Retargeting", traditional: "Annoying repeat ad spam", brandforge: "Sequential storytelling & intent-based offer sequences" },
+      { feature: "Tracking & Setup", traditional: "Ad spend started before proper tracking is verified", brandforge: "GA4, Meta CAPI, offline pixels & call tracking wired before 1 rupee is spent" },
+      { feature: "Ad Creatives", traditional: "Generic static templates causing instant ad fatigue", brandforge: "Scroll-stopping custom UGC, reels & motion video built in-house by our Story Smithy studio" },
+      { feature: "Post-Click Experience", traditional: "Traffic dumped onto slow homepage or broken form", brandforge: "High-converting bespoke landing pages built by our Web Foundry team" },
+      { feature: "Reporting & Accountability", traditional: "Vague monthly PDF full of vanity impression metrics", brandforge: "Transparent weekly reporting: spend, real leads, and cost-per-lead in plain numbers" },
     ],
+    pillarsTag: "MULTI-CHANNEL AD ENGINE",
+    pillarsTitle: "Every Type of Ad We Run",
+    pillarsSubtitle: "We don't push one channel. We match the platform to your buyer. Here's what Ignition Ads manages across Google, Meta, and LinkedIn.",
     pillars: [
-      { icon: Zap, tag: "META ADS", title: "Meta & Instagram Scaling Engine", description: "Deploy high-converting UGC reels, carousel stacks, and advantage+ shopping campaigns.", deliverables: ["Advantage+ Shopping Setup", "CAPI Server-Side Tracking", "UGC Creative Matrix"] },
-      { icon: Search, tag: "GOOGLE SEARCH", title: "Google Search & Performance Max", description: "Capture bottom-funnel commercial intent with high-ROAS Search and PMax campaign structures.", deliverables: ["Negative Keyword Shield", "PMax Asset Group Testing", "Brand Search Lock"] },
-      { icon: Video, tag: "TIKTOK", title: "TikTok & Shorts Viral Ad Vault", description: "Native hook-first short video ads designed to ignite impulsive buyer impulse and trend adoption.", deliverables: ["Hook Testing Engine", "Native Creator Scripting", "Fast Creative Refreshes"] },
-      { icon: Target, tag: "B2B LINKEDIN", title: "LinkedIn B2B Pipeline Accelerator", description: "Target high-net-worth enterprise decision makers with account-based marketing (ABM) strategies.", deliverables: ["Job-Title ABM Targeting", "Lead Gen Form Funnels", "Thought Leadership Ads"] },
-      { icon: BarChart3, tag: "ATTRIBUTION", title: "Multi-Touch Attribution Dashboard", description: "Full clarity into true ROAS, MER (Marketing Efficiency Ratio), and LTV CAC payback periods.", deliverables: ["Triple Whale / Northbeam Setup", "First-Party Data Tracking", "MER Dashboard"] },
-      { icon: TrendingUp, tag: "CRO ADS", title: "Ad-to-Landing Page Sync", description: "Align ad creative hooks with landing page headlines to double post-click conversion rates.", deliverables: ["Message Matching UX", "Dynamic Headline Swap", "Frictionless Checkout"] },
+      {
+        icon: Search,
+        tag: "GOOGLE SEARCH",
+        title: "Google Search Ads — High-Intent Leads",
+        description: "When someone in Coimbatore searches for your service on Google, your ad shows first. We capture bottom-funnel buyers at the exact moment they are ready to call or purchase.",
+        deliverables: ["Negative Keyword Shield (Zero Wasted Clicks)", "High-Intent Keyword Match Strategy", "Ad Copy & Extension Optimization", "Bid & Quality Score Management"]
+      },
+      {
+        icon: Zap,
+        tag: "META PERFORMANCE",
+        title: "Meta Ads (Facebook & Instagram)",
+        description: "The best channel for lead-generation and brand demand in Coimbatore. We deploy high-converting UGC reels, carousel stacks, and advantage+ shopping campaigns.",
+        deliverables: ["Advantage+ Audience Targeting", "Server-Side Meta CAPI Tracking", "In-House Video & Reel Creative Matrix", "High-Converting Lead Gen Funnels"]
+      },
+      {
+        icon: Video,
+        tag: "REELS & SHORTS",
+        title: "Instagram Reels & Story Ads",
+        description: "Short-form vertical video where younger, mobile-first buyers spend their time. Built with native hooks designed to stop the scroll and trigger immediate DM inquiries.",
+        deliverables: ["Hook Testing Engine (15+ variants/mo)", "Native Creator Scripting & UGC", "Fast Creative Refreshes (Zero Ad Fatigue)"]
+      },
+      {
+        icon: Globe,
+        tag: "GOOGLE DISPLAY",
+        title: "Google Display Ads & Banner Networks",
+        description: "Eye-catching visual banner ads across millions of websites and apps, ideal for massive brand recall and keeping your business top-of-mind across Coimbatore.",
+        deliverables: ["Custom Intent & Affinity Audiences", "Responsive Display Ad Formats", "Strict Placement & Fraud Filtering"]
+      },
+      {
+        icon: Video,
+        tag: "YOUTUBE ADS",
+        title: "YouTube Ads — High-Recall Video Campaigns",
+        description: "Video ads for brand recall, coaching course launches, clinic walk-throughs, and product demos. Reach targeted viewers before they watch industry videos.",
+        deliverables: ["Skippable In-Stream Video Ads", "Non-Skippable 15s Brand Stories", "YouTube Bumper Ads (6s High-Impact)"]
+      },
+      {
+        icon: ShieldCheck,
+        tag: "E-COMMERCE",
+        title: "Google Shopping Ads",
+        description: "Direct product listings with image, customer review ratings, and price for e-commerce brands looking for immediate sales and high blended ROAS.",
+        deliverables: ["Google Merchant Center Feed Setup", "Smart Shopping Campaign Optimization", "Dynamic Product Remarketing Feeds"]
+      },
+      {
+        icon: Cpu,
+        tag: "GOOGLE AI",
+        title: "Performance Max (PMax)",
+        description: "Google's unified AI ad format running across Search, Display, YouTube, Gmail, and Google Maps simultaneously with automated machine-learning optimization.",
+        deliverables: ["PMax Asset Group & Copy Testing", "Custom First-Party Audience Signals", "Search Theme & Negative Keyword Control"]
+      },
+      {
+        icon: TrendingUp,
+        tag: "HIGH ROI",
+        title: "Retargeting Ads — Recapture Lost Visitors",
+        description: "Chasing past website visitors across Google and Meta. Retargeting ads are usually the cheapest leads in any account because intent is already established.",
+        deliverables: ["Cart Abandonment Retargeting Sequences", "Dynamic Carousel Retargeting", "Sequential Storytelling Ad Flows"]
+      },
+      {
+        icon: Award,
+        tag: "INSTANT FORMS",
+        title: "Lead Generation Campaigns",
+        description: "Instant-form ads on Meta and LinkedIn that capture verified name, phone number, and email without forcing users to wait for a slow landing page.",
+        deliverables: ["Native Instant Forms with Pre-Fill", "Instant CRM & WhatsApp Webhook Sync", "Lead Qualification Questions to Filter Junk"]
+      },
+      {
+        icon: Globe,
+        tag: "LOCAL CALLS",
+        title: "Local & Google Maps Ads",
+        description: "Engineered specifically for Coimbatore businesses that need direct foot walk-ins and phone calls from nearby customers searching on Google Maps.",
+        deliverables: ["Google Business Profile Ad Extensions", "Promoted Pins on Google Maps", "Call-Only Ad Campaigns with Click-to-Call"]
+      },
+      {
+        icon: Target,
+        tag: "B2B PIPELINE",
+        title: "LinkedIn Ads — B2B Decision-Maker Targeting",
+        description: "For B2B companies and premium corporate services in Coimbatore targeting founders, managing directors, purchase managers, and corporate decision-makers.",
+        deliverables: ["Job-Title & Company Industry ABM Targeting", "LinkedIn Lead Gen Forms", "Sponsored Thought Leadership Content"]
+      }
     ],
+    differentiators: {
+      tag: "THE BRANDFORGE ADVANTAGE",
+      title: "What Makes BrandForge Different as a PPC Company in Coimbatore",
+      subtitle: "Plenty of agencies run ads. Fewer make them profitable. As a full-service agency that also handles branding, Web Foundry, and Story Smithy in-house, we connect the ad to the page to the follow-up.",
+      items: [
+        {
+          title: "Tracking First",
+          description: "GA4, Meta pixel, CAPI server tracking, and phone call tracking installed and verified before a single rupee of ad spend.",
+          icon: ShieldCheck
+        },
+        {
+          title: "Scroll-Stopping Creative",
+          description: "Built in-house by our Story Smithy studio with dynamic UGC video, reels, and custom graphics — never generic templates.",
+          icon: PenTool
+        },
+        {
+          title: "Landing Pages That Convert",
+          description: "Engineered by our Web Foundry team with sub-second speeds so your expensive paid traffic never hits a dead end.",
+          icon: TrendingUp
+        },
+        {
+          title: "Weekly Plain-Number Reporting",
+          description: "Spend, verified leads, and real cost-per-lead delivered in plain numbers — no vanity metrics or black-box jargon.",
+          icon: BarChart3
+        },
+        {
+          title: "Data-Led Weekly Optimization",
+          description: "We cut losing ad sets, prune negative search terms, and scale high-ROAS winners every single week.",
+          icon: Zap
+        }
+      ]
+    },
+    timeline: {
+      tag: "6-STEP PPC PROCESS",
+      title: "How We Work — From Audit to Profitable Scale",
+      subtitle: "A transparent, data-backed 6-step framework to maximize ROAS and eliminate ad budget leaks.",
+      steps: [
+        { num: "01", title: "FREE AD ACCOUNT AUDIT", desc: "We analyze your past spend, search terms, and landing pages to find where your budget is leaking." },
+        { num: "02", title: "PLATFORM STRATEGY", desc: "We pick the platforms your buyers actually use (Google, Meta, YouTube) rather than spreading budget thin." },
+        { num: "03", title: "BUILD & ASSETS", desc: "Custom targeting, scroll-stopping creatives by Story Smithy, copy, tracking, and Web Foundry landing pages." },
+        { num: "04", title: "LAUNCH & CLOSE MONITORING", desc: "Live launch with close, hands-on monitoring during the critical first 72 hours to calibrate bids." },
+        { num: "05", title: "WEEKLY OPTIMIZATION", desc: "A/B testing hooks, pruning negative keywords, and lowering your cost per lead week over week." },
+        { num: "06", title: "AGGRESSIVE SCALING", desc: "Confidently scale ad spend into verified winning campaigns to double your revenue." }
+      ]
+    },
+    whoWeHelp: {
+      tag: "WHO WE HELP",
+      title: "Who We Help in Coimbatore and Tamil Nadu",
+      subtitle: "If you have a budget and a product or service people want, we'll put it in front of the right buyers with profitable paid ads.",
+      industries: [
+        { title: "Coaching & Education Institutes", desc: "High-intent student enrollment leads for NEET, JEE, IELTS, UPSC, and skills academies across Coimbatore." },
+        { title: "Clinics & Healthcare Centers", desc: "Qualified patient appointment bookings for dental, fertility, eye care, and multi-specialty hospitals." },
+        { title: "Real Estate & Builders", desc: "High-ticket buyer site visit inquiries for luxury villas, gated apartments, and commercial plots." },
+        { title: "E-Commerce & D2C Brands", desc: "High-ROAS Google Shopping and Meta advantage+ shopping campaigns that scale profitable sales." },
+        { title: "Local Service Businesses", desc: "Direct phone calls and walk-in leads for interior designers, solar installers, modular kitchens, and local pros." },
+        { title: "B2B & Enterprise Services", desc: "Account-based LinkedIn and Google Search ads targeting founders, CEOs, and purchase managers." }
+      ],
+      certifications: [
+        { label: "Google Ads Certified Partner" },
+        { label: "Meta Blueprint Certified Agency" },
+        { label: "Real Client Result: CPL Cut from ₹420 to ₹95" },
+        { label: "₹45M+ Lifetime Ad Spend Managed" }
+      ]
+    },
     faqs: [
-      { q: "What monthly ad budget do you recommend for scaling?", a: "We typically work with brands spending between $10,000 to $500,000+ per month across Meta, Google, and TikTok." },
-      { q: "Do you produce the ad creatives in-house?", a: "Yes. Our in-house creative forge scriptwriters, video editors, and motion designers produce 10 to 20 fresh ad creatives every month." },
-      { q: "How do you handle post-iOS14 attribution loss?", a: "We set up server-side Conversational API (CAPI), first-party offline conversion tracking, and MER metrics so you always know your exact profit per ad dollar." },
-      { q: "How quickly can we launch new campaigns?", a: "Once onboarding and pixel/CAPI audit are complete, campaigns go live within 5 to 7 business days." },
+      {
+        q: "What does a PPC company in Coimbatore do?",
+        a: "A PPC company manages paid advertising campaigns on Google Ads, Meta (Facebook & Instagram), YouTube, and LinkedIn. At BrandForge, we handle keyword research, in-house ad creatives, landing pages, conversion tracking, and weekly bid optimization to turn ad spend into profitable leads."
+      },
+      {
+        q: "How much should my business spend on paid ads monthly?",
+        a: "For local Coimbatore businesses, we recommend starting with ₹20,000 to ₹50,000/month. For scaling e-commerce or regional brands, ad spend typically ranges from ₹1,00,000 to ₹10,00,000+/month across Google and Meta."
+      },
+      {
+        q: "Why is tracking installed before spending any budget?",
+        a: "Without GA4, Meta CAPI, and call tracking, you cannot know which keyword or creative generated a paying customer. We wire 100% accurate tracking first so every rupee spent is accounted for."
+      },
+      {
+        q: "How quickly can PPC bring leads compared to SEO?",
+        a: "Paid ads bring leads the same week you launch. While SEO builds long-term organic authority over 3 to 6 months, PPC gives immediate top-of-Google rankings and instant social media reach."
+      },
+      {
+        q: "Do you design the ad creatives and landing pages in-house?",
+        a: "Yes. Our in-house creative studio (Story Smithy) writes scripts and edits scroll-stopping video ads, while our Web Foundry team builds custom, sub-second landing pages optimized for maximum conversion."
+      },
+      {
+        q: "How do you prevent junk leads and wasted clicks?",
+        a: "We implement negative keyword shields on Google Ads to block irrelevant searches, use qualifying questions on Meta instant forms, and set up algorithmic bid caps to only bid on high-intent buyers."
+      }
     ],
+    bottomCta: {
+      title: "Get Your Free Ad Account Audit This Week",
+      subtitle: "We'll show you exactly where your spend is leaking, how much cheaper your leads could be, and the step-by-step roadmap to scale.",
+      buttonText: "Claim Your Free Ad Audit →"
+    }
   },
 
   "web-foundry": {
@@ -614,3 +797,4 @@ export const servicesData = {
 };
 
 servicesData["seo-company-coimbatore"] = servicesData["seo-geo"];
+servicesData["ppc-company-coimbatore"] = servicesData["paid-media"];

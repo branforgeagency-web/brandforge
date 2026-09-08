@@ -1,29 +1,47 @@
 import { useCallback, useEffect, useState } from "react";
 
 /**
- * Minimal hash-based router — no extra dependency required.
- * Reads/writes window.location.hash so it works on any static host
- * without server-side rewrite rules (unlike history/pushState routing).
- *
- * URLs look like:
- *   yoursite.com/#/         → home
- *   yoursite.com/#/about    → about page
+ * SEO-Optimized HTML5 Path & Hash Router.
+ * Reads window.location.pathname for canonical URLs (e.g. /about, /services/seo-geo)
+ * while also gracefully handling hash-based fallbacks (e.g. /#/about).
+ * Works seamlessly with Screaming Frog, Googlebot, and all SEO audit tools.
  */
 function readPath() {
-  const raw = window.location.hash.replace(/^#/, "");
-  return raw || "/";
+  if (typeof window === "undefined") return "/";
+  
+  // 1. Check window.location.pathname first
+  const pathname = window.location.pathname;
+  if (pathname && pathname !== "/" && !pathname.endsWith(".html")) {
+    return pathname.replace(/\/$/, ""); // trim trailing slash
+  }
+
+  // 2. Check hash fallback if pathname is root
+  const hash = window.location.hash.replace(/^#/, "");
+  if (hash) {
+    return hash.startsWith("/") ? hash : `/${hash}`;
+  }
+
+  return "/";
 }
 
 export default function useRoute() {
   const [path, setPath] = useState(readPath);
 
   useEffect(() => {
-    const onHashChange = () => setPath(readPath());
-    window.addEventListener("hashchange", onHashChange);
-    return () => window.removeEventListener("hashchange", onHashChange);
+    const handleRouteChange = () => {
+      setPath(readPath());
+    };
+
+    window.addEventListener("popstate", handleRouteChange);
+    window.addEventListener("hashchange", handleRouteChange);
+
+    return () => {
+      window.removeEventListener("popstate", handleRouteChange);
+      window.removeEventListener("hashchange", handleRouteChange);
+    };
   }, []);
 
-  // Scroll to top whenever the page changes (including Lenis scroll engine reset)
+  // Scroll to top on route change
   useEffect(() => {
     window.scrollTo(0, 0);
     if (window.__lenis) {
@@ -36,11 +54,19 @@ export default function useRoute() {
     if (window.__lenis) {
       window.__lenis.scrollTo(0, { immediate: true });
     }
-    if (window.location.hash === `#${to}`) {
-      return;
+
+    const target = to.startsWith("/") ? to : `/${to}`;
+
+    if (window.location.pathname !== target && window.location.hash !== `#${target}`) {
+      try {
+        window.history.pushState({}, "", target);
+        setPath(target);
+      } catch {
+        window.location.hash = target;
+      }
     }
-    window.location.hash = to;
   }, []);
 
   return { path, navigate };
 }
+

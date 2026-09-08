@@ -341,17 +341,19 @@ export default function BrandForgeAboutUsSection({ onOpenModal, navigate }) {
           </div>
 
           {/* PRIMARY CTA BUTTON DIRECTLY BELOW CONTENT */}
-          <motion.button
+          <motion.a
+            href="/about"
             className="bf-about-cta-btn"
             onClick={handleAboutClick}
             whileHover={{ scale: 1.04, y: -2 }}
             whileTap={{ scale: 0.98 }}
+            style={{ textDecoration: "none" }}
           >
             <span>ABOUT BRANDFORGE</span>
             <div className="cta-btn-arrow">
               <ArrowUpRight size={18} />
             </div>
-          </motion.button>
+          </motion.a>
         </motion.div>
 
         {/* RIGHT COLUMN: ORGANIC FLUID MASK BLOB & SCROLL GRAPHIC */}

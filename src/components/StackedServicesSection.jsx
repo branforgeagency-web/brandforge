@@ -319,10 +319,21 @@ export default function StackedServicesSection({ onSelectService, navigate }) {
                     <span className="card-number" style={{ color: service.color === "#EF4136" ? "#FFFFFF" : "#EF4136" }}>
                       {service.number}
                     </span>
-                    <button className="card-action-btn" onClick={(e) => { e.stopPropagation(); handleCardClick(service); }}>
+                    <a
+                      href={`/services/${service.slug}`}
+                      className="card-action-btn"
+                      onClick={(e) => {
+                        if (!e.ctrlKey && !e.metaKey) {
+                          e.preventDefault();
+                          e.stopPropagation();
+                          handleCardClick(service);
+                        }
+                      }}
+                      style={{ textDecoration: "none" }}
+                    >
                       <span>FORGE</span>
                       <ArrowRight size={14} />
-                    </button>
+                    </a>
                   </div>
                 </footer>
               </article>

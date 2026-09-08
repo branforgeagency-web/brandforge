@@ -96,6 +96,35 @@ export default function ServiceLandingPage({ slug = "seo-geo", onOpenModal, navi
             
             {/* LEFT COLUMN: BADGE, HEADING, PARAGRAPH & CTAS */}
             <div className="sg-hero-left">
+              {/* BREADCRUMB NAVIGATION FOR SEO CRAWLERS */}
+              <nav aria-label="Breadcrumb" className="sg-breadcrumb-nav">
+                <a
+                  href="/"
+                  onClick={(e) => {
+                    if (!e.ctrlKey && !e.metaKey && navigate) {
+                      e.preventDefault();
+                      navigate("/");
+                    }
+                  }}
+                >
+                  Home
+                </a>
+                <span className="sg-crumb-sep">/</span>
+                <a
+                  href="/#stacked-services"
+                  onClick={(e) => {
+                    if (!e.ctrlKey && !e.metaKey && navigate) {
+                      e.preventDefault();
+                      navigate("/");
+                    }
+                  }}
+                >
+                  Services
+                </a>
+                <span className="sg-crumb-sep">/</span>
+                <span className="sg-crumb-current">{data.eyebrow}</span>
+              </nav>
+
               <motion.div
                 className="sg-badge"
                 initial={{ opacity: 0, x: -40 }}
@@ -473,19 +502,27 @@ export default function ServiceLandingPage({ slug = "seo-geo", onOpenModal, navi
             viewport={{ once: false, amount: 0.2 }}
             transition={{ duration: 0.7 }}
           >
-            <span className="sg-section-tag">EXECUTION ROADMAP</span>
-            <h2 className="sg-section-title">4-STEP <span>ENGINEERING BLUEPRINT</span></h2>
-            <p className="sg-section-subtitle">How we take your project from initial strategy blueprint to live market dominance.</p>
+            <span className="sg-section-tag">{data.timeline?.tag || "EXECUTION ROADMAP"}</span>
+            <h2 className="sg-section-title">
+              {data.timeline?.title ? (
+                data.timeline.title
+              ) : (
+                <>4-STEP <span>ENGINEERING BLUEPRINT</span></>
+              )}
+            </h2>
+            <p className="sg-section-subtitle">
+              {data.timeline?.subtitle || "How we take your project from initial strategy blueprint to live market dominance."}
+            </p>
           </motion.div>
 
-          <div className="sg-timeline-stream">
+          <div className={`sg-timeline-stream ${data.timeline?.steps?.length === 6 ? "has-6-steps" : ""}`}>
             <div className="sg-timeline-line" />
-            {[
+            {(data.timeline?.steps || [
               { num: "01", title: "STRATEGY ARCHITECTURE", desc: "120-point diagnostic audit, competitor teardowns & roadmap alignment." },
               { num: "02", title: "UI/UX & PROTOTYPING", desc: "Custom 3D visual design tokens, glassmorphic UX & conversion triggers." },
               { num: "03", title: "SUB-SECOND ENGINEERING", desc: "Next.js/React front-end code, WebGL shaders & Core Web Vitals optimization." },
               { num: "04", title: "DEPLOYS & ROAS SCALE", desc: "Live production launch, CAPI tracking, GEO schemas & LTV scaling loops." },
-            ].map((step, sIdx) => (
+            ]).map((step, sIdx) => (
               <motion.div
                 key={step.num}
                 className="sg-timeline-step"
@@ -546,6 +583,68 @@ export default function ServiceLandingPage({ slug = "seo-geo", onOpenModal, navi
         </section>
       )}
 
+      {/* WHO WE HELP SECTION */}
+      {data.whoWeHelp && (
+        <section className="sg-section sg-who-section">
+          <div className="sg-container">
+            <motion.div
+              className="sg-section-header text-center"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: false, amount: 0.2 }}
+              transition={{ duration: 0.7 }}
+            >
+              <span className="sg-section-tag">{data.whoWeHelp.tag || "WHO WE HELP"}</span>
+              <h2 className="sg-section-title">{data.whoWeHelp.title}</h2>
+              {data.whoWeHelp.subtitle && (
+                <p className="sg-section-subtitle">{data.whoWeHelp.subtitle}</p>
+              )}
+            </motion.div>
+
+            {data.whoWeHelp.industries && (
+              <div className="sg-who-grid">
+                {data.whoWeHelp.industries.map((ind, idx) => (
+                  <motion.div
+                    key={ind.title}
+                    className="sg-who-card"
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: false, amount: 0.2 }}
+                    transition={{ duration: 0.5, delay: idx * 0.08 }}
+                  >
+                    <div className="sg-who-icon">
+                      <CheckCircle2 size={18} className="check-icon" />
+                    </div>
+                    <div className="sg-who-content">
+                      <h4>{ind.title}</h4>
+                      <p>{ind.desc}</p>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+            )}
+
+            {data.whoWeHelp.certifications && (
+              <div className="sg-cert-strip">
+                {data.whoWeHelp.certifications.map((cert, idx) => (
+                  <motion.div
+                    key={cert.label}
+                    className="sg-cert-badge"
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    viewport={{ once: false, amount: 0.2 }}
+                    transition={{ duration: 0.4, delay: idx * 0.1 }}
+                  >
+                    <ShieldCheck size={16} className="cert-icon" />
+                    <span>{cert.label}</span>
+                  </motion.div>
+                ))}
+              </div>
+            )}
+          </div>
+        </section>
+      )}
+
       {/* CARDLESS FAQ ACCORDION LIST */}
       <section className="sg-section sg-faq-section">
         <div className="sg-container">
@@ -590,6 +689,60 @@ export default function ServiceLandingPage({ slug = "seo-geo", onOpenModal, navi
                 </AnimatePresence>
               </motion.div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* RELATED SERVICES INTERNAL CROSS-LINKING SECTION */}
+      <section className="sg-section sg-related-services-section">
+        <div className="sg-container">
+          <motion.div
+            className="sg-section-header text-center"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: false, amount: 0.2 }}
+            transition={{ duration: 0.7 }}
+          >
+            <span className="sg-section-tag">COMPLEMENTARY FORGES</span>
+            <h2 className="sg-section-title">RELATED <span>GROWTH SYSTEMS</span></h2>
+            <p className="sg-section-subtitle">
+              Scale your brand faster by connecting {data.eyebrow} with our specialized revenue engines.
+            </p>
+          </motion.div>
+
+          <div className="sg-related-grid">
+            {Object.entries(servicesData)
+              .filter(([k]) => k !== slug)
+              .slice(0, 4)
+              .map(([k, srv], rIdx) => (
+                <motion.a
+                  key={k}
+                  href={`/services/${k}`}
+                  className="sg-related-card"
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: false, amount: 0.2 }}
+                  transition={{ duration: 0.5, delay: rIdx * 0.08 }}
+                  onClick={(e) => {
+                    if (!e.ctrlKey && !e.metaKey && navigate) {
+                      e.preventDefault();
+                      navigate(`/services/${k}`);
+                    }
+                  }}
+                >
+                  <div className="sg-related-num-badge">{srv.number}</div>
+                  <h4>{srv.eyebrow}</h4>
+                  <p>
+                    {typeof srv.subtitle === "string"
+                      ? srv.subtitle.slice(0, 85) + "..."
+                      : srv.subtitle[0]?.slice(0, 85) + "..."}
+                  </p>
+                  <div className="sg-related-link-text">
+                    <span>EXPLORE FORGE</span>
+                    <ArrowRight size={14} />
+                  </div>
+                </motion.a>
+              ))}
           </div>
         </div>
       </section>
@@ -1436,6 +1589,15 @@ const styles = `
     margin-top: 40px;
   }
 
+  .sg-timeline-stream.has-6-steps {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px 30px;
+  }
+
+  .sg-timeline-stream.has-6-steps .sg-timeline-line {
+    display: none;
+  }
+
   .sg-timeline-line {
     position: absolute;
     top: 24px;
@@ -1480,6 +1642,95 @@ const styles = `
     line-height: 1.5;
     margin: 0;
   }
+
+  /* WHO WE HELP SECTION */
+  .sg-who-section {
+    position: relative;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    background: linear-gradient(180deg, rgba(10, 10, 14, 0.4) 0%, rgba(239, 65, 54, 0.03) 100%);
+  }
+
+  .sg-who-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-bottom: 48px;
+  }
+
+  .sg-who-card {
+    padding: 24px;
+    border-radius: 16px;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.09);
+    backdrop-filter: blur(12px);
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .sg-who-card:hover {
+    border-color: rgba(239, 65, 54, 0.4);
+    background: rgba(239, 65, 54, 0.05);
+    transform: translateY(-4px);
+  }
+
+  .sg-who-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    background: rgba(239, 65, 54, 0.15);
+    border: 1px solid rgba(239, 65, 54, 0.35);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    color: #EF4136;
+    margin-top: 2px;
+  }
+
+  .sg-who-content h4 {
+    font-family: "Outfit", sans-serif;
+    font-size: 17px;
+    font-weight: 800;
+    color: #FFFFFF;
+    margin: 0 0 6px;
+  }
+
+  .sg-who-content p {
+    font-size: 13.5px;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.7);
+    margin: 0;
+  }
+
+  .sg-cert-strip {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 16px;
+    padding-top: 24px;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .sg-cert-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 20px;
+    border-radius: 999px;
+    background: rgba(239, 65, 54, 0.1);
+    border: 1px solid rgba(239, 65, 54, 0.3);
+    color: #FFFFFF;
+    font-size: 13.5px;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+  }
+
+  .sg-cert-badge .cert-icon {
+    color: #EF4136;
+  }
+
 
   /* CARDLESS FAQ */
   .sg-faq-stream {
@@ -1559,23 +1810,120 @@ const styles = `
     transform: translateY(-2px);
   }
 
-  @media (max-width: 992px) {
-    .sg-hero-grid { grid-template-columns: 1fr; }
-    .sg-metrics-strip { grid-template-columns: repeat(2, 1fr); }
-    .sg-timeline-stream { grid-template-columns: repeat(2, 1fr); gap: 40px 20px; }
-    .sg-timeline-line { display: none; }
-  @media (max-width: 992px) {
-    .sg-hero-grid { grid-template-columns: 1fr; }
-    .sg-metrics-strip { grid-template-columns: repeat(2, 1fr); }
-    .sg-timeline-stream { grid-template-columns: repeat(2, 1fr); gap: 40px 20px; }
-    .sg-timeline-line { display: none; }
-    .sg-matrix-row { grid-template-columns: 1fr; gap: 10px; }
+  /* BREADCRUMB NAVIGATION */
+  .sg-breadcrumb-nav {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.82rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+    font-family: "JetBrains Mono", monospace;
   }
 
-  @media (max-width: 600px) {
+  .sg-breadcrumb-nav a {
+    color: rgba(255, 255, 255, 0.6);
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+
+  .sg-breadcrumb-nav a:hover {
+    color: #EF4136;
+  }
+
+  .sg-crumb-sep {
+    color: rgba(255, 255, 255, 0.3);
+  }
+
+  .sg-crumb-current {
+    color: #EF4136;
+    text-transform: uppercase;
+  }
+
+  /* RELATED SERVICES CROSS-LINKING GRID */
+  .sg-related-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    margin-top: 40px;
+  }
+
+  .sg-related-card {
+    background: rgba(15, 15, 20, 0.65);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 18px;
+    padding: 24px 20px;
+    text-decoration: none;
+    color: #FFFFFF;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    backdrop-filter: blur(12px);
+  }
+
+  .sg-related-card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(239, 65, 54, 0.5);
+    background: rgba(239, 65, 54, 0.08);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6), 0 0 25px rgba(239, 65, 54, 0.15);
+  }
+
+  .sg-related-num-badge {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.78rem;
+    font-weight: 800;
+    color: #EF4136;
+    margin-bottom: 12px;
+  }
+
+  .sg-related-card h4 {
+    font-family: "Outfit", sans-serif;
+    font-size: 1.15rem;
+    font-weight: 800;
+    margin: 0 0 8px;
+    color: #FFFFFF;
+    letter-spacing: -0.01em;
+  }
+
+  .sg-related-card p {
+    font-size: 0.82rem;
+    line-height: 1.5;
+    color: rgba(255, 255, 255, 0.65);
+    margin: 0 0 16px;
+    flex-grow: 1;
+  }
+
+  .sg-related-link-text {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-family: "Outfit", sans-serif;
+    font-size: 0.75rem;
+    font-weight: 800;
+    color: #EF4136;
+    letter-spacing: 0.05em;
+  }
+
+  @media (max-width: 992px) {
+    .sg-hero-grid { grid-template-columns: 1fr; }
+    .sg-metrics-strip { grid-template-columns: repeat(2, 1fr); }
+    .sg-timeline-stream { grid-template-columns: repeat(2, 1fr); gap: 40px 20px; }
+    .sg-timeline-stream.has-6-steps { grid-template-columns: repeat(2, 1fr); gap: 30px 20px; }
+    .sg-timeline-line { display: none; }
+    .sg-matrix-row { grid-template-columns: 1fr; gap: 10px; }
+    .sg-who-grid { grid-template-columns: repeat(2, 1fr); }
+    .sg-related-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  @media (max-width: 640px) {
     .sg-metrics-strip { grid-template-columns: 1fr; }
     .sg-timeline-stream { grid-template-columns: 1fr; }
+    .sg-timeline-stream.has-6-steps { grid-template-columns: 1fr; }
     .sg-field-grid { grid-template-columns: 1fr; }
     .sg-col-compare { grid-template-columns: 1fr; }
+    .sg-who-grid { grid-template-columns: 1fr; }
+    .sg-related-grid { grid-template-columns: 1fr; }
   }
 `;
+

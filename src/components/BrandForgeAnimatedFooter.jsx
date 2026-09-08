@@ -222,15 +222,17 @@ export default function BrandForgeAnimatedFooter({ onOpenModal }) {
           >
             <h4 className="col-title">SERVICES</h4>
             <ul className="footer-link-list">
-              <li><a href="#/services/seo-geo">Search & GEO Supremacy</a></li>
-              <li><a href="#/services/web-foundry">3D Web Development</a></li>
-              <li><a href="#/services/paid-media">Paid Media Scaling</a></li>
-              <li><a href="#/services/viral-social">Viral Social Network</a></li>
-              <li><a href="#/services/cro-revenue">CRO Revenue Engine</a></li>
+              <li><a href="/services/seo-geo">SEO & GEO Supremacy</a></li>
+              <li><a href="/services/web-foundry">3D Web Development</a></li>
+              <li><a href="/services/paid-media">Paid Media Scaling</a></li>
+              <li><a href="/services/viral-social">Viral Social Network</a></li>
+              <li><a href="/services/cro-revenue">CRO Revenue Engine</a></li>
+              <li><a href="/seo-company-coimbatore">SEO Company Coimbatore</a></li>
+              <li><a href="/ppc-company-coimbatore">PPC Agency Coimbatore</a></li>
             </ul>
           </motion.div>
 
-          {/* COL 3: CAPABILITIES */}
+          {/* COL 3: CAPABILITIES & COMPANY */}
           <motion.div
             className="footer-col"
             initial={{ opacity: 0, y: 35 }}
@@ -238,13 +240,16 @@ export default function BrandForgeAnimatedFooter({ onOpenModal }) {
             viewport={{ once: false, amount: 0.2 }}
             transition={{ duration: 0.8, delay: 0.3, ease: SMOOTH_EASE }}
           >
-            <h4 className="col-title">CAPABILITIES</h4>
+            <h4 className="col-title">COMPANY</h4>
             <ul className="footer-link-list">
-              <li><a href="#/services/brand-anvil">Brand Growth Architecture</a></li>
-              <li><a href="#/services/visual-id">Visual Identity Forge</a></li>
-              <li><a href="#/services/commercial-video">Commercial Video Production</a></li>
-              <li><a href="#/services/inbox-edge">Inbox Retention Loops</a></li>
-              <li><a href="#/services/reputation-shield">Reputation Shield PR</a></li>
+              <li><a href="/">Home</a></li>
+              <li><a href="/about">Who We Are / About Us</a></li>
+              <li><a href="/contact">Contact & Strategy Consultation</a></li>
+              <li><a href="/services/brand-anvil">Brand Growth Architecture</a></li>
+              <li><a href="/services/visual-id">Visual Identity Forge</a></li>
+              <li><a href="/services/commercial-video">Commercial Video Production</a></li>
+              <li><a href="/services/inbox-edge">Inbox Retention Loops</a></li>
+              <li><a href="/services/reputation-shield">Reputation Shield PR</a></li>
             </ul>
           </motion.div>
 

@@ -296,8 +296,9 @@ const REVIEWS = [
   },
 ];
 
-export default function BrandForgeTestimonialsSection({ onOpenModal }) {
+export default function BrandForgeTestimonialsSection({ onOpenModal, theme }) {
   const [active, setActive] = useState(0);
+  const isBlackTheme = theme === "black";
 
   const nextSlide = () => {
     setActive((prev) => (prev + 1) % REVIEWS.length);
@@ -317,7 +318,7 @@ export default function BrandForgeTestimonialsSection({ onOpenModal }) {
   const current = REVIEWS[active];
 
   return (
-    <section className="bf-paperclip-testimonials">
+    <section className={`bf-paperclip-testimonials ${isBlackTheme ? "is-black-theme" : ""}`}>
       <style>{styles}</style>
       <KexsioCanvasBackground />
       <div className="kexsio-overlay" />
@@ -801,6 +802,52 @@ const styles = `
   .bf-cta-primary:hover {
     transform: translateY(-2px);
     box-shadow: 0 14px 40px rgba(239, 65, 54, 0.6);
+  }
+
+  /* ── BLACK THEME CUSTOMIZATION ── */
+  .is-black-theme {
+    background: #060509 !important;
+  }
+
+  .is-black-theme .testimonial {
+    background: #110F18 !important;
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.85), 0 0 35px rgba(239, 65, 54, 0.15) !important;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  }
+
+  .is-black-theme .testimonial:after {
+    border: 6px solid #EF4136 !important;
+  }
+
+  .is-black-theme .testimonial:before {
+    border-color: #EF4136 transparent transparent transparent !important;
+  }
+
+  .is-black-theme .quote {
+    background: #EF4136 !important;
+    color: #FFFFFF !important;
+  }
+
+  .is-black-theme .testimonial p {
+    color: #F5F3EF !important;
+  }
+
+  .is-black-theme .rating-stars {
+    color: #EF4136 !important;
+  }
+
+  .is-black-theme .rating-stars strong {
+    color: #FFFFFF !important;
+  }
+
+  .is-black-theme .source span {
+    color: #FFFFFF !important;
+  }
+
+  .is-black-theme .polaroid-frame {
+    border: 8px solid #1C1924 !important;
+    background: #1C1924 !important;
+    box-shadow: 0 14px 35px rgba(0, 0, 0, 0.7) !important;
   }
 
   @media (max-width: 640px) {

@@ -116,7 +116,8 @@ function buildParticles() {
   return p;
 }
 
-function BlackParticleGlobeCanvas() {
+function BlackParticleGlobeCanvas({ theme }) {
+  const isDark = theme === "black" || theme === "dark";
   const canvasRef = useRef(null);
 
   useEffect(() => {
@@ -267,13 +268,17 @@ function BlackParticleGlobeCanvas() {
         const x = P.px[i], y = P.py[i], s = P.ps[i];
 
         if (P.ph[i]) {
-          ctx.fillStyle = `rgba(255, 77, 77, ${a * 0.25})`;
+          ctx.fillStyle = isDark
+            ? `rgba(239, 65, 54, ${a * 0.6})`
+            : `rgba(255, 77, 77, ${a * 0.25})`;
           ctx.beginPath();
           ctx.arc(x, y, s * 2.5, 0, Math.PI * 2);
           ctx.fill();
         }
 
-        ctx.fillStyle = `rgba(20, 24, 38, ${a})`;
+        ctx.fillStyle = isDark
+          ? `rgba(255, 255, 255, ${a * 0.75})`
+          : `rgba(20, 24, 38, ${a})`;
         ctx.beginPath();
         ctx.arc(x, y, s, 0, Math.PI * 2);
         ctx.fill();
@@ -295,7 +300,7 @@ function BlackParticleGlobeCanvas() {
       canvas.removeEventListener("pointerdown", onMove);
       canvas.removeEventListener("touchmove", onTouchMove);
     };
-  }, []);
+  }, [isDark]);
 
   return (
     <canvas
@@ -315,7 +320,8 @@ function BlackParticleGlobeCanvas() {
 }
 
 /* ─── Creative Floating FAQ Card ─── */
-function FAQCard({ item, index, isOpen, onToggle, isMobile }) {
+function FAQCard({ item, index, isOpen, onToggle, isMobile, theme }) {
+  const isDark = theme === "black" || theme === "dark";
   const contentRef = useRef(null);
   const [height, setHeight] = useState(0);
 
@@ -339,15 +345,27 @@ function FAQCard({ item, index, isOpen, onToggle, isMobile }) {
         whileTap={{ scale: 0.99 }}
         style={{
           borderRadius: 22,
-          background: isOpen
+          background: isDark
+            ? isOpen
+              ? "rgba(22, 19, 30, 0.95)"
+              : "rgba(16, 14, 22, 0.75)"
+            : isOpen
             ? "rgba(255, 255, 255, 0.94)"
             : "rgba(255, 255, 255, 0.65)",
           backdropFilter: "blur(16px) saturate(180%)",
           WebkitBackdropFilter: "blur(16px) saturate(180%)",
-          border: isOpen
+          border: isDark
+            ? isOpen
+              ? "1.5px solid #EF4136"
+              : "1px solid rgba(255, 255, 255, 0.08)"
+            : isOpen
             ? "1.5px solid #FF4D4D"
             : "1px solid rgba(255, 255, 255, 0.8)",
-          boxShadow: isOpen
+          boxShadow: isDark
+            ? isOpen
+              ? "0 20px 48px -12px rgba(239, 65, 54, 0.25), inset 0 1px 0 0 rgba(255, 255, 255, 0.08)"
+              : "0 8px 32px 0 rgba(0, 0, 0, 0.45), inset 0 1px 0 0 rgba(255, 255, 255, 0.04)"
+            : isOpen
             ? "0 20px 48px -12px rgba(255, 77, 77, 0.22), inset 0 1px 0 0 rgba(255, 255, 255, 1)"
             : "0 8px 32px 0 rgba(31, 38, 135, 0.05), inset 0 1px 0 0 rgba(255, 255, 255, 0.9)",
           padding: isMobile ? "20px 18px" : "24px 28px",
@@ -367,8 +385,8 @@ function FAQCard({ item, index, isOpen, onToggle, isMobile }) {
               left: 0,
               bottom: 0,
               width: 4,
-              background: "linear-gradient(180deg, #FF4D4D 0%, #FF8A65 100%)",
-              boxShadow: "0 0 12px rgba(255, 77, 77, 0.8)",
+              background: "linear-gradient(180deg, #EF4136 0%, #FF8A65 100%)",
+              boxShadow: "0 0 12px rgba(239, 65, 54, 0.8)",
             }}
           />
         )}
@@ -392,8 +410,25 @@ function FAQCard({ item, index, isOpen, onToggle, isMobile }) {
                 fontWeight: 800,
                 letterSpacing: "0.08em",
                 textTransform: "uppercase",
-                color: isOpen ? "#FF4D4D" : "#9CA3AF",
-                background: isOpen ? "rgba(255,77,77,0.08)" : "rgba(0,0,0,0.03)",
+                color: isDark
+                  ? isOpen
+                    ? "#EF4136"
+                    : "#FFFFFF"
+                  : isOpen
+                  ? "#FF4D4D"
+                  : "#9CA3AF",
+                background: isDark
+                  ? isOpen
+                    ? "rgba(239,65,54,0.18)"
+                    : "rgba(255,255,255,0.08)"
+                  : isOpen
+                  ? "rgba(255,77,77,0.08)"
+                  : "rgba(0,0,0,0.03)",
+                border: isDark
+                  ? isOpen
+                    ? "1px solid rgba(239,65,54,0.45)"
+                    : "1px solid rgba(255,255,255,0.12)"
+                  : "none",
                 padding: "3px 10px",
                 borderRadius: 999,
                 marginBottom: 10,
@@ -408,7 +443,13 @@ function FAQCard({ item, index, isOpen, onToggle, isMobile }) {
                 fontFamily: "'Outfit', 'Inter', sans-serif",
                 fontSize: isMobile ? "1rem" : "1.12rem",
                 fontWeight: 800,
-                color: isOpen ? "#111827" : "#1F2937",
+                color: isDark
+                  ? isOpen
+                    ? "#FFFFFF"
+                    : "rgba(255, 255, 255, 0.95)"
+                  : isOpen
+                  ? "#111827"
+                  : "#1F2937",
                 lineHeight: 1.35,
                 margin: 0,
                 letterSpacing: "-0.01em",
@@ -423,8 +464,12 @@ function FAQCard({ item, index, isOpen, onToggle, isMobile }) {
           <motion.div
             animate={{
               rotate: isOpen ? 135 : 0,
-              background: isOpen ? "#FF4D4D" : "rgba(0,0,0,0.04)",
-              color: isOpen ? "#FFFFFF" : "#4B5563",
+              background: isOpen
+                ? "#EF4136"
+                : isDark
+                ? "rgba(255,255,255,0.1)"
+                : "rgba(0,0,0,0.04)",
+              color: "#FFFFFF",
             }}
             transition={{ duration: 0.3, ease: "easeOut" }}
             style={{
@@ -435,7 +480,8 @@ function FAQCard({ item, index, isOpen, onToggle, isMobile }) {
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
-              boxShadow: isOpen ? "0 4px 14px rgba(255,77,77,0.35)" : "none",
+              border: isDark ? "1px solid rgba(255,255,255,0.15)" : "none",
+              boxShadow: isOpen ? "0 4px 14px rgba(239,65,54,0.45)" : "none",
             }}
           >
             <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
@@ -467,7 +513,9 @@ function FAQCard({ item, index, isOpen, onToggle, isMobile }) {
               style={{
                 height: 1,
                 width: "100%",
-                background: "linear-gradient(90deg, rgba(255,77,77,0.2), transparent)",
+                background: isDark
+                  ? "linear-gradient(90deg, #EF4136 0%, rgba(255,255,255,0.2) 60%, transparent 100%)"
+                  : "linear-gradient(90deg, rgba(255,77,77,0.2), transparent)",
                 marginBottom: 16,
               }}
             />
@@ -476,7 +524,7 @@ function FAQCard({ item, index, isOpen, onToggle, isMobile }) {
                 fontFamily: "'Inter', sans-serif",
                 fontSize: isMobile ? "0.9rem" : "0.95rem",
                 lineHeight: 1.75,
-                color: "#4B5563",
+                color: isDark ? "rgba(255, 255, 255, 0.88)" : "#4B5563",
                 margin: 0,
               }}
             >
@@ -490,7 +538,8 @@ function FAQCard({ item, index, isOpen, onToggle, isMobile }) {
 }
 
 /* ─── Main FAQ Section ─── */
-export default function BrandForgeFAQ() {
+export default function BrandForgeFAQ({ theme }) {
+  const isDark = theme === "black" || theme === "dark";
   const [openIndex, setOpenIndex] = useState(null);
   const [isMobile, setIsMobile] = useState(false);
 
@@ -511,7 +560,7 @@ export default function BrandForgeFAQ() {
         position: "relative",
         width: "100%",
         padding: isMobile ? "70px 16px 90px" : "110px 24px 130px",
-        background: "#FBFBFC",
+        background: isDark ? "#060509" : "#FBFBFC",
         overflow: "hidden",
       }}
     >
@@ -525,7 +574,9 @@ export default function BrandForgeFAQ() {
           width: 500,
           height: 500,
           borderRadius: "50%",
-          background: "radial-gradient(circle, rgba(255,77,77,0.04) 0%, transparent 70%)",
+          background: isDark
+            ? "radial-gradient(circle, rgba(239,65,54,0.08) 0%, transparent 70%)"
+            : "radial-gradient(circle, rgba(255,77,77,0.04) 0%, transparent 70%)",
           filter: "blur(60px)",
           pointerEvents: "none",
         }}
@@ -539,7 +590,9 @@ export default function BrandForgeFAQ() {
           width: 450,
           height: 450,
           borderRadius: "50%",
-          background: "radial-gradient(circle, rgba(255,138,101,0.05) 0%, transparent 70%)",
+          background: isDark
+            ? "radial-gradient(circle, rgba(255,87,51,0.06) 0%, transparent 70%)"
+            : "radial-gradient(circle, rgba(255,138,101,0.05) 0%, transparent 70%)",
           filter: "blur(60px)",
           pointerEvents: "none",
         }}
@@ -568,14 +621,14 @@ export default function BrandForgeFAQ() {
               alignItems: "center",
               gap: 8,
               padding: "6px 18px",
-              background: "rgba(255,77,77,0.08)",
-              border: "1px solid rgba(255,77,77,0.2)",
+              background: isDark ? "rgba(239,65,54,0.12)" : "rgba(255,77,77,0.08)",
+              border: isDark ? "1px solid rgba(239,65,54,0.3)" : "1px solid rgba(255,77,77,0.2)",
               borderRadius: 999,
               fontFamily: "'Inter', sans-serif",
               fontSize: 11,
               fontWeight: 800,
               letterSpacing: "0.14em",
-              color: "#FF4D4D",
+              color: "#EF4136",
               textTransform: "uppercase",
               marginBottom: 20,
             }}
@@ -585,8 +638,8 @@ export default function BrandForgeFAQ() {
                 width: 6,
                 height: 6,
                 borderRadius: "50%",
-                background: "#FF4D4D",
-                boxShadow: "0 0 8px rgba(255,77,77,0.8)",
+                background: "#EF4136",
+                boxShadow: "0 0 8px rgba(239,65,54,0.8)",
               }}
             />
             Got Questions? We Have Answers
@@ -599,14 +652,14 @@ export default function BrandForgeFAQ() {
               fontWeight: 900,
               lineHeight: 1.08,
               letterSpacing: "-0.035em",
-              color: "#111827",
+              color: isDark ? "#FFFFFF" : "#111827",
               margin: "0 0 16px",
             }}
           >
             Frequently Asked{" "}
             <span
               style={{
-                background: "linear-gradient(135deg, #FF4D4D 0%, #FF8A65 100%)",
+                background: "linear-gradient(135deg, #EF4136 0%, #FF8A65 100%)",
                 WebkitBackgroundClip: "text",
                 WebkitTextFillColor: "transparent",
               }}
@@ -619,7 +672,7 @@ export default function BrandForgeFAQ() {
             style={{
               fontFamily: "'Inter', sans-serif",
               fontSize: "clamp(0.95rem, 1.2vw, 1.08rem)",
-              color: "#6B7280",
+              color: isDark ? "rgba(255, 255, 255, 0.65)" : "#6B7280",
               lineHeight: 1.65,
               maxWidth: 580,
               margin: "0 auto",
@@ -638,7 +691,7 @@ export default function BrandForgeFAQ() {
             flexWrap: "wrap",
           }}
         >
-          {/* Left — 3D Stage with Black Particle Globe */}
+          {/* Left — 3D Stage with Particle Globe */}
           <motion.div
             initial={{ opacity: 0, y: isMobile ? 20 : 0, x: isMobile ? 0 : -40 }}
             whileInView={{ opacity: 1, y: 0, x: 0 }}
@@ -667,8 +720,8 @@ export default function BrandForgeFAQ() {
                 overflow: "hidden",
               }}
             >
-              {/* Interactive Black Particle Globe behind image */}
-              <BlackParticleGlobeCanvas />
+              {/* Interactive Particle Globe behind image */}
+              <BlackParticleGlobeCanvas theme={theme} />
 
               {/* 3D Illustration Image */}
               <motion.img
@@ -684,7 +737,9 @@ export default function BrandForgeFAQ() {
                   position: "relative",
                   zIndex: 2,
                   transform: isMobile ? "none" : "translateX(-10px)",
-                  filter: "drop-shadow(0 16px 32px rgba(0,0,0,0.08))",
+                  filter: isDark
+                    ? "drop-shadow(0 16px 36px rgba(0,0,0,0.6))"
+                    : "drop-shadow(0 16px 32px rgba(0,0,0,0.08))",
                 }}
               />
             </div>
@@ -700,6 +755,7 @@ export default function BrandForgeFAQ() {
                 isOpen={openIndex === i}
                 onToggle={() => handleToggle(i)}
                 isMobile={isMobile}
+                theme={theme}
               />
             ))}
           </div>

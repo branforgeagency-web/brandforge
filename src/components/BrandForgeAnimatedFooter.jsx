@@ -584,19 +584,22 @@ const styles = `
 
 .newsletter-input {
   flex-grow: 1;
-  background: rgba(20, 20, 22, 0.8);
-  border: 1px solid rgba(239, 65, 54, 0.3);
+  background: rgba(6, 5, 9, 0.5);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.16);
   border-radius: 12px;
   padding: 12px 16px;
   color: #FFFFFF;
   font-family: var(--font-body);
   font-size: 0.88rem;
   outline: none;
-  transition: border-color 0.2s ease;
+  transition: border-color 0.2s ease, background 0.2s ease;
 }
 
 .newsletter-input:focus {
   border-color: #EF4136;
+  background: rgba(6, 5, 9, 0.75);
   box-shadow: none;
 }
 

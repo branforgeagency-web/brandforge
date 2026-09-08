@@ -5,6 +5,23 @@ export default function CommandPaletteModal({ isOpen, onClose }) {
   const [query, setQuery] = useState('');
 
   useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = "hidden";
+      document.documentElement.style.overflow = "hidden";
+      if (window.__lenis) window.__lenis.stop();
+    } else {
+      document.body.style.overflow = "";
+      document.documentElement.style.overflow = "";
+      if (window.__lenis) window.__lenis.start();
+    }
+    return () => {
+      document.body.style.overflow = "";
+      document.documentElement.style.overflow = "";
+      if (window.__lenis) window.__lenis.start();
+    };
+  }, [isOpen]);
+
+  useEffect(() => {
     const handleKeyDown = (e) => {
       if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'k') {
         e.preventDefault();

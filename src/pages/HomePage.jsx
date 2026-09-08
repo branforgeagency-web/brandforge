@@ -57,9 +57,9 @@ export default function HomePage({ onOpenModal, navigate }) {
         <BrandForgeTestimonialsSection onOpenModal={onOpenModal} />
       </div>
 
-      {/* BRANDFORGE FAQ SECTION */}
+      {/* BRANDFORGE FAQ SECTION (BLACK THEME WITH RED & WHITE ACCENTS) */}
       <div id="faq">
-        <BrandForgeFAQ />
+        <BrandForgeFAQ theme="black" />
       </div>
 
       {/* BRANDFORGE CREATIVE SCROLL-ANIMATED FOOTER */}

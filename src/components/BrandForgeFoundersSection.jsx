@@ -38,8 +38,6 @@ export default function BrandForgeFoundersSection() {
   const leftPhotoY = useTransform(smoothProgress, [0, 0.45, 1], ["62%", "0%", "-6%"]);
   const rightPhotoY = useTransform(smoothProgress, [0, 0.45, 1], ["62%", "0%", "6%"]);
 
-  const glowScale = useTransform(smoothProgress, [0, 0.5, 1], [0.85, 1.15, 0.85]);
-
   // Extra scroll-driven motion for the centre content
   const contentY = useTransform(smoothProgress, [0, 1], ["36px", "-36px"]);
   const badgeScale = useTransform(smoothProgress, [0, 0.14], [0.7, 1]);
@@ -57,9 +55,6 @@ export default function BrandForgeFoundersSection() {
         <div className="bf-founders-bg-overlay" />
         <div className="bf-founders-bg-radial-vignette" />
       </div>
-
-      <motion.div className="bf-founders-glow-a" style={{ scale: glowScale }} aria-hidden="true" />
-      <div className="bf-founders-glow-b" aria-hidden="true" />
 
       <div className="bf-founders-stage">
         {/* ── Left founder ── */}
@@ -277,30 +272,6 @@ const styles = `
     );
   }
 
-  .bf-founders-glow-a {
-    position: absolute;
-    top: 8%;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 640px;
-    height: 640px;
-    border-radius: 50%;
-    background: radial-gradient(circle, rgba(239, 65, 54, 0.14), transparent 70%);
-    filter: blur(90px);
-    z-index: 0;
-    pointer-events: none;
-  }
-
-  .bf-founders-glow-b {
-    position: absolute;
-    inset: 0;
-    z-index: 0;
-    pointer-events: none;
-    background:
-      radial-gradient(ellipse at 4% 90%, rgba(239, 65, 54, 0.08), transparent 32%),
-      radial-gradient(ellipse at 96% 10%, rgba(239, 65, 54, 0.08), transparent 32%);
-  }
-
   .bf-founders-stage {
     position: relative;
     z-index: 2;
@@ -414,7 +385,6 @@ const styles = `
     height: 6px;
     border-radius: 50%;
     background: var(--red);
-    box-shadow: 0 0 8px var(--red);
   }
 
   .bf-founders-heading {

@@ -919,24 +919,22 @@ const styles = `
   .sg-inline-form-wrap {
     position: relative;
     padding: clamp(24px, 3vw, 36px) clamp(20px, 2.5vw, 32px);
-    background: linear-gradient(135deg, rgba(18, 18, 24, 0.82) 0%, rgba(8, 8, 12, 0.92) 100%);
+    background: rgba(10, 8, 14, 0.35);
     border-radius: 24px;
-    border: none;
-    backdrop-filter: blur(24px);
-    -webkit-backdrop-filter: blur(24px);
+    border: 1px solid rgba(239, 65, 54, 0.35);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
     box-shadow: 
-      0 20px 50px rgba(0, 0, 0, 0.8),
-      0 0 40px rgba(239, 65, 54, 0.12),
-      inset 0 0 20px rgba(239, 65, 54, 0.04);
+      0 20px 60px rgba(0, 0, 0, 0.5),
+      0 0 35px rgba(239, 65, 54, 0.08);
     overflow: hidden;
     transition: all 0.35s ease;
   }
 
   .sg-inline-form-wrap:hover {
     box-shadow: 
-      0 25px 60px rgba(0, 0, 0, 0.9),
-      0 0 50px rgba(239, 65, 54, 0.2),
-      inset 0 0 30px rgba(239, 65, 54, 0.06);
+      0 25px 60px rgba(0, 0, 0, 0.7),
+      0 0 50px rgba(239, 65, 54, 0.18);
   }
 
   .sg-inline-form-wrap::before {
@@ -946,7 +944,7 @@ const styles = `
     right: 0;
     width: 160px;
     height: 160px;
-    background: radial-gradient(circle, rgba(239, 65, 54, 0.25) 0%, transparent 70%);
+    background: radial-gradient(circle, rgba(239, 65, 54, 0.2) 0%, transparent 70%);
     filter: blur(30px);
     pointer-events: none;
   }
@@ -958,7 +956,7 @@ const styles = `
     left: -40px;
     width: 140px;
     height: 140px;
-    background: radial-gradient(circle, rgba(239, 65, 54, 0.15) 0%, transparent 70%);
+    background: radial-gradient(circle, rgba(239, 65, 54, 0.12) 0%, transparent 70%);
     filter: blur(35px);
     pointer-events: none;
   }
@@ -980,6 +978,7 @@ const styles = `
     margin: 0 0 6px;
     color: #FFFFFF;
     letter-spacing: -0.01em;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.7);
   }
 
   .sg-form-header p {
@@ -1004,8 +1003,10 @@ const styles = `
   .sg-input-line, .sg-select-line, .sg-textarea-line {
     width: 100%;
     padding: 12px 14px;
-    background: rgba(255, 255, 255, 0.04);
-    border: 1px solid rgba(255, 255, 255, 0.12);
+    background: rgba(6, 5, 9, 0.5);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.16);
     border-radius: 10px;
     color: #FFFFFF;
     font-size: 13.5px;
@@ -1027,7 +1028,7 @@ const styles = `
   }
 
   .sg-input-line:focus, .sg-select-line:focus, .sg-textarea-line:focus {
-    background: rgba(239, 65, 54, 0.06);
+    background: rgba(6, 5, 9, 0.75);
     border-color: #EF4136;
     box-shadow: 0 0 16px rgba(239, 65, 54, 0.35), inset 0 0 8px rgba(239, 65, 54, 0.1);
   }

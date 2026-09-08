@@ -37,11 +37,23 @@ export default function TransformationModal({ isOpen, onClose }) {
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = "hidden";
+      document.documentElement.style.overflow = "hidden";
+      if (window.__lenis) {
+        window.__lenis.stop();
+      }
     } else {
       document.body.style.overflow = "";
+      document.documentElement.style.overflow = "";
+      if (window.__lenis) {
+        window.__lenis.start();
+      }
     }
     return () => {
       document.body.style.overflow = "";
+      document.documentElement.style.overflow = "";
+      if (window.__lenis) {
+        window.__lenis.start();
+      }
     };
   }, [isOpen]);
 
@@ -258,11 +270,11 @@ const styles = `
     width: 100%;
     max-width: 460px;
     padding: clamp(24px, 5vw, 36px);
-    background: rgba(10, 8, 14, 0.42);
-    backdrop-filter: blur(18px);
-    -webkit-backdrop-filter: blur(18px);
-    border: 1px solid rgba(239, 65, 54, 0.38);
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6), 0 0 35px rgba(239, 65, 54, 0.1);
+    background: rgba(10, 8, 14, 0.35);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(239, 65, 54, 0.35);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5), 0 0 35px rgba(239, 65, 54, 0.08);
     border-radius: 20px;
     color: #FFFFFF;
     font-family: "Outfit", "Inter", sans-serif;

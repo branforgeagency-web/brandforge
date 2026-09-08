@@ -31,6 +31,14 @@ const ROUTES_META = {
     title: "Best PPC Agency in Coimbatore | Paid Ads & ROAS Scaling – Brand Forge",
     description: "Brand Forge is a top performance marketing & PPC company in Coimbatore managing Google Ads, Meta Ads, and omnichannel paid media for maximum ROAS.",
   },
+  "/website-development-company-coimbatore": {
+    title: "Website Development Company in Coimbatore | BrandForge",
+    description: "Need a website development company in Coimbatore? BrandForge builds fast, SEO-ready websites that convert. Get a free website consultation today.",
+  },
+  "/web-development-company-coimbatore": {
+    title: "Website Development Company in Coimbatore | BrandForge",
+    description: "Need a website development company in Coimbatore? BrandForge builds fast, SEO-ready websites that convert. Get a free website consultation today.",
+  },
   "/services/seo-geo": {
     title: "SEO Company in Coimbatore | SEO & GEO Services – Brand Forge",
     description: "Brand Forge is a trusted SEO company in Coimbatore offering SEO, GEO (Generative Engine Optimization), and local search services to rank higher on Google and AI search engines.",
@@ -40,8 +48,8 @@ const ROUTES_META = {
     description: "Scale your revenue across Meta, Google, TikTok, and LinkedIn with algorithmic bidding, dynamic retargeting, and high-converting ad creative.",
   },
   "/services/web-foundry": {
-    title: "3D Web Development & Sub-Second WebGL Experiences – Brand Forge",
-    description: "Turn visitor attention into high-converting revenue with sub-second loading speeds, custom 3D WebGL motion shaders, and responsive UI architecture.",
+    title: "Website Development Company in Coimbatore | BrandForge",
+    description: "Need a website development company in Coimbatore? BrandForge builds fast, SEO-ready websites that convert. Get a free website consultation today.",
   },
   "/services/viral-social": {
     title: "Viral Social Media Growth & Content Engine – Brand Forge",

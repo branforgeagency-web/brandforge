@@ -96,35 +96,6 @@ export default function ServiceLandingPage({ slug = "seo-geo", onOpenModal, navi
             
             {/* LEFT COLUMN: BADGE, HEADING, PARAGRAPH & CTAS */}
             <div className="sg-hero-left">
-              {/* BREADCRUMB NAVIGATION FOR SEO CRAWLERS */}
-              <nav aria-label="Breadcrumb" className="sg-breadcrumb-nav">
-                <a
-                  href="/"
-                  onClick={(e) => {
-                    if (!e.ctrlKey && !e.metaKey && navigate) {
-                      e.preventDefault();
-                      navigate("/");
-                    }
-                  }}
-                >
-                  Home
-                </a>
-                <span className="sg-crumb-sep">/</span>
-                <a
-                  href="/#stacked-services"
-                  onClick={(e) => {
-                    if (!e.ctrlKey && !e.metaKey && navigate) {
-                      e.preventDefault();
-                      navigate("/");
-                    }
-                  }}
-                >
-                  Services
-                </a>
-                <span className="sg-crumb-sep">/</span>
-                <span className="sg-crumb-current">{data.eyebrow}</span>
-              </nav>
-
               <motion.div
                 className="sg-badge"
                 initial={{ opacity: 0, x: -40 }}
@@ -146,6 +117,8 @@ export default function ServiceLandingPage({ slug = "seo-geo", onOpenModal, navi
               >
                 {data.slug === "seo-geo" ? (
                   <>Best SEO Company in Coimbatore for <span>Google & AI Search Rankings</span></>
+                ) : data.slug === "web-foundry" ? (
+                  <>Website Development Company in Coimbatore That Builds <span>Sites That Sell</span></>
                 ) : data.title.includes("/") ? (
                   <>{data.title.split("/")[0]} / <span>{data.title.split("/")[1]}</span></>
                 ) : (

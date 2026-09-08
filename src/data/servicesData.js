@@ -417,40 +417,260 @@ export const servicesData = {
 
   "web-foundry": {
     slug: "web-foundry",
+    urlSlug: "/website-development-company-coimbatore",
+    metaTitle: "Website Development Company in Coimbatore | BrandForge",
+    metaDescription: "Need a website development company in Coimbatore? BrandForge builds fast, SEO-ready websites that convert. Get a free website consultation today.",
     number: "03",
-    eyebrow: "WEB FOUNDRY / 3D EXPERIENCE",
-    title: "SUB-SECOND WEB PLATFORMS & 3D VISUAL WORLDS",
-    subtitle: "We build ultra-fast React, Vite, and Next.js web applications with 3D WebGL motion that convert visitors into enterprise revenue.",
+    eyebrow: "Website Development Company in Coimbatore | Web Foundry by BrandForge",
+    title: "Website Development Company in Coimbatore That Builds Sites That Sell",
+    heroButtonText: "Get a Free Website Consultation →",
+    subtitle: [
+      "A slow, outdated website quietly costs you customers every single day. If your site loads slowly, looks dated on mobile, or doesn't turn visitors into enquiries, the design is the problem — not your business.",
+      "BrandForge is a website development company in Coimbatore that builds fast, mobile-first, SEO-ready websites designed to convert. Our web studio, Web Foundry, handles everything from a simple business site to a full e-commerce store — built to load quickly, rank on Google, and turn clicks into leads."
+    ],
+    bannerBg: "/banner-web-dev.png",
     icon: Box,
     metrics: [
-      { value: "<200ms", label: "First Contentful Paint", desc: "Instantaneous page load benchmark" },
-      { value: "100/100", label: "Lighthouse Score", desc: "Perfect desktop & mobile web score" },
-      { value: "+210%", label: "Conversion Rate Lift", desc: "Post-rebuild checkout & lead conversion" },
-      { value: "60-120fps", label: "WebGL Motion Smoothness", desc: "Butter-smooth 3D canvas interaction" },
+      { value: "< 1.8s", label: "Mobile Load Speed", desc: "Tested on live mobile 4G networks" },
+      { value: "100/100", label: "Lighthouse Performance", desc: "Google Core Web Vitals benchmark" },
+      { value: "+240%", label: "Mobile Enquiries Surge", desc: "Average post-launch conversion lift" },
+      { value: "100%", label: "SEO-Ready Code", desc: "Clean semantic markup & schema from Day 1" },
     ],
-    matrixTag: "DIGITAL ARCHITECTURE",
-    matrixTitle: "SLOW WORDPRESS VS BRANDFORGE 3D WEB FOUNDRY",
-    matrixSubtitle: "Ditch bloated templates for custom, sub-second 3D interactive web experiences.",
+    whyChooseUs: {
+      tag: "THE REAL COST OF A BAD SITE",
+      title: "Why Your Website Is Losing You Customers",
+      description: "Most business websites in Coimbatore fail for the same few reasons. Fixing them is where growth starts. A good website fixes all five — that's the difference between a site that just exists and one that actually earns.",
+      leadIn: "Here are the 5 critical reasons your current site is leaking customers every day:",
+      points: [
+        "It loads too slowly — visitors leave before it even opens (Google data shows over 53% of mobile visits are abandoned if pages take over 3 seconds).",
+        "It breaks on mobile, where over 80% of your customer traffic in Coimbatore comes from.",
+        "It has no clear call to action, so visitors browse aimlessly and leave without contacting.",
+        "It isn't built for SEO, so Google never crawls, indexes, or shows it to high-intent buyers.",
+        "It looks dated, which quietly tells premium buyers you're behind the times."
+      ]
+    },
+    matrixTag: "CRITICAL FUNDAMENTALS",
+    matrixTitle: "WHAT MAKES THE BEST WEBSITE DEVELOPMENT COMPANY IN COIMBATORE?",
+    matrixSubtitle: "If you're comparing agencies, look past the price tag. The best website development company in Coimbatore is the one that gets these fundamentals right:",
     matrixRows: [
-      { feature: "Performance & Speed", traditional: "Bloated 5s load times & plugin lag", brandforge: "Sub-200ms instant load React/Vite architecture" },
-      { feature: "Visual Experience", traditional: "Generic static flat templates", brandforge: "Custom 3D WebGL interactive canvas & glassmorphism" },
-      { feature: "Security & Uptime", traditional: "Constant plugin vulnerability patches", brandforge: "Enterprise serverless edge infrastructure" },
-      { feature: "Mobile UX", traditional: "Clunky responsive layout breaks", brandforge: "Touch-optimized 120fps mobile motion design" },
+      {
+        feature: "Speed & Performance",
+        traditional: "Bloated templates taking 6–10s to load on mobile data",
+        brandforge: "Pages that load in under 3 seconds on mobile data (verified on Google PageSpeed Insights)"
+      },
+      {
+        feature: "SEO-Ready Code",
+        traditional: "Messy spaghetti code with missing meta tags and zero schema",
+        brandforge: "Clean semantic HTML & schema markup structured so Google can index and rank you"
+      },
+      {
+        feature: "Mobile-First Design",
+        traditional: "Desktop layouts shrunken down to mobile screens with broken buttons",
+        brandforge: "Engineered for phones first with thumb-friendly navigation and touch responsiveness"
+      },
+      {
+        feature: "Conversion Focus",
+        traditional: "Vague artistic layouts with hidden contact forms and zero CTAs",
+        brandforge: "Clear CTAs, frictionless enquiry forms, and instant WhatsApp & click-to-call buttons"
+      },
+      {
+        feature: "Ongoing Support",
+        traditional: "Agency vanishes after launch; zero help when plugins break",
+        brandforge: "Direct developer support line, automated cloud backups, and proactive maintenance"
+      }
     ],
+    pillarsTag: "FULL-STACK CAPABILITIES",
+    pillarsTitle: "Website Development Services We Offer",
+    pillarsSubtitle: "We don't do one-size-fits-all. We build the right type of site engineered for your exact business goals.",
     pillars: [
-      { icon: Box, tag: "3D WEBGL", title: "Interactive 3D Three.js Motion", description: "Immersive 3D product visualizers, shader particle fields, and real-time WebGL ambient lights.", deliverables: ["Three.js Custom Shaders", "3D Product Renderers", "GPU Hardware Acceleration"] },
-      { icon: Zap, tag: "REACT/NEXT", title: "Next-Gen React & Vite Engine", description: "Ultra-fast single-page web applications built on modern JavaScript frameworks with zero bloat.", deliverables: ["Clean Modular Code", "Sub-Second State Management", "Serverless Edge Routing"] },
-      { icon: Gauge, tag: "SPEED", title: "Sub-200ms Core Web Vitals", description: "100/100 Google Lighthouse scores to boost SEO rankings and visitor retention.", deliverables: ["Code Splitting", "WebP/AVIF Asset Optimization", "CDN Edge Caching"] },
-      { icon: ShieldCheck, tag: "ENTERPRISE", title: "Enterprise Security & SLA", description: "Bank-grade SSL, DDOS shield protection, and 99.99% uptime SLA guarantees.", deliverables: ["Cloudflare Enterprise", "Automated Daily Backups", "Zero-Downtime Deploys"] },
-      { icon: Layers, tag: "DESIGN SYSTEM", title: "Custom UI/UX Glass Design System", description: " Bespoke design system with glowing capsules, micro-interactions, and magnetic cursors.", deliverables: ["Figma Design Tokens", "Tailored Component Library", "Dark & Light Mode Engine"] },
-      { icon: TrendingUp, tag: "CRO UX", title: "Conversion-Focused Architecture", description: "Strategic layout placement engineered to guide user eye-flow directly to action buttons.", deliverables: ["Frictionless Checkout", "One-Click Lead Modals", "Heatmap-Tested Funnels"] },
+      {
+        icon: Globe,
+        tag: "TRUST & ENQUIRIES",
+        title: "Business Websites",
+        description: "Professional company sites that build enterprise trust, explain your capabilities clearly, and generate consistent inbound enquiries from high-intent clients.",
+        deliverables: [
+          "Brand positioning & high-converting copywriting",
+          "Mobile-optimized service & portfolio pages",
+          "Prominent WhatsApp and click-to-call triggers",
+          "Instant lead capture & CRM notification sync"
+        ]
+      },
+      {
+        icon: ShieldCheck,
+        tag: "ONLINE STORES",
+        title: "E-Commerce Websites",
+        description: "Online stores with secure payment gateways (Razorpay, Stripe, UPI), dynamic product catalogues, category filtering, cart systems, and frictionless checkout.",
+        deliverables: [
+          "Frictionless 1-page checkout experience",
+          "Automated inventory & order management",
+          "Secure payment gateway & UPI integration",
+          "Abandoned cart recovery & retargeting loops"
+        ]
+      },
+      {
+        icon: Target,
+        tag: "HIGH-ROAS FUNNELS",
+        title: "Landing Pages",
+        description: "Single high-converting pages purpose-built for Google Ads and Meta ad campaigns to maximize conversion rate and drop your blended cost per lead.",
+        deliverables: [
+          "A/B hook testing & variant framework",
+          "Above-the-fold lead form architecture",
+          "Sub-second mobile loading speed (<1.8s)",
+          "Direct pixel sync with Meta CAPI & Google Ads"
+        ]
+      },
+      {
+        icon: Cpu,
+        tag: "CUSTOM SOFTWARE",
+        title: "Custom Web Applications",
+        description: "Custom dashboards, online booking systems, customer portals, and internal business tools built on modern React, Node.js, and serverless edge databases.",
+        deliverables: [
+          "Custom React/Vite single-page architecture",
+          "Role-based authentication & data security",
+          "Automated database synchronizations",
+          "Scalable serverless API integrations"
+        ]
+      },
+      {
+        icon: Layers,
+        tag: "CMS FREEDOM",
+        title: "WordPress Development",
+        description: "Easy-to-edit WordPress & headless CMS websites with custom Gutenberg blocks that your internal team can update yourself without touching a line of code.",
+        deliverables: [
+          "Custom lightweight block themes (zero bloated plugins)",
+          "Hardened security, SSL & daily backups",
+          "Intuitive drag-and-drop page editor",
+          "Staff training video walkthroughs"
+        ]
+      },
+      {
+        icon: Zap,
+        tag: "MODERNIZATION",
+        title: "Website Redesign",
+        description: "Modernizing slow, outdated sites without losing existing SEO rankings. We overhaul visual aesthetics, mobile responsiveness, and page speed while preserving URL structure.",
+        deliverables: [
+          "Comprehensive 301 SEO redirect mapping",
+          "Google Core Web Vitals speed overhaul",
+          "Modern responsive 2026 UI/UX design",
+          "Brand authority & conversion rate refresh"
+        ]
+      },
+      {
+        icon: Gauge,
+        tag: "PERFORMANCE",
+        title: "Speed & SEO Optimization",
+        description: "Making an existing website significantly faster and search-ready. We eliminate render-blocking code, compress assets, and optimize technical infrastructure for Google ranking.",
+        deliverables: [
+          "Lighthouse 95+ performance optimization",
+          "Image & JavaScript code minification",
+          "Cloudflare CDN edge caching setup",
+          "Structured schema markup injection"
+        ]
+      },
+      {
+        icon: ShieldCheck,
+        tag: "24/7 PEACE OF MIND",
+        title: "Maintenance & Support",
+        description: "Ongoing updates, daily cloud backups, security monitoring, and direct technical help handled for you so your site is always live, fast, and secure.",
+        deliverables: [
+          "Automated daily cloud backups",
+          "Malware scanning & firewall protection",
+          "24/7 uptime & server monitoring",
+          "Priority developer support line"
+        ]
+      }
     ],
+    differentiators: {
+      tag: "THE BRANDFORGE ADVANTAGE",
+      title: "Why Businesses Choose BrandForge",
+      subtitle: "As a website development company in Coimbatore that also runs branding, SEO, and ads in-house, we don't just hand over a site and disappear. Your website is built to work with everything else that drives your growth.",
+      items: [
+        {
+          title: "Built for Speed and Google Ranking from Day One",
+          description: "Clean code structure, sub-2s mobile loading, and complete technical SEO foundation built into every page from Day 1.",
+          icon: Search
+        },
+        {
+          title: "Mobile-First, So It Looks Sharp on Every Phone",
+          description: "Built for mobile screens and thumbs first, ensuring razor-sharp typography and effortless navigation on every smartphone.",
+          icon: Globe
+        },
+        {
+          title: "Designed to Convert Visitors into Leads, Not Just Look Pretty",
+          description: "Strategic layout hierarchy, friction-free forms, and prominent call/WhatsApp buttons that turn casual clicks into real enquiries.",
+          icon: TrendingUp
+        },
+        {
+          title: "Connected to Our In-House SEO and Ads Teams",
+          description: "Seamlessly connected to our SEO services (Rank Forge) and PPC services (Ignition Ads) for unified digital growth.",
+          icon: Zap
+        },
+        {
+          title: "Clear Timelines and Honest Pricing — No Surprises",
+          description: "Fixed transparent quotes, milestone-based deliverables, and zero hidden charges.",
+          icon: ShieldCheck
+        }
+      ]
+    },
+    timeline: {
+      tag: "OUR WEB DEVELOPMENT PROCESS",
+      title: "Our 6-Step Web Development Process",
+      subtitle: "A transparent, milestone-driven framework that takes your website from initial concept to high-converting launch.",
+      steps: [
+        { num: "01", title: "DISCOVERY", desc: "We learn your business, target audience, competitive landscape, and revenue goals." },
+        { num: "02", title: "PLAN & WIREFRAME", desc: "Structure and page layout wireframes agreed before visual design begins." },
+        { num: "03", title: "DESIGN", desc: "A modern, bespoke look that matches your brand and commands instant authority." },
+        { num: "04", title: "BUILD", desc: "Fast, clean, SEO-ready development with sub-second loading speed." },
+        { num: "05", title: "TEST & LAUNCH", desc: "Checked on every mobile device, browser, and screen size, then go live." },
+        { num: "06", title: "SUPPORT", desc: "Updates, backups, and developer help whenever you need it." }
+      ]
+    },
+    whoWeHelp: {
+      tag: "WHO WE BUILD FOR",
+      title: "Who We Build For Across Coimbatore & Tamil Nadu",
+      subtitle: "We build websites for coaching institutes, clinics and hospitals, retail and e-commerce brands, real estate, manufacturers, and local service businesses across Coimbatore and Tamil Nadu. If your customers are searching online, you need a site that shows up and closes.",
+      industries: [
+        { title: "Coaching & Education Institutes", desc: "High-trust admissions portals, course syllabi, and fast enrollment enquiry funnels for academies in Coimbatore." },
+        { title: "Clinics & Hospitals", desc: "Patient-friendly healthcare websites with doctor profiles, treatment details, and instant appointment booking." },
+        { title: "Retail & E-Commerce Brands", desc: "Lightning-fast online stores with secure checkout, product catalogues, and mobile shopping experiences." },
+        { title: "Real Estate & Builders", desc: "Luxury project showcases, floor plans, virtual tours, and high-ticket site visit lead funnels." },
+        { title: "Manufacturers & Industrialists", desc: "B2B industrial websites showcasing precision machinery, ISO certifications, and RFQ enquiry forms." },
+        { title: "Local Service Businesses", desc: "Direct phone calls and quote requests for interior designers, solar companies, modular kitchens, and local pros." }
+      ],
+      certifications: [
+        { label: "Google PageSpeed Insights Certified (<3s Mobile Load)" },
+        { label: "Google Search Central SEO-Ready Architecture" },
+        { label: "Real Client Metric: Cut Load Time from 6s to 1.8s" },
+        { label: "Reviewed by BalaMurali, Lead Developer & Technical Architect, Web Foundry" }
+      ]
+    },
     faqs: [
-      { q: "What tech stack do you use for web development?", a: "We build using React, Vite, Next.js, Three.js, GSAP, and Framer Motion combined with high-performance CSS and serverless edge deployment." },
-      { q: "Will 3D animations slow down our website?", a: "Never. We use custom GLSL WebGL shaders and GPU hardware acceleration with IntersectionObserver viewport throttling to guarantee 60-120fps performance." },
-      { q: "Can we easily edit text and images after launch?", a: "Yes. We integrate headless CMS platforms (like Sanity or Contentful) so your team can update content without writing code." },
-      { q: "How long does a custom 3D web platform take to build?", a: "A custom high-tech website typically takes 3 to 6 weeks from initial design blueprint to live production launch." },
+      {
+        q: "How much does website development cost in Coimbatore?",
+        a: "It depends on the type and size of the site. A simple business website costs less than an e-commerce store or custom web app. We give a clear, fixed quote after understanding your needs — no hidden charges."
+      },
+      {
+        q: "How long does it take to build a website?",
+        a: "A standard business website usually takes 2 to 4 weeks. E-commerce and custom builds take longer. We share a clear timeline before we start so you always know what to expect."
+      },
+      {
+        q: "Will my website show up on Google?",
+        a: "We build every site SEO-ready — with clean code, fast loading, and proper structure. That gives Google the foundation to rank you, though top rankings also need ongoing SEO and time."
+      },
+      {
+        q: "Do you redesign existing websites?",
+        a: "Yes. We modernize slow or outdated sites and improve speed, mobile experience, and conversions — carefully, so you don't lose your existing Google rankings."
+      },
+      {
+        q: "Will my website work on mobile phones?",
+        a: "Always. We design mobile-first, because most visitors in Coimbatore browse on their phones. Your site will look and work perfectly on every screen size."
+      }
     ],
+    bottomCta: {
+      title: "Get a Free Website Consultation Today",
+      subtitle: "We'll review your current site (or your idea) and show you exactly what a high-converting website would look like for your business.",
+      buttonText: "Claim Your Free Website Consultation →"
+    }
   },
 
   "viral-social": {

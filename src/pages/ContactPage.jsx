@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import BrandForgeAnimatedFooter from "../components/BrandForgeAnimatedFooter";
+import FloatingLines from "../components/FloatingLines";
 import {
   ArrowRight,
   Building2,
@@ -17,9 +18,6 @@ import {
   UsersRound,
   Zap,
 } from "lucide-react";
-
-const BACKGROUND_IMAGE =
-  "https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&w=2400&q=88";
 
 const FEATURES = [
   {
@@ -43,17 +41,20 @@ const CONTACT_INFO = [
   {
     icon: Phone,
     label: "+91 93845 76852",
-    subtext: "Direct Strategy Line / WhatsApp",
+    subtext: "Call / WhatsApp Direct",
+    href: "tel:+919384576852",
   },
   {
     icon: Mail,
     label: "brandforgedigitalmarketing@gmail.com",
     subtext: "24/7 Response Time",
+    href: "mailto:brandforgedigitalmarketing@gmail.com",
   },
   {
     icon: Globe,
     label: "Global HQ & Labs",
     subtext: "BrandForge Agency",
+    href: "/about",
   },
 ];
 
@@ -67,7 +68,7 @@ const SERVICES_LIST = [
   "Omnichannel Growth Strategy",
 ];
 
-export default function ContactPage() {
+export default function ContactPage({ onOpenModal }) {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [mobile, setMobile] = useState("");
@@ -138,17 +139,27 @@ export default function ContactPage() {
       <style>{styles}</style>
 
       <section className="contact-layout">
+        {/* INTERACTIVE 3D FLOATING LINES WEBGL BACKGROUND (BRANDFORGE THEME - DARKER & SUBTLE OPACITY) */}
+        <FloatingLines
+          enabledWaves={["top", "middle", "bottom"]}
+          lineCount={[8, 8, 8]}
+          lineDistance={[6, 6, 6]}
+          animationSpeed={0.75}
+          interactive={true}
+          bendRadius={7.0}
+          bendStrength={-1.5}
+          linesGradient={["#D9382E", "#C5221F", "#B91C1C", "#991B1B", "#7F1D1D"]}
+          mixBlendMode="screen"
+          style={{ opacity: 0.55 }}
+        />
+
+        {/* AMBIENT GLOW GRADIENT ACCENTS */}
+        <div className="ambient-glow glow-top-left" />
+        <div className="ambient-glow glow-bottom-right" />
+        <div className="ambient-glow glow-center-pulse" />
+
         {/* LEFT VISUAL PANEL */}
         <aside className="visual-panel">
-          <img
-            className="background-image"
-            src={BACKGROUND_IMAGE}
-            alt="BrandForge Headquarters Studio"
-            loading="eager"
-          />
-
-          <div className="background-overlay" />
-
           <div className="visual-content">
             <div className="brand">
               <img
@@ -342,15 +353,23 @@ export default function ContactPage() {
             </div>
 
             <div className="provider-grid">
-              {CONTACT_INFO.map(({ icon: InfoIcon, label, subtext }) => (
-                <div key={label} className="contact-info-pill">
-                  <InfoIcon size={16} strokeWidth={1.8} className="info-icon" />
-                  <div>
-                    <strong>{label}</strong>
-                    <small>{subtext}</small>
-                  </div>
-                </div>
-              ))}
+              {CONTACT_INFO.map(({ icon: InfoIcon, label, subtext, href }) => {
+                const Component = href ? "a" : "div";
+                return (
+                  <Component
+                    key={label}
+                    href={href}
+                    className="contact-info-pill"
+                    {...(href?.startsWith("http") ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+                  >
+                    <InfoIcon size={16} strokeWidth={1.8} className="info-icon" />
+                    <div>
+                      <strong>{label}</strong>
+                      <small>{subtext}</small>
+                    </div>
+                  </Component>
+                );
+              })}
             </div>
           </form>
         </section>
@@ -366,56 +385,77 @@ const styles = `
   @import url("https://fonts.googleapis.com/css2?family=Outfit:wght@700;800;900&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap");
 
   .contact-page {
-    --background: #060509;
+    --background: #040306;
     --card: #0A0A0C;
     --text: #FFFFFF;
     --muted: #94A3B8;
     --red: #EF4136;
-    --border: rgba(239, 65, 54, 0.3);
+    --border: rgba(239, 65, 54, 0.25);
 
     width: 100%;
     min-height: 100vh;
     min-height: 100svh;
     overflow-x: hidden;
     color: var(--text);
-    background: var(--background);
+    background: #040306;
     font-family: "Outfit", "Plus Jakarta Sans", sans-serif;
     padding-top: 80px;
     box-sizing: border-box;
   }
 
   .contact-layout {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
     width: 100%;
     max-width: 100%;
     min-height: calc(100vh - 80px);
     margin: 0;
     display: grid;
     grid-template-columns: 1fr 1fr;
+    background: 
+      radial-gradient(ellipse 70% 60% at 18% 25%, rgba(239, 65, 54, 0.1) 0%, rgba(239, 65, 54, 0.02) 50%, transparent 80%),
+      radial-gradient(ellipse 65% 55% at 85% 65%, rgba(239, 65, 54, 0.08) 0%, rgba(255, 87, 51, 0.01) 50%, transparent 75%),
+      linear-gradient(135deg, #09060E 0%, #050407 35%, #07040A 70%, #030205 100%);
+  }
+
+  .ambient-glow {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(120px);
+    pointer-events: none;
+    z-index: -1;
+    opacity: 0.5;
+  }
+
+  .glow-top-left {
+    top: -10%;
+    left: -5%;
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, rgba(239, 65, 54, 0.16) 0%, rgba(239, 65, 54, 0.03) 55%, transparent 75%);
+  }
+
+  .glow-bottom-right {
+    bottom: -15%;
+    right: -5%;
+    width: 580px;
+    height: 580px;
+    background: radial-gradient(circle, rgba(239, 65, 54, 0.12) 0%, rgba(180, 20, 20, 0.02) 60%, transparent 80%);
+  }
+
+  .glow-center-pulse {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(239, 65, 54, 0.05) 0%, transparent 70%);
   }
 
   .visual-panel {
     position: relative;
-    isolation: isolate;
     min-width: 0;
-    overflow: hidden;
-  }
-
-  .background-image {
-    position: absolute;
-    inset: 0;
-    z-index: -3;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: 50% center;
-    filter: brightness(0.4) contrast(1.1);
-  }
-
-  .background-overlay {
-    position: absolute;
-    inset: 0;
-    z-index: -2;
-    background: linear-gradient(180deg, rgba(6, 5, 9, 0.7) 0%, rgba(6, 5, 9, 0.95) 100%);
   }
 
   .visual-content {
@@ -449,6 +489,7 @@ const styles = `
     font-size: 12px;
     font-weight: 800;
     letter-spacing: 0.14em;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.7);
   }
 
   .hero-content h1 {
@@ -459,6 +500,7 @@ const styles = `
     line-height: 1.02;
     letter-spacing: -0.04em;
     color: #FFFFFF;
+    text-shadow: 0 4px 20px rgba(0, 0, 0, 0.85);
   }
 
   .hero-content h1 span {
@@ -469,9 +511,10 @@ const styles = `
   .hero-description {
     max-width: 560px;
     margin: 20px 0 0;
-    color: rgba(255, 255, 255, 0.8);
+    color: rgba(255, 255, 255, 0.9);
     font-size: 14.5px;
     line-height: 1.65;
+    text-shadow: 0 2px 12px rgba(0, 0, 0, 0.85);
   }
 
   .feature-list {
@@ -531,15 +574,20 @@ const styles = `
     width: 100%;
     padding: 30px clamp(24px, 4vw, 70px);
     box-sizing: border-box;
+    position: relative;
+    background: transparent;
   }
 
   .login-card {
     width: 100%;
     max-width: 620px;
     padding: clamp(28px, 4vh, 48px) clamp(28px, 4vw, 50px);
-    border: 1px solid var(--border);
+    border: 1px solid rgba(239, 65, 54, 0.35);
     border-radius: 20px;
-    background: #0A0A0C;
+    background: rgba(10, 8, 14, 0.35);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5), 0 0 35px rgba(239, 65, 54, 0.08);
     box-sizing: border-box;
   }
 
@@ -570,6 +618,7 @@ const styles = `
     line-height: 1.12;
     letter-spacing: -0.03em;
     color: #FFFFFF;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.7);
   }
 
   .form-header p {
@@ -602,12 +651,15 @@ const styles = `
     border: 1px solid rgba(255, 255, 255, 0.16);
     border-radius: 10px;
     color: var(--red);
-    background: #060509;
-    transition: border-color 0.25s ease;
+    background: rgba(6, 5, 9, 0.5);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    transition: border-color 0.25s ease, background 0.25s ease;
   }
 
   .input-container:focus-within {
     border-color: var(--red);
+    background: rgba(6, 5, 9, 0.75);
   }
 
   .input-container input {
@@ -723,11 +775,27 @@ const styles = `
   .contact-info-pill {
     display: flex;
     align-items: center;
-    gap: 8px;
-    padding: 10px 12px;
+    gap: 10px;
+    padding: 11px 13px;
     border: 1px solid rgba(255, 255, 255, 0.12);
     border-radius: 10px;
-    background: #060509;
+    background: rgba(6, 5, 9, 0.5);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    text-decoration: none;
+    color: inherit;
+    transition: border-color 0.2s ease, background 0.2s ease, transform 0.2s ease;
+    box-sizing: border-box;
+  }
+
+  .contact-info-pill:hover {
+    border-color: rgba(239, 65, 54, 0.5);
+    background: rgba(14, 13, 18, 0.75);
+    transform: translateY(-2px);
+  }
+
+  .contact-info-pill:active {
+    transform: scale(0.98);
   }
 
   .info-icon {
@@ -737,69 +805,266 @@ const styles = `
 
   .contact-info-pill strong {
     display: block;
-    font-size: 10.5px;
+    font-size: 11px;
+    font-weight: 700;
     color: #FFFFFF;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    white-space: normal;
+    word-break: break-word;
+    line-height: 1.3;
   }
 
   .contact-info-pill small {
     display: block;
-    font-size: 8.5px;
-    color: #64748B;
+    font-size: 9.5px;
+    color: #94A3B8;
+    margin-top: 1px;
   }
 
   .status-message {
-    margin-top: 12px;
-    font-size: 11.5px;
+    margin-top: 14px;
+    font-size: 12px;
     font-weight: 700;
     text-align: center;
+    line-height: 1.4;
   }
 
   .status-message.success {
     color: #22C55E;
+    background: rgba(34, 197, 94, 0.1);
+    padding: 10px 14px;
+    border-radius: 8px;
+    border: 1px solid rgba(34, 197, 94, 0.25);
   }
 
   .status-message.error {
     color: #EF4136;
+    background: rgba(239, 65, 54, 0.1);
+    padding: 10px 14px;
+    border-radius: 8px;
+    border: 1px solid rgba(239, 65, 54, 0.25);
   }
 
   @media (max-width: 900px) {
     .contact-layout {
       grid-template-columns: 1fr;
+      min-height: auto;
     }
 
     .visual-panel {
-      min-height: 280px;
+      min-height: auto;
     }
 
     .visual-content {
-      min-height: 280px;
-      padding: 24px;
+      min-height: auto;
+      padding: 32px 24px 16px;
     }
 
-    .brand,
-    .feature-list,
+    .brand {
+      display: inline-flex;
+    }
+
+    .hero-content {
+      margin-top: 14px;
+      max-width: 100%;
+    }
+
+    .hero-content h1 {
+      font-size: clamp(32px, 7.5vw, 46px);
+    }
+
+    .hero-description {
+      max-width: 100%;
+      font-size: 14px;
+      line-height: 1.6;
+      margin-top: 12px;
+    }
+
+    .feature-list {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+      margin-top: 22px;
+      padding-top: 16px;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      max-width: 100%;
+    }
+
+    .feature-item {
+      grid-template-columns: 42px 1fr;
+      gap: 12px;
+    }
+
+    .feature-icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 10px;
+    }
+
     .footer-copy {
       display: none;
     }
 
+    .form-panel {
+      padding: 12px 20px 48px;
+    }
+
+    .login-card {
+      padding: 28px 22px;
+      max-width: 100%;
+    }
+
     .mobile-brand {
-      display: inline-flex;
-      margin-bottom: 20px;
-    }
-
-    .hero-content {
-      margin-top: 20px;
-    }
-
-    .hero-content h1 {
-      font-size: 36px;
+      display: none;
     }
 
     .provider-grid {
       grid-template-columns: 1fr;
+      gap: 10px;
+    }
+  }
+
+  @media (max-width: 580px) {
+    .contact-page {
+      padding-top: 72px;
+    }
+
+    .visual-content {
+      padding: 20px 16px 14px;
+    }
+
+    .brand-logo-img {
+      height: 32px;
+    }
+
+    .eyebrow {
+      font-size: 11px;
+      margin-bottom: 8px;
+    }
+
+    .hero-content h1 {
+      font-size: clamp(26px, 8.2vw, 36px);
+      letter-spacing: -0.03em;
+    }
+
+    .hero-description {
+      font-size: 13.5px;
+      line-height: 1.55;
+      margin-top: 10px;
+    }
+
+    .feature-list {
+      gap: 10px;
+      margin-top: 18px;
+      padding-top: 14px;
+    }
+
+    .feature-item {
+      grid-template-columns: 36px 1fr;
+      gap: 10px;
+    }
+
+    .feature-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 9px;
+    }
+
+    .feature-icon svg {
+      width: 18px;
+      height: 18px;
+    }
+
+    .feature-item strong {
+      font-size: 12.5px;
+    }
+
+    .feature-item p {
+      font-size: 11px;
+      line-height: 1.45;
+    }
+
+    .form-panel {
+      padding: 8px 14px 40px;
+    }
+
+    .login-card {
+      padding: 22px 16px;
+      border-radius: 16px;
+    }
+
+    .form-header {
+      margin-bottom: 20px;
+    }
+
+    .form-header h2 {
+      font-size: 22px;
+    }
+
+    .form-header p {
+      font-size: 12.5px;
+      margin-top: 6px;
+    }
+
+    .field-group {
+      margin-top: 14px;
+    }
+
+    .field-group label {
+      font-size: 10px;
+      margin-bottom: 6px;
+    }
+
+    .input-container {
+      min-height: 46px;
+      padding: 0 12px;
+      gap: 10px;
+    }
+
+    .input-container input,
+    .select-container select,
+    .textarea-container textarea {
+      font-size: 16px; /* Prevents Safari iOS auto-zoom on input focus */
+    }
+
+    .textarea-container {
+      padding: 10px 12px;
+    }
+
+    .submit-button {
+      min-height: 48px;
+      font-size: 13px;
+      margin-top: 20px;
+    }
+
+    .divider {
+      margin: 22px 0 14px;
+    }
+
+    .contact-info-pill {
+      padding: 10px 12px;
+      gap: 10px;
+    }
+
+    .contact-info-pill strong {
+      font-size: 11px;
+    }
+
+    .contact-info-pill small {
+      font-size: 9px;
+    }
+  }
+
+  @media (max-width: 380px) {
+    .login-card {
+      padding: 18px 12px;
+    }
+
+    .hero-content h1 {
+      font-size: 24px;
+    }
+
+    .input-container {
+      padding: 0 10px;
     }
   }
 `;

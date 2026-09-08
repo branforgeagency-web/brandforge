@@ -238,8 +238,9 @@ const styles = `
     position: fixed;
     inset: 0;
     z-index: 99999;
-    background: rgba(0, 0, 0, 0.88);
-    backdrop-filter: blur(12px);
+    background: rgba(0, 0, 0, 0.65);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
     display: grid;
     place-items: center;
     overflow-y: auto;
@@ -257,8 +258,11 @@ const styles = `
     width: 100%;
     max-width: 460px;
     padding: clamp(24px, 5vw, 36px);
-    background: #0A0A0C;
-    border: 1.5px solid #EF4136;
+    background: rgba(10, 8, 14, 0.42);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    border: 1px solid rgba(239, 65, 54, 0.38);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6), 0 0 35px rgba(239, 65, 54, 0.1);
     border-radius: 20px;
     color: #FFFFFF;
     font-family: "Outfit", "Inter", sans-serif;
@@ -268,7 +272,9 @@ const styles = `
     position: absolute;
     top: 18px;
     right: 18px;
-    background: #16161A;
+    background: rgba(22, 22, 26, 0.5);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
     border: 1px solid rgba(255, 255, 255, 0.15);
     color: #FFFFFF;
     width: 36px;
@@ -306,11 +312,12 @@ const styles = `
     margin: 0 0 6px;
     line-height: 1.25;
     letter-spacing: -0.01em;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.7);
   }
 
   .bf-modal-header p {
     font-size: 0.85rem;
-    color: rgba(255, 255, 255, 0.65);
+    color: rgba(255, 255, 255, 0.7);
     margin: 0;
     line-height: 1.4;
   }
@@ -346,14 +353,16 @@ const styles = `
   .bf-field textarea {
     width: 100%;
     padding: 0 14px 0 44px;
-    background: #141418;
-    border: 1px solid rgba(255, 255, 255, 0.12);
+    background: rgba(6, 5, 9, 0.5);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.16);
     border-radius: 10px;
     color: #FFFFFF;
     font-size: 0.88rem;
     font-family: inherit;
     outline: none;
-    transition: border-color 0.2s ease;
+    transition: border-color 0.2s ease, background 0.2s ease;
   }
 
   .bf-field input,
@@ -388,13 +397,14 @@ const styles = `
 
   .bf-field input::placeholder,
   .bf-field textarea::placeholder {
-    color: rgba(255, 255, 255, 0.42);
+    color: rgba(255, 255, 255, 0.45);
   }
 
   .bf-field input:focus,
   .bf-field select:focus,
   .bf-field textarea:focus {
     border-color: #EF4136;
+    background: rgba(6, 5, 9, 0.75);
   }
 
   .bf-modal-submit {

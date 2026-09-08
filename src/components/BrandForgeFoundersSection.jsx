@@ -47,6 +47,17 @@ export default function BrandForgeFoundersSection() {
 
   return (
     <section ref={containerRef} className="bf-founders-root" id="who-we-are">
+      {/* CINEMATIC BRANDFORGE HERO BANNER BACKGROUND */}
+      <div className="bf-founders-bg-image-wrap" aria-hidden="true">
+        <img
+          src="/banner-who-we-are.jpg"
+          alt="BrandForge Studio Headquarters"
+          className="bf-founders-bg-img"
+        />
+        <div className="bf-founders-bg-overlay" />
+        <div className="bf-founders-bg-radial-vignette" />
+      </div>
+
       <motion.div className="bf-founders-glow-a" style={{ scale: glowScale }} aria-hidden="true" />
       <div className="bf-founders-glow-b" aria-hidden="true" />
 
@@ -216,6 +227,54 @@ const styles = `
     padding: clamp(70px, 9vw, 120px) 0;
     overflow: hidden;
     isolation: isolate;
+  }
+
+  /* BACKGROUND BANNER IMAGE WRAPPER & VIGNETTE */
+  .bf-founders-bg-image-wrap {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    overflow: hidden;
+  }
+
+  .bf-founders-bg-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 32%;
+    opacity: 0.35;
+    filter: brightness(0.65) contrast(1.18);
+    transform: scale(1.02);
+    animation: founderBannerFloat 30s ease-in-out infinite alternate;
+  }
+
+  @keyframes founderBannerFloat {
+    0% { transform: scale(1.02) translateY(0); }
+    100% { transform: scale(1.07) translateY(-14px); }
+  }
+
+  .bf-founders-bg-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      180deg,
+      rgba(6, 5, 9, 0.8) 0%,
+      rgba(6, 5, 9, 0.45) 45%,
+      rgba(6, 5, 9, 0.88) 85%,
+      #060509 100%
+    );
+  }
+
+  .bf-founders-bg-radial-vignette {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(
+      circle at center,
+      transparent 15%,
+      rgba(6, 5, 9, 0.65) 60%,
+      #060509 100%
+    );
   }
 
   .bf-founders-glow-a {

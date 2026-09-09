@@ -675,40 +675,265 @@ export const servicesData = {
 
   "viral-social": {
     slug: "viral-social",
+    urlSlug: "/social-media-marketing-company-coimbatore",
+    metaTitle: "Social Media Marketing Company in Coimbatore | BrandForge",
+    metaDescription: "Looking for a social media marketing company in Coimbatore? BrandForge grows your brand with content, reels & ads that convert. Get a free strategy call.",
     number: "04",
-    eyebrow: "VIRAL SOCIAL / BRAND REACH ENGINE",
-    title: "DOMINATE SOCIAL FEEDS WITH VIRAL SHORT-FORM CONTENT LOOPS",
-    subtitle: "We craft short-form Reels, TikToks, and viral content strategies designed to travel rapidly across modern digital culture.",
+    eyebrow: "Social Media Marketing Company in Coimbatore | Story Smithy by BrandForge",
+    title: "Social Media Marketing Company in Coimbatore That Grows Real Followers Into Customers",
+    heroButtonText: "Get a Free Strategy Call →",
+    subtitle: [
+      "Posting every day but getting no leads, no sales, and barely any likes? That's not a content problem — it's a strategy problem. Random posts don't grow a business; a plan does.",
+      "BrandForge is a social media marketing company in Coimbatore that turns your Instagram, Facebook, and other channels into real business growth. Our content studio, Story Smithy, handles strategy, content, reels, and ads together — so your pages don't just look active, they actually bring in customers."
+    ],
+    bannerBg: "/banner-viral-social.png",
     icon: Rocket,
     metrics: [
-      { value: "120M+", label: "Organic Social Impressions", desc: "Generated across client viral content campaigns" },
       { value: "+450%", label: "Follower Growth Rate", desc: "Average 90-day organic audience expansion" },
+      { value: "12M+", label: "Monthly Reel Views", desc: "Generated across client viral content campaigns" },
       { value: "14.2%", label: "Engagement Rate Benchmark", desc: "Top-tier interaction share across Reels & Shorts" },
-      { value: "#1 Trend", label: "Culture Sound Dominance", desc: "Viral sound & meme audio creation" },
+      { value: "₹95", label: "Cost Per Direct Enquiry", desc: "Meta & Instagram DM lead conversion rate" },
     ],
-    matrixTag: "SOCIAL VIRALITY",
-    matrixTitle: "BORING CORPORATE POSTS VS BRANDFORGE VIRAL ENGINE",
-    matrixSubtitle: "Stop posting corporate graphics nobody cares about. We create culture-defining viral content.",
+    whyChooseUs: {
+      tag: "WHY MOST SOCIAL MEDIA MARKETING FAILS",
+      title: "Why Most Social Media Marketing Fails",
+      description: "If your social media isn't working, it's usually one of these reasons. We fix all of them. Social media done right builds trust, keeps you top-of-mind, and quietly sends buyers your way. That takes a plan, not just a posting schedule.",
+      leadIn: "Here are the 5 critical reasons your current social media isn't generating real business:",
+      points: [
+        "Posting with no strategy or goal behind it",
+        "Boring content that nobody stops to watch",
+        "No reels or video — where all the reach is today",
+        "No call to action, so followers never become buyers",
+        "Posting and forgetting — no engagement, no replies"
+      ]
+    },
+    matrixTag: "WHAT AN AGENCY ACTUALLY DOES",
+    matrixTitle: "WHAT DOES A SOCIAL MEDIA MARKETING COMPANY IN COIMBATORE ACTUALLY DO?",
+    matrixSubtitle: "Good social media marketing in Coimbatore is more than pretty posts. Here's what a real agency handles for you:",
     matrixRows: [
-      { feature: "Content Format", traditional: "Boring static text & stock photos", brandforge: "High-retention short-form video & trend hooks" },
-      { feature: "Algorithm Strategy", traditional: "Posting randomly without hook logic", brandforge: "3-second dopamine hook & retention loops" },
-      { feature: "Posting Frequency", traditional: "1 post per week", brandforge: "Daily high-velocity short-form deployment" },
-      { feature: "Community Impact", traditional: "Zero comments & ghost engagement", brandforge: "Fierce viral community debate & share loops" },
+      {
+        feature: "Strategy & Planning",
+        traditional: "Random posting whenever there is free time without target goals",
+        brandforge: "A clear data-backed plan for what to post, when, and why"
+      },
+      {
+        feature: "Content Creation",
+        traditional: "Boring generic Canva templates that viewers scroll past immediately",
+        brandforge: "Scroll-stopping posts, reels, and stories with 3-second dopamine hooks"
+      },
+      {
+        feature: "Page Management",
+        traditional: "Irregular posting that leaves accounts dead and inactive for weeks",
+        brandforge: "Consistent scheduled posting so your brand never goes quiet"
+      },
+      {
+        feature: "Engagement & DMs",
+        traditional: "Ignoring user comments and leaving valuable buyer DMs unanswered",
+        brandforge: "Active replies to comments and DMs to build authentic community trust"
+      },
+      {
+        feature: "Paid Ads Scaling",
+        traditional: "Random boosting button clicks that burn budget with zero return",
+        brandforge: "Targeted Meta and Instagram ad campaigns turning reach into actual sales"
+      },
+      {
+        feature: "Reporting & Insights",
+        traditional: "Vague vanity metrics and screenshots without actionable insights",
+        brandforge: "Clear monthly numbers on follower growth, reach, and real leads"
+      }
     ],
+    pillarsTag: "OUR SERVICES",
+    pillarsTitle: "Our Social Media Marketing Services",
+    pillarsSubtitle: "We build the right mix for your business and audience — not the same package for everyone.",
     pillars: [
-      { icon: Rocket, tag: "VIRAL REELS", title: "Short-Form Reel & TikTok Engine", description: "Produce high-retention 15-60s videos with dynamic captions, sound design, and retention hooks.", deliverables: ["3-Second Hook Formulas", "Kinetic Subtitle Design", "Sound Effect Layering"] },
-      { icon: Users, tag: "COMMUNITY", title: "Brand Cult Community Growth", description: "Turn casual passive viewers into obsessed brand advocates through interactive story loops.", deliverables: ["Comment Spark Strategy", "Interactive Story Polls", "DM Automation Funnels"] },
-      { icon: BarChart3, tag: "LISTENING", title: "Cultural Trend & Audio Radar", description: "Spot emerging audio trends and viral memes before your competitors even notice them.", deliverables: ["Daily Trend Alerts", "Audio Licensing Lock", "Culture Hijack Scripting"] },
-      { icon: Zap, tag: "DISTRIBUTION", title: "Multi-Platform Omni-Posting", description: "Simultaneously syndicate content across Instagram Reels, TikTok, YouTube Shorts, and X.", deliverables: ["Cross-Platform Formatting", "Optimal Timing Schedule", "Metadata Optimization"] },
-      { icon: PenTool, tag: "COPYWRITING", title: "Viral Hook Scriptwriting", description: "Copywriting designed to ignite psychological curiosity and force immediate watch time.", deliverables: ["Curiosity Gap Scripts", "Contrarian Storytelling", "CTA Retention Triggers"] },
-      { icon: TrendingUp, tag: "CONVERSION", title: "Social-to-Sales Funnel", description: "Convert viral views into email subscribers and direct product sales with bio-link funnels.", deliverables: ["Link-in-Bio UX", "DM Keyword Automation", "Promo Offer Triggers"] },
+      {
+        icon: Megaphone,
+        tag: "INSTAGRAM GROWTH",
+        title: "Instagram Marketing",
+        description: "Reels, carousel guides, posts, and interactive stories that grow reach and convert followers into customers.",
+        deliverables: [
+          "3-Second Hook Video Reels",
+          "Carousel Value Infographics",
+          "Daily Interactive Story Polls",
+          "Bio Link Funnel Optimization"
+        ]
+      },
+      {
+        icon: Globe,
+        tag: "LOCAL REACH",
+        title: "Facebook Marketing",
+        description: "Pages, posts, and community building engineered for hyper-local reach and customer trust across Coimbatore.",
+        deliverables: [
+          "Facebook Page Authority Setup",
+          "Local Group Engagement Strategy",
+          "Event & Promotional Broadcasts",
+          "Cross-Platform Social Syndication"
+        ]
+      },
+      {
+        icon: Video,
+        tag: "VIRAL FORMATS",
+        title: "Reels & Short Video",
+        description: "The fastest way to get discovered in 2026. High-retention short-form video scripted, shot, and edited in-house.",
+        deliverables: [
+          "Trending Audio & Sound Design",
+          "Kinetic Animated Captions",
+          "High-Pacing Video Editing",
+          "Visual Curiosity Hook Scripts"
+        ]
+      },
+      {
+        icon: PenTool,
+        tag: "IN-HOUSE STUDIO",
+        title: "Content Creation & Design",
+        description: "Scroll-stopping graphics, persuasive copywriting captions, and high-production video handled in-house by Story Smithy.",
+        deliverables: [
+          "Bespoke Brand Visual Grading",
+          "Persuasive Captions & CTAs",
+          "Carousel Educational Slides",
+          "Custom Motion Graphic Overlays"
+        ]
+      },
+      {
+        icon: Target,
+        tag: "PAID SOCIAL",
+        title: "Social Media Ads",
+        description: "Meta and Instagram ad campaigns that convert interest into verified phone calls, WhatsApp messages, and website sales.",
+        deliverables: [
+          "High-ROAS Meta Ad Campaigns",
+          "WhatsApp Click-to-Chat Ads",
+          "Meta Instant Lead Forms",
+          "Pixel & CAPI Server Tracking"
+        ]
+      },
+      {
+        icon: Users,
+        tag: "B2B AUTHORITY",
+        title: "LinkedIn Marketing",
+        description: "Building executive authority and inbound B2B pipeline for company founders, managing directors, and corporate brands.",
+        deliverables: [
+          "Founder Personal Branding",
+          "B2B Thought Leadership Posts",
+          "Executive Network Growth",
+          "Industry Article Syndication"
+        ]
+      },
+      {
+        icon: Award,
+        tag: "LOCAL CREATORS",
+        title: "Influencer Marketing",
+        description: "Local creator collaborations across Coimbatore and Tamil Nadu to amplify social proof and drive word-of-mouth.",
+        deliverables: [
+          "Vetted Coimbatore Creators",
+          "Campaign Briefing & Scripting",
+          "Perpetual Ad Usage Rights",
+          "Trackable Discount Codes & ROI"
+        ]
+      },
+      {
+        icon: ShieldCheck,
+        tag: "FULL HANDLING",
+        title: "Account Management",
+        description: "Full end-to-end handling from scheduling and community moderation to monthly reviews so you can focus on your business.",
+        deliverables: [
+          "Monthly Content Calendar",
+          "DM & Comment Moderation",
+          "Brand Reputation Protection",
+          "Monthly Performance Strategy Call"
+        ]
+      }
     ],
+    differentiators: {
+      tag: "THE BRANDFORGE ADVANTAGE",
+      title: "Why Businesses Choose BrandForge",
+      subtitle: "As a social media marketing company in Coimbatore that also runs SEO, web, and paid ads in-house, we connect your social content to everything else that drives growth — so it's never just posting for the sake of it.",
+      items: [
+        {
+          title: "Strategy First — Every Post Has a Purpose",
+          description: "Every single post, reel, and story is tied to a specific business goal: brand awareness, trust building, or lead capture.",
+          icon: Target
+        },
+        {
+          title: "Reels and Video Built to Actually Get Watched",
+          description: "Engineered with fast pacing, clear 3-second visual hooks, and trending audio so algorithms push your content to new buyers.",
+          icon: Video
+        },
+        {
+          title: "Content Designed to Turn Followers into Enquiries",
+          description: "We embed clear, frictionless CTAs and DM automation funnels so profile visitors easily reach out via WhatsApp or call.",
+          icon: TrendingUp
+        },
+        {
+          title: "Ads and Organic Working Together, Not Separately",
+          description: "We amplify top-performing organic reels with targeted paid ad spend, dramatically lowering your blended cost per lead.",
+          icon: Zap
+        },
+        {
+          title: "Clear Monthly Reports — You See Exactly What's Working",
+          description: "Plain numbers on follower growth, video reach, click-throughs, and verified inbound leads delivered every month.",
+          icon: BarChart3
+        }
+      ]
+    },
+    timeline: {
+      tag: "WHAT BRANDFORGE WILL DO FOR YOU",
+      title: "What BrandForge Will Do For You",
+      subtitle: "Here's what actually lands in your account every month — no vague promises, just the work. Most agencies post and vanish. We treat your page like it's our own brand on the line.",
+      steps: [
+        { num: "01", title: "MONTHLY CONTENT CALENDAR", desc: "You'll always know what's going out and when, planned around festivals, offers, and trends." },
+        { num: "02", title: "TREND-JACKING & AUDIO", desc: "We jump on trending audios and reel formats fast, while they're still getting viral reach." },
+        { num: "03", title: "COMPETITOR WATCH", desc: "We track what rival Coimbatore brands are posting and engineer better creative angles to beat them." },
+        { num: "04", title: "REELS SHOT & EDITED", desc: "Hooks in the first 3 seconds, kinetic animated captions, and trending audio built in." },
+        { num: "05", title: "WHATSAPP & DM FUNNELS", desc: "We turn comments and DMs into actual phone and WhatsApp enquiries, not dead-end likes." },
+        { num: "06", title: "MONTHLY REVIEW CALL", desc: "We sit with you, show the plain numbers, and plan the next month of growth together." }
+      ]
+    },
+    whoWeHelp: {
+      tag: "WHO WE WORK WITH",
+      title: "Who We Work With in Coimbatore & Tamil Nadu",
+      subtitle: "We manage social media for coaching institutes, clinics, restaurants and cafes, retail and e-commerce brands, real estate, and local service businesses across Coimbatore and Tamil Nadu. If your customers are on Instagram, that's where we get you noticed.",
+      industries: [
+        { title: "Restaurants, Cafes & Food Brands", desc: "Drool-worthy reel videos, ambiance showcases, and local food creator visits that pack tables on weekends." },
+        { title: "Coaching & Education Institutes", desc: "High-intent student enrollment leads, faculty authority reels, and student testimonial videos." },
+        { title: "Clinics, Doctors & Healthcare", desc: "Patient educational reels, doctor trust-building video series, and appointment booking funnels." },
+        { title: "Retail & E-Commerce Brands", desc: "Trending product showcases, styling reels, customer unboxings, and Instagram Shop catalogue integrations." },
+        { title: "Real Estate & Builders", desc: "Luxury walk-through reels, project aerial footage, and high-ticket site visit enquiries." },
+        { title: "Local Service Businesses", desc: "Direct phone calls, WhatsApp quote requests, and client transformation case studies." }
+      ],
+      certifications: [
+        { label: "Meta Certified Digital Marketing Agency" },
+        { label: "Instagram for Business Best Practices Architecture" },
+        { label: "Real Client Result: Grew Coimbatore Cafe from 800 to 12K Followers in 5 Months" },
+        { label: "Reviewed by BalaMurali, Social Media Lead & Founder, Story Smithy" }
+      ]
+    },
     faqs: [
-      { q: "Which platforms do you focus on for viral social growth?", a: "We focus heavily on Instagram Reels, TikTok, YouTube Shorts, and X (Twitter)." },
-      { q: "Do we need to film the videos ourselves?", a: "You can either send raw mobile clips for us to script and edit, or we can deploy our creative team to shoot full production content for you." },
-      { q: "How many short-form videos do you produce per month?", a: "Our standard packages range from 15 to 45 high-retention short videos per month." },
-      { q: "How do you guarantee video retention and views?", a: "We test multiple 3-second visual and audio hooks, use fast kinetic editing, and design videos around proven psychological curiosity gaps." },
+      {
+        q: "How much does social media marketing cost in Coimbatore?",
+        a: "It depends on the platforms, how many posts and reels you need, and whether ads are included. We offer monthly packages and share a clear price after understanding your goals — no hidden fees."
+      },
+      {
+        q: "Which social media platform is best for my business?",
+        a: "It depends on where your customers are. Instagram and Facebook work for most local businesses; LinkedIn suits B2B. We pick the right platforms in your strategy instead of spreading you thin everywhere."
+      },
+      {
+        q: "How long until I see results from social media marketing?",
+        a: "Organic growth usually shows over 2 to 3 months of consistent, strategic content. Paid ads can bring leads much faster. We set realistic expectations upfront and report progress monthly."
+      },
+      {
+        q: "Do you create the content or do I have to?",
+        a: "We handle everything — graphics, captions, reels, and posting. You just approve the plan. If you have your own photos or videos, we'll use them too."
+      },
+      {
+        q: "Can social media marketing actually bring me sales?",
+        a: "Yes, when it's done with strategy and backed by ads. Social builds trust and awareness; ads and clear CTAs turn that attention into enquiries and sales. Random posting alone rarely does."
+      }
     ],
+    bottomCta: {
+      title: "Get a Free Social Media Strategy Call",
+      subtitle: "We'll review your pages and show you exactly how to turn followers into paying customers.",
+      buttonText: "Claim Your Free Strategy Call →"
+    }
   },
 
   "influencer-network": {

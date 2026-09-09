@@ -27,11 +27,11 @@ const NAVIGATION_ITEMS = [
 
 const MOBILE_SERVICES = [
   { label: "SEO & GEO Supremacy", slug: "seo-geo" },
-  { label: "Website Development", slug: "web-dev" },
+  { label: "Website Development", slug: "web-foundry" },
   { label: "Paid Media Scaling", slug: "paid-media" },
-  { label: "Performance Marketing", slug: "performance-marketing" },
-  { label: "Social Media Dominance", slug: "social-media" },
-  { label: "Branding & Identity", slug: "branding-identity" },
+  { label: "Social Media Dominance", slug: "viral-social" },
+  { label: "Branding & Identity", slug: "brand-anvil" },
+  { label: "CRO & Conversions", slug: "cro-revenue" },
 ];
 
 export default function SiteNavbar({ path, navigate, onOpenModal }) {

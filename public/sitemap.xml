@@ -149,6 +149,21 @@
     </image:image>
   </url>
 
+  <url>
+    <loc>https://www.brandforgeagency.in/social-media-marketing-company-coimbatore</loc>
+    <lastmod>2026-09-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.95</priority>
+    <image:image>
+      <image:loc>https://www.brandforgeagency.in/banner-viral-social.png</image:loc>
+      <image:title>Social Media Marketing Company in Coimbatore Viral Catalyst</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.brandforgeagency.in/mindmap-viral-social.svg</image:loc>
+      <image:title>Viral Social Media Strategy Map</image:title>
+    </image:image>
+  </url>
+
   <!-- 12 Service Landing Pages -->
   <url>
     <loc>https://www.brandforgeagency.in/services/seo-geo</loc>
@@ -199,7 +214,15 @@
     <loc>https://www.brandforgeagency.in/services/viral-social</loc>
     <lastmod>2026-09-09</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.90</priority>
+    <priority>0.95</priority>
+    <image:image>
+      <image:loc>https://www.brandforgeagency.in/banner-viral-social.png</image:loc>
+      <image:title>Social Media Marketing Company in Coimbatore</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.brandforgeagency.in/banner-viral-social.jpg</image:loc>
+      <image:title>Viral Catalyst Social Media Banner</image:title>
+    </image:image>
     <image:image>
       <image:loc>https://www.brandforgeagency.in/mindmap-viral-social.svg</image:loc>
       <image:title>Viral Social Media Growth Engine</image:title>

@@ -39,6 +39,14 @@ const ROUTES_META = {
     title: "Website Development Company in Coimbatore | BrandForge",
     description: "Need a website development company in Coimbatore? BrandForge builds fast, SEO-ready websites that convert. Get a free website consultation today.",
   },
+  "/social-media-marketing-company-coimbatore": {
+    title: "Social Media Marketing Company in Coimbatore | BrandForge",
+    description: "Looking for a social media marketing company in Coimbatore? BrandForge grows your brand with content, reels & ads that convert. Get a free strategy call.",
+  },
+  "/social-media-agency-coimbatore": {
+    title: "Social Media Marketing Company in Coimbatore | BrandForge",
+    description: "Looking for a social media marketing company in Coimbatore? BrandForge grows your brand with content, reels & ads that convert. Get a free strategy call.",
+  },
   "/services/seo-geo": {
     title: "SEO Company in Coimbatore | SEO & GEO Services – Brand Forge",
     description: "Brand Forge is a trusted SEO company in Coimbatore offering SEO, GEO (Generative Engine Optimization), and local search services to rank higher on Google and AI search engines.",
@@ -52,8 +60,8 @@ const ROUTES_META = {
     description: "Need a website development company in Coimbatore? BrandForge builds fast, SEO-ready websites that convert. Get a free website consultation today.",
   },
   "/services/viral-social": {
-    title: "Viral Social Media Growth & Content Engine – Brand Forge",
-    description: "Engineering short-form viral algorithms, community resonance, and organic distribution loops across Instagram, YouTube, TikTok, and LinkedIn.",
+    title: "Social Media Marketing Company in Coimbatore | BrandForge",
+    description: "Looking for a social media marketing company in Coimbatore? BrandForge grows your brand with content, reels & ads that convert. Get a free strategy call.",
   },
   "/services/influencer-network": {
     title: "Creator Networks & Influencer Marketing Campaigns – Brand Forge",

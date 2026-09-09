@@ -119,6 +119,8 @@ export default function ServiceLandingPage({ slug = "seo-geo", onOpenModal, navi
                   <>Best SEO Company in Coimbatore for <span>Google & AI Search Rankings</span></>
                 ) : data.slug === "web-foundry" ? (
                   <>Website Development Company in Coimbatore That Builds <span>Sites That Sell</span></>
+                ) : data.slug === "viral-social" ? (
+                  <>Social Media Marketing Company in Coimbatore That Grows <span>Real Followers Into Customers</span></>
                 ) : data.title.includes("/") ? (
                   <>{data.title.split("/")[0]} / <span>{data.title.split("/")[1]}</span></>
                 ) : (

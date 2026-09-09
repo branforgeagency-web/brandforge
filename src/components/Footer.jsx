@@ -34,28 +34,28 @@ export default function Footer({ onOpenModal }) {
         {/* LINKS COLS */}
         <div className="footer-links-col">
           <h4>12 SERVICES</h4>
-          <a href="#services-grid">SEO & GEO</a>
-          <a href="#services-grid">Paid Media (PPC)</a>
-          <a href="#services-grid">Web Foundry</a>
-          <a href="#services-grid">Social Media</a>
-          <a href="#services-grid">Visual Identity</a>
-          <a href="#services-grid">View All 12</a>
+          <a href="/seo-company-coimbatore">SEO & GEO Services</a>
+          <a href="/ppc-company-coimbatore">Paid Media (PPC)</a>
+          <a href="/website-development-company-coimbatore">Web Foundry (Web Dev)</a>
+          <a href="/services/viral-social">Social Media Dominance</a>
+          <a href="/services/visual-id">Visual Identity & 3D</a>
+          <a href="/services/cro-revenue">CRO Revenue Engine</a>
         </div>
 
         <div className="footer-links-col">
           <h4>AGENCY</h4>
-          <a href="#about-forge">About Engine</a>
-          <a href="#portfolio-showcase">Case Studies</a>
-          <a href="#power-calculator">Growth Calculator</a>
-          <a href="#about-forge">Manifesto</a>
+          <a href="/about">Who We Are / Founders</a>
+          <a href="/contact">Contact Strategy Consultation</a>
+          <a href="/seo-company-coimbatore">Best SEO Coimbatore</a>
+          <a href="/website-development-company-coimbatore">Web Dev Coimbatore</a>
         </div>
 
         <div className="footer-links-col">
           <h4>CONNECT</h4>
-          <a href="#" onClick={(e) => { e.preventDefault(); alert('Connecting on LinkedIn...'); }}>LinkedIn</a>
-          <a href="#" onClick={(e) => { e.preventDefault(); alert('Connecting on X / Twitter...'); }}>X (Twitter)</a>
-          <a href="#" onClick={(e) => { e.preventDefault(); alert('Connecting on Instagram...'); }}>Instagram</a>
-          <a href="#" onClick={(e) => { e.preventDefault(); alert('Connecting on YouTube...'); }}>YouTube</a>
+          <a href="https://www.instagram.com/the_brandforge_digital?igsi=YjR1N3prdzJocTdx" target="_blank" rel="noreferrer">Instagram</a>
+          <a href="https://wa.me/919384576852" target="_blank" rel="noreferrer">WhatsApp</a>
+          <a href="mailto:brandforgedigitalmarketing@gmail.com">Email Us</a>
+          <a href="tel:+919384576852">Call Consultation</a>
         </div>
 
       </div>

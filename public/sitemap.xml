@@ -1,116 +1,297 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
 
   <!-- Core Pages -->
   <url>
     <loc>https://www.brandforgeagency.in/</loc>
-    <lastmod>2026-09-02</lastmod>
+    <lastmod>2026-09-09</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.00</priority>
+    <image:image>
+      <image:loc>https://www.brandforgeagency.in/brandforge-logo.png</image:loc>
+      <image:title>BrandForge Agency Official Logo</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.brandforgeagency.in/brandforge-full-logo.png</image:loc>
+      <image:title>BrandForge Digital Growth Agency Wordmark</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.brandforgeagency.in/logo.png</image:loc>
+      <image:title>BrandForge Brandmark</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.brandforgeagency.in/banner-web-dev.png</image:loc>
+      <image:title>3D Web Development Interactive HUD Interface</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.brandforgeagency.in/banner-seo-geo.png</image:loc>
+      <image:title>SEO and Generative Engine Optimization Hologram</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.brandforgeagency.in/banner-paid-media.png</image:loc>
+      <image:title>Paid Media ROAS Scaling Analytics Dashboard</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.brandforgeagency.in/faq-illustration.png</image:loc>
+      <image:title>BrandForge FAQ Interactive Knowledge Graph</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.brandforgeagency.in/client-sonicprints.png</image:loc>
+      <image:title>SonicPrints Client Partner Logo</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.brandforgeagency.in/client-talentera.png</image:loc>
+      <image:title>Talentera Client Partner Logo</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.brandforgeagency.in/client-thoughtflows.png</image:loc>
+      <image:title>ThoughtFlows Client Partner Logo</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.brandforgeagency.in/client-thoughtspace.png</image:loc>
+      <image:title>ThoughtSpace Client Partner Logo</image:title>
+    </image:image>
   </url>
+
   <url>
     <loc>https://www.brandforgeagency.in/about</loc>
-    <lastmod>2026-09-02</lastmod>
+    <lastmod>2026-09-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
+    <image:image>
+      <image:loc>https://www.brandforgeagency.in/banner-about-hero.jpg</image:loc>
+      <image:title>BrandForge Founders and Executive Leadership</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.brandforgeagency.in/banner-who-we-are.jpg</image:loc>
+      <image:title>BrandForge Who We Are Agency Team</image:title>
+    </image:image>
   </url>
+
   <url>
     <loc>https://www.brandforgeagency.in/contact</loc>
-    <lastmod>2026-09-08</lastmod>
+    <lastmod>2026-09-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.90</priority>
+    <image:image>
+      <image:loc>https://www.brandforgeagency.in/banner-contact.jpg</image:loc>
+      <image:title>BrandForge Global Strategy Consultation Line</image:title>
+    </image:image>
   </url>
+
+  <!-- Location Landing Pages -->
   <url>
     <loc>https://www.brandforgeagency.in/seo-company-coimbatore</loc>
-    <lastmod>2026-09-08</lastmod>
+    <lastmod>2026-09-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.95</priority>
+    <image:image>
+      <image:loc>https://www.brandforgeagency.in/banner-seo-geo.png</image:loc>
+      <image:title>Best SEO Company in Coimbatore</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.brandforgeagency.in/banner-seo-geo-bg.jpg</image:loc>
+      <image:title>SEO Matrix Background</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.brandforgeagency.in/mindmap-seo-geo.svg</image:loc>
+      <image:title>SEO Generative Ranking Roadmap</image:title>
+    </image:image>
   </url>
+
   <url>
     <loc>https://www.brandforgeagency.in/ppc-company-coimbatore</loc>
-    <lastmod>2026-09-08</lastmod>
+    <lastmod>2026-09-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.95</priority>
+    <image:image>
+      <image:loc>https://www.brandforgeagency.in/banner-paid-media.png</image:loc>
+      <image:title>Best PPC Agency in Coimbatore</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.brandforgeagency.in/banner-paid-media.jpg</image:loc>
+      <image:title>Performance Ads Media Banner</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.brandforgeagency.in/mindmap-paid-media.svg</image:loc>
+      <image:title>Paid Media ROAS Scaling Funnel</image:title>
+    </image:image>
   </url>
+
   <url>
     <loc>https://www.brandforgeagency.in/website-development-company-coimbatore</loc>
-    <lastmod>2026-09-08</lastmod>
+    <lastmod>2026-09-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.95</priority>
+    <image:image>
+      <image:loc>https://www.brandforgeagency.in/banner-web-dev.png</image:loc>
+      <image:title>Website Development Company in Coimbatore HUD</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.brandforgeagency.in/banner-web-dev.jpg</image:loc>
+      <image:title>Web Foundry 3D Web Development</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.brandforgeagency.in/mindmap-web-foundry.svg</image:loc>
+      <image:title>Web Development Architecture Blueprint</image:title>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://www.brandforgeagency.in/web-development-company-coimbatore</loc>
+    <lastmod>2026-09-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.95</priority>
+    <image:image>
+      <image:loc>https://www.brandforgeagency.in/banner-web-dev.png</image:loc>
+      <image:title>Web Development Company in Coimbatore</image:title>
+    </image:image>
   </url>
 
   <!-- 12 Service Landing Pages -->
   <url>
     <loc>https://www.brandforgeagency.in/services/seo-geo</loc>
-    <lastmod>2026-09-02</lastmod>
+    <lastmod>2026-09-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.95</priority>
+    <image:image>
+      <image:loc>https://www.brandforgeagency.in/banner-seo-geo.png</image:loc>
+      <image:title>SEO and GEO Services Banner</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.brandforgeagency.in/mindmap-seo-geo.svg</image:loc>
+      <image:title>SEO Roadmap</image:title>
+    </image:image>
   </url>
+
   <url>
     <loc>https://www.brandforgeagency.in/services/paid-media</loc>
-    <lastmod>2026-09-02</lastmod>
+    <lastmod>2026-09-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.95</priority>
+    <image:image>
+      <image:loc>https://www.brandforgeagency.in/banner-paid-media.png</image:loc>
+      <image:title>Paid Media Scaling Banner</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.brandforgeagency.in/mindmap-paid-media.svg</image:loc>
+      <image:title>Paid Media Blueprint</image:title>
+    </image:image>
   </url>
+
   <url>
     <loc>https://www.brandforgeagency.in/services/web-foundry</loc>
-    <lastmod>2026-09-02</lastmod>
+    <lastmod>2026-09-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.95</priority>
+    <image:image>
+      <image:loc>https://www.brandforgeagency.in/banner-web-dev.png</image:loc>
+      <image:title>Web Foundry 3D Web Development</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.brandforgeagency.in/mindmap-web-foundry.svg</image:loc>
+      <image:title>Web Foundry Roadmap</image:title>
+    </image:image>
   </url>
+
   <url>
     <loc>https://www.brandforgeagency.in/services/viral-social</loc>
-    <lastmod>2026-09-02</lastmod>
+    <lastmod>2026-09-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.90</priority>
+    <image:image>
+      <image:loc>https://www.brandforgeagency.in/mindmap-viral-social.svg</image:loc>
+      <image:title>Viral Social Media Growth Engine</image:title>
+    </image:image>
   </url>
+
   <url>
     <loc>https://www.brandforgeagency.in/services/influencer-network</loc>
-    <lastmod>2026-09-02</lastmod>
+    <lastmod>2026-09-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.90</priority>
+    <image:image>
+      <image:loc>https://www.brandforgeagency.in/mindmap-influencer-network.svg</image:loc>
+      <image:title>Creator Network Campaign Workflow</image:title>
+    </image:image>
   </url>
+
   <url>
     <loc>https://www.brandforgeagency.in/services/content-smithy</loc>
-    <lastmod>2026-09-02</lastmod>
+    <lastmod>2026-09-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.90</priority>
+    <image:image>
+      <image:loc>https://www.brandforgeagency.in/mindmap-content-smithy.svg</image:loc>
+      <image:title>Authority Content Marketing Roadmap</image:title>
+    </image:image>
   </url>
+
   <url>
     <loc>https://www.brandforgeagency.in/services/inbox-edge</loc>
-    <lastmod>2026-09-02</lastmod>
+    <lastmod>2026-09-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.90</priority>
+    <image:image>
+      <image:loc>https://www.brandforgeagency.in/mindmap-inbox-edge.svg</image:loc>
+      <image:title>Email Lifecycle Retention Roadmap</image:title>
+    </image:image>
   </url>
+
   <url>
     <loc>https://www.brandforgeagency.in/services/brand-anvil</loc>
-    <lastmod>2026-09-02</lastmod>
+    <lastmod>2026-09-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.90</priority>
+    <image:image>
+      <image:loc>https://www.brandforgeagency.in/mindmap-brand-anvil.svg</image:loc>
+      <image:title>Enterprise Brand Architecture Map</image:title>
+    </image:image>
   </url>
+
   <url>
     <loc>https://www.brandforgeagency.in/services/visual-id</loc>
-    <lastmod>2026-09-02</lastmod>
+    <lastmod>2026-09-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.90</priority>
+    <image:image>
+      <image:loc>https://www.brandforgeagency.in/mindmap-visual-id.svg</image:loc>
+      <image:title>Visual Identity Design Token System</image:title>
+    </image:image>
   </url>
+
   <url>
     <loc>https://www.brandforgeagency.in/services/commercial-video</loc>
-    <lastmod>2026-09-02</lastmod>
+    <lastmod>2026-09-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.90</priority>
+    <image:image>
+      <image:loc>https://www.brandforgeagency.in/mindmap-commercial-video.svg</image:loc>
+      <image:title>Commercial Video Production Workflow</image:title>
+    </image:image>
   </url>
+
   <url>
     <loc>https://www.brandforgeagency.in/services/cro-revenue</loc>
-    <lastmod>2026-09-02</lastmod>
+    <lastmod>2026-09-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.90</priority>
+    <image:image>
+      <image:loc>https://www.brandforgeagency.in/mindmap-cro-revenue.svg</image:loc>
+      <image:title>CRO Conversion Rate Lift Funnel</image:title>
+    </image:image>
   </url>
+
   <url>
     <loc>https://www.brandforgeagency.in/services/reputation-shield</loc>
-    <lastmod>2026-09-02</lastmod>
+    <lastmod>2026-09-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.90</priority>
+    <image:image>
+      <image:loc>https://www.brandforgeagency.in/mindmap-reputation-shield.svg</image:loc>
+      <image:title>Reputation Shield Crisis PR Defense</image:title>
+    </image:image>
   </url>
 
 </urlset>

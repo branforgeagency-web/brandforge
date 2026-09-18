@@ -39,6 +39,14 @@ export default function App() {
           <ServiceLandingPage slug="web-foundry" onOpenModal={openModal} navigate={navigate} />
         ) : path === '/social-media-marketing-company-coimbatore' || path === '/social-media-agency-coimbatore' ? (
           <ServiceLandingPage slug="viral-social" onOpenModal={openModal} navigate={navigate} />
+        ) : path === '/content-marketing-agency-coimbatore' || path === '/content-marketing-company-coimbatore' ? (
+          <ServiceLandingPage slug="content-smithy" onOpenModal={openModal} navigate={navigate} />
+        ) : path === '/email-marketing-company-coimbatore' || path === '/email-marketing-agency-coimbatore' ? (
+          <ServiceLandingPage slug="inbox-edge" onOpenModal={openModal} navigate={navigate} />
+        ) : path === '/brand-positioning-agency-coimbatore' || path === '/brand-positioning-company-coimbatore' ? (
+          <ServiceLandingPage slug="brand-anvil" onOpenModal={openModal} navigate={navigate} />
+        ) : path === '/brand-identity-design-agency-coimbatore' || path === '/brand-identity-design-company-coimbatore' ? (
+          <ServiceLandingPage slug="visual-id" onOpenModal={openModal} navigate={navigate} />
         ) : serviceSlug ? (
           <ServiceLandingPage slug={serviceSlug} onOpenModal={openModal} navigate={navigate} />
         ) : (

@@ -47,6 +47,46 @@ const ROUTES_META = {
     title: "Social Media Marketing Company in Coimbatore | BrandForge",
     description: "Looking for a social media marketing company in Coimbatore? BrandForge grows your brand with content, reels & ads that convert. Get a free strategy call.",
   },
+  "/content-marketing-agency-coimbatore": {
+    title: "Content Marketing Agency in Coimbatore | BrandForge",
+    description: "Looking for a content marketing agency in Coimbatore? BrandForge creates SEO blogs, videos & content that bring leads for months. Book a free content audit.",
+  },
+  "/content-marketing-company-coimbatore": {
+    title: "Content Marketing Agency in Coimbatore | BrandForge",
+    description: "Looking for a content marketing agency in Coimbatore? BrandForge creates SEO blogs, videos & content that bring leads for months. Book a free content audit.",
+  },
+  "/email-marketing-company-coimbatore": {
+    title: "Email Marketing Company in Coimbatore | BrandForge",
+    description: "Looking for an email marketing company in Coimbatore? BrandForge builds automated email flows that turn leads into repeat buyers. Book a free email audit.",
+  },
+  "/email-marketing-agency-coimbatore": {
+    title: "Email Marketing Company in Coimbatore | BrandForge",
+    description: "Looking for an email marketing company in Coimbatore? BrandForge builds automated email flows that turn leads into repeat buyers. Book a free email audit.",
+  },
+  "/brand-positioning-agency-coimbatore": {
+    title: "Brand Positioning Agency in Coimbatore | BrandForge",
+    description: "Looking for a brand positioning agency in Coimbatore? Brand Anvil by BrandForge helps you stand out and charge more. Book a free brand positioning session.",
+  },
+  "/brand-position-agency-coimbatore": {
+    title: "Brand Positioning Agency in Coimbatore | BrandForge",
+    description: "Looking for a brand positioning agency in Coimbatore? Brand Anvil by BrandForge helps you stand out and charge more. Book a free brand positioning session.",
+  },
+  "/brand-positioning-agency-coimbatore": {
+    title: "Brand Positioning Agency in Coimbatore | BrandForge",
+    description: "Looking for a brand positioning agency in Coimbatore? Brand Anvil by BrandForge helps you stand out and charge more. Book a free brand positioning session.",
+  },
+  "/brand-positioning-company-coimbatore": {
+    title: "Brand Positioning Agency in Coimbatore | BrandForge",
+    description: "Looking for a brand positioning agency in Coimbatore? Brand Anvil by BrandForge helps you stand out and charge more. Book a free brand positioning session.",
+  },
+  "/brand-identity-design-agency-coimbatore": {
+    title: "Brand Identity Design Agency in Coimbatore | BrandForge",
+    description: "Need a brand identity design agency? Identity Forge by BrandForge crafts logos, colours & complete brand kits that make you memorable. Book a free brand call.",
+  },
+  "/brand-identity-design-company-coimbatore": {
+    title: "Brand Identity Design Agency in Coimbatore | BrandForge",
+    description: "Need a brand identity design agency? Identity Forge by BrandForge crafts logos, colours & complete brand kits that make you memorable. Book a free brand call.",
+  },
   "/services/seo-geo": {
     title: "SEO Company in Coimbatore | SEO & GEO Services – Brand Forge",
     description: "Brand Forge is a trusted SEO company in Coimbatore offering SEO, GEO (Generative Engine Optimization), and local search services to rank higher on Google and AI search engines.",
@@ -64,24 +104,24 @@ const ROUTES_META = {
     description: "Looking for a social media marketing company in Coimbatore? BrandForge grows your brand with content, reels & ads that convert. Get a free strategy call.",
   },
   "/services/influencer-network": {
-    title: "Creator Networks & Influencer Marketing Campaigns – Brand Forge",
-    description: "Connect with high-authority creators, vetted contract talent, and key opinion leaders with transparent ROI and conversion tracking.",
+    title: "Key Opinion Leader & Influencer Network Studio – Brand Forge",
+    description: "Connect with high-converting creators, key opinion leaders, and viral influencers across Meta, TikTok, and YouTube to drive exponential brand authority.",
   },
   "/services/content-smithy": {
-    title: "Authority Storytelling & Content Marketing – Brand Forge",
-    description: "Transform complex value propositions into high-converting editorial copy, whitepapers, thought leadership, and organic demand engines.",
+    title: "Content Marketing Agency in Coimbatore | BrandForge",
+    description: "Looking for a content marketing agency in Coimbatore? BrandForge creates SEO blogs, videos & content that bring leads for months. Book a free content audit.",
   },
   "/services/inbox-edge": {
-    title: "Lifecycle Email Marketing & Retention Loops – Brand Forge",
-    description: "Automate high-converting Klaviyo sequences, dynamic customer segmentation, and subscriber lifetime value (LTV) maximization.",
+    title: "Email Marketing Company in Coimbatore | BrandForge",
+    description: "Looking for an email marketing company in Coimbatore? BrandForge builds automated email flows that turn leads into repeat buyers. Book a free email audit.",
   },
   "/services/brand-anvil": {
-    title: "Enterprise Brand Growth Architecture & 360° Strategy – Brand Forge",
-    description: "360° growth blueprints, market intelligence, unit economics optimization, and go-to-market roadmaps engineered for category dominance.",
+    title: "Brand Positioning Agency in Coimbatore | BrandForge",
+    description: "Looking for a brand positioning agency in Coimbatore? Brand Anvil by BrandForge helps you stand out and charge more. Book a free brand positioning session.",
   },
   "/services/visual-id": {
-    title: "Visual Identity Systems & 3D Brand Design – Brand Forge",
-    description: "Command instant market authority with custom logo design, 3D motion tokens, dynamic typography, and scalable enterprise design systems.",
+    title: "Brand Identity Design Agency in Coimbatore | BrandForge",
+    description: "Need a brand identity design agency? Identity Forge by BrandForge crafts logos, colours & complete brand kits that make you memorable. Book a free brand call.",
   },
   "/services/commercial-video": {
     title: "Commercial Video Ads & 3D Motion Production – Brand Forge",

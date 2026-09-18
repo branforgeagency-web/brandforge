@@ -121,6 +121,14 @@ export default function ServiceLandingPage({ slug = "seo-geo", onOpenModal, navi
                   <>Website Development Company in Coimbatore That Builds <span>Sites That Sell</span></>
                 ) : data.slug === "viral-social" ? (
                   <>Social Media Marketing Company in Coimbatore That Grows <span>Real Followers Into Customers</span></>
+                ) : data.slug === "content-smithy" ? (
+                  <>Content Marketing Agency in Coimbatore That Turns <span>Words Into Customers</span></>
+                ) : data.slug === "inbox-edge" ? (
+                  <>Email Marketing Company in Coimbatore That Turns <span>Your List Into Revenue</span></>
+                ) : data.slug === "brand-anvil" ? (
+                  <>Brand Positioning Agency in Coimbatore That Makes <span>You the Obvious Choice</span></>
+                ) : data.slug === "visual-id" ? (
+                  <>Brand Identity Design Agency in Coimbatore That Makes <span>You Unforgettable</span></>
                 ) : data.title.includes("/") ? (
                   <>{data.title.split("/")[0]} / <span>{data.title.split("/")[1]}</span></>
                 ) : (

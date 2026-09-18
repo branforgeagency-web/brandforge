@@ -942,6 +942,7 @@ export const servicesData = {
     eyebrow: "INFLUENCER / CREATOR NETWORK",
     title: "AMPLIFY BRAND AUTHORITY THROUGH TOP-TIER CREATOR NETWORKS",
     subtitle: "We connect your brand with high-converting creators, key opinion leaders, and viral influencers to generate massive social proof.",
+    bannerBg: "/banner-influencer-network.png",
     icon: Users,
     metrics: [
       { value: "2,500+", label: "Vetted Creator Roster", desc: "Niche influencers across Fashion, Tech, SaaS & Wellness" },
@@ -976,154 +977,1060 @@ export const servicesData = {
 
   "content-smithy": {
     slug: "content-smithy",
+    urlSlug: "/content-marketing-agency-coimbatore",
+    metaTitle: "Content Marketing Agency in Coimbatore | BrandForge",
+    metaDescription: "Looking for a content marketing agency in Coimbatore? BrandForge creates SEO blogs, videos & content that bring leads for months. Book a free content audit.",
     number: "06",
-    eyebrow: "CONTENT / STORY SMITHY",
-    title: "AUTHORITY COPYWRITING & EDITORIAL THOUGHT LEADERSHIP",
-    subtitle: "We craft high-impact editorial copy, whitepapers, and thought leadership articles designed to position your executives as industry leaders.",
+    eyebrow: "Content Marketing Agency in Coimbatore | Story Smithy by BrandForge",
+    title: "Content Marketing Agency in Coimbatore That Turns Words Into Customers",
+    heroButtonText: "Book a Free Content Audit →",
+    subtitle: [
+      "Ads stop working the day you stop paying. Good content keeps bringing you leads for months, even years, after you publish it. That's the difference between renting attention and owning it.",
+      "BrandForge is a content marketing agency in Coimbatore that creates blogs, videos, and social content built to rank on Google and turn readers into customers. Our content studio, Story Smithy, plans and produces content that works long after it's posted — not one-off pieces nobody sees."
+    ],
+    bannerBg: "/banner-content-smithy.png",
     icon: PenTool,
     metrics: [
-      { value: "500+", label: "Whitepapers & Articles Written", desc: "Published across top tier-1 industry journals" },
-      { value: "3.5x", label: "Time-on-Page Increase", desc: "Long-form editorial reader engagement boost" },
-      { value: "+180%", label: "Lead Magnets Conversion", desc: "Gated whitepaper lead capture efficiency" },
-      { value: "#1", label: "Executive Authority Rank", desc: "LinkedIn thought leadership positioning" },
+      { value: "3.5x", label: "Reader Time-on-Page", desc: "Deep domain storytelling & engaging editorial" },
+      { value: "+320%", label: "Organic Search Leads", desc: "Average 6-month compounding inbound traffic" },
+      { value: "Page 1", label: "Google Top 3 Rankings", desc: "High-intent keyword dominance across niches" },
+      { value: "100%", label: "SEO & Conversion Ready", desc: "Zero generic AI fluff, pure human authority" },
     ],
-    matrixTag: "EDITORIAL POWER",
-    matrixTitle: "GENERIC AI TEXT VS BRANDFORGE STORY SMITHY",
-    matrixSubtitle: "Stand out in a sea of generic AI text. We forge deep, authoritative storytelling that commands respect.",
+    whyChooseUs: {
+      tag: "WHY CONTENT MARKETING WINS",
+      title: "Why Content Marketing Beats One-Off Ads",
+      description: "A single ad gets a click and disappears. A single blog post can rank on Google and pull in leads every month for years. The catch is consistency. One blog won't move the needle — a steady stream of the right content will. That's what an agency handles for you.",
+      leadIn: "Here is why strategic content marketing wins over time:",
+      points: [
+        "It keeps working after you stop paying",
+        "It builds trust — helpful content makes you the expert",
+        "It ranks on Google, bringing free traffic every month",
+        "It gives your ads and social pages something worth sharing",
+        "It answers buyer questions, so they choose you over rivals"
+      ]
+    },
+    matrixTag: "WHAT AN AGENCY ACTUALLY DOES",
+    matrixTitle: "WHAT DOES A CONTENT MARKETING AGENCY IN COIMBATORE DO?",
+    matrixSubtitle: "A real content marketing agency in Coimbatore does far more than write blogs. Here's what we handle end to end:",
     matrixRows: [
-      { feature: "Writing Depth", traditional: "Shallow robotic AI fluff", brandforge: "Deep domain research & expert executive voice" },
-      { feature: "Strategic Goal", traditional: "Filling page space for SEO", brandforge: "Captivating decision makers & driving revenue" },
-      { feature: "Brand Tone", traditional: "Dry corporate jargon", brandforge: "Bold, punchy, persuasive editorial storytelling" },
-      { feature: "Reader Action", traditional: "Bored reader leaves in 5 seconds", brandforge: "Compelling CTA that converts prospect into client" },
+      {
+        feature: "Content Strategy",
+        traditional: "Writing random articles with no audience search demand",
+        brandforge: "A clear content plan tied to what your customers actually search"
+      },
+      {
+        feature: "SEO & Keyword Research",
+        traditional: "Guessing topics or stuffing useless generic keywords",
+        brandforge: "Finding the exact high-intent keywords and questions worth ranking for"
+      },
+      {
+        feature: "Multi-Format Creation",
+        traditional: "Shallow 500-word text copied from existing search results",
+        brandforge: "Deep blogs, high-hook video scripts, graphics, and social carousels"
+      },
+      {
+        feature: "Conversion Optimization",
+        traditional: "Dead-end articles with zero next steps or lead captures",
+        brandforge: "Every piece built to rank and convert readers into paying customers"
+      },
+      {
+        feature: "Content Distribution",
+        traditional: "Publishing on a hidden blog and letting it sit unread",
+        brandforge: "Active syndication across search, email newsletters, and social channels"
+      },
+      {
+        feature: "Measurement & Refresh",
+        traditional: "Never checking traffic or letting old articles decay",
+        brandforge: "Monthly tracking of traffic, rankings, leads, and proactive content refreshes"
+      }
     ],
+    pillarsTag: "OUR SERVICES",
+    pillarsTitle: "Our Content Marketing Services",
+    pillarsSubtitle: "We build the right content mix for your goals — not the same package for everyone.",
     pillars: [
-      { icon: PenTool, tag: "AUTHORITY", title: "Executive Thought Leadership", description: "Craft opinionated, high-signal articles for CEOs and founders on LinkedIn and Medium.", deliverables: ["Founder Ghostwriting", "Industry Commentary", "LinkedIn Viral Posts"] },
-      { icon: Database, tag: "WHITEPAPERS", title: "Enterprise Whitepapers & Ebooks", description: "Design data-dense research reports and whitepapers that generate qualified enterprise B2B leads.", deliverables: ["Primary Market Research", "Data Visualization", "Gated Lead PDF Layout"] },
-      { icon: Layers, tag: "EDITORIAL", title: "Editorial Brand Storytelling", description: "Tell your brand’s origin story and core mission through captivating manifesto copy.", deliverables: ["Brand Manifesto", "About Us Storytelling", "Press Release Copy"] },
-      { icon: Search, tag: "SEO COPY", title: "High-Intent Sales Copywriting", description: "Write conversion copywriting for landing pages, product pages, and email sales letters.", deliverables: ["Sales Letter Copy", "Landing Page Headlines", "Value Proposition Lock"] },
-      { icon: BarChart3, tag: "CASE STUDIES", title: "Client Success Case Studies", description: "Turn customer wins into persuasive case study narratives featuring metrics, quotes, and takeaways.", deliverables: ["Customer Interviews", "Metrics Proof Breakdown", "PDF & Web Layout"] },
-      { icon: TrendingUp, tag: "REPURPOSING", title: "Content Multiplier System", description: "Repurpose single whitepapers into 20+ short articles, carousels, and newsletter editions.", deliverables: ["Carousel Graphic Specs", "Newsletter Snippets", "Social Thread Extracts"] },
+      {
+        icon: Search,
+        tag: "ORGANIC TRAFFIC",
+        title: "SEO Blog Writing",
+        description: "Articles built with deep keyword research and technical structure to rank on Google and pull in high-intent traffic for months and years.",
+        deliverables: [
+          "Target Keyword Intent Mapping",
+          "Original Research & Insights",
+          "Structured Schema & Meta Tags",
+          "Internal Linking Architecture"
+        ]
+      },
+      {
+        icon: Globe,
+        tag: "HIGH CONVERSION",
+        title: "Website Content",
+        description: "Homepage, service, and landing page copy that clearly positions your authority, overcomes objections, and turns casual visitors into enquiries.",
+        deliverables: [
+          "Hero Value Proposition Copy",
+          "Service Page Deep Dives",
+          "Frictionless Form CTAs",
+          "Mobile-First Readability"
+        ]
+      },
+      {
+        icon: Video,
+        tag: "VIRAL RETENTION",
+        title: "Video & Reel Scripts",
+        description: "High-hook video concepts and scripts for short-form Reels, YouTube Shorts, and brand showreels designed to capture and hold attention.",
+        deliverables: [
+          "3-Second Dopamine Hooks",
+          "Visual Direction & B-Roll Cues",
+          "Kinetic Caption Scripts",
+          "Story Arc Retention Framework"
+        ]
+      },
+      {
+        icon: Megaphone,
+        tag: "BRAND AUTHORITY",
+        title: "Social Media Content",
+        description: "Educational carousel slide decks, thought leadership posts, and engaging captions that build an obsessed brand following across platforms.",
+        deliverables: [
+          "Carousel Educational Guides",
+          "Thought Leadership Articles",
+          "Engaging Copy & CTAs",
+          "Custom Branded Infographics"
+        ]
+      },
+      {
+        icon: Mail,
+        tag: "RETENTION LOOPS",
+        title: "Email & Newsletter Content",
+        description: "High-open-rate newsletter sequences and automated nurture drips that build relationships and convert cold subscribers into repeat buyers.",
+        deliverables: [
+          "Welcome Onboarding Sequences",
+          "Weekly Editorial Newsletters",
+          "Promotional Sales Drips",
+          "Re-Engagement Campaigns"
+        ]
+      },
+      {
+        icon: Award,
+        tag: "PROOF & TRUST",
+        title: "Case Studies & Testimonials",
+        description: "Compelling, metrics-driven customer success stories and transformation breakdowns that eliminate buyer skepticism and close high-ticket deals.",
+        deliverables: [
+          "Customer Interview Framework",
+          "Before & After Metrics Proof",
+          "Executive Quote Formatting",
+          "Downloadable PDF Case Decks"
+        ]
+      },
+      {
+        icon: Layers,
+        tag: "PRODUCT COPY",
+        title: "Product & Service Descriptions",
+        description: "Clear, persuasive, benefit-led product and service descriptions for e-commerce catalogues and premium service brochures.",
+        deliverables: [
+          "Benefit-Driven Feature Bullets",
+          "Technical Specification Tables",
+          "SEO Micro-Copy & Snippets",
+          "Conversion-Focused FAQs"
+        ]
+      },
+      {
+        icon: TrendingUp,
+        tag: "MULTIPLIER ENGINE",
+        title: "Content Repurposing",
+        description: "Turning one single in-depth pillar blog into 5 short-form reels, 3 LinkedIn carousels, and a weekly newsletter so nothing goes to waste.",
+        deliverables: [
+          "1 Pillar into 10+ Micro Assets",
+          "Cross-Platform Formatting",
+          "Carousel Visual Breakdowns",
+          "Email Digest Extracts"
+        ]
+      }
     ],
+    differentiators: {
+      tag: "THE BRANDFORGE ADVANTAGE",
+      title: "Why Businesses Choose BrandForge",
+      subtitle: "As a content marketing agency in Coimbatore that also runs SEO, web, and paid ads in-house, we connect your content to everything else that drives growth — so it's never just writing for the sake of it.",
+      items: [
+        {
+          title: "Strategy First — Content Mapped to Search",
+          description: "Every single blog and video is tied to actual customer search demand on Google, ensuring steady compounding inbound traffic.",
+          icon: Target
+        },
+        {
+          title: "SEO Baked In From Day One",
+          description: "Structured hierarchy, semantic keywords, schema markup, and internal linking engineered so search engines index and rank you fast.",
+          icon: Search
+        },
+        {
+          title: "Human, On-Brand Storytelling",
+          description: "Zero generic AI dumps. Authentic, punchy, persuasive writing crafted in-house by our Story Smithy editorial team.",
+          icon: PenTool
+        },
+        {
+          title: "One Idea, Many Formats",
+          description: "We turn single blogs into reels, carousels, posts, and emails so your brand reaches buyers across search, social, and inbox.",
+          icon: Zap
+        },
+        {
+          title: "Proactive Content Refreshes",
+          description: "We continuously update past articles with new data and keywords to keep them ranking on page 1 for years, not let them fade.",
+          icon: BarChart3
+        }
+      ]
+    },
+    timeline: {
+      tag: "WHAT BRANDFORGE WILL DO FOR YOU",
+      title: "What BrandForge Will Do For You",
+      subtitle: "No random posts, no filler articles. Here's what actually lands for you every month. Because we run SEO, web, and social in-house too, your content isn't a lonely blog — it's wired into everything that brings you customers.",
+      steps: [
+        { num: "01", title: "SEARCH-MAPPED CONTENT PLAN", desc: "We build topics around what Coimbatore and global customers actually type into Google." },
+        { num: "02", title: "SEO BAKED IN FROM START", desc: "Every blog is keyword-researched and structured so it works for rankings, not just reading." },
+        { num: "03", title: "ONE IDEA, MANY FORMATS", desc: "We turn single blogs into reels, carousels, posts, and emails so nothing goes to waste." },
+        { num: "04", title: "HUMAN ON-BRAND WRITING", desc: "Content that sounds like your authentic voice — zero robotic generic AI fluff." },
+        { num: "05", title: "RANKINGS & TRAFFIC REPORTS", desc: "You see plain numbers on which pieces are bringing visitors, rankings, and real leads." },
+        { num: "06", title: "PROACTIVE CONTENT REFRESH", desc: "We continuously update past blogs to keep them ranking on page 1, never letting them fade." }
+      ]
+    },
+    whoWeHelp: {
+      tag: "WHO WE WORK WITH",
+      title: "Who We Work With in Coimbatore & Tamil Nadu",
+      subtitle: "We create content for coaching institutes, clinics and healthcare, e-commerce and retail, real estate, B2B companies, and local service brands across Coimbatore and Tamil Nadu. If your customers are searching for answers online, we make sure yours is the one they find.",
+      industries: [
+        { title: "Coaching & Education Institutes", desc: "Course syllabus guides, career roadmaps, and student success stories that rank on page 1 for admissions keywords." },
+        { title: "Clinics, Doctors & Healthcare", desc: "Doctor-reviewed treatment guides, patient FAQ blogs, and educational articles that build deep medical trust." },
+        { title: "E-Commerce & Retail Brands", desc: "High-ranking gift guides, product buying comparisons, and lifestyle reels that drive organic checkout sales." },
+        { title: "Real Estate & Builders", desc: "Locality guides, luxury villa walkthrough scripts, and property investment articles for serious buyers." },
+        { title: "B2B & Industrial Companies", desc: "Technical whitepapers, manufacturing case studies, and LinkedIn thought leadership for corporate buyers." },
+        { title: "Local Service Brands", desc: "Location-specific solution guides and customer transformation stories that dominate local Google searches." }
+      ],
+      certifications: [
+        { label: "Google Search Central Quality Rater Compliant (E-E-A-T)" },
+        { label: "HubSpot Content Marketing Certified Methodology" },
+        { label: "Real Client Result: ThoughtFlows Blog Ranked Page 1 for 'Medical Coding Course' & Drove 14K+ Views" },
+        { label: "Reviewed by BalaMurali, Content Lead & Founder, Story Smithy" }
+      ]
+    },
     faqs: [
-      { q: "How do you capture our company’s technical tone of voice?", a: "We conduct a 60-minute recorded executive interview to extract your exact insights, terminology, and brand perspective before writing a single word." },
-      { q: "Can you ghostwrite for our CEO on LinkedIn?", a: "Yes. We manage full LinkedIn executive positioning, writing 3 to 5 high-signal posts per week to build industry authority." },
-      { q: "Who owns the copyright to the content?", a: "You own 100% of all intellectual property, copyright, and publishing rights for all content we create." },
-      { q: "What is your turnaround time for long-form whitepapers?", a: "A comprehensive 15-page enterprise whitepaper typically takes 10 to 14 business days including design." },
+      {
+        q: "How much does content marketing cost in Coimbatore?",
+        a: "It depends on how much content you need each month — blogs, videos, social, or a mix. We offer monthly packages and share a clear price after understanding your goals. There are no hidden charges."
+      },
+      {
+        q: "How long until content marketing brings results?",
+        a: "SEO content usually starts showing results in 3 to 6 months as pages climb Google. Social and email content works faster. Content is a long game, but it keeps paying off long after ads stop."
+      },
+      {
+        q: "Do you write the content or do I have to?",
+        a: "We handle everything — strategy, writing, editing, and optimization. You just approve the plan and topics. If you have product knowledge or ideas, we build them in."
+      },
+      {
+        q: "Is content marketing better than paid ads?",
+        a: "They do different jobs. Ads bring fast leads but stop when you stop paying; content builds lasting traffic and trust over time. The best results come from using both together, which we do in-house."
+      },
+      {
+        q: "Will your content actually rank on Google?",
+        a: "We build every blog SEO-ready with proper keyword research, structure, and internal links. That gives Google the foundation to rank you, though top spots also depend on competition and time."
+      }
     ],
+    bottomCta: {
+      title: "Book a Free Content Audit Today",
+      subtitle: "We'll review your current content, show you the gaps, and map out the topics that could bring you leads for months.",
+      buttonText: "Claim Your Free Content Audit →"
+    }
   },
 
   "inbox-edge": {
     slug: "inbox-edge",
+    urlSlug: "/email-marketing-company-coimbatore",
+    metaTitle: "Email Marketing Company in Coimbatore | BrandForge",
+    metaDescription: "Looking for an email marketing company in Coimbatore? BrandForge builds automated email flows that turn leads into repeat buyers. Book a free email audit.",
     number: "07",
-    eyebrow: "INBOX EDGE / RETENTION FUNNELS",
-    title: "MAXIMIZE CUSTOMER LIFETIME VALUE WITH AUTOMATED EMAIL FUNNELS",
-    subtitle: "We build automated Klaviyo and Omnisend email sequences that increase open rates, inbox deliverability, and repeat revenue.",
+    eyebrow: "Email Marketing Company in Coimbatore | Story Smithy by BrandForge",
+    title: "Email Marketing Company in Coimbatore That Turns Your List Into Revenue",
+    heroButtonText: "Book a Free Email Audit →",
+    subtitle: [
+      "You already have a list of leads and past customers sitting in your phone and inbox — and most businesses never email them again. That's money left on the table, because it costs nothing to reach people who already know you.",
+      "BrandForge is an email marketing company in Coimbatore that turns your contacts into repeat sales with smart, automated email campaigns. Our team sets up the flows, writes the emails, and tracks the results — so your list quietly earns for you month after month."
+    ],
+    bannerBg: "/banner-inbox-edge.png",
     icon: Mail,
     metrics: [
-      { value: "34.2%", label: "Average Email Revenue Share", desc: "Percentage of total client e-commerce revenue from email" },
-      { value: "48.5%", label: "Open Rate Benchmark", desc: "Industry-leading inbox deliverability performance" },
-      { value: "+65%", label: "Repeat Purchase Rate", desc: "Increase in customer LTV over 12 months" },
-      { value: "99.8%", label: "Domain Deliverability", desc: "DMARC, DKIM & SPF authentication health" },
+      { value: "+312%", label: "Email Revenue Lift", desc: "Average L6M client retention ROI surge" },
+      { value: "42.8%", label: "Average Open Rate", desc: "2.5x higher vs industry average (17%)" },
+      { value: "99.4%", label: "Inbox Deliverability", desc: "SPF, DKIM, DMARC & BIMI verified" },
+      { value: "24/7", label: "Automated Revenue Engine", desc: "Flows sell while you sleep on autopilot" },
     ],
-    matrixTag: "RETENTION ENGINE",
-    matrixTitle: "SPAM EMAIL BLASTS VS BRANDFORGE INBOX EDGE",
-    matrixSubtitle: "Stop blasting generic newsletters. We build behavioral trigger funnels that print predictable retention revenue.",
+    whyChooseUs: {
+      tag: "WHY EMAIL MARKETING WINS",
+      title: "Why Email Marketing Still Beats Everything on ROI",
+      description: "Social reach comes and goes. Ads stop when the budget runs out. But your email list is yours — no algorithm decides who sees it. That's why email consistently returns more per rupee than almost any other channel. The reason most businesses skip it? Setting it up feels like work. That's exactly the part we handle for you.",
+      leadIn: "Here is why email marketing continues to dominate ROI:",
+      points: [
+        "You own the list — no platform can take it away",
+        "It reaches people who already trust you",
+        "It runs on autopilot once set up",
+        "It brings repeat sales, not just one-time buyers",
+        "It's cheap — no ad spend to reach your own contacts"
+      ]
+    },
+    matrixTag: "WHAT AN AGENCY ACTUALLY DOES",
+    matrixTitle: "WHAT DOES AN EMAIL MARKETING COMPANY IN COIMBATORE DO?",
+    matrixSubtitle: "A good email marketing company in Coimbatore builds a system that runs itself. Here's what we handle end to end:",
     matrixRows: [
-      { feature: "Sending Logic", traditional: "Batch & blast same email to everyone", brandforge: "Behavioral triggers based on real-time browsing" },
-      { feature: "Inbox Placement", traditional: "Ending up in Spam & Promotions tab", brandforge: "99.8% Primary Inbox deliverability setup" },
-      { feature: "Visual Design", traditional: "Clunky HTML templates with broken images", brandforge: "Sleek, dark-mode glassmorphic email design" },
-      { feature: "Segmentation", traditional: "One giant unsegmented list", brandforge: "Hyper-segmented VIP, At-Risk, and RFM tiers" },
+      {
+        feature: "Strategy & Planning",
+        traditional: "Sending random unsegmented newsletters with no clear goal",
+        brandforge: "Mapping out who receives what email and when, based on how they entered your list"
+      },
+      {
+        feature: "List Setup & Cleaning",
+        traditional: "Leaving old invalid contacts to degrade domain reputation",
+        brandforge: "Organizing your existing contacts and removing dead emails so deliverability stays high"
+      },
+      {
+        feature: "Automated Flows",
+        traditional: "Manual one-off email sending with zero ongoing automation",
+        brandforge: "Setting up welcome sequences, abandoned cart reminders, and re-engagement drips that run 24/7"
+      },
+      {
+        feature: "Copy & Design",
+        traditional: "Generic robotic templates that get ignored and deleted",
+        brandforge: "Writing punchy, high-open subject lines and clean emails that look great on phones"
+      },
+      {
+        feature: "Technical Deliverability",
+        traditional: "Landing directly in Spam & Promotions tabs",
+        brandforge: "Configuring SPF, DKIM, DMARC, and sender reputation so emails land in the primary inbox"
+      },
+      {
+        feature: "Tracking & Optimization",
+        traditional: "Never reviewing open rates or revenue generated per email",
+        brandforge: "Tracking opens, clicks, and sales generated to continually optimize subject lines and send times"
+      }
     ],
+    pillarsTag: "OUR SERVICES",
+    pillarsTitle: "Our Email Marketing Services",
+    pillarsSubtitle: "We build the right automated flows and campaign sequences tailored to your customer journey.",
     pillars: [
-      { icon: Zap, tag: "AUTOMATION", title: "Automated Lifecycle Flows", description: "Deploy high-converting Welcome Series, Abandoned Checkout, Post-Purchase, and Win-Back flows.", deliverables: ["Welcome 4-Part Series", "Smart Abandoned Cart", "VIP Rewards Flow"] },
-      { icon: ShieldCheck, tag: "DELIVERABILITY", title: "Technical Deliverability & Domain Health", description: "Authenticate DMARC, DKIM, and SPF records to keep your emails out of the spam filter.", deliverables: ["DMARC/DKIM/SPF Setup", "IP Warming Protocol", "Spam Trap Cleanup"] },
-      { icon: Users, tag: "SEGMENTATION", title: "RFM Customer Segmentation", description: "Segment subscribers based on Recency, Frequency, and Monetary value for targeted offers.", deliverables: ["VIP High-Spender Tier", "Churn Risk Winback", "Category Preference Segment"] },
-      { icon: PenTool, tag: "CAMPAIGNS", title: "Broadcast Campaign Calendar", description: "Execute 8-12 strategic broadcast campaigns per month aligned with product drops and promos.", deliverables: ["Product Launch Emails", "Seasonal Flash Sales", "Editorial Newsletters"] },
-      { icon: BarChart3, tag: "SMS MARKETING", title: "SMS & Mobile Push Integration", description: "Combine SMS messaging with email for high-urgency cart recovery and VIP order alerts.", deliverables: ["Attentive / SMSBump Setup", "SMS Cart Recovery", "Compliance Setup"] },
-      { icon: TrendingUp, tag: "LTV OPTIMIZATION", title: "Subscription & LTV Acceleration", description: "Convert one-time buyers into recurring monthly subscribers to boost lifetime customer value.", deliverables: ["Recharge / Skio Setup", "Subscription Upsells", "Churn Reduction Flow"] },
+      {
+        icon: Zap,
+        tag: "FIRST IMPRESSIONS",
+        title: "Welcome & Onboarding Flows",
+        description: "First impressions that introduce your brand, deliver lead magnets, and turn new sign-ups into first-time buyers.",
+        deliverables: [
+          "High-Value Lead Magnet Delivery",
+          "Brand Story & Authority Introduction",
+          "First-Order Incentive Strategy",
+          "Subscriber Preference Profiling"
+        ]
+      },
+      {
+        icon: Mail,
+        tag: "TOP-OF-MIND",
+        title: "Newsletter Campaigns",
+        description: "Regular, value-packed updates that keep your brand top-of-mind without being salesy or annoying.",
+        deliverables: [
+          "Curated Industry Insights & Tips",
+          "Customer Stories & Highlights",
+          "Founder Letters & Product Updates",
+          "Engaging Polls & Micro-Surveys"
+        ]
+      },
+      {
+        icon: Megaphone,
+        tag: "REVENUE SURGE",
+        title: "Promotional Campaigns",
+        description: "High-converting emails for festival sales, seasonal discounts, product launches, and limited-time offers.",
+        deliverables: [
+          "Diwali & Festival Promo Calendars",
+          "Flash Sale Countdown Announcements",
+          "Product Launch Hype Sequences",
+          "Exclusive Subscriber-Only Perks"
+        ]
+      },
+      {
+        icon: Target,
+        tag: "REVENUE RECOVERY",
+        title: "Abandoned Cart Emails",
+        description: "Automated reminders that bring back shoppers who added items to cart but left without buying.",
+        deliverables: [
+          "Multi-Stage Trigger Timing",
+          "Dynamic Product Card Insertion",
+          "Objection Buster FAQs & Reviews",
+          "Limited-Time Incentive Unlocks"
+        ]
+      },
+      {
+        icon: Users,
+        tag: "PIPELINE CONVERSION",
+        title: "Lead Nurture Sequences",
+        description: "Educational drips that warm up cold leads from your website, ads, or events into paying clients.",
+        deliverables: [
+          "Problem-Awareness Educational Guides",
+          "Case Study Proof & Transformations",
+          "Discovery Call & Consultation Pitches",
+          "Automated Drip Scheduling"
+        ]
+      },
+      {
+        icon: ShieldCheck,
+        tag: "WIN-BACK",
+        title: "Re-Engagement Campaigns",
+        description: "Win-back campaigns that reactivate dormant subscribers and past customers who haven't bought in months.",
+        deliverables: [
+          "We Miss You Automated Offers",
+          "Feedback & Satisfaction Inquiries",
+          "VIP Reactivation Discounts",
+          "List Hygiene Auto-Sunset Rules"
+        ]
+      },
+      {
+        icon: Award,
+        tag: "MULTI-CHANNEL",
+        title: "WhatsApp & SMS Campaigns",
+        description: "Blending email with instant WhatsApp and SMS messaging for high-urgency notifications and time-sensitive deals.",
+        deliverables: [
+          "WhatsApp Business API Integration",
+          "Urgent Flash Sale SMS Alerts",
+          "Order Updates & Confirmation Drips",
+          "Direct Two-Way Chat Support Links"
+        ]
+      },
+      {
+        icon: TrendingUp,
+        tag: "AUDIENCE GROWTH",
+        title: "List Building & Lead Magnets",
+        description: "Free guides, discount popups, and opt-in forms that constantly capture new visitor emails on your site.",
+        deliverables: [
+          "High-Converting Exit-Intent Popups",
+          "Custom Downloadable Lead Magnets",
+          "Embedded Inline Signup Bars",
+          "GDPR & Data Privacy Compliance"
+        ]
+      }
     ],
+    differentiators: {
+      tag: "THE BRANDFORGE ADVANTAGE",
+      title: "Why Businesses Choose BrandForge for Email Marketing",
+      subtitle: "As an email marketing company in Coimbatore backed by Story Smithy and BrandForge's full-stack growth team, we connect your email campaigns to your website, paid ads, and social funnels for maximum customer lifetime value.",
+      items: [
+        {
+          title: "Automated Flows That Sell While You Sleep",
+          description: "Welcome drips, abandoned cart recovery, and post-purchase follow-ups that quietly generate sales 24/7 on autopilot.",
+          icon: Zap
+        },
+        {
+          title: "Primary Inbox Placement, Not Spam",
+          description: "Full SPF, DKIM, DMARC, and sender domain authentication to ensure your emails reach the main inbox every single time.",
+          icon: ShieldCheck
+        },
+        {
+          title: "Subject Lines That Actually Get Opened",
+          description: "Curiosity hooks, personalization, and compelling preview text crafted to beat crowded inbox competition.",
+          icon: PenTool
+        },
+        {
+          title: "Smart RFM List Segmentation",
+          description: "Targeted messaging for VIP spenders, first-time buyers, and at-risk churned customers so every offer hits the mark.",
+          icon: Users
+        },
+        {
+          title: "Email + WhatsApp Unified Retention",
+          description: "Combining high-ROI email campaigns with instant WhatsApp messaging for unbeatable conversion rates.",
+          icon: Target
+        }
+      ]
+    },
+    timeline: {
+      tag: "WHAT BRANDFORGE WILL DO FOR YOU",
+      title: "What BrandForge Will Do For You",
+      subtitle: "No spam blasts, no generic templates. Here's what actually gets built and deployed for your business. Because we manage SEO, web, and ads in-house too, your email funnels integrate smoothly with every customer touchpoint.",
+      steps: [
+        { num: "01", title: "AUTOMATED FLOWS THAT SELL 24/7", desc: "Welcome, cart recovery, post-purchase, and win-back drips running quietly on autopilot." },
+        { num: "02", title: "SMART LIST SEGMENTATION", desc: "Segmenting subscribers into VIPs, cold leads, repeat buyers, and interest-based tiers." },
+        { num: "03", title: "PRIMARY INBOX DELIVERY, NOT SPAM", desc: "SPF, DKIM, DMARC, and domain warming so your emails never get lost in junk folders." },
+        { num: "04", title: "SUBJECT LINES THAT GET OPENED", desc: "Tested hooks, compelling preview text, and persuasive copy crafted by our Story Smithy writers." },
+        { num: "05", title: "FESTIVAL & OFFER CAMPAIGNS", desc: "Timely promotional campaigns for Diwali, Pongal, New Year, and seasonal flash sales." },
+        { num: "06", title: "EMAIL + WHATSAPP COMBINED", desc: "Multi-channel retention sequences pairing email depth with high-urgency WhatsApp messaging." },
+        { num: "07", title: "CLEAR REVENUE & OPEN REPORTS", desc: "Straightforward monthly reports showing opens, clicks, recovered carts, and revenue earned." },
+        { num: "08", title: "MOBILE-RESPONSIVE TEMPLATES", desc: "Clean, fast-loading, dark-mode compatible email designs that look flawless on any smartphone." }
+      ]
+    },
+    whoWeHelp: {
+      tag: "WHO WE WORK WITH",
+      title: "Who We Work With in Coimbatore & Tamil Nadu",
+      subtitle: "We run email marketing for coaching institutes, e-commerce and retail brands, clinics and healthcare, real estate, B2B companies, and local service brands across Coimbatore and Tamil Nadu. If you have contacts or past buyers, we turn them into recurring revenue.",
+      industries: [
+        { title: "Coaching & Education Institutes", desc: "Automated student onboarding drips, batch commencement reminders, and webinar invite sequences." },
+        { title: "E-Commerce & Retail Brands", desc: "Abandoned checkout recovery, new arrival drops, VIP loyalty perks, and festive sale announcements." },
+        { title: "Clinics, Doctors & Healthcare", desc: "Appointment reminder drips, post-consultation care guides, and preventive health newsletters." },
+        { title: "Real Estate & Property Developers", desc: "Project launch teasers, construction progress updates, and site visit invitation sequences." },
+        { title: "B2B & Industrial Manufacturers", desc: "Product catalog updates, corporate case studies, and client relationship nurture drip flows." },
+        { title: "Local Service Businesses", desc: "Seasonal service reminders, customer feedback surveys, and referral reward campaigns." }
+      ],
+      certifications: [
+        { label: "Klaviyo & HubSpot Email Certified Methodology" },
+        { label: "Mailchimp & Brevo Deliverability Optimization Standards" },
+        { label: "Real Client Result: A Coimbatore retail store's re-engagement flow recovered ₹1.2L in 60 days" },
+        { label: "Reviewed by BalaMurali, Email Lead & Founder, Story Smithy" }
+      ]
+    },
     faqs: [
-      { q: "Which email platforms do you specialize in?", a: "We specialize in Klaviyo, Omnisend, Mailchimp, ActiveCampaign, and Hubspot." },
-      { q: "How much revenue should email marketing generate?", a: "For established e-commerce brands, automated email and SMS should generate 25% to 45% of total monthly revenue." },
-      { q: "Will sending frequent emails hurt our deliverability?", a: "Not with our strategy. We use strict engagement segmentation so emails only go to active subscribers, keeping open rates above 40%." },
-      { q: "How long does it take to build all the email flows?", a: "Core flows (Welcome, Abandoned Cart, Post-Purchase, Winback) are written, designed, and deployed within 10 to 14 business days." },
+      {
+        q: "How much does email marketing cost in Coimbatore?",
+        a: "It depends on your list size and how many campaigns and flows you need. We offer affordable monthly retainer packages with zero hidden fees after understanding your requirements."
+      },
+      {
+        q: "I have a small list. Is email marketing still worth it?",
+        a: "Yes! A targeted list of 500 engaged local customers can generate more repeat sales than 10,000 random social followers because email reaches people directly in their personal inbox."
+      },
+      {
+        q: "Will my emails end up in the spam folder?",
+        a: "No. We authenticate your domain with SPF, DKIM, and DMARC records, clean invalid addresses, and use high-reputation sending practices so your emails reach the primary inbox."
+      },
+      {
+        q: "What email tool do you use?",
+        a: "We work with top platforms including Klaviyo, Omnisend, Mailchimp, Brevo, and ActiveCampaign, or set up campaigns on your existing email software."
+      },
+      {
+        q: "Can email marketing really bring repeat sales?",
+        a: "Absolutely. Automated flows like post-purchase cross-sells, birthday offers, and win-back drips consistently turn one-time shoppers into lifelong loyal repeat customers."
+      }
     ],
+    bottomCta: {
+      title: "Book a Free Email Marketing Audit Today",
+      subtitle: "We'll audit your list, check your deliverability, and show you the automated email flows that could add recurring revenue every month.",
+      buttonText: "Claim Your Free Email Audit →"
+    }
   },
 
   "brand-anvil": {
     slug: "brand-anvil",
+    urlSlug: "/brand-positioning-agency-coimbatore",
+    metaTitle: "Brand Positioning Agency in Coimbatore | BrandForge",
+    metaDescription: "Looking for a brand positioning agency in Coimbatore? Brand Anvil by BrandForge helps you stand out and charge more. Book a free brand positioning session.",
     number: "08",
-    eyebrow: "BRAND ANVIL / GROWTH ARCHITECTURE",
-    title: "ENGINEER 360° GROWTH BLUEPRINTS & UNIT ECONOMICS FOR MARKET DOMINANCE",
-    subtitle: "We analyze your business model, customer acquisition costs, and market landscape to construct a data-backed blueprint for 10x expansion.",
+    eyebrow: "Brand Positioning Agency in Coimbatore | Brand Anvil by BrandForge",
+    title: "Brand Positioning Agency in Coimbatore That Makes You the Obvious Choice",
+    heroButtonText: "Book a Free Positioning Session →",
+    subtitle: [
+      "If customers only pick you when you're the cheapest, you don't have a brand — you have a price tag. Strong positioning is what lets you charge more, get chosen faster, and stop competing on discounts.",
+      "Brand Anvil is the brand positioning studio inside BrandForge — a brand positioning agency in Coimbatore that shapes how the market sees you. We define what you stand for, who you're for, and why you're the obvious choice, then make that message consistent everywhere your customers meet you."
+    ],
+    bannerBg: "/banner-brand-anvil.png",
     icon: Target,
     metrics: [
-      { value: "10x", label: "Valuation Expansion Goal", desc: "Long-term enterprise growth architecture target" },
-      { value: "+140%", label: "EBITDA Margin Improvement", desc: "Efficiency optimization across marketing spend" },
-      { value: "<3 Mo", label: "CAC Payback Period", desc: "Accelerated cash flow reinvestment cycle" },
-      { value: "360°", label: "Market Omnipresence", desc: "Integrated organic, paid, and PR ecosystem" },
+      { value: "4.8x", label: "Pricing Power Multiple", desc: "Ability to command premium prices without margin erosion" },
+      { value: "+340%", label: "Market Recall & Authority", desc: "Customer consideration surge vs generic rivals" },
+      { value: "100%", label: "Strategic Category Moat", desc: "Defensible positioning across web, ads & sales" },
+      { value: "14 Days", label: "Blueprint Turnaround", desc: "Complete brand book & cross-channel messaging rollout" },
     ],
-    matrixTag: "GROWTH ARCHITECTURE",
-    matrixTitle: "AD HOC MARKETING VS BRANDFORGE GROWTH ARCHITECTURE",
-    matrixSubtitle: "Stop guessing tactics. Build a scalable unit-economic engine for market leadership.",
+    whyChooseUs: {
+      tag: "THE POWER OF POSITIONING",
+      title: "What Is Brand Positioning (And Why It Decides Your Price)",
+      description: "Positioning is the space your brand owns in a customer's mind. It's the reason someone picks you over the shop next door — even at a higher price. Without positioning, you blend in — and blending in means competing on price. That's a race nobody wins.",
+      leadIn: "Get your positioning right and you gain measurable business leverage:",
+      points: [
+        "A clear reason to be chosen over cheaper rivals",
+        "The ability to charge premium prices without pushback",
+        "Customers who remember and recommend you",
+        "Marketing that finally feels consistent, not random",
+        "A brand that attracts the right customers, not just any"
+      ]
+    },
+    matrixTag: "WHAT AN AGENCY ACTUALLY DOES",
+    matrixTitle: "WHAT DOES A BRAND POSITIONING AGENCY IN COIMBATORE DO?",
+    matrixSubtitle: "A real brand positioning agency in Coimbatore digs into your business, market, and customers before writing a single tagline. Here's what Brand Anvil handles end to end:",
     matrixRows: [
-      { feature: "Growth Strategy", traditional: "Random tactical experiments with no plan", brandforge: "Comprehensive 360° growth blueprint & roadmap" },
-      { feature: "Unit Economics", traditional: "Unprofitable CAC burning cash reserves", brandforge: "Optimized LTV/CAC ratio (>4:1) & sub-3mo payback" },
-      { feature: "Channel Synergies", traditional: "Siloed teams fighting for attribution", brandforge: "Unified ecosystem combining Paid, SEO & Retention" },
-      { feature: "Market Positioning", traditional: "Copycatting competitors blindly", brandforge: "Forging an unassailable category-defining brand" },
+      {
+        feature: "Market & Competitor Research",
+        traditional: "Copying rival taglines blindly without research",
+        brandforge: "Finding the unique market gap you can decisively own"
+      },
+      {
+        feature: "Audience Clarity",
+        traditional: "Marketing vaguely to everyone and attracting nobody",
+        brandforge: "Defining exactly who you're for (and who you're not)"
+      },
+      {
+        feature: "Positioning Statement",
+        traditional: "Empty corporate buzzwords nobody remembers",
+        brandforge: "The core central idea your entire business and culture rallies behind"
+      },
+      {
+        feature: "Messaging Framework",
+        traditional: "Inconsistent ad copy and scattered messaging",
+        brandforge: "How you talk about yourself across website, ads, pitches, and social"
+      },
+      {
+        feature: "Brand Story & Voice",
+        traditional: "Generic corporate bio that fails to evoke emotion",
+        brandforge: "The compelling origin narrative that makes customers truly care"
+      },
+      {
+        feature: "Cross-Channel Rollout",
+        traditional: "Positioning PDF that sits ignored in a folder",
+        brandforge: "Deploying new positioning across your website, social, ads, and sales team"
+      }
     ],
+    pillarsTag: "OUR SERVICES",
+    pillarsTitle: "Our Brand Positioning Services",
+    pillarsSubtitle: "We shape the right positioning for your stage — a new launch, a rebrand, or a business stuck competing on price.",
     pillars: [
-      { icon: Target, tag: "BLUEPRINT", title: "360° Growth Audit & Master Roadmap", description: "Audit your current funnels, metrics, and competitors to build a step-by-step expansion blueprint.", deliverables: ["120-Point Growth Audit", "Quarterly Expansion Roadmap", "Channel Budget Allocator"] },
-      { icon: BarChart3, tag: "UNIT ECONOMICS", title: "LTV & CAC Unit Economics Modeling", description: "Optimize pricing, gross margins, and customer payback velocity for sustainable profitability.", deliverables: ["LTV/CAC Financial Model", "Payback Velocity Chart", "Pricing Strategy Refactor"] },
-      { icon: Globe, tag: "CATEGORY", title: "Category Creation & Positioning", description: "Position your company as the undisputed leader of a brand-new or redefined category.", deliverables: ["Category Claiming Deck", "Competitive Moat Strategy", "Value Prop Framing"] },
-      { icon: Layers, tag: "FUNNEL", title: "Full-Funnel Omnipresence Engine", description: "Align top-of-funnel awareness with retargeting loops and automated retention sequences.", deliverables: ["Full-Funnel Mapping", "Cross-Channel Attribution", "Customer Journey Refactor"] },
-      { icon: Cpu, tag: "TECH STACK", title: "Marketing Tech Stack Optimization", description: "Audit and streamline software tools to remove bloated SaaS subscriptions and data silos.", deliverables: ["MarTech Cost Reduction", "API Data Pipeline", "CRM Infrastructure"] },
-      { icon: TrendingUp, tag: "ADVISORY", title: "Fractional CMO & Executive Advisory", description: "Direct strategic guidance from senior growth engineers to guide your internal marketing team.", deliverables: ["Weekly CMO Strategy Calls", "Team Hiring & Vetting", "KPI Accountability"] },
+      {
+        icon: Target,
+        tag: "CORE STRATEGY",
+        title: "Brand Strategy & Positioning",
+        description: "The core strategic idea that sets you apart from competitors and makes you the undisputed leader in your category.",
+        deliverables: [
+          "Unique Value Proposition Definition",
+          "Competitive Category Framing",
+          "Long-Term Positioning Roadmap",
+          "Market White-Space Opportunity Map"
+        ]
+      },
+      {
+        icon: PenTool,
+        tag: "HIGH CONVERSION",
+        title: "Brand Messaging & Tagline",
+        description: "Words that stick in customer minds and sell your value proposition instantly without technical friction.",
+        deliverables: [
+          "Signature Brand Taglines & Hooks",
+          "Core Pitch & Elevator Statements",
+          "Hero Value Statements for Web",
+          "Objection-Buster Copy Frameworks"
+        ]
+      },
+      {
+        icon: Award,
+        tag: "NARRATIVE",
+        title: "Brand Story Development",
+        description: "The emotional origin narrative behind why your business exists and why discerning clients should trust you.",
+        deliverables: [
+          "Founder & Heritage Storytelling",
+          "Brand Manifesto & Mission Creed",
+          "Customer Hero Transformation Arc",
+          "Internal Culture & Purpose Deck"
+        ]
+      },
+      {
+        icon: ShieldCheck,
+        tag: "STRATEGIC MOAT",
+        title: "Competitor Differentiation",
+        description: "A sharp, defensible reason for buyers to choose you over alternatives, eliminating price-matching wars forever.",
+        deliverables: [
+          "Competitor Messaging Audit",
+          "Differentiator Battle Cards",
+          "Pricing Power Justification Matrix",
+          "Category Distinction Moat"
+        ]
+      },
+      {
+        icon: Users,
+        tag: "BUYER CLARITY",
+        title: "Target Audience Definition",
+        description: "Knowing exactly who to talk to by pinpointing high-value ideal buyer profiles, psychological triggers, and pain points.",
+        deliverables: [
+          "Ideal Customer Profiles (ICP)",
+          "Buyer Persona Psychographics",
+          "Customer Pain & Desire Maps",
+          "Disqualification Criteria (Who You're Not For)"
+        ]
+      },
+      {
+        icon: Zap,
+        tag: "CONSISTENT TONE",
+        title: "Brand Voice & Tone Guide",
+        description: "A consistent, magnetic personality across every website page, ad creative, email sequence, and client proposal.",
+        deliverables: [
+          "Brand Personality Archetypes",
+          "Tone of Voice Spectrum Rules",
+          "Vocabulary & Banned Words List",
+          "Channel-Specific Copy Examples"
+        ]
+      },
+      {
+        icon: TrendingUp,
+        tag: "TRANSFORMATION",
+        title: "Rebranding & Repositioning",
+        description: "Shifting how the market perceives an established business so you attract higher-paying clientele without losing loyal buyers.",
+        deliverables: [
+          "Legacy Perception Audit",
+          "Repositioning Transition Strategy",
+          "Customer Migration Messaging",
+          "Market Re-Introduction Campaign"
+        ]
+      },
+      {
+        icon: Layers,
+        tag: "PLAYBOOK",
+        title: "Brand Guidelines & Playbook",
+        description: "A single comprehensive document that keeps your executive team, sales reps, and external designers aligned forever.",
+        deliverables: [
+          "Master Positioning Playbook",
+          "Sales Pitch Deck & Script Guide",
+          "Copywriting & Content Rulebook",
+          "Executive Onboarding Handout"
+        ]
+      }
     ],
+    differentiators: {
+      tag: "THE BRAND ANVIL ADVANTAGE",
+      title: "Why Businesses Choose Brand Anvil for Brand Positioning",
+      subtitle: "As the dedicated brand positioning studio inside BrandForge that also runs web development, content marketing, paid ads, and social media in-house, we don't just deliver a PDF — we bring your positioning to life across every customer touchpoint.",
+      items: [
+        {
+          title: "Strategy First — Never Guesswork",
+          description: "We uncover the exact market space your competitors have left wide open before writing a single word of copy.",
+          icon: Target
+        },
+        {
+          title: "Command Premium Pricing",
+          description: "Our positioning models transform your business from a commodity price tag into an authority brand customers pay more for gladly.",
+          icon: Award
+        },
+        {
+          title: "End-to-End Cross-Channel Execution",
+          description: "We immediately push your new positioning live into your website copy, ad creative, email flows, and sales pitch decks.",
+          icon: Zap
+        },
+        {
+          title: "Actionable Messaging Playbooks",
+          description: "Zero fluffy mood boards. You get plug-and-play copy, taglines, and elevator pitches your sales team can use today.",
+          icon: PenTool
+        },
+        {
+          title: "Proven Category Authority",
+          description: "Backed by real-world transformation case studies across startups, clinics, education institutions, and D2C enterprises in Tamil Nadu.",
+          icon: ShieldCheck
+        }
+      ]
+    },
+    timeline: {
+      tag: "WHAT BRAND ANVIL WILL DO FOR YOU",
+      title: "What Brand Anvil Will Do For You",
+      subtitle: "No vague 'brand vibes' or decorative mood boards. Here is the concrete strategic arsenal you walk away with. And because BrandForge runs web, content, and ads in-house, your new positioning launches live across every channel.",
+      steps: [
+        { num: "01", title: "ONE-LINE POSITIONING STATEMENT", desc: "The single magnetic idea your entire business, leadership, and sales team can rally behind." },
+        { num: "02", title: "CLEAR 'WHY CHOOSE US' MOAT", desc: "A sharp, persuasive answer to why customers should pick you over the cheaper alternatives." },
+        { num: "03", title: "DEFINED IDEAL BUYER PROFILE", desc: "Stop marketing vaguely to everyone and start attracting high-ticket, high-retention clients." },
+        { num: "04", title: "MESSAGING CHEAT-SHEET", desc: "Ready-to-use hooks and elevator lines for your website, ad creatives, sales pitches, and social." },
+        { num: "05", title: "BRAND VOICE & TONE GUIDE", desc: "Ensuring every email, blog post, and ad campaign sounds unmistakably and authoritatively like you." },
+        { num: "06", title: "COMPETITOR GAP ANALYSIS", desc: "We uncover the lucrative market space rivals left wide open for you to dominate." },
+        { num: "07", title: "FULL BRAND GUIDELINES BOOK", desc: "One master playbook your internal staff and external designers can follow forever." },
+        { num: "08", title: "FULL-FUNNEL ROLLOUT PLAN", desc: "A detailed launch roadmap executing your new positioning across web, ads, and sales." }
+      ]
+    },
+    whoWeHelp: {
+      tag: "WHO WE WORK WITH",
+      title: "Who We Work With in Coimbatore & Tamil Nadu",
+      subtitle: "We position new startups, family businesses ready to modernize, coaching institutes, clinics and healthcare, D2C retail brands, real estate developers, and service businesses across Coimbatore and Tamil Nadu. If you're tired of competing on price, positioning is where the fix starts.",
+      industries: [
+        { title: "Startups & Emerging Tech", desc: "Category creation, investor pitch narrative framing, and launch positioning to secure early market dominance." },
+        { title: "Family Businesses Modernizing", desc: "Preserving legacy trust while elevating positioning and messaging to win next-generation buyers." },
+        { title: "Coaching & Education Institutes", desc: "Establishing premier curriculum authority and outcome-focused positioning that justifies premium admissions." },
+        { title: "Clinics, Doctors & Healthcare", desc: "Specialist medical authority positioning and patient trust narratives that elevate consultation value." },
+        { title: "D2C & Retail Consumer Brands", desc: "Lifestyle positioning, packaging narrative copy, and unboxing storytelling that beats discount competition." },
+        { title: "B2B & Enterprise Services", desc: "High-ticket positioning frameworks and ROI-focused sales messaging for corporate procurement decision-makers." }
+      ],
+      certifications: [
+        { label: "Harvard Business Review & Interbrand Strategy Framework Alignment" },
+        { label: "Real Repositioning Case Study: Rebranded ThoughtFlows into an AI-Powered Healthcare Pioneer with 3.4x Valuation Growth" },
+        { label: "Sample Brand Guidelines: 40-Page Master Playbook Covering Tone, Value Proposition & Sales Scripts" },
+        { label: "Reviewed by BalaMurali, Brand Strategist & Founder, Brand Anvil by BrandForge" }
+      ]
+    },
     faqs: [
-      { q: "What is Fractional CMO Growth Advisory?", a: "Fractional CMO guidance gives your business executive-level marketing leadership and strategic blueprints without paying a full-time $350k+ executive salary." },
-      { q: "How do you optimize our unit economics?", a: "We analyze your gross margins, acquisition costs, average order value, and 12-month customer lifetime value to build a profitable payback model." },
-      { q: "How long does a 360° Growth Audit take?", a: "Our comprehensive growth audit and 12-month expansion roadmap are delivered within 14 business days." },
-      { q: "Will this work for both B2B SaaS and B2C E-commerce?", a: "Yes. We tailor growth architecture models specifically for high-growth B2B SaaS, D2C E-commerce, and high-ticket service companies." },
+      {
+        q: "What's the difference between branding and brand positioning?",
+        a: "Branding is how you look — logo, colours, design. Positioning is how you're seen — the idea and space you own in a customer's mind. Positioning comes first; good branding then brings it to life."
+      },
+      {
+        q: "How much does brand positioning cost in Coimbatore?",
+        a: "It depends on the depth of research and how much rollout you need. We share a clear, fixed quote after a discovery call. Think of it as an investment that lets you charge more, not a one-time expense."
+      },
+      {
+        q: "My business is small. Do I really need positioning?",
+        a: "Especially then. Small businesses can't outspend big ones, so standing out on price is a losing game. Sharp positioning is how a small brand wins customers without the biggest budget."
+      },
+      {
+        q: "How long does the brand positioning process take?",
+        a: "A focused positioning project usually takes 2 to 4 weeks, depending on research depth and how many rounds of feedback are needed. You get a clear timeline upfront."
+      },
+      {
+        q: "Can you reposition my existing brand?",
+        a: "Yes. Repositioning is one of our core services. We shift how the market sees an existing business, carefully, so you gain a sharper identity without losing the customers you already have."
+      }
     ],
+    bottomCta: {
+      title: "Book a Free Brand Positioning Session Today",
+      subtitle: "In 30 minutes we'll pinpoint what makes you different and the one shift that could let you charge more.",
+      buttonText: "Claim Your Free Positioning Session →"
+    }
   },
 
   "visual-id": {
     slug: "visual-id",
+    urlSlug: "/brand-identity-design-agency-coimbatore",
+    metaTitle: "Brand Identity Design Agency in Coimbatore | BrandForge",
+    metaDescription: "Need a brand identity design agency? Identity Forge by BrandForge crafts logos, colours & complete brand kits that make you memorable. Book a free brand call.",
     number: "09",
-    eyebrow: "IDENTITY FORGE / VISUAL ID DESIGN",
-    title: "COMMAND INSTANT MARKET AUTHORITY WITH 3D BRAND IDENTITY SYSTEMS",
-    subtitle: "We forge iconic logos, 3D motion graphics, typography systems, and visual guidelines that demand immediate customer trust.",
+    eyebrow: "Brand Identity Design Agency in Coimbatore | Identity Forge by BrandForge",
+    title: "Brand Identity Design Agency in Coimbatore That Makes You Unforgettable",
+    heroButtonText: "Book a Free Brand Call →",
+    subtitle: [
+      "A cheap logo and mismatched colours quietly tell customers you're a small, unserious business — even when you're not. Your brand identity is the first judgement people make about you, and they make it in seconds.",
+      "Identity Forge is the brand identity studio inside BrandForge — a brand identity design agency that builds complete, professional identities, not just logos. As a brand identity design agency in Coimbatore, we craft the logo, colours, fonts, and full brand kit that make you look established and stay memorable everywhere customers see you."
+    ],
+    bannerBg: "/banner-visual-id.png",
     icon: Palette,
     metrics: [
-      { value: "100%", label: "Iconic Brand Originality", desc: "Custom 3D logo vector & motion assets" },
-      { value: "3.2x", label: "Perceived Value Increase", desc: "Premium pricing power post-rebrand" },
-      { value: "3D", label: "Motion Identity Assets", desc: "Interactive WebGL logo renders & video intro" },
-      { value: "100+", label: "Brand System Pages", desc: "Comprehensive visual guidelines manual" },
+      { value: "100%", label: "Iconic Design Originality", desc: "Custom vector geometry, dynamic 3D tokens & bespoke typography" },
+      { value: "4.5x", label: "Perceived Value Increase", desc: "Immediate customer trust & premium pricing power" },
+      { value: "100+", label: "Brand System Page Manual", desc: "Comprehensive design rulebook covering print, digital & 3D" },
+      { value: "7-14 Days", label: "Complete Kit Delivery", desc: "Full multi-format logo files, palette & social asset handover" },
     ],
-    matrixTag: "VISUAL AUTHORITY",
-    matrixTitle: "CHEAP LOGO GENERATORS VS BRANDFORGE IDENTITY FORGE",
-    matrixSubtitle: "Stop looking like a cheap template. Build a 3D visual identity system that commands high prices.",
+    whyChooseUs: {
+      tag: "FIRST IMPRESSIONS MATTER",
+      title: "Why Your Brand Identity Decides First Impressions",
+      description: "People judge a business by how it looks before they ever try it. A strong, consistent identity earns trust instantly. A DIY logo saves a little money now and costs you customers for years. Identity is where looking the part starts.",
+      leadIn: "A polished, professional identity gives you an immediate competitive advantage:",
+      points: [
+        "Instant credibility — you look established, not amateur",
+        "Recognition — customers remember and spot you everywhere",
+        "Trust — a polished look signals a serious business",
+        "Consistency — every post, card, and sign feels like one brand",
+        "The ability to charge more — professional brands command it"
+      ]
+    },
+    matrixTag: "WHAT AN AGENCY ACTUALLY DOES",
+    matrixTitle: "WHAT DOES A BRAND IDENTITY DESIGN AGENCY DO?",
+    matrixSubtitle: "A real brand identity design agency builds a complete visual system, not a one-off logo. Here's what Identity Forge handles end to end:",
     matrixRows: [
-      { feature: "Design Depth", traditional: "Flat 2D clip-art logo generator", brandforge: "Custom 3D metallic metallic logo & motion system" },
-      { feature: "Brand Trust", traditional: "Generic fonts that look amateur", brandforge: "Curated typography scale & glassmorphism aesthetic" },
-      { feature: "Consistency", traditional: "Inconsistent colors across ads & site", brandforge: "Rigorous 100-page visual guidelines design system" },
-      { feature: "Market Impact", traditional: "Blends in with 1,000 competitors", brandforge: "Instantly recognizable premium brand authority" },
+      {
+        feature: "Logo Design",
+        traditional: "Single flat low-res PNG with no variations or icons",
+        brandforge: "A primary, secondary, and icon mark that is simple, unique, and works everywhere"
+      },
+      {
+        feature: "Colour Palette",
+        traditional: "Random uncalibrated colours that look washed out in print",
+        brandforge: "Harmonious HEX, RGB & CMYK palettes chosen specifically for your industry"
+      },
+      {
+        feature: "Typography System",
+        traditional: "Clashing default system fonts across different pages",
+        brandforge: "Curated heading and body font pairings that express your personality"
+      },
+      {
+        feature: "Visual Style & Assets",
+        traditional: "Inconsistent stock images and mismatched templates",
+        brandforge: "A cohesive visual aesthetic for graphics, photography, and layout grids"
+      },
+      {
+        feature: "Business Stationery",
+        traditional: "DIY business cards with blurry logos and broken margins",
+        brandforge: "Print-ready luxury cards, letterheads, invoice templates & packaging"
+      },
+      {
+        feature: "Brand Guidelines",
+        traditional: "Zero documentation leading to branding drift over time",
+        brandforge: "A comprehensive brand rulebook keeping your team and designers on-brand forever"
+      }
     ],
+    pillarsTag: "OUR SERVICES",
+    pillarsTitle: "Our Brand Identity Design Services",
+    pillarsSubtitle: "We build the right identity for your stage — a fresh startup, a rebrand, or a business that has simply outgrown its old look.",
     pillars: [
-      { icon: Palette, tag: "LOGO FORGE", title: "3D Logo & Emblem Forging", description: "Design high-tech 3D chrome, metallic, and glass logos engineered for digital screens and 3D web canvases.", deliverables: ["Vector Logo Master Files", "3D Metal & Glass Render", "App Icon & Favicon Suite"] },
-      { icon: Video, tag: "3D MOTION", title: "3D Motion Identity & Video Bumpers", description: "Animate your brand logo with 3D light trails, metallic shine, and futuristic motion bumpers for videos.", deliverables: ["4K Video Intro Bumpers", "Looping Logo Animation", "Social Media Overlays"] },
-      { icon: Layers, tag: "DESIGN SYSTEM", title: "Comprehensive Design Guidelines", description: "Document your typography, color tokens, grid structures, and UI rules in an interactive brand book.", deliverables: ["Color Palette Tokens", "Typography Hierarchy", "UI Component Library"] },
-      { icon: Box, tag: "PACKAGING", title: "3D Product Packaging Design", description: "Create luxury 3D product box renders, bottle packaging, and unboxing container designs.", deliverables: ["3D Photorealistic Render", "Print-Ready Dielines", "Unboxing Mockups"] },
-      { icon: PenTool, tag: "BRAND ASSETS", title: "Social & Marketing Asset Suite", description: "Equip your marketing team with pitch deck templates, social media banners, and email header graphics.", deliverables: ["Investor Pitch Deck", "LinkedIn & Twitter Covers", "Business Card Design"] },
-      { icon: TrendingUp, tag: "REBRAND", title: "Full Rebrand Transition Strategy", description: "Seamlessly transition your existing website and ad collateral to your new visual identity without losing trust.", deliverables: ["Rebrand Announcement Video", "Asset Migration Checklist", "PR Release Asset Pack"] },
+      {
+        icon: Palette,
+        tag: "CORE IDENTITY",
+        title: "Logo Design",
+        description: "Primary, secondary, horizontal, and icon versions crafted with geometric precision for web, print, and mobile apps.",
+        deliverables: [
+          "Primary & Secondary Logo Marks",
+          "Compact Icon & Favicon Suite",
+          "Monochrome & Dark/Light Variants",
+          "Full Vector AI, EPS & SVG Master Files"
+        ]
+      },
+      {
+        icon: Box,
+        tag: "FULL PACKAGE",
+        title: "Complete Brand Identity Kits",
+        description: "Logo, colour palettes, typography, stationery, and social media assets combined in one cohesive, turnkey package.",
+        deliverables: [
+          "Full Brand Asset Library",
+          "Ready-to-Use Vector Icons",
+          "Digital & Print Asset Packaging",
+          "Cloud-Accessible Brand Drive"
+        ]
+      },
+      {
+        icon: PenTool,
+        tag: "VISUAL HARMONY",
+        title: "Colour & Typography Systems",
+        description: "Calibrated HEX, RGB, and CMYK color codes and font pairings that stay unmistakably consistent across every channel.",
+        deliverables: [
+          "Primary & Secondary Color Scales",
+          "Accessible Contrast Ratios",
+          "Header & Body Type Pairing Specs",
+          "Webfont & Desktop Font Licenses"
+        ]
+      },
+      {
+        icon: Layers,
+        tag: "PRINT READY",
+        title: "Business Stationery",
+        description: "Premium business cards, letterheads, corporate envelopes, email signatures, and invoices that look the part.",
+        deliverables: [
+          "Luxury Business Card Designs",
+          "Official Letterhead & Envelope Templates",
+          "Clickable HTML Email Signatures",
+          "Branded Invoice & Receipt Layouts"
+        ]
+      },
+      {
+        icon: Megaphone,
+        tag: "DIGITAL READY",
+        title: "Social Media Brand Kits",
+        description: "Editable Canva and Figma templates so every Instagram post, Reel cover, and LinkedIn graphic looks elite from day one.",
+        deliverables: [
+          "Instagram Post & Story Templates",
+          "YouTube & LinkedIn Banner Covers",
+          "Reel & Short-Form Video Intro Frames",
+          "Branded Carousel Slide Layouts"
+        ]
+      },
+      {
+        icon: Target,
+        tag: "RETAIL IMPACT",
+        title: "Packaging & Label Design",
+        description: "Product boxes, bottle labels, retail hangtags, and unboxing collateral designed to captivate buyers and jump off shelves.",
+        deliverables: [
+          "Product Box & Pouch Dielines",
+          "Label Design & Barcode Formatting",
+          "Luxury Unboxing Insert Cards",
+          "3D Photorealistic Packaging Renders"
+        ]
+      },
+      {
+        icon: TrendingUp,
+        tag: "MODERNIZATION",
+        title: "Rebranding & Logo Redesign",
+        description: "Modernising existing visual identities with care, preserving what loyal customers recognize while elevating your market authority.",
+        deliverables: [
+          "Legacy Brand Equity Audit",
+          "Vector Modernization & Cleanup",
+          "Brand Evolution Transition Deck",
+          "Announcement Assets & PR Graphics"
+        ]
+      },
+      {
+        icon: ShieldCheck,
+        tag: "MASTER PLAYBOOK",
+        title: "Brand Guidelines Document",
+        description: "A single comprehensive rulebook covering clear space, color rules, typography, and do's/don'ts that keeps everyone on brand.",
+        deliverables: [
+          "Complete Brand Guidelines PDF",
+          "Logo Clear Space & Minimum Sizing Rules",
+          "Incorrect Usage & Violation Examples",
+          "Vendor & Designer Onboarding Sheet"
+        ]
+      }
     ],
+    differentiators: {
+      tag: "THE IDENTITY FORGE ADVANTAGE",
+      title: "Why Businesses Choose Identity Forge for Brand Identity Design",
+      subtitle: "As the dedicated brand identity design studio inside BrandForge that also builds websites, runs ads, and produces content in-house, we design visual systems built for real-world conversion across digital screens and physical print.",
+      items: [
+        {
+          title: "Complete Visual Systems, Not Just A Logo",
+          description: "We give you a complete toolkit of colors, typography, stationery, and social templates that work together seamlessly.",
+          icon: Box
+        },
+        {
+          title: "Every Source File & Format Included",
+          description: "You receive full vector AI, EPS, SVG, PDF, and high-resolution PNGs so you are never stuck asking a designer later.",
+          icon: Palette
+        },
+        {
+          title: "Immediate Cross-Channel Deployment",
+          description: "We carry your new visual identity straight onto your website, landing pages, ads, and email templates without delay.",
+          icon: Zap
+        },
+        {
+          title: "Collaborative Options & Revisions",
+          description: "Multiple distinct artistic directions to choose from with structured feedback loops until your identity is 100% perfect.",
+          icon: PenTool
+        },
+        {
+          title: "Proven Category Authority",
+          description: "Backed by real client design systems across startups, retail D2C brands, coaching academies, and clinics in Coimbatore.",
+          icon: ShieldCheck
+        }
+      ]
+    },
+    timeline: {
+      tag: "WHAT IDENTITY FORGE WILL DO FOR YOU",
+      title: "What Identity Forge Will Do For You",
+      subtitle: "No single flat logo file and goodbye. Here is the complete visual design arsenal you actually walk away with. And because BrandForge runs web, social, and content in-house, your new identity goes live properly across every customer touchpoint.",
+      steps: [
+        { num: "01", title: "MULTIPLE LOGO VARIATIONS", desc: "Full, compact, horizontal, and icon marks optimized for websites, print, and mobile app icons." },
+        { num: "02", title: "EVERY FILE FORMAT YOU NEED", desc: "PNG, SVG, PDF, EPS, and vector source files (AI/Figma), so you are never restricted." },
+        { num: "03", title: "DEFINED COLOUR PALETTE", desc: "Exact calibrated HEX, RGB, and CMYK codes engineered for high contrast on screens and paper." },
+        { num: "04", title: "CHOSEN BRAND FONTS", desc: "Curated heading and body font pairings that carry your personality across all marketing text." },
+        { num: "05", title: "READY-TO-USE SOCIAL TEMPLATES", desc: "Editable Canva and Figma post and story templates so your social feed looks elite from day one." },
+        { num: "06", title: "BUSINESS CARDS & STATIONERY", desc: "Print-ready luxury business cards, letterheads, invoice templates, and corporate folders." },
+        { num: "07", title: "MASTER BRAND GUIDELINES PDF", desc: "The definitive rulebook that keeps your internal team and any external designer consistent forever." },
+        { num: "08", title: "REAL CONCEPTS & REVISIONS", desc: "Multiple creative concepts and structured polish rounds, never a single take-it-or-leave-it mock." }
+      ]
+    },
+    whoWeHelp: {
+      tag: "WHO WE WORK WITH",
+      title: "Who We Work With in Coimbatore & Tamil Nadu",
+      subtitle: "We design identities for new startups, family businesses ready for a modern look, coaching institutes, clinics and healthcare, cafes & restaurants, and D2C product brands across Coimbatore and Tamil Nadu. If you want to look established and be remembered, this is where it begins.",
+      industries: [
+        { title: "Startups & Tech Ventures", desc: "Futuristic, scalable 3D emblems and digital-first design tokens built for investor decks and mobile apps." },
+        { title: "Family Businesses Modernizing", desc: "Elevating traditional brands with sleek, contemporary visual identities that resonate with modern consumers." },
+        { title: "Coaching & Education Institutes", desc: "Prestigious crests, certificate designs, and student marketing collateral that inspire trust and enrollments." },
+        { title: "Clinics, Doctors & Healthcare", desc: "Clean, calming, highly professional medical visual systems, prescription pads, and clinic signage." },
+        { title: "Cafes, Restaurants & Hospitality", desc: "Appetizing menu layouts, aesthetic packaging, table collateral, and Instagrammable interior branding." },
+        { title: "D2C & Retail Consumer Brands", desc: "Luxury product boxes, pouch dielines, unboxing cards, and retail shelf packaging that converts." }
+      ],
+      certifications: [
+        { label: "Behance Featured Design & Adobe Brand Standard Compliant Framework" },
+        { label: "Real Portfolio Proof: Built BrandForge, Sonic Prints & Talentera Visual Identity Systems" },
+        { label: "Delivered Assets: Vector Source Files, 3D Mockups, Print Guidelines & Color Proofing Sheets" },
+        { label: "Reviewed by BalaMurali, Lead Designer & Founder, Identity Forge by BrandForge" }
+      ]
+    },
     faqs: [
-      { q: "What files do we receive at the end of the visual identity project?", a: "You receive full vector AI, EPS, SVG files, 4K transparent PNGs, 3D OBJ/GLTF models, 4K video intro bumpers, and a 100-page PDF brand guideline book." },
-      { q: "Can you create 3D animated logos for our website banner?", a: "Yes! We specialize in creating 3D WebGL logo assets optimized specifically for smooth 60fps website hero banners." },
-      { q: "How long does a full brand identity project take?", a: "A complete 3D visual identity system takes between 2 to 4 weeks from initial concept sketches to final deliverable delivery." },
-      { q: "What if we already have a logo and just need a brand refresh?", a: "We offer brand modernization services to elevate your existing logo into a modern 3D visual system without losing brand recognition." },
+      {
+        q: "What's the difference between a logo and a brand identity?",
+        a: "A logo is one mark. A brand identity is the full system — logo, colours, fonts, and style — that makes your business recognisable everywhere. A logo alone isn't enough to look consistent and professional."
+      },
+      {
+        q: "How much does brand identity design cost in Coimbatore?",
+        a: "It depends on whether you need just a logo or a complete brand kit with stationery and guidelines. We share a clear, fixed quote after understanding your needs — no hidden charges."
+      },
+      {
+        q: "How long does it take to design a brand identity?",
+        a: "A logo alone can take about a week. A complete brand identity with guidelines usually takes 2 to 3 weeks, allowing for concepts and revisions. You get a clear timeline before we begin."
+      },
+      {
+        q: "Will I get all the logo files and formats?",
+        a: "Yes. You receive every format you need — PNG, SVG, PDF, and source files — plus colour codes and fonts. You'll never be stuck unable to use your own brand."
+      },
+      {
+        q: "Can you redesign my existing logo and brand?",
+        a: "Yes. We modernise existing brands carefully, keeping what customers already recognise while giving you a fresh, professional look that fits where your business is headed."
+      }
     ],
+    bottomCta: {
+      title: "Book a Free Brand Identity Call Today",
+      subtitle: "Show us your business and we'll share exactly how a professional identity would make you look established and unforgettable.",
+      buttonText: "Claim Your Free Brand Call →"
+    }
   },
 
   "commercial-video": {

@@ -230,10 +230,29 @@
   </url>
 
   <url>
-    <loc>https://www.brandforgeagency.in/services/influencer-network</loc>
-    <lastmod>2026-09-09</lastmod>
+    <loc>https://www.brandforgeagency.in/content-marketing-agency-coimbatore</loc>
+    <lastmod>2026-09-12</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.90</priority>
+    <priority>0.95</priority>
+    <image:image>
+      <image:loc>https://www.brandforgeagency.in/banner-content-smithy.png</image:loc>
+      <image:title>Content Marketing Agency in Coimbatore Creator Studio</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.brandforgeagency.in/mindmap-content-smithy.svg</image:loc>
+      <image:title>Content Marketing Strategy Roadmap</image:title>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://www.brandforgeagency.in/services/influencer-network</loc>
+    <lastmod>2026-09-12</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.95</priority>
+    <image:image>
+      <image:loc>https://www.brandforgeagency.in/banner-influencer-network.png</image:loc>
+      <image:title>Influencer and Creator Network Studio</image:title>
+    </image:image>
     <image:image>
       <image:loc>https://www.brandforgeagency.in/mindmap-influencer-network.svg</image:loc>
       <image:title>Creator Network Campaign Workflow</image:title>
@@ -242,9 +261,13 @@
 
   <url>
     <loc>https://www.brandforgeagency.in/services/content-smithy</loc>
-    <lastmod>2026-09-09</lastmod>
+    <lastmod>2026-09-12</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.90</priority>
+    <priority>0.95</priority>
+    <image:image>
+      <image:loc>https://www.brandforgeagency.in/banner-content-smithy.png</image:loc>
+      <image:title>Story Smithy Content Marketing Banner</image:title>
+    </image:image>
     <image:image>
       <image:loc>https://www.brandforgeagency.in/mindmap-content-smithy.svg</image:loc>
       <image:title>Authority Content Marketing Roadmap</image:title>
@@ -252,10 +275,18 @@
   </url>
 
   <url>
-    <loc>https://www.brandforgeagency.in/services/inbox-edge</loc>
-    <lastmod>2026-09-09</lastmod>
+    <loc>https://www.brandforgeagency.in/email-marketing-company-coimbatore</loc>
+    <lastmod>2026-09-12</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.90</priority>
+    <priority>0.95</priority>
+    <image:image>
+      <image:loc>https://www.brandforgeagency.in/banner-inbox-edge.png</image:loc>
+      <image:title>Email Marketing Company in Coimbatore</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.brandforgeagency.in/banner-inbox-edge.jpg</image:loc>
+      <image:title>Automated Email Flows & Retention Banner</image:title>
+    </image:image>
     <image:image>
       <image:loc>https://www.brandforgeagency.in/mindmap-inbox-edge.svg</image:loc>
       <image:title>Email Lifecycle Retention Roadmap</image:title>
@@ -263,10 +294,37 @@
   </url>
 
   <url>
-    <loc>https://www.brandforgeagency.in/services/brand-anvil</loc>
-    <lastmod>2026-09-09</lastmod>
+    <loc>https://www.brandforgeagency.in/services/inbox-edge</loc>
+    <lastmod>2026-09-12</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.90</priority>
+    <priority>0.95</priority>
+    <image:image>
+      <image:loc>https://www.brandforgeagency.in/banner-inbox-edge.png</image:loc>
+      <image:title>Email Marketing Company in Coimbatore</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.brandforgeagency.in/banner-inbox-edge.jpg</image:loc>
+      <image:title>Automated Email Flows & Retention Banner</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.brandforgeagency.in/mindmap-inbox-edge.svg</image:loc>
+      <image:title>Email Lifecycle Retention Roadmap</image:title>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://www.brandforgeagency.in/brand-positioning-agency-coimbatore</loc>
+    <lastmod>2026-09-18</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.95</priority>
+    <image:image>
+      <image:loc>https://www.brandforgeagency.in/banner-brand-anvil.png</image:loc>
+      <image:title>Brand Positioning Agency in Coimbatore</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.brandforgeagency.in/banner-brand-anvil.jpg</image:loc>
+      <image:title>Brand Anvil Positioning Studio Banner</image:title>
+    </image:image>
     <image:image>
       <image:loc>https://www.brandforgeagency.in/mindmap-brand-anvil.svg</image:loc>
       <image:title>Enterprise Brand Architecture Map</image:title>
@@ -274,10 +332,56 @@
   </url>
 
   <url>
-    <loc>https://www.brandforgeagency.in/services/visual-id</loc>
-    <lastmod>2026-09-09</lastmod>
+    <loc>https://www.brandforgeagency.in/services/brand-anvil</loc>
+    <lastmod>2026-09-18</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.90</priority>
+    <priority>0.95</priority>
+    <image:image>
+      <image:loc>https://www.brandforgeagency.in/banner-brand-anvil.png</image:loc>
+      <image:title>Brand Positioning Agency in Coimbatore</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.brandforgeagency.in/banner-brand-anvil.jpg</image:loc>
+      <image:title>Brand Anvil Positioning Studio Banner</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.brandforgeagency.in/mindmap-brand-anvil.svg</image:loc>
+      <image:title>Enterprise Brand Architecture Map</image:title>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://www.brandforgeagency.in/brand-identity-design-agency-coimbatore</loc>
+    <lastmod>2026-09-18</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.95</priority>
+    <image:image>
+      <image:loc>https://www.brandforgeagency.in/banner-visual-id.png</image:loc>
+      <image:title>Brand Identity Design Agency in Coimbatore</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.brandforgeagency.in/banner-visual-id.jpg</image:loc>
+      <image:title>Identity Forge Brand Design Studio Banner</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.brandforgeagency.in/mindmap-visual-id.svg</image:loc>
+      <image:title>Visual Identity Design Token System</image:title>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://www.brandforgeagency.in/services/visual-id</loc>
+    <lastmod>2026-09-18</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.95</priority>
+    <image:image>
+      <image:loc>https://www.brandforgeagency.in/banner-visual-id.png</image:loc>
+      <image:title>Brand Identity Design Agency in Coimbatore</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.brandforgeagency.in/banner-visual-id.jpg</image:loc>
+      <image:title>Identity Forge Brand Design Studio Banner</image:title>
+    </image:image>
     <image:image>
       <image:loc>https://www.brandforgeagency.in/mindmap-visual-id.svg</image:loc>
       <image:title>Visual Identity Design Token System</image:title>

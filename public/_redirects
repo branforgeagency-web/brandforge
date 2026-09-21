@@ -1,1 +1,11 @@
+# BrandForge 301 Permanent Canonical Redirects
+/web-development-company-coimbatore          /website-development-company-coimbatore          301
+/social-media-agency-coimbatore              /social-media-marketing-company-coimbatore      301
+/content-marketing-company-coimbatore        /content-marketing-agency-coimbatore            301
+/email-marketing-agency-coimbatore          /email-marketing-company-coimbatore              301
+/brand-position-agency-coimbatore            /brand-positioning-agency-coimbatore            301
+/brand-positioning-company-coimbatore        /brand-positioning-agency-coimbatore            301
+/brand-identity-design-company-coimbatore    /brand-identity-design-agency-coimbatore        301
+
+# SPA Fallback for dynamic client routing
 /*    /index.html   200

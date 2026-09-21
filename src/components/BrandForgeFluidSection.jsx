@@ -390,10 +390,12 @@ export default function BrandForgeFluidSection({ onOpenModal }) {
     >
       <style>{css}</style>
       <div className="pl-hero">
-        <h1>FORGE DIGITAL BRANDS.</h1>
-        <h1>SCALE MEDIA & ROAS.</h1>
-        <h1>DIGITAL MARKETING AGENCY</h1>
-        <h1>IN COIMBATORE.</h1>
+        <h1 className="pl-hero-title">
+          <span className="pl-line pl-line-1">FORGE DIGITAL BRANDS.</span>
+          <span className="pl-line pl-line-2">SCALE MEDIA &amp; ROAS.</span>
+          <span className="pl-line pl-line-3">DIGITAL MARKETING AGENCY</span>
+          <span className="pl-line pl-line-4">IN COIMBATORE.</span>
+        </h1>
       </div>
 
       <canvas className="pl-canvas" ref={canvasRef} />
@@ -444,7 +446,16 @@ const css = `
   box-sizing: border-box;
 }
 
-.pl-hero h1 {
+.pl-hero-title {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(4px, 1vh, 12px);
+  width: 100%;
+}
+
+.pl-hero-title .pl-line {
+  display: block;
   margin: 0;
   text-transform: uppercase;
   color: #FFFFFF;
@@ -457,20 +468,20 @@ const css = `
   white-space: nowrap;
 }
 
-.pl-hero h1:nth-child(1) {
+.pl-hero-title .pl-line-1 {
   align-self: flex-start;
 }
 
-.pl-hero h1:nth-child(2) {
+.pl-hero-title .pl-line-2 {
   align-self: flex-end;
 }
 
-.pl-hero h1:nth-child(3) {
+.pl-hero-title .pl-line-3 {
   align-self: flex-start;
   margin-left: clamp(1rem, 5vw, 6rem);
 }
 
-.pl-hero h1:nth-child(4) {
+.pl-hero-title .pl-line-4 {
   align-self: flex-end;
   margin-right: clamp(1rem, 5vw, 6rem);
 }

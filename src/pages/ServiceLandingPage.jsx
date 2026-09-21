@@ -49,6 +49,18 @@ export default function ServiceLandingPage({ slug = "seo-geo", onOpenModal, navi
 
   const [activeFaq, setActiveFaq] = useState(null);
   const [activePillar, setActivePillar] = useState(0);
+  const [artTilt, setArtTilt] = useState({ x: 0, y: 0, active: false });
+
+  const handleArtMouseMove = (e) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    const x = (e.clientX - rect.left) / rect.width - 0.5;
+    const y = (e.clientY - rect.top) / rect.height - 0.5;
+    setArtTilt({ x, y, active: true });
+  };
+
+  const handleArtMouseLeave = () => {
+    setArtTilt({ x: 0, y: 0, active: false });
+  };
 
   const Icon = data.icon || Search;
 
@@ -75,193 +87,488 @@ export default function ServiceLandingPage({ slug = "seo-geo", onOpenModal, navi
         </div>
       </div>
 
-      {/* HERO BANNER SECTION WITH CARDLESS INLINE LEAD CAPTURE */}
-      <header
-        className={`sg-hero ${data.bannerBg ? "has-banner-bg" : ""}`}
-        style={
-          data.bannerBg
-            ? {
-                backgroundImage: `linear-gradient(180deg, rgba(0, 0, 0, 0.72) 0%, rgba(5, 5, 8, 0.85) 50%, rgba(0, 0, 0, 0.98) 100%), url(${data.bannerBg})`,
-                backgroundSize: "cover",
-                backgroundPosition: "center top",
-                backgroundRepeat: "no-repeat",
-              }
-            : undefined
-        }
-      >
-        <div className="sg-hero-glow" />
+      {/* HERO BANNER SECTION */}
+      {data.slug === "seo-geo" ? (
+        <header className="sg-hero sg-hero-banner-tech has-banner-bg">
+          <div className="sg-hero-glow" />
 
-        <div className="sg-container">
-          <div className="sg-hero-grid">
-            
-            {/* LEFT COLUMN: BADGE, HEADING, PARAGRAPH & CTAS */}
-            <div className="sg-hero-left">
+          {/* High-Tech HUD Background Accents */}
+          <div className="tech-hud-overlay" aria-hidden="true">
+            <div className="tech-hud-circle" />
+            <div className="tech-hud-circle tech-hud-circle-2" />
+            <div className="tech-hud-dots" />
+          </div>
+
+          <div className="sg-container">
+            <div className="sg-tech-banner-grid">
+              
+              {/* LEFT COLUMN: SOCIALS, PILL TAG, H1, MICRO-HOOK, DUAL BUTTONS */}
               <motion.div
-                className="sg-badge"
+                className="sg-tech-banner-left"
                 initial={{ opacity: 0, x: -40 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: false, amount: 0.2 }}
-                transition={{ duration: 0.6 }}
+                transition={{ duration: 0.7 }}
               >
-                <Icon size={14} className="sg-badge-icon" />
-                <span>{data.eyebrow}</span>
-                <Sparkles size={14} className="sg-badge-sparkle" />
-              </motion.div>
-
-              <motion.h1
-                className="sg-hero-title"
-                initial={{ opacity: 0, y: 40, scale: 0.95 }}
-                whileInView={{ opacity: 1, y: 0, scale: 1 }}
-                viewport={{ once: false, amount: 0.2 }}
-                transition={{ duration: 0.8, delay: 0.1 }}
-              >
-                {data.slug === "seo-geo" ? (
-                  <>Best SEO Company in Coimbatore for <span>Google & AI Search Rankings</span></>
-                ) : data.slug === "web-foundry" ? (
-                  <>Website Development Company in Coimbatore That Builds <span>Sites That Sell</span></>
-                ) : data.slug === "viral-social" ? (
-                  <>Social Media Marketing Company in Coimbatore That Grows <span>Real Followers Into Customers</span></>
-                ) : data.slug === "content-smithy" ? (
-                  <>Content Marketing Agency in Coimbatore That Turns <span>Words Into Customers</span></>
-                ) : data.slug === "inbox-edge" ? (
-                  <>Email Marketing Company in Coimbatore That Turns <span>Your List Into Revenue</span></>
-                ) : data.slug === "brand-anvil" ? (
-                  <>Brand Positioning Agency in Coimbatore That Makes <span>You the Obvious Choice</span></>
-                ) : data.slug === "visual-id" ? (
-                  <>Brand Identity Design Agency in Coimbatore That Makes <span>You Unforgettable</span></>
-                ) : data.title.includes("/") ? (
-                  <>{data.title.split("/")[0]} / <span>{data.title.split("/")[1]}</span></>
-                ) : (
-                  <>{data.title.split(" ").slice(0, -1).join(" ")} <span>{data.title.split(" ").slice(-1)}</span></>
-                )}
-              </motion.h1>
-
-              <motion.div
-                className="sg-hero-desc"
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: false, amount: 0.2 }}
-                transition={{ duration: 0.8, delay: 0.2 }}
-              >
-                {Array.isArray(data.subtitle) ? (
-                  data.subtitle.map((para, i) => (
-                    <p key={i} className="sg-hero-desc-para">
-                      {para}
-                    </p>
-                  ))
-                ) : typeof data.subtitle === "string" && data.subtitle.includes("\n\n") ? (
-                  data.subtitle.split("\n\n").map((para, i) => (
-                    <p key={i} className="sg-hero-desc-para">
-                      {para}
-                    </p>
-                  ))
-                ) : (
-                  <p className="sg-hero-desc-para">{data.subtitle}</p>
-                )}
-              </motion.div>
-
-              <motion.div
-                className="sg-hero-actions"
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: false, amount: 0.2 }}
-                transition={{ duration: 0.8, delay: 0.3 }}
-              >
-                <button className="sg-btn primary" onClick={onOpenModal}>
-                  <Zap size={16} />
-                  <span>{data.heroButtonText || `START FREE ${data.number} AUDIT`}</span>
-                  <ArrowRight size={16} />
-                </button>
-              </motion.div>
-            </div>
-
-            {/* RIGHT COLUMN: CARDLESS MINIMALIST INLINE LEAD FORM */}
-            <motion.div
-              className="sg-hero-right"
-              initial={{ opacity: 0, x: 40, scale: 0.96 }}
-              whileInView={{ opacity: 1, x: 0, scale: 1 }}
-              viewport={{ once: false, amount: 0.2 }}
-              transition={{ duration: 0.9, delay: 0.2 }}
-            >
-              <div className="sg-inline-form-wrap">
-                <div className="sg-form-header">
-                  <Sparkles size={18} className="sg-form-sparkle" />
-                  <h3>Drop Us a Message</h3>
-                  <p>Get a response within 4 hours & free audit strategy</p>
+                {/* Social icons row */}
+                <div className="sg-tech-socials">
+                  <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="sg-tech-social-link">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                  </a>
+                  <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" aria-label="YouTube" className="sg-tech-social-link">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+                  </a>
+                  <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="sg-tech-social-link">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+                  </a>
+                  <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" aria-label="X (Twitter)" className="sg-tech-social-link">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                  </a>
                 </div>
 
-                <form className="sg-lead-form" onSubmit={async (e) => {
-                  e.preventDefault();
-                  const formEl = e.target;
-                  const formData = new FormData(formEl);
-                  const dataObj = Object.fromEntries(formData.entries());
+                {/* IT SOLUTIONS / SEO & GEO Pill Tag */}
+                <div className="sg-tech-pill">
+                  <span className="sg-tech-pill-dot">•</span>
+                  <span>IT SOLUTIONS & SEARCH DOMINANCE</span>
+                  <span className="sg-tech-pill-dot">•</span>
+                </div>
 
-                  try {
-                    await fetch("https://formsubmit.co/ajax/brandforgedigitalmarketing@gmail.com", {
-                      method: "POST",
-                      headers: {
-                        "Content-Type": "application/json",
-                        "Accept": "application/json",
-                      },
-                      body: JSON.stringify({
-                        ...dataObj,
-                        _subject: `⚡ New Landing Page Enquiry for ${data.eyebrow}`
-                      })
-                    });
-                  } catch (err) {
-                    console.error(err);
-                  }
-                  alert(`Thank you! Your ${data.eyebrow} enquiry has been received. Our strategy team will contact +91 93845 76852 within 4 hours.`);
-                  formEl.reset();
-                }}>
-                  <div className="sg-field-row">
-                    <input type="text" name="name" required placeholder="Your Full Name *" className="sg-input-line" />
-                  </div>
+                {/* H1 Heading with styled accent & wave underline */}
+                <h1 className="sg-tech-h1">
+                  Best SEO Company in Coimbatore for{" "}
+                  <span className="sg-tech-h1-accent">
+                    Google & AI Search Rankings
+                    <svg className="sg-tech-squiggle" viewBox="0 0 320 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M4 12C30 4 55 18 85 10C115 2 140 17 170 9C200 1 225 16 255 8C280 2 300 15 316 9" stroke="#EF4136" strokeWidth="4.5" strokeLinecap="round" />
+                    </svg>
+                  </span>
+                </h1>
 
-                  <div className="sg-field-grid">
-                    <select name="country_code" className="sg-select-line country-code" defaultValue="+91">
-                      <option value="+91">🇮🇳 +91</option>
-                      <option value="+1">🇺🇸 +1</option>
-                      <option value="+44">🇬🇧 +44</option>
-                      <option value="+971">🇦🇪 +971</option>
-                      <option value="+65">🇸🇬 +65</option>
-                    </select>
-                    <input type="tel" name="phone" required placeholder="Phone / WhatsApp *" className="sg-input-line" />
-                  </div>
+                {/* Micro Tagline */}
+                <p className="sg-tech-micro-desc">
+                  Providing enterprise SEO, GEO (Generative Engine Optimization), and sub-second performance engineering to scale your brand’s organic revenue.
+                </p>
 
-                  <div className="sg-field-grid">
-                    <input type="email" name="email" required placeholder="Work Email *" className="sg-input-line" />
-                    <select name="service" className="sg-select-line" defaultValue={data.eyebrow}>
-                      <option value={data.eyebrow}>{data.eyebrow}</option>
-                      <option value="Website Development">Website Development</option>
-                      <option value="Paid Media Scaling">Paid Media Scaling</option>
-                      <option value="SEO & GEO Supremacy">SEO & GEO Supremacy</option>
-                    </select>
-                  </div>
-
-                  <div className="sg-field-grid">
-                    <input type="text" name="business" required placeholder="Business Name *" className="sg-input-line" />
-                    <input type="text" name="location" required placeholder="City / Country *" className="sg-input-line" />
-                  </div>
-
-                  <div className="sg-field-row">
-                    <textarea name="message" rows="2" required placeholder="Message / Target Outcome *" className="sg-textarea-line" />
-                  </div>
-
-                  <button type="submit" className="sg-form-btn">
+                {/* Dual Action Buttons */}
+                <div className="sg-tech-action-row">
+                  <button className="sg-tech-start-btn" onClick={onOpenModal}>
                     <Zap size={16} />
-                    <span>SEND ENQUIRY NOW</span>
+                    <span>Start Free SEO Audit</span>
                     <ArrowRight size={16} />
                   </button>
-                </form>
-              </div>
-            </motion.div>
 
+                  <button className="sg-tech-play-btn" onClick={onOpenModal} title="View Search Strategy & Methodology">
+                    <div className="sg-tech-play-icon-wrap">
+                      <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
+                        <polygon points="6 3 20 12 6 21 6 3" />
+                      </svg>
+                    </div>
+                    <span className="sg-tech-play-label">See How It Works</span>
+                  </button>
+                </div>
+              </motion.div>
+
+              {/* RIGHT COLUMN: TRANSPARENT 3D FLOATING ARTWORK WITH MOUSE FLOAT EFFECT */}
+              <motion.div
+                className="sg-tech-banner-right"
+                initial={{ opacity: 0, x: 40, scale: 0.95 }}
+                whileInView={{ opacity: 1, x: 0, scale: 1 }}
+                viewport={{ once: false, amount: 0.2 }}
+                transition={{ duration: 0.8, delay: 0.15 }}
+              >
+                <motion.div
+                  className="sg-tech-floating-container"
+                  onMouseMove={handleArtMouseMove}
+                  onMouseLeave={handleArtMouseLeave}
+                  animate={{
+                    rotateY: artTilt.active ? artTilt.x * 24 : 0,
+                    rotateX: artTilt.active ? -artTilt.y * 24 : 0,
+                    y: artTilt.active ? -20 : 0,
+                    scale: artTilt.active ? 1.06 : 1,
+                  }}
+                  transition={{
+                    type: "spring",
+                    stiffness: 260,
+                    damping: 20,
+                  }}
+                >
+                  <div className="sg-tech-art-ambient-glow" />
+                  
+                  <img
+                    src="/seo-geo-floating-3d.png"
+                    alt="SEO & GEO Search Dominance Transparent 3D Ecosystem"
+                    className="sg-tech-floating-img"
+                  />
+
+                  {/* Floating Badges */}
+                  <div className="sg-tech-floating-badge badge-top">
+                    <Sparkles size={14} className="badge-icon-sparkle" />
+                    <div>
+                      <strong>#1 AI Citation</strong>
+                      <span>ChatGPT & Perplexity</span>
+                    </div>
+                  </div>
+
+                  <div className="sg-tech-floating-badge badge-bottom">
+                    <CheckCircle2 size={14} className="badge-icon-check" />
+                    <div>
+                      <strong>+340% Traffic Lift</strong>
+                      <span>Coimbatore & Global</span>
+                    </div>
+                  </div>
+                </motion.div>
+              </motion.div>
+
+            </div>
           </div>
+        </header>
+      ) : (
+        <header
+          className={`sg-hero ${data.bannerBg ? "has-banner-bg" : ""}`}
+          style={
+            data.bannerBg
+              ? {
+                  backgroundImage: `linear-gradient(180deg, rgba(0, 0, 0, 0.72) 0%, rgba(5, 5, 8, 0.85) 50%, rgba(0, 0, 0, 0.98) 100%), url(${data.bannerBg})`,
+                  backgroundSize: "cover",
+                  backgroundPosition: "center top",
+                  backgroundRepeat: "no-repeat",
+                }
+              : undefined
+          }
+        >
+          <div className="sg-hero-glow" />
+
+          <div className="sg-container">
+            <div className="sg-hero-grid">
+              
+              {/* LEFT COLUMN: BADGE, HEADING, PARAGRAPH & CTAS */}
+              <div className="sg-hero-left">
+                <motion.div
+                  className="sg-badge"
+                  initial={{ opacity: 0, x: -40 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: false, amount: 0.2 }}
+                  transition={{ duration: 0.6 }}
+                >
+                  <Icon size={14} className="sg-badge-icon" />
+                  <span>{data.eyebrow}</span>
+                  <Sparkles size={14} className="sg-badge-sparkle" />
+                </motion.div>
+
+                <motion.h1
+                  className="sg-hero-title"
+                  initial={{ opacity: 0, y: 40, scale: 0.95 }}
+                  whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                  viewport={{ once: false, amount: 0.2 }}
+                  transition={{ duration: 0.8, delay: 0.1 }}
+                >
+                  {data.slug === "web-foundry" ? (
+                    <>Website Development Company in Coimbatore That Builds <span>Sites That Sell</span></>
+                  ) : data.slug === "viral-social" ? (
+                    <>Social Media Marketing Company in Coimbatore That Grows <span>Real Followers Into Customers</span></>
+                  ) : data.slug === "content-smithy" ? (
+                    <>Content Marketing Agency in Coimbatore That Turns <span>Words Into Customers</span></>
+                  ) : data.slug === "inbox-edge" ? (
+                    <>Email Marketing Company in Coimbatore That Turns <span>Your List Into Revenue</span></>
+                  ) : data.slug === "brand-anvil" ? (
+                    <>Brand Positioning Agency in Coimbatore That Makes <span>You the Obvious Choice</span></>
+                  ) : data.slug === "visual-id" ? (
+                    <>Brand Identity Design Agency in Coimbatore That Makes <span>You Unforgettable</span></>
+                  ) : data.title.includes("/") ? (
+                    <>{data.title.split("/")[0]} / <span>{data.title.split("/")[1]}</span></>
+                  ) : (
+                    <>{data.title.split(" ").slice(0, -1).join(" ")} <span>{data.title.split(" ").slice(-1)}</span></>
+                  )}
+                </motion.h1>
+
+                <motion.div
+                  className="sg-hero-desc"
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: false, amount: 0.2 }}
+                  transition={{ duration: 0.8, delay: 0.2 }}
+                >
+                  {Array.isArray(data.subtitle) ? (
+                    data.subtitle.map((para, i) => (
+                      <p key={i} className="sg-hero-desc-para">
+                        {para}
+                      </p>
+                    ))
+                  ) : typeof data.subtitle === "string" && data.subtitle.includes("\n\n") ? (
+                    data.subtitle.split("\n\n").map((para, i) => (
+                      <p key={i} className="sg-hero-desc-para">
+                        {para}
+                      </p>
+                    ))
+                  ) : (
+                    <p className="sg-hero-desc-para">{data.subtitle}</p>
+                  )}
+                </motion.div>
+
+                <motion.div
+                  className="sg-hero-actions"
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: false, amount: 0.2 }}
+                  transition={{ duration: 0.8, delay: 0.3 }}
+                >
+                  <button className="sg-btn primary" onClick={onOpenModal}>
+                    <Zap size={16} />
+                    <span>{data.heroButtonText || `START FREE ${data.number} AUDIT`}</span>
+                    <ArrowRight size={16} />
+                  </button>
+                </motion.div>
+              </div>
+
+              {/* RIGHT COLUMN: CARDLESS MINIMALIST INLINE LEAD FORM */}
+              <motion.div
+                className="sg-hero-right"
+                initial={{ opacity: 0, x: 40, scale: 0.96 }}
+                whileInView={{ opacity: 1, x: 0, scale: 1 }}
+                viewport={{ once: false, amount: 0.2 }}
+                transition={{ duration: 0.9, delay: 0.2 }}
+              >
+                <div className="sg-inline-form-wrap">
+                  <div className="sg-form-header">
+                    <Sparkles size={18} className="sg-form-sparkle" />
+                    <h3>Drop Us a Message</h3>
+                    <p>Get a response within 4 hours & free audit strategy</p>
+                  </div>
+
+                  <form className="sg-lead-form" onSubmit={async (e) => {
+                    e.preventDefault();
+                    const formEl = e.target;
+                    const formData = new FormData(formEl);
+                    const dataObj = Object.fromEntries(formData.entries());
+
+                    try {
+                      await fetch("https://formsubmit.co/ajax/brandforgedigitalmarketing@gmail.com", {
+                        method: "POST",
+                        headers: {
+                          "Content-Type": "application/json",
+                          "Accept": "application/json",
+                        },
+                        body: JSON.stringify({
+                          ...dataObj,
+                          _subject: `⚡ New Landing Page Enquiry for ${data.eyebrow}`
+                        })
+                      });
+                    } catch (err) {
+                      console.error(err);
+                    }
+                    alert(`Thank you! Your ${data.eyebrow} enquiry has been received. Our strategy team will contact +91 93845 76852 within 4 hours.`);
+                    formEl.reset();
+                  }}>
+                    <div className="sg-field-row">
+                      <input type="text" name="name" required placeholder="Your Full Name *" className="sg-input-line" />
+                    </div>
+
+                    <div className="sg-field-grid">
+                      <select name="country_code" className="sg-select-line country-code" defaultValue="+91">
+                        <option value="+91">🇮🇳 +91</option>
+                        <option value="+1">🇺🇸 +1</option>
+                        <option value="+44">🇬🇧 +44</option>
+                        <option value="+971">🇦🇪 +971</option>
+                        <option value="+65">🇸🇬 +65</option>
+                      </select>
+                      <input type="tel" name="phone" required placeholder="Phone / WhatsApp *" className="sg-input-line" />
+                    </div>
+
+                    <div className="sg-field-grid">
+                      <input type="email" name="email" required placeholder="Work Email *" className="sg-input-line" />
+                      <select name="service" className="sg-select-line" defaultValue={data.eyebrow}>
+                        <option value={data.eyebrow}>{data.eyebrow}</option>
+                        <option value="Website Development">Website Development</option>
+                        <option value="Paid Media Scaling">Paid Media Scaling</option>
+                        <option value="SEO & GEO Supremacy">SEO & GEO Supremacy</option>
+                      </select>
+                    </div>
+
+                    <div className="sg-field-grid">
+                      <input type="text" name="business" required placeholder="Business Name *" className="sg-input-line" />
+                      <input type="text" name="location" required placeholder="City / Country *" className="sg-input-line" />
+                    </div>
+
+                    <div className="sg-field-row">
+                      <textarea name="message" rows="2" required placeholder="Message / Target Outcome *" className="sg-textarea-line" />
+                    </div>
+
+                    <button type="submit" className="sg-form-btn">
+                      <Zap size={16} />
+                      <span>SEND ENQUIRY NOW</span>
+                      <ArrowRight size={16} />
+                    </button>
+                  </form>
+                </div>
+              </motion.div>
+
+            </div>
+          </div>
+        </header>
+      )}
+
+      {/* DEDICATED PARAGRAPH STORY & LEAD FORM SECTION (SECOND SECTION FOR SEO & GEO) */}
+      {data.slug === "seo-geo" && (
+        <section className="sg-seo-story-section">
+          <div className="sg-container">
+            <div className="sg-seo-split-grid">
+              
+              {/* LEFT COLUMN: THE PARAGRAPHS & CAPABILITIES */}
+              <motion.div
+                className="sg-seo-story-left"
+                initial={{ opacity: 0, x: -35 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: false, amount: 0.2 }}
+                transition={{ duration: 0.7 }}
+              >
+                <div className="sg-tech-pill inline-pill">
+                  <span className="sg-tech-pill-dot">•</span>
+                  <span>THE NEW SEARCH PARADIGM</span>
+                  <span className="sg-tech-pill-dot">•</span>
+                </div>
+                
+                <h2 className="sg-seo-story-heading">
+                  Search Has Split Into Two Paths — <span>We Help You Win Both</span>
+                </h2>
+
+                <div className="sg-seo-story-body">
+                  {Array.isArray(data.subtitle) ? (
+                    data.subtitle.map((para, i) => (
+                      <p key={i} className={`sg-seo-story-para ${i === 0 ? "lead-para" : ""}`}>
+                        {para}
+                      </p>
+                    ))
+                  ) : (
+                    <p className="sg-seo-story-para lead-para">{data.subtitle}</p>
+                  )}
+                </div>
+
+                {/* High-Impact Capabilities Stack */}
+                <div className="sg-seo-story-pillars">
+                  <div className="sg-story-pillar-item">
+                    <div className="pillar-icon-box">
+                      <Search size={20} />
+                    </div>
+                    <div>
+                      <h4>Google Search Dominance</h4>
+                      <p>First-page organic rankings, technical Core Web Vitals, and Coimbatore local Google Maps pack dominance.</p>
+                    </div>
+                  </div>
+
+                  <div className="sg-story-pillar-item">
+                    <div className="pillar-icon-box">
+                      <Cpu size={20} />
+                    </div>
+                    <div>
+                      <h4>Generative AI Citations (GEO)</h4>
+                      <p>Top entity positioning & knowledge graph authority inside ChatGPT, Perplexity, Gemini, and AI Overviews.</p>
+                    </div>
+                  </div>
+
+                  <div className="sg-story-pillar-item">
+                    <div className="pillar-icon-box">
+                      <Zap size={20} />
+                    </div>
+                    <div>
+                      <h4>High-Intent Revenue Lift</h4>
+                      <p>Zero spam, zero vanity traffic. Engineering search campaigns that convert clicks into paying customers.</p>
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
+
+              {/* RIGHT COLUMN: LEAD CAPTURE FORM */}
+              <motion.div
+                className="sg-seo-story-right"
+                initial={{ opacity: 0, x: 35 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: false, amount: 0.2 }}
+                transition={{ duration: 0.7, delay: 0.15 }}
+              >
+                <div className="sg-inline-form-wrap">
+                  <div className="sg-form-header">
+                    <Sparkles size={18} className="sg-form-sparkle" />
+                    <h3>Drop Us a Message</h3>
+                    <p>Get a response within 4 hours & free audit strategy</p>
+                  </div>
+
+                  <form className="sg-lead-form" onSubmit={async (e) => {
+                    e.preventDefault();
+                    const formEl = e.target;
+                    const formData = new FormData(formEl);
+                    const dataObj = Object.fromEntries(formData.entries());
+
+                    try {
+                      await fetch("https://formsubmit.co/ajax/brandforgedigitalmarketing@gmail.com", {
+                        method: "POST",
+                        headers: {
+                          "Content-Type": "application/json",
+                          "Accept": "application/json",
+                        },
+                        body: JSON.stringify({
+                          ...dataObj,
+                          _subject: `⚡ New Landing Page Enquiry for ${data.eyebrow}`
+                        })
+                      });
+                    } catch (err) {
+                      console.error(err);
+                    }
+                    alert(`Thank you! Your ${data.eyebrow} enquiry has been received. Our strategy team will contact +91 93845 76852 within 4 hours.`);
+                    formEl.reset();
+                  }}>
+                    <div className="sg-field-row">
+                      <input type="text" name="name" required placeholder="Your Full Name *" className="sg-input-line" />
+                    </div>
+
+                    <div className="sg-field-grid">
+                      <select name="country_code" className="sg-select-line country-code" defaultValue="+91">
+                        <option value="+91">🇮🇳 +91</option>
+                        <option value="+1">🇺🇸 +1</option>
+                        <option value="+44">🇬🇧 +44</option>
+                        <option value="+971">🇦🇪 +971</option>
+                        <option value="+65">🇸🇬 +65</option>
+                      </select>
+                      <input type="tel" name="phone" required placeholder="Phone / WhatsApp *" className="sg-input-line" />
+                    </div>
+
+                    <div className="sg-field-grid">
+                      <input type="email" name="email" required placeholder="Work Email *" className="sg-input-line" />
+                      <select name="service" className="sg-select-line" defaultValue={data.eyebrow}>
+                        <option value={data.eyebrow}>{data.eyebrow}</option>
+                        <option value="Website Development">Website Development</option>
+                        <option value="Paid Media Scaling">Paid Media Scaling</option>
+                        <option value="SEO & GEO Supremacy">SEO & GEO Supremacy</option>
+                      </select>
+                    </div>
+
+                    <div className="sg-field-grid">
+                      <input type="text" name="business" required placeholder="Business Name *" className="sg-input-line" />
+                      <input type="text" name="location" required placeholder="City / Country *" className="sg-input-line" />
+                    </div>
+
+                    <div className="sg-field-row">
+                      <textarea name="message" rows="2" required placeholder="Message / Target Outcome *" className="sg-textarea-line" />
+                    </div>
+
+                    <button type="submit" className="sg-form-btn">
+                      <Zap size={16} />
+                      <span>SEND ENQUIRY NOW</span>
+                      <ArrowRight size={16} />
+                    </button>
+                  </form>
+                </div>
+              </motion.div>
+
+            </div>
+          </div>
+        </section>
+      )}
 
 
 
-          {/* CARDLESS TYPOGRAPHIC METRICS STRIP */}
+          {/* CARDLESS TYPOGRAPHIC METRICS STRIP & CLIENT LOGOS PROOF */}
+      <section className="sg-metrics-section">
+        <div className="sg-container">
           <div className="sg-metrics-strip">
             {data.metrics.map((m, idx) => (
               <motion.div
@@ -296,7 +603,7 @@ export default function ServiceLandingPage({ slug = "seo-geo", onOpenModal, navi
             </div>
           </motion.div>
         </div>
-      </header>
+      </section>
 
       {/* WHY BUSINESSES CHOOSE BRAND FORGE SECTION */}
       {data.whyChooseUs && (
@@ -834,6 +1141,478 @@ const styles = `
     padding: clamp(40px, 6vw, 80px) 0 clamp(60px, 8vw, 100px);
     background: transparent;
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  /* HIGH-TECH BANNER SECTION (SEO & GEO) */
+  .sg-hero-banner-tech {
+    background: radial-gradient(circle at 75% 40%, rgba(239, 65, 54, 0.12) 0%, rgba(0, 240, 255, 0.05) 45%, transparent 70%), #030306;
+    overflow: hidden;
+  }
+
+  .tech-hud-overlay {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: 1;
+  }
+
+  .tech-hud-circle {
+    position: absolute;
+    top: 8%;
+    left: -8%;
+    width: 440px;
+    height: 440px;
+    border: 1px dashed rgba(255, 255, 255, 0.08);
+    border-radius: 50%;
+    animation: sgSpinHUD 60s linear infinite;
+  }
+
+  .tech-hud-circle-2 {
+    top: 40%;
+    right: -10%;
+    width: 540px;
+    height: 540px;
+    border: 1px dashed rgba(239, 65, 54, 0.12);
+    animation: sgSpinHUDRev 75s linear infinite;
+  }
+
+  @keyframes sgSpinHUD {
+    to { transform: rotate(360deg); }
+  }
+  @keyframes sgSpinHUDRev {
+    to { transform: rotate(-360deg); }
+  }
+
+  .tech-hud-dots {
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(rgba(255, 255, 255, 0.15) 1px, transparent 1px);
+    background-size: 32px 32px;
+    opacity: 0.18;
+    mask-image: radial-gradient(circle at center, black 40%, transparent 80%);
+    -webkit-mask-image: radial-gradient(circle at center, black 40%, transparent 80%);
+  }
+
+  .sg-tech-banner-grid {
+    display: grid;
+    grid-template-columns: 1.15fr 0.85fr;
+    gap: clamp(32px, 5vw, 64px);
+    align-items: center;
+    position: relative;
+    z-index: 2;
+  }
+
+  .sg-tech-banner-left {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  /* Social Icons Row */
+  .sg-tech-socials {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 24px;
+  }
+
+  .sg-tech-social-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    color: rgba(255, 255, 255, 0.75);
+    text-decoration: none;
+    transition: all 0.25s ease;
+  }
+
+  .sg-tech-social-link:hover {
+    color: #FFFFFF;
+    background: #EF4136;
+    border-color: #EF4136;
+    transform: translateY(-2px);
+    box-shadow: 0 0 18px rgba(239, 65, 54, 0.45);
+  }
+
+  /* Cyber Pill Tag */
+  .sg-tech-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 16px;
+    border-radius: 999px;
+    background: rgba(0, 240, 255, 0.08);
+    border: 1px solid rgba(0, 240, 255, 0.35);
+    color: #00F0FF;
+    font-size: 0.78rem;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    font-family: "JetBrains Mono", monospace;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+  }
+
+  .sg-tech-pill-dot {
+    color: #EF4136;
+    font-size: 1.1rem;
+    line-height: 1;
+  }
+
+  .sg-tech-pill.inline-pill {
+    background: rgba(239, 65, 54, 0.1);
+    border-color: rgba(239, 65, 54, 0.35);
+    color: #EF4136;
+  }
+
+  /* H1 Heading with Gradient Accent & Squiggly Wave */
+  .sg-tech-h1 {
+    font-family: "Outfit", sans-serif;
+    font-size: clamp(34px, 4.5vw, 62px);
+    font-weight: 900;
+    line-height: 1.08;
+    letter-spacing: -0.025em;
+    color: #FFFFFF;
+    margin: 0 0 22px;
+  }
+
+  .sg-tech-h1-accent {
+    position: relative;
+    display: inline-block;
+    color: #EF4136;
+    background: linear-gradient(135deg, #EF4136 0%, #FF6B5A 60%, #00F0FF 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .sg-tech-squiggle {
+    position: absolute;
+    left: 0;
+    bottom: -12px;
+    width: 100%;
+    height: 16px;
+    pointer-events: none;
+  }
+
+  .sg-tech-micro-desc {
+    font-size: clamp(15px, 1.4vw, 18px);
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.82);
+    margin: 0 0 32px;
+    max-width: 580px;
+  }
+
+  /* Dual Action Buttons (Start Free Audit + Circular Play Button) */
+  .sg-tech-action-row {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+
+  .sg-tech-start-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 30px;
+    border-radius: 999px;
+    background: #EF4136;
+    color: #FFFFFF;
+    font-family: "Outfit", sans-serif;
+    font-size: 0.92rem;
+    font-weight: 800;
+    letter-spacing: 0.03em;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: 0 10px 28px rgba(239, 65, 54, 0.4);
+  }
+
+  .sg-tech-start-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 14px 38px rgba(239, 65, 54, 0.65);
+    background: #FF4A3E;
+  }
+
+  .sg-tech-play-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 4px 8px;
+    transition: all 0.25s ease;
+  }
+
+  .sg-tech-play-icon-wrap {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: #00F0FF;
+    color: #030306;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 24px rgba(0, 240, 255, 0.6);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .sg-tech-play-btn:hover .sg-tech-play-icon-wrap {
+    transform: scale(1.12);
+    box-shadow: 0 0 35px rgba(0, 240, 255, 0.9);
+  }
+
+  .sg-tech-play-label {
+    font-family: "Outfit", sans-serif;
+    font-size: 0.88rem;
+    font-weight: 800;
+    letter-spacing: 0.04em;
+    color: rgba(255, 255, 255, 0.88);
+    transition: color 0.2s ease;
+  }
+
+  .sg-tech-play-btn:hover .sg-tech-play-label {
+    color: #00F0FF;
+  }
+
+  /* Right-Side Transparent 3D Floating Artwork */
+  .sg-tech-banner-right {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    perspective: 1200px;
+  }
+
+  .sg-tech-floating-container {
+    position: relative;
+    width: 100%;
+    max-width: 540px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transform-style: preserve-3d;
+    will-change: transform;
+  }
+
+  .sg-tech-floating-img {
+    width: 100%;
+    max-width: 520px;
+    height: auto;
+    object-fit: contain;
+    display: block;
+    position: relative;
+    z-index: 1;
+    filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.95)) drop-shadow(0 0 35px rgba(239, 65, 54, 0.35)) drop-shadow(0 0 55px rgba(0, 240, 255, 0.25));
+    animation: sgLevitate3D 6s ease-in-out infinite alternate;
+    transition: filter 0.4s ease;
+  }
+
+  .sg-tech-floating-container:hover .sg-tech-floating-img {
+    filter: drop-shadow(0 25px 50px rgba(0, 0, 0, 0.98)) drop-shadow(0 0 55px rgba(239, 65, 54, 0.6)) drop-shadow(0 0 75px rgba(0, 240, 255, 0.5));
+  }
+
+  @keyframes sgLevitate3D {
+    0% {
+      transform: translateY(0px) rotate(0deg);
+    }
+    50% {
+      transform: translateY(-14px) rotate(1.2deg);
+    }
+    100% {
+      transform: translateY(-4px) rotate(-0.8deg);
+    }
+  }
+
+  .sg-tech-art-ambient-glow {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 440px;
+    height: 440px;
+    transform: translate(-50%, -50%);
+    background: radial-gradient(circle, rgba(239, 65, 54, 0.22) 0%, rgba(0, 240, 255, 0.12) 40%, transparent 70%);
+    filter: blur(55px);
+    pointer-events: none;
+    z-index: 0;
+    transition: opacity 0.4s ease, transform 0.4s ease;
+  }
+
+  .sg-tech-floating-container:hover .sg-tech-art-ambient-glow {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1.18);
+  }
+
+  .sg-tech-floating-badge {
+    position: absolute;
+    z-index: 2;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 16px;
+    border-radius: 16px;
+    background: rgba(10, 10, 15, 0.88);
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.7);
+    animation: sgFloatBadge 4s ease-in-out infinite alternate;
+  }
+
+  .sg-tech-floating-badge.badge-top {
+    top: 24px;
+    right: 20px;
+  }
+
+  .sg-tech-floating-badge.badge-bottom {
+    bottom: 24px;
+    left: 20px;
+    animation-delay: 2s;
+  }
+
+  @keyframes sgFloatBadge {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-8px); }
+  }
+
+  .sg-tech-floating-badge strong {
+    display: block;
+    font-size: 0.86rem;
+    font-weight: 900;
+    color: #FFFFFF;
+    font-family: "Outfit", sans-serif;
+  }
+
+  .sg-tech-floating-badge span {
+    display: block;
+    font-size: 0.72rem;
+    color: rgba(255, 255, 255, 0.65);
+  }
+
+  .badge-icon-sparkle { color: #00F0FF; }
+  .badge-icon-check { color: #EF4136; }
+
+  /* DEDICATED PARAGRAPH STORY & LEAD FORM SECTION (SEO & GEO) */
+  .sg-seo-story-section {
+    padding: clamp(60px, 8vw, 100px) 0 clamp(30px, 4vw, 50px);
+    position: relative;
+    z-index: 2;
+  }
+
+  .sg-seo-split-grid {
+    display: grid;
+    grid-template-columns: 1.15fr 0.85fr;
+    gap: clamp(32px, 5vw, 64px);
+    align-items: flex-start;
+  }
+
+  .sg-seo-story-left {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .sg-seo-story-heading {
+    font-family: "Outfit", sans-serif;
+    font-size: clamp(26px, 3.4vw, 46px);
+    font-weight: 900;
+    line-height: 1.15;
+    color: #FFFFFF;
+    margin: 14px 0 22px;
+    letter-spacing: -0.02em;
+  }
+
+  .sg-seo-story-heading span {
+    color: #EF4136;
+  }
+
+  .sg-seo-story-body {
+    margin-bottom: 28px;
+  }
+
+  .sg-seo-story-para {
+    font-size: clamp(15px, 1.4vw, 17px);
+    line-height: 1.7;
+    color: rgba(255, 255, 255, 0.78);
+    margin: 0 0 16px;
+  }
+
+  .sg-seo-story-para.lead-para {
+    font-size: clamp(17px, 1.6vw, 20px);
+    font-weight: 600;
+    line-height: 1.65;
+    color: #FFFFFF;
+    border-left: 3px solid #EF4136;
+    padding-left: 18px;
+    margin-bottom: 20px;
+    background: rgba(239, 65, 54, 0.04);
+    padding-top: 6px;
+    padding-bottom: 6px;
+    border-radius: 0 12px 12px 0;
+  }
+
+  .sg-seo-story-pillars {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin-top: 24px;
+    padding-top: 24px;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .sg-story-pillar-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 18px;
+    padding: 16px 20px;
+    transition: all 0.3s ease;
+  }
+
+  .sg-story-pillar-item:hover {
+    border-color: rgba(239, 65, 54, 0.4);
+    background: rgba(239, 65, 54, 0.06);
+    transform: translateY(-2px);
+  }
+
+  .pillar-icon-box {
+    flex-shrink: 0;
+    width: 40px;
+    height: 40px;
+    border-radius: 12px;
+    background: rgba(239, 65, 54, 0.15);
+    border: 1px solid rgba(239, 65, 54, 0.3);
+    color: #EF4136;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .sg-story-pillar-item h4 {
+    font-family: "Outfit", sans-serif;
+    font-size: 1.05rem;
+    font-weight: 800;
+    color: #FFFFFF;
+    margin: 0 0 4px;
+  }
+
+  .sg-story-pillar-item p {
+    font-size: 0.84rem;
+    line-height: 1.5;
+    color: rgba(255, 255, 255, 0.65);
+    margin: 0;
+  }
+
+  .sg-seo-story-right {
+    position: sticky;
+    top: 90px;
   }
 
   .sg-hero-glow {
@@ -1891,6 +2670,11 @@ const styles = `
 
   @media (max-width: 992px) {
     .sg-hero-grid { grid-template-columns: 1fr; }
+    .sg-tech-banner-grid { grid-template-columns: 1fr; gap: 40px; }
+    .sg-tech-floating-container { max-width: 440px; margin: 0 auto; }
+    .sg-seo-split-grid { grid-template-columns: 1fr; gap: 40px; }
+    .sg-seo-story-right { position: static; }
+    .sg-seo-story-pillars { grid-template-columns: 1fr; }
     .sg-metrics-strip { grid-template-columns: repeat(2, 1fr); }
     .sg-timeline-stream { grid-template-columns: repeat(2, 1fr); gap: 40px 20px; }
     .sg-timeline-stream.has-6-steps { grid-template-columns: repeat(2, 1fr); gap: 30px 20px; }
@@ -1901,6 +2685,10 @@ const styles = `
   }
 
   @media (max-width: 640px) {
+    .sg-tech-action-row { flex-direction: column; align-items: flex-start; gap: 14px; }
+    .sg-tech-start-btn { width: 100%; justify-content: center; }
+    .sg-tech-floating-badge.badge-top { top: 12px; right: 12px; padding: 8px 12px; }
+    .sg-tech-floating-badge.badge-bottom { bottom: 12px; left: 12px; padding: 8px 12px; }
     .sg-metrics-strip { grid-template-columns: 1fr; }
     .sg-timeline-stream { grid-template-columns: 1fr; }
     .sg-timeline-stream.has-6-steps { grid-template-columns: 1fr; }

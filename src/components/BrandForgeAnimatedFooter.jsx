@@ -226,6 +226,8 @@ export default function BrandForgeAnimatedFooter({ onOpenModal }) {
               <li><a href="/services/web-foundry">3D Web Development</a></li>
               <li><a href="/services/paid-media">Paid Media Scaling</a></li>
               <li><a href="/services/viral-social">Viral Social Network</a></li>
+              <li><a href="/services/influencer-network">Influencer & Creator Network</a></li>
+              <li><a href="/services/content-smithy">Content Marketing & Authority</a></li>
               <li><a href="/services/cro-revenue">CRO Revenue Engine</a></li>
               <li><a href="/seo-company-coimbatore">SEO Company Coimbatore</a></li>
               <li><a href="/ppc-company-coimbatore">PPC Agency Coimbatore</a></li>

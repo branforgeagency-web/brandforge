@@ -598,17 +598,7 @@ const styles = `
   }
 
   .sg-hero-glow {
-    position: absolute;
-    top: -10%;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 650px;
-    height: 420px;
-    border-radius: 50%;
-    background: radial-gradient(circle, rgba(239, 65, 54, 0.14) 0%, transparent 70%);
-    filter: blur(60px);
-    pointer-events: none;
-    z-index: 0;
+    display: none;
   }
 
   .sg-badge {

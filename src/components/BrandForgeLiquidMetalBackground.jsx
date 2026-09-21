@@ -77,33 +77,33 @@ const fragmentShader = `
     float w3 = sin(dot(warpedUv, dir3) * freq3 + time * 1.8 + w2 * 0.5);
     float waveField = w1 * 0.50 + w2 * 0.35 + w3 * 0.15;
 
-    float wideSheen = pow(max(0.0, 1.0 - abs(waveField - 0.1)), 2.5);
-    float crispSpecular = pow(max(0.0, 1.0 - abs(waveField - 0.15)), 8.0);
-    float crest = wideSheen * 0.5 + crispSpecular * 0.9;
+    // Distance from the flowing wave ridge
+    float dist = abs(waveField - 0.12);
 
-    // BrandForge Acid Crimson Palette Integration (Extra Lighter & Soft Tones)
-    vec3 c0_shadow = vec3(0.28, 0.12, 0.14);
-    vec3 c0_wave1  = vec3(0.60, 0.22, 0.20);
-    vec3 c0_wave2  = vec3(0.42, 0.14, 0.12);
-    vec3 c0_crest  = vec3(0.95, 0.50, 0.45);
+    // Black & White liquid chrome wave ribbon profiles
+    float waveBody = pow(max(0.0, 1.0 - dist * 1.6), 2.5);
+    float ribbon = pow(max(0.0, 1.0 - dist * 2.5), 3.2);
+    float whiteCrest = pow(max(0.0, 1.0 - dist * 5.5), 4.5);
 
-    vec3 c1_shadow = vec3(0.24, 0.10, 0.12);
-    vec3 c1_wave1  = vec3(0.65, 0.25, 0.22);
-    vec3 c1_wave2  = vec3(0.46, 0.16, 0.14);
-    vec3 c1_crest  = vec3(0.98, 0.58, 0.52);
+    // Red Accent contour ribbon flowing adjacent to the chrome crest
+    float redAccent = pow(max(0.0, 1.0 - abs(dist - 0.16) * 3.8), 3.0) * 0.75;
 
-    float t = smoothstep(0.0, 1.0, scroll);
-    vec3 colShadow = mix(c0_shadow, c1_shadow, t);
-    vec3 colWave1  = mix(c0_wave1, c1_wave1, t);
-    vec3 colWave2  = mix(c0_wave2, c1_wave2, t);
-    vec3 colCrest  = mix(c0_crest, c1_crest, t);
+    // Palette: Pure Black, Monochrome Liquid Chrome, Pure White Specular, and Red Accent
+    vec3 colBlack      = vec3(0.0, 0.0, 0.0);
+    vec3 colCharcoal   = vec3(0.12, 0.12, 0.14);  // Deep liquid metal body
+    vec3 colSilver     = vec3(0.58, 0.58, 0.62);  // Liquid silver sheen
+    vec3 colWhiteCrest = vec3(0.98, 0.98, 1.00);  // Crisp white specular highlight
+    vec3 colRedAccent  = vec3(0.95, 0.08, 0.14);  // Glowing fiery red accent line
 
-    vec3 color = colShadow;
-    color = mix(color, colWave2, smoothstep(-0.6, 0.2, waveField));
-    color = mix(color, colWave1, smoothstep(0.0, 0.8, waveField));
-    color += colCrest * crest * 1.3 + vec3(0.18, 0.08, 0.08);
+    // Start with pitch black
+    vec3 color = colBlack;
+    color += colCharcoal * waveBody * 0.45;
+    color += colSilver * ribbon * 0.70;
+    color += colWhiteCrest * whiteCrest * 0.90;
+    color += colRedAccent * redAccent;
 
-    float vignette = 1.0 - dot(uv, uv) * 0.03;
+    // Edge vignette fading cleanly to black
+    float vignette = clamp(1.0 - dot(uv, uv) * 0.12, 0.0, 1.0);
     color *= vignette;
     gl_FragColor = vec4(color, 1.0);
   }
@@ -170,9 +170,9 @@ export default function BrandForgeLiquidMetalBackground() {
     textureCanvas.height = 16;
     const ctx = textureCanvas.getContext("2d");
     const gradient = ctx.createRadialGradient(8, 8, 0, 8, 8, 8);
-    gradient.addColorStop(0, "rgba(255, 255, 255, 1)");
-    gradient.addColorStop(0.25, "rgba(239, 65, 54, 0.85)");
-    gradient.addColorStop(0.6, "rgba(239, 65, 54, 0.25)");
+    gradient.addColorStop(0, "rgba(255, 220, 230, 1)");
+    gradient.addColorStop(0.25, "rgba(220, 15, 45, 0.9)");
+    gradient.addColorStop(0.6, "rgba(160, 0, 30, 0.3)");
     gradient.addColorStop(1, "rgba(0, 0, 0, 0)");
     ctx.fillStyle = gradient;
     ctx.fillRect(0, 0, 16, 16);
@@ -186,14 +186,14 @@ export default function BrandForgeLiquidMetalBackground() {
       sparkPositions[i * 3 + 1] = y;
       sparkPositions[i * 3 + 2] = z;
 
-      if (Math.random() < 0.65) {
-        sparkColors[i * 3] = 0.937;
-        sparkColors[i * 3 + 1] = 0.255;
-        sparkColors[i * 3 + 2] = 0.212;
+      if (Math.random() < 0.75) {
+        sparkColors[i * 3] = 0.95;
+        sparkColors[i * 3 + 1] = 0.02;
+        sparkColors[i * 3 + 2] = 0.08;
       } else {
         sparkColors[i * 3] = 1.0;
-        sparkColors[i * 3 + 1] = 0.6;
-        sparkColors[i * 3 + 2] = 0.4;
+        sparkColors[i * 3 + 1] = 0.04;
+        sparkColors[i * 3 + 2] = 0.10;
       }
 
       sparkData.push({
@@ -317,7 +317,7 @@ export default function BrandForgeLiquidMetalBackground() {
           width: "100vw",
           height: "100vh",
           zIndex: 0,
-          opacity: 0.15,
+          opacity: 1.0,
           pointerEvents: "none",
         }}
       />

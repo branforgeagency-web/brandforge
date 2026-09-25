@@ -208,6 +208,74 @@ const ROUTES_CONFIG = {
   },
 };
 
+
+/* ── Pre-rendered, crawlable body content (replaced by React on mount) ── */
+const SERVICE_ORDER = [
+  "seo-geo", "paid-media", "web-foundry", "viral-social", "content-smithy",
+  "inbox-edge", "brand-anvil", "visual-id", "influencer-network",
+  "commercial-video", "cro-revenue", "reputation-shield",
+];
+const serviceHref = (k) => servicesData[k]?.urlSlug || `/services/${k}`;
+const serviceName = (k) => {
+  const s = servicesData[k];
+  return s.metaTitle ? s.metaTitle.split("|")[0].trim() : s.eyebrow;
+};
+const paras = (sub) => (Array.isArray(sub) ? sub : sub ? [sub] : []);
+
+function canonicalFor(route, config) {
+  if (config.canonicalUrl) return config.canonicalUrl;
+  // /services/<key> duplicates a Coimbatore landing page → point to that page
+  if (route.startsWith("/services/") && config.serviceKey) {
+    const urlSlug = servicesData[config.serviceKey]?.urlSlug;
+    if (urlSlug && urlSlug !== route) return `${BASE_URL}${urlSlug}`;
+  }
+  return `${BASE_URL}${route === "/" ? "/" : route}`;
+}
+
+function servicesNav() {
+  return `<nav aria-label="Services"><h2>Our Services</h2><ul>${SERVICE_ORDER.filter((k) => servicesData[k])
+    .map((k) => `<li><a href="${serviceHref(k)}">${escapeHtml(serviceName(k))}</a></li>`)
+    .join("")}</ul><p><a href="/">Home</a> · <a href="/about">About</a> · <a href="/contact">Contact</a></p></nav>`;
+}
+
+function prerenderBody(config) {
+  let html = "";
+  if (config.type === "service" && servicesData[config.serviceKey]) {
+    const s = servicesData[config.serviceKey];
+    html += `<h1>${escapeHtml(s.title)}</h1>`;
+    html += paras(s.subtitle).map((p) => `<p>${escapeHtml(p)}</p>`).join("");
+    if (s.whyChooseUs) {
+      html += `<h2>${escapeHtml(s.whyChooseUs.title)}</h2><p>${escapeHtml(s.whyChooseUs.description)}</p>`;
+      if (s.whyChooseUs.points) html += `<ul>${s.whyChooseUs.points.map((p) => `<li>${escapeHtml(p)}</li>`).join("")}</ul>`;
+    }
+    if (s.pillars?.length) {
+      html += `<h2>${escapeHtml(s.pillarsTitle || "What We Deliver")}</h2>`;
+      html += s.pillars.map((p) => `<h3>${escapeHtml(p.title)}</h3><p>${escapeHtml(p.description)}</p>${
+        Array.isArray(p.deliverables) ? `<ul>${p.deliverables.map((d) => `<li>${escapeHtml(typeof d === "string" ? d : d.title || d.name || "")}</li>`).join("")}</ul>` : ""}`).join("");
+    }
+    if (s.faqs?.length) {
+      html += `<h2>Frequently Asked Questions</h2>` + s.faqs.map((f) => `<h3>${escapeHtml(f.q)}</h3><p>${escapeHtml(f.a)}</p>`).join("");
+    }
+  } else if (config.type === "hub") {
+    html += `<h1>Digital Marketing Services in Coimbatore</h1><p>${escapeHtml(config.description)}</p>`;
+    html += SERVICE_ORDER.filter((k) => servicesData[k]).map((k) => {
+      const first = paras(servicesData[k].subtitle)[0] || "";
+      return `<h2><a href="${serviceHref(k)}">${escapeHtml(serviceName(k))}</a></h2><p>${escapeHtml(first)}</p>`;
+    }).join("");
+  } else {
+    html += `<h1>${escapeHtml(config.title.split("|")[0].trim())}</h1><p>${escapeHtml(config.description)}</p>`;
+  }
+  return `<div class="ssg-content">${html}${servicesNav()}</div>`;
+}
+
+const SSG_STYLE = `<style>.ssg-content{max-width:960px;margin:0 auto;padding:120px 20px 60px;font-family:Inter,system-ui,sans-serif;color:#d8d8de;background:#0A0A0C;line-height:1.7}.ssg-content h1,.ssg-content h2,.ssg-content h3{font-family:Outfit,sans-serif;color:#fff;line-height:1.25}.ssg-content a{color:#FF5A1F}</style>`;
+
+function buildSitemap(entries) {
+  const now = new Date().toISOString();
+  const urls = entries.map((u) => `  <url>\n    <loc>${u}</loc>\n    <lastmod>${now}</lastmod>\n  </url>`).join("\n");
+  return `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls}\n</urlset>\n`;
+}
+
 function generateJsonLd(config, canonicalUrl) {
   const schemas = [];
 
@@ -299,12 +367,17 @@ function generateSSG() {
     process.exit(1);
   }
 
-  const baseHtml = fs.readFileSync(INDEX_HTML_PATH, "utf8");
+  const baseHtml = fs.readFileSync(INDEX_HTML_PATH, "utf8")
+    // remove the hidden sitewide link/image dump (hidden text, identical on every page)
+    .replace(/<div class="sr-only"[\s\S]*?<\/nav>\s*<\/div>/, "");
+  const sitemapUrls = [];
 
   console.log("⚡ Generating static HTML files with clean root and full SEO metadata in head...");
 
   for (const [route, config] of Object.entries(ROUTES_CONFIG)) {
-    const canonicalUrl = config.canonicalUrl || `${BASE_URL}${route === "/" ? "/" : route}`;
+    const canonicalUrl = canonicalFor(route, config);
+    const selfUrl = `${BASE_URL}${route === "/" ? "/" : route}`;
+    if (canonicalUrl === selfUrl) sitemapUrls.push(selfUrl);
 
     let customizedHtml = baseHtml;
 
@@ -350,7 +423,10 @@ function generateSSG() {
     const jsonLdHtml = generateJsonLd(config, canonicalUrl);
     customizedHtml = customizedHtml.replace("</head>", `${jsonLdHtml}\n</head>`);
 
-    // Keep <div id="root"></div> clean so that on reload the user never sees unstyled plain text!
+    // Pre-render real, crawlable content into #root (React's createRoot replaces it on mount)
+    customizedHtml = customizedHtml
+      .replace("</head>", `${SSG_STYLE}\n</head>`)
+      .replace('<div id="root"></div>', `<div id="root">${prerenderBody(config)}</div>`);
 
     // Determine target file path
     let targetFilePath;
@@ -373,13 +449,11 @@ function generateSSG() {
   fs.writeFileSync(fallback404, baseHtml, "utf8");
   console.log("  ✓ Created: 404.html (SPA Fallback)");
 
-  // Copy verified public/sitemap.xml to dist/sitemap.xml
-  const publicSitemap = path.resolve(__dirname, "../public/sitemap.xml");
-  const distSitemap = path.join(DIST_DIR, "sitemap.xml");
-  if (fs.existsSync(publicSitemap)) {
-    fs.copyFileSync(publicSitemap, distSitemap);
-    console.log("  ✓ Verified sitemap.xml copied to dist/sitemap.xml");
-  }
+  // Generate sitemap.xml from canonical routes only (no duplicates / alias URLs)
+  const sitemapXml = buildSitemap(sitemapUrls);
+  fs.writeFileSync(path.join(DIST_DIR, "sitemap.xml"), sitemapXml, "utf8");
+  fs.writeFileSync(path.resolve(__dirname, "../public/sitemap.xml"), sitemapXml, "utf8");
+  console.log(`  ✓ sitemap.xml generated with ${sitemapUrls.length} canonical URLs`);
 
   // Copy verified public/robots.txt to dist/robots.txt
   const publicRobots = path.resolve(__dirname, "../public/robots.txt");

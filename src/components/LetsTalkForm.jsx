@@ -31,7 +31,7 @@ export const LETS_TALK_SERVICES = [
 ];
 
 const GOOGLE_SCRIPT_URL =
-  "https://script.google.com/macros/s/AKfycbyAbwgmmsDXa9Uc9WBk3O9w9u2qvHzN6EPgrvKcQHngJ0CGap2qlBVgGsABRCSJHdUh/exec";
+  "https://script.google.com/macros/s/AKfycbxaohtHvMcc49gscfGUF6FLTWI33KjBwdu8X_gQsSs5957uk_ZXXEAyVInMS7imBDcP/exec";
 const BACKUP_EMAIL_URL =
   "https://formsubmit.co/ajax/brandforgedigitalmarketing@gmail.com";
 

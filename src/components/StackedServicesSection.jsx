@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useEffect, useRef, useState } from "react";
+import { serviceUrl } from "../data/servicesData";
 import {
   CheckCircle2,
   ArrowRight,
@@ -182,7 +183,7 @@ export default function StackedServicesSection({ onSelectService, navigate }) {
 
   const handleCardClick = (service) => {
     if (navigate) {
-      navigate(`/services/${service.slug}`);
+      navigate(serviceUrl(service.slug));
     } else if (onSelectService) {
       onSelectService();
     }
@@ -320,7 +321,7 @@ export default function StackedServicesSection({ onSelectService, navigate }) {
                       {service.number}
                     </span>
                     <a
-                      href={`/services/${service.slug}`}
+                      href={serviceUrl(service.slug)}
                       className="card-action-btn"
                       onClick={(e) => {
                         if (!e.ctrlKey && !e.metaKey) {

@@ -1,5 +1,6 @@
 "use client";
 
+import { serviceUrl, isServicePath } from "../data/servicesData";
 import React, { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
@@ -39,7 +40,7 @@ export default function SiteNavbar({ path, navigate, onOpenModal }) {
   const [menuOpen, setMenuOpen] = useState(false);
   const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
 
-  const isLightLandingPage = path?.startsWith("/services/");
+  const isLightLandingPage = isServicePath(path);
 
   useEffect(() => {
     const onScroll = () => {
@@ -105,7 +106,7 @@ export default function SiteNavbar({ path, navigate, onOpenModal }) {
         {/* DESKTOP NAVIGATION RAIL */}
         <div className="liquid-nav__rail">
           {NAVIGATION_ITEMS.map(({ label, to, icon: Icon }) => {
-            const isActive = path === to || (label === "Services" && path.startsWith("/services/"));
+            const isActive = path === to || (label === "Services" && isServicePath(path));
 
             return (
               <a
@@ -207,12 +208,12 @@ export default function SiteNavbar({ path, navigate, onOpenModal }) {
                     {MOBILE_SERVICES.map((srv) => (
                       <a
                         key={srv.slug}
-                        href={`/services/${srv.slug}`}
-                        className={`sub-item ${path === `/services/${srv.slug}` ? "is-active" : ""}`}
+                        href={serviceUrl(srv.slug)}
+                        className={`sub-item ${path === serviceUrl(srv.slug) ? "is-active" : ""}`}
                         onClick={(e) => {
                           if (!e.ctrlKey && !e.metaKey) {
                             e.preventDefault();
-                            go(`/services/${srv.slug}`);
+                            go(serviceUrl(srv.slug));
                           }
                         }}
                       >

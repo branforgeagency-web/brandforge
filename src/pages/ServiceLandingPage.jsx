@@ -16,7 +16,7 @@ import {
   BarChart3,
   Cpu,
 } from "lucide-react";
-import { servicesData } from "../data/servicesData";
+import { servicesData, serviceUrl } from "../data/servicesData";
 import BrandForgeAnimatedFooter from "../components/BrandForgeAnimatedFooter";
 import BrandForgeLiquidMetalBackground from "../components/BrandForgeLiquidMetalBackground";
 
@@ -1184,7 +1184,7 @@ export default function ServiceLandingPage({ slug = "seo-geo", onOpenModal, navi
               .map(([k, srv], rIdx) => (
                 <motion.a
                   key={k}
-                  href={`/services/${k}`}
+                  href={serviceUrl(k)}
                   className="sg-related-card"
                   initial={{ opacity: 0, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
@@ -1193,7 +1193,7 @@ export default function ServiceLandingPage({ slug = "seo-geo", onOpenModal, navi
                   onClick={(e) => {
                     if (!e.ctrlKey && !e.metaKey && navigate) {
                       e.preventDefault();
-                      navigate(`/services/${k}`);
+                      navigate(serviceUrl(k));
                     }
                   }}
                 >

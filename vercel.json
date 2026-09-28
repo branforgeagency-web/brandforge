@@ -1,0 +1,20 @@
+{
+  "trailingSlash": false,
+  "redirects": [
+    { "source": "/web-development-company-coimbatore", "destination": "/website-development-company-coimbatore", "permanent": true },
+    { "source": "/social-media-agency-coimbatore", "destination": "/social-media-marketing-company-coimbatore", "permanent": true },
+    { "source": "/content-marketing-company-coimbatore", "destination": "/content-marketing-agency-coimbatore", "permanent": true },
+    { "source": "/email-marketing-agency-coimbatore", "destination": "/email-marketing-company-coimbatore", "permanent": true },
+    { "source": "/brand-position-agency-coimbatore", "destination": "/brand-positioning-agency-coimbatore", "permanent": true },
+    { "source": "/brand-positioning-company-coimbatore", "destination": "/brand-positioning-agency-coimbatore", "permanent": true },
+    { "source": "/brand-identity-design-company-coimbatore", "destination": "/brand-identity-design-agency-coimbatore", "permanent": true },
+    { "source": "/services/seo-geo", "destination": "/seo-company-coimbatore", "permanent": true },
+    { "source": "/services/paid-media", "destination": "/ppc-company-coimbatore", "permanent": true },
+    { "source": "/services/web-foundry", "destination": "/website-development-company-coimbatore", "permanent": true },
+    { "source": "/services/viral-social", "destination": "/social-media-marketing-company-coimbatore", "permanent": true },
+    { "source": "/services/content-smithy", "destination": "/content-marketing-agency-coimbatore", "permanent": true },
+    { "source": "/services/inbox-edge", "destination": "/email-marketing-company-coimbatore", "permanent": true },
+    { "source": "/services/brand-anvil", "destination": "/brand-positioning-agency-coimbatore", "permanent": true },
+    { "source": "/services/visual-id", "destination": "/brand-identity-design-agency-coimbatore", "permanent": true }
+  ]
+}

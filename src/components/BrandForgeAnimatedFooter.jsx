@@ -222,15 +222,13 @@ export default function BrandForgeAnimatedFooter({ onOpenModal }) {
           >
             <h4 className="col-title">SERVICES</h4>
             <ul className="footer-link-list">
-              <li><a href="/services/seo-geo">SEO & GEO Supremacy</a></li>
-              <li><a href="/services/web-foundry">3D Web Development</a></li>
-              <li><a href="/services/paid-media">Paid Media Scaling</a></li>
-              <li><a href="/services/viral-social">Viral Social Network</a></li>
+              <li><a href="/seo-company-coimbatore">SEO & GEO Supremacy</a></li>
+              <li><a href="/website-development-company-coimbatore">3D Web Development</a></li>
+              <li><a href="/ppc-company-coimbatore">Paid Media Scaling</a></li>
+              <li><a href="/social-media-marketing-company-coimbatore">Viral Social Network</a></li>
               <li><a href="/services/influencer-network">Influencer & Creator Network</a></li>
-              <li><a href="/services/content-smithy">Content Marketing & Authority</a></li>
+              <li><a href="/content-marketing-agency-coimbatore">Content Marketing & Authority</a></li>
               <li><a href="/services/cro-revenue">CRO Revenue Engine</a></li>
-              <li><a href="/seo-company-coimbatore">SEO Company Coimbatore</a></li>
-              <li><a href="/ppc-company-coimbatore">PPC Agency Coimbatore</a></li>
             </ul>
           </motion.div>
 
@@ -247,10 +245,10 @@ export default function BrandForgeAnimatedFooter({ onOpenModal }) {
               <li><a href="/">Home</a></li>
               <li><a href="/about">Who We Are / About Us</a></li>
               <li><a href="/contact">Contact & Strategy Consultation</a></li>
-              <li><a href="/services/brand-anvil">Brand Growth Architecture</a></li>
-              <li><a href="/services/visual-id">Visual Identity Forge</a></li>
+              <li><a href="/brand-positioning-agency-coimbatore">Brand Growth Architecture</a></li>
+              <li><a href="/brand-identity-design-agency-coimbatore">Visual Identity Forge</a></li>
               <li><a href="/services/commercial-video">Commercial Video Production</a></li>
-              <li><a href="/services/inbox-edge">Inbox Retention Loops</a></li>
+              <li><a href="/email-marketing-company-coimbatore">Inbox Retention Loops</a></li>
               <li><a href="/services/reputation-shield">Reputation Shield PR</a></li>
             </ul>
           </motion.div>

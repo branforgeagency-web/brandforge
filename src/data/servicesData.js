@@ -2150,3 +2150,8 @@ export const servicesData = {
 
 servicesData["seo-company-coimbatore"] = servicesData["seo-geo"];
 servicesData["ppc-company-coimbatore"] = servicesData["paid-media"];
+
+/* Canonical URL for a service: its Coimbatore landing page when one exists, else /services/<key> */
+export const serviceUrl = (key) => servicesData[key]?.urlSlug || `/services/${key}`;
+export const isServicePath = (path) =>
+  !!path && (path.startsWith("/services/") || Object.values(servicesData).some((s) => s.urlSlug === path));

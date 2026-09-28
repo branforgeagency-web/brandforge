@@ -47,6 +47,12 @@ export default function App() {
           <ServiceLandingPage slug="brand-anvil" onOpenModal={openModal} navigate={navigate} />
         ) : path === '/brand-identity-design-agency-coimbatore' || path === '/brand-identity-design-company-coimbatore' ? (
           <ServiceLandingPage slug="visual-id" onOpenModal={openModal} navigate={navigate} />
+        ) : path === '/influencer-marketing-coimbatore' ? (
+          <ServiceLandingPage slug="influencer-network" onOpenModal={openModal} navigate={navigate} />
+        ) : path === '/brand-reputation-management-coimbatore' ? (
+          <ServiceLandingPage slug="reputation-shield" onOpenModal={openModal} navigate={navigate} />
+        ) : path === '/video-production-editing-company-coimbatore' ? (
+          <ServiceLandingPage slug="commercial-video" onOpenModal={openModal} navigate={navigate} />
         ) : serviceSlug ? (
           <ServiceLandingPage slug={serviceSlug} onOpenModal={openModal} navigate={navigate} />
         ) : (

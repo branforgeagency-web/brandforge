@@ -37,8 +37,8 @@ export default function Footer({ onOpenModal }) {
           <a href="/seo-company-coimbatore">SEO & GEO Services</a>
           <a href="/ppc-company-coimbatore">Paid Media (PPC)</a>
           <a href="/website-development-company-coimbatore">Web Foundry (Web Dev)</a>
-          <a href="/services/viral-social">Social Media Dominance</a>
-          <a href="/services/visual-id">Visual Identity & 3D</a>
+          <a href="/social-media-marketing-company-coimbatore">Social Media Dominance</a>
+          <a href="/brand-identity-design-agency-coimbatore">Visual Identity & 3D</a>
           <a href="/services/cro-revenue">CRO Revenue Engine</a>
         </div>
 

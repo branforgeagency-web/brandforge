@@ -938,6 +938,7 @@ export const servicesData = {
 
   "influencer-network": {
     slug: "influencer-network",
+    urlSlug: "/influencer-marketing-coimbatore",
     number: "05",
     eyebrow: "INFLUENCER / CREATOR NETWORK",
     title: "AMPLIFY BRAND AUTHORITY THROUGH TOP-TIER CREATOR NETWORKS",
@@ -2035,6 +2036,7 @@ export const servicesData = {
 
   "commercial-video": {
     slug: "commercial-video",
+    urlSlug: "/video-production-editing-company-coimbatore",
     number: "10",
     eyebrow: "REEL FORGE / COMMERCIAL VIDEO",
     title: "HIGH-CONVERTING COMMERCIAL VIDEO ADS & 3D MOTION SHOWREELS",
@@ -2111,6 +2113,7 @@ export const servicesData = {
 
   "reputation-shield": {
     slug: "reputation-shield",
+    urlSlug: "/brand-reputation-management-coimbatore",
     number: "12",
     eyebrow: "REPUTATION SHIELD / GLOBAL PR ENGINE",
     title: "PROTECT & ELEVATE BRAND TRUST WITH GLOBAL PR & REVIEW GROWTH",

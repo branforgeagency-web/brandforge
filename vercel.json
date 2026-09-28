@@ -15,6 +15,9 @@
     { "source": "/services/content-smithy", "destination": "/content-marketing-agency-coimbatore", "permanent": true },
     { "source": "/services/inbox-edge", "destination": "/email-marketing-company-coimbatore", "permanent": true },
     { "source": "/services/brand-anvil", "destination": "/brand-positioning-agency-coimbatore", "permanent": true },
-    { "source": "/services/visual-id", "destination": "/brand-identity-design-agency-coimbatore", "permanent": true }
+    { "source": "/services/visual-id", "destination": "/brand-identity-design-agency-coimbatore", "permanent": true },
+    { "source": "/services/influencer-network", "destination": "/influencer-marketing-coimbatore", "permanent": true },
+    { "source": "/services/reputation-shield", "destination": "/brand-reputation-management-coimbatore", "permanent": true },
+    { "source": "/services/commercial-video", "destination": "/video-production-editing-company-coimbatore", "permanent": true }
   ]
 }

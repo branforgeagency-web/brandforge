@@ -226,7 +226,7 @@ export default function BrandForgeAnimatedFooter({ onOpenModal }) {
               <li><a href="/website-development-company-coimbatore">3D Web Development</a></li>
               <li><a href="/ppc-company-coimbatore">Paid Media Scaling</a></li>
               <li><a href="/social-media-marketing-company-coimbatore">Viral Social Network</a></li>
-              <li><a href="/services/influencer-network">Influencer & Creator Network</a></li>
+              <li><a href="/influencer-marketing-coimbatore">Influencer & Creator Network</a></li>
               <li><a href="/content-marketing-agency-coimbatore">Content Marketing & Authority</a></li>
               <li><a href="/services/cro-revenue">CRO Revenue Engine</a></li>
             </ul>
@@ -247,9 +247,9 @@ export default function BrandForgeAnimatedFooter({ onOpenModal }) {
               <li><a href="/contact">Contact & Strategy Consultation</a></li>
               <li><a href="/brand-positioning-agency-coimbatore">Brand Growth Architecture</a></li>
               <li><a href="/brand-identity-design-agency-coimbatore">Visual Identity Forge</a></li>
-              <li><a href="/services/commercial-video">Commercial Video Production</a></li>
+              <li><a href="/video-production-editing-company-coimbatore">Commercial Video Production</a></li>
               <li><a href="/email-marketing-company-coimbatore">Inbox Retention Loops</a></li>
-              <li><a href="/services/reputation-shield">Reputation Shield PR</a></li>
+              <li><a href="/brand-reputation-management-coimbatore">Reputation Shield PR</a></li>
             </ul>
           </motion.div>
 

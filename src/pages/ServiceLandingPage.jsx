@@ -19,6 +19,7 @@ import {
 import { servicesData, serviceUrl } from "../data/servicesData";
 import BrandForgeAnimatedFooter from "../components/BrandForgeAnimatedFooter";
 import BrandForgeLiquidMetalBackground from "../components/BrandForgeLiquidMetalBackground";
+import LetsTalkForm from "../components/LetsTalkForm";
 
 /* ───────────────────────────────────────────────────────────────────────────
    DYNAMIC SERVICE LANDING PAGE COMPONENT (CARDLESS & LIQUID METAL SHADER)
@@ -634,79 +635,12 @@ export default function ServiceLandingPage({ slug = "seo-geo", onOpenModal, navi
               transition={{ duration: 0.7, delay: 0.15 }}
             >
               <div className="sg-inline-form-wrap">
-                <div className="sg-form-header">
-                  <Sparkles size={18} className="sg-form-sparkle" />
-                  <h3>Drop Us a Message</h3>
-                  <p>Get a response within 4 hours & free audit strategy</p>
-                </div>
-
-                <form className="sg-lead-form" onSubmit={async (e) => {
-                  e.preventDefault();
-                  const formEl = e.target;
-                  const formData = new FormData(formEl);
-                  const dataObj = Object.fromEntries(formData.entries());
-
-                  try {
-                    await fetch("https://formsubmit.co/ajax/brandforgedigitalmarketing@gmail.com", {
-                      method: "POST",
-                      headers: {
-                        "Content-Type": "application/json",
-                        "Accept": "application/json",
-                      },
-                      body: JSON.stringify({
-                        ...dataObj,
-                        _subject: `⚡ New Landing Page Enquiry for ${data.eyebrow}`
-                      })
-                    });
-                  } catch (err) {
-                    console.error(err);
-                  }
-                  alert(`Thank you! Your ${data.eyebrow} enquiry has been received. Our strategy team will contact you within 4 hours.`);
-                  formEl.reset();
-                }}>
-                  <div className="sg-field-row">
-                    <input type="text" name="name" required placeholder="Your Full Name *" className="sg-input-line" />
-                  </div>
-
-                  <div className="sg-field-grid">
-                    <select name="country_code" className="sg-select-line country-code" defaultValue="+91">
-                      <option value="+91">🇮🇳 +91</option>
-                      <option value="+1">🇺🇸 +1</option>
-                      <option value="+44">🇬🇧 +44</option>
-                      <option value="+971">🇦🇪 +971</option>
-                      <option value="+65">🇸🇬 +65</option>
-                    </select>
-                    <input type="tel" name="phone" required placeholder="Phone / WhatsApp *" className="sg-input-line" />
-                  </div>
-
-                  <div className="sg-field-grid">
-                    <input type="email" name="email" required placeholder="Work Email *" className="sg-input-line" />
-                    <select name="service" className="sg-select-line" defaultValue={data.eyebrow}>
-                      <option value={data.eyebrow}>{data.eyebrow}</option>
-                      <option value="SEO & GEO Supremacy">SEO & GEO Supremacy</option>
-                      <option value="Paid Media Scaling">Paid Media Scaling</option>
-                      <option value="Website Development">Website Development</option>
-                      <option value="Social Media & Viral Reels">Social Media & Viral Reels</option>
-                      <option value="Content & Brand Positioning">Content & Brand Positioning</option>
-                      <option value="Full Agency Forge">Full Agency Forge</option>
-                    </select>
-                  </div>
-
-                  <div className="sg-field-grid">
-                    <input type="text" name="business" required placeholder="Business Name *" className="sg-input-line" />
-                    <input type="text" name="location" required placeholder="City / Country *" className="sg-input-line" />
-                  </div>
-
-                  <div className="sg-field-row">
-                    <textarea name="message" rows="3" placeholder="Tell us about your brand growth goals..." className="sg-textarea-line" />
-                  </div>
-
-                  <button type="submit" className="sg-form-btn">
-                    <Zap size={16} />
-                    <span>SEND ENQUIRY NOW</span>
-                    <ArrowRight size={16} />
-                  </button>
-                </form>
+                <LetsTalkForm
+                  title="LET'S TALK"
+                  subtitle={`Get in touch with our strategy team for ${data.eyebrow} & expect a response within 4 hours`}
+                  defaultService={data.eyebrow}
+                  compact={true}
+                />
               </div>
             </motion.div>
 

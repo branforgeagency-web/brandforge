@@ -137,19 +137,19 @@ const ROUTES_CONFIG = {
   "/influencer-marketing-coimbatore": {
     serviceKey: "influencer-network",
     title: "Influencer Marketing Agency in Coimbatore | BrandForge",
-    description: "Looking for influencer marketing in Coimbatore? BrandForge connects your brand with high-converting creators and influencers across Instagram & YouTube.",
+    description: "Looking for influencer marketing in Coimbatore? BrandForge finds genuine local creators, runs your campaigns end to end, and tracks every sale. Book a free call.",
     type: "service"
   },
   "/brand-reputation-management-coimbatore": {
     serviceKey: "reputation-shield",
     title: "Brand Reputation Management in Coimbatore | BrandForge",
-    description: "Protect and grow your brand's reputation in Coimbatore. BrandForge handles review growth, PR, and search reputation defense. Book a free reputation audit.",
+    description: "Protect and grow your brand's reputation in Coimbatore. BrandForge manages Google reviews, review replies, monitoring & search reputation. Book a free audit.",
     type: "service"
   },
   "/video-production-editing-company-coimbatore": {
     serviceKey: "commercial-video",
     title: "Video Production & Editing Company in Coimbatore | BrandForge",
-    description: "Looking for a video production and editing company in Coimbatore? BrandForge creates commercial ads, reels & motion videos that convert. Get a free quote.",
+    description: "Looking for a video production and editing company in Coimbatore? BrandForge creates ad films, reels, corporate videos & motion graphics. Get a free quote.",
     type: "service"
   },
   "/services/seo-geo": {

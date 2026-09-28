@@ -62,8 +62,8 @@ const SERVICE_BADGES = {
     bottom: { strong: "4.2x Engagement", span: "Community-Led Growth" }
   },
   "influencer-network": {
-    top: { strong: "500+ Top Creators", span: "Vetted Regional & National" },
-    bottom: { strong: "100% Brand Safe", span: "Performance Driven" }
+    top: { strong: "Real Followers Only", span: "Every Creator Audited" },
+    bottom: { strong: "Tracked Results", span: "Promo Codes & UTM Links" }
   },
   "content-smithy": {
     top: { strong: "High-Authority Copy", span: "Human & AI Synergy" },
@@ -82,16 +82,16 @@ const SERVICE_BADGES = {
     bottom: { strong: "100% Unique Identity", span: "Enterprise Grade" }
   },
   "commercial-video": {
-    top: { strong: "Cinema 4K / 8K", span: "High-Impact Commercials" },
-    bottom: { strong: "Direct Response Sales", span: "Reels, Ads & TV" }
+    top: { strong: "Script → Shoot → Edit", span: "End-to-End Production" },
+    bottom: { strong: "Every Format", span: "Reels, Shorts, YouTube & Web" }
   },
   "cro-revenue": {
     top: { strong: "+45% Conversion Lift", span: "A/B Testing & Funnel Audit" },
     bottom: { strong: "Lower Acquisition Cost", span: "Revenue Optimization" }
   },
   "reputation-shield": {
-    top: { strong: "5-Star Brand Armor", span: "Proactive ORM & Review Engine" },
-    bottom: { strong: "100% Crisis Defense", span: "Search Knowledge Graph" }
+    top: { strong: "Genuine Reviews Only", span: "Google Policy Safe" },
+    bottom: { strong: "Every Review Answered", span: "Coimbatore & Tamil Nadu" }
   },
   "seo-company-coimbatore": {
     top: { strong: "#1 AI Citation", span: "ChatGPT & Perplexity" },
@@ -108,14 +108,14 @@ const SERVICE_PILL_TAGS = {
   "paid-media": "PAID MEDIA & PPC SCALING",
   "web-foundry": "HIGH-PERFORMANCE WEB FOUNDRY",
   "viral-social": "VIRAL SOCIAL & AUDIENCE GROWTH",
-  "influencer-network": "INFLUENCER & CREATOR NETWORK",
+  "influencer-network": "INFLUENCER MARKETING COIMBATORE",
   "content-smithy": "EDITORIAL & CONTENT SMITHY",
   "inbox-edge": "AUTOMATED EMAIL RETENTION",
   "brand-anvil": "STRATEGIC BRAND POSITIONING",
   "visual-id": "ENTERPRISE BRAND IDENTITY",
-  "commercial-video": "COMMERCIAL VIDEO & 3D MOTION",
+  "commercial-video": "VIDEO PRODUCTION & EDITING",
   "cro-revenue": "CRO & REVENUE ACCELERATION",
-  "reputation-shield": "REPUTATION SHIELD & GLOBAL PR",
+  "reputation-shield": "BRAND REPUTATION MANAGEMENT",
   "seo-company-coimbatore": "IT SOLUTIONS & SEARCH DOMINANCE",
   "ppc-company-coimbatore": "PAID MEDIA & PPC SCALING",
 };
@@ -125,14 +125,14 @@ const SERVICE_MICRO_DESCS = {
   "paid-media": "High-intent Google Ads, Meta scaling, and algorithmic paid media that turns ad spend into verified customer acquisition.",
   "web-foundry": "High-performance websites, ultra-fast custom web applications, and conversion-optimized architectures built on modern Jamstack.",
   "viral-social": "Short-form video production, algorithm-tailored reels, and organic social growth that converts followers into brand loyalists.",
-  "influencer-network": "Vetted creator partnerships, performance whitelisting, and viral authority campaigns engineered for maximum ROI.",
+  "influencer-network": "Genuine Coimbatore and Tamil Nadu creators, fully managed campaigns, and tracked results that show what every influencer delivers.",
   "content-smithy": "Authoritative SEO articles, thought-leadership pillars, and conversion copywriting that rank high on Google and AI LLMs.",
   "inbox-edge": "Automated email sequences, customer retention funnels, and hyper-segmented inbox campaigns that drive recurring revenue.",
   "brand-anvil": "Uncompromising brand positioning, market differentiation, and messaging architectures that make you the obvious choice.",
   "visual-id": "Distinctive visual identity, precision design systems, and unforgettable brand aesthetics crafted for enterprise trust.",
-  "commercial-video": "Hollywood-grade video commercials, 3D product animations, and direct-response video ads that compel action.",
+  "commercial-video": "Ad films, reels, corporate videos, and professional editing — scripted, shot, and cut to turn viewers into enquiries.",
   "cro-revenue": "Frictionless checkout optimization, heat-map user analytics, and rigorous A/B testing to maximize revenue per visitor.",
-  "reputation-shield": "Proactive review growth engines, top-tier global digital PR, and 24/7 crisis reputation defense across search engines.",
+  "reputation-shield": "Genuine review growth, professional review replies, brand monitoring, and cleaner search results for your business.",
 };
 
 const SERVICE_STORY_HEADINGS = {
@@ -157,9 +157,9 @@ const SERVICE_STORY_HEADINGS = {
     accent: "Build an Audience That Buys"
   },
   "influencer-network": {
-    pill: "CREATOR AUTHORITY NEXUS",
-    lead: "Authentic Creator Endorsements —",
-    accent: "Scale Trusted Word-of-Mouth"
+    pill: "TRUSTED WORD-OF-MOUTH",
+    lead: "People Trust People —",
+    accent: "Let Local Creators Vouch for You"
   },
   "content-smithy": {
     pill: "EDITORIAL AUTHORITY",
@@ -182,9 +182,9 @@ const SERVICE_STORY_HEADINGS = {
     accent: "Design That Inspires Enterprise Trust"
   },
   "commercial-video": {
-    pill: "CINEMATIC CONVERSION",
-    lead: "Visual Storytelling That Sells —",
-    accent: "Broadcast-Quality Video Commercials"
+    pill: "VIDEO THAT CONVERTS",
+    lead: "Stop the Scroll —",
+    accent: "Videos Built to Bring Enquiries"
   },
   "cro-revenue": {
     pill: "CONVERSION ARCHITECTURE",
@@ -192,9 +192,9 @@ const SERVICE_STORY_HEADINGS = {
     accent: "Without Spending More on Ads"
   },
   "reputation-shield": {
-    pill: "REPUTATION FORTRESS",
-    lead: "Protect Your Brand Trust —",
-    accent: "Proactive Defense & 5-Star Authority"
+    pill: "TRUST BEFORE THE FIRST CALL",
+    lead: "Customers Search You First —",
+    accent: "Make Sure They Like What They Find"
   }
 };
 
@@ -273,9 +273,9 @@ function renderHeroTitle(data) {
   if (data.slug === "influencer-network") {
     return (
       <>
-        Amplify Brand Authority Through{" "}
+        Influencer Marketing Agency in Coimbatore That Turns{" "}
         <span className="sg-tech-h1-accent">
-          Top-Tier Creator Networks
+          Creators Into Customers
           <svg className="sg-tech-squiggle" viewBox="0 0 320 20" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M4 12C30 4 55 18 85 10C115 2 140 17 170 9C200 1 225 16 255 8C280 2 300 15 316 9" stroke="#D2042D" strokeWidth="4.5" strokeLinecap="round" />
           </svg>
@@ -338,9 +338,9 @@ function renderHeroTitle(data) {
   if (data.slug === "commercial-video") {
     return (
       <>
-        High-Converting Commercial Video Ads &{" "}
+        Video Production & Editing Company in Coimbatore That{" "}
         <span className="sg-tech-h1-accent">
-          3D Motion Showreels
+          Makes Videos Sell
           <svg className="sg-tech-squiggle" viewBox="0 0 320 20" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M4 12C30 4 55 18 85 10C115 2 140 17 170 9C200 1 225 16 255 8C280 2 300 15 316 9" stroke="#D2042D" strokeWidth="4.5" strokeLinecap="round" />
           </svg>
@@ -364,9 +364,9 @@ function renderHeroTitle(data) {
   if (data.slug === "reputation-shield") {
     return (
       <>
-        Protect & Elevate Brand Trust With{" "}
+        Brand Reputation Management in Coimbatore That Builds{" "}
         <span className="sg-tech-h1-accent">
-          Global PR & Review Growth
+          Trust Before the First Call
           <svg className="sg-tech-squiggle" viewBox="0 0 320 20" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M4 12C30 4 55 18 85 10C115 2 140 17 170 9C200 1 225 16 255 8C280 2 300 15 316 9" stroke="#D2042D" strokeWidth="4.5" strokeLinecap="round" />
           </svg>

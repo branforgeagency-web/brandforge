@@ -939,41 +939,120 @@ export const servicesData = {
   "influencer-network": {
     slug: "influencer-network",
     urlSlug: "/influencer-marketing-coimbatore",
+    metaTitle: "Influencer Marketing Agency in Coimbatore | BrandForge",
+    metaDescription: "Looking for influencer marketing in Coimbatore? BrandForge finds genuine local creators, runs your campaigns end to end, and tracks every sale. Book a free call.",
     number: "05",
-    eyebrow: "INFLUENCER / CREATOR NETWORK",
-    title: "AMPLIFY BRAND AUTHORITY THROUGH TOP-TIER CREATOR NETWORKS",
-    subtitle: "We connect your brand with high-converting creators, key opinion leaders, and viral influencers to generate massive social proof.",
+    eyebrow: "Influencer Marketing Agency in Coimbatore | Creator Network by BrandForge",
+    title: "Influencer Marketing Agency in Coimbatore That Turns Creators Into Customers",
+    heroButtonText: "Book a Free Influencer Strategy Call →",
+    subtitle: [
+      "People in Coimbatore trust people, not ads. When a local food blogger, fashion creator, or tech reviewer they already follow recommends your brand, it lands in a way no banner ever will. That's the power of influencer marketing — if it's done with the right creators.",
+      "BrandForge is an influencer marketing agency in Coimbatore that connects your business with genuine creators across Instagram and YouTube. We find the right influencers, check that their followers are real, manage the whole campaign, and track the leads and sales each creator brings in — so you know exactly what your money is doing."
+    ],
     bannerBg: "/banner-influencer-network.png",
     icon: Users,
     metrics: [
-      { value: "2,500+", label: "Vetted Creator Roster", desc: "Niche influencers across Fashion, Tech, SaaS & Wellness" },
-      { value: "6.4x", label: "Average Campaign ROI", desc: "Return on influencer spending across campaigns" },
-      { value: "100%", label: "Contract & Usage Safety", desc: "Full perpetual ad usage rights secured" },
-      { value: "$12M+", label: "Creator Revenue Generated", desc: "Direct sales generated via creator partnerships" },
+      { value: "Nano → Macro", label: "Creator Tiers Covered", desc: "From 5K local voices to 1M+ state-wide creators" },
+      { value: "100%", label: "Creators Audited", desc: "Every creator checked for fake followers before signing" },
+      { value: "Tamil + English", label: "Campaign Languages", desc: "Content that feels native to Coimbatore audiences" },
+      { value: "Code + UTM", label: "Sales Tracking", desc: "Unique codes and links to measure each creator's results" },
     ],
-    matrixTag: "CREATOR SCALING",
-    matrixTitle: "OLD INFLUENCER MARKETING VS BRANDFORGE CREATOR ENGINE",
-    matrixSubtitle: "Eliminate fake follower influencers. We engineer data-backed creator campaigns built for ROAS.",
+    whyChooseUs: {
+      tag: "WHY INFLUENCER MARKETING WORKS",
+      title: "Why Influencer Marketing Works for Coimbatore Businesses",
+      description: "Coimbatore is a word-of-mouth city. Buyers check what people they trust are saying before they visit a store, book a clinic, or order online. Influencer marketing puts your brand into those trusted conversations — through creators your customers already watch every day.",
+      leadIn: "Done right, a creator campaign gives your business:",
+      points: [
+        "Instant trust from an audience that already believes the creator",
+        "Reach into local neighbourhoods and communities ads struggle to win",
+        "Authentic photo and video content you can reuse in your own ads",
+        "Measurable leads and sales, not just likes and views",
+        "Faster awareness for a new store, product, or launch in Coimbatore"
+      ]
+    },
+    matrixTag: "WHAT AN AGENCY ACTUALLY DOES",
+    matrixTitle: "WHAT DOES AN INFLUENCER MARKETING AGENCY IN COIMBATORE DO?",
+    matrixSubtitle: "Sending free products to a few popular accounts isn't a strategy. Here's the difference between random influencer posts and a managed BrandForge campaign:",
     matrixRows: [
-      { feature: "Influencer Selection", traditional: "Vanity follower counts with bot engagement", brandforge: "Audience authenticity vetting & real buyer overlap" },
-      { feature: "Contract Terms", traditional: "Single story post that vanishes in 24h", brandforge: "Whitelisting rights & perpetual paid ad usage" },
-      { feature: "Creative Freedom", traditional: "Stiff scripted ads that viewers scroll past", brandforge: "Native organic storytelling that feels real" },
-      { feature: "Performance Tracking", traditional: "Vague impressions and guesswork", brandforge: "Unique discount codes, affiliate tracking & MER" },
+      { feature: "Creator Selection", traditional: "Picking whoever has the most followers", brandforge: "Choosing creators whose audience matches your real buyers" },
+      { feature: "Fake Follower Check", traditional: "Trusting follower counts at face value", brandforge: "Auditing engagement, comments, and audience location first" },
+      { feature: "Briefing", traditional: "Stiff scripts that feel like ads", brandforge: "Clear briefs that keep the creator's own voice and style" },
+      { feature: "Contracts & Rights", traditional: "No agreement on deadlines or reuse", brandforge: "Written deliverables, timelines, and content usage rights" },
+      { feature: "Tracking", traditional: "Guessing results from views and likes", brandforge: "Promo codes, UTM links, and a clear results report" },
+      { feature: "Content Reuse", traditional: "Post disappears after 24 hours", brandforge: "Creator content repurposed into your ads and website" }
     ],
+    pillarsTag: "OUR SERVICES",
+    pillarsTitle: "Our Influencer Marketing Services",
+    pillarsSubtitle: "Whether you're launching a new store, a product, or a brand, we plan and run creator campaigns that fit your goal and budget.",
     pillars: [
-      { icon: Users, tag: "ROSTER", title: "Vetted Creator Selection & Matchmaking", description: "Identify and vet high-performing creators based on real audience demographics and buying power.", deliverables: ["Fake Follower Audit", "Audience Overlap Check", "Niche Creator Matching"] },
-      { icon: ShieldCheck, tag: "CONTRACTS", title: "Contract Vetting & Rights Management", description: "Secure full commercial rights, ad whitelisting permissions, and strict deliverable deadlines.", deliverables: ["Ad Whitelisting Lock", "Perpetual Usage Rights", "Performance Tier Bonus"] },
-      { icon: Rocket, tag: "WHITELISTING", title: "Meta & TikTok Dark Post Whitelisting", description: "Run paid ads directly through the influencer’s official handle for massive social proof.", deliverables: ["Creator Access Setup", "Spark Ads Integration", "Dynamic Retargeting"] },
-      { icon: BarChart3, tag: "TRACKING", title: "Real-Time ROI & Sales Tracking", description: "Track exact revenue generated by each creator via custom promo codes and UTM parameters.", deliverables: ["Custom Discount Codes", "Affiliate Portal Setup", "Live Revenue Dashboard"] },
-      { icon: PenTool, tag: "BRIEFS", title: "High-Converting Creative Briefs", description: "Provide creators with winning angle frameworks while preserving their authentic voice.", deliverables: ["Angle Framework Briefs", "Hook Recommendations", "DOs & DON'Ts Guidelines"] },
-      { icon: TrendingUp, tag: "SEEDING", title: "Gifting & Micro-Seeding Engine", description: "Scale product gifting to hundreds of micro-influencers to generate exponential organic buzz.", deliverables: ["Automated Gifting Flow", "Unboxing Content Wave", "Micro-Creator Scale"] },
+      { icon: Search, tag: "DISCOVERY", title: "Creator Discovery & Matching", description: "We shortlist Coimbatore and Tamil Nadu creators whose followers match your ideal customers by age, location, and interests.", deliverables: ["Niche Creator Shortlist", "Audience Match Report", "Local & Regional Options", "Budget-Tier Recommendations"] },
+      { icon: ShieldCheck, tag: "VETTING", title: "Fake Follower & Brand Safety Audit", description: "Every creator is checked for bought followers, engagement pods, and past content that could hurt your brand.", deliverables: ["Engagement Quality Check", "Follower Growth Review", "Audience Location Check", "Brand Safety Review"] },
+      { icon: PenTool, tag: "BRIEFS", title: "Campaign Strategy & Creative Briefs", description: "We define the campaign idea and give creators a brief that highlights your key message without killing their natural style.", deliverables: ["Campaign Concept", "Key Message & Hooks", "Do's & Don'ts Guide", "Content Approval Flow"] },
+      { icon: Layers, tag: "MANAGEMENT", title: "End-to-End Campaign Management", description: "Outreach, negotiation, contracts, product dispatch, content approvals, and creator payments — handled for you.", deliverables: ["Creator Outreach", "Rate Negotiation", "Written Agreements", "Timeline Management"] },
+      { icon: TrendingUp, tag: "SEEDING", title: "Product Gifting & Micro-Influencer Seeding", description: "Send products to a group of smaller local creators to create a wave of genuine unboxings and reviews.", deliverables: ["Seeding List", "Gifting Coordination", "Unboxing Content Wave", "Mention Tracking"] },
+      { icon: Rocket, tag: "AMPLIFY", title: "Creator Content in Paid Ads", description: "With the creator's permission, we run their best-performing content as Meta and YouTube ads to reach far more people.", deliverables: ["Usage Rights Setup", "Partnership Ads", "Retargeting Audiences", "Ad Creative Variants"] },
+      { icon: BarChart3, tag: "TRACKING", title: "Results Tracking & Reporting", description: "Unique promo codes and tracked links show you the leads, sales, and reach each creator generated.", deliverables: ["Custom Promo Codes", "UTM Link Tracking", "Creator-Wise Results", "Campaign Report"] },
+      { icon: Award, tag: "PARTNERSHIPS", title: "Long-Term Brand Ambassadors", description: "Turn your best-performing creators into ongoing ambassadors who keep your brand in front of their audience.", deliverables: ["Ambassador Programme", "Monthly Content Plan", "Affiliate Commission Setup", "Relationship Management"] }
     ],
+    differentiators: {
+      tag: "THE BRANDFORGE ADVANTAGE",
+      title: "Why Businesses Choose BrandForge for Influencer Marketing",
+      subtitle: "We're a full-service digital marketing agency in Coimbatore, so your creator campaigns connect with your social media, ads, and website instead of running in isolation.",
+      items: [
+        { title: "Real Audiences Only", description: "We audit every creator before recommending them, so your budget goes to real people, not bots.", icon: ShieldCheck },
+        { title: "Local Creator Knowledge", description: "We know the Coimbatore and Tamil Nadu creator scene — food, fashion, lifestyle, tech, education, and family content.", icon: Users },
+        { title: "Results You Can Measure", description: "Every campaign is tracked with codes and links, and you get a clear report on what each creator delivered.", icon: BarChart3 },
+        { title: "Content That Works Twice", description: "We plan campaigns so creator content can be reused in your ads, website, and social media.", icon: Zap },
+        { title: "One Team, Every Channel", description: "Influencer, social media, paid ads, and content are handled in-house, so your message stays consistent.", icon: Layers }
+      ]
+    },
+    timeline: {
+      tag: "HOW WE RUN YOUR CAMPAIGN",
+      title: "How We Run Your Influencer Campaign",
+      subtitle: "A clear, step-by-step process — from understanding your goal to reporting on results.",
+      steps: [
+        { num: "01", title: "GOAL & BUDGET CALL", desc: "We understand your product, target customers, and what success looks like — footfall, leads, or sales." },
+        { num: "02", title: "CREATOR SHORTLIST", desc: "You receive a shortlist of matched creators with audience details and estimated costs." },
+        { num: "03", title: "AUDIT & APPROVAL", desc: "We run fake-follower and brand-safety checks, and you approve the final line-up." },
+        { num: "04", title: "BRIEF & AGREEMENTS", desc: "Creators get a clear brief, and deliverables, deadlines, and usage rights are agreed in writing." },
+        { num: "05", title: "CONTENT REVIEW", desc: "We review drafts before they go live to make sure your message and details are accurate." },
+        { num: "06", title: "GO LIVE & AMPLIFY", desc: "Content goes live on schedule, and the best posts can be boosted as ads." },
+        { num: "07", title: "TRACK RESULTS", desc: "Promo codes and tracked links show which creators drive real leads and sales." },
+        { num: "08", title: "REPORT & SCALE", desc: "You get a clear report and a plan to scale what worked with the best creators." }
+      ]
+    },
+    whoWeHelp: {
+      tag: "WHO WE WORK WITH",
+      title: "Who We Work With in Coimbatore & Tamil Nadu",
+      subtitle: "We run influencer campaigns for restaurants and cafés, fashion and jewellery stores, D2C brands, clinics, education institutes, real estate projects, and local service businesses across Coimbatore and Tamil Nadu.",
+      industries: [
+        { title: "Restaurants, Cafés & Bakeries", desc: "Food blogger visits, reels, and reviews that bring new diners through the door." },
+        { title: "Fashion, Textiles & Jewellery", desc: "Try-on reels, festive collections, and styling content with local fashion creators." },
+        { title: "D2C & E-commerce Brands", desc: "Unboxings, reviews, and tracked promo codes that drive online orders." },
+        { title: "Clinics, Salons & Wellness", desc: "Trusted experience-led content that helps people feel confident booking with you." },
+        { title: "Education & Coaching Institutes", desc: "Student and parent-focused creators who build trust before admissions season." },
+        { title: "Real Estate & Local Services", desc: "Walkthroughs and local lifestyle content that put your project or service in front of the right families." }
+      ],
+      certifications: [
+        { label: "Every creator audited for fake followers and brand safety before recommendation" },
+        { label: "Campaigns tracked with unique promo codes and UTM links" },
+        { label: "Content aligned with ASCI influencer advertising disclosure guidelines" },
+        { label: "Reviewed by BalaMurali, Founder & MD, BrandForge" }
+      ]
+    },
     faqs: [
-      { q: "What types of influencers do you work with?", a: "We work with Nano (5k-20k), Micro (20k-100k), Macro (100k-1M), and Celebrity creators across e-commerce, B2B SaaS, tech, fitness, and lifestyle." },
-      { q: "Do you handle influencer negotiations and payments?", a: "Yes. We manage outreach, contract negotiations, product shipping, content approvals, and creator payouts from start to finish." },
-      { q: "What is creator whitelisting?", a: "Creator whitelisting allows us to run Meta or TikTok paid ads using the influencer’s handle, giving your ads 5x higher CTR and trust." },
-      { q: "How do you protect our brand from fake influencer bots?", a: "We run deep analytics to audit engagement rates, comment quality, follower growth spikes, and real audience location data before signing any creator." },
+      { q: "How much does influencer marketing cost in Coimbatore?", a: "It depends on the number and size of creators. Local nano and micro-influencers are very affordable, while larger creators cost more. After a short call, we share a clear quote with the creator fees and our management fee listed separately." },
+      { q: "Do you work with local Coimbatore influencers?", a: "Yes. We work with Coimbatore and Tamil Nadu creators across food, fashion, lifestyle, tech, parenting, and education, in both Tamil and English, as well as national creators when your goal needs wider reach." },
+      { q: "How do you make sure an influencer's followers are real?", a: "Before we recommend any creator, we check engagement rates, comment quality, sudden follower spikes, and where their audience is located. Creators with signs of fake followers are removed from the list." },
+      { q: "Is micro-influencer marketing better than using a big celebrity?", a: "For most local businesses, yes. Micro-influencers usually have closer, more engaged audiences and cost far less, so you can work with several creators and reach the right people for the same budget." },
+      { q: "How do you measure the results of an influencer campaign?", a: "Each creator gets a unique promo code and tracked link. We report on reach, engagement, clicks, leads, and sales per creator so you can see exactly which partnerships are worth repeating." },
+      { q: "Do influencers need to mark posts as paid partnerships?", a: "Yes. Under ASCI guidelines in India, paid or gifted content must be clearly disclosed. We make sure every post follows the rules, which also protects your brand's credibility." }
     ],
+    bottomCta: {
+      title: "Book a Free Influencer Strategy Call",
+      subtitle: "In 30 minutes we'll suggest the type of creators, budget range, and campaign idea that fits your business.",
+      buttonText: "Get My Free Creator Plan →"
+    }
   },
 
   "content-smithy": {
@@ -2037,40 +2116,120 @@ export const servicesData = {
   "commercial-video": {
     slug: "commercial-video",
     urlSlug: "/video-production-editing-company-coimbatore",
+    metaTitle: "Video Production & Editing Company in Coimbatore | BrandForge",
+    metaDescription: "Looking for a video production and editing company in Coimbatore? BrandForge creates ad films, reels, corporate videos & motion graphics. Get a free quote.",
     number: "10",
-    eyebrow: "REEL FORGE / COMMERCIAL VIDEO",
-    title: "HIGH-CONVERTING COMMERCIAL VIDEO ADS & 3D MOTION SHOWREELS",
-    subtitle: "We produce Hollywood-grade commercial video ads, 3D motion product trailers, and high-converting ad reels that captivate audiences.",
+    eyebrow: "Video Production & Editing Company in Coimbatore | BrandForge",
+    title: "Video Production & Editing Company in Coimbatore That Makes Videos Sell",
+    heroButtonText: "Get a Free Video Quote →",
+    subtitle: [
+      "Video is how people discover brands today — on Instagram Reels, YouTube, WhatsApp, and even your own website. But a video that looks nice isn't enough. It has to grab attention in the first few seconds and give people a reason to act.",
+      "BrandForge is a video production and editing company in Coimbatore that handles everything from script to final edit. We shoot ad films, reels, product videos, corporate films, and testimonials, and we edit your existing footage into content built for each platform — so your videos don't just get views, they bring in enquiries."
+    ],
+    bannerBg: "/banner-commercial-video-3d.jpg",
     icon: Video,
     metrics: [
-      { value: "4K 60fps", label: "Cinematic Video Quality", desc: "High-end commercial color grading & VFX" },
-      { value: "+320%", label: "Ad Click-Through Rate", desc: "CTR lift over standard static ad creatives" },
-      { value: "15M+", label: "Total Commercial Views", desc: "Generated across TV, YouTube & Meta campaigns" },
-      { value: "100%", label: "Custom 3D VFX & Motion", desc: "CGI product breakdowns & dynamic graphics" },
+      { value: "Script → Edit", label: "End-to-End Production", desc: "Concept, shoot, editing, and delivery under one roof" },
+      { value: "9:16 · 1:1 · 16:9", label: "Every Platform Format", desc: "Reels, feed, YouTube, and website versions" },
+      { value: "Tamil + English", label: "Voiceover & Subtitles", desc: "Videos that speak to local and wider audiences" },
+      { value: "2–3 Weeks", label: "Typical Turnaround", desc: "From script approval to final delivery" },
     ],
-    matrixTag: "CINEMATIC IMPACT",
-    matrixTitle: "STOCK VIDEO ADS VS BRANDFORGE REEL FORGE",
-    matrixSubtitle: "Stop using boring stock footage. Capture attention with Hollywood-grade CGI video commercials.",
+    whyChooseUs: {
+      tag: "WHY VIDEO MATTERS",
+      title: "Why Your Business Needs Professional Video",
+      description: "Customers scroll past plain photos and long text. A well-made video explains your product, shows your space, and builds trust faster than anything else. For Coimbatore businesses competing online, video is often the difference between being noticed and being skipped.",
+      leadIn: "Professional video helps your business:",
+      points: [
+        "Stop the scroll with a strong hook in the first 3 seconds",
+        "Explain your product or service quickly and clearly",
+        "Build trust with real faces, real places, and real customers",
+        "Get better results from Meta and YouTube ads",
+        "Keep visitors on your website longer and turn them into enquiries"
+      ]
+    },
+    matrixTag: "WHAT A VIDEO COMPANY ACTUALLY DOES",
+    matrixTitle: "WHAT DOES A VIDEO PRODUCTION COMPANY IN COIMBATORE DO?",
+    matrixSubtitle: "A good video production partner does far more than point a camera. Here's how a planned BrandForge production compares with a quick, unplanned shoot:",
     matrixRows: [
-      { feature: "Production Quality", traditional: "Cheesy stock footage with bad voiceover", brandforge: "Custom 3D VFX, cinematic lighting & pro voice actors" },
-      { feature: "Viewer Retention", traditional: "Viewers skip ad after 2 seconds", brandforge: "Aggressive visual hook that locks attention" },
-      { feature: "Product Focus", traditional: "Vague generic visuals", brandforge: "3D CGI product exploding view & feature breakdown" },
-      { feature: "Platform Multi-Format", traditional: "Horizontal 16:9 video squeezed into Reels", brandforge: "Native 9:16, 1:1, and 16:9 multi-format renders" },
+      { feature: "Planning & Script", traditional: "Shoot first, figure out the story later", brandforge: "Clear script and storyboard built around your goal" },
+      { feature: "The Hook", traditional: "Slow intros that viewers skip", brandforge: "Opening seconds designed to stop the scroll" },
+      { feature: "Shoot Quality", traditional: "Phone footage with poor light and sound", brandforge: "Professional camera, lighting, and audio setup" },
+      { feature: "Editing", traditional: "Basic cuts with generic music", brandforge: "Pacing, colour grading, motion graphics, and licensed music" },
+      { feature: "Formats", traditional: "One horizontal video squeezed into Reels", brandforge: "Separate 9:16, 1:1, and 16:9 versions for each platform" },
+      { feature: "Purpose", traditional: "Looks nice but has no call to action", brandforge: "Every video ends with a clear next step for the viewer" }
     ],
+    pillarsTag: "OUR SERVICES",
+    pillarsTitle: "Our Video Production & Editing Services",
+    pillarsSubtitle: "From a single reel to a full ad campaign, we produce and edit videos for every stage of your marketing.",
     pillars: [
-      { icon: Video, tag: "COMMERCIALS", title: "High-Impact Video Ad Commercials", description: "Produce direct-response video ads engineered specifically to drive purchases on Meta, TikTok, and YouTube.", deliverables: ["Hook Variant Scripting", "Professional Voiceover", "Dynamic Motion Editing"] },
-      { icon: Box, tag: "3D CGI", title: "3D CGI Product Spotlight Videos", description: "Render photorealistic 3D product animations showing internal components, materials, and features.", deliverables: ["3D Exploded Views", "Realistic Liquid/Lighting VFX", "Product Feature Callouts"] },
-      { icon: PenTool, tag: "SCRIPTING", title: "Psychological Ad Scriptwriting", description: "Write persuasive video scripts designed around problem-solution frameworks and urgency triggers.", deliverables: ["3-Second Hook Matrix", "Pain-Point Story Arc", "Strong Urgency Call-to-Action"] },
-      { icon: Layers, tag: "SHOWREELS", title: "Brand Anthem & Vision Showreels", description: "Create epic 90-second brand anthem videos for website hero sections, investor meetings, and trade shows.", deliverables: ["Cinematic Sound Design", "4K Color Grading", "Epic Brand Manifesto"] },
-      { icon: Zap, tag: "MULTI-RATIO", title: "Multi-Platform Aspect Ratio Render", description: "Deliver every commercial formatted for 9:16 Stories/Reels, 1:1 Feed, and 16:9 YouTube/TV.", deliverables: ["9:16 Vertical Video", "1:1 Square Feed", "16:9 Full Widescreen"] },
-      { icon: TrendingUp, tag: "AD TESTING", title: "Ad Creative Variant Testing Pack", description: "Provide 5 different video opening hooks for each commercial to find the highest ROAS winner.", deliverables: ["5 Hook Variations", "3 CTA Ending Swaps", "Fast Iteration Edits"] },
+      { icon: Video, tag: "AD FILMS", title: "Ad Films & Commercial Videos", description: "Short, persuasive ad videos for Meta, YouTube, and OTT, designed to drive enquiries and sales.", deliverables: ["Concept & Script", "Professional Shoot", "15s / 30s / 60s Cuts", "Call-to-Action Endings"] },
+      { icon: Zap, tag: "REELS", title: "Instagram Reels & YouTube Shorts", description: "Fast, trend-aware short videos that grow your reach and keep your social media active.", deliverables: ["Monthly Reel Batches", "Hook-First Editing", "Captions & Subtitles", "Trending Audio Guidance"] },
+      { icon: PenTool, tag: "EDITING", title: "Professional Video Editing", description: "Send us your raw footage and we turn it into polished, platform-ready videos.", deliverables: ["Cutting & Pacing", "Colour Correction & Grading", "Sound Clean-Up & Music", "Subtitles in Tamil / English"] },
+      { icon: Box, tag: "PRODUCT", title: "Product & E-commerce Videos", description: "Clean product videos that show features, sizes, and use cases for your website, Amazon, and ads.", deliverables: ["Studio Product Shoots", "Feature Close-Ups", "How-To-Use Videos", "Marketplace-Ready Formats"] },
+      { icon: Globe, tag: "CORPORATE", title: "Corporate & Brand Films", description: "Company profiles, factory and facility tours, and brand story films for your website, investors, and trade shows.", deliverables: ["Brand Story Film", "Facility Walkthrough", "Founder Interviews", "Recruitment Videos"] },
+      { icon: Users, tag: "TESTIMONIALS", title: "Customer Testimonial Videos", description: "Real customers sharing real experiences — the most convincing video you can put on your website or ads.", deliverables: ["Interview Planning", "On-Location Shoot", "Short & Long Edits", "Quote Cards for Social"] },
+      { icon: Layers, tag: "MOTION", title: "Motion Graphics & Explainer Videos", description: "Animated explainers, logo animations, and 2D/3D motion graphics that make complex ideas simple.", deliverables: ["Explainer Animation", "Logo Reveal", "Animated Infographics", "Text & Title Animation"] },
+      { icon: TrendingUp, tag: "TESTING", title: "Ad Creative Variations", description: "Multiple hook and ending versions of your ad so your campaigns can test and find the best performer.", deliverables: ["Multiple Opening Hooks", "Alternate CTAs", "Aspect Ratio Versions", "Quick Iteration Edits"] }
     ],
+    differentiators: {
+      tag: "THE BRANDFORGE ADVANTAGE",
+      title: "Why Businesses Choose BrandForge for Video Production",
+      subtitle: "We're a digital marketing agency first, so every video is made with a clear goal — views that turn into enquiries, not just a nice-looking file.",
+      items: [
+        { title: "Made for Marketing, Not Just Looks", description: "Scripts and edits are planned around hooks, attention, and a clear call to action.", icon: Target },
+        { title: "Shoot + Edit Under One Roof", description: "Concept, filming, editing, motion graphics, and subtitles handled by one team.", icon: Video },
+        { title: "Every Platform Covered", description: "We deliver vertical, square, and widescreen versions so one shoot works everywhere.", icon: Layers },
+        { title: "Local & Multilingual", description: "We shoot across Coimbatore and Tamil Nadu, with Tamil and English voiceovers and subtitles.", icon: Globe },
+        { title: "Connected to Your Ads", description: "Our paid media team uses your videos in live campaigns and tells us what's working.", icon: BarChart3 }
+      ]
+    },
+    timeline: {
+      tag: "OUR PRODUCTION PROCESS",
+      title: "How We Produce Your Video",
+      subtitle: "A simple, transparent process so you always know what's happening and what comes next.",
+      steps: [
+        { num: "01", title: "DISCOVERY CALL", desc: "We learn about your business, audience, goal, and where the video will be used." },
+        { num: "02", title: "CONCEPT & SCRIPT", desc: "We write the script and plan the key scenes, hook, and call to action for your approval." },
+        { num: "03", title: "PRE-PRODUCTION", desc: "Locations, talent, props, shot list, and shoot schedule are fixed in advance." },
+        { num: "04", title: "SHOOT DAY", desc: "Our crew films with professional camera, lighting, and audio equipment." },
+        { num: "05", title: "EDITING & GRADING", desc: "We cut, colour grade, add music, graphics, and subtitles." },
+        { num: "06", title: "REVIEW & REVISIONS", desc: "You review the draft and we make agreed changes." },
+        { num: "07", title: "MULTI-FORMAT EXPORT", desc: "Final videos are delivered in every size you need for each platform." },
+        { num: "08", title: "LAUNCH SUPPORT", desc: "We can publish, boost, or run your videos as ads through our in-house teams." }
+      ]
+    },
+    whoWeHelp: {
+      tag: "WHO WE WORK WITH",
+      title: "Who We Make Videos For in Coimbatore & Tamil Nadu",
+      subtitle: "We produce videos for manufacturers, retailers, restaurants, clinics, education institutes, real estate developers, D2C brands, and service businesses across Coimbatore and Tamil Nadu.",
+      industries: [
+        { title: "Manufacturing & Industrial", desc: "Factory tours, machine demos, and corporate films for Coimbatore's industrial businesses." },
+        { title: "Retail, Textiles & Jewellery", desc: "Collection launches, festive ads, and in-store reels that bring customers in." },
+        { title: "Restaurants & Food Brands", desc: "Mouth-watering food reels, menu videos, and behind-the-kitchen stories." },
+        { title: "Clinics & Healthcare", desc: "Doctor introductions, patient testimonials, and treatment explainers that build trust." },
+        { title: "Education & Coaching", desc: "Campus tours, faculty videos, and student success stories for admissions." },
+        { title: "Real Estate & Construction", desc: "Project walkthroughs, drone shots, and site-progress videos for buyers." }
+      ],
+      certifications: [
+        { label: "Complete process: concept, script, shoot, edit, motion graphics, and subtitles" },
+        { label: "Delivered in 9:16, 1:1, and 16:9 formats for every platform" },
+        { label: "Licensed music and royalty-free assets only" },
+        { label: "Reviewed by BalaMurali, Founder & MD, BrandForge" }
+      ]
+    },
     faqs: [
-      { q: "Do we need to ship physical products for 3D video creation?", a: "If creating 3D CGI product renders, you only need to send us CAD files or product photos! If shooting live-action footage, you can ship products to our studio." },
-      { q: "How long is a standard commercial video ad?", a: "Direct-response ad commercials are typically 15, 30, or 60 seconds long. Brand anthem showreels are usually 60 to 120 seconds." },
-      { q: "Do you supply professional voiceovers and background music?", a: "Yes. We license high-end commercial music tracks and hire professional voiceover talent across multiple languages and accents." },
-      { q: "What is the turnaround time for a commercial video project?", a: "Production typically takes 2 to 3 weeks from script approval to final 4K video rendering." },
+      { q: "How much does video production cost in Coimbatore?", a: "It depends on the type of video, shoot duration, locations, talent, and editing work. A batch of reels costs far less than a full ad film. After a short call, we share a clear, itemised quote." },
+      { q: "Do you only edit videos, or do you shoot as well?", a: "Both. We handle complete production — script, shoot, and edit — and we also offer editing-only services if you already have raw footage." },
+      { q: "How long does it take to produce a video?", a: "Reels and short edits can be ready within a few days. A full ad film or corporate video usually takes 2 to 3 weeks from script approval to final delivery." },
+      { q: "Do you provide Tamil voiceovers and subtitles?", a: "Yes. We offer Tamil and English voiceovers and subtitles, and can arrange other languages if your audience needs them." },
+      { q: "Can you shoot at our shop, factory, or office in Coimbatore?", a: "Yes. We shoot on location across Coimbatore and Tamil Nadu, including shops, factories, clinics, campuses, and project sites." },
+      { q: "Will I get videos in different sizes for Instagram and YouTube?", a: "Yes. Every project can be delivered in vertical 9:16 for Reels and Shorts, square 1:1 for feeds, and 16:9 widescreen for YouTube and your website." }
     ],
+    bottomCta: {
+      title: "Get a Free Video Production Quote",
+      subtitle: "Tell us what you need and we'll suggest the right video format, a script idea, and a clear price.",
+      buttonText: "Request My Free Video Quote →"
+    }
   },
 
   "cro-revenue": {
@@ -2114,41 +2273,122 @@ export const servicesData = {
   "reputation-shield": {
     slug: "reputation-shield",
     urlSlug: "/brand-reputation-management-coimbatore",
+    metaTitle: "Brand Reputation Management in Coimbatore | BrandForge",
+    metaDescription: "Protect and grow your brand's reputation in Coimbatore. BrandForge manages Google reviews, review replies, monitoring & search reputation. Book a free audit.",
     number: "12",
-    eyebrow: "REPUTATION SHIELD / GLOBAL PR ENGINE",
-    title: "PROTECT & ELEVATE BRAND TRUST WITH GLOBAL PR & REVIEW GROWTH",
-    subtitle: "We deploy proactive review growth engines, global press release networks, and crisis PR defense across major media channels.",
+    eyebrow: "Brand Reputation Management in Coimbatore | Reputation Shield by BrandForge",
+    title: "Brand Reputation Management in Coimbatore That Builds Trust Before the First Call",
+    heroButtonText: "Get a Free Reputation Audit →",
+    subtitle: [
+      "Before anyone in Coimbatore visits your store, books your clinic, or calls your office, they search your name. What they find — your Google rating, recent reviews, and how you reply — often decides whether they choose you or the business next door.",
+      "Reputation Shield is the brand reputation management service by BrandForge. We help you earn more genuine reviews from happy customers, respond to every review professionally, monitor what's said about you online, and make sure the right information shows up when people search for your brand."
+    ],
+    bannerBg: "/banner-reputation-shield-3d.jpg",
     icon: ShieldCheck,
     metrics: [
-      { value: "4.9★", label: "Average Client Review Score", desc: "Trustpilot & Google review portfolio rating" },
-      { value: "300+", label: "Press Publications", desc: "Global PR coverage on Forbes, Bloomberg & TechCrunch" },
-      { value: "24/7", label: "Brand Defense Monitoring", desc: "Real-time crisis monitoring & sentiment tracking" },
-      { value: "100%", label: "Search Grid Protection", desc: "Page 1 search results dominated by positive PR" },
+      { value: "Google + More", label: "Review Platforms Managed", desc: "Google, Justdial, Practo, Facebook & industry sites" },
+      { value: "Every Review", label: "Answered Professionally", desc: "Consistent, on-brand replies to good and bad reviews" },
+      { value: "0", label: "Fake Reviews. Ever.", desc: "Only genuine reviews from real customers" },
+      { value: "Monthly", label: "Reputation Report", desc: "Ratings, review volume, sentiment, and mentions" },
     ],
-    matrixTag: "BRAND TRUST",
-    matrixTitle: "UNPROTECTED BRAND VS BRANDFORGE REPUTATION SHIELD",
-    matrixSubtitle: "Don’t let a single bad review ruin your reputation. Secure global PR and review dominance.",
+    whyChooseUs: {
+      tag: "WHY REPUTATION MATTERS",
+      title: "Why Online Reputation Decides Who Gets the Customer",
+      description: "Your reputation is now the first thing people see — often before your website. A 4.7-star business with fresh reviews wins over a 3.9-star business with old ones, even if the service is similar. One unanswered complaint can quietly turn away customers for months.",
+      leadIn: "Good reputation management helps you:",
+      points: [
+        "Win more customers who compare you on Google before calling",
+        "Show up stronger in Google Maps and local search results",
+        "Turn negative reviews into proof that you care about customers",
+        "Catch complaints early, before they spread",
+        "Build a steady flow of genuine reviews from happy customers"
+      ]
+    },
+    matrixTag: "WHAT REPUTATION MANAGEMENT ACTUALLY INVOLVES",
+    matrixTitle: "WHAT DOES A BRAND REPUTATION MANAGEMENT AGENCY IN COIMBATORE DO?",
+    matrixSubtitle: "Reputation isn't managed by hoping for good reviews. Here's how an ignored online presence compares with a managed one:",
     matrixRows: [
-      { feature: "Search Reputation", traditional: "Negative review site ranking #2 on Google", brandforge: "Page 1 search grid suppressed & dominated by positive PR" },
-      { feature: "Review Volume", traditional: "Only unhappy customers leaving reviews", brandforge: "Automated post-purchase review generation engine" },
-      { feature: "Media Coverage", traditional: "Zero press mentions or industry recognition", brandforge: "Tier-1 features on top global news publications" },
-      { feature: "Crisis Preparedness", traditional: "Panic when negative press strikes", brandforge: "Proactive crisis response strategy & instant PR push" },
+      { feature: "Review Collection", traditional: "Waiting for customers to review on their own", brandforge: "Simple SMS, WhatsApp & QR review requests after every sale" },
+      { feature: "Review Replies", traditional: "Reviews left unanswered for months", brandforge: "Timely, professional replies to every review" },
+      { feature: "Negative Reviews", traditional: "Arguing publicly or ignoring the complaint", brandforge: "Calm response, offline resolution, and follow-up" },
+      { feature: "Monitoring", traditional: "Finding out about problems by accident", brandforge: "Regular tracking of reviews and brand mentions" },
+      { feature: "Search Results", traditional: "Outdated or wrong information about your brand", brandforge: "Accurate listings and strong owned profiles on page one" },
+      { feature: "Fake Reviews", traditional: "Buying reviews and risking penalties", brandforge: "Genuine reviews only, following Google's policies" }
     ],
+    pillarsTag: "OUR SERVICES",
+    pillarsTitle: "Our Brand Reputation Management Services",
+    pillarsSubtitle: "Whether you want more reviews, need to handle negative feedback, or want to clean up what people see when they search for you, we cover it.",
     pillars: [
-      { icon: ShieldCheck, tag: "REVIEWS", title: "Automated Review Growth Engine", description: "Automatically invite happy customers via SMS & email to leave 5-star reviews on Trustpilot, Google, and G2.", deliverables: ["Trustpilot Review Funnel", "Google Business Review Sync", "G2 / Capterra Automation"] },
-      { icon: Globe, tag: "GLOBAL PR", title: "Tier-1 Global Press Release Distribution", description: "Publish executive interviews and brand announcements on Forbes, Bloomberg, Yahoo Finance, and Business Insider.", deliverables: ["Tier-1 Press Distribution", "Executive Media Pitching", "Guaranteed Publication Lock"] },
-      { icon: Search, tag: "SERP SHIELD", title: "Page 1 Google Search Reputation Shield", description: "Push negative search results off Page 1 by ranking high-authority positive news articles and profiles.", deliverables: ["Negative SERP Suppression", "Positive Article Indexing", "Brand Search Defense"] },
-      { icon: BarChart3, tag: "MONITORING", title: "24/7 Sentiment & Mention Radar", description: "Monitor web mentions, forum discussions, and social media chatter in real-time to intercept negative press.", deliverables: ["Real-Time Mention Alerts", "Social Sentiment Radar", "Forum Reputation Defense"] },
-      { icon: Layers, tag: "WIKIPEDIA", title: "Executive & Corporate Knowledge Panel", description: "Build and verify Google Knowledge Panels and executive Wikipedia entries to lock in maximum authority.", deliverables: ["Google Knowledge Panel Lock", "Wikidata Entity Graph", "Executive Bio Verification"] },
-      { icon: TrendingUp, tag: "CRISIS PR", title: "Crisis PR & Defense Protocol", description: "Deploy rapid crisis PR strategies, press statements, and SEO suppression when unexpected PR challenges arise.", deliverables: ["Crisis Statement Blueprint", "Media Spokesperson Brief", "Rapid Press Counter-Wave"] },
+      { icon: TrendingUp, tag: "REVIEWS", title: "Genuine Review Generation", description: "We set up simple systems that ask happy customers for reviews at the right moment — via SMS, WhatsApp, email, or QR code.", deliverables: ["Review Request Templates", "QR Review Cards", "WhatsApp & SMS Flows", "Staff Review-Ask Training"] },
+      { icon: PenTool, tag: "REPLIES", title: "Review Response Management", description: "We write and post professional, on-brand replies to your reviews so every customer feels heard.", deliverables: ["Reply Tone Guide", "Positive Review Replies", "Negative Review Responses", "Escalation to Your Team"] },
+      { icon: ShieldCheck, tag: "NEGATIVE", title: "Negative Review Handling", description: "A calm, clear process to respond to complaints, resolve issues offline, and report reviews that break platform rules.", deliverables: ["Response Strategy", "Resolution Follow-Up", "Policy-Violation Flagging", "Recovery Messaging"] },
+      { icon: Search, tag: "LISTINGS", title: "Google Business Profile Optimisation", description: "A complete, accurate, and active Google Business Profile that builds trust and ranks better in local search.", deliverables: ["Profile Audit & Clean-Up", "Photos & Services Update", "Regular Google Posts", "Q&A Management"] },
+      { icon: BarChart3, tag: "MONITORING", title: "Brand Mention Monitoring", description: "We keep track of reviews, social media mentions, and forum discussions about your brand so nothing catches you off guard.", deliverables: ["Review Alerts", "Social Mention Tracking", "Sentiment Summary", "Monthly Report"] },
+      { icon: Globe, tag: "SEARCH", title: "Brand Search Result Management", description: "We strengthen your website, social profiles, and directory listings so accurate, positive information shows first when people search your name.", deliverables: ["Branded Search Audit", "Owned Profile Building", "Directory Consistency", "Positive Content Publishing"] },
+      { icon: Megaphone, tag: "PR", title: "Local PR & Media Features", description: "We pitch your genuine stories, milestones, and expertise to relevant local and industry media to build credibility.", deliverables: ["Press Release Writing", "Local Media Outreach", "Founder Profile Stories", "Industry Feature Pitching"] },
+      { icon: Zap, tag: "CRISIS", title: "Crisis Response Support", description: "When something goes wrong publicly, we help you respond quickly, clearly, and honestly to limit the damage.", deliverables: ["Response Statement Drafting", "Platform Reply Plan", "Stakeholder Messaging", "Post-Crisis Review"] }
     ],
+    differentiators: {
+      tag: "THE REPUTATION SHIELD ADVANTAGE",
+      title: "Why Businesses Choose BrandForge for Reputation Management",
+      subtitle: "We build a strong reputation the honest way — with real customers, real responses, and consistent effort — backed by our in-house SEO, social media, and content teams.",
+      items: [
+        { title: "Genuine Reviews Only", description: "We never buy or fake reviews. Everything follows Google's policies, so your rating is real and safe.", icon: ShieldCheck },
+        { title: "Every Review Answered", description: "Positive or negative, every customer gets a thoughtful, on-brand reply.", icon: PenTool },
+        { title: "Local Search Expertise", description: "Our SEO team knows how reviews and Google Business Profiles affect Coimbatore local rankings.", icon: Search },
+        { title: "Early Warning", description: "Regular monitoring means you hear about problems early and can respond before they grow.", icon: BarChart3 },
+        { title: "Clear Monthly Reports", description: "See your rating, review count, reply rate, and sentiment trends in one simple report.", icon: Award }
+      ]
+    },
+    timeline: {
+      tag: "HOW WE PROTECT YOUR REPUTATION",
+      title: "How Reputation Shield Works",
+      subtitle: "A steady, month-by-month process that strengthens your reputation and protects it over time.",
+      steps: [
+        { num: "01", title: "REPUTATION AUDIT", desc: "We review your ratings, reviews, listings, and what shows up when people search your brand." },
+        { num: "02", title: "PROFILE CLEAN-UP", desc: "We fix incorrect details and optimise your Google Business Profile and key listings." },
+        { num: "03", title: "REVIEW SYSTEM SETUP", desc: "We create review request flows, QR cards, and simple steps for your team to follow." },
+        { num: "04", title: "REPLY GUIDELINES", desc: "We agree on a reply tone and an escalation process for serious complaints." },
+        { num: "05", title: "ONGOING REPLIES", desc: "We respond to new reviews regularly and flag issues that need your attention." },
+        { num: "06", title: "MONITORING", desc: "We track reviews and brand mentions across platforms and social media." },
+        { num: "07", title: "POSITIVE CONTENT", desc: "We publish helpful content and PR that strengthens your branded search results." },
+        { num: "08", title: "MONTHLY REPORT", desc: "You get a clear report on ratings, reviews, sentiment, and next steps." }
+      ]
+    },
+    whoWeHelp: {
+      tag: "WHO WE WORK WITH",
+      title: "Who We Help in Coimbatore & Tamil Nadu",
+      subtitle: "We manage reputation for clinics and hospitals, restaurants, hotels, retail stores, education institutes, real estate developers, and service businesses across Coimbatore and Tamil Nadu — any business where reviews decide who gets chosen.",
+      industries: [
+        { title: "Clinics, Hospitals & Doctors", desc: "Google and Practo reviews that help patients choose you with confidence." },
+        { title: "Restaurants, Cafés & Hotels", desc: "Google, Zomato, and travel reviews that keep tables and rooms full." },
+        { title: "Retail & Showrooms", desc: "Strong Google ratings that bring more footfall to your store." },
+        { title: "Education & Coaching", desc: "Positive parent and student reviews that build trust during admissions." },
+        { title: "Real Estate & Builders", desc: "A trustworthy online presence for buyers researching big decisions." },
+        { title: "Home & Local Services", desc: "Justdial and Google reviews that make you the first call in your area." }
+      ],
+      certifications: [
+        { label: "Genuine reviews only — no fake or paid reviews" },
+        { label: "Review requests follow Google Business Profile policies" },
+        { label: "Monthly reputation report with ratings, reviews, and sentiment" },
+        { label: "Reviewed by BalaMurali, Founder & MD, BrandForge" }
+      ]
+    },
     faqs: [
-      { q: "Can you remove negative search results from Google?", a: "While search engines rarely delete articles directly, our SERP Shield strategy ranks high-authority positive news articles that push negative links down off Page 1 and Page 2 where no one sees them." },
-      { q: "How does the automated review growth engine work?", a: "We integrate with your CRM/store so when a customer completes a order, an automated SMS/email asks for feedback. Satisfied customers are directed to Trustpilot/Google to post 5-star reviews." },
-      { q: "Which press publications do you guarantee placements on?", a: "We guarantee distribution across major outlets including Yahoo Finance, Business Insider, Digital Journal, AP News, and top industry trade publications." },
-      { q: "How long does it take to build a 4.9-star review rating?", a: "Our review growth engine generates fresh 5-star reviews within the first 72 hours of launch and steadily elevates your average rating over 30 to 60 days." },
+      { q: "What is brand reputation management?", a: "It's the ongoing work of shaping what people see and say about your business online — mainly reviews, review replies, Google Business Profile, social mentions, and your branded search results." },
+      { q: "Can you delete negative Google reviews?", a: "No one can delete genuine reviews just because they're negative. We can report reviews that break Google's policies — such as spam, fake, or abusive reviews — and we help you respond professionally and resolve the issue, which often matters more to future customers." },
+      { q: "Do you post fake or paid reviews?", a: "Never. Fake reviews break Google's policies, can get your profile penalised, and damage trust. We only help you collect genuine reviews from real customers." },
+      { q: "How quickly will my Google rating improve?", a: "Most businesses see more reviews within the first few weeks of setting up review requests. How fast your average rating rises depends on your current number of reviews and how many happy customers you serve each month." },
+      { q: "How much does reputation management cost in Coimbatore?", a: "It depends on the number of locations, platforms, and review volume. We offer monthly plans, and share a clear quote after a free reputation audit." },
+      { q: "Does reputation management help local SEO?", a: "Yes. Review count, rating, freshness, and replies are all signals in Google's local results. A well-managed profile helps you show up more often in Google Maps searches around Coimbatore." }
     ],
+    bottomCta: {
+      title: "Get a Free Brand Reputation Audit",
+      subtitle: "We'll review your ratings, reviews, and search results, and show you the quickest ways to build more trust online.",
+      buttonText: "Claim My Free Reputation Audit →"
+    }
   },
+
 };
 
 servicesData["seo-company-coimbatore"] = servicesData["seo-geo"];

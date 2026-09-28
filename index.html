@@ -42,8 +42,19 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600;700;800&display=swap" />
 
-    <!-- LCP Preload for Critical Above-the-Fold Brand Assets -->
-    <link rel="preload" as="image" href="/brandforge-logo.png" type="image/png" />
+    <!-- Critical Base Styles (Prevents White / Unstyled Flash on Reload) -->
+    <style>
+      html, body {
+        background-color: #0A0A0C !important;
+        color: #FFFFFF;
+        margin: 0;
+        padding: 0;
+      }
+      #root {
+        min-height: 100vh;
+        background-color: #0A0A0C;
+      }
+    </style>
   </head>
   <body>
     <!-- SCREEN-READER & SEARCH BOT CRAWLABLE SITEMAP & ASSETS (SCREAMING FROG COMPLIANT) -->

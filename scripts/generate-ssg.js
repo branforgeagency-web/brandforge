@@ -423,10 +423,9 @@ function generateSSG() {
     const jsonLdHtml = generateJsonLd(config, canonicalUrl);
     customizedHtml = customizedHtml.replace("</head>", `${jsonLdHtml}\n</head>`);
 
-    // Pre-render real, crawlable content into #root (React's createRoot replaces it on mount)
+    // Pre-render crawlable content in <noscript> inside #root so search bots index full content, but human visitors never see a flash of unstyled content on reload
     customizedHtml = customizedHtml
-      .replace("</head>", `${SSG_STYLE}\n</head>`)
-      .replace('<div id="root"></div>', `<div id="root">${prerenderBody(config)}</div>`);
+      .replace('<div id="root"></div>', `<div id="root"><noscript>${prerenderBody(config)}</noscript></div>`);
 
     // Determine target file path
     let targetFilePath;

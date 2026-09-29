@@ -25,6 +25,7 @@ import { servicesData, serviceUrl } from "../data/servicesData";
 import BrandForgeAnimatedFooter from "../components/BrandForgeAnimatedFooter";
 import BrandForgeLiquidMetalBackground from "../components/BrandForgeLiquidMetalBackground";
 import LetsTalkForm from "../components/LetsTalkForm";
+import KexsioCanvasBackground from "../components/KexsioCanvasBackground";
 
 /* ───────────────────────────────────────────────────────────────────────────
    DYNAMIC SERVICE LANDING PAGE COMPONENT (CARDLESS & LIQUID METAL SHADER)
@@ -894,6 +895,7 @@ export default function ServiceLandingPage({ slug = "seo-geo", onOpenModal, navi
 
       {/* DEDICATED PARAGRAPH STORY & LEAD FORM SECTION (APPLIED TO ALL SERVICES) */}
       <section className="sg-seo-story-section">
+        <KexsioCanvasBackground />
         <div className="sg-container">
           <div className="sg-seo-split-grid">
             
@@ -1027,6 +1029,7 @@ export default function ServiceLandingPage({ slug = "seo-geo", onOpenModal, navi
       {/* WHY BUSINESSES CHOOSE BRAND FORGE SECTION */}
       {data.whyChooseUs && (
         <section className="sg-section sg-why-section">
+          <KexsioCanvasBackground />
           <div className="sg-container">
             <div className="sg-why-grid">
               
@@ -1186,6 +1189,7 @@ export default function ServiceLandingPage({ slug = "seo-geo", onOpenModal, navi
 
       {/* CARDLESS INTERACTIVE 6-PILLAR LIST STREAM */}
       <section className="sg-section sg-pillars-section">
+        <KexsioCanvasBackground />
         <div className="sg-container">
           <motion.div
             className="sg-section-header text-center"
@@ -1366,6 +1370,7 @@ export default function ServiceLandingPage({ slug = "seo-geo", onOpenModal, navi
       {/* WHAT MAKES OUR COMPANY DIFFERENT SECTION */}
       {data.differentiators && (
         <section className="sg-section sg-diff-section">
+          <KexsioCanvasBackground />
           <div className="sg-container">
             <motion.div
               className="sg-section-header text-center"

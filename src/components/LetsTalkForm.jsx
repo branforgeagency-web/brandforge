@@ -32,8 +32,7 @@ export const LETS_TALK_SERVICES = [
 
 const GOOGLE_SCRIPT_URL =
   "https://script.google.com/macros/s/AKfycbwJDxnBdnUr0eML1uYQgb89ezPtQESJKGlgk887so2rxKleYAHnuS6v6h1iTRaKbAk/exec";
-const BACKUP_EMAIL_URL =
-  "https://formsubmit.co/ajax/brandforgedigitalmarketing@gmail.com";
+
 
 const wait = (duration) =>
   new Promise((resolve) => setTimeout(resolve, duration));
@@ -98,27 +97,7 @@ export default function LetsTalkForm({
       console.warn("Apps Script submission notice:", err);
     }
 
-    // 2. Submit to FormSubmit as instant email backup so lead is 100% delivered
-    try {
-      await fetch(BACKUP_EMAIL_URL, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
-        },
-        body: JSON.stringify({
-          Name: name.trim(),
-          "Phone Number": phone.trim(),
-          Email: email.trim(),
-          Service: activeService,
-          Message: message.trim(),
-          Page: pagePath,
-          _subject: `⚡ New BrandForge Lead: ${name.trim()} (${activeService})`,
-        }),
-      });
-    } catch (err) {
-      console.warn("Email backup notice:", err);
-    }
+
 
     setStatus("success");
 

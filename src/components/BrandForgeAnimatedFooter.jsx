@@ -271,7 +271,7 @@ export default function BrandForgeAnimatedFooter({ onOpenModal }) {
               <a href="https://wa.me/919384576852" target="_blank" rel="noreferrer" className="social-icon-btn" aria-label="WhatsApp">
                 <WhatsappIcon />
               </a>
-              <a href="mailto:brandforgedigitalmarketing@gmail.com" className="social-icon-btn" aria-label="Email Us">
+              <a href="mailto:info@brandforgeagency.in" className="social-icon-btn" aria-label="Email Us">
                 <Send size={18} />
               </a>
             </div>
@@ -279,7 +279,7 @@ export default function BrandForgeAnimatedFooter({ onOpenModal }) {
             <ul className="footer-link-list" style={{ marginTop: "16px" }}>
               <li><a href="https://www.instagram.com/the_brandforge_digital?igsi=YjR1N3prdzJocTdx" target="_blank" rel="noreferrer">INSTAGRAM ↗</a></li>
               <li><a href="https://wa.me/919384576852" target="_blank" rel="noreferrer">WHATSAPP ↗</a></li>
-              <li><a href="mailto:brandforgedigitalmarketing@gmail.com">EMAIL US ↗</a></li>
+              <li><a href="mailto:info@brandforgeagency.in">EMAIL US ↗</a></li>
               <li><a href="tel:+919384576852">CALL NOW ↗</a></li>
             </ul>
           </motion.div>

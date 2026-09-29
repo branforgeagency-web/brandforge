@@ -54,7 +54,7 @@ export default function Footer({ onOpenModal }) {
           <h4>CONNECT</h4>
           <a href="https://www.instagram.com/the_brandforge_digital?igsi=YjR1N3prdzJocTdx" target="_blank" rel="noreferrer">Instagram</a>
           <a href="https://wa.me/919384576852" target="_blank" rel="noreferrer">WhatsApp</a>
-          <a href="mailto:brandforgedigitalmarketing@gmail.com">Email Us</a>
+          <a href="mailto:info@brandforgeagency.in">Email Us</a>
           <a href="tel:+919384576852">Call Consultation</a>
         </div>
 

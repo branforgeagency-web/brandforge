@@ -761,7 +761,7 @@ const styles = `
     position: relative;
     border-top: 1px solid rgba(15, 23, 42, 0.08);
     border-bottom: 1px solid rgba(15, 23, 42, 0.08);
-    background: linear-gradient(180deg, rgba(239, 65, 54, 0.03) 0%, rgba(248, 250, 252, 0.8) 100%);
+    background: #000000;
   }
 
   .sg-why-grid {

@@ -207,7 +207,7 @@ export const servicesData = {
       "Most businesses in Coimbatore don't have an ads problem — they have a wasted budget problem. If you're paying for clicks that never turn into customers, that's a targeting and tracking issue, not a reason to give up on paid ads.",
       "BrandForge is a PPC company in Coimbatore built for one outcome: turning every rupee of ad spend into measurable leads and sales. Our paid media studio, Ignition Ads, plans and manages campaigns across Google, Meta, YouTube, and more — with proper tracking wired in from day one."
     ],
-    bannerBg: "/banner-paid-media.jpg",
+    bannerBg: "/paid-media-banner-illustration.png",
     icon: Megaphone,
     metrics: [
       { value: "₹420 → ₹95", label: "Cost-Per-Lead Cut", desc: "Average 77% drop in CPL across accounts" },
@@ -428,7 +428,7 @@ export const servicesData = {
       "A slow, outdated website quietly costs you customers every single day. If your site loads slowly, looks dated on mobile, or doesn't turn visitors into enquiries, the design is the problem — not your business.",
       "BrandForge is a website development company in Coimbatore that builds fast, mobile-first, SEO-ready websites designed to convert. Our web studio, Web Foundry, handles everything from a simple business site to a full e-commerce store — built to load quickly, rank on Google, and turn clicks into leads."
     ],
-    bannerBg: "/banner-web-dev.png",
+    bannerBg: "/web-dev-banner-illustration.png",
     icon: Box,
     metrics: [
       { value: "< 1.8s", label: "Mobile Load Speed", desc: "Tested on live mobile 4G networks" },
@@ -686,7 +686,7 @@ export const servicesData = {
       "Posting every day but getting no leads, no sales, and barely any likes? That's not a content problem — it's a strategy problem. Random posts don't grow a business; a plan does.",
       "BrandForge is a social media marketing company in Coimbatore that turns your Instagram, Facebook, and other channels into real business growth. Our content studio, Story Smithy, handles strategy, content, reels, and ads together — so your pages don't just look active, they actually bring in customers."
     ],
-    bannerBg: "/banner-viral-social.png",
+    bannerBg: "/viral-social-banner-illustration.png",
     icon: Rocket,
     metrics: [
       { value: "+450%", label: "Follower Growth Rate", desc: "Average 90-day organic audience expansion" },
@@ -949,7 +949,7 @@ export const servicesData = {
       "People in Coimbatore trust people, not ads. When a local food blogger, fashion creator, or tech reviewer they already follow recommends your brand, it lands in a way no banner ever will. That's the power of influencer marketing — if it's done with the right creators.",
       "BrandForge is an influencer marketing agency in Coimbatore that connects your business with genuine creators across Instagram and YouTube. We find the right influencers, check that their followers are real, manage the whole campaign, and track the leads and sales each creator brings in — so you know exactly what your money is doing."
     ],
-    bannerBg: "/banner-influencer-network.png",
+    bannerBg: "/influencer-banner-illustration.png",
     icon: Users,
     metrics: [
       { value: "Nano → Macro", label: "Creator Tiers Covered", desc: "From 5K local voices to 1M+ state-wide creators" },
@@ -1068,7 +1068,7 @@ export const servicesData = {
       "Ads stop working the day you stop paying. Good content keeps bringing you leads for months, even years, after you publish it. That's the difference between renting attention and owning it.",
       "BrandForge is a content marketing agency in Coimbatore that creates blogs, videos, and social content built to rank on Google and turn readers into customers. Our content studio, Story Smithy, plans and produces content that works long after it's posted — not one-off pieces nobody sees."
     ],
-    bannerBg: "/banner-content-smithy.png",
+    bannerBg: "/content-smithy-banner-illustration.png",
     icon: PenTool,
     metrics: [
       { value: "3.5x", label: "Reader Time-on-Page", desc: "Deep domain storytelling & engaging editorial" },
@@ -1331,7 +1331,7 @@ export const servicesData = {
       "You already have a list of leads and past customers sitting in your phone and inbox — and most businesses never email them again. That's money left on the table, because it costs nothing to reach people who already know you.",
       "BrandForge is an email marketing company in Coimbatore that turns your contacts into repeat sales with smart, automated email campaigns. Our team sets up the flows, writes the emails, and tracks the results — so your list quietly earns for you month after month."
     ],
-    bannerBg: "/banner-inbox-edge.png",
+    bannerBg: "/inbox-edge-banner-illustration.png",
     icon: Mail,
     metrics: [
       { value: "+312%", label: "Email Revenue Lift", desc: "Average L6M client retention ROI surge" },
@@ -1596,7 +1596,7 @@ export const servicesData = {
       "If customers only pick you when you're the cheapest, you don't have a brand — you have a price tag. Strong positioning is what lets you charge more, get chosen faster, and stop competing on discounts.",
       "Brand Anvil is the brand positioning studio inside BrandForge — a brand positioning agency in Coimbatore that shapes how the market sees you. We define what you stand for, who you're for, and why you're the obvious choice, then make that message consistent everywhere your customers meet you."
     ],
-    bannerBg: "/banner-brand-anvil.png",
+    bannerBg: "/brand-anvil-banner-illustration.png",
     icon: Target,
     metrics: [
       { value: "4.8x", label: "Pricing Power Multiple", desc: "Ability to command premium prices without margin erosion" },
@@ -1861,7 +1861,7 @@ export const servicesData = {
       "A cheap logo and mismatched colours quietly tell customers you're a small, unserious business — even when you're not. Your brand identity is the first judgement people make about you, and they make it in seconds.",
       "Identity Forge is the brand identity studio inside BrandForge — a brand identity design agency that builds complete, professional identities, not just logos. As a brand identity design agency in Coimbatore, we craft the logo, colours, fonts, and full brand kit that make you look established and stay memorable everywhere customers see you."
     ],
-    bannerBg: "/banner-visual-id.png",
+    bannerBg: "/visual-id-banner-illustration.png",
     icon: Palette,
     metrics: [
       { value: "100%", label: "Iconic Design Originality", desc: "Custom vector geometry, dynamic 3D tokens & bespoke typography" },
@@ -2126,7 +2126,7 @@ export const servicesData = {
       "Video is how people discover brands today — on Instagram Reels, YouTube, WhatsApp, and even your own website. But a video that looks nice isn't enough. It has to grab attention in the first few seconds and give people a reason to act.",
       "BrandForge is a video production and editing company in Coimbatore that handles everything from script to final edit. We shoot ad films, reels, product videos, corporate films, and testimonials, and we edit your existing footage into content built for each platform — so your videos don't just get views, they bring in enquiries."
     ],
-    bannerBg: "/banner-commercial-video-3d.jpg",
+    bannerBg: "/commercial-video-banner-illustration.png",
     icon: Video,
     metrics: [
       { value: "Script → Edit", label: "End-to-End Production", desc: "Concept, shoot, editing, and delivery under one roof" },
@@ -2238,6 +2238,7 @@ export const servicesData = {
     eyebrow: "INSIGHT FURNACE / CRO REVENUE LIFT",
     title: "DOUBLE YOUR WEBSITE CONVERSION RATES WITHOUT INCREASING AD SPEND",
     subtitle: "We run data-driven A/B testing, user session recording analysis, and checkout friction removal to squeeze maximum profit from existing traffic.",
+    bannerBg: "/cro-revenue-banner-illustration.png",
     icon: Gauge,
     metrics: [
       { value: "+118%", label: "Average Conversion Rate Lift", desc: "Direct increase in visitor-to-customer conversion" },
@@ -2283,7 +2284,7 @@ export const servicesData = {
       "Before anyone in Coimbatore visits your store, books your clinic, or calls your office, they search your name. What they find — your Google rating, recent reviews, and how you reply — often decides whether they choose you or the business next door.",
       "Reputation Shield is the brand reputation management service by BrandForge. We help you earn more genuine reviews from happy customers, respond to every review professionally, monitor what's said about you online, and make sure the right information shows up when people search for your brand."
     ],
-    bannerBg: "/banner-reputation-shield-3d.jpg",
+    bannerBg: "/reputation-shield-banner-illustration.png",
     icon: ShieldCheck,
     metrics: [
       { value: "Google + More", label: "Review Platforms Managed", desc: "Google, Justdial, Practo, Facebook & industry sites" },

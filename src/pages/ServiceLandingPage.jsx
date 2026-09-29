@@ -1,7 +1,7 @@
 "use client";
 
-import React, { useState, useLayoutEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import React, { useState, useLayoutEffect, useRef } from "react";
+import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
 import {
   Search,
   Sparkles,
@@ -15,6 +15,11 @@ import {
   PenTool,
   BarChart3,
   Cpu,
+  Bot,
+  Layers,
+  MessageSquare,
+  ArrowRightLeft,
+  Video,
 } from "lucide-react";
 import { servicesData, serviceUrl } from "../data/servicesData";
 import BrandForgeAnimatedFooter from "../components/BrandForgeAnimatedFooter";
@@ -28,20 +33,310 @@ import LetsTalkForm from "../components/LetsTalkForm";
    ─────────────────────────────────────────────────────────────────────────── */
 
 const SERVICE_BANNER_ASSETS = {
-  "seo-geo": "/seo-geo-forge-red-3d.png",
-  "paid-media": "/paid-media-forge-3d-crop.png",
-  "web-foundry": "/banner-web-dev.png",
-  "viral-social": "/banner-viral-social.png",
-  "influencer-network": "/banner-influencer-network.png",
-  "content-smithy": "/banner-content-smithy-3d.jpg",
-  "inbox-edge": "/banner-inbox-edge.png",
-  "brand-anvil": "/banner-brand-anvil.png",
-  "visual-id": "/banner-visual-id.png",
-  "commercial-video": "/banner-commercial-video-3d.jpg",
-  "cro-revenue": "/banner-cro-revenue-3d.jpg",
-  "reputation-shield": "/banner-reputation-shield-3d.jpg",
-  "seo-company-coimbatore": "/seo-geo-forge-red-3d.png",
-  "ppc-company-coimbatore": "/paid-media-forge-3d-crop.png",
+  "seo-geo": "/seo-sketch-diagram.png",
+  "paid-media": "/paid-media-banner-illustration.png",
+  "web-foundry": "/web-dev-banner-illustration.png",
+  "viral-social": "/viral-social-banner-illustration.png",
+  "influencer-network": "/influencer-banner-illustration.png",
+  "content-smithy": "/content-smithy-banner-illustration.png",
+  "inbox-edge": "/inbox-edge-banner-illustration.png",
+  "brand-anvil": "/brand-anvil-banner-illustration.png",
+  "visual-id": "/visual-id-banner-illustration.png",
+  "commercial-video": "/commercial-video-banner-illustration.png",
+  "cro-revenue": "/cro-revenue-banner-illustration.png",
+  "reputation-shield": "/reputation-shield-banner-illustration.png",
+  "seo-company-coimbatore": "/seo-sketch-diagram.png",
+  "ppc-company-coimbatore": "/paid-media-banner-illustration.png",
+  "website-development-company-coimbatore": "/web-dev-banner-illustration.png",
+  "web-development-company-coimbatore": "/web-dev-banner-illustration.png",
+  "social-media-marketing-company-coimbatore": "/viral-social-banner-illustration.png",
+  "social-media-agency-coimbatore": "/viral-social-banner-illustration.png",
+  "influencer-marketing-coimbatore": "/influencer-banner-illustration.png",
+  "content-marketing-agency-coimbatore": "/content-smithy-banner-illustration.png",
+  "content-marketing-company-coimbatore": "/content-smithy-banner-illustration.png",
+  "email-marketing-company-coimbatore": "/inbox-edge-banner-illustration.png",
+  "email-marketing-agency-coimbatore": "/inbox-edge-banner-illustration.png",
+  "brand-positioning-agency-coimbatore": "/brand-anvil-banner-illustration.png",
+  "brand-position-agency-coimbatore": "/brand-anvil-banner-illustration.png",
+  "brand-positioning-company-coimbatore": "/brand-anvil-banner-illustration.png",
+  "brand-identity-design-agency-coimbatore": "/visual-id-banner-illustration.png",
+  "brand-identity-design-company-coimbatore": "/visual-id-banner-illustration.png",
+  "video-production-editing-company-coimbatore": "/commercial-video-banner-illustration.png",
+  "brand-reputation-management-coimbatore": "/reputation-shield-banner-illustration.png",
+};
+
+
+const SERVICE_EVOLUTION_VISUALS = {
+  "seo-geo": {
+    image: "/seo-to-geo-evolution-icon.png",
+    badge: "NEXT-GEN AI SEARCH ARCHITECTURE",
+    badgeIcon: Cpu,
+    chipFrom: "Classic Search (SEO)",
+    chipTo: "Generative AI (GEO)",
+    title: "From Query Matching to Neural Answer Recommendation",
+    desc: "Search is no longer about blue links. AI knowledge models synthesize information directly. BrandForge structures your digital authority so ChatGPT, Perplexity, and Google Gemini recommend you by name."
+  },
+  "seo-company-coimbatore": {
+    image: "/seo-to-geo-evolution-icon.png",
+    badge: "NEXT-GEN AI SEARCH ARCHITECTURE",
+    badgeIcon: Cpu,
+    chipFrom: "Classic Search (SEO)",
+    chipTo: "Generative AI (GEO)",
+    title: "From Query Matching to Neural Answer Recommendation",
+    desc: "Search is no longer about blue links. AI knowledge models synthesize information directly. BrandForge structures your digital authority so ChatGPT, Perplexity, and Google Gemini recommend you by name."
+  },
+  "paid-media": {
+    image: "/paid-media-evolution-icon.png",
+    badge: "ALGORITHMIC ROAS SCALING ENGINE",
+    badgeIcon: Zap,
+    chipFrom: "Generic Ad Spend",
+    chipTo: "BrandForge ROAS Engine",
+    title: "From Budget Wastage to Predictable Customer Acquisition",
+    desc: "Stop burning ad budget on unverified vanity clicks. We deploy AI-bid tracking, high-converting creative hooks, and full CAPI attribution to scale real revenue on Google & Meta."
+  },
+  "ppc-company-coimbatore": {
+    image: "/paid-media-evolution-icon.png",
+    badge: "ALGORITHMIC ROAS SCALING ENGINE",
+    badgeIcon: Zap,
+    chipFrom: "Generic Ad Spend",
+    chipTo: "BrandForge ROAS Engine",
+    title: "From Budget Wastage to Predictable Customer Acquisition",
+    desc: "Stop burning ad budget on unverified vanity clicks. We deploy AI-bid tracking, high-converting creative hooks, and full CAPI attribution to scale real revenue on Google & Meta."
+  },
+  "web-foundry": {
+    image: "/web-dev-evolution-icon.png",
+    badge: "SUB-SECOND JAMSTACK ARCHITECTURE",
+    badgeIcon: Globe,
+    chipFrom: "Bloated WordPress",
+    chipTo: "Sub-Second React/Jamstack",
+    title: "From Slow Legacy Sites to 100/100 Core Web Vitals",
+    desc: "Bloated page templates destroy conversion rates before the customer even reads your headline. BrandForge engineers sub-200ms ultra-fast web architectures engineered for maximum pipeline scale."
+  },
+  "website-development-company-coimbatore": {
+    image: "/web-dev-evolution-icon.png",
+    badge: "SUB-SECOND JAMSTACK ARCHITECTURE",
+    badgeIcon: Globe,
+    chipFrom: "Bloated WordPress",
+    chipTo: "Sub-Second React/Jamstack",
+    title: "From Slow Legacy Sites to 100/100 Core Web Vitals",
+    desc: "Bloated page templates destroy conversion rates before the customer even reads your headline. BrandForge engineers sub-200ms ultra-fast web architectures engineered for maximum pipeline scale."
+  },
+  "web-development-company-coimbatore": {
+    image: "/web-dev-evolution-icon.png",
+    badge: "SUB-SECOND JAMSTACK ARCHITECTURE",
+    badgeIcon: Globe,
+    chipFrom: "Bloated WordPress",
+    chipTo: "Sub-Second React/Jamstack",
+    title: "From Slow Legacy Sites to 100/100 Core Web Vitals",
+    desc: "Bloated page templates destroy conversion rates before the customer even reads your headline. BrandForge engineers sub-200ms ultra-fast web architectures engineered for maximum pipeline scale."
+  },
+  "viral-social": {
+    image: "/viral-social-evolution-icon.png",
+    badge: "ALGORITHMIC VIRAL RETENTION ENGINE",
+    badgeIcon: Users,
+    chipFrom: "Static Image Posts",
+    chipTo: "High-Retention Video Reels",
+    title: "From Ignored Social Feeds to 10M+ Organic Reach",
+    desc: "Posting generic flyers produces zero brand equity. We engineer scroll-stopping short-form reels and community-driven social engines that turn followers into paying brand advocates."
+  },
+  "social-media-marketing-company-coimbatore": {
+    image: "/viral-social-evolution-icon.png",
+    badge: "ALGORITHMIC VIRAL RETENTION ENGINE",
+    badgeIcon: Users,
+    chipFrom: "Static Image Posts",
+    chipTo: "High-Retention Video Reels",
+    title: "From Ignored Social Feeds to 10M+ Organic Reach",
+    desc: "Posting generic flyers produces zero brand equity. We engineer scroll-stopping short-form reels and community-driven social engines that turn followers into paying brand advocates."
+  },
+  "social-media-agency-coimbatore": {
+    image: "/viral-social-evolution-icon.png",
+    badge: "ALGORITHMIC VIRAL RETENTION ENGINE",
+    badgeIcon: Users,
+    chipFrom: "Static Image Posts",
+    chipTo: "High-Retention Video Reels",
+    title: "From Ignored Social Feeds to 10M+ Organic Reach",
+    desc: "Posting generic flyers produces zero brand equity. We engineer scroll-stopping short-form reels and community-driven social engines that turn followers into paying brand advocates."
+  },
+  "influencer-network": {
+    image: "/influencer-evolution-icon.png",
+    badge: "VERIFIED CREATOR NETWORK",
+    badgeIcon: Sparkles,
+    chipFrom: "Random Influencer Barters",
+    chipTo: "Audited ROI Partnerships",
+    title: "From Fake Follower Barters to Trackable Revenue Campaigns",
+    desc: "Sending free products to random creators yields no verifiable returns. We audit creator engagement, negotiate exclusive rates, and implement UTM tracking to guarantee measurable ROAS."
+  },
+  "influencer-marketing-coimbatore": {
+    image: "/influencer-evolution-icon.png",
+    badge: "VERIFIED CREATOR NETWORK",
+    badgeIcon: Sparkles,
+    chipFrom: "Random Influencer Barters",
+    chipTo: "Audited ROI Partnerships",
+    title: "From Fake Follower Barters to Trackable Revenue Campaigns",
+    desc: "Sending free products to random creators yields no verifiable returns. We audit creator engagement, negotiate exclusive rates, and implement UTM tracking to guarantee measurable ROAS."
+  },
+  "content-smithy": {
+    image: "/content-smithy-evolution-icon.png",
+    badge: "EDITORIAL AUTHORITY SMITHY",
+    badgeIcon: PenTool,
+    chipFrom: "Generic Keyword Stuffing",
+    chipTo: "Thought Leadership & AI Synergy",
+    title: "From Cheap Content Mill to Industry Thought Leadership",
+    desc: "Generic AI articles flood the web with zero trust. BrandForge forges authoritative, research-backed editorial frameworks that rank #1 and position your executive team as the obvious market choice."
+  },
+  "content-marketing-agency-coimbatore": {
+    image: "/content-smithy-evolution-icon.png",
+    badge: "EDITORIAL AUTHORITY SMITHY",
+    badgeIcon: PenTool,
+    chipFrom: "Generic Keyword Stuffing",
+    chipTo: "Thought Leadership & AI Synergy",
+    title: "From Cheap Content Mill to Industry Thought Leadership",
+    desc: "Generic AI articles flood the web with zero trust. BrandForge forges authoritative, research-backed editorial frameworks that rank #1 and position your executive team as the obvious market choice."
+  },
+  "content-marketing-company-coimbatore": {
+    image: "/content-smithy-evolution-icon.png",
+    badge: "EDITORIAL AUTHORITY SMITHY",
+    badgeIcon: PenTool,
+    chipFrom: "Generic Keyword Stuffing",
+    chipTo: "Thought Leadership & AI Synergy",
+    title: "From Cheap Content Mill to Industry Thought Leadership",
+    desc: "Generic AI articles flood the web with zero trust. BrandForge forges authoritative, research-backed editorial frameworks that rank #1 and position your executive team as the obvious market choice."
+  },
+  "inbox-edge": {
+    image: "/email-marketing-evolution-icon.png",
+    badge: "AUTOMATED RETENTION FUNNELS",
+    badgeIcon: MessageSquare,
+    chipFrom: "Spammy Batch Blasts",
+    chipTo: "Hyper-Segmented Lifecycle Flows",
+    title: "From Unopened Newsletters to 42% Average Open Rates",
+    desc: "Blasting your list with generic promotions burns deliverability. We engineer automated behavior-triggered lifecycle flows that nurture subscribers and drive predictable repeat revenue on autopilot."
+  },
+  "email-marketing-company-coimbatore": {
+    image: "/email-marketing-evolution-icon.png",
+    badge: "AUTOMATED RETENTION FUNNELS",
+    badgeIcon: MessageSquare,
+    chipFrom: "Spammy Batch Blasts",
+    chipTo: "Hyper-Segmented Lifecycle Flows",
+    title: "From Unopened Newsletters to 42% Average Open Rates",
+    desc: "Blasting your list with generic promotions burns deliverability. We engineer automated behavior-triggered lifecycle flows that nurture subscribers and drive predictable repeat revenue on autopilot."
+  },
+  "email-marketing-agency-coimbatore": {
+    image: "/email-marketing-evolution-icon.png",
+    badge: "AUTOMATED RETENTION FUNNELS",
+    badgeIcon: MessageSquare,
+    chipFrom: "Spammy Batch Blasts",
+    chipTo: "Hyper-Segmented Lifecycle Flows",
+    title: "From Unopened Newsletters to 42% Average Open Rates",
+    desc: "Blasting your list with generic promotions burns deliverability. We engineer automated behavior-triggered lifecycle flows that nurture subscribers and drive predictable repeat revenue on autopilot."
+  },
+  "brand-anvil": {
+    image: "/brand-anvil-evolution-icon.png",
+    badge: "STRATEGIC BRAND POSITIONING",
+    badgeIcon: ShieldCheck,
+    chipFrom: "Me-Too Brand Identity",
+    chipTo: "Uncontested Category Monopoly",
+    title: "From Commodity Pricing to Category Dominance",
+    desc: "Competing on price is a race to the bottom. BrandForge hammers your core market positioning on the strategy anvil so your company stands out as the single obvious premium authority in your space."
+  },
+  "brand-positioning-agency-coimbatore": {
+    image: "/brand-anvil-evolution-icon.png",
+    badge: "STRATEGIC BRAND POSITIONING",
+    badgeIcon: ShieldCheck,
+    chipFrom: "Me-Too Brand Identity",
+    chipTo: "Uncontested Category Monopoly",
+    title: "From Commodity Pricing to Category Dominance",
+    desc: "Competing on price is a race to the bottom. BrandForge hammers your core market positioning on the strategy anvil so your company stands out as the single obvious premium authority in your space."
+  },
+  "brand-position-agency-coimbatore": {
+    image: "/brand-anvil-evolution-icon.png",
+    badge: "STRATEGIC BRAND POSITIONING",
+    badgeIcon: ShieldCheck,
+    chipFrom: "Me-Too Brand Identity",
+    chipTo: "Uncontested Category Monopoly",
+    title: "From Commodity Pricing to Category Dominance",
+    desc: "Competing on price is a race to the bottom. BrandForge hammers your core market positioning on the strategy anvil so your company stands out as the single obvious premium authority in your space."
+  },
+  "brand-positioning-company-coimbatore": {
+    image: "/brand-anvil-evolution-icon.png",
+    badge: "STRATEGIC BRAND POSITIONING",
+    badgeIcon: ShieldCheck,
+    chipFrom: "Me-Too Brand Identity",
+    chipTo: "Uncontested Category Monopoly",
+    title: "From Commodity Pricing to Category Dominance",
+    desc: "Competing on price is a race to the bottom. BrandForge hammers your core market positioning on the strategy anvil so your company stands out as the single obvious premium authority in your space."
+  },
+  "visual-id": {
+    image: "/visual-id-evolution-icon.png",
+    badge: "ENTERPRISE DESIGN SYSTEMS",
+    badgeIcon: Layers,
+    chipFrom: "Stock Template Logos",
+    chipTo: "Custom Iconic Brand System",
+    title: "From Random Canva Logos to Enterprise Identity Systems",
+    desc: "A logo without a system is an afterthought. We build comprehensive design tokens, custom typography hierarchies, and cohesive brand guidelines that communicate institutional authority across every touchpoint."
+  },
+  "brand-identity-design-agency-coimbatore": {
+    image: "/visual-id-evolution-icon.png",
+    badge: "ENTERPRISE DESIGN SYSTEMS",
+    badgeIcon: Layers,
+    chipFrom: "Stock Template Logos",
+    chipTo: "Custom Iconic Brand System",
+    title: "From Random Canva Logos to Enterprise Identity Systems",
+    desc: "A logo without a system is an afterthought. We build comprehensive design tokens, custom typography hierarchies, and cohesive brand guidelines that communicate institutional authority across every touchpoint."
+  },
+  "brand-identity-design-company-coimbatore": {
+    image: "/visual-id-evolution-icon.png",
+    badge: "ENTERPRISE DESIGN SYSTEMS",
+    badgeIcon: Layers,
+    chipFrom: "Stock Template Logos",
+    chipTo: "Custom Iconic Brand System",
+    title: "From Random Canva Logos to Enterprise Identity Systems",
+    desc: "A logo without a system is an afterthought. We build comprehensive design tokens, custom typography hierarchies, and cohesive brand guidelines that communicate institutional authority across every touchpoint."
+  },
+  "commercial-video": {
+    image: "/commercial-video-evolution-icon.png",
+    badge: "HIGH-CONVERTING CINEMATIC PRODUCTION",
+    badgeIcon: Video,
+    chipFrom: "Unplanned Phone Shoots",
+    chipTo: "Scripted Cinema Production",
+    title: "From Amateur Clips to High-Production Commercial Ads",
+    desc: "Shaky phone videos lower perceived brand value. BrandForge executes scripted studio video production, commercial color grading, and dynamic editing designed specifically to maximize conversion rates."
+  },
+  "video-production-editing-company-coimbatore": {
+    image: "/commercial-video-evolution-icon.png",
+    badge: "HIGH-CONVERTING CINEMATIC PRODUCTION",
+    badgeIcon: Video,
+    chipFrom: "Unplanned Phone Shoots",
+    chipTo: "Scripted Cinema Production",
+    title: "From Amateur Clips to High-Production Commercial Ads",
+    desc: "Shaky phone videos lower perceived brand value. BrandForge executes scripted studio video production, commercial color grading, and dynamic editing designed specifically to maximize conversion rates."
+  },
+  "cro-revenue": {
+    image: "/cro-revenue-evolution-icon.png",
+    badge: "A/B TESTING CONVERSION ENGINE",
+    badgeIcon: BarChart3,
+    chipFrom: "Subjective Guesswork",
+    chipTo: "Data-Driven A/B Testing",
+    title: "From Lost Website Visitors to Multiplied Conversion Rates",
+    desc: "Driving traffic to a leaky bucket is expensive. BrandForge deploys heatmaps, session replay telemetry, and multi-variant split tests to double your site's revenue per visitor without increasing ad spend."
+  },
+  "reputation-shield": {
+    image: "/reputation-shield-evolution-icon.png",
+    badge: "ENTERPRISE REPUTATION SHIELD",
+    badgeIcon: ShieldCheck,
+    chipFrom: "Unmanaged Negative Reviews",
+    chipTo: "Active 5-Star Reputation Engine",
+    title: "From Ignored Review Profiles to Market-Leading Trust",
+    desc: "A few unanswered negative reviews can sink high-ticket deals before calls are even booked. BrandForge deploys automated review generation, sentiment shielding, and Google Business Profile defense."
+  },
+  "brand-reputation-management-coimbatore": {
+    image: "/reputation-shield-evolution-icon.png",
+    badge: "ENTERPRISE REPUTATION SHIELD",
+    badgeIcon: ShieldCheck,
+    chipFrom: "Unmanaged Negative Reviews",
+    chipTo: "Active 5-Star Reputation Engine",
+    title: "From Ignored Review Profiles to Market-Leading Trust",
+    desc: "A few unanswered negative reviews can sink high-ticket deals before calls are even booked. BrandForge deploys automated review generation, sentiment shielding, and Google Business Profile defense."
+  }
 };
 
 const SERVICE_BADGES = {
@@ -51,7 +346,7 @@ const SERVICE_BADGES = {
   },
   "paid-media": {
     top: { strong: "4.8x ROAS Avg", span: "Meta & Google Ads" },
-    bottom: { strong: "₹12Cr+ Scaled", span: "Performance Ad Spend" }
+    bottom: null
   },
   "web-foundry": {
     top: { strong: "100/100 Core Vitals", span: "Sub-200ms Load Speed" },
@@ -99,7 +394,7 @@ const SERVICE_BADGES = {
   },
   "ppc-company-coimbatore": {
     top: { strong: "4.8x ROAS Avg", span: "Meta & Google Ads" },
-    bottom: { strong: "₹12Cr+ Scaled", span: "Performance Ad Spend" }
+    bottom: null
   }
 };
 
@@ -421,8 +716,27 @@ export default function ServiceLandingPage({ slug = "seo-geo", onOpenModal, navi
 
   const Icon = data.icon || Search;
 
-  const bannerAsset = SERVICE_BANNER_ASSETS[data.slug] || data.bannerBg || "/seo-geo-forge-red-3d.png";
-  const badges = SERVICE_BADGES[data.slug] || {
+  const evolutionVisual = SERVICE_EVOLUTION_VISUALS[data.slug] || SERVICE_EVOLUTION_VISUALS[slug] || SERVICE_EVOLUTION_VISUALS["seo-geo"];
+  const EvolutionBadgeIcon = evolutionVisual.badgeIcon || Cpu;
+
+  const isSeoGeo = data.slug === "seo-geo" || slug === "seo-geo" || slug === "seo-company-coimbatore";
+  const heroBannerRef = useRef(null);
+
+  const { scrollYProgress: heroScroll } = useScroll({
+    target: heroBannerRef,
+    offset: ["start start", "end start"],
+  });
+
+  // Scroll animations: move from left to right on top layer when scrolling into next section
+  const bannerArtworkX = useTransform(heroScroll, [0, 1], [-25, 175]);
+  const bannerArtworkY = useTransform(heroScroll, [0, 1], [0, 160]);
+  const bannerArtworkScale = useTransform(heroScroll, [0, 1], [1, 1.08]);
+  const bannerArtworkRotate = useTransform(heroScroll, [0, 1], [0, 3]);
+
+  const bannerAsset = isSeoGeo
+    ? "/seo-sketch-diagram.png"
+    : (SERVICE_BANNER_ASSETS[data.slug] || data.bannerBg || "/seo-sketch-diagram.png");
+  const badges = SERVICE_BADGES[data.slug] || SERVICE_BADGES[slug] || {
     top: { strong: data.metrics?.[1]?.value || "100/100", span: data.metrics?.[1]?.label || "Performance" },
     bottom: { strong: data.metrics?.[0]?.value || "+300%", span: data.metrics?.[0]?.label || "Growth" }
   };
@@ -442,12 +756,6 @@ export default function ServiceLandingPage({ slug = "seo-geo", onOpenModal, navi
     <div className="sg-page-root">
       <style>{styles}</style>
 
-      {/* THREE.JS LIQUID METAL SHADER & SPARKS BACKGROUND */}
-      <BrandForgeLiquidMetalBackground />
-
-      {/* SEMI-TRANSPARENT BLACK OVERLAY IN BETWEEN BACKGROUND & CONTENT */}
-      <div className="sg-bg-overlay" aria-hidden="true" />
-
       {/* ANIMATED MARQUEE TICKER STRIP */}
       <div className="sg-marquee-bar">
         <div className="sg-marquee-track">
@@ -465,7 +773,7 @@ export default function ServiceLandingPage({ slug = "seo-geo", onOpenModal, navi
       </div>
 
       {/* HIGH-TECH SPLIT HERO BANNER SECTION (APPLIED TO ALL SERVICES) */}
-      <header className="sg-hero sg-hero-banner-tech has-banner-bg">
+      <header ref={heroBannerRef} className="sg-hero sg-hero-banner-tech has-banner-bg">
         {/* High-Tech HUD Background Accents */}
         <div className="tech-hud-overlay" aria-hidden="true">
           <div className="tech-hud-circle" />
@@ -544,40 +852,40 @@ export default function ServiceLandingPage({ slug = "seo-geo", onOpenModal, navi
               </div>
             </motion.div>
 
-            {/* RIGHT COLUMN: BRANDFORGE THEME 3D ARTWORK (GROUNDED, NO HOVER FLOAT) */}
+            {/* RIGHT COLUMN: BRANDFORGE THEME 3D ARTWORK (SEO & GEO SCROLL PARALLAX) */}
             <motion.div
-              className="sg-tech-banner-right"
+              className={`sg-tech-banner-right ${isSeoGeo ? "is-seo-geo-artwork-col" : ""}`}
               initial={{ opacity: 0, x: 40 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: false, amount: 0.2 }}
               transition={{ duration: 0.8, delay: 0.15 }}
+              style={{
+                zIndex: isSeoGeo ? 40 : 2,
+                position: "relative",
+              }}
             >
-              <div className="sg-tech-floating-container">
+              <motion.div
+                className={`sg-tech-floating-container ${isSeoGeo ? "is-seo-geo-floating-box" : ""}`}
+                style={
+                  isSeoGeo
+                    ? {
+                        x: bannerArtworkX,
+                        y: bannerArtworkY,
+                        scale: bannerArtworkScale,
+                        rotate: bannerArtworkRotate,
+                        zIndex: 40,
+                      }
+                    : {}
+                }
+              >
                 <div className="sg-tech-art-ambient-glow" />
                 <img
                   src={bannerAsset}
                   alt={`${data.title} BrandForge 3D Ecosystem`}
-                  className="sg-tech-floating-img"
-                  style={{ borderRadius: "24px" }}
+                  className={`sg-tech-floating-img ${isSeoGeo ? "is-seo-geo-img" : ""}`}
+                  style={{ borderRadius: (isSeoGeo || (bannerAsset.endsWith('.png') && !bannerAsset.includes('commercial-video') && !bannerAsset.includes('visual-id'))) ? "0px" : "20px" }}
                 />
-
-                {/* Badges in BrandForge Theme */}
-                <div className="sg-tech-floating-badge badge-top">
-                  <Sparkles size={14} className="badge-icon-sparkle" />
-                  <div>
-                    <strong>{badges.top.strong}</strong>
-                    <span>{badges.top.span}</span>
-                  </div>
-                </div>
-
-                <div className="sg-tech-floating-badge badge-bottom">
-                  <CheckCircle2 size={14} className="badge-icon-check" />
-                  <div>
-                    <strong>{badges.bottom.strong}</strong>
-                    <span>{badges.bottom.span}</span>
-                  </div>
-                </div>
-              </div>
+              </motion.div>
             </motion.div>
 
           </div>
@@ -762,51 +1070,119 @@ export default function ServiceLandingPage({ slug = "seo-geo", onOpenModal, navi
         </section>
       )}
 
-      {/* CARDLESS EDITORIAL COMPARISON MATRIX */}
-      <section className="sg-section sg-comparison-section">
-        <div className="sg-container">
-          <motion.div
-            className="sg-section-header text-center"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: false, amount: 0.2 }}
-            transition={{ duration: 0.7 }}
-          >
-            <span className="sg-section-tag">{data.matrixTag}</span>
-            <h2 className="sg-section-title">{data.matrixTitle}</h2>
-            <p className="sg-section-subtitle">{data.matrixSubtitle}</p>
-          </motion.div>
+      {/* CREATIVE EDITORIAL COMPARISON MATRIX: THE EVOLUTION FROM SEO TO GEO */}
+      {data.matrixRows && data.matrixRows.length > 0 && (
+        <section className="sg-section sg-evolution-section">
+          <div className="sg-container">
+            <motion.div
+              className="sg-section-header text-center"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: false, amount: 0.2 }}
+              transition={{ duration: 0.7 }}
+            >
+              <div className="sg-evolution-badge">
+                <span className="badge-pulse-dot" />
+                <span>{data.matrixTag || "PARADIGM SHIFT"}</span>
+              </div>
+              <h2 className="sg-section-title">{data.matrixTitle}</h2>
+              <p className="sg-section-subtitle">{data.matrixSubtitle}</p>
+            </motion.div>
 
-          <div className="sg-matrix-stream">
-            {data.matrixRows.map((row, idx) => (
+            <div className="sg-evolution-grid">
+              
+              {/* LEFT COLUMN: 3D ICON EMBLEM SHOWCASE WITH CYBER HUD */}
               <motion.div
-                key={row.feature}
-                className="sg-matrix-row"
-                initial={{ opacity: 0, x: idx % 2 === 0 ? -40 : 40 }}
-                whileInView={{ opacity: 1, x: 0 }}
+                className="sg-evolution-visual-col"
+                initial={{ opacity: 0, scale: 0.96, x: -30 }}
+                whileInView={{ opacity: 1, scale: 1, x: 0 }}
                 viewport={{ once: false, amount: 0.2 }}
-                transition={{ duration: 0.6, delay: idx * 0.08 }}
+                transition={{ duration: 0.7 }}
               >
-                <div className="sg-row-feature">
-                  <Sparkles size={16} className="feat-icon" />
-                  <span>{row.feature}</span>
-                </div>
-                
-                <div className="sg-row-compare">
-                  <div className="sg-col-trad">
-                    <span className="sg-col-lbl">OLD TRADITIONAL AGENCY</span>
-                    <p>{row.traditional}</p>
+                                <div className="sg-evolution-card-pod">
+                  <div className="sg-evolution-img-wrap">
+                    <img
+                      src={evolutionVisual.image}
+                      alt={data.matrixTitle || "Service Capability Matrix"}
+                      className="sg-evolution-3d-img"
+                    />
+                    <div className="sg-evolution-img-badge">
+                      <EvolutionBadgeIcon size={14} className="badge-icon-cpu" />
+                      <span>{evolutionVisual.badge}</span>
+                    </div>
                   </div>
-                  <div className="sg-col-geo">
-                    <span className="sg-col-lbl">BRANDFORGE ENGINE</span>
-                    <p>{row.brandforge}</p>
+
+                  <div className="sg-evolution-pod-caption">
+                    <div className="sg-pod-badge-row">
+                      <span className="sg-pod-chip chip-trad">{evolutionVisual.chipFrom}</span>
+                      <ArrowRightLeft size={14} className="sg-pod-arrow" />
+                      <span className="sg-pod-chip chip-geo">{evolutionVisual.chipTo}</span>
+                    </div>
+                    <h4 className="sg-pod-title">{evolutionVisual.title}</h4>
+                    <p className="sg-pod-desc">
+                      {evolutionVisual.desc}
+                    </p>
                   </div>
                 </div>
               </motion.div>
-            ))}
+
+              {/* RIGHT COLUMN: INTERACTIVE COMPARISON MATRIX MODULES */}
+              <div className="sg-evolution-cards-col">
+                {data.matrixRows.map((row, idx) => {
+                  const RowIcon = idx === 0 ? Bot : idx === 1 ? Layers : idx === 2 ? MessageSquare : Zap;
+
+                  return (
+                    <motion.div
+                      key={row.feature}
+                      className="sg-evolution-compare-item"
+                      initial={{ opacity: 0, y: 22 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: false, amount: 0.15 }}
+                      transition={{ duration: 0.5, delay: idx * 0.08 }}
+                    >
+                      {/* Feature Title Row */}
+                      <div className="sg-compare-header">
+                        <div className="sg-compare-icon-wrap">
+                          <RowIcon size={18} />
+                        </div>
+                        <span className="sg-compare-feature-name">{row.feature}</span>
+                        <span className="sg-compare-step-num">STAGE 0{idx + 1}</span>
+                      </div>
+
+                      {/* Dual Cards Comparison */}
+                      <div className="sg-compare-dual-grid">
+                        {/* Left: Traditional Agency */}
+                        <div className="sg-compare-box box-trad">
+                          <div className="sg-compare-box-label">
+                            <span className="status-dot dot-gray" />
+                            <span>TRADITIONAL SEO</span>
+                          </div>
+                          <p className="sg-compare-box-text">{row.traditional}</p>
+                        </div>
+
+                        {/* Center transfer glyph */}
+                        <div className="sg-compare-transfer-arrow">
+                          <ArrowRight size={16} />
+                        </div>
+
+                        {/* Right: BrandForge GEO Engine */}
+                        <div className="sg-compare-box box-geo">
+                          <div className="sg-compare-box-label">
+                            <span className="status-dot dot-red" />
+                            <span>BRANDFORGE GEO ENGINE</span>
+                          </div>
+                          <p className="sg-compare-box-text">{row.brandforge}</p>
+                        </div>
+                      </div>
+                    </motion.div>
+                  );
+                })}
+              </div>
+
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      )}
 
       {/* CARDLESS INTERACTIVE 6-PILLAR LIST STREAM */}
       <section className="sg-section sg-pillars-section">
@@ -831,7 +1207,7 @@ export default function ServiceLandingPage({ slug = "seo-geo", onOpenModal, navi
             </p>
           </motion.div>
 
-          <div className="sg-pillars-list">
+          <div className="sg-creative-accordion-list">
             {data.pillars.map((p, idx) => {
               const PillarIcon = p.icon || Zap;
               const isOpen = activePillar === idx;
@@ -839,49 +1215,95 @@ export default function ServiceLandingPage({ slug = "seo-geo", onOpenModal, navi
               return (
                 <motion.div
                   key={p.title}
-                  className={`sg-pillar-row ${isOpen ? "is-active" : ""}`}
-                  initial={{ opacity: 0, x: -35, y: 15 }}
-                  whileInView={{ opacity: 1, x: 0, y: 0 }}
-                  viewport={{ once: false, amount: 0.2 }}
-                  transition={{ duration: 0.6, delay: idx * 0.08 }}
-                  onClick={() => setActivePillar(isOpen ? null : idx)}
+                  className={`sg-creative-accordion-card ${isOpen ? "is-expanded" : ""}`}
+                  initial={{ opacity: 0, y: 25 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: false, amount: 0.15 }}
+                  transition={{ duration: 0.5, delay: idx * 0.07 }}
                 >
-                  <div className="sg-pillar-head">
-                    <div className="sg-pillar-num">0{idx + 1}</div>
-                    <div className="sg-big-pillar-icon">
-                      <PillarIcon size={24} className="pillar-lucide-icon" />
+                  <button
+                    type="button"
+                    className="sg-creative-accordion-btn"
+                    onClick={() => setActivePillar(isOpen ? null : idx)}
+                    aria-expanded={isOpen}
+                  >
+                    <div className="sg-acc-left-meta">
+                      <span className="sg-acc-index">0{idx + 1}</span>
+                      <div className={`sg-acc-icon-box ${isOpen ? "is-active" : ""}`}>
+                        <PillarIcon size={22} />
+                      </div>
                     </div>
-                    <div className="sg-pillar-title-group">
-                      <div className="sg-pillar-tag-inline">{p.tag}</div>
-                      <h3>{p.title}</h3>
-                    </div>
-                    <div className="sg-pillar-toggle">
-                      <ChevronDown size={20} className={`toggle-icon ${isOpen ? "open" : ""}`} />
-                    </div>
-                  </div>
 
-                  <AnimatePresence>
+                    <div className="sg-acc-content-header">
+                      <div className="sg-acc-tag-row">
+                        <span className="sg-acc-tag">{p.tag}</span>
+                        {p.deliverables && (
+                          <span className="sg-acc-count-badge">
+                            {p.deliverables.length} {p.deliverables.length === 1 ? "Capability" : "Capabilities"}
+                          </span>
+                        )}
+                      </div>
+                      <h3 className="sg-acc-title">{p.title}</h3>
+                    </div>
+
+                    <div className={`sg-acc-toggle-bubble ${isOpen ? "is-open" : ""}`}>
+                      <ChevronDown size={18} className="sg-acc-chevron" />
+                    </div>
+                  </button>
+
+                  <AnimatePresence initial={false}>
                     {isOpen && (
                       <motion.div
-                        className="sg-pillar-body"
+                        className="sg-acc-collapse-body"
                         initial={{ height: 0, opacity: 0 }}
                         animate={{ height: "auto", opacity: 1 }}
                         exit={{ height: 0, opacity: 0 }}
-                        transition={{ duration: 0.4 }}
+                        transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
                       >
-                        <p>{p.description}</p>
-                        {p.callout && (
-                          <div className="sg-pillar-callout" style={{ margin: "14px 0 16px", padding: "12px 16px", borderRadius: "12px", background: "rgba(239, 65, 54, 0.08)", borderLeft: "3px solid #EF4136", color: "rgba(255, 255, 255, 0.9)", fontSize: "14px", fontStyle: "italic", lineHeight: 1.6 }}>
-                            {p.callout}
-                          </div>
-                        )}
-                        <div className="sg-pillar-deliv-wrap">
-                          {p.deliverables.map((d) => (
-                            <span key={d} className="sg-deliv-tag">
-                              <CheckCircle2 size={13} />
-                              {d}
-                            </span>
-                          ))}
+                        <div className="sg-acc-body-inner">
+                          <p className="sg-acc-desc">{p.description}</p>
+
+                          {p.callout && (
+                            <div className="sg-acc-callout">
+                              <Sparkles size={16} className="sg-acc-callout-icon" />
+                              <p>{p.callout}</p>
+                            </div>
+                          )}
+
+                          {p.deliverables && p.deliverables.length > 0 && (
+                            <div className="sg-acc-deliverables-grid">
+                              {p.deliverables.map((deliv, dIdx) => {
+                                const parts = deliv.includes(" — ")
+                                  ? deliv.split(" — ")
+                                  : deliv.includes(" - ")
+                                  ? deliv.split(" - ")
+                                  : null;
+
+                                return (
+                                  <motion.div
+                                    key={dIdx}
+                                    className="sg-acc-deliv-item"
+                                    initial={{ opacity: 0, x: -10 }}
+                                    animate={{ opacity: 1, x: 0 }}
+                                    transition={{ duration: 0.25, delay: dIdx * 0.03 }}
+                                  >
+                                    <div className="sg-acc-deliv-bullet">
+                                      <CheckCircle2 size={15} />
+                                    </div>
+                                    <div className="sg-acc-deliv-text">
+                                      {parts ? (
+                                        <>
+                                          <strong>{parts[0]}</strong> — {parts.slice(1).join(" — ")}
+                                        </>
+                                      ) : (
+                                        deliv
+                                      )}
+                                    </div>
+                                  </motion.div>
+                                );
+                              })}
+                            </div>
+                          )}
                         </div>
                       </motion.div>
                     )}
@@ -1195,8 +1617,8 @@ const styles = `
   @import url("https://fonts.googleapis.com/css2?family=Outfit:wght@700;800;900&family=Plus+Jakarta+Sans:wght@500;600;700;800&family=JetBrains+Mono:wght@700;800&display=swap");
 
   .sg-page-root {
-    background: #000000;
-    color: #FFFFFF;
+    background: #FAFAFC;
+    color: #0A0A0C;
     font-family: "Plus Jakarta Sans", sans-serif;
     overflow-x: hidden;
     padding-top: 110px;
@@ -1204,15 +1626,8 @@ const styles = `
     z-index: 1;
   }
 
-  /* BLACK TRANSPARENT OVERLAY IN BETWEEN BACKGROUND & CONTENT */
   .sg-bg-overlay {
-    position: fixed;
-    inset: 0;
-    width: 100vw;
-    height: 100vh;
-    background: rgba(0, 0, 0, 0.68);
-    pointer-events: none;
-    z-index: 1;
+    display: none;
   }
 
   .sg-container {
@@ -1225,12 +1640,13 @@ const styles = `
 
   .text-center { text-align: center; }
 
-  /* TICKER STRIP */
+  /* ==========================================================================
+     SECTION 1: TICKER & HERO BANNER (LIGHT THEME)
+     ========================================================================== */
   .sg-marquee-bar {
-    background: rgba(10, 10, 12, 0.85);
-    backdrop-filter: blur(12px);
-    border-top: 1px solid rgba(255, 255, 255, 0.08);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    background: #0A0A0C;
+    border-top: 1px solid #1F2937;
+    border-bottom: 1px solid #1F2937;
     color: #FFFFFF;
     padding: 12px 0;
     margin-top: 8px;
@@ -1257,18 +1673,18 @@ const styles = `
     100% { transform: translateX(-50%); }
   }
 
-  /* HERO BANNER — CARDLESS */
   .sg-hero {
     position: relative;
     padding: clamp(40px, 6vw, 80px) 0 clamp(60px, 8vw, 100px);
-    background: transparent;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    background: #FFFFFF;
+    border-bottom: 1px solid #E5E7EB;
   }
 
-  /* HIGH-TECH BANNER SECTION (SEO & GEO) */
   .sg-hero-banner-tech {
-    background: transparent;
-    overflow: hidden;
+    background: #FFFFFF;
+    overflow: visible;
+    position: relative;
+    z-index: 25;
   }
 
   .tech-hud-overlay {
@@ -1285,7 +1701,7 @@ const styles = `
     left: -8%;
     width: 440px;
     height: 440px;
-    border: 1px dashed rgba(255, 255, 255, 0.08);
+    border: 1px dashed rgba(10, 10, 12, 0.07);
     border-radius: 50%;
     animation: sgSpinHUD 60s linear infinite;
   }
@@ -1295,7 +1711,7 @@ const styles = `
     right: -10%;
     width: 540px;
     height: 540px;
-    border: 1px dashed rgba(210, 4, 45, 0.22);
+    border: 1px dashed rgba(239, 65, 54, 0.18);
     animation: sgSpinHUDRev 75s linear infinite;
   }
 
@@ -1309,9 +1725,9 @@ const styles = `
   .tech-hud-dots {
     position: absolute;
     inset: 0;
-    background-image: radial-gradient(rgba(255, 255, 255, 0.15) 1px, transparent 1px);
+    background-image: radial-gradient(rgba(10, 10, 12, 0.08) 1px, transparent 1px);
     background-size: 32px 32px;
-    opacity: 0.18;
+    opacity: 0.6;
     mask-image: radial-gradient(circle at center, black 40%, transparent 80%);
     -webkit-mask-image: radial-gradient(circle at center, black 40%, transparent 80%);
   }
@@ -1331,7 +1747,6 @@ const styles = `
     align-items: flex-start;
   }
 
-  /* Social Icons Row */
   .sg-tech-socials {
     display: flex;
     align-items: center;
@@ -1346,31 +1761,30 @@ const styles = `
     width: 36px;
     height: 36px;
     border-radius: 50%;
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.12);
-    color: rgba(255, 255, 255, 0.75);
+    background: #F3F4F6;
+    border: 1px solid #E5E7EB;
+    color: #4B5563;
     text-decoration: none;
     transition: all 0.25s ease;
   }
 
   .sg-tech-social-link:hover {
     color: #FFFFFF;
-    background: #D2042D;
-    border-color: #D2042D;
+    background: #EF4136;
+    border-color: #EF4136;
     transform: translateY(-2px);
-    box-shadow: 0 0 18px rgba(210, 4, 45, 0.55);
+    box-shadow: 0 4px 14px rgba(239, 65, 54, 0.4);
   }
 
-  /* Cyber Pill Tag */
   .sg-tech-pill {
     display: inline-flex;
     align-items: center;
     gap: 8px;
     padding: 6px 16px;
     border-radius: 999px;
-    background: rgba(210, 4, 45, 0.1);
-    border: 1px solid rgba(210, 4, 45, 0.4);
-    color: #D2042D;
+    background: rgba(239, 65, 54, 0.08);
+    border: 1px solid rgba(239, 65, 54, 0.3);
+    color: #EF4136;
     font-size: 0.78rem;
     font-weight: 800;
     letter-spacing: 0.1em;
@@ -1380,55 +1794,44 @@ const styles = `
   }
 
   .sg-tech-pill-dot {
-    color: #D2042D;
+    color: #EF4136;
     font-size: 1.1rem;
     line-height: 1;
   }
 
   .sg-tech-pill.inline-pill {
-    background: rgba(210, 4, 45, 0.12);
-    border-color: rgba(210, 4, 45, 0.4);
-    color: #D2042D;
+    background: rgba(239, 65, 54, 0.12);
+    border-color: rgba(239, 65, 54, 0.35);
+    color: #EF4136;
   }
 
-  /* H1 Heading with Gradient Accent & Squiggly Wave */
   .sg-tech-h1 {
     font-family: "Outfit", sans-serif;
     font-size: clamp(34px, 4.5vw, 62px);
     font-weight: 900;
     line-height: 1.08;
-    letter-spacing: -0.025em;
-    color: #FFFFFF;
-    margin: 0 0 22px;
+    color: #0A0A0C;
+    margin: 0 0 20px;
+    letter-spacing: -0.02em;
   }
 
-  .sg-tech-h1-accent {
-    position: relative;
-    display: inline-block;
-    color: #D2042D;
-    background: linear-gradient(135deg, #FF2E55 0%, #D2042D 50%, #900018 100%);
+  .sg-tech-h1 span,
+  .sg-tech-h1 .accent-text {
+    color: #EF4136;
+    background: linear-gradient(135deg, #EF4136 0%, #D2042D 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
   }
 
-  .sg-tech-squiggle {
-    position: absolute;
-    left: 0;
-    bottom: -12px;
-    width: 100%;
-    height: 16px;
-    pointer-events: none;
-  }
-
   .sg-tech-micro-desc {
-    font-size: clamp(15px, 1.4vw, 18px);
+    font-size: clamp(16px, 1.4vw, 19px);
     line-height: 1.6;
-    color: rgba(255, 255, 255, 0.82);
-    margin: 0 0 32px;
+    color: #4B5563;
     max-width: 580px;
+    margin: 0 0 32px;
+    font-weight: 500;
   }
 
-  /* Dual Action Buttons (Start Free Audit + Circular Play Button) */
   .sg-tech-action-row {
     display: flex;
     align-items: center;
@@ -1440,24 +1843,24 @@ const styles = `
     display: inline-flex;
     align-items: center;
     gap: 10px;
-    padding: 14px 30px;
-    border-radius: 999px;
-    background: #D2042D;
+    padding: 15px 32px;
+    border-radius: 14px;
+    background: #EF4136;
     color: #FFFFFF;
     font-family: "Outfit", sans-serif;
-    font-size: 0.92rem;
+    font-size: 0.95rem;
     font-weight: 800;
     letter-spacing: 0.03em;
     border: none;
     cursor: pointer;
     transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-    box-shadow: 0 10px 28px rgba(210, 4, 45, 0.45);
+    box-shadow: 0 8px 24px rgba(239, 65, 54, 0.35);
   }
 
   .sg-tech-start-btn:hover {
     transform: translateY(-3px);
-    box-shadow: 0 14px 38px rgba(210, 4, 45, 0.7);
-    background: #B80324;
+    box-shadow: 0 12px 30px rgba(10, 10, 12, 0.25);
+    background: #0A0A0C;
   }
 
   .sg-tech-play-btn {
@@ -1475,18 +1878,19 @@ const styles = `
     width: 44px;
     height: 44px;
     border-radius: 50%;
-    background: #D2042D;
+    background: #0A0A0C;
     color: #FFFFFF;
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 0 24px rgba(210, 4, 45, 0.6);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
   }
 
   .sg-tech-play-btn:hover .sg-tech-play-icon-wrap {
     transform: scale(1.08);
-    box-shadow: 0 0 35px rgba(210, 4, 45, 0.9);
+    background: #EF4136;
+    box-shadow: 0 0 20px rgba(239, 65, 54, 0.5);
   }
 
   .sg-tech-play-label {
@@ -1494,15 +1898,14 @@ const styles = `
     font-size: 0.88rem;
     font-weight: 800;
     letter-spacing: 0.04em;
-    color: rgba(255, 255, 255, 0.88);
+    color: #0A0A0C;
     transition: color 0.2s ease;
   }
 
   .sg-tech-play-btn:hover .sg-tech-play-label {
-    color: #D2042D;
+    color: #EF4136;
   }
 
-  /* Right-Side BrandForge Theme 3D Artwork (Grounded, No Hover Float) */
   .sg-tech-banner-right {
     position: relative;
     display: flex;
@@ -1527,7 +1930,26 @@ const styles = `
     display: block;
     position: relative;
     z-index: 1;
-    filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.95)) drop-shadow(0 0 45px rgba(210, 4, 45, 0.38));
+    filter: drop-shadow(0 15px 35px rgba(0, 0, 0, 0.12));
+  }
+
+  .is-seo-geo-artwork-col {
+    z-index: 40 !important;
+    position: relative;
+  }
+
+  .is-seo-geo-floating-box {
+    z-index: 40 !important;
+    will-change: transform;
+  }
+
+  .is-seo-geo-img {
+    width: 100% !important;
+    max-width: 530px !important;
+    height: auto !important;
+    object-fit: contain;
+    filter: drop-shadow(0 15px 35px rgba(0, 0, 0, 0.12)) !important;
+    border-radius: 0 !important;
   }
 
   .sg-tech-art-ambient-glow {
@@ -1537,7 +1959,7 @@ const styles = `
     width: 480px;
     height: 480px;
     transform: translate(-50%, -50%);
-    background: radial-gradient(circle, rgba(210, 4, 45, 0.32) 0%, rgba(130, 8, 25, 0.12) 48%, transparent 70%);
+    background: radial-gradient(circle, rgba(239, 65, 54, 0.12) 0%, rgba(239, 65, 54, 0.03) 50%, transparent 70%);
     filter: blur(55px);
     pointer-events: none;
     z-index: 0;
@@ -1551,11 +1973,9 @@ const styles = `
     gap: 10px;
     padding: 10px 16px;
     border-radius: 16px;
-    background: rgba(14, 2, 4, 0.92);
-    border: 1px solid rgba(210, 4, 45, 0.4);
-    backdrop-filter: blur(14px);
-    -webkit-backdrop-filter: blur(14px);
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.8), 0 0 25px rgba(210, 4, 45, 0.25);
+    background: #FFFFFF;
+    border: 1px solid #E5E7EB;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
   }
 
   .sg-tech-floating-badge.badge-top {
@@ -1572,121 +1992,254 @@ const styles = `
     display: block;
     font-size: 0.86rem;
     font-weight: 900;
-    color: #FFFFFF;
+    color: #0A0A0C;
     font-family: "Outfit", sans-serif;
   }
 
   .sg-tech-floating-badge span {
     display: block;
     font-size: 0.72rem;
-    color: rgba(255, 255, 255, 0.65);
+    font-weight: 700;
+    color: #6B7280;
+    font-family: "JetBrains Mono", monospace;
   }
 
-  .badge-icon-sparkle { color: #D2042D; }
-  .badge-icon-check { color: #D2042D; }
+  .badge-icon-sparkle, .badge-icon-check {
+    color: #EF4136;
+  }
 
-  /* DEDICATED PARAGRAPH STORY & LEAD FORM SECTION (SEO & GEO) */
+  /* ==========================================================================
+     SECTION 2: DEDICATED PARAGRAPH STORY & LEAD FORM (BLACK BACKGROUND)
+     ========================================================================== */
   .sg-seo-story-section {
-    padding: clamp(60px, 8vw, 100px) 0 clamp(40px, 5vw, 60px);
+    padding: clamp(70px, 9vw, 110px) 0 clamp(50px, 6vw, 80px);
     position: relative;
     z-index: 2;
-    background: transparent;
-    border-top: 1px solid rgba(210, 4, 45, 0.2);
-    border-bottom: 1px solid rgba(210, 4, 45, 0.15);
+    background: #0A0A0C;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   }
 
   .sg-seo-split-grid {
     display: grid;
     grid-template-columns: 1.15fr 0.85fr;
-    gap: clamp(32px, 5vw, 64px);
+    gap: clamp(36px, 5vw, 68px);
     align-items: flex-start;
+    margin-bottom: clamp(50px, 6vw, 75px);
   }
 
   .sg-seo-story-left {
     display: flex;
     flex-direction: column;
+    align-items: flex-start;
   }
 
   .sg-seo-story-heading {
     font-family: "Outfit", sans-serif;
-    font-size: clamp(26px, 3.4vw, 46px);
+    font-size: clamp(30px, 4vw, 50px);
     font-weight: 900;
     line-height: 1.15;
     color: #FFFFFF;
-    margin: 14px 0 22px;
+    margin: 0 0 28px;
     letter-spacing: -0.02em;
   }
 
   .sg-seo-story-heading span {
-    color: #D2042D;
+    color: #EF4136;
   }
 
   .sg-seo-story-body {
-    margin-bottom: 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
   }
 
   .sg-seo-story-para {
-    font-size: clamp(15px, 1.4vw, 17px);
-    line-height: 1.7;
-    color: rgba(255, 255, 255, 0.78);
-    margin: 0 0 16px;
+    font-size: 16.5px;
+    line-height: 1.8;
+    color: rgba(255, 255, 255, 0.82);
+    margin: 0;
   }
 
   .sg-seo-story-para.lead-para {
-    font-size: clamp(17px, 1.6vw, 20px);
+    font-size: clamp(17px, 1.35vw, 19.5px);
     font-weight: 600;
-    line-height: 1.65;
     color: #FFFFFF;
-    border-left: 3px solid #D2042D;
-    padding-left: 18px;
-    margin-bottom: 20px;
-    background: rgba(210, 4, 45, 0.06);
-    padding-top: 6px;
-    padding-bottom: 6px;
-    border-radius: 0 12px 12px 0;
+    line-height: 1.75;
   }
 
+  .sg-seo-story-right {
+    position: sticky;
+    top: 100px;
+  }
+
+  /* HIGH CONTRAST FORM CARD WITH GENEROUS PADDING */
+  .sg-inline-form-wrap {
+    position: relative;
+    background: #FFFFFF;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 28px;
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.5), 0 0 35px rgba(255, 255, 255, 0.04);
+    overflow: hidden;
+    padding: clamp(34px, 4vw, 46px) clamp(28px, 3.5vw, 40px);
+    transition: box-shadow 0.3s ease;
+  }
+
+  .sg-inline-form-wrap:hover {
+    box-shadow: 0 28px 70px rgba(0, 0, 0, 0.65), 0 0 45px rgba(239, 65, 54, 0.08);
+  }
+
+  .sg-inline-form-wrap .lt-header {
+    margin-bottom: 24px !important;
+  }
+
+  .sg-inline-form-wrap h2,
+  .sg-inline-form-wrap h3,
+  .sg-inline-form-wrap h4,
+  .sg-inline-form-wrap .lt-title,
+  .sg-inline-form-wrap .lt-header-title {
+    color: #0A0A0C !important;
+    font-size: clamp(1.35rem, 2.5vw, 1.65rem) !important;
+    font-weight: 900 !important;
+    letter-spacing: -0.02em !important;
+    margin-bottom: 8px !important;
+  }
+
+  .sg-inline-form-wrap p,
+  .sg-inline-form-wrap .lt-subtitle,
+  .sg-inline-form-wrap .lt-header-subtitle {
+    color: #4B5563 !important;
+    font-size: 0.88rem !important;
+    line-height: 1.55 !important;
+    max-width: 400px !important;
+  }
+
+  .sg-inline-form-wrap .lt-form {
+    gap: 14px !important;
+  }
+
+  .sg-inline-form-wrap .lt-field-icon {
+    left: 16px !important;
+    color: #EF4136 !important;
+  }
+
+  .sg-inline-form-wrap input,
+  .sg-inline-form-wrap select,
+  .sg-inline-form-wrap textarea {
+    background: #F9FAFB !important;
+    border: 1px solid #D1D5DB !important;
+    color: #111827 !important;
+    border-radius: 12px !important;
+    font-size: 0.92rem !important;
+    font-weight: 500 !important;
+    padding-left: 48px !important;
+    padding-right: 16px !important;
+    transition: all 0.2s ease !important;
+  }
+
+  .sg-inline-form-wrap input,
+  .sg-inline-form-wrap select {
+    height: 48px !important;
+  }
+
+  .sg-inline-form-wrap textarea {
+    padding-top: 14px !important;
+    padding-bottom: 14px !important;
+  }
+
+  .sg-inline-form-wrap select {
+    color: #111827 !important;
+  }
+
+  .sg-inline-form-wrap select option {
+    background: #FFFFFF !important;
+    color: #111827 !important;
+  }
+
+  .sg-inline-form-wrap input:focus,
+  .sg-inline-form-wrap select:focus,
+  .sg-inline-form-wrap textarea:focus {
+    border-color: #EF4136 !important;
+    background: #FFFFFF !important;
+    box-shadow: 0 0 0 3px rgba(239, 65, 54, 0.15) !important;
+    outline: none !important;
+  }
+
+  .sg-inline-form-wrap input::placeholder,
+  .sg-inline-form-wrap textarea::placeholder {
+    color: #9CA3AF !important;
+  }
+
+  .sg-inline-form-wrap .lt-submit-btn,
+  .sg-inline-form-wrap button[type="submit"],
+  .sg-form-btn {
+    height: 52px !important;
+    background: #0A0A0C !important;
+    color: #FFFFFF !important;
+    border: none !important;
+    border-radius: 12px !important;
+    font-size: 0.95rem !important;
+    font-weight: 800 !important;
+    letter-spacing: 0.05em !important;
+    margin-top: 10px !important;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25) !important;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .sg-inline-form-wrap .lt-submit-btn:hover,
+  .sg-inline-form-wrap button[type="submit"]:hover,
+  .sg-form-btn:hover {
+    background: #EF4136 !important;
+    box-shadow: 0 10px 25px rgba(239, 65, 54, 0.4) !important;
+    transform: translateY(-2px);
+  }
+
+  .sg-inline-form-wrap .lt-footer-note {
+    color: #6B7280 !important;
+    font-size: 0.8rem !important;
+    margin-top: 16px !important;
+  }
+
+  /* 3 Story Pillar Cards on Black Background */
   .sg-seo-story-pillars {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: clamp(16px, 2vw, 24px);
-    margin-top: clamp(36px, 4vw, 48px);
-    padding-top: clamp(28px, 3.5vw, 40px);
-    border-top: 1px solid rgba(210, 4, 45, 0.2);
+    gap: 24px;
+    padding-top: 40px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
   }
 
   .sg-story-pillar-item {
     display: flex;
+    gap: 18px;
     align-items: flex-start;
-    gap: 16px;
-    background: rgba(210, 4, 45, 0.03);
-    border: 1px solid rgba(210, 4, 45, 0.16);
-    border-radius: 20px;
-    padding: 22px 20px;
+    padding: 24px 22px;
+    border-radius: 18px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
     transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    height: 100%;
   }
 
   .sg-story-pillar-item:hover {
-    border-color: rgba(210, 4, 45, 0.55);
-    background: rgba(210, 4, 45, 0.08);
-    transform: translateY(-4px);
-    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5), 0 0 25px rgba(210, 4, 45, 0.2);
+    border-color: #EF4136;
+    background: rgba(255, 255, 255, 0.07);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 24px rgba(239, 65, 54, 0.2);
   }
 
   .pillar-icon-box {
-    flex-shrink: 0;
-    width: 44px;
-    height: 44px;
-    border-radius: 14px;
-    background: rgba(210, 4, 45, 0.15);
-    border: 1px solid rgba(210, 4, 45, 0.4);
-    color: #D2042D;
+    width: 46px;
+    height: 46px;
+    border-radius: 12px;
+    background: rgba(239, 65, 54, 0.15);
+    border: 1px solid rgba(239, 65, 54, 0.35);
+    color: #EF4136;
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-shrink: 0;
   }
 
   .sg-story-pillar-item h4 {
@@ -1695,582 +2248,106 @@ const styles = `
     font-weight: 800;
     color: #FFFFFF;
     margin: 0 0 6px;
-    line-height: 1.3;
   }
 
   .sg-story-pillar-item p {
-    font-size: 0.86rem;
+    font-size: 0.88rem;
     line-height: 1.55;
-    color: rgba(255, 255, 255, 0.65);
+    color: rgba(255, 255, 255, 0.75);
     margin: 0;
   }
 
-  .sg-seo-story-right {
-    position: sticky;
-    top: 90px;
+  /* ==========================================================================
+     SECTION 3: METRICS & CLIENT LOGOS (LIGHT THEME)
+     ========================================================================== */
+  .sg-metrics-section {
+    background: #FFFFFF;
+    border-bottom: 1px solid #E5E7EB;
+    padding: 60px 0;
   }
 
-  .sg-hero-glow {
-    display: none;
-  }
-
-  .sg-hero-grid {
-    display: grid;
-    grid-template-columns: 1.1fr 0.9fr;
-    gap: clamp(32px, 5vw, 64px);
-    align-items: center;
-  }
-
-  .sg-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    padding: 6px 16px;
-    border-radius: 999px;
-    background: rgba(239, 65, 54, 0.12);
-    border: 1px solid rgba(239, 65, 54, 0.35);
-    color: #EF4136;
-    font-size: 0.82rem;
-    font-weight: 800;
-    margin-bottom: 20px;
-    text-transform: uppercase;
-  }
-
-  .sg-hero-title {
-    font-family: "Outfit", sans-serif;
-    font-size: clamp(34px, 5vw, 68px);
-    font-weight: 900;
-    line-height: 1.05;
-    letter-spacing: -0.02em;
-    color: #FFFFFF;
-    margin: 0 0 20px;
-  }
-
-  .sg-hero-title span { color: #EF4136; }
-
-  .sg-hero-desc {
-    font-size: clamp(15px, 1.6vw, 18px);
-    line-height: 1.65;
-    color: rgba(255, 255, 255, 0.82);
-    margin: 0 0 32px;
-  }
-
-  .sg-hero-desc-para {
-    margin: 0 0 16px;
-  }
-
-  .sg-hero-desc-para:last-child {
-    margin-bottom: 0;
-  }
-
-  .sg-hero-actions { display: flex; gap: 14px; }
-
-  /* HIGH-TECH GLOWING GLASS FORM BACKGROUND EFFECT (BORDERLESS) */
-  .sg-inline-form-wrap {
-    position: relative;
-    padding: clamp(24px, 3vw, 36px) clamp(20px, 2.5vw, 32px);
-    background: rgba(14, 2, 5, 0.45);
-    border-radius: 24px;
-    border: 1px solid rgba(210, 4, 45, 0.35);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    box-shadow: 
-      0 20px 60px rgba(0, 0, 0, 0.7),
-      0 0 35px rgba(210, 4, 45, 0.12);
-    overflow: hidden;
-    transition: all 0.35s ease;
-  }
-
-  .sg-inline-form-wrap:hover {
-    box-shadow: 
-      0 25px 60px rgba(0, 0, 0, 0.85),
-      0 0 50px rgba(210, 4, 45, 0.22);
-    border-color: rgba(210, 4, 45, 0.5);
-  }
-
-  .sg-inline-form-wrap::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 160px;
-    height: 160px;
-    background: radial-gradient(circle, rgba(210, 4, 45, 0.25) 0%, transparent 70%);
-    filter: blur(30px);
-    pointer-events: none;
-  }
-
-  .sg-inline-form-wrap::after {
-    content: "";
-    position: absolute;
-    bottom: -40px;
-    left: -40px;
-    width: 140px;
-    height: 140px;
-    background: radial-gradient(circle, rgba(210, 4, 45, 0.16) 0%, transparent 70%);
-    filter: blur(35px);
-    pointer-events: none;
-  }
-
-  .sg-form-header {
-    position: relative;
-    z-index: 2;
-  }
-
-  .sg-form-sparkle {
-    color: #D2042D;
-    margin-bottom: 8px;
-    filter: drop-shadow(0 0 8px rgba(210, 4, 45, 0.8));
-  }
-
-  .sg-form-header h3 {
-    font-size: clamp(20px, 2.2vw, 24px);
-    font-weight: 900;
-    margin: 0 0 6px;
-    color: #FFFFFF;
-    letter-spacing: -0.01em;
-    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.7);
-  }
-
-  .sg-form-header p {
-    font-size: 13px;
-    color: rgba(255, 255, 255, 0.7);
-    margin: 0 0 24px;
-    font-weight: 500;
-  }
-
-  .sg-lead-form {
-    position: relative;
-    z-index: 2;
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-  }
-
-  .sg-field-row { width: 100%; }
-
-  .sg-field-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
-
-  .sg-input-line, .sg-select-line, .sg-textarea-line {
-    width: 100%;
-    padding: 12px 14px;
-    background: rgba(6, 5, 9, 0.5);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-    border: 1px solid rgba(255, 255, 255, 0.16);
-    border-radius: 10px;
-    color: #FFFFFF;
-    font-size: 13.5px;
-    font-weight: 600;
-    outline: none;
-    transition: all 0.25s ease;
-    font-family: inherit;
-    box-sizing: border-box;
-  }
-
-  .sg-input-line::placeholder, .sg-textarea-line::placeholder {
-    color: rgba(255, 255, 255, 0.45);
-    font-weight: 500;
-  }
-
-  .sg-select-line option {
-    background: #0A0A0C;
-    color: #FFFFFF;
-  }
-
-  .sg-input-line:focus, .sg-select-line:focus, .sg-textarea-line:focus {
-    background: rgba(6, 5, 9, 0.75);
-    border-color: #D2042D;
-    box-shadow: 0 0 16px rgba(210, 4, 45, 0.35), inset 0 0 8px rgba(210, 4, 45, 0.1);
-  }
-
-  .sg-form-btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    height: 52px;
-    width: 100%;
-    margin-top: 8px;
-    background: linear-gradient(135deg, #D2042D 0%, #A80324 100%);
-    color: #FFFFFF;
-    border: none;
-    border-radius: 12px;
-    font-size: 0.92rem;
-    font-weight: 800;
-    letter-spacing: 0.05em;
-    cursor: pointer;
-    box-shadow: 0 10px 25px rgba(210, 4, 45, 0.45);
-    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-  }
-
-  .sg-form-btn:hover {
-    background: linear-gradient(135deg, #E61940 0%, #D2042D 100%);
-    transform: translateY(-2px);
-    box-shadow: 0 14px 35px rgba(210, 4, 45, 0.65);
-  }
-
-  /* BIG WIDESCREEN HERO VISUAL SHOWCASE FRAME STYLES */
-  .sg-big-visual-frame {
-    position: relative;
-    width: 100%;
-    height: clamp(280px, 35vw, 440px);
-    margin-top: 50px;
-    border-radius: 28px;
-    overflow: hidden;
-    border: 1.5px solid rgba(239, 65, 54, 0.4);
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.7), 0 0 40px rgba(239, 65, 54, 0.2);
-  }
-
-  .big-visual-img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    filter: brightness(0.9) contrast(1.1);
-  }
-
-  .visual-glass-overlay {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(180deg, transparent 40%, rgba(10, 10, 12, 0.85) 100%);
-    pointer-events: none;
-  }
-
-  .floating-badge {
-    position: absolute;
-    display: flex;
-    align-items: center;
-    gap: 14px;
-    padding: 12px 20px;
-    border-radius: 20px;
-    background: rgba(10, 10, 14, 0.85);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    backdrop-filter: blur(16px);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-    z-index: 5;
-  }
-
-  .floating-badge.top-left {
-    top: 24px;
-    left: 24px;
-  }
-
-  .floating-badge.bottom-right {
-    bottom: 24px;
-    right: 24px;
-  }
-
-  .big-floating-png {
-    width: 36px;
-    height: 36px;
-    object-fit: contain;
-    filter: drop-shadow(0 0 8px rgba(239, 65, 54, 0.8));
-  }
-
-  .floating-badge strong {
-    display: block;
-    font-size: 13px;
-    font-weight: 900;
-    color: #FFFFFF;
-    font-family: "Outfit", sans-serif;
-  }
-
-  .floating-badge span {
-    font-size: 11px;
-    color: rgba(255, 255, 255, 0.65);
-  }
-
-  /* LARGE PILLAR ICON BADGES */
-  .sg-big-pillar-icon {
-    position: relative;
-    width: 52px;
-    height: 52px;
-    border-radius: 16px;
-    background: rgba(239, 65, 54, 0.12);
-    border: 1.5px solid rgba(239, 65, 54, 0.35);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-right: 20px;
-    flex-shrink: 0;
-    box-shadow: 0 0 20px rgba(239, 65, 54, 0.2);
-  }
-
-  .pillar-lucide-icon {
-    color: #EF4136;
-  }
-
-  .pillar-png-icon {
-    position: absolute;
-    bottom: -6px;
-    right: -6px;
-    width: 22px;
-    height: 22px;
-    object-fit: contain;
-    filter: drop-shadow(0 0 4px rgba(239, 65, 54, 0.8));
-  }
-
-  /* CARDLESS METRICS STRIP */
   .sg-metrics-strip {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 20px;
-    margin-top: 60px;
-    padding-top: 40px;
-    border-top: 1px solid rgba(255, 255, 255, 0.12);
+    margin-bottom: 48px;
+  }
+
+  .sg-metric-item {
+    text-align: center;
+    padding: 0 20px;
+    border-right: 1px solid #E5E7EB;
+  }
+
+  .sg-metric-item:last-child {
+    border-right: none;
   }
 
   .sg-metric-val {
     font-family: "Outfit", sans-serif;
-    font-size: clamp(28px, 3.5vw, 46px);
+    font-size: clamp(34px, 4vw, 52px);
     font-weight: 900;
-    color: #EF4136;
+    color: #0A0A0C;
     line-height: 1;
     display: block;
-    margin-bottom: 6px;
+    margin-bottom: 8px;
+    letter-spacing: -0.02em;
   }
 
   .sg-metric-lbl {
-    font-size: 14px;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.82rem;
     font-weight: 800;
-    color: #FFFFFF;
+    letter-spacing: 0.06em;
+    color: #EF4136;
+    text-transform: uppercase;
+    margin-bottom: 6px;
   }
 
-  .sg-badge-png-icon {
-    height: 18px;
-    width: 18px;
-    object-fit: contain;
-    filter: drop-shadow(0 0 6px rgba(239, 65, 54, 0.6));
+  .sg-metric-sub {
+    font-size: 0.85rem;
+    color: #6B7280;
+    line-height: 1.4;
   }
 
-  .png-deliv-icon {
-    height: 14px;
-    width: 14px;
-    object-fit: contain;
-    margin-right: 2px;
-  }
-
-  /* TRANSPARENT PNG CLIENT LOGOS PROOF STREAM */
   .sg-client-png-strip {
-    margin-top: 40px;
-    padding-top: 28px;
-    border-top: 1px solid rgba(255, 255, 255, 0.12);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 20px;
+    text-align: center;
+    padding-top: 24px;
+    border-top: 1px solid #F3F4F6;
   }
 
   .strip-title {
-    font-family: "Outfit", sans-serif;
-    font-size: 12px;
+    display: block;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.72rem;
     font-weight: 800;
-    letter-spacing: 0.18em;
-    color: rgba(255, 255, 255, 0.65);
+    letter-spacing: 0.12em;
+    color: #9CA3AF;
     text-transform: uppercase;
+    margin-bottom: 24px;
   }
 
   .strip-logos {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: clamp(16px, 4vw, 48px);
-    flex-wrap: nowrap;
-    width: 100%;
-    overflow-x: auto;
-    scrollbar-width: none;
-    -ms-overflow-style: none;
-    padding: 10px 0;
-  }
-
-  .strip-logos::-webkit-scrollbar {
-    display: none;
+    gap: clamp(24px, 5vw, 60px);
+    flex-wrap: wrap;
   }
 
   .png-client-logo {
-    height: clamp(38px, 4.5vw, 56px);
-    max-width: 180px;
-    width: auto;
+    max-height: 38px;
     object-fit: contain;
-    flex-shrink: 0;
-    filter: brightness(0) invert(1) opacity(0.9) drop-shadow(0 2px 10px rgba(255, 255, 255, 0.25));
-    transition: opacity 0.25s ease, filter 0.25s ease, transform 0.25s ease;
+    filter: grayscale(100%) opacity(0.7) contrast(1.2);
+    transition: all 0.3s ease;
   }
 
   .png-client-logo:hover {
-    filter: brightness(0) invert(1) opacity(1) drop-shadow(0 6px 20px rgba(239, 65, 54, 0.7));
+    filter: grayscale(0%) opacity(1) contrast(1);
+    transform: scale(1.05);
   }
 
-  .sg-metric-sub {
-    font-size: 12px;
-    color: rgba(255, 255, 255, 0.65);
-  }
-
-  /* WHY BUSINESSES CHOOSE BRAND FORGE SECTION */
-  .sg-why-section {
-    position: relative;
-    border-top: 1px solid rgba(255, 255, 255, 0.08);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-    background: linear-gradient(180deg, rgba(239, 65, 54, 0.03) 0%, rgba(10, 10, 14, 0.4) 100%);
-  }
-
-  .sg-why-grid {
-    display: grid;
-    grid-template-columns: 1.15fr 1fr;
-    gap: clamp(36px, 5vw, 64px);
-    align-items: center;
-  }
-
-  .sg-why-title {
-    font-family: "Outfit", sans-serif;
-    font-size: clamp(26px, 3.5vw, 42px);
-    font-weight: 900;
-    line-height: 1.15;
-    color: #FFFFFF;
-    margin: 0 0 18px;
-    letter-spacing: -0.01em;
-  }
-
-  .sg-why-desc {
-    font-size: clamp(15px, 1.5vw, 17px);
-    line-height: 1.7;
-    color: rgba(255, 255, 255, 0.8);
-    margin: 0 0 20px;
-  }
-
-  .sg-why-leadin {
-    font-size: 15px;
-    font-weight: 700;
-    color: #FFFFFF;
-    letter-spacing: 0.01em;
-    margin: 0;
-  }
-
-  .sg-why-points-grid {
-    display: flex;
-    flex-direction: column;
-    gap: 14px;
-  }
-
-  .sg-why-point-card {
-    display: flex;
-    align-items: center;
-    gap: 16px;
-    padding: 18px 22px;
-    border-radius: 16px;
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(12px);
-    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-  }
-
-  .sg-why-point-card:hover {
-    border-color: rgba(239, 65, 54, 0.5);
-    background: rgba(239, 65, 54, 0.08);
-    transform: translateX(6px);
-  }
-
-  .sg-why-point-icon {
-    width: 38px;
-    height: 38px;
-    border-radius: 10px;
-    background: rgba(239, 65, 54, 0.15);
-    border: 1px solid rgba(239, 65, 54, 0.35);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-  }
-
-  .sg-why-point-icon .check-icon {
-    color: #EF4136;
-  }
-
-  .sg-why-point-content p {
-    font-size: clamp(14px, 1.3vw, 16px);
-    font-weight: 600;
-    line-height: 1.5;
-    color: #FFFFFF;
-    margin: 0;
-  }
-
-  @media (max-width: 920px) {
-    .sg-why-grid {
-      grid-template-columns: 1fr;
-      gap: 32px;
-    }
-  }
-
-  /* WHAT MAKES US DIFFERENT SECTION */
-  .sg-diff-section {
-    position: relative;
-    border-top: 1px solid rgba(255, 255, 255, 0.08);
-    background: linear-gradient(180deg, rgba(239, 65, 54, 0.02) 0%, rgba(10, 10, 14, 0.5) 100%);
-  }
-
-  .sg-diff-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 24px;
-  }
-
-  .sg-diff-card {
-    padding: 32px 28px;
-    border-radius: 20px;
-    background: rgba(255, 255, 255, 0.02);
-    border: 1px solid rgba(255, 255, 255, 0.09);
-    backdrop-filter: blur(14px);
-    transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-  }
-
-  .sg-diff-card:hover {
-    border-color: rgba(239, 65, 54, 0.45);
-    background: rgba(239, 65, 54, 0.06);
-    transform: translateY(-5px);
-    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.6), 0 0 30px rgba(239, 65, 54, 0.15);
-  }
-
-  .sg-diff-icon-wrap {
-    width: 48px;
-    height: 48px;
-    border-radius: 14px;
-    background: rgba(239, 65, 54, 0.15);
-    border: 1px solid rgba(239, 65, 54, 0.35);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 4px;
-  }
-
-  .sg-diff-icon-wrap .diff-lucide-icon {
-    color: #EF4136;
-  }
-
-  .sg-diff-card h3 {
-    font-family: "Outfit", sans-serif;
-    font-size: 20px;
-    font-weight: 800;
-    color: #FFFFFF;
-    margin: 0;
-  }
-
-  .sg-diff-card p {
-    font-size: 14.5px;
-    line-height: 1.65;
-    color: rgba(255, 255, 255, 0.75);
-    margin: 0;
-  }
-
-  @media (max-width: 768px) {
-    .sg-diff-grid {
-      grid-template-columns: 1fr;
-    }
-  }
-
-  /* CARDLESS COMPARISON STREAM */
+  /* GENERAL SECTION COMMONS */
   .sg-section {
     padding: clamp(60px, 8vw, 100px) 0;
     position: relative;
@@ -2292,7 +2369,7 @@ const styles = `
     font-family: "Outfit", sans-serif;
     font-size: clamp(28px, 4vw, 48px);
     font-weight: 900;
-    color: #FFFFFF;
+    color: #0A0A0C;
     margin: 0 0 12px;
   }
 
@@ -2300,306 +2377,938 @@ const styles = `
 
   .sg-section-subtitle {
     font-size: 16px;
-    color: rgba(255, 255, 255, 0.72);
+    color: #4B5563;
     max-width: 620px;
     margin: 0 auto 50px;
   }
 
-  .sg-matrix-stream {
+  /* ==========================================================================
+     SECTION 4: WHY BUSINESSES CHOOSE BRAND FORGE (BLACK BACKGROUND)
+     ========================================================================== */
+  .sg-why-section {
+    position: relative;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    background: #0A0A0C;
+  }
+
+  .sg-why-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.15fr;
+    gap: clamp(36px, 5vw, 60px);
+    align-items: center;
+  }
+
+  .sg-why-left {
     display: flex;
     flex-direction: column;
+    align-items: flex-start;
   }
 
-  .sg-matrix-row {
-    padding: 24px 0;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
-    display: grid;
-    grid-template-columns: 240px 1fr;
-    gap: 30px;
-    align-items: center;
-  }
-
-  .sg-row-feature {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    font-weight: 800;
-    color: #FFFFFF;
-  }
-
-  .sg-row-feature .feat-icon { color: #EF4136; }
-
-  .sg-row-compare {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 30px;
-  }
-
-  .sg-col-lbl {
-    font-size: 10px;
-    font-weight: 800;
-    letter-spacing: 0.1em;
-    color: rgba(255, 255, 255, 0.45);
-    display: block;
-    margin-bottom: 4px;
-  }
-
-  .sg-col-trad p { color: rgba(255, 255, 255, 0.6); margin: 0; font-size: 14px; }
-
-  .sg-col-geo p { color: #EF4136; margin: 0; font-size: 14px; font-weight: 700; }
-
-  /* CARDLESS PILLARS ACCORDION STREAM */
-  .sg-pillars-list {
-    display: flex;
-    flex-direction: column;
-  }
-
-  .sg-pillar-row {
-    border-bottom: 1.5px solid rgba(255, 255, 255, 0.15);
-    padding: 24px 0;
-    cursor: pointer;
-    transition: border-bottom-color 0.25s ease;
-  }
-
-  .sg-pillar-row.is-active, .sg-pillar-row:hover {
-    border-bottom-color: #EF4136;
-  }
-
-  .sg-pillar-head {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-
-  .sg-pillar-num {
+  .sg-why-title {
     font-family: "Outfit", sans-serif;
-    font-size: 28px;
+    font-size: clamp(30px, 4vw, 46px);
     font-weight: 900;
-    color: #EF4136;
-    width: 60px;
-  }
-
-  .sg-pillar-title-group {
-    flex: 1;
-  }
-
-  .sg-pillar-tag-inline {
-    font-size: 11px;
-    font-weight: 800;
-    color: rgba(255, 255, 255, 0.5);
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-  }
-
-  .sg-pillar-title-group h3 {
-    font-size: 22px;
-    font-weight: 800;
-    margin: 2px 0 0;
     color: #FFFFFF;
+    line-height: 1.15;
+    margin: 0 0 20px;
   }
 
-  .toggle-icon {
-    color: #FFFFFF;
-    transition: transform 0.3s ease;
-  }
-
-  .toggle-icon.open { transform: rotate(180deg); color: #EF4136; }
-
-  .sg-pillar-body {
-    padding-left: 60px;
-    padding-top: 16px;
-  }
-
-  .sg-pillar-body p {
-    font-size: 15px;
-    color: rgba(255, 255, 255, 0.75);
-    max-width: 700px;
+  .sg-why-desc {
+    font-size: 16px;
+    line-height: 1.7;
+    color: rgba(255, 255, 255, 0.8);
     margin: 0 0 16px;
   }
 
-  .sg-pillar-deliv-wrap {
+  .sg-why-leadin {
+    font-size: 17px;
+    font-weight: 700;
+    color: #FFFFFF;
+    margin: 0;
+  }
+
+  .sg-why-points-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .sg-why-point-card {
     display: flex;
-    flex-wrap: wrap;
+    align-items: center;
+    gap: 16px;
+    padding: 18px 22px;
+    border-radius: 16px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+  }
+
+  .sg-why-point-card:hover {
+    border-color: #EF4136;
+    background: rgba(255, 255, 255, 0.07);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 22px rgba(239, 65, 54, 0.2);
+  }
+
+  .sg-why-point-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    background: rgba(239, 65, 54, 0.15);
+    border: 1px solid rgba(239, 65, 54, 0.35);
+    color: #EF4136;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .sg-why-point-content p {
+    font-size: 15px;
+    line-height: 1.5;
+    color: #FFFFFF;
+    margin: 0;
+    font-weight: 600;
+  }
+
+  /* ==========================================================================
+     SECTION 5: THE EVOLUTION FROM SEO TO GEO (LIGHT THEME WITH TRANSPARENT PNG)
+     ========================================================================== */
+  .sg-evolution-section {
+    position: relative;
+    border-top: 1px solid #E5E7EB;
+    border-bottom: 1px solid #E5E7EB;
+    background: #FFFFFF;
+  }
+
+  .sg-evolution-section .sg-section-title {
+    color: #0A0A0C;
+  }
+
+  .sg-evolution-section .sg-section-subtitle {
+    color: #4B5563;
+  }
+
+  .sg-evolution-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 16px;
+    border-radius: 999px;
+    background: rgba(239, 65, 54, 0.08);
+    border: 1px solid rgba(239, 65, 54, 0.3);
+    color: #EF4136;
+    font-size: 0.82rem;
+    font-weight: 800;
+    margin-bottom: 16px;
+    text-transform: uppercase;
+    font-family: "JetBrains Mono", monospace;
+  }
+
+  .badge-pulse-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #EF4136;
+    box-shadow: 0 0 10px #EF4136;
+  }
+
+  .sg-evolution-grid {
+    display: grid;
+    grid-template-columns: 0.95fr 1.05fr;
+    gap: clamp(32px, 4vw, 54px);
+    align-items: flex-start;
+  }
+
+  .sg-evolution-visual-col {
+    position: sticky;
+    top: 100px;
+  }
+
+  .sg-evolution-card-pod {
+    background: transparent;
+    border: none;
+    border-radius: 0;
+    overflow: visible;
+    box-shadow: none;
+  }
+
+  .sg-evolution-card-pod:hover {
+    border-color: transparent;
+    box-shadow: none;
+  }
+
+  .sg-evolution-img-wrap {
+    position: relative;
+    width: 100%;
+    background: transparent;
+    padding: 0 0 16px;
+    overflow: visible;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .sg-evolution-3d-img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    filter: drop-shadow(0 15px 30px rgba(0, 0, 0, 0.08));
+    display: block;
+    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .sg-evolution-card-pod:hover .sg-evolution-3d-img {
+    transform: scale(1.03);
+  }
+
+  .sg-evolution-img-badge {
+    position: absolute;
+    bottom: 0px;
+    left: 8px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 14px;
+    border-radius: 12px;
+    background: #0A0A0C;
+    border: 1px solid rgba(239, 65, 54, 0.4);
+    color: #FFFFFF;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 0.05em;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+  }
+
+  .badge-icon-cpu {
+    color: #EF4136;
+  }
+
+  .sg-evolution-pod-caption {
+    padding: 20px 0 0;
+  }
+
+  .sg-pod-badge-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 14px;
+  }
+
+  .sg-pod-chip {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.75rem;
+    font-weight: 800;
+    padding: 4px 12px;
+    border-radius: 8px;
+    letter-spacing: 0.04em;
+  }
+
+  .sg-pod-chip.chip-trad {
+    background: #F3F4F6;
+    border: 1px solid #E5E7EB;
+    color: #4B5563;
+  }
+
+  .sg-pod-chip.chip-geo {
+    background: rgba(239, 65, 54, 0.09);
+    border: 1px solid rgba(239, 65, 54, 0.35);
+    color: #EF4136;
+  }
+
+  .sg-pod-arrow {
+    color: #9CA3AF;
+  }
+
+  .sg-pod-title {
+    font-family: "Outfit", sans-serif;
+    font-size: 1.22rem;
+    font-weight: 800;
+    color: #0A0A0C;
+    line-height: 1.3;
+    margin: 0 0 10px;
+    letter-spacing: -0.01em;
+  }
+
+  .sg-pod-desc {
+    font-size: 0.88rem;
+    line-height: 1.65;
+    color: #4B5563;
+    margin: 0;
+  }
+
+  .sg-evolution-cards-col {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .sg-evolution-compare-item {
+    background: #FFFFFF;
+    border: 1px solid #E5E7EB;
+    border-radius: 20px;
+    padding: 24px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .sg-evolution-compare-item:hover {
+    border-color: rgba(239, 65, 54, 0.4);
+    box-shadow: 0 8px 24px rgba(239, 65, 54, 0.08);
+    transform: translateY(-2px);
+  }
+
+  .sg-compare-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding-bottom: 16px;
+    margin-bottom: 18px;
+    border-bottom: 1px solid #F3F4F6;
+  }
+
+  .sg-compare-icon-wrap {
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    background: rgba(239, 65, 54, 0.08);
+    border: 1px solid rgba(239, 65, 54, 0.25);
+    color: #EF4136;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .sg-compare-feature-name {
+    font-family: "Outfit", sans-serif;
+    font-size: 1.05rem;
+    font-weight: 800;
+    color: #0A0A0C;
+    flex: 1;
+    letter-spacing: -0.01em;
+  }
+
+  .sg-compare-step-num {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.72rem;
+    font-weight: 800;
+    color: #EF4136;
+    background: rgba(239, 65, 54, 0.08);
+    padding: 4px 10px;
+    border-radius: 6px;
+    border: 1px solid rgba(239, 65, 54, 0.2);
+  }
+
+  .sg-compare-dual-grid {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    gap: 14px;
+    align-items: center;
+  }
+
+  .sg-compare-box {
+    border-radius: 14px;
+    padding: 16px 18px;
+    min-height: 96px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+
+  .sg-compare-box.box-trad {
+    background: #F9FAFB;
+    border: 1px solid #E5E7EB;
+  }
+
+  .sg-compare-box.box-geo {
+    background: #FFF8F8;
+    border: 1.5px solid rgba(239, 65, 54, 0.35);
+    box-shadow: 0 4px 16px rgba(239, 65, 54, 0.06);
+  }
+
+  .sg-compare-box-label {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.7rem;
+    font-weight: 800;
+    letter-spacing: 0.06em;
+    margin-bottom: 8px;
+  }
+
+  .box-trad .sg-compare-box-label {
+    color: #6B7280;
+  }
+
+  .box-geo .sg-compare-box-label {
+    color: #EF4136;
+  }
+
+  .status-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+  }
+
+  .status-dot.dot-gray {
+    background: #9CA3AF;
+  }
+
+  .status-dot.dot-red {
+    background: #EF4136;
+    box-shadow: 0 0 8px #EF4136;
+  }
+
+  .sg-compare-box-text {
+    font-size: 0.88rem;
+    line-height: 1.5;
+    margin: 0;
+  }
+
+  .box-trad .sg-compare-box-text {
+    color: #4B5563;
+  }
+
+  .box-geo .sg-compare-box-text {
+    color: #0A0A0C;
+    font-weight: 600;
+  }
+
+  .sg-compare-transfer-arrow {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: #FFFFFF;
+    border: 1px solid #E5E7EB;
+    color: #EF4136;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  }
+
+  /* ==========================================================================
+     SECTION 6: OUR SEO & GEO SERVICES ACCORDION (BLACK BACKGROUND)
+     ========================================================================== */
+  .sg-pillars-section {
+    background: #0A0A0C;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .sg-pillars-section .sg-section-title {
+    color: #FFFFFF;
+  }
+
+  .sg-pillars-section .sg-section-subtitle {
+    color: rgba(255, 255, 255, 0.78);
+  }
+
+  .sg-creative-accordion-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    max-width: 1040px;
+    margin: 0 auto;
+  }
+
+  .sg-creative-accordion-card {
+    background: rgba(255, 255, 255, 0.035);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    overflow: hidden;
+  }
+
+  .sg-creative-accordion-card:hover {
+    border-color: rgba(239, 65, 54, 0.5);
+    box-shadow: 0 8px 24px rgba(239, 65, 54, 0.15);
+  }
+
+  .sg-creative-accordion-card.is-expanded {
+    background: #141419;
+    border-color: #EF4136;
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.6), 0 0 25px rgba(239, 65, 54, 0.15);
+  }
+
+  .sg-creative-accordion-btn {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 24px 28px;
+    background: transparent;
+    border: none;
+    text-align: left;
+    cursor: pointer;
+    color: inherit;
+    transition: background 0.25s ease;
+  }
+
+  .sg-acc-left-meta {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex-shrink: 0;
+  }
+
+  .sg-acc-index {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.95rem;
+    font-weight: 800;
+    color: rgba(255, 255, 255, 0.45);
+  }
+
+  .sg-creative-accordion-card.is-expanded .sg-acc-index {
+    color: #EF4136;
+  }
+
+  .sg-acc-icon-box {
+    width: 48px;
+    height: 48px;
+    border-radius: 14px;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    color: #FFFFFF;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+  }
+
+  .sg-acc-icon-box.is-active,
+  .sg-creative-accordion-card.is-expanded .sg-acc-icon-box {
+    background: #EF4136;
+    border-color: #EF4136;
+    color: #FFFFFF;
+    box-shadow: 0 0 18px rgba(239, 65, 54, 0.5);
+  }
+
+  .sg-acc-content-header {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .sg-acc-tag-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .sg-acc-tag {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.72rem;
+    font-weight: 800;
+    color: #EF4136;
+    background: rgba(239, 65, 54, 0.15);
+    padding: 3px 10px;
+    border-radius: 6px;
+    border: 1px solid rgba(239, 65, 54, 0.35);
+    text-transform: uppercase;
+  }
+
+  .sg-acc-count-badge {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.72rem;
+    color: rgba(255, 255, 255, 0.7);
+    background: rgba(255, 255, 255, 0.08);
+    padding: 3px 8px;
+    border-radius: 6px;
+  }
+
+  .sg-acc-title {
+    font-family: "Outfit", sans-serif;
+    font-size: clamp(1.15rem, 1.6vw, 1.45rem);
+    font-weight: 800;
+    color: #FFFFFF;
+    margin: 0;
+    letter-spacing: -0.01em;
+  }
+
+  .sg-acc-toggle-bubble {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    color: #FFFFFF;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .sg-acc-toggle-bubble.is-open {
+    background: #EF4136;
+    border-color: #EF4136;
+    color: #FFFFFF;
+    transform: rotate(180deg);
+  }
+
+  .sg-acc-collapse-body {
+    overflow: hidden;
+  }
+
+  .sg-acc-body-inner {
+    padding: 0 28px 28px;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    padding-top: 22px;
+  }
+
+  .sg-acc-desc {
+    font-size: 0.98rem;
+    line-height: 1.7;
+    color: rgba(255, 255, 255, 0.85);
+    margin: 0 0 20px;
+  }
+
+  .sg-acc-callout {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 14px 18px;
+    border-radius: 12px;
+    background: rgba(239, 65, 54, 0.12);
+    border-left: 3px solid #EF4136;
+    color: #FFFFFF;
+    font-size: 0.88rem;
+    margin-bottom: 22px;
+  }
+
+  .sg-acc-callout p { margin: 0; line-height: 1.55; }
+  .sg-acc-callout-icon { color: #EF4136; flex-shrink: 0; margin-top: 2px; }
+
+  .sg-acc-deliverables-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
     gap: 12px;
   }
 
-  .sg-deliv-tag {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    font-size: 13px;
-    font-weight: 700;
-    color: #FFFFFF;
-    background: rgba(255, 255, 255, 0.08);
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    padding: 6px 14px;
-    border-radius: 999px;
+  .sg-acc-deliv-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 12px 16px;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    font-size: 0.88rem;
+    line-height: 1.5;
+    color: rgba(255, 255, 255, 0.88);
   }
 
-  /* CARDLESS HORIZONTAL TIMELINE */
+  .sg-acc-deliv-bullet {
+    color: #EF4136;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .sg-acc-deliv-text strong {
+    color: #FFFFFF;
+  }
+
+  /* ==========================================================================
+     SECTION 7: 4-STEP BLUEPRINT ROADMAP (LIGHT THEME)
+     ========================================================================== */
+  .sg-process-sec {
+    background: #FFFFFF;
+    border-top: 1px solid #E5E7EB;
+    border-bottom: 1px solid #E5E7EB;
+  }
+
+  .sg-process-sec .sg-section-title {
+    color: #0A0A0C;
+  }
+
+  .sg-process-sec .sg-section-subtitle {
+    color: #4B5563;
+  }
+
   .sg-timeline-stream {
-    position: relative;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 30px;
-    margin-top: 40px;
+    gap: 24px;
+    position: relative;
+    padding-top: 30px;
   }
 
   .sg-timeline-stream.has-6-steps {
     grid-template-columns: repeat(3, 1fr);
-    gap: 40px 30px;
-  }
-
-  .sg-timeline-stream.has-6-steps .sg-timeline-line {
-    display: none;
   }
 
   .sg-timeline-line {
     position: absolute;
-    top: 24px;
-    left: 0;
-    right: 0;
+    top: 52px;
+    left: 40px;
+    right: 40px;
     height: 2px;
-    background: rgba(255, 255, 255, 0.15);
+    background: #E5E7EB;
     z-index: 1;
   }
 
   .sg-timeline-step {
     position: relative;
     z-index: 2;
+    background: #F9FAFB;
+    border: 1px solid #E5E7EB;
+    border-radius: 18px;
+    padding: 24px 20px;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.03);
+    transition: all 0.3s ease;
+  }
+
+  .sg-timeline-step:hover {
+    border-color: #EF4136;
+    background: #FFFFFF;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 24px rgba(239, 65, 54, 0.08);
   }
 
   .sg-node-dot {
-    width: 48px;
-    height: 48px;
+    width: 44px;
+    height: 44px;
     border-radius: 50%;
-    background: #EF4136;
+    background: #0A0A0C;
     color: #FFFFFF;
+    border: 2px solid #EF4136;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-family: "Outfit", sans-serif;
-    font-weight: 900;
-    font-size: 16px;
-    margin-bottom: 20px;
-    box-shadow: 0 0 0 6px #000000;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.85rem;
+    font-weight: 800;
+    margin-bottom: 18px;
   }
 
   .sg-timeline-step h4 {
-    font-size: 16px;
+    font-family: "Outfit", sans-serif;
+    font-size: 1.05rem;
     font-weight: 800;
+    color: #0A0A0C;
     margin: 0 0 8px;
-    color: #FFFFFF;
   }
 
   .sg-timeline-step p {
-    font-size: 13px;
-    color: rgba(255, 255, 255, 0.65);
-    line-height: 1.5;
+    font-size: 0.88rem;
+    line-height: 1.6;
+    color: #4B5563;
     margin: 0;
   }
 
-  /* WHO WE HELP SECTION */
+  /* ==========================================================================
+     SECTION 8: WHAT MAKES US DIFFERENT (BLACK BACKGROUND)
+     ========================================================================== */
+  .sg-diff-section {
+    background: #0A0A0C;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .sg-diff-section .sg-section-title {
+    color: #FFFFFF;
+  }
+
+  .sg-diff-section .sg-section-subtitle {
+    color: rgba(255, 255, 255, 0.78);
+  }
+
+  .sg-diff-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+
+  .sg-diff-card {
+    padding: 32px 28px;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3);
+    transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .sg-diff-card:hover {
+    border-color: #EF4136;
+    background: rgba(255, 255, 255, 0.07);
+    transform: translateY(-4px);
+    box-shadow: 0 12px 30px rgba(239, 65, 54, 0.2);
+  }
+
+  .sg-diff-icon-wrap {
+    width: 48px;
+    height: 48px;
+    border-radius: 14px;
+    background: rgba(239, 65, 54, 0.15);
+    border: 1px solid rgba(239, 65, 54, 0.35);
+    color: #EF4136;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+
+  .sg-diff-card h3 {
+    font-family: "Outfit", sans-serif;
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: #FFFFFF;
+    margin: 0 0 10px;
+  }
+
+  .sg-diff-card p {
+    font-size: 14.5px;
+    line-height: 1.65;
+    color: rgba(255, 255, 255, 0.78);
+    margin: 0;
+  }
+
+  /* ==========================================================================
+     SECTION 9: WHO WE HELP (LIGHT THEME)
+     ========================================================================== */
   .sg-who-section {
-    position: relative;
-    border-top: 1px solid rgba(255, 255, 255, 0.08);
-    background: linear-gradient(180deg, rgba(10, 10, 14, 0.4) 0%, rgba(239, 65, 54, 0.03) 100%);
+    background: #FFFFFF;
+    border-top: 1px solid #E5E7EB;
+  }
+
+  .sg-who-section .sg-section-title {
+    color: #0A0A0C;
+  }
+
+  .sg-who-section .sg-section-subtitle {
+    color: #4B5563;
   }
 
   .sg-who-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 24px;
-    margin-bottom: 48px;
+    gap: 20px;
+    margin-bottom: 36px;
   }
 
   .sg-who-card {
     padding: 24px;
     border-radius: 16px;
-    background: rgba(255, 255, 255, 0.02);
-    border: 1px solid rgba(255, 255, 255, 0.09);
-    backdrop-filter: blur(12px);
+    background: #F9FAFB;
+    border: 1px solid #E5E7EB;
     display: flex;
     gap: 16px;
     align-items: flex-start;
-    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    transition: all 0.3s ease;
   }
 
   .sg-who-card:hover {
-    border-color: rgba(239, 65, 54, 0.4);
-    background: rgba(239, 65, 54, 0.05);
-    transform: translateY(-4px);
+    border-color: #EF4136;
+    background: #FFFFFF;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
   }
 
   .sg-who-icon {
-    width: 36px;
-    height: 36px;
+    width: 34px;
+    height: 34px;
     border-radius: 10px;
-    background: rgba(239, 65, 54, 0.15);
-    border: 1px solid rgba(239, 65, 54, 0.35);
+    background: rgba(239, 65, 54, 0.08);
+    border: 1px solid rgba(239, 65, 54, 0.2);
+    color: #EF4136;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-shrink: 0;
-    color: #EF4136;
-    margin-top: 2px;
   }
 
   .sg-who-content h4 {
     font-family: "Outfit", sans-serif;
-    font-size: 17px;
+    font-size: 1.05rem;
     font-weight: 800;
-    color: #FFFFFF;
+    color: #0A0A0C;
     margin: 0 0 6px;
   }
 
   .sg-who-content p {
-    font-size: 13.5px;
-    line-height: 1.6;
-    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.88rem;
+    line-height: 1.55;
+    color: #4B5563;
     margin: 0;
   }
 
   .sg-cert-strip {
     display: flex;
-    flex-wrap: wrap;
     justify-content: center;
+    align-items: center;
     gap: 16px;
+    flex-wrap: wrap;
     padding-top: 24px;
-    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    border-top: 1px solid #E5E7EB;
   }
 
   .sg-cert-badge {
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    padding: 10px 20px;
+    padding: 8px 18px;
     border-radius: 999px;
-    background: rgba(239, 65, 54, 0.1);
-    border: 1px solid rgba(239, 65, 54, 0.3);
-    color: #FFFFFF;
-    font-size: 13.5px;
+    background: #FFFFFF;
+    border: 1px solid #E5E7EB;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.78rem;
     font-weight: 700;
-    letter-spacing: 0.02em;
+    color: #0A0A0C;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
   }
 
-  .sg-cert-badge .cert-icon {
-    color: #EF4136;
+  .cert-icon { color: #EF4136; }
+
+  /* ==========================================================================
+     SECTION 10: FREQUENTLY ASKED QUESTIONS (BLACK BACKGROUND)
+     ========================================================================== */
+  .sg-faq-section {
+    background: #0A0A0C;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   }
 
+  .sg-faq-section .sg-section-title {
+    color: #FFFFFF;
+  }
 
-  /* CARDLESS FAQ */
   .sg-faq-stream {
-    max-width: 800px;
+    max-width: 860px;
     margin: 0 auto;
     display: flex;
     flex-direction: column;
+    gap: 12px;
   }
 
   .sg-faq-row {
-    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
-    padding: 20px 0;
+    background: rgba(255, 255, 255, 0.035);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    padding: 20px 24px;
     cursor: pointer;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3);
+    transition: all 0.25s ease;
+  }
+
+  .sg-faq-row:hover {
+    border-color: rgba(239, 65, 54, 0.5);
+    background: rgba(255, 255, 255, 0.05);
+  }
+
+  .sg-faq-row.is-open {
+    border-color: #EF4136;
+    background: #141419;
+    box-shadow: 0 8px 24px rgba(239, 65, 54, 0.2);
   }
 
   .sg-faq-q {
@@ -2609,174 +3318,215 @@ const styles = `
     font-size: 17px;
     font-weight: 800;
     color: #FFFFFF;
+    font-family: "Outfit", sans-serif;
+  }
+
+  .sg-faq-arrow {
+    color: #EF4136;
+    transition: transform 0.3s ease;
+  }
+
+  .sg-faq-row.is-open .sg-faq-arrow {
+    transform: rotate(180deg);
+  }
+
+  .sg-faq-a {
+    overflow: hidden;
   }
 
   .sg-faq-a p {
-    color: rgba(255, 255, 255, 0.7);
-    font-size: 14px;
-    line-height: 1.6;
-    margin: 12px 0 0;
+    font-size: 15px;
+    line-height: 1.7;
+    color: rgba(255, 255, 255, 0.82);
+    margin: 16px 0 0;
+    padding-top: 16px;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
   }
 
-  /* CARDLESS CTA */
-  .sg-bottom-cta {
-    background: rgba(10, 10, 12, 0.85);
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-    color: #FFFFFF;
-    padding: clamp(60px, 8vw, 100px) 0;
-    text-align: center;
-    position: relative;
-    z-index: 2;
+  /* ==========================================================================
+     SECTION 11: RELATED SERVICES (LIGHT THEME)
+     ========================================================================== */
+  .sg-related-services-section {
+    background: #FFFFFF;
+    border-top: 1px solid #E5E7EB;
   }
 
-  .sg-cta-box-cardless h2 {
-    font-family: "Outfit", sans-serif;
-    font-size: clamp(32px, 5vw, 64px);
-    font-weight: 900;
-    margin: 0 0 16px;
+  .sg-related-services-section .sg-section-title {
+    color: #0A0A0C;
   }
 
-  .sg-cta-box-cardless h2 span { color: #EF4136; }
-
-  .sg-cta-box-cardless p {
-    font-size: 17px;
-    color: rgba(255, 255, 255, 0.7);
-    margin: 0 auto 36px;
-    max-width: 600px;
+  .sg-related-services-section .sg-section-subtitle {
+    color: #4B5563;
   }
 
-  .sg-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    padding: 16px 36px;
-    border-radius: 999px;
-    font-size: 0.95rem;
-    font-weight: 800;
-    cursor: pointer;
-    border: none;
-    transition: transform 0.25s ease, background 0.25s ease;
-  }
-
-  .sg-btn.primary {
-    background: #EF4136;
-    color: #FFFFFF;
-  }
-
-  .sg-btn.primary:hover {
-    background: #d8342a;
-    transform: translateY(-2px);
-  }
-
-  /* BREADCRUMB NAVIGATION */
-  .sg-breadcrumb-nav {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    font-size: 0.82rem;
-    font-weight: 700;
-    margin-bottom: 20px;
-    font-family: "JetBrains Mono", monospace;
-  }
-
-  .sg-breadcrumb-nav a {
-    color: rgba(255, 255, 255, 0.6);
-    text-decoration: none;
-    transition: color 0.2s ease;
-  }
-
-  .sg-breadcrumb-nav a:hover {
-    color: #EF4136;
-  }
-
-  .sg-crumb-sep {
-    color: rgba(255, 255, 255, 0.3);
-  }
-
-  .sg-crumb-current {
-    color: #EF4136;
-    text-transform: uppercase;
-  }
-
-  /* RELATED SERVICES CROSS-LINKING GRID */
   .sg-related-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 20px;
-    margin-top: 40px;
   }
 
   .sg-related-card {
-    background: rgba(15, 15, 20, 0.65);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: #F9FAFB;
+    border: 1px solid #E5E7EB;
     border-radius: 18px;
     padding: 24px 20px;
     text-decoration: none;
-    color: #FFFFFF;
+    color: #0A0A0C;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-    backdrop-filter: blur(12px);
   }
 
   .sg-related-card:hover {
-    transform: translateY(-5px);
-    border-color: rgba(239, 65, 54, 0.5);
-    background: rgba(239, 65, 54, 0.08);
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6), 0 0 25px rgba(239, 65, 54, 0.15);
+    border-color: #0A0A0C;
+    background: #FFFFFF;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
   }
 
   .sg-related-num-badge {
     font-family: "JetBrains Mono", monospace;
-    font-size: 0.78rem;
+    font-size: 0.72rem;
     font-weight: 800;
     color: #EF4136;
-    margin-bottom: 12px;
+    background: rgba(239, 65, 54, 0.08);
+    padding: 3px 8px;
+    border-radius: 6px;
+    display: inline-block;
+    width: fit-content;
+    margin-bottom: 14px;
+    border: 1px solid rgba(239, 65, 54, 0.2);
   }
 
   .sg-related-card h4 {
     font-family: "Outfit", sans-serif;
     font-size: 1.15rem;
     font-weight: 800;
+    color: #0A0A0C;
     margin: 0 0 8px;
-    color: #FFFFFF;
-    letter-spacing: -0.01em;
   }
 
   .sg-related-card p {
-    font-size: 0.82rem;
-    line-height: 1.5;
-    color: rgba(255, 255, 255, 0.65);
-    margin: 0 0 16px;
-    flex-grow: 1;
+    font-size: 0.86rem;
+    line-height: 1.55;
+    color: #4B5563;
+    margin: 0 0 20px;
   }
 
   .sg-related-link-text {
-    display: inline-flex;
+    display: flex;
     align-items: center;
-    gap: 6px;
+    gap: 8px;
     font-family: "Outfit", sans-serif;
-    font-size: 0.75rem;
+    font-size: 0.78rem;
     font-weight: 800;
-    color: #EF4136;
     letter-spacing: 0.05em;
+    color: #0A0A0C;
+    transition: color 0.2s ease;
   }
 
-  @media (max-width: 992px) {
-    .sg-hero-grid { grid-template-columns: 1fr; }
+  .sg-related-card:hover .sg-related-link-text {
+    color: #EF4136;
+  }
+
+  /* ==========================================================================
+     SECTION 12: BOTTOM BANNER CTA (BLACK BACKGROUND)
+     ========================================================================== */
+  .sg-bottom-cta {
+    background: #0A0A0C;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding: clamp(60px, 8vw, 100px) 0;
+    position: relative;
+    z-index: 2;
+  }
+
+  .sg-cta-box-cardless {
+    background: linear-gradient(135deg, #111116 0%, #1A0508 50%, #111116 100%);
+    border: 1px solid rgba(239, 65, 54, 0.35);
+    border-radius: 28px;
+    padding: clamp(48px, 6vw, 76px) clamp(24px, 5vw, 56px);
+    text-align: center;
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.8);
+  }
+
+  .sg-cta-box-cardless h2 {
+    font-family: "Outfit", sans-serif;
+    font-size: clamp(30px, 4vw, 52px);
+    font-weight: 900;
+    color: #FFFFFF;
+    margin: 0 0 16px;
+    letter-spacing: -0.02em;
+  }
+
+  .sg-cta-box-cardless h2 span {
+    color: #EF4136;
+  }
+
+  .sg-cta-box-cardless p {
+    font-size: clamp(16px, 1.4vw, 19px);
+    color: rgba(255, 255, 255, 0.85);
+    max-width: 620px;
+    margin: 0 auto 36px;
+    line-height: 1.6;
+  }
+
+  .sg-cta-actions {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .sg-btn.primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 16px 36px;
+    border-radius: 14px;
+    background: #EF4136;
+    color: #FFFFFF;
+    font-family: "Outfit", sans-serif;
+    font-size: 0.95rem;
+    font-weight: 800;
+    letter-spacing: 0.04em;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 10px 25px rgba(239, 65, 54, 0.4);
+    transition: all 0.3s ease;
+  }
+
+  .sg-btn.primary:hover {
+    background: #D2042D;
+    transform: translateY(-2px);
+    box-shadow: 0 14px 35px rgba(239, 65, 54, 0.6);
+  }
+
+  /* RESPONSIVE BREAKPOINTS */
+  @media (max-width: 1024px) {
     .sg-tech-banner-grid { grid-template-columns: 1fr; gap: 40px; }
-    .sg-tech-floating-container { max-width: 440px; margin: 0 auto; }
-    .sg-seo-split-grid { grid-template-columns: 1fr; gap: 40px; }
+    .sg-seo-split-grid { grid-template-columns: 1fr; }
     .sg-seo-story-right { position: static; }
     .sg-seo-story-pillars { grid-template-columns: 1fr; }
-    .sg-metrics-strip { grid-template-columns: repeat(2, 1fr); }
-    .sg-timeline-stream { grid-template-columns: repeat(2, 1fr); gap: 40px 20px; }
-    .sg-timeline-stream.has-6-steps { grid-template-columns: repeat(2, 1fr); gap: 30px 20px; }
-    .sg-timeline-line { display: none; }
-    .sg-matrix-row { grid-template-columns: 1fr; gap: 10px; }
+    .sg-evolution-grid { grid-template-columns: 1fr; }
+    .sg-evolution-visual-col { position: static; }
+    .sg-metrics-strip { grid-template-columns: repeat(2, 1fr); gap: 30px; }
+    .sg-metric-item { border-right: none; }
+    .sg-why-grid { grid-template-columns: 1fr; }
+    .sg-diff-grid { grid-template-columns: 1fr; }
     .sg-who-grid { grid-template-columns: repeat(2, 1fr); }
     .sg-related-grid { grid-template-columns: repeat(2, 1fr); }
+    .sg-acc-deliverables-grid { grid-template-columns: 1fr; }
+  }
+
+  @media (max-width: 768px) {
+    .sg-compare-dual-grid { grid-template-columns: 1fr; }
+    .sg-compare-transfer-arrow { transform: rotate(90deg); margin: 0 auto; }
+    .sg-creative-accordion-btn { padding: 20px; }
+    .sg-acc-body-inner { padding: 0 20px 20px; }
+    .sg-acc-tag-row { flex-wrap: wrap; }
+    .sg-who-grid { grid-template-columns: 1fr; }
+    .sg-related-grid { grid-template-columns: 1fr; }
   }
 
   @media (max-width: 640px) {
@@ -2787,10 +3537,6 @@ const styles = `
     .sg-metrics-strip { grid-template-columns: 1fr; }
     .sg-timeline-stream { grid-template-columns: 1fr; }
     .sg-timeline-stream.has-6-steps { grid-template-columns: 1fr; }
-    .sg-field-grid { grid-template-columns: 1fr; }
-    .sg-col-compare { grid-template-columns: 1fr; }
-    .sg-who-grid { grid-template-columns: 1fr; }
-    .sg-related-grid { grid-template-columns: 1fr; }
   }
 `;
 

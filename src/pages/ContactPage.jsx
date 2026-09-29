@@ -38,9 +38,9 @@ const CONTACT_INFO = [
   },
   {
     icon: Mail,
-    label: "brandforgedigitalmarketing@gmail.com",
+    label: "info@brandforgeagency.in",
     subtext: "24/7 Response Time",
-    href: "mailto:brandforgedigitalmarketing@gmail.com",
+    href: "mailto:info@brandforgeagency.in",
   },
   {
     icon: Globe,

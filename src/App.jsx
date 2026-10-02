@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import CustomCursor from './components/CustomCursor';
+import GlowCursor from './components/GlowCursor';
 import SiteNavbar from './components/SiteNavbar';
 import TransformationModal from './components/TransformationModal';
 import FloatingContactButtons from './components/FloatingContactButtons';
@@ -20,8 +20,26 @@ export default function App() {
   return (
     <SmoothScrollProvider>
       <div className="app-main-wrap">
-        {/* CUSTOM MAGNETIC CURSOR */}
-        <CustomCursor />
+        {/* SITE-WIDE GLOW CURSOR (RED THEME) */}
+        <GlowCursor
+          color="#EF4136"
+          secondaryColor="#FF6B5E"
+          trailLength={15}
+          trailWidth={2}
+          trailTaper={1}
+          followSpeed={0.06}
+          glowIntensity={0.8}
+          glowSpread={1.8}
+          hotspot={1}
+          brightness={1.65}
+          opacity={0.9}
+          pulseSpeed={1.1}
+          noiseStrength={0.17}
+          idleFade
+          idleTimeout={1600}
+          fadeDuration={2350}
+          blendMode="screen"
+        />
 
         {/* SITE-WIDE NAVBAR */}
         <SiteNavbar path={path} navigate={navigate} onOpenModal={openModal} />

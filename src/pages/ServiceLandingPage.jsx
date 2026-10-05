@@ -26,6 +26,7 @@ import BrandForgeAnimatedFooter from "../components/BrandForgeAnimatedFooter";
 import BrandForgeLiquidMetalBackground from "../components/BrandForgeLiquidMetalBackground";
 import LetsTalkForm from "../components/LetsTalkForm";
 import KexsioCanvasBackground from "../components/KexsioCanvasBackground";
+import SeoVideoScrubSection from "../components/SeoVideoScrubSection";
 
 /* ───────────────────────────────────────────────────────────────────────────
    DYNAMIC SERVICE LANDING PAGE COMPONENT (CARDLESS & LIQUID METAL SHADER)
@@ -773,8 +774,11 @@ export default function ServiceLandingPage({ slug = "seo-geo", onOpenModal, navi
         </div>
       </div>
 
+      {/* 1ST SECTION: SEO & GEO ARCHITECTURE VIDEO SCROLL-SCRUB (ONLY ON SEO & GEO) */}
+      {isSeoGeo && <SeoVideoScrubSection onOpenModal={onOpenModal} />}
+
       {/* HIGH-TECH SPLIT HERO BANNER SECTION (APPLIED TO ALL SERVICES) */}
-      <header ref={heroBannerRef} className="sg-hero sg-hero-banner-tech has-banner-bg">
+      <header ref={heroBannerRef} id="seo-hero-banner" className="sg-hero sg-hero-banner-tech has-banner-bg">
         {/* High-Tech HUD Background Accents */}
         <div className="tech-hud-overlay" aria-hidden="true">
           <div className="tech-hud-circle" />
@@ -1625,7 +1629,7 @@ const styles = `
     background: #FAFAFC;
     color: #0A0A0C;
     font-family: "Plus Jakarta Sans", sans-serif;
-    overflow-x: hidden;
+    overflow-x: clip;
     padding-top: 110px;
     position: relative;
     z-index: 1;

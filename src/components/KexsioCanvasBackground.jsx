@@ -1,18 +1,26 @@
 import React, { useEffect, useRef } from "react";
 
-const PARTICLE_COLORS = [
+const DARK_PARTICLE_COLORS = [
   { r: 239, g: 65,  b: 54  }, // Crimson Red
   { r: 255, g: 77,  b: 77  }, // Electric Red
   { r: 255, g: 255, b: 255 }, // White
   { r: 191, g: 52,  b: 43  }, // Deep Crimson
 ];
 
+const LIGHT_PARTICLE_COLORS = [
+  { r: 239, g: 65,  b: 54  }, // Crimson Red
+  { r: 210, g: 4,   b: 45  }, // Brand Red
+  { r: 160, g: 170, b: 185 }, // Subtle Slate
+  { r: 100, g: 110, b: 125 }, // Muted Slate
+];
+
 /**
  * High-performance neural constellation / particle network canvas background
  * with subtle radial vignette overlay, mouse repulsion, and IntersectionObserver
  * visibility auto-pausing for ultra-smooth 60fps performance across sections.
+ * Supports theme="light" for pristine white backgrounds.
  */
-export default function KexsioCanvasBackground({ showOverlay = true, opacity = 1 }) {
+export default function KexsioCanvasBackground({ showOverlay = true, opacity = 1, theme = "dark" }) {
   const canvasRef = useRef(null);
 
   useEffect(() => {
@@ -126,10 +134,8 @@ export default function KexsioCanvasBackground({ showOverlay = true, opacity = 1
         const velocityX = Math.random() * 0.42 - 0.21;
         const velocityY = Math.random() * 0.42 - 0.21;
 
-        const color =
-          PARTICLE_COLORS[
-            Math.floor(Math.random() * PARTICLE_COLORS.length)
-          ];
+        const palette = theme === "light" ? LIGHT_PARTICLE_COLORS : DARK_PARTICLE_COLORS;
+        const color = palette[Math.floor(Math.random() * palette.length)];
 
         particles.push(
           new Particle(
@@ -178,8 +184,9 @@ export default function KexsioCanvasBackground({ showOverlay = true, opacity = 1
 
           if (distanceSquared > maxDistanceSquared) continue;
 
+          const baseOpacity = theme === "light" ? 0.35 : 0.58;
           const lineOpacity =
-            0.58 * (1 - distanceSquared / maxDistanceSquared);
+            baseOpacity * (1 - distanceSquared / maxDistanceSquared);
 
           const startColor = particles[a].color;
           const endColor = particles[b].color;
@@ -205,7 +212,7 @@ export default function KexsioCanvasBackground({ showOverlay = true, opacity = 1
           ctx.moveTo(particles[a].x, particles[a].y);
           ctx.lineTo(particles[b].x, particles[b].y);
           ctx.strokeStyle = lineGradient;
-          ctx.lineWidth = 0.85;
+          ctx.lineWidth = theme === "light" ? 0.75 : 0.85;
           ctx.stroke();
         }
       }
@@ -294,11 +301,11 @@ export default function KexsioCanvasBackground({ showOverlay = true, opacity = 1
       window.removeEventListener("mousemove", handleMouseMove);
       document.removeEventListener("mouseleave", handleMouseLeave);
     };
-  }, []);
+  }, [theme]);
 
   return (
     <div
-      className="kexsio-bg-wrapper"
+      className={`kexsio-bg-wrapper ${theme === "light" ? "is-light-theme" : ""}`}
       style={{
         position: "absolute",
         inset: 0,
@@ -330,7 +337,9 @@ export default function KexsioCanvasBackground({ showOverlay = true, opacity = 1
             inset: 0,
             pointerEvents: "none",
             background:
-              "radial-gradient(circle at center, transparent 10%, rgba(0, 0, 0, 0.18) 56%, rgba(0, 0, 0, 0.72) 100%)",
+              theme === "light"
+                ? "radial-gradient(circle at center, transparent 40%, rgba(255, 255, 255, 0.45) 80%, rgba(255, 255, 255, 0.85) 100%)"
+                : "radial-gradient(circle at center, transparent 10%, rgba(0, 0, 0, 0.18) 56%, rgba(0, 0, 0, 0.72) 100%)",
           }}
         />
       )}

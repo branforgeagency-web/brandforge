@@ -26,7 +26,7 @@ import BrandForgeAnimatedFooter from "../components/BrandForgeAnimatedFooter";
 import BrandForgeLiquidMetalBackground from "../components/BrandForgeLiquidMetalBackground";
 import LetsTalkForm from "../components/LetsTalkForm";
 import KexsioCanvasBackground from "../components/KexsioCanvasBackground";
-import SeoVideoScrubSection from "../components/SeoVideoScrubSection";
+import SeoIntroVideoSection from "../components/SeoIntroVideoSection";
 
 /* ───────────────────────────────────────────────────────────────────────────
    DYNAMIC SERVICE LANDING PAGE COMPONENT (CARDLESS & LIQUID METAL SHADER)
@@ -722,6 +722,8 @@ export default function ServiceLandingPage({ slug = "seo-geo", onOpenModal, navi
   const EvolutionBadgeIcon = evolutionVisual.badgeIcon || Cpu;
 
   const isSeoGeo = data.slug === "seo-geo" || slug === "seo-geo" || slug === "seo-company-coimbatore";
+  const isPaidMedia = data.slug === "paid-media" || slug === "paid-media" || slug === "ppc-company-coimbatore";
+  const hasIntroVideo = isSeoGeo || isPaidMedia;
   const heroBannerRef = useRef(null);
 
   const { scrollYProgress: heroScroll } = useScroll({
@@ -755,7 +757,7 @@ export default function ServiceLandingPage({ slug = "seo-geo", onOpenModal, navi
     : (data.pillars && data.pillars.length >= 3 ? data.pillars.slice(0, 3) : (data.pillars || []));
 
   return (
-    <div className="sg-page-root">
+    <div className={`sg-page-root ${hasIntroVideo ? "is-intro-video-page is-seo-geo-page" : ""}`}>
       <style>{styles}</style>
 
       {/* ANIMATED MARQUEE TICKER STRIP */}
@@ -774,11 +776,27 @@ export default function ServiceLandingPage({ slug = "seo-geo", onOpenModal, navi
         </div>
       </div>
 
-      {/* 1ST SECTION: SEO & GEO ARCHITECTURE VIDEO SCROLL-SCRUB (ONLY ON SEO & GEO) */}
-      {isSeoGeo && <SeoVideoScrubSection onOpenModal={onOpenModal} />}
+      {/* 1ST SECTION: INTRO VIDEO (SEO & PAID MEDIA - NO SCRUB, MUTED, FULL WIDTH) */}
+      {isSeoGeo && (
+        <SeoIntroVideoSection
+          src="/seo-intro.mp4"
+          id="seo-intro-section"
+          ariaLabel="BrandForge SEO & GEO Search Ecosystem Intro"
+        />
+      )}
+      {isPaidMedia && (
+        <SeoIntroVideoSection
+          src="/paid-media-banner.mp4"
+          id="paid-media-intro-section"
+          ariaLabel="BrandForge Paid Media & Ad Scaling Performance Ecosystem"
+        />
+      )}
 
       {/* HIGH-TECH SPLIT HERO BANNER SECTION (APPLIED TO ALL SERVICES) */}
       <header ref={heroBannerRef} id="seo-hero-banner" className="sg-hero sg-hero-banner-tech has-banner-bg">
+        {/* Neural Network Constellation Background (White Theme) */}
+        <KexsioCanvasBackground theme="light" opacity={0.75} />
+
         {/* High-Tech HUD Background Accents */}
         <div className="tech-hud-overlay" aria-hidden="true">
           <div className="tech-hud-circle" />
@@ -993,6 +1011,7 @@ export default function ServiceLandingPage({ slug = "seo-geo", onOpenModal, navi
 
           {/* CARDLESS TYPOGRAPHIC METRICS STRIP & CLIENT LOGOS PROOF */}
       <section className="sg-metrics-section">
+        <KexsioCanvasBackground theme="light" opacity={0.65} />
         <div className="sg-container">
           <div className="sg-metrics-strip">
             {data.metrics.map((m, idx) => (
@@ -1080,6 +1099,7 @@ export default function ServiceLandingPage({ slug = "seo-geo", onOpenModal, navi
       {/* CREATIVE EDITORIAL COMPARISON MATRIX: THE EVOLUTION FROM SEO TO GEO */}
       {data.matrixRows && data.matrixRows.length > 0 && (
         <section className="sg-section sg-evolution-section">
+          <KexsioCanvasBackground theme="light" opacity={0.65} />
           <div className="sg-container">
             <motion.div
               className="sg-section-header text-center"
@@ -1325,6 +1345,7 @@ export default function ServiceLandingPage({ slug = "seo-geo", onOpenModal, navi
 
       {/* CARDLESS HORIZONTAL TIMELINE PROCESS THREAD */}
       <section className="sg-section sg-process-sec">
+        <KexsioCanvasBackground theme="light" opacity={0.65} />
         <div className="sg-container">
           <motion.div
             className="sg-section-header text-center"
@@ -1418,6 +1439,7 @@ export default function ServiceLandingPage({ slug = "seo-geo", onOpenModal, navi
       {/* WHO WE HELP SECTION */}
       {data.whoWeHelp && (
         <section className="sg-section sg-who-section">
+          <KexsioCanvasBackground theme="light" opacity={0.65} />
           <div className="sg-container">
             <motion.div
               className="sg-section-header text-center"
@@ -1527,6 +1549,7 @@ export default function ServiceLandingPage({ slug = "seo-geo", onOpenModal, navi
 
       {/* RELATED SERVICES INTERNAL CROSS-LINKING SECTION */}
       <section className="sg-section sg-related-services-section">
+        <KexsioCanvasBackground theme="light" opacity={0.65} />
         <div className="sg-container">
           <motion.div
             className="sg-section-header text-center"
@@ -1633,6 +1656,18 @@ const styles = `
     padding-top: 110px;
     position: relative;
     z-index: 1;
+  }
+
+  .sg-page-root.is-seo-geo-page {
+    padding-top: 0;
+    background: #000000;
+  }
+
+  .sg-page-root.is-seo-geo-page .sg-marquee-bar {
+    margin-top: 0;
+    padding-top: 90px;
+    background: #000000;
+    border-top: none;
   }
 
   .sg-bg-overlay {

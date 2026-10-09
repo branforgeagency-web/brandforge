@@ -1,32 +1,39 @@
 "use client";
 
-import React, { useState, useLayoutEffect, useRef } from "react";
-import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
+import React, { useLayoutEffect, useRef } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
 import {
   Search,
   Sparkles,
   Zap,
   ArrowRight,
-  CheckCircle2,
-  ChevronDown,
   Globe,
   ShieldCheck,
   Users,
   PenTool,
   BarChart3,
   Cpu,
-  Bot,
   Layers,
   MessageSquare,
-  ArrowRightLeft,
   Video,
 } from "lucide-react";
-import { servicesData, serviceUrl } from "../data/servicesData";
+import { servicesData } from "../data/servicesData";
 import BrandForgeAnimatedFooter from "../components/BrandForgeAnimatedFooter";
-import BrandForgeLiquidMetalBackground from "../components/BrandForgeLiquidMetalBackground";
-import LetsTalkForm from "../components/LetsTalkForm";
 import KexsioCanvasBackground from "../components/KexsioCanvasBackground";
-import SeoIntroVideoSection from "../components/SeoIntroVideoSection";
+import CinematicSeoHero from "../components/CinematicSeoHero";
+import SerpGeoVisualizer from "../components/SerpGeoVisualizer";
+import Seo3DBentoGrid from "../components/Seo3DBentoGrid";
+import InteractiveStorySection from "../components/InteractiveStorySection";
+import InteractiveMetricsSection from "../components/InteractiveMetricsSection";
+import InteractiveWhyChooseSection from "../components/InteractiveWhyChooseSection";
+import InteractiveEvolutionMatrix from "../components/InteractiveEvolutionMatrix";
+import InteractivePillarsSection from "../components/InteractivePillarsSection";
+import InteractiveBlueprintTimeline from "../components/InteractiveBlueprintTimeline";
+import InteractiveDiffSection from "../components/InteractiveDiffSection";
+import InteractiveWhoWeHelpSection from "../components/InteractiveWhoWeHelpSection";
+import InteractiveFaqSection from "../components/InteractiveFaqSection";
+import InteractiveRelatedServicesSection from "../components/InteractiveRelatedServicesSection";
+import InteractiveBottomCtaSection from "../components/InteractiveBottomCtaSection";
 
 /* ───────────────────────────────────────────────────────────────────────────
    DYNAMIC SERVICE LANDING PAGE COMPONENT (CARDLESS & LIQUID METAL SHADER)
@@ -341,7 +348,7 @@ const SERVICE_EVOLUTION_VISUALS = {
   }
 };
 
-const SERVICE_BADGES = {
+const _SERVICE_BADGES = {
   "seo-geo": {
     top: { strong: "#1 AI Citation", span: "ChatGPT & Perplexity" },
     bottom: { strong: "+340% Traffic Lift", span: "Coimbatore & Global" }
@@ -713,17 +720,10 @@ export default function ServiceLandingPage({ slug = "seo-geo", onOpenModal, navi
     }
   }, [slug, data]);
 
-  const [activeFaq, setActiveFaq] = useState(null);
-  const [activePillar, setActivePillar] = useState(0);
-
-  const Icon = data.icon || Search;
-
   const evolutionVisual = SERVICE_EVOLUTION_VISUALS[data.slug] || SERVICE_EVOLUTION_VISUALS[slug] || SERVICE_EVOLUTION_VISUALS["seo-geo"];
-  const EvolutionBadgeIcon = evolutionVisual.badgeIcon || Cpu;
 
   const isSeoGeo = data.slug === "seo-geo" || slug === "seo-geo" || slug === "seo-company-coimbatore";
   const isPaidMedia = data.slug === "paid-media" || slug === "paid-media" || slug === "ppc-company-coimbatore";
-  const hasIntroVideo = isSeoGeo || isPaidMedia;
   const heroBannerRef = useRef(null);
 
   const { scrollYProgress: heroScroll } = useScroll({
@@ -740,10 +740,6 @@ export default function ServiceLandingPage({ slug = "seo-geo", onOpenModal, navi
   const bannerAsset = isSeoGeo
     ? "/seo-sketch-diagram.png"
     : (SERVICE_BANNER_ASSETS[data.slug] || data.bannerBg || "/seo-sketch-diagram.png");
-  const badges = SERVICE_BADGES[data.slug] || SERVICE_BADGES[slug] || {
-    top: { strong: data.metrics?.[1]?.value || "100/100", span: data.metrics?.[1]?.label || "Performance" },
-    bottom: { strong: data.metrics?.[0]?.value || "+300%", span: data.metrics?.[0]?.label || "Growth" }
-  };
   const pillTag = SERVICE_PILL_TAGS[data.slug] || data.eyebrow?.split("|")?.[0]?.toUpperCase() || "ENTERPRISE GROWTH";
   const microDesc = SERVICE_MICRO_DESCS[data.slug] || data.metaDescription || (Array.isArray(data.subtitle) ? data.subtitle[0] : data.subtitle);
   const storyHeading = SERVICE_STORY_HEADINGS[data.slug] || {
@@ -757,7 +753,7 @@ export default function ServiceLandingPage({ slug = "seo-geo", onOpenModal, navi
     : (data.pillars && data.pillars.length >= 3 ? data.pillars.slice(0, 3) : (data.pillars || []));
 
   return (
-    <div className={`sg-page-root ${hasIntroVideo ? "is-intro-video-page is-seo-geo-page" : ""}`}>
+    <div className={`sg-page-root ${isSeoGeo ? "is-seo-geo-page" : ""}`}>
       <style>{styles}</style>
 
       {/* ANIMATED MARQUEE TICKER STRIP */}
@@ -776,868 +772,199 @@ export default function ServiceLandingPage({ slug = "seo-geo", onOpenModal, navi
         </div>
       </div>
 
-      {/* 1ST SECTION: INTRO VIDEO (SEO & PAID MEDIA - NO SCRUB, MUTED, FULL WIDTH) */}
-      {isSeoGeo && (
-        <SeoIntroVideoSection
-          src="/seo-intro.mp4"
-          id="seo-intro-section"
-          ariaLabel="BrandForge SEO & GEO Search Ecosystem Intro"
-        />
-      )}
-      {isPaidMedia && (
-        <SeoIntroVideoSection
-          src="/paid-media-banner.mp4"
-          id="paid-media-intro-section"
-          ariaLabel="BrandForge Paid Media & Ad Scaling Performance Ecosystem"
-        />
-      )}
+      {/* HERO BANNER (CINEMATIC COCKPIT FOR SEO & GEO, SPLIT BANNER FOR OTHER SERVICES) */}
+      {isSeoGeo ? (
+        <CinematicSeoHero onOpenModal={onOpenModal} data={data} />
+      ) : (
+        <header ref={heroBannerRef} id="seo-hero-banner" className="sg-hero sg-hero-banner-tech has-banner-bg">
+          {/* Neural Network Constellation Background (White Theme) */}
+          <KexsioCanvasBackground theme="light" opacity={0.75} />
 
-      {/* HIGH-TECH SPLIT HERO BANNER SECTION (APPLIED TO ALL SERVICES) */}
-      <header ref={heroBannerRef} id="seo-hero-banner" className="sg-hero sg-hero-banner-tech has-banner-bg">
-        {/* Neural Network Constellation Background (White Theme) */}
-        <KexsioCanvasBackground theme="light" opacity={0.75} />
-
-        {/* High-Tech HUD Background Accents */}
-        <div className="tech-hud-overlay" aria-hidden="true">
-          <div className="tech-hud-circle" />
-          <div className="tech-hud-circle tech-hud-circle-2" />
-          <div className="tech-hud-dots" />
-        </div>
-
-        <div className="sg-container">
-          <div className="sg-tech-banner-grid">
-            
-            {/* LEFT COLUMN: SOCIALS, PILL TAG, H1, MICRO-HOOK, DUAL BUTTONS */}
-            <motion.div
-              className="sg-tech-banner-left"
-              initial={{ opacity: 0, x: -40 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: false, amount: 0.2 }}
-              transition={{ duration: 0.7 }}
-            >
-              {/* Social icons row */}
-              <div className="sg-tech-socials">
-                <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="sg-tech-social-link">
-                  <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
-                </a>
-                <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" aria-label="YouTube" className="sg-tech-social-link">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
-                </a>
-                <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="sg-tech-social-link">
-                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
-                </a>
-                <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" aria-label="X (Twitter)" className="sg-tech-social-link">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-                </a>
-              </div>
-
-              {/* Category Pill Tag */}
-              <div className="sg-tech-pill">
-                <span className="sg-tech-pill-dot">•</span>
-                <span>{pillTag}</span>
-                <span className="sg-tech-pill-dot">•</span>
-              </div>
-
-              {/* H1 Heading with styled accent & wave underline */}
-              <h1 className="sg-tech-h1">
-                {renderHeroTitle(data)}
-              </h1>
-
-              {/* Micro Tagline */}
-              <p className="sg-tech-micro-desc">
-                {microDesc}
-              </p>
-
-              {/* Dual Action Buttons */}
-              <div className="sg-tech-action-row">
-                <button className="sg-tech-start-btn" onClick={onOpenModal}>
-                  <Zap size={16} />
-                  <span>{data.heroButtonText ? data.heroButtonText.replace("→", "").trim() : "Start Free Audit"}</span>
-                  <ArrowRight size={16} />
-                </button>
-
-                <button
-                  className="sg-tech-play-btn"
-                  onClick={() => {
-                    const el = document.querySelector('.sg-seo-story-section');
-                    if (el) el.scrollIntoView({ behavior: 'smooth' });
-                    else onOpenModal();
-                  }}
-                  title="View Strategy & Methodology"
-                >
-                  <div className="sg-tech-play-icon-wrap">
-                    <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
-                      <polygon points="6 3 20 12 6 21 6 3" />
-                    </svg>
-                  </div>
-                  <span className="sg-tech-play-label">See How It Works</span>
-                </button>
-              </div>
-            </motion.div>
-
-            {/* RIGHT COLUMN: BRANDFORGE THEME 3D ARTWORK (SEO & GEO SCROLL PARALLAX) */}
-            <motion.div
-              className={`sg-tech-banner-right ${isSeoGeo ? "is-seo-geo-artwork-col" : ""}`}
-              initial={{ opacity: 0, x: 40 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: false, amount: 0.2 }}
-              transition={{ duration: 0.8, delay: 0.15 }}
-              style={{
-                zIndex: isSeoGeo ? 40 : 2,
-                position: "relative",
-              }}
-            >
-              <motion.div
-                className={`sg-tech-floating-container ${isSeoGeo ? "is-seo-geo-floating-box" : ""}`}
-                style={
-                  isSeoGeo
-                    ? {
-                        x: bannerArtworkX,
-                        y: bannerArtworkY,
-                        scale: bannerArtworkScale,
-                        rotate: bannerArtworkRotate,
-                        zIndex: 40,
-                      }
-                    : {}
-                }
-              >
-                <div className="sg-tech-art-ambient-glow" />
-                <img
-                  src={bannerAsset}
-                  alt={`${data.title} BrandForge 3D Ecosystem`}
-                  className={`sg-tech-floating-img ${isSeoGeo ? "is-seo-geo-img" : ""}`}
-                  style={{ borderRadius: (isSeoGeo || (bannerAsset.endsWith('.png') && !bannerAsset.includes('commercial-video') && !bannerAsset.includes('visual-id'))) ? "0px" : "20px" }}
-                />
-              </motion.div>
-            </motion.div>
-
-          </div>
-        </div>
-      </header>
-
-      {/* DEDICATED PARAGRAPH STORY & LEAD FORM SECTION (APPLIED TO ALL SERVICES) */}
-      <section className="sg-seo-story-section">
-        <KexsioCanvasBackground />
-        <div className="sg-container">
-          <div className="sg-seo-split-grid">
-            
-            {/* LEFT COLUMN: THE PARAGRAPHS & CAPABILITIES */}
-            <motion.div
-              className="sg-seo-story-left"
-              initial={{ opacity: 0, x: -35 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: false, amount: 0.2 }}
-              transition={{ duration: 0.7 }}
-            >
-              <div className="sg-tech-pill inline-pill">
-                <span className="sg-tech-pill-dot">•</span>
-                <span>{storyHeading.pill}</span>
-                <span className="sg-tech-pill-dot">•</span>
-              </div>
-              
-              <h2 className="sg-seo-story-heading">
-                {storyHeading.lead} <span>{storyHeading.accent}</span>
-              </h2>
-
-              <div className="sg-seo-story-body">
-                {Array.isArray(data.subtitle) ? (
-                  data.subtitle.map((para, i) => (
-                    <p key={i} className={`sg-seo-story-para ${i === 0 ? "lead-para" : ""}`}>
-                      {para}
-                    </p>
-                  ))
-                ) : typeof data.subtitle === "string" && data.subtitle.includes("\n\n") ? (
-                  data.subtitle.split("\n\n").map((para, i) => (
-                    <p key={i} className={`sg-seo-story-para ${i === 0 ? "lead-para" : ""}`}>
-                      {para}
-                    </p>
-                  ))
-                ) : (
-                  <p className="sg-seo-story-para lead-para">{data.subtitle}</p>
-                )}
-              </div>
-            </motion.div>
-
-            {/* RIGHT COLUMN: LEAD CAPTURE FORM */}
-            <motion.div
-              className="sg-seo-story-right"
-              initial={{ opacity: 0, x: 35 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: false, amount: 0.2 }}
-              transition={{ duration: 0.7, delay: 0.15 }}
-            >
-              <div className="sg-inline-form-wrap">
-                <LetsTalkForm
-                  title="LET'S TALK"
-                  subtitle={`Get in touch with our strategy team for ${data.eyebrow} & expect a response within 4 hours`}
-                  defaultService={data.eyebrow}
-                  compact={true}
-                />
-              </div>
-            </motion.div>
-
+          {/* High-Tech HUD Background Accents */}
+          <div className="tech-hud-overlay" aria-hidden="true">
+            <div className="tech-hud-circle" />
+            <div className="tech-hud-circle tech-hud-circle-2" />
+            <div className="tech-hud-dots" />
           </div>
 
-          {/* 3 CARDS IN A ROW */}
-          <motion.div
-            className="sg-seo-story-pillars"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: false, amount: 0.2 }}
-            transition={{ duration: 0.7, delay: 0.2 }}
-          >
-            {topThreePillars.map((pillar, idx) => {
-              const PillarIcon = pillar.icon || Zap;
-              const pillarDesc = pillar.description
-                ? (pillar.description.length > 130 ? pillar.description.slice(0, 127) + "..." : pillar.description)
-                : (pillar.deliverables?.[0] || "");
-              return (
-                <div key={idx} className="sg-story-pillar-item">
-                  <div className="pillar-icon-box">
-                    <PillarIcon size={22} />
-                  </div>
-                  <div>
-                    <h4>{pillar.title}</h4>
-                    <p>{pillarDesc}</p>
-                  </div>
-                </div>
-              );
-            })}
-          </motion.div>
-        </div>
-      </section>
-
-
-
-          {/* CARDLESS TYPOGRAPHIC METRICS STRIP & CLIENT LOGOS PROOF */}
-      <section className="sg-metrics-section">
-        <KexsioCanvasBackground theme="light" opacity={0.65} />
-        <div className="sg-container">
-          <div className="sg-metrics-strip">
-            {data.metrics.map((m, idx) => (
-              <motion.div
-                key={m.label}
-                className="sg-metric-item"
-                initial={{ opacity: 0, y: 35, scale: 0.92 }}
-                whileInView={{ opacity: 1, y: 0, scale: 1 }}
-                viewport={{ once: false, amount: 0.2 }}
-                transition={{ duration: 0.5, delay: idx * 0.1 }}
-              >
-                <span className="sg-metric-val">{m.value}</span>
-                <div className="sg-metric-lbl">{m.label}</div>
-                <div className="sg-metric-sub">{m.desc}</div>
-              </motion.div>
-            ))}
-          </div>
-
-          {/* TRANSPARENT PNG CLIENT LOGOS PROOF STREAM */}
-          <motion.div
-            className="sg-client-png-strip"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: false, amount: 0.2 }}
-            transition={{ duration: 0.7 }}
-          >
-            <span className="strip-title">TRUSTED BY CATEGORY LEADERS</span>
-            <div className="strip-logos">
-              <img src="/client-sonicprints.png" alt="Sonic Prints" className="png-client-logo" style={{ transform: "scale(1.4)" }} />
-              <img src="/client-thoughtflows.png" alt="ThoughtFlows" className="png-client-logo" style={{ transform: "scale(1.35)" }} />
-              <img src="/client-talentera.png" alt="Talentera" className="png-client-logo" style={{ transform: "scale(1.0)" }} />
-              <img src="/client-thoughtspace.png" alt="ThoughtSpace" className="png-client-logo" style={{ transform: "scale(1.4)" }} />
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* WHY BUSINESSES CHOOSE BRAND FORGE SECTION */}
-      {data.whyChooseUs && (
-        <section className="sg-section sg-why-section">
-          <KexsioCanvasBackground />
           <div className="sg-container">
-            <div className="sg-why-grid">
+            <div className="sg-tech-banner-grid">
               
-              {/* LEFT: HEADING, DESCRIPTION & LEAD-IN */}
+              {/* LEFT COLUMN: SOCIALS, PILL TAG, H1, MICRO-HOOK, DUAL BUTTONS */}
               <motion.div
-                className="sg-why-left"
+                className="sg-tech-banner-left"
                 initial={{ opacity: 0, x: -40 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: false, amount: 0.2 }}
                 transition={{ duration: 0.7 }}
               >
-                <span className="sg-section-tag">{data.whyChooseUs.tag || "LOCAL SEO AUTHORITY"}</span>
-                <h2 className="sg-why-title">{data.whyChooseUs.title}</h2>
-                <p className="sg-why-desc">{data.whyChooseUs.description}</p>
-                <p className="sg-why-leadin">{data.whyChooseUs.leadIn}</p>
-              </motion.div>
+                {/* Social icons row */}
+                <div className="sg-tech-socials">
+                  <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="sg-tech-social-link">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                  </a>
+                  <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" aria-label="YouTube" className="sg-tech-social-link">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+                  </a>
+                  <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="sg-tech-social-link">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+                  </a>
+                  <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" aria-label="X (Twitter)" className="sg-tech-social-link">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                  </a>
+                </div>
 
-              {/* RIGHT: FEATURE CARDS / POINTS */}
-              <div className="sg-why-points-grid">
-                {data.whyChooseUs.points.map((point, idx) => (
-                  <motion.div
-                    key={idx}
-                    className="sg-why-point-card"
-                    initial={{ opacity: 0, y: 30 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: false, amount: 0.2 }}
-                    transition={{ duration: 0.5, delay: idx * 0.1 }}
+                {/* Category Pill Tag */}
+                <div className="sg-tech-pill">
+                  <span className="sg-tech-pill-dot">•</span>
+                  <span>{pillTag}</span>
+                  <span className="sg-tech-pill-dot">•</span>
+                </div>
+
+                {/* H1 Heading with styled accent & wave underline */}
+                <h1 className="sg-tech-h1">
+                  {renderHeroTitle(data)}
+                </h1>
+
+                {/* Micro Tagline */}
+                <p className="sg-tech-micro-desc">
+                  {microDesc}
+                </p>
+
+                {/* Dual Action Buttons */}
+                <div className="sg-tech-action-row">
+                  <button className="sg-tech-start-btn" onClick={onOpenModal}>
+                    <Zap size={16} />
+                    <span>{data.heroButtonText ? data.heroButtonText.replace("→", "").trim() : "Start Free Audit"}</span>
+                    <ArrowRight size={16} />
+                  </button>
+
+                  <button
+                    className="sg-tech-play-btn"
+                    onClick={() => {
+                      const el = document.querySelector('.sg-seo-story-section');
+                      if (el) el.scrollIntoView({ behavior: 'smooth' });
+                      else onOpenModal();
+                    }}
+                    title="View Strategy & Methodology"
                   >
-                    <div className="sg-why-point-icon">
-                      <CheckCircle2 size={18} className="check-icon" />
+                    <div className="sg-tech-play-icon-wrap">
+                      <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
+                        <polygon points="6 3 20 12 6 21 6 3" />
+                      </svg>
                     </div>
-                    <div className="sg-why-point-content">
-                      <p>{typeof point === "string" ? point : point.text}</p>
-                    </div>
-                  </motion.div>
-                ))}
-              </div>
-
-            </div>
-          </div>
-        </section>
-      )}
-
-      {/* CREATIVE EDITORIAL COMPARISON MATRIX: THE EVOLUTION FROM SEO TO GEO */}
-      {data.matrixRows && data.matrixRows.length > 0 && (
-        <section className="sg-section sg-evolution-section">
-          <KexsioCanvasBackground theme="light" opacity={0.65} />
-          <div className="sg-container">
-            <motion.div
-              className="sg-section-header text-center"
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: false, amount: 0.2 }}
-              transition={{ duration: 0.7 }}
-            >
-              <div className="sg-evolution-badge">
-                <span className="badge-pulse-dot" />
-                <span>{data.matrixTag || "PARADIGM SHIFT"}</span>
-              </div>
-              <h2 className="sg-section-title">{data.matrixTitle}</h2>
-              <p className="sg-section-subtitle">{data.matrixSubtitle}</p>
-            </motion.div>
-
-            <div className="sg-evolution-grid">
-              
-              {/* LEFT COLUMN: 3D ICON EMBLEM SHOWCASE WITH CYBER HUD */}
-              <motion.div
-                className="sg-evolution-visual-col"
-                initial={{ opacity: 0, scale: 0.96, x: -30 }}
-                whileInView={{ opacity: 1, scale: 1, x: 0 }}
-                viewport={{ once: false, amount: 0.2 }}
-                transition={{ duration: 0.7 }}
-              >
-                                <div className="sg-evolution-card-pod">
-                  <div className="sg-evolution-img-wrap">
-                    <img
-                      src={evolutionVisual.image}
-                      alt={data.matrixTitle || "Service Capability Matrix"}
-                      className="sg-evolution-3d-img"
-                    />
-                    <div className="sg-evolution-img-badge">
-                      <EvolutionBadgeIcon size={14} className="badge-icon-cpu" />
-                      <span>{evolutionVisual.badge}</span>
-                    </div>
-                  </div>
-
-                  <div className="sg-evolution-pod-caption">
-                    <div className="sg-pod-badge-row">
-                      <span className="sg-pod-chip chip-trad">{evolutionVisual.chipFrom}</span>
-                      <ArrowRightLeft size={14} className="sg-pod-arrow" />
-                      <span className="sg-pod-chip chip-geo">{evolutionVisual.chipTo}</span>
-                    </div>
-                    <h4 className="sg-pod-title">{evolutionVisual.title}</h4>
-                    <p className="sg-pod-desc">
-                      {evolutionVisual.desc}
-                    </p>
-                  </div>
+                    <span className="sg-tech-play-label">See How It Works</span>
+                  </button>
                 </div>
               </motion.div>
 
-              {/* RIGHT COLUMN: INTERACTIVE COMPARISON MATRIX MODULES */}
-              <div className="sg-evolution-cards-col">
-                {data.matrixRows.map((row, idx) => {
-                  const RowIcon = idx === 0 ? Bot : idx === 1 ? Layers : idx === 2 ? MessageSquare : Zap;
-
-                  return (
-                    <motion.div
-                      key={row.feature}
-                      className="sg-evolution-compare-item"
-                      initial={{ opacity: 0, y: 22 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      viewport={{ once: false, amount: 0.15 }}
-                      transition={{ duration: 0.5, delay: idx * 0.08 }}
-                    >
-                      {/* Feature Title Row */}
-                      <div className="sg-compare-header">
-                        <div className="sg-compare-icon-wrap">
-                          <RowIcon size={18} />
-                        </div>
-                        <span className="sg-compare-feature-name">{row.feature}</span>
-                        <span className="sg-compare-step-num">STAGE 0{idx + 1}</span>
-                      </div>
-
-                      {/* Dual Cards Comparison */}
-                      <div className="sg-compare-dual-grid">
-                        {/* Left: Traditional Agency */}
-                        <div className="sg-compare-box box-trad">
-                          <div className="sg-compare-box-label">
-                            <span className="status-dot dot-gray" />
-                            <span>TRADITIONAL SEO</span>
-                          </div>
-                          <p className="sg-compare-box-text">{row.traditional}</p>
-                        </div>
-
-                        {/* Center transfer glyph */}
-                        <div className="sg-compare-transfer-arrow">
-                          <ArrowRight size={16} />
-                        </div>
-
-                        {/* Right: BrandForge GEO Engine */}
-                        <div className="sg-compare-box box-geo">
-                          <div className="sg-compare-box-label">
-                            <span className="status-dot dot-red" />
-                            <span>BRANDFORGE GEO ENGINE</span>
-                          </div>
-                          <p className="sg-compare-box-text">{row.brandforge}</p>
-                        </div>
-                      </div>
-                    </motion.div>
-                  );
-                })}
-              </div>
+              {/* RIGHT COLUMN: BRANDFORGE THEME 3D ARTWORK (SEO & GEO SCROLL PARALLAX) */}
+              <motion.div
+                className={`sg-tech-banner-right ${isSeoGeo ? "is-seo-geo-artwork-col" : ""}`}
+                initial={{ opacity: 0, x: 40 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: false, amount: 0.2 }}
+                transition={{ duration: 0.8, delay: 0.15 }}
+                style={{
+                  zIndex: isSeoGeo ? 40 : 2,
+                  position: "relative",
+                }}
+              >
+                <motion.div
+                  className={`sg-tech-floating-container ${isSeoGeo ? "is-seo-geo-floating-box" : ""}`}
+                  style={
+                    isSeoGeo
+                      ? {
+                          x: bannerArtworkX,
+                          y: bannerArtworkY,
+                          scale: bannerArtworkScale,
+                          rotate: bannerArtworkRotate,
+                          zIndex: 40,
+                        }
+                      : {}
+                  }
+                >
+                  <div className="sg-tech-art-ambient-glow" />
+                  <img
+                    src={bannerAsset}
+                    alt={`${data.title} BrandForge 3D Ecosystem`}
+                    className={`sg-tech-floating-img ${isSeoGeo ? "is-seo-geo-img" : ""}`}
+                    style={{ borderRadius: (isSeoGeo || (bannerAsset.endsWith('.png') && !bannerAsset.includes('commercial-video') && !bannerAsset.includes('visual-id'))) ? "0px" : "20px" }}
+                  />
+                </motion.div>
+              </motion.div>
 
             </div>
           </div>
-        </section>
+        </header>
+      )}
+
+      {/* 3D BENTO GRID & CORE CAPABILITIES (ONLY ON SEO & GEO) */}
+      {isSeoGeo && <Seo3DBentoGrid />}
+
+      {/* DUAL-ENGINE SEARCH VISUALIZER (ONLY ON SEO & GEO) */}
+      {isSeoGeo && <SerpGeoVisualizer />}
+
+      {/* DEDICATED PARAGRAPH STORY & LEAD FORM SECTION (APPLIED TO ALL SERVICES) */}
+      <InteractiveStorySection
+        data={data}
+        storyHeading={storyHeading}
+        topThreePillars={topThreePillars}
+      />
+
+      {/* CARDLESS TYPOGRAPHIC METRICS STRIP & CLIENT LOGOS PROOF */}
+      <InteractiveMetricsSection metrics={data.metrics} />
+
+      {/* WHY BUSINESSES CHOOSE BRAND FORGE SECTION */}
+      {data.whyChooseUs && (
+        <InteractiveWhyChooseSection whyChooseUs={data.whyChooseUs} />
+      )}
+
+
+      {/* CREATIVE EDITORIAL COMPARISON MATRIX: THE EVOLUTION FROM SEO TO GEO */}
+      {data.matrixRows && data.matrixRows.length > 0 && (
+        <InteractiveEvolutionMatrix
+          matrixRows={data.matrixRows}
+          matrixTag={data.matrixTag}
+          matrixTitle={data.matrixTitle}
+          matrixSubtitle={data.matrixSubtitle}
+          evolutionVisual={evolutionVisual}
+        />
       )}
 
       {/* CARDLESS INTERACTIVE 6-PILLAR LIST STREAM */}
-      <section className="sg-section sg-pillars-section">
-        <KexsioCanvasBackground />
-        <div className="sg-container">
-          <motion.div
-            className="sg-section-header text-center"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: false, amount: 0.2 }}
-            transition={{ duration: 0.7 }}
-          >
-            <span className="sg-section-tag">{data.pillarsTag || "6-PILLAR SYSTEM"}</span>
-            <h2 className="sg-section-title">
-              {data.pillarsTitle ? (
-                data.pillarsTitle
-              ) : (
-                <>THE <span>BRANDFORGE {data.number} FORGE</span></>
-              )}
-            </h2>
-            <p className="sg-section-subtitle">
-              {data.pillarsSubtitle || "Every system is engineered to capture market intent, build category authority, and scale pipeline."}
-            </p>
-          </motion.div>
-
-          <div className="sg-creative-accordion-list">
-            {data.pillars.map((p, idx) => {
-              const PillarIcon = p.icon || Zap;
-              const isOpen = activePillar === idx;
-
-              return (
-                <motion.div
-                  key={p.title}
-                  className={`sg-creative-accordion-card ${isOpen ? "is-expanded" : ""}`}
-                  initial={{ opacity: 0, y: 25 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: false, amount: 0.15 }}
-                  transition={{ duration: 0.5, delay: idx * 0.07 }}
-                >
-                  <button
-                    type="button"
-                    className="sg-creative-accordion-btn"
-                    onClick={() => setActivePillar(isOpen ? null : idx)}
-                    aria-expanded={isOpen}
-                  >
-                    <div className="sg-acc-left-meta">
-                      <span className="sg-acc-index">0{idx + 1}</span>
-                      <div className={`sg-acc-icon-box ${isOpen ? "is-active" : ""}`}>
-                        <PillarIcon size={22} />
-                      </div>
-                    </div>
-
-                    <div className="sg-acc-content-header">
-                      <div className="sg-acc-tag-row">
-                        <span className="sg-acc-tag">{p.tag}</span>
-                        {p.deliverables && (
-                          <span className="sg-acc-count-badge">
-                            {p.deliverables.length} {p.deliverables.length === 1 ? "Capability" : "Capabilities"}
-                          </span>
-                        )}
-                      </div>
-                      <h3 className="sg-acc-title">{p.title}</h3>
-                    </div>
-
-                    <div className={`sg-acc-toggle-bubble ${isOpen ? "is-open" : ""}`}>
-                      <ChevronDown size={18} className="sg-acc-chevron" />
-                    </div>
-                  </button>
-
-                  <AnimatePresence initial={false}>
-                    {isOpen && (
-                      <motion.div
-                        className="sg-acc-collapse-body"
-                        initial={{ height: 0, opacity: 0 }}
-                        animate={{ height: "auto", opacity: 1 }}
-                        exit={{ height: 0, opacity: 0 }}
-                        transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
-                      >
-                        <div className="sg-acc-body-inner">
-                          <p className="sg-acc-desc">{p.description}</p>
-
-                          {p.callout && (
-                            <div className="sg-acc-callout">
-                              <Sparkles size={16} className="sg-acc-callout-icon" />
-                              <p>{p.callout}</p>
-                            </div>
-                          )}
-
-                          {p.deliverables && p.deliverables.length > 0 && (
-                            <div className="sg-acc-deliverables-grid">
-                              {p.deliverables.map((deliv, dIdx) => {
-                                const parts = deliv.includes(" — ")
-                                  ? deliv.split(" — ")
-                                  : deliv.includes(" - ")
-                                  ? deliv.split(" - ")
-                                  : null;
-
-                                return (
-                                  <motion.div
-                                    key={dIdx}
-                                    className="sg-acc-deliv-item"
-                                    initial={{ opacity: 0, x: -10 }}
-                                    animate={{ opacity: 1, x: 0 }}
-                                    transition={{ duration: 0.25, delay: dIdx * 0.03 }}
-                                  >
-                                    <div className="sg-acc-deliv-bullet">
-                                      <CheckCircle2 size={15} />
-                                    </div>
-                                    <div className="sg-acc-deliv-text">
-                                      {parts ? (
-                                        <>
-                                          <strong>{parts[0]}</strong> — {parts.slice(1).join(" — ")}
-                                        </>
-                                      ) : (
-                                        deliv
-                                      )}
-                                    </div>
-                                  </motion.div>
-                                );
-                              })}
-                            </div>
-                          )}
-                        </div>
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
-                </motion.div>
-              );
-            })}
-          </div>
-        </div>
-      </section>
+      <InteractivePillarsSection data={data} />
 
       {/* CARDLESS HORIZONTAL TIMELINE PROCESS THREAD */}
-      <section className="sg-section sg-process-sec">
-        <KexsioCanvasBackground theme="light" opacity={0.65} />
-        <div className="sg-container">
-          <motion.div
-            className="sg-section-header text-center"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: false, amount: 0.2 }}
-            transition={{ duration: 0.7 }}
-          >
-            <span className="sg-section-tag">{data.timeline?.tag || "EXECUTION ROADMAP"}</span>
-            <h2 className="sg-section-title">
-              {data.timeline?.title ? (
-                data.timeline.title
-              ) : (
-                <>4-STEP <span>ENGINEERING BLUEPRINT</span></>
-              )}
-            </h2>
-            <p className="sg-section-subtitle">
-              {data.timeline?.subtitle || "How we take your project from initial strategy blueprint to live market dominance."}
-            </p>
-          </motion.div>
-
-          <div className={`sg-timeline-stream ${data.timeline?.steps?.length === 6 ? "has-6-steps" : ""}`}>
-            <div className="sg-timeline-line" />
-            {(data.timeline?.steps || [
-              { num: "01", title: "STRATEGY ARCHITECTURE", desc: "120-point diagnostic audit, competitor teardowns & roadmap alignment." },
-              { num: "02", title: "UI/UX & PROTOTYPING", desc: "Custom 3D visual design tokens, glassmorphic UX & conversion triggers." },
-              { num: "03", title: "SUB-SECOND ENGINEERING", desc: "Next.js/React front-end code, WebGL shaders & Core Web Vitals optimization." },
-              { num: "04", title: "DEPLOYS & ROAS SCALE", desc: "Live production launch, CAPI tracking, GEO schemas & LTV scaling loops." },
-            ]).map((step, sIdx) => (
-              <motion.div
-                key={step.num}
-                className="sg-timeline-step"
-                initial={{ opacity: 0, y: 35, scale: 0.88 }}
-                whileInView={{ opacity: 1, y: 0, scale: 1 }}
-                viewport={{ once: false, amount: 0.2 }}
-                transition={{ duration: 0.6, delay: sIdx * 0.12 }}
-              >
-                <div className="sg-node-dot">{step.num}</div>
-                <h4>{step.title}</h4>
-                <p>{step.desc}</p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <InteractiveBlueprintTimeline timeline={data.timeline} />
 
       {/* WHAT MAKES OUR COMPANY DIFFERENT SECTION */}
       {data.differentiators && (
-        <section className="sg-section sg-diff-section">
-          <KexsioCanvasBackground />
-          <div className="sg-container">
-            <motion.div
-              className="sg-section-header text-center"
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: false, amount: 0.2 }}
-              transition={{ duration: 0.7 }}
-            >
-              <span className="sg-section-tag">{data.differentiators.tag || "THE BRANDFORGE ADVANTAGE"}</span>
-              <h2 className="sg-section-title">{data.differentiators.title}</h2>
-              {data.differentiators.subtitle && (
-                <p className="sg-section-subtitle">{data.differentiators.subtitle}</p>
-              )}
-            </motion.div>
-
-            <div className="sg-diff-grid">
-              {data.differentiators.items.map((item, idx) => {
-                const DiffIcon = item.icon || Sparkles;
-                return (
-                  <motion.div
-                    key={item.title}
-                    className="sg-diff-card"
-                    initial={{ opacity: 0, y: 35 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: false, amount: 0.2 }}
-                    transition={{ duration: 0.6, delay: idx * 0.1 }}
-                  >
-                    <div className="sg-diff-icon-wrap">
-                      <DiffIcon size={24} className="diff-lucide-icon" />
-                    </div>
-                    <h3>{item.title}</h3>
-                    <p>{item.description}</p>
-                  </motion.div>
-                );
-              })}
-            </div>
-          </div>
-        </section>
+        <InteractiveDiffSection differentiators={data.differentiators} />
       )}
 
       {/* WHO WE HELP SECTION */}
       {data.whoWeHelp && (
-        <section className="sg-section sg-who-section">
-          <KexsioCanvasBackground theme="light" opacity={0.65} />
-          <div className="sg-container">
-            <motion.div
-              className="sg-section-header text-center"
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: false, amount: 0.2 }}
-              transition={{ duration: 0.7 }}
-            >
-              <span className="sg-section-tag">{data.whoWeHelp.tag || "WHO WE HELP"}</span>
-              <h2 className="sg-section-title">{data.whoWeHelp.title}</h2>
-              {data.whoWeHelp.subtitle && (
-                <p className="sg-section-subtitle">{data.whoWeHelp.subtitle}</p>
-              )}
-            </motion.div>
-
-            {data.whoWeHelp.industries && (
-              <div className="sg-who-grid">
-                {data.whoWeHelp.industries.map((ind, idx) => (
-                  <motion.div
-                    key={ind.title}
-                    className="sg-who-card"
-                    initial={{ opacity: 0, y: 30 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: false, amount: 0.2 }}
-                    transition={{ duration: 0.5, delay: idx * 0.08 }}
-                  >
-                    <div className="sg-who-icon">
-                      <CheckCircle2 size={18} className="check-icon" />
-                    </div>
-                    <div className="sg-who-content">
-                      <h4>{ind.title}</h4>
-                      <p>{ind.desc}</p>
-                    </div>
-                  </motion.div>
-                ))}
-              </div>
-            )}
-
-            {data.whoWeHelp.certifications && (
-              <div className="sg-cert-strip">
-                {data.whoWeHelp.certifications.map((cert, idx) => (
-                  <motion.div
-                    key={cert.label}
-                    className="sg-cert-badge"
-                    initial={{ opacity: 0, scale: 0.9 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    viewport={{ once: false, amount: 0.2 }}
-                    transition={{ duration: 0.4, delay: idx * 0.1 }}
-                  >
-                    <ShieldCheck size={16} className="cert-icon" />
-                    <span>{cert.label}</span>
-                  </motion.div>
-                ))}
-              </div>
-            )}
-          </div>
-        </section>
+        <InteractiveWhoWeHelpSection whoWeHelp={data.whoWeHelp} />
       )}
 
       {/* CARDLESS FAQ ACCORDION LIST */}
-      <section className="sg-section sg-faq-section">
-        <div className="sg-container">
-          <motion.div
-            className="sg-section-header text-center"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: false, amount: 0.2 }}
-            transition={{ duration: 0.7 }}
-          >
-            <span className="sg-section-tag">ANSWERS & CLARITY</span>
-            <h2 className="sg-section-title">FREQUENTLY ASKED <span>QUESTIONS</span></h2>
-          </motion.div>
-
-          <div className="sg-faq-stream">
-            {data.faqs.map((faq, idx) => (
-              <motion.div
-                key={faq.q}
-                className={`sg-faq-row ${activeFaq === idx ? "is-open" : ""}`}
-                initial={{ opacity: 0, y: 25 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: false, amount: 0.2 }}
-                transition={{ duration: 0.5, delay: idx * 0.06 }}
-                onClick={() => setActiveFaq(activeFaq === idx ? null : idx)}
-              >
-                <div className="sg-faq-q">
-                  <span>{faq.q}</span>
-                  <ChevronDown size={18} className="sg-faq-arrow" />
-                </div>
-                <AnimatePresence>
-                  {activeFaq === idx && (
-                    <motion.div
-                      className="sg-faq-a"
-                      initial={{ height: 0, opacity: 0 }}
-                      animate={{ height: "auto", opacity: 1 }}
-                      exit={{ height: 0, opacity: 0 }}
-                      transition={{ duration: 0.3 }}
-                    >
-                      <p>{faq.a}</p>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <InteractiveFaqSection faqs={data.faqs} onOpenModal={onOpenModal} />
 
       {/* RELATED SERVICES INTERNAL CROSS-LINKING SECTION */}
-      <section className="sg-section sg-related-services-section">
-        <KexsioCanvasBackground theme="light" opacity={0.65} />
-        <div className="sg-container">
-          <motion.div
-            className="sg-section-header text-center"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: false, amount: 0.2 }}
-            transition={{ duration: 0.7 }}
-          >
-            <span className="sg-section-tag">COMPLEMENTARY FORGES</span>
-            <h2 className="sg-section-title">RELATED <span>GROWTH SYSTEMS</span></h2>
-            <p className="sg-section-subtitle">
-              Scale your brand faster by connecting {data.eyebrow} with our specialized revenue engines.
-            </p>
-          </motion.div>
-
-          <div className="sg-related-grid">
-            {Object.entries(servicesData)
-              .filter(([k]) => k !== slug)
-              .slice(0, 4)
-              .map(([k, srv], rIdx) => (
-                <motion.a
-                  key={k}
-                  href={serviceUrl(k)}
-                  className="sg-related-card"
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: false, amount: 0.2 }}
-                  transition={{ duration: 0.5, delay: rIdx * 0.08 }}
-                  onClick={(e) => {
-                    if (!e.ctrlKey && !e.metaKey && navigate) {
-                      e.preventDefault();
-                      navigate(serviceUrl(k));
-                    }
-                  }}
-                >
-                  <div className="sg-related-num-badge">{srv.number}</div>
-                  <h4>{srv.eyebrow}</h4>
-                  <p>
-                    {typeof srv.subtitle === "string"
-                      ? srv.subtitle.slice(0, 85) + "..."
-                      : srv.subtitle[0]?.slice(0, 85) + "..."}
-                  </p>
-                  <div className="sg-related-link-text">
-                    <span>EXPLORE FORGE</span>
-                    <ArrowRight size={14} />
-                  </div>
-                </motion.a>
-              ))}
-          </div>
-        </div>
-      </section>
+      <InteractiveRelatedServicesSection
+        currentSlug={slug}
+        currentEyebrow={data.eyebrow}
+        navigate={navigate}
+      />
 
       {/* BOTTOM BANNER CTA */}
-      <section className="sg-bottom-cta">
-        <div className="sg-container">
-          <motion.div
-            className="sg-cta-box-cardless"
-            initial={{ opacity: 0, y: 45, scale: 0.93 }}
-            whileInView={{ opacity: 1, y: 0, scale: 1 }}
-            viewport={{ once: false, amount: 0.2 }}
-            transition={{ duration: 0.8 }}
-          >
-            <h2>
-              {data.bottomCta?.title ? (
-                <>
-                  {data.bottomCta.title.includes("—") ? (
-                    <>{data.bottomCta.title.split("—")[0]} — <span>{data.bottomCta.title.split("—")[1]}</span></>
-                  ) : (
-                    data.bottomCta.title
-                  )}
-                </>
-              ) : (
-                <>READY TO FORGE <span>{data.eyebrow}?</span></>
-              )}
-            </h2>
-            <p>
-              {data.bottomCta?.subtitle || "Get a comprehensive strategy audit delivered to your inbox within 24 hours."}
-            </p>
-            <div className="sg-cta-actions">
-              <button className="sg-btn primary" onClick={onOpenModal}>
-                <Zap size={16} />
-                <span>{data.bottomCta?.buttonText || "REQUEST FREE STRATEGY AUDIT"}</span>
-                <ArrowRight size={16} />
-              </button>
-            </div>
-          </motion.div>
-        </div>
-      </section>
+      <InteractiveBottomCtaSection
+        bottomCta={data.bottomCta}
+        eyebrow={data.eyebrow}
+        onOpenModal={onOpenModal}
+      />
+
 
       {/* SITE FOOTER */}
       <BrandForgeAnimatedFooter onOpenModal={onOpenModal} />
@@ -1660,14 +987,71 @@ const styles = `
 
   .sg-page-root.is-seo-geo-page {
     padding-top: 0;
-    background: #000000;
+    background: #FFFFFF;
   }
 
   .sg-page-root.is-seo-geo-page .sg-marquee-bar {
     margin-top: 0;
     padding-top: 90px;
-    background: #000000;
+    background: #0A0A0C;
     border-top: none;
+    border-bottom: 1px solid rgba(239, 65, 54, 0.2);
+  }
+
+  /* COHESIVE LIGHT THEME WITH RED, BLACK, AND WHITE ACCENTS */
+  .sg-page-root.is-seo-geo-page .sg-metrics-section {
+    background: #FFFFFF;
+    position: relative;
+    border-top: 1px solid #E5E7EB;
+    border-bottom: 1px solid #E5E7EB;
+  }
+
+  .sg-page-root.is-seo-geo-page .sg-seo-story-section {
+    background: #FFFFFF;
+    border-top: 1px solid #E5E7EB;
+    border-bottom: 1px solid #E5E7EB;
+  }
+
+  .sg-page-root.is-seo-geo-page .sg-evolution-section {
+    background: #FAFAFC;
+    border-top: 1px solid #E5E7EB;
+    border-bottom: 1px solid #E5E7EB;
+  }
+
+  .sg-page-root.is-seo-geo-page .sg-pillars-section {
+    background: #FFFFFF;
+    border-top: 1px solid #E5E7EB;
+    border-bottom: 1px solid #E5E7EB;
+  }
+
+  .sg-page-root.is-seo-geo-page .sg-process-sec {
+    background: #FAFAFC;
+    border-top: 1px solid #E5E7EB;
+    border-bottom: 1px solid #E5E7EB;
+  }
+
+  .sg-page-root.is-seo-geo-page .sg-diff-section {
+    background: #FFFFFF;
+    border-top: 1px solid #E5E7EB;
+    border-bottom: 1px solid #E5E7EB;
+  }
+
+  .sg-page-root.is-seo-geo-page .sg-who-section {
+    background: #FAFAFC;
+    border-top: 1px solid #E5E7EB;
+    border-bottom: 1px solid #E5E7EB;
+  }
+
+  .sg-page-root.is-seo-geo-page .sg-faq-section {
+    background: #FFFFFF;
+    border-top: 1px solid #E5E7EB;
+    border-bottom: 1px solid #E5E7EB;
+  }
+
+  .sg-page-root.is-seo-geo-page .sg-related-services-section {
+    background: #FAFAFC;
+    border-top: 1px solid #E5E7EB;
+    border-bottom: 1px solid #E5E7EB;
   }
 
   .sg-bg-overlay {

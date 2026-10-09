@@ -42,7 +42,7 @@ export default function App() {
         />
 
         {/* SITE-WIDE NAVBAR */}
-        <SiteNavbar path={path} navigate={navigate} onOpenModal={openModal} />
+        <SiteNavbar path={path} navigate={navigate} onOpenModal={openModal} />    
 
         {/* ROUTES */}
         {path === '/about' ? (
@@ -50,7 +50,7 @@ export default function App() {
         ) : path === '/contact' ? (
           <ContactPage onOpenModal={openModal} />
         ) : path === '/seo-company-coimbatore' ? (
-          <ServiceLandingPage slug="seo-geo" onOpenModal={openModal} navigate={navigate} />
+          <ServiceLandingPage slug="seo-geo" onOpenModal={openModal} navigate={navigate} />   
         ) : path === '/ppc-company-coimbatore' ? (
           <ServiceLandingPage slug="paid-media" onOpenModal={openModal} navigate={navigate} />
         ) : path === '/website-development-company-coimbatore' || path === '/web-development-company-coimbatore' ? (
@@ -67,7 +67,7 @@ export default function App() {
           <ServiceLandingPage slug="visual-id" onOpenModal={openModal} navigate={navigate} />
         ) : path === '/influencer-marketing-coimbatore' ? (
           <ServiceLandingPage slug="influencer-network" onOpenModal={openModal} navigate={navigate} />
-        ) : path === '/brand-reputation-management-coimbatore' ? (
+        ) : path === '/brand-reputation-management-coimbatore' ? ( 
           <ServiceLandingPage slug="reputation-shield" onOpenModal={openModal} navigate={navigate} />
         ) : path === '/video-production-editing-company-coimbatore' ? (
           <ServiceLandingPage slug="commercial-video" onOpenModal={openModal} navigate={navigate} />

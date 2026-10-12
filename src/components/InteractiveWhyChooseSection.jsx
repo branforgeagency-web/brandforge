@@ -15,8 +15,10 @@ function WhyPointCard({ point, idx }) {
   const mouseXSpring = useSpring(x, { stiffness: 150, damping: 20 });
   const mouseYSpring = useSpring(y, { stiffness: 150, damping: 20 });
 
-  const rotateX = useTransform(mouseYSpring, [-0.5, 0.5], ["8deg", "-8deg"]);
-  const rotateY = useTransform(mouseXSpring, [-0.5, 0.5], ["-8deg", "8deg"]);
+  const rotateX = useTransform(mouseYSpring, [-0.5, 0.5], ["10deg", "-10deg"]);
+  const rotateY = useTransform(mouseXSpring, [-0.5, 0.5], ["-10deg", "10deg"]);
+  const translateX = useTransform(mouseXSpring, [-0.5, 0.5], [-8, 8]);
+  const translateY = useTransform(mouseYSpring, [-0.5, 0.5], [-6, 6]);
 
   const handleMouseMove = (e) => {
     if (!cardRef.current) return;
@@ -39,7 +41,7 @@ function WhyPointCard({ point, idx }) {
     "SUB-SECOND STACK",
     "KNOWLEDGE GRAPH",
     "ATTRIBUTION ENGINE",
-    "COIMBATORE LOCAL DOMINANCE"
+    "LOCAL DOMINANCE"
   ];
 
   const tag = microTags[idx % microTags.length];
@@ -47,45 +49,62 @@ function WhyPointCard({ point, idx }) {
 
   return (
     <motion.div
-      ref={cardRef}
-      onMouseMove={handleMouseMove}
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={handleMouseLeave}
-      style={{
-        rotateX,
-        rotateY,
-        transformStyle: "preserve-3d",
+      animate={{
+        y: idx % 2 === 0 ? [-5, 5, -5] : [5, -5, 5],
+      }}
+      transition={{
+        duration: 4.4 + (idx % 3) * 0.5,
+        repeat: Infinity,
+        ease: "easeInOut",
       }}
       className="sg-why-point-3d-wrap"
-      initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: false, amount: 0.15 }}
-      transition={{ duration: 0.5, delay: idx * 0.08 }}
     >
-      <div className={`sg-why-point-card ${hovered ? "is-hovered" : ""}`}>
-        {/* Animated Spotlight Glare */}
-        <div
-          className="sg-why-card-glare"
-          style={{ opacity: hovered ? 0.7 : 0 }}
-        />
+      <motion.div
+        ref={cardRef}
+        onMouseMove={handleMouseMove}
+        onMouseEnter={() => setHovered(true)}
+        onMouseLeave={handleMouseLeave}
+        style={{
+          rotateX,
+          rotateY,
+          x: translateX,
+          y: translateY,
+          transformStyle: "preserve-3d",
+        }}
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: false, amount: 0.15 }}
+        transition={{ duration: 0.5, delay: idx * 0.08 }}
+      >
+        <div className={`sg-why-point-card ${hovered ? "is-hovered" : ""}`} style={{ transformStyle: "preserve-3d" }}>
+          {/* Animated Spotlight Glare */}
+          <div
+            className="sg-why-card-glare"
+            style={{ opacity: hovered ? 0.7 : 0 }}
+          />
 
-        <div className="sg-why-card-header">
-          <div className="sg-why-point-icon">
-            <CheckCircle2 size={18} className="check-icon" />
-            <span className="check-ring-pulse" />
+          <div className="sg-why-card-header" style={{ transform: "translateZ(28px)" }}>
+            <motion.div
+              className="sg-why-point-icon"
+              animate={{ scale: hovered ? 1.12 : 1, rotateZ: hovered ? [0, -8, 8, 0] : 0 }}
+              transition={{ duration: 0.4 }}
+            >
+              <CheckCircle2 size={18} className="check-icon" />
+              <span className="check-ring-pulse" />
+            </motion.div>
+            <span className="sg-why-card-tag">{tag}</span>
           </div>
-          <span className="sg-why-card-tag">{tag}</span>
-        </div>
 
-        <div className="sg-why-point-content">
-          <p>{pointText}</p>
-        </div>
+          <div className="sg-why-point-content" style={{ transform: "translateZ(34px)" }}>
+            <p>{pointText}</p>
+          </div>
 
-        <div className="sg-why-card-footer">
-          <span className="footer-status-dot" />
-          <span className="footer-status-label">VERIFIED PERFORMANCE STANDARD</span>
+          <div className="sg-why-card-footer" style={{ transform: "translateZ(22px)" }}>
+            <span className="footer-status-dot" />
+            <span className="footer-status-label">VERIFIED PERFORMANCE STANDARD</span>
+          </div>
         </div>
-      </div>
+      </motion.div>
     </motion.div>
   );
 }

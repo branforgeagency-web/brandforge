@@ -723,25 +723,6 @@ export default function ServiceLandingPage({ slug = "seo-geo", onOpenModal, navi
   const evolutionVisual = SERVICE_EVOLUTION_VISUALS[data.slug] || SERVICE_EVOLUTION_VISUALS[slug] || SERVICE_EVOLUTION_VISUALS["seo-geo"];
 
   const isSeoGeo = data.slug === "seo-geo" || slug === "seo-geo" || slug === "seo-company-coimbatore";
-  const isPaidMedia = data.slug === "paid-media" || slug === "paid-media" || slug === "ppc-company-coimbatore";
-  const heroBannerRef = useRef(null);
-
-  const { scrollYProgress: heroScroll } = useScroll({
-    target: heroBannerRef,
-    offset: ["start start", "end start"],
-  });
-
-  // Scroll animations: move from left to right on top layer when scrolling into next section
-  const bannerArtworkX = useTransform(heroScroll, [0, 1], [-25, 175]);
-  const bannerArtworkY = useTransform(heroScroll, [0, 1], [0, 160]);
-  const bannerArtworkScale = useTransform(heroScroll, [0, 1], [1, 1.08]);
-  const bannerArtworkRotate = useTransform(heroScroll, [0, 1], [0, 3]);
-
-  const bannerAsset = isSeoGeo
-    ? "/seo-sketch-diagram.png"
-    : (SERVICE_BANNER_ASSETS[data.slug] || data.bannerBg || "/seo-sketch-diagram.png");
-  const pillTag = SERVICE_PILL_TAGS[data.slug] || data.eyebrow?.split("|")?.[0]?.toUpperCase() || "ENTERPRISE GROWTH";
-  const microDesc = SERVICE_MICRO_DESCS[data.slug] || data.metaDescription || (Array.isArray(data.subtitle) ? data.subtitle[0] : data.subtitle);
   const storyHeading = SERVICE_STORY_HEADINGS[data.slug] || {
     pill: data.whyChooseUs?.tag || "THE STRATEGY",
     lead: (data.whyChooseUs?.title || data.title || "Engineered for").split(" ").slice(0, 4).join(" ") + " —",
@@ -772,135 +753,11 @@ export default function ServiceLandingPage({ slug = "seo-geo", onOpenModal, navi
         </div>
       </div>
 
-      {/* HERO BANNER (CINEMATIC COCKPIT FOR SEO & GEO, SPLIT BANNER FOR OTHER SERVICES) */}
-      {isSeoGeo ? (
-        <CinematicSeoHero onOpenModal={onOpenModal} data={data} />
-      ) : (
-        <header ref={heroBannerRef} id="seo-hero-banner" className="sg-hero sg-hero-banner-tech has-banner-bg">
-          {/* Neural Network Constellation Background (White Theme) */}
-          <KexsioCanvasBackground theme="light" opacity={0.75} />
+      {/* CINEMATIC 3D LEVITATING HERO WITH LIQUID GLASS FLOATING CARDS (ALL 12 SERVICES) */}
+      <CinematicSeoHero onOpenModal={onOpenModal} data={data} slug={slug} />
 
-          {/* High-Tech HUD Background Accents */}
-          <div className="tech-hud-overlay" aria-hidden="true">
-            <div className="tech-hud-circle" />
-            <div className="tech-hud-circle tech-hud-circle-2" />
-            <div className="tech-hud-dots" />
-          </div>
-
-          <div className="sg-container">
-            <div className="sg-tech-banner-grid">
-              
-              {/* LEFT COLUMN: SOCIALS, PILL TAG, H1, MICRO-HOOK, DUAL BUTTONS */}
-              <motion.div
-                className="sg-tech-banner-left"
-                initial={{ opacity: 0, x: -40 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: false, amount: 0.2 }}
-                transition={{ duration: 0.7 }}
-              >
-                {/* Social icons row */}
-                <div className="sg-tech-socials">
-                  <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="sg-tech-social-link">
-                    <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
-                  </a>
-                  <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" aria-label="YouTube" className="sg-tech-social-link">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
-                  </a>
-                  <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="sg-tech-social-link">
-                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
-                  </a>
-                  <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" aria-label="X (Twitter)" className="sg-tech-social-link">
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-                  </a>
-                </div>
-
-                {/* Category Pill Tag */}
-                <div className="sg-tech-pill">
-                  <span className="sg-tech-pill-dot">•</span>
-                  <span>{pillTag}</span>
-                  <span className="sg-tech-pill-dot">•</span>
-                </div>
-
-                {/* H1 Heading with styled accent & wave underline */}
-                <h1 className="sg-tech-h1">
-                  {renderHeroTitle(data)}
-                </h1>
-
-                {/* Micro Tagline */}
-                <p className="sg-tech-micro-desc">
-                  {microDesc}
-                </p>
-
-                {/* Dual Action Buttons */}
-                <div className="sg-tech-action-row">
-                  <button className="sg-tech-start-btn" onClick={onOpenModal}>
-                    <Zap size={16} />
-                    <span>{data.heroButtonText ? data.heroButtonText.replace("→", "").trim() : "Start Free Audit"}</span>
-                    <ArrowRight size={16} />
-                  </button>
-
-                  <button
-                    className="sg-tech-play-btn"
-                    onClick={() => {
-                      const el = document.querySelector('.sg-seo-story-section');
-                      if (el) el.scrollIntoView({ behavior: 'smooth' });
-                      else onOpenModal();
-                    }}
-                    title="View Strategy & Methodology"
-                  >
-                    <div className="sg-tech-play-icon-wrap">
-                      <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
-                        <polygon points="6 3 20 12 6 21 6 3" />
-                      </svg>
-                    </div>
-                    <span className="sg-tech-play-label">See How It Works</span>
-                  </button>
-                </div>
-              </motion.div>
-
-              {/* RIGHT COLUMN: BRANDFORGE THEME 3D ARTWORK (SEO & GEO SCROLL PARALLAX) */}
-              <motion.div
-                className={`sg-tech-banner-right ${isSeoGeo ? "is-seo-geo-artwork-col" : ""}`}
-                initial={{ opacity: 0, x: 40 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: false, amount: 0.2 }}
-                transition={{ duration: 0.8, delay: 0.15 }}
-                style={{
-                  zIndex: isSeoGeo ? 40 : 2,
-                  position: "relative",
-                }}
-              >
-                <motion.div
-                  className={`sg-tech-floating-container ${isSeoGeo ? "is-seo-geo-floating-box" : ""}`}
-                  style={
-                    isSeoGeo
-                      ? {
-                          x: bannerArtworkX,
-                          y: bannerArtworkY,
-                          scale: bannerArtworkScale,
-                          rotate: bannerArtworkRotate,
-                          zIndex: 40,
-                        }
-                      : {}
-                  }
-                >
-                  <div className="sg-tech-art-ambient-glow" />
-                  <img
-                    src={bannerAsset}
-                    alt={`${data.title} BrandForge 3D Ecosystem`}
-                    className={`sg-tech-floating-img ${isSeoGeo ? "is-seo-geo-img" : ""}`}
-                    style={{ borderRadius: (isSeoGeo || (bannerAsset.endsWith('.png') && !bannerAsset.includes('commercial-video') && !bannerAsset.includes('visual-id'))) ? "0px" : "20px" }}
-                  />
-                </motion.div>
-              </motion.div>
-
-            </div>
-          </div>
-        </header>
-      )}
-
-      {/* 3D BENTO GRID & CORE CAPABILITIES (ONLY ON SEO & GEO) */}
-      {isSeoGeo && <Seo3DBentoGrid />}
+      {/* 3D BENTO GRID & CORE CAPABILITIES (ALL 12 SERVICES) */}
+      <Seo3DBentoGrid data={data} slug={slug} />
 
       {/* DUAL-ENGINE SEARCH VISUALIZER (ONLY ON SEO & GEO) */}
       {isSeoGeo && <SerpGeoVisualizer />}

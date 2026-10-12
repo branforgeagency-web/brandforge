@@ -15,7 +15,7 @@ export default function InteractiveEvolutionMatrix({
   const [activeStage, setActiveStage] = useState(0);
   const [activeMode, setActiveMode] = useState("geo"); // "trad" or "geo"
 
-  // 3D Tilt for left visual card
+  // 3D Tilt & Parallax for left visual card
   const cardRef = useRef(null);
   const x = useMotionValue(0);
   const y = useMotionValue(0);
@@ -23,8 +23,12 @@ export default function InteractiveEvolutionMatrix({
   const mouseXSpring = useSpring(x, { stiffness: 120, damping: 18 });
   const mouseYSpring = useSpring(y, { stiffness: 120, damping: 18 });
 
-  const rotateX = useTransform(mouseYSpring, [-0.5, 0.5], ["10deg", "-10deg"]);
-  const rotateY = useTransform(mouseXSpring, [-0.5, 0.5], ["-10deg", "10deg"]);
+  const rotateX = useTransform(mouseYSpring, [-0.5, 0.5], ["12deg", "-12deg"]);
+  const rotateY = useTransform(mouseXSpring, [-0.5, 0.5], ["-12deg", "12deg"]);
+  const podX = useTransform(mouseXSpring, [-0.5, 0.5], [-14, 14]);
+  const podY = useTransform(mouseYSpring, [-0.5, 0.5], [-10, 10]);
+  const badgeX = useTransform(mouseXSpring, [-0.5, 0.5], [16, -16]);
+  const badgeY = useTransform(mouseYSpring, [-0.5, 0.5], [12, -12]);
 
   const handleMouseMove = (e) => {
     if (!cardRef.current) return;
@@ -64,7 +68,7 @@ export default function InteractiveEvolutionMatrix({
 
         {/* 2-COLUMN EVOLUTION GRID */}
         <div className="sg-evolution-grid">
-          {/* LEFT COLUMN: 3D EMBLEM SHOWCASE WITH HOLOGRAPHIC SCANNER */}
+          {/* LEFT COLUMN: 3D EMBLEM SHOWCASE WITH LEVITATING PARALLAX */}
           <motion.div
             className="sg-evolution-visual-col"
             initial={{ opacity: 0, scale: 0.96, x: -30 }}
@@ -79,27 +83,90 @@ export default function InteractiveEvolutionMatrix({
               style={{
                 rotateX,
                 rotateY,
+                x: podX,
+                y: podY,
                 transformStyle: "preserve-3d",
+              }}
+              animate={{
+                y: [-7, 7, -7],
+              }}
+              transition={{
+                duration: 5.2,
+                repeat: Infinity,
+                ease: "easeInOut",
               }}
               className="sg-evolution-card-pod-3d"
             >
-              <div className="sg-evolution-card-pod">
-                {/* Holographic scanner line */}
-                <div className="holographic-scanner-beam" />
+              <div className="sg-evolution-card-pod" style={{ transformStyle: "preserve-3d" }}>
+                <div className="sg-evolution-img-wrap" style={{ transformStyle: "preserve-3d" }}>
+                  {/* Subtle Animated Vector Orbital Rings Behind Illustration */}
+                  <svg
+                    className="sg-evolution-orbit-svg"
+                    viewBox="0 0 360 360"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    aria-hidden="true"
+                  >
+                    <circle
+                      cx="180"
+                      cy="180"
+                      r="142"
+                      stroke="rgba(239, 65, 54, 0.16)"
+                      strokeWidth="1.5"
+                      strokeDasharray="8 10"
+                      className="evo-orbit-ring-outer"
+                    />
+                    <circle
+                      cx="180"
+                      cy="180"
+                      r="106"
+                      stroke="rgba(17, 24, 39, 0.1)"
+                      strokeWidth="1.2"
+                      strokeDasharray="4 8"
+                      className="evo-orbit-ring-inner"
+                    />
+                    <circle cx="180" cy="38" r="5" fill="#EF4136" className="evo-orbit-node" />
+                    <circle cx="322" cy="180" r="4" fill="#111827" className="evo-orbit-node-alt" />
+                  </svg>
 
-                <div className="sg-evolution-img-wrap">
-                  <img
+                  <motion.img
                     src={evolutionVisual.image || "/seo-to-geo-evolution-icon.png"}
                     alt={matrixTitle}
                     className="sg-evolution-3d-img"
+                    animate={{
+                      y: [-8, 8, -8],
+                      rotateZ: [-1.2, 1.2, -1.2],
+                      scale: [1, 1.035, 1],
+                    }}
+                    transition={{
+                      duration: 4.4,
+                      repeat: Infinity,
+                      ease: "easeInOut",
+                    }}
+                    style={{ transform: "translateZ(35px)" }}
                   />
-                  <div className="sg-evolution-img-badge">
+                  <motion.div
+                    style={{
+                      x: badgeX,
+                      y: badgeY,
+                      transform: "translateZ(65px)",
+                    }}
+                    animate={{
+                      y: [4, -4, 4],
+                    }}
+                    transition={{
+                      duration: 3.8,
+                      repeat: Infinity,
+                      ease: "easeInOut",
+                    }}
+                    className="sg-evolution-img-badge"
+                  >
                     <EvolutionBadgeIcon size={14} className="badge-icon-cpu" />
                     <span>{evolutionVisual.badge || "NEXT-GEN AI SEARCH"}</span>
-                  </div>
+                  </motion.div>
                 </div>
 
-                <div className="sg-evolution-pod-caption">
+                <div className="sg-evolution-pod-caption" style={{ transform: "translateZ(28px)" }}>
                   {/* Interactive Mode Switcher Chips */}
                   <div className="sg-pod-badge-row">
                     <button
@@ -144,8 +211,9 @@ export default function InteractiveEvolutionMatrix({
                   className={`sg-evolution-compare-item ${isCurrent ? "is-current-stage" : ""}`}
                   initial={{ opacity: 0, y: 22 }}
                   whileInView={{ opacity: 1, y: 0 }}
+                  whileHover={{ y: -5, scale: 1.01 }}
                   viewport={{ once: false, amount: 0.15 }}
-                  transition={{ duration: 0.5, delay: idx * 0.08 }}
+                  transition={{ duration: 0.4, delay: idx * 0.06 }}
                   onMouseEnter={() => setActiveStage(idx)}
                 >
                   {/* Feature Title Row */}
@@ -220,58 +288,66 @@ const evolutionStyles = `
 
   .sg-evolution-card-pod {
     position: relative;
-    background: #FAFAFC;
-    border: 1px solid #E5E7EB;
-    border-radius: 24px;
-    padding: 24px;
-    overflow: hidden;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    background: transparent;
+    border: none;
+    border-radius: 0;
+    padding: 12px;
+    overflow: visible;
+    box-shadow: none;
     transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
   }
 
   .sg-evolution-card-pod:hover {
-    border-color: rgba(239, 65, 54, 0.4);
-    box-shadow: 0 16px 40px rgba(239, 65, 54, 0.1);
-  }
-
-  /* HOLOGRAPHIC SCANNER BEAM */
-  .holographic-scanner-beam {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 3px;
-    background: linear-gradient(90deg, transparent, #EF4136, #FFA07A, transparent);
-    box-shadow: 0 0 12px #EF4136;
-    animation: scannerSweep 3.5s ease-in-out infinite;
-    z-index: 10;
-    pointer-events: none;
-  }
-
-  @keyframes scannerSweep {
-    0% { top: 0%; opacity: 0; }
-    15% { opacity: 1; }
-    85% { opacity: 1; }
-    100% { top: 75%; opacity: 0; }
+    border: none;
+    box-shadow: none;
+    background: transparent;
   }
 
   .sg-evolution-img-wrap {
     position: relative;
     width: 100%;
-    background: #FFFFFF;
-    border: 1px solid #F3F4F6;
-    border-radius: 18px;
+    background: transparent;
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
     padding: 24px 16px;
     display: flex;
     justify-content: center;
     align-items: center;
   }
 
+  .sg-evolution-orbit-svg {
+    position: absolute;
+    width: 310px;
+    height: 310px;
+    pointer-events: none;
+    z-index: 0;
+    animation: evoOrbitSpin 26s linear infinite;
+  }
+
+  .evo-orbit-ring-inner {
+    transform-origin: 180px 180px;
+    animation: evoOrbitReverse 18s linear infinite;
+  }
+
+  @keyframes evoOrbitSpin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+
+  @keyframes evoOrbitReverse {
+    from { transform: rotate(360deg); }
+    to { transform: rotate(0deg); }
+  }
+
   .sg-evolution-3d-img {
+    position: relative;
+    z-index: 2;
     width: 100%;
-    max-height: 280px;
+    max-height: 295px;
     object-fit: contain;
-    filter: drop-shadow(0 15px 30px rgba(0, 0, 0, 0.08));
+    background: transparent;
+    filter: none;
     display: block;
     transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
   }

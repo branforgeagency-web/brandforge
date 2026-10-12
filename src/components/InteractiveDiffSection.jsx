@@ -15,8 +15,10 @@ function DiffCard({ item, idx }) {
   const mouseXSpring = useSpring(x, { stiffness: 140, damping: 20 });
   const mouseYSpring = useSpring(y, { stiffness: 140, damping: 20 });
 
-  const rotateX = useTransform(mouseYSpring, [-0.5, 0.5], ["10deg", "-10deg"]);
-  const rotateY = useTransform(mouseXSpring, [-0.5, 0.5], ["-10deg", "10deg"]);
+  const rotateX = useTransform(mouseYSpring, [-0.5, 0.5], ["11deg", "-11deg"]);
+  const rotateY = useTransform(mouseXSpring, [-0.5, 0.5], ["-11deg", "11deg"]);
+  const translateX = useTransform(mouseXSpring, [-0.5, 0.5], [-8, 8]);
+  const translateY = useTransform(mouseYSpring, [-0.5, 0.5], [-8, 8]);
 
   const handleMouseMove = (e) => {
     if (!cardRef.current) return;
@@ -42,45 +44,64 @@ function DiffCard({ item, idx }) {
 
   return (
     <motion.div
-      ref={cardRef}
-      onMouseMove={handleMouseMove}
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={handleMouseLeave}
-      style={{
-        rotateX,
-        rotateY,
-        transformStyle: "preserve-3d",
+      animate={{
+        y: idx % 2 === 0 ? [-6, 6, -6] : [6, -6, 6],
+      }}
+      transition={{
+        duration: 4.6 + idx * 0.5,
+        repeat: Infinity,
+        ease: "easeInOut",
       }}
       className="sg-diff-card-3d"
-      initial={{ opacity: 0, y: 35 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: false, amount: 0.2 }}
-      transition={{ duration: 0.6, delay: idx * 0.1 }}
     >
-      <div className={`sg-diff-card ${hovered ? "is-hovered" : ""}`}>
-        {/* Cursor Glow Spotlight */}
-        <div
-          className="sg-diff-glare"
-          style={{ opacity: hovered ? 0.75 : 0 }}
-        />
+      <motion.div
+        ref={cardRef}
+        onMouseMove={handleMouseMove}
+        onMouseEnter={() => setHovered(true)}
+        onMouseLeave={handleMouseLeave}
+        style={{
+          rotateX,
+          rotateY,
+          x: translateX,
+          y: translateY,
+          transformStyle: "preserve-3d",
+        }}
+        initial={{ opacity: 0, y: 35 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: false, amount: 0.2 }}
+        transition={{ duration: 0.6, delay: idx * 0.1 }}
+      >
+        <div className={`sg-diff-card ${hovered ? "is-hovered" : ""}`} style={{ transformStyle: "preserve-3d" }}>
+          {/* Cursor Glow Spotlight */}
+          <div
+            className="sg-diff-glare"
+            style={{ opacity: hovered ? 0.75 : 0 }}
+          />
 
-        {/* Top Cyber Metadata */}
-        <div className="sg-diff-card-top">
-          <div className="sg-diff-icon-wrap">
-            <DiffIcon size={24} className="diff-lucide-icon" />
+          {/* Top Cyber Metadata */}
+          <div className="sg-diff-card-top" style={{ transform: "translateZ(30px)" }}>
+            <motion.div
+              className="sg-diff-icon-wrap"
+              animate={{ scale: hovered ? 1.1 : 1, rotateZ: hovered ? [0, -8, 8, 0] : 0 }}
+              transition={{ duration: 0.45 }}
+            >
+              <DiffIcon size={24} className="diff-lucide-icon" />
+            </motion.div>
+            <span className="sg-diff-guarantee-badge">{tag}</span>
           </div>
-          <span className="sg-diff-guarantee-badge">{tag}</span>
-        </div>
 
-        <h3>{item.title}</h3>
-        <p>{item.description}</p>
+          <div style={{ transform: "translateZ(36px)" }}>
+            <h3>{item.title}</h3>
+            <p>{item.description}</p>
+          </div>
 
-        {/* Bottom Status Conduit */}
-        <div className="sg-diff-card-footer">
-          <div className="footer-line" />
-          <span className="footer-code">BENCHMARK 0{idx + 1} // VERIFIED</span>
+          {/* Bottom Status Conduit */}
+          <div className="sg-diff-card-footer" style={{ transform: "translateZ(24px)" }}>
+            <div className="footer-line" />
+            <span className="footer-code">BENCHMARK 0{idx + 1} // VERIFIED</span>
+          </div>
         </div>
-      </div>
+      </motion.div>
     </motion.div>
   );
 }

@@ -141,25 +141,6 @@ export default function SerpGeoVisualizer() {
                         <strong className="attr-val text-red">+340% Organic ROAS</strong>
                       </div>
                     </div>
-
-                    {/* Citations / Source References Row */}
-                    <div className="bf-geo-sources-row">
-                      <span className="sources-label">CITED KNOWLEDGE GRAPH SOURCES:</span>
-                      <div className="sources-list">
-                        <span className="source-pill">
-                          <span className="dot dot-green" />
-                          <span>BrandForge Knowledge Graph [Entity ID: 8904]</span>
-                        </span>
-                        <span className="source-pill">
-                          <span className="dot dot-red" />
-                          <span>Lighthouse Performance Benchmarks (100/100)</span>
-                        </span>
-                        <span className="source-pill">
-                          <span className="dot dot-yellow" />
-                          <span>Verified Client Attribution Case Studies</span>
-                        </span>
-                      </div>
-                    </div>
                   </div>
                 </motion.div>
               )}
@@ -469,7 +450,7 @@ const visualizerStyles = `
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 16px;
-    margin-bottom: 28px;
+    margin-bottom: 0;
   }
 
   .bf-geo-attr-box {

@@ -2,17 +2,184 @@
 
 import React, { useRef } from "react";
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
-import { Zap, ArrowRight, Search, Cpu, Globe, CheckCircle2, Sparkles, Check, Star } from "lucide-react";
+import {
+  Zap, ArrowRight, Search, Cpu, Globe, CheckCircle2, Sparkles, Check, Star,
+  Target, BarChart3, Users, PenTool, MessageSquare, Layers, Video, ShieldCheck
+} from "lucide-react";
 import KexsioCanvasBackground from "./KexsioCanvasBackground";
 
-/**
- * World-Class Cinematic 3D SEO & GEO Hero
- * Features interactive 3D SEO & GEO apparatus artwork with cursor parallax,
- * floating 3D Google Search & AI Recommendation holographic cards,
- * and high-converting light-theme styling with red, black, and white accents.
- */
-export default function CinematicSeoHero({ onOpenModal }) {
+const SERVICE_HERO_CONFIGS = {
+  "seo-geo": {
+    eyebrow: "NEXT-GEN SEARCH SUPREMACY • DUAL-ENGINE ARCHITECTURE",
+    leadTitle: "Own The Search Engine.",
+    accentTitle: "Command The AI Answer.",
+    sub: "Traditional SEO captures ten blue links. BrandForge GEO synthesizes your brand into ChatGPT, Perplexity, and Google Gemini vector graphs. We deliver category-leading organic market share.",
+    cta: "Ignite Your Search Dominance",
+    proofs: ["#1 Organic SERP", "Top AI Answer Citations", "100/100 Core Web Vitals"],
+    modelImg: "/seo-rocket-3d.png",
+    card1: { icon: Search, domain: "brandforge.in", slug: "› seo-geo", badge: "#1 ORGANIC", title: "Top SEO & GEO Engine" },
+    card2: { title: "Top AI Answer Source", chips: [{ name: "ChatGPT" }, { name: "Perplexity" }, { name: "Gemini" }] },
+    card3: { score: "100", label: "Core Web Vitals", status: "PERFECT" }
+  },
+  "paid-media": {
+    eyebrow: "PERFORMANCE PAID ADVERTISING • ROAS MULTIPLIER",
+    leadTitle: "Turn Ad Spend Into",
+    accentTitle: "High-Yield Revenue.",
+    sub: "Stop burning marketing budget on vanity clicks. BrandForge engineers hyper-targeted Google, Meta, and LinkedIn ad architectures that maximize return on ad spend and lower acquisition costs.",
+    cta: "Scale Your Ad Pipeline",
+    proofs: ["4.8x Average ROAS", "Zero Ad Spend Waste", "Omnichannel Attribution"],
+    modelImg: "/3d-paid-media.png",
+    card1: { icon: Target, domain: "brandforge.in", slug: "› ppc-ads", badge: "4.8x ROAS", title: "High-Intent PPC Engine" },
+    card2: { title: "Multi-Platform Scaling", chips: [{ name: "Google Ads" }, { name: "Meta Ads" }, { name: "LinkedIn" }] },
+    card3: { score: "98", label: "Attribution Score", status: "SCALING" }
+  },
+  "web-foundry": {
+    eyebrow: "SUB-SECOND JAMSTACK • HIGH-CONVERSION FOUNDRY",
+    leadTitle: "Build Blazing Fast",
+    accentTitle: "Web Architectures.",
+    sub: "Slow legacy sites silently kill high-ticket deals before visitors read your headline. BrandForge builds sub-200ms React, Next.js, and Jamstack digital engines engineered for category dominance.",
+    cta: "Build Your High-Speed Site",
+    proofs: ["100/100 Core Web Vitals", "<300ms DOM Hydration", "Jamstack Edge CDN"],
+    modelImg: "/3d-web-foundry.png",
+    card1: { icon: Globe, domain: "brandforge.in", slug: "› web-foundry", badge: "SUB-SECOND", title: "100/100 Core Web Vitals" },
+    card2: { title: "Next-Gen Tech Stack", chips: [{ name: "React 19" }, { name: "Next.js" }, { name: "Jamstack" }] },
+    card3: { score: "100", label: "Lighthouse Speed", status: "OPTIMAL" }
+  },
+  "viral-social": {
+    eyebrow: "ORGANIC VIRAL REACH • HIGH-RETENTION SOCIAL ENGINE",
+    leadTitle: "Ignite Algorithmic",
+    accentTitle: "Viral Video Reach.",
+    sub: "Posting generic flyers produces zero brand equity. We script, produce, and distribute scroll-stopping short-form reels and community engines that turn casual viewers into loyal brand advocates.",
+    cta: "Ignite Your Viral Growth",
+    proofs: ["10M+ Organic Views", "4.2x Engagement Rate", "High-Retention Reels"],
+    modelImg: "/3d-viral-social.png",
+    card1: { icon: Users, domain: "brandforge.in", slug: "› viral-social", badge: "10M+ REACH", title: "Algorithmic Viral Feeds" },
+    card2: { title: "High-Retention Formats", chips: [{ name: "Reels" }, { name: "Shorts" }, { name: "Community" }] },
+    card3: { score: "4.2x", label: "Engagement Lift", status: "VIRAL" }
+  },
+  "influencer-network": {
+    eyebrow: "VERIFIED CREATOR NETWORK • AUDITED INFLUENCER ROI",
+    leadTitle: "Turn Creator Influence Into",
+    accentTitle: "Direct Sales.",
+    sub: "Zero fake followers, zero guesswork. We partner your brand with audited, high-trust regional creators backed by unique tracking codes and verified conversion metrics.",
+    cta: "Deploy Creator Network",
+    proofs: ["100% Audited Creators", "3.8x Trackable ROAS", "Zero Follower Fraud"],
+    modelImg: "/3d-influencer.png",
+    card1: { icon: Sparkles, domain: "brandforge.in", slug: "› creators", badge: "VERIFIED", title: "Audited Creator Network" },
+    card2: { title: "High-Trust Creators", chips: [{ name: "Macro" }, { name: "Micro" }, { name: "Regional" }] },
+    card3: { score: "3.8x", label: "Trackable ROAS", status: "AUDITED" }
+  },
+  "content-smithy": {
+    eyebrow: "EDITORIAL AUTHORITY SMITHY • REVENUE COPYWRITING",
+    leadTitle: "Forge Industry-Leading",
+    accentTitle: "Content Authority.",
+    sub: "Generic AI articles flood the web with zero trust. BrandForge forges authoritative, research-backed editorial frameworks that rank #1 and position your executive team as the obvious market choice.",
+    cta: "Commission Authority Content",
+    proofs: ["#1 Search Rankings", "3.5x More Backlinks", "Zero AI Hallucinations"],
+    modelImg: "/3d-content-smithy.png",
+    card1: { icon: PenTool, domain: "brandforge.in", slug: "› content", badge: "#1 RANK", title: "High-Authority Editorial" },
+    card2: { title: "Thought Leadership", chips: [{ name: "Research" }, { name: "Whitepapers" }, { name: "Op-Eds" }] },
+    card3: { score: "99", label: "Editorial Trust", status: "VERIFIED" }
+  },
+  "inbox-edge": {
+    eyebrow: "AUTOMATED RETENTION FUNNELS • ZERO-SPAM DELIVERABILITY",
+    leadTitle: "Command The Inbox.",
+    accentTitle: "Multiply Repeat Revenue.",
+    sub: "Newsletters are ignored; hyper-personalized lifecycle flows generate consistent pipeline. We engineer automated email sequences that turn single-buyers into lifelong fans.",
+    cta: "Automate Your Lifecycle Flows",
+    proofs: ["42% Avg Open Rate", "+38% Repeat Revenue", "99.8% Inbox Landing"],
+    modelImg: "/3d-inbox-edge.png",
+    card1: { icon: MessageSquare, domain: "brandforge.in", slug: "› email-flows", badge: "42% OPENS", title: "Automated Lifecycle Flows" },
+    card2: { title: "Segmented Triggers", chips: [{ name: "Welcome" }, { name: "Cart Recovery" }, { name: "Winback" }] },
+    card3: { score: "42%", label: "Open Rate Benchmark", status: "DELIVERED" }
+  },
+  "brand-anvil": {
+    eyebrow: "CATEGORY POSITIONING • INSTITUTIONAL BRAND ANVIL",
+    leadTitle: "Carve An Uncontested",
+    accentTitle: "Market Monopoly.",
+    sub: "Stop competing on price. BrandForge re-engineers your strategic category narrative, competitive positioning, and enterprise identity so you are the obvious market choice.",
+    cta: "Forge Your Brand Monopoly",
+    proofs: ["Category Monopoly", "Zero Price Friction", "Institutional Authority"],
+    modelImg: "/3d-brand-anvil.png",
+    card1: { icon: Star, domain: "brandforge.in", slug: "› brand-anvil", badge: "#1 CHOICE", title: "Category Monopoly Blueprint" },
+    card2: { title: "Strategic Positioning", chips: [{ name: "Narrative" }, { name: "Moat" }, { name: "Identity" }] },
+    card3: { score: "100", label: "Category Power", status: "MONOPOLY" }
+  },
+  "visual-id": {
+    eyebrow: "ENTERPRISE DESIGN SYSTEMS • ICONIC VISUAL FOUNDRY",
+    leadTitle: "Craft Iconic",
+    accentTitle: "Visual Identities.",
+    sub: "A logo without an ecosystem is instantly forgotten. We build comprehensive, multi-platform brand design systems that project institutional prestige across every medium.",
+    cta: "Design Your Iconic Identity",
+    proofs: ["100% Bespoke Identity", "Design Token Library", "Enterprise Style Guide"],
+    modelImg: "/3d-visual-id.png",
+    card1: { icon: Layers, domain: "brandforge.in", slug: "› design-system", badge: "GOLDEN RATIO", title: "Enterprise Design System" },
+    card2: { title: "Tokenized Assets", chips: [{ name: "Typography" }, { name: "Color" }, { name: "Grid" }] },
+    card3: { score: "100", label: "Design Consistency", status: "BESPOKE" }
+  },
+  "commercial-video": {
+    eyebrow: "CINEMATIC STUDIO PRODUCTION • HIGH-CONVERTING ADS",
+    leadTitle: "Produce Cinematic",
+    accentTitle: "Commercial Ads.",
+    sub: "Low-budget phone videos damage brand authority. We write, direct, shoot, and grade high-production commercial films designed specifically to multiply conversion rates.",
+    cta: "Book Studio Production",
+    proofs: ["4K Cinema Production", "Script-to-Screen Studio", "Direct-Response Focus"],
+    modelImg: "/3d-commercial-video.png",
+    card1: { icon: Video, domain: "brandforge.in", slug: "› studio-film", badge: "4K CINEMA", title: "High-Production Commercials" },
+    card2: { title: "Cinematic Formats", chips: [{ name: "TV Spots" }, { name: "Reels" }, { name: "Brand Film" }] },
+    card3: { score: "4K", label: "Studio Production", status: "CINEMATIC" }
+  },
+  "cro-revenue": {
+    eyebrow: "SCIENTIFIC A/B TESTING • CONVERSION REVENUE ENGINE",
+    leadTitle: "Double Revenue Per Visitor",
+    accentTitle: "Without More Ads.",
+    sub: "Pouring ad spend into a leaky funnel is financial waste. We deploy heatmaps, user session telemetry, and iterative split testing to systematically unlock trapped pipeline.",
+    cta: "Unlock Trapped Revenue",
+    proofs: ["+84% Revenue / Visitor", "Zero Guesswork", "Continuous A/B Testing"],
+    modelImg: "/3d-cro-revenue.png",
+    card1: { icon: BarChart3, domain: "brandforge.in", slug: "› cro-engine", badge: "+84% LIFT", title: "A/B Testing Funnel" },
+    card2: { title: "Optimized Vectors", chips: [{ name: "Headlines" }, { name: "Funnels" }, { name: "Friction" }] },
+    card3: { score: "84%", label: "Conversion Lift", status: "WINNING" }
+  },
+  "reputation-shield": {
+    eyebrow: "BRAND SENTIMENT DEFENSE • EXECUTIVE REPUTATION SHIELD",
+    leadTitle: "Armor Your Brand With",
+    accentTitle: "5-Star Authority.",
+    sub: "Negative online chatter destroys high-ticket conversions before prospects ever reach out. We actively defend and amplify your Google, Glassdoor, and press reputation 24/7.",
+    cta: "Fortify Your Brand Shield",
+    proofs: ["4.9★ Average Rating", "24/7 Threat Defense", "Verified Trust Growth"],
+    modelImg: "/3d-reputation-shield.png",
+    card1: { icon: ShieldCheck, domain: "brandforge.in", slug: "› reputation", badge: "4.9★ RATING", title: "Enterprise Defense Shield" },
+    card2: { title: "Monitored Channels", chips: [{ name: "Google Maps" }, { name: "Press" }, { name: "Reviews" }] },
+    card3: { score: "4.9★", label: "Trust Score", status: "SHIELDED" }
+  }
+};
+
+// Aliases for regional routes
+SERVICE_HERO_CONFIGS["seo-company-coimbatore"] = SERVICE_HERO_CONFIGS["seo-geo"];
+SERVICE_HERO_CONFIGS["ppc-company-coimbatore"] = SERVICE_HERO_CONFIGS["paid-media"];
+SERVICE_HERO_CONFIGS["website-development-company-coimbatore"] = SERVICE_HERO_CONFIGS["web-foundry"];
+SERVICE_HERO_CONFIGS["web-development-company-coimbatore"] = SERVICE_HERO_CONFIGS["web-foundry"];
+SERVICE_HERO_CONFIGS["social-media-marketing-company-coimbatore"] = SERVICE_HERO_CONFIGS["viral-social"];
+SERVICE_HERO_CONFIGS["social-media-agency-coimbatore"] = SERVICE_HERO_CONFIGS["viral-social"];
+SERVICE_HERO_CONFIGS["influencer-marketing-coimbatore"] = SERVICE_HERO_CONFIGS["influencer-network"];
+SERVICE_HERO_CONFIGS["content-marketing-agency-coimbatore"] = SERVICE_HERO_CONFIGS["content-smithy"];
+SERVICE_HERO_CONFIGS["content-marketing-company-coimbatore"] = SERVICE_HERO_CONFIGS["content-smithy"];
+SERVICE_HERO_CONFIGS["email-marketing-company-coimbatore"] = SERVICE_HERO_CONFIGS["inbox-edge"];
+SERVICE_HERO_CONFIGS["email-marketing-agency-coimbatore"] = SERVICE_HERO_CONFIGS["inbox-edge"];
+SERVICE_HERO_CONFIGS["brand-positioning-agency-coimbatore"] = SERVICE_HERO_CONFIGS["brand-anvil"];
+SERVICE_HERO_CONFIGS["brand-position-agency-coimbatore"] = SERVICE_HERO_CONFIGS["brand-anvil"];
+SERVICE_HERO_CONFIGS["brand-positioning-company-coimbatore"] = SERVICE_HERO_CONFIGS["brand-anvil"];
+SERVICE_HERO_CONFIGS["brand-identity-design-agency-coimbatore"] = SERVICE_HERO_CONFIGS["visual-id"];
+SERVICE_HERO_CONFIGS["brand-identity-design-company-coimbatore"] = SERVICE_HERO_CONFIGS["visual-id"];
+SERVICE_HERO_CONFIGS["video-production-editing-company-coimbatore"] = SERVICE_HERO_CONFIGS["commercial-video"];
+SERVICE_HERO_CONFIGS["brand-reputation-management-coimbatore"] = SERVICE_HERO_CONFIGS["reputation-shield"];
+
+export default function CinematicSeoHero({ onOpenModal, data, slug }) {
   const heroRef = useRef(null);
+
+  const currentSlug = (data && data.slug) || slug || "seo-geo";
+  const currentConfig = SERVICE_HERO_CONFIGS[currentSlug] || SERVICE_HERO_CONFIGS["seo-geo"];
 
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
@@ -45,6 +212,8 @@ export default function CinematicSeoHero({ onOpenModal }) {
     mouseX.set(0);
     mouseY.set(0);
   };
+
+  const Card1Icon = currentConfig.card1.icon;
 
   return (
     <header
@@ -82,26 +251,25 @@ export default function CinematicSeoHero({ onOpenModal }) {
                 <span className="ping-ring" />
                 <span className="solid-dot" />
               </span>
-              <span>NEXT-GEN SEARCH SUPREMACY • DUAL-ENGINE ARCHITECTURE</span>
+              <span>{currentConfig.eyebrow}</span>
             </div>
 
             {/* Main Headline */}
             <h1 className="bf-cine-h1">
-              Own The <span className="bf-cine-h1-dark">Search Engine</span>.
-              <br />
-              Command The <span className="bf-cine-h1-red">AI Answer</span>.
+              {currentConfig.leadTitle}{" "}
+              <span className="bf-cine-h1-red">{currentConfig.accentTitle}</span>
             </h1>
 
             {/* Subtitle */}
             <p className="bf-cine-sub">
-              Traditional SEO captures ten blue links. BrandForge GEO synthesizes your brand into ChatGPT, Perplexity, and Google Gemini vector graphs. We deliver category-leading organic market share.
+              {currentConfig.sub}
             </p>
 
             {/* Dual Action Buttons */}
             <div className="bf-cine-cta-wrap">
               <button onClick={onOpenModal} className="bf-cine-btn-black">
                 <Zap size={18} />
-                <span>Ignite Your Search Dominance</span>
+                <span>{currentConfig.cta}</span>
                 <ArrowRight size={18} className="btn-arrow" />
               </button>
 
@@ -119,24 +287,19 @@ export default function CinematicSeoHero({ onOpenModal }) {
 
             {/* Trust Proof Badges */}
             <div className="bf-cine-proof-strip">
-              <div className="proof-item">
-                <CheckCircle2 size={15} className="proof-icon" />
-                <span>#1 Organic SERP</span>
-              </div>
-              <span className="proof-sep">•</span>
-              <div className="proof-item">
-                <CheckCircle2 size={15} className="proof-icon" />
-                <span>Top AI Answer Citations</span>
-              </div>
-              <span className="proof-sep">•</span>
-              <div className="proof-item">
-                <CheckCircle2 size={15} className="proof-icon" />
-                <span>100/100 Core Web Vitals</span>
-              </div>
+              {currentConfig.proofs.map((proof, pIdx) => (
+                <React.Fragment key={pIdx}>
+                  {pIdx > 0 && <span className="proof-sep">•</span>}
+                  <div className="proof-item">
+                    <CheckCircle2 size={15} className="proof-icon" />
+                    <span>{proof}</span>
+                  </div>
+                </React.Fragment>
+              ))}
             </div>
           </motion.div>
 
-          {/* RIGHT COLUMN: 3D INTERACTIVE SEO & GEO ARTWORK STAGE */}
+          {/* RIGHT COLUMN: 3D INTERACTIVE ARTWORK STAGE */}
           <motion.div
             className="bf-cine-right"
             initial={{ opacity: 0, x: 40, scale: 0.95 }}
@@ -156,7 +319,7 @@ export default function CinematicSeoHero({ onOpenModal }) {
               {/* Soft Ambient Spotlight Glow */}
               <div className="bf-3d-stage-glow" />
 
-              {/* Main 3D SEO & GEO Apparatus Model */}
+              {/* Main 3D Model Artwork */}
               <motion.div
                 className="bf-3d-model-wrap"
                 animate={{
@@ -170,17 +333,17 @@ export default function CinematicSeoHero({ onOpenModal }) {
                 style={{ transform: "translateZ(30px)" }}
               >
                 <img
-                  src="/seo-rocket-3d.png"
+                  src={currentConfig.modelImg}
                   onError={(e) => {
                     e.currentTarget.onerror = null;
-                    e.currentTarget.src = "/seo-geo-floating-3d.png";
+                    e.currentTarget.src = "/seo-rocket-3d.png";
                   }}
-                  alt="BrandForge 3D SEO & GEO Rocket Engine"
+                  alt={`${currentConfig.accentTitle} 3D Engine`}
                   className="bf-3d-model-img"
                 />
               </motion.div>
 
-              {/* CREATIVE SATELLITE CARD 1: GOOGLE SERP (#1 RANK) */}
+              {/* LIQUID GLASS CARD 1 */}
               <motion.div
                 style={{
                   x: hudGoogleX,
@@ -201,25 +364,25 @@ export default function CinematicSeoHero({ onOpenModal }) {
                 <div className="bf-serp-top">
                   <div className="bf-serp-source">
                     <div className="bf-g-badge">
-                      <Search size={13} />
+                      <Card1Icon size={13} />
                     </div>
                     <div className="bf-serp-meta">
-                      <span className="bf-serp-brand">brandforge.in</span>
-                      <span className="bf-serp-slug">› seo-geo</span>
+                      <span className="bf-serp-brand">{currentConfig.card1.domain}</span>
+                      <span className="bf-serp-slug">{currentConfig.card1.slug}</span>
                     </div>
                   </div>
                   <div className="bf-rank-trophy-pill">
                     <Star size={11} className="trophy-star" />
-                    <span>#1 ORGANIC</span>
+                    <span>{currentConfig.card1.badge}</span>
                   </div>
                 </div>
 
                 <div className="bf-serp-headline">
-                  Top SEO &amp; GEO Engine
+                  {currentConfig.card1.title}
                 </div>
               </motion.div>
 
-              {/* CREATIVE SATELLITE CARD 2: GENERATIVE ENGINE OPTIMIZATION */}
+              {/* LIQUID GLASS CARD 2 */}
               <motion.div
                 style={{
                   x: hudAiX,
@@ -238,32 +401,24 @@ export default function CinematicSeoHero({ onOpenModal }) {
                 className="bf-creative-card card-geo-network"
               >
                 <div className="bf-geo-heading">
-                  Top AI Answer Source
+                  {currentConfig.card2.title}
                 </div>
 
-                {/* 3 AI Engine Citation Badges */}
                 <div className="bf-geo-chips-row">
-                  <div className="bf-engine-chip">
-                    <span className="engine-name">ChatGPT</span>
-                    <Check size={10} className="engine-icon-chk" />
-                  </div>
-                  <div className="bf-engine-chip">
-                    <span className="engine-name">Perplexity</span>
-                    <Sparkles size={10} className="engine-icon-spark" />
-                  </div>
-                  <div className="bf-engine-chip">
-                    <span className="engine-name">Gemini</span>
-                    <Zap size={10} className="engine-icon-zap" />
-                  </div>
+                  {currentConfig.card2.chips.map((chip, cIdx) => (
+                    <div key={cIdx} className="bf-engine-chip">
+                      <span className="engine-name">{chip.name}</span>
+                      <Check size={10} className="engine-icon-chk" />
+                    </div>
+                  ))}
                 </div>
 
-                {/* Micro Attribution Gauge */}
                 <div className="bf-geo-progress-track">
                   <div className="bf-geo-progress-bar" />
                 </div>
               </motion.div>
 
-              {/* CREATIVE SATELLITE CARD 3: LIGHTHOUSE 100 PERFORMANCE */}
+              {/* LIQUID GLASS CARD 3 */}
               <motion.div
                 style={{
                   transform: "translateZ(65px)",
@@ -279,19 +434,18 @@ export default function CinematicSeoHero({ onOpenModal }) {
                 }}
                 className="bf-creative-card card-speed-lighthouse"
               >
-                {/* Authentic Circular Lighthouse Dial */}
                 <div className="bf-dial-wrapper">
-                  <svg viewBox="0 0 46 46" className="bf-svg-dial">
-                    <circle cx="23" cy="23" r="19" className="dial-bg-track" />
-                    <circle cx="23" cy="23" r="19" className="dial-fill-stroke" />
+                  <svg viewBox="0 0 44 44" className="bf-svg-dial">
+                    <circle cx="22" cy="22" r="18" className="dial-bg-track" />
+                    <circle cx="22" cy="22" r="18" className="dial-fill-stroke" />
                   </svg>
-                  <div className="bf-dial-num">100</div>
+                  <div className="bf-dial-num">{currentConfig.card3.score}</div>
                 </div>
 
                 <div className="bf-speed-details">
                   <div className="bf-speed-header">
-                    <span className="bf-speed-label">Core Web Vitals</span>
-                    <span className="bf-pass-pill">PERFECT</span>
+                    <span className="bf-speed-label">{currentConfig.card3.label}</span>
+                    <span className="bf-pass-pill">{currentConfig.card3.status}</span>
                   </div>
                 </div>
               </motion.div>
@@ -308,74 +462,69 @@ export default function CinematicSeoHero({ onOpenModal }) {
 const heroStyles = `
   .bf-cine-hero-root {
     position: relative;
-    min-height: 90vh;
+    min-height: 88vh;
     width: 100%;
     overflow: hidden;
     background: #FFFFFF;
-    color: #0A0A0C;
     display: flex;
     align-items: center;
-    padding: clamp(60px, 8vw, 110px) 0 clamp(70px, 9vw, 120px);
     border-bottom: 1px solid #E5E7EB;
-  }
-
-  .bf-cine-container {
-    max-width: 1260px;
-    width: 100%;
-    margin: 0 auto;
-    padding: 0 clamp(20px, 4vw, 40px);
-    position: relative;
-    z-index: 10;
   }
 
   .bf-cine-radar-overlay {
     position: absolute;
     inset: 0;
     pointer-events: none;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     overflow: hidden;
-    z-index: 1;
   }
 
   .bf-cine-radar-ring {
     position: absolute;
     border-radius: 50%;
+    border: 1px solid rgba(239, 65, 54, 0.08);
   }
 
-  .bf-cine-radar-ring.ring-outer {
-    width: 860px;
-    height: 860px;
-    border: 1px dashed rgba(10, 10, 12, 0.07);
-    animation: cineSpin 90s linear infinite;
+  .ring-outer {
+    width: 900px;
+    height: 900px;
+    top: 50%;
+    right: -200px;
+    transform: translateY(-50%);
   }
 
-  .bf-cine-radar-ring.ring-middle {
-    width: 580px;
-    height: 580px;
-    border: 1px dashed rgba(239, 65, 54, 0.2);
-    animation: cineSpinRev 65s linear infinite;
+  .ring-middle {
+    width: 600px;
+    height: 600px;
+    top: 50%;
+    right: -50px;
+    transform: translateY(-50%);
   }
 
   .bf-cine-radar-glow {
     position: absolute;
-    inset: 0;
-    background: radial-gradient(circle at 65% 50%, rgba(239, 65, 54, 0.08) 0%, transparent 65%);
+    width: 500px;
+    height: 500px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(239, 65, 54, 0.08) 0%, transparent 70%);
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+    filter: blur(40px);
   }
 
-  @keyframes cineSpin {
-    to { transform: rotate(360deg); }
-  }
-
-  @keyframes cineSpinRev {
-    to { transform: rotate(-360deg); }
+  .bf-cine-container {
+    position: relative;
+    z-index: 10;
+    max-width: 1280px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 60px 24px 70px;
   }
 
   .bf-cine-split-grid {
     display: grid;
-    grid-template-columns: 1.15fr 1fr;
-    gap: clamp(40px, 6vw, 80px);
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 40px;
     align-items: center;
   }
 
@@ -383,69 +532,63 @@ const heroStyles = `
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    text-align: left;
   }
 
   .bf-cine-eyebrow {
     display: inline-flex;
     align-items: center;
-    gap: 10px;
-    padding: 8px 18px;
+    gap: 8px;
+    padding: 6px 14px;
     border-radius: 999px;
-    background: #FFFFFF;
-    border: 1px solid rgba(239, 65, 54, 0.3);
-    color: #EF4136;
+    background: #FAFAFC;
+    border: 1px solid #E5E7EB;
     font-family: "JetBrains Mono", monospace;
-    font-size: 0.76rem;
+    font-size: 0.72rem;
     font-weight: 800;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    box-shadow: 0 4px 14px rgba(239, 65, 54, 0.08);
+    color: #EF4136;
+    letter-spacing: 0.04em;
+    margin-bottom: 22px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
   }
 
   .bf-cine-pulse-dot {
     position: relative;
+    width: 8px;
+    height: 8px;
     display: flex;
-    width: 8px;
-    height: 8px;
+    align-items: center;
+    justify-content: center;
   }
 
-  .bf-cine-pulse-dot .ping-ring {
+  .ping-ring {
     position: absolute;
-    inset: 0;
+    width: 14px;
+    height: 14px;
     border-radius: 50%;
-    background: #EF4136;
-    opacity: 0.75;
-    animation: cinePing 1.5s cubic-bezier(0, 0, 0.2, 1) infinite;
+    background: rgba(239, 65, 54, 0.4);
+    animation: cinePing 1.8s infinite ease-out;
   }
 
-  .bf-cine-pulse-dot .solid-dot {
-    position: relative;
-    width: 8px;
-    height: 8px;
+  .solid-dot {
+    width: 6px;
+    height: 6px;
     border-radius: 50%;
     background: #EF4136;
   }
 
   @keyframes cinePing {
-    75%, 100% {
-      transform: scale(2.2);
-      opacity: 0;
-    }
+    0% { transform: scale(0.6); opacity: 1; }
+    100% { transform: scale(1.6); opacity: 0; }
   }
 
   .bf-cine-h1 {
-    margin: 22px 0 0;
     font-family: "Outfit", sans-serif;
-    font-size: clamp(36px, 4.8vw, 66px);
+    font-size: clamp(38px, 4.4vw, 58px);
     font-weight: 900;
-    line-height: 1.08;
+    line-height: 1.1;
     letter-spacing: -0.025em;
     color: #0A0A0C;
-  }
-
-  .bf-cine-h1-dark {
-    color: #0A0A0C;
+    margin: 0;
   }
 
   .bf-cine-h1-red {
@@ -457,7 +600,7 @@ const heroStyles = `
 
   .bf-cine-sub {
     margin: 20px 0 0;
-    font-size: clamp(16px, 1.2vw, 18px);
+    font-size: clamp(16px, 1.15vw, 17.5px);
     line-height: 1.7;
     color: #4B5563;
     font-family: "Plus Jakarta Sans", sans-serif;
@@ -465,7 +608,7 @@ const heroStyles = `
   }
 
   .bf-cine-cta-wrap {
-    margin-top: 36px;
+    margin-top: 34px;
     display: flex;
     align-items: center;
     gap: 16px;
@@ -476,7 +619,7 @@ const heroStyles = `
     display: inline-flex;
     align-items: center;
     gap: 12px;
-    padding: 18px 34px;
+    padding: 16px 32px;
     border-radius: 14px;
     background: #0A0A0C;
     color: #FFFFFF;
@@ -487,7 +630,7 @@ const heroStyles = `
     text-transform: uppercase;
     border: 1px solid #0A0A0C;
     cursor: pointer;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
     transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
   }
 
@@ -510,7 +653,7 @@ const heroStyles = `
     display: inline-flex;
     align-items: center;
     gap: 10px;
-    padding: 18px 30px;
+    padding: 16px 28px;
     border-radius: 14px;
     background: #FFFFFF;
     color: #0A0A0C;
@@ -532,10 +675,10 @@ const heroStyles = `
   }
 
   .bf-cine-proof-strip {
-    margin-top: 32px;
+    margin-top: 30px;
     display: flex;
     align-items: center;
-    gap: 14px;
+    gap: 12px;
     font-family: "JetBrains Mono", monospace;
     font-size: 0.74rem;
     font-weight: 700;
@@ -544,7 +687,7 @@ const heroStyles = `
   }
 
   .proof-item {
-    display: flex;
+    display: inline-flex;
     align-items: center;
     gap: 6px;
   }
@@ -557,19 +700,18 @@ const heroStyles = `
     color: #D1D5DB;
   }
 
-  /* RIGHT 3D STAGE */
+  /* 3D ARTWORK STAGE */
   .bf-cine-right {
-    position: relative;
     display: flex;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
     perspective: 1200px;
   }
 
   .bf-3d-stage-viewport {
     position: relative;
     width: 100%;
-    max-width: 520px;
+    max-width: 500px;
     aspect-ratio: 1;
     display: flex;
     align-items: center;
@@ -582,7 +724,7 @@ const heroStyles = `
     width: 380px;
     height: 380px;
     border-radius: 50%;
-    background: radial-gradient(circle, rgba(239, 65, 54, 0.2) 0%, rgba(239, 65, 54, 0.04) 50%, transparent 70%);
+    background: radial-gradient(circle, rgba(239, 65, 54, 0.18) 0%, rgba(239, 65, 54, 0.03) 50%, transparent 70%);
     filter: blur(30px);
     pointer-events: none;
   }
@@ -591,11 +733,11 @@ const heroStyles = `
     position: relative;
     z-index: 5;
     width: 100%;
-    max-width: 480px;
+    max-width: 440px;
     display: flex;
     justify-content: center;
     align-items: center;
-    filter: drop-shadow(0 25px 50px rgba(0, 0, 0, 0.14)) drop-shadow(0 0 40px rgba(239, 65, 54, 0.2));
+    filter: drop-shadow(0 25px 50px rgba(0, 0, 0, 0.14)) drop-shadow(0 0 35px rgba(239, 65, 54, 0.18));
   }
 
   .bf-3d-model-img {
@@ -611,8 +753,8 @@ const heroStyles = `
     position: absolute;
     z-index: 20;
     border-radius: 20px;
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.75) 0%, rgba(255, 255, 255, 0.42) 45%, rgba(255, 255, 255, 0.65) 100%);
-    border: 1px solid rgba(255, 255, 255, 0.88);
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.78) 0%, rgba(255, 255, 255, 0.44) 45%, rgba(255, 255, 255, 0.68) 100%);
+    border: 1px solid rgba(255, 255, 255, 0.9);
     backdrop-filter: blur(26px) saturate(200%) contrast(102%);
     -webkit-backdrop-filter: blur(26px) saturate(200%) contrast(102%);
     box-shadow:
@@ -645,7 +787,7 @@ const heroStyles = `
 
   .bf-creative-card:hover {
     transform: scale(1.05) translateZ(95px) !important;
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.85) 0%, rgba(255, 255, 255, 0.5) 45%, rgba(255, 255, 255, 0.78) 100%);
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.88) 0%, rgba(255, 255, 255, 0.52) 45%, rgba(255, 255, 255, 0.8) 100%);
     border-color: rgba(255, 255, 255, 0.98);
     box-shadow:
       0 32px 75px rgba(239, 65, 54, 0.14),
@@ -655,7 +797,7 @@ const heroStyles = `
       inset 0 0 24px 0 rgba(255, 255, 255, 0.7);
   }
 
-  /* CARD 1: GOOGLE SERP (#1 RANK) */
+  /* CARD 1: TOP LEFT */
   .card-serp-dominant {
     top: 6%;
     left: -4%;
@@ -736,12 +878,12 @@ const heroStyles = `
     line-height: 1.25;
   }
 
-  /* CARD 2: GEO AI VECTOR CITATION */
+  /* CARD 2: BOTTOM RIGHT */
   .card-geo-network {
     bottom: 6%;
     right: -6%;
     padding: 12px 16px;
-    min-width: 250px;
+    min-width: 240px;
     display: flex;
     flex-direction: column;
     gap: 8px;
@@ -787,14 +929,12 @@ const heroStyles = `
   }
 
   .engine-icon-chk { color: #10B981; }
-  .engine-icon-spark { color: #8B5CF6; }
-  .engine-icon-zap { color: #EF4136; }
 
   .bf-geo-progress-track {
     width: 100%;
     height: 4px;
     border-radius: 999px;
-    background: #F3F4F6;
+    background: rgba(0, 0, 0, 0.05);
     overflow: hidden;
     margin-top: 2px;
   }
@@ -806,7 +946,7 @@ const heroStyles = `
     background: linear-gradient(90deg, #EF4136 0%, #D2042D 100%);
   }
 
-  /* CARD 3: LIGHTHOUSE 100 PERFORMANCE */
+  /* CARD 3: BOTTOM LEFT */
   .card-speed-lighthouse {
     bottom: -4%;
     left: -4%;

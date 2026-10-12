@@ -1,16 +1,96 @@
 "use client";
 
-import React, { useState } from "react";
-import { motion } from "framer-motion";
+import React, { useRef, useState } from "react";
+import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 import { CheckCircle2, ShieldCheck, ArrowRight, Building2, Stethoscope, Factory, ShoppingBag, Laptop } from "lucide-react";
 import KexsioCanvasBackground from "./KexsioCanvasBackground";
+
+function WhoIndustryCard({ ind, idx, winTag }) {
+  const cardRef = useRef(null);
+  const [hovered, setHovered] = useState(false);
+
+  const x = useMotionValue(0);
+  const y = useMotionValue(0);
+
+  const mouseXSpring = useSpring(x, { stiffness: 150, damping: 20 });
+  const mouseYSpring = useSpring(y, { stiffness: 150, damping: 20 });
+
+  const rotateX = useTransform(mouseYSpring, [-0.5, 0.5], ["10deg", "-10deg"]);
+  const rotateY = useTransform(mouseXSpring, [-0.5, 0.5], ["-10deg", "10deg"]);
+  const translateX = useTransform(mouseXSpring, [-0.5, 0.5], [-8, 8]);
+  const translateY = useTransform(mouseYSpring, [-0.5, 0.5], [-6, 6]);
+
+  const handleMouseMove = (e) => {
+    if (!cardRef.current) return;
+    const rect = cardRef.current.getBoundingClientRect();
+    x.set((e.clientX - rect.left) / rect.width - 0.5);
+    y.set((e.clientY - rect.top) / rect.height - 0.5);
+  };
+
+  const handleMouseLeave = () => {
+    x.set(0);
+    y.set(0);
+    setHovered(false);
+  };
+
+  return (
+    <motion.div
+      animate={{
+        y: idx % 2 === 0 ? [-5, 5, -5] : [5, -5, 5],
+      }}
+      transition={{
+        duration: 4.5 + (idx % 3) * 0.5,
+        repeat: Infinity,
+        ease: "easeInOut",
+      }}
+      style={{ perspective: "1100px" }}
+    >
+      <motion.div
+        ref={cardRef}
+        onMouseMove={handleMouseMove}
+        onMouseEnter={() => setHovered(true)}
+        onMouseLeave={handleMouseLeave}
+        style={{
+          rotateX,
+          rotateY,
+          x: translateX,
+          y: translateY,
+          transformStyle: "preserve-3d",
+        }}
+        className={`sg-who-card ${hovered ? "is-hovered" : ""}`}
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: false, amount: 0.2 }}
+        transition={{ duration: 0.5, delay: idx * 0.08 }}
+      >
+        <div className="sg-who-top-row" style={{ transform: "translateZ(28px)" }}>
+          <motion.div
+            className="sg-who-icon"
+            animate={{ scale: hovered ? 1.12 : 1, rotateZ: hovered ? [0, -8, 8, 0] : 0 }}
+            transition={{ duration: 0.4 }}
+          >
+            <CheckCircle2 size={18} className="check-icon" />
+          </motion.div>
+          <span className="sg-who-metric-tag">{winTag}</span>
+        </div>
+
+        <div className="sg-who-content" style={{ transform: "translateZ(34px)" }}>
+          <h4>{ind.title}</h4>
+          <p>{ind.desc}</p>
+        </div>
+
+        <div className="sg-who-bottom-bar" style={{ transform: "translateZ(22px)" }}>
+          <span className="who-sector-code">SECTOR 0{idx + 1} // DOMINANCE ARCHITECTURE</span>
+        </div>
+      </motion.div>
+    </motion.div>
+  );
+}
 
 export default function InteractiveWhoWeHelpSection({
   whoWeHelp = {},
 }) {
   if (!whoWeHelp || !whoWeHelp.industries) return null;
-
-  const [hoveredIdx, setHoveredIdx] = useState(null);
 
   const industryWins = [
     "+420% Patient Inquiries",
@@ -45,33 +125,12 @@ export default function InteractiveWhoWeHelpSection({
         {/* INDUSTRIES GRID */}
         <div className="sg-who-grid">
           {whoWeHelp.industries.map((ind, idx) => (
-            <motion.div
+            <WhoIndustryCard
               key={ind.title}
-              className={`sg-who-card ${hoveredIdx === idx ? "is-hovered" : ""}`}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: false, amount: 0.2 }}
-              transition={{ duration: 0.5, delay: idx * 0.08 }}
-              onMouseEnter={() => setHoveredIdx(idx)}
-              onMouseLeave={() => setHoveredIdx(null)}
-              whileHover={{ y: -5, transition: { duration: 0.2 } }}
-            >
-              <div className="sg-who-top-row">
-                <div className="sg-who-icon">
-                  <CheckCircle2 size={18} className="check-icon" />
-                </div>
-                <span className="sg-who-metric-tag">{industryWins[idx % industryWins.length]}</span>
-              </div>
-
-              <div className="sg-who-content">
-                <h4>{ind.title}</h4>
-                <p>{ind.desc}</p>
-              </div>
-
-              <div className="sg-who-bottom-bar">
-                <span className="who-sector-code">SECTOR 0{idx + 1} // DOMINANCE ARCHITECTURE</span>
-              </div>
-            </motion.div>
+              ind={ind}
+              idx={idx}
+              winTag={industryWins[idx % industryWins.length]}
+            />
           ))}
         </div>
 

@@ -664,14 +664,35 @@ class App {
     const initW = Math.max(1, container.offsetWidth);
     const initH = Math.max(1, container.offsetHeight);
 
-    this.renderer = new THREE.WebGLRenderer({
-      antialias: false,
-      alpha: true,
-    });
+    try {
+      this.renderer = new THREE.WebGLRenderer({
+        antialias: false,
+        alpha: true,
+        powerPreference: "high-performance",
+      });
+    } catch (e) {
+      console.warn("WebGLRenderer creation failed:", e);
+      this.disposed = true;
+      return;
+    }
+
+    const gl = this.renderer.getContext();
+    if (!gl || typeof gl.getContextAttributes !== "function" || !gl.getContextAttributes()) {
+      console.warn("WebGL context not available or context lost.");
+      this.disposed = true;
+      return;
+    }
+
     this.renderer.setSize(initW, initH, false);
     this.renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 
-    this.composer = new EffectComposer(this.renderer);
+    try {
+      this.composer = new EffectComposer(this.renderer);
+    } catch (e) {
+      console.warn("EffectComposer creation failed, will use direct renderer:", e);
+      this.composer = null;
+    }
+
     container.appendChild(this.renderer.domElement);
 
     this.camera = new THREE.PerspectiveCamera(options.fov, initW / initH, 0.1, 10000);
@@ -741,37 +762,49 @@ class App {
       this.hasValidSize = false;
       return;
     }
-    this.renderer.setSize(width, height);
+    if (this.renderer) {
+      this.renderer.setSize(width, height);
+    }
     this.camera.aspect = width / height;
     this.camera.updateProjectionMatrix();
-    this.composer.setSize(width, height);
+    if (this.composer) {
+      this.composer.setSize(width, height);
+    }
     this.hasValidSize = true;
   }
 
   initPasses() {
-    this.renderPass = new RenderPass(this.scene, this.camera);
-    this.bloomPass = new EffectPass(
-      this.camera,
-      new BloomEffect({
-        luminanceThreshold: 0.2,
-        luminanceSmoothing: 0,
-        resolutionScale: 1,
-      })
-    );
+    if (this.disposed || !this.composer) return;
+    const gl = this.renderer?.getContext();
+    if (!gl || typeof gl.getContextAttributes !== "function" || !gl.getContextAttributes()) return;
+    try {
+      this.renderPass = new RenderPass(this.scene, this.camera);
+      this.bloomPass = new EffectPass(
+        this.camera,
+        new BloomEffect({
+          luminanceThreshold: 0.2,
+          luminanceSmoothing: 0,
+          resolutionScale: 1,
+        })
+      );
 
-    const smaaPass = new EffectPass(
-      this.camera,
-      new SMAAEffect({
-        preset: SMAAPreset.MEDIUM,
-      })
-    );
-    this.renderPass.renderToScreen = false;
-    this.bloomPass.renderToScreen = false;
-    smaaPass.renderToScreen = true;
+      const smaaPass = new EffectPass(
+        this.camera,
+        new SMAAEffect({
+          preset: SMAAPreset.MEDIUM,
+        })
+      );
+      this.renderPass.renderToScreen = false;
+      this.bloomPass.renderToScreen = false;
+      smaaPass.renderToScreen = true;
 
-    this.composer.addPass(this.renderPass);
-    this.composer.addPass(this.bloomPass);
-    this.composer.addPass(smaaPass);
+      this.composer.addPass(this.renderPass);
+      this.composer.addPass(this.bloomPass);
+      this.composer.addPass(smaaPass);
+    } catch (e) {
+      console.warn("Postprocessing pass setup fallback:", e);
+      this.composer = null;
+    }
   }
 
   loadAssets() {
@@ -889,7 +922,12 @@ class App {
   }
 
   render(delta) {
-    this.composer.render(delta);
+    if (this.disposed || !this.renderer) return;
+    if (this.composer && this.composer.passes && this.composer.passes.length > 0) {
+      this.composer.render(delta);
+    } else {
+      this.renderer.render(this.scene, this.camera);
+    }
   }
 
   dispose() {
@@ -934,7 +972,11 @@ class App {
   }
 
   setSize(width, height, updateStyles) {
-    this.composer.setSize(width, height, updateStyles);
+    if (this.composer) {
+      this.composer.setSize(width, height, updateStyles);
+    } else if (this.renderer) {
+      this.renderer.setSize(width, height, updateStyles);
+    }
   }
 
   tick() {
@@ -944,10 +986,14 @@ class App {
       const w = this.container.offsetWidth;
       const h = this.container.offsetHeight;
       if (w > 0 && h > 0) {
-        this.renderer.setSize(w, h, false);
+        if (this.renderer) {
+          this.renderer.setSize(w, h, false);
+        }
         this.camera.aspect = w / h;
         this.camera.updateProjectionMatrix();
-        this.composer.setSize(w, h);
+        if (this.composer) {
+          this.composer.setSize(w, h);
+        }
         this.hasValidSize = true;
       } else {
         requestAnimationFrame(this.tick);
@@ -1003,7 +1049,14 @@ export default function BrandForgeBannerSection({ onOpenModal }) {
 
     const myApp = new App(container, options);
     appRef.current = myApp;
-    myApp.loadAssets().then(myApp.init);
+    myApp
+      .loadAssets()
+      .then(() => {
+        if (!myApp.disposed) {
+          myApp.init();
+        }
+      })
+      .catch((err) => console.warn("Banner assets load error:", err));
 
     return () => {
       if (appRef.current) {

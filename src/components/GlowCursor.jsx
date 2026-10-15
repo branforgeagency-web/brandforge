@@ -260,6 +260,15 @@ const GlowCursor = ({
       fade = 1;
     };
 
+    let isRendering = false;
+
+    const startRenderLoop = () => {
+      if (destroyed || isRendering) return;
+      isRendering = true;
+      lastFrameTime = performance.now();
+      raf = requestAnimationFrame(render);
+    };
+
     const updatePointer = event => {
       const rect = isFixed
         ? { left: 0, top: 0, width: window.innerWidth, height: window.innerHeight }
@@ -271,6 +280,7 @@ const GlowCursor = ({
       target.y = y;
       pointerInside = true;
       lastInputTime = performance.now();
+      if (!isRendering) startRenderLoop();
     };
 
     const onPointerLeave = () => {
@@ -279,10 +289,20 @@ const GlowCursor = ({
     };
 
     const render = now => {
-      if (destroyed) return;
+      if (destroyed) {
+        isRendering = false;
+        return;
+      }
       const config = propsRef.current;
       const delta = Math.min((now - lastFrameTime) / 16.667, 3);
       lastFrameTime = now;
+
+      // If active scrolling and pointer has been idle for >80ms, yield to scroll compositor
+      const idleFor = now - lastInputTime;
+      if (window.__isScrolling && idleFor > 80 && fade < 0.05) {
+        isRendering = false;
+        return;
+      }
 
       if (initialized) {
         const headEase = 1 - Math.pow(1 - clamp(config.followSpeed, 0.01, 0.99), delta);
@@ -304,11 +324,18 @@ const GlowCursor = ({
         }
       }
 
-      const idleFor = now - lastInputTime;
       const shouldFade = config.idleFade && (!pointerInside || idleFor > config.idleTimeout);
       const fadeStep = (16.667 * delta) / Math.max(config.fadeDuration, 16);
       const fadeTarget = initialized && config.enabled && !shouldFade ? 1 : 0;
       fade += (fadeTarget - fade) * Math.min(1, fadeStep * 7);
+
+      // Sleep the loop if completely faded out to save 100% GPU
+      if (fade < 0.002 && fadeTarget === 0) {
+        fade = 0;
+        gl.clear(gl.COLOR_BUFFER_BIT);
+        isRendering = false;
+        return;
+      }
 
       program.uniforms.uPointCount.value = clamp(Math.round(config.trailLength), 2, MAX_POINTS);
       program.uniforms.uColor.value = hexToRgb(config.color);
@@ -327,7 +354,7 @@ const GlowCursor = ({
       program.uniforms.uFade.value = fade;
 
       renderer.render({ scene: mesh });
-      if (!destroyed) raf = requestAnimationFrame(render);
+      raf = requestAnimationFrame(render);
     };
 
     const resizeObserver = new ResizeObserver(resize);
@@ -344,7 +371,7 @@ const GlowCursor = ({
     }
 
     resize();
-    raf = requestAnimationFrame(render);
+    startRenderLoop();
 
     return () => {
       destroyed = true;

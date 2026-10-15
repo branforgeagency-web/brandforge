@@ -753,21 +753,21 @@ const heroStyles = `
     position: absolute;
     z-index: 20;
     border-radius: 20px;
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.78) 0%, rgba(255, 255, 255, 0.44) 45%, rgba(255, 255, 255, 0.68) 100%);
-    border: 1px solid rgba(255, 255, 255, 0.9);
-    backdrop-filter: blur(26px) saturate(200%) contrast(102%);
-    -webkit-backdrop-filter: blur(26px) saturate(200%) contrast(102%);
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.85) 0%, rgba(255, 255, 255, 0.58) 45%, rgba(255, 255, 255, 0.78) 100%);
+    border: 1px solid rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(12px) saturate(160%);
+    -webkit-backdrop-filter: blur(12px) saturate(160%);
     box-shadow:
-      0 24px 60px rgba(0, 0, 0, 0.07),
-      0 10px 24px rgba(0, 0, 0, 0.03),
+      0 18px 40px rgba(0, 0, 0, 0.06),
+      0 6px 16px rgba(0, 0, 0, 0.02),
       inset 0 1.5px 1.5px 0 rgba(255, 255, 255, 0.95),
-      inset 0 -1px 2px 0 rgba(10, 10, 12, 0.04),
-      inset 0 0 20px 0 rgba(255, 255, 255, 0.45);
-    transition: all 0.38s cubic-bezier(0.16, 1, 0.3, 1);
+      inset 0 -1px 2px 0 rgba(10, 10, 12, 0.04);
+    transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s ease;
     transform-style: preserve-3d;
     cursor: default;
     user-select: none;
     overflow: hidden;
+    will-change: transform;
   }
 
   .bf-creative-card::before {

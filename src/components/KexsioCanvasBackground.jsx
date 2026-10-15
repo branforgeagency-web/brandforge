@@ -50,37 +50,13 @@ export default function KexsioCanvasBackground({ showOverlay = true, opacity = 1
         this.velocityY = velocityY;
         this.size = size;
         this.color = color;
+        this.colorStr = `rgb(${color.r}, ${color.g}, ${color.b})`;
       }
 
       draw() {
         ctx.beginPath();
         ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-
-        const particleGlow = ctx.createRadialGradient(
-          this.x,
-          this.y,
-          0,
-          this.x,
-          this.y,
-          this.size * 4,
-        );
-
-        particleGlow.addColorStop(
-          0,
-          `rgba(${this.color.r}, ${this.color.g}, ${this.color.b}, 1)`,
-        );
-
-        particleGlow.addColorStop(
-          0.35,
-          `rgba(${this.color.r}, ${this.color.g}, ${this.color.b}, 0.75)`,
-        );
-
-        particleGlow.addColorStop(
-          1,
-          `rgba(${this.color.r}, ${this.color.g}, ${this.color.b}, 0)`,
-        );
-
-        ctx.fillStyle = particleGlow;
+        ctx.fillStyle = this.colorStr;
         ctx.fill();
       }
 
@@ -103,8 +79,8 @@ export default function KexsioCanvasBackground({ showOverlay = true, opacity = 1
             const forceX = dx / distance;
             const forceY = dy / distance;
 
-            this.x -= forceX * force * 4.5;
-            this.y -= forceY * force * 4.5;
+            this.x -= forceX * force * 3.5;
+            this.y -= forceY * force * 3.5;
           }
         }
 
@@ -118,21 +94,22 @@ export default function KexsioCanvasBackground({ showOverlay = true, opacity = 1
     const createParticles = () => {
       particles = [];
 
-      const responsiveDivider = canvasWidth < 768 ? 15000 : 10500;
+      // High-performance particle cap: 35 on mobile, 45-60 on desktop
+      const responsiveDivider = canvasWidth < 768 ? 24000 : 18000;
       const particleCount = Math.min(
-        165,
+        theme === "light" ? 48 : 65,
         Math.max(
-          45,
+          25,
           Math.floor((canvasWidth * canvasHeight) / responsiveDivider),
         ),
       );
 
       for (let index = 0; index < particleCount; index += 1) {
-        const size = Math.random() * 1.8 + 0.9;
+        const size = Math.random() * 1.5 + 0.8;
         const x = Math.random() * canvasWidth;
         const y = Math.random() * canvasHeight;
-        const velocityX = Math.random() * 0.42 - 0.21;
-        const velocityY = Math.random() * 0.42 - 0.21;
+        const velocityX = Math.random() * 0.36 - 0.18;
+        const velocityY = Math.random() * 0.36 - 0.18;
 
         const palette = theme === "light" ? LIGHT_PARTICLE_COLORS : DARK_PARTICLE_COLORS;
         const color = palette[Math.floor(Math.random() * palette.length)];
@@ -159,7 +136,7 @@ export default function KexsioCanvasBackground({ showOverlay = true, opacity = 1
 
       canvasWidth = newWidth;
       canvasHeight = newHeight;
-      pixelRatio = Math.min(window.devicePixelRatio || 1, 2);
+      pixelRatio = Math.min(window.devicePixelRatio || 1, 1.5);
 
       canvas.width = canvasWidth * pixelRatio;
       canvas.height = canvasHeight * pixelRatio;
@@ -172,10 +149,12 @@ export default function KexsioCanvasBackground({ showOverlay = true, opacity = 1
       createParticles();
     };
 
+    // BATCHED stroke rendering: 1 single draw call instead of hundreds per frame
     const connectParticles = () => {
-      const maxDistance = canvasWidth < 768 ? 105 : 145;
+      const maxDistance = canvasWidth < 768 ? 90 : 120;
       const maxDistanceSquared = maxDistance * maxDistance;
 
+      ctx.beginPath();
       for (let a = 0; a < particles.length; a += 1) {
         for (let b = a + 1; b < particles.length; b += 1) {
           const dx = particles[a].x - particles[b].x;
@@ -184,42 +163,23 @@ export default function KexsioCanvasBackground({ showOverlay = true, opacity = 1
 
           if (distanceSquared > maxDistanceSquared) continue;
 
-          const baseOpacity = theme === "light" ? 0.35 : 0.58;
-          const lineOpacity =
-            baseOpacity * (1 - distanceSquared / maxDistanceSquared);
-
-          const startColor = particles[a].color;
-          const endColor = particles[b].color;
-
-          const lineGradient = ctx.createLinearGradient(
-            particles[a].x,
-            particles[a].y,
-            particles[b].x,
-            particles[b].y,
-          );
-
-          lineGradient.addColorStop(
-            0,
-            `rgba(${startColor.r}, ${startColor.g}, ${startColor.b}, ${lineOpacity})`,
-          );
-
-          lineGradient.addColorStop(
-            1,
-            `rgba(${endColor.r}, ${endColor.g}, ${endColor.b}, ${lineOpacity})`,
-          );
-
-          ctx.beginPath();
           ctx.moveTo(particles[a].x, particles[a].y);
           ctx.lineTo(particles[b].x, particles[b].y);
-          ctx.strokeStyle = lineGradient;
-          ctx.lineWidth = theme === "light" ? 0.75 : 0.85;
-          ctx.stroke();
         }
       }
+      ctx.strokeStyle = theme === "light" ? "rgba(239, 65, 54, 0.14)" : "rgba(239, 65, 54, 0.22)";
+      ctx.lineWidth = 0.75;
+      ctx.stroke();
     };
 
     const animate = () => {
       if (!isVisible) return;
+
+      // During active scroll, throttle canvas animation to prioritize scroll compositor
+      if (window.__isScrolling) {
+        animationFrameId = window.requestAnimationFrame(animate);
+        return;
+      }
 
       ctx.clearRect(0, 0, canvasWidth, canvasHeight);
 

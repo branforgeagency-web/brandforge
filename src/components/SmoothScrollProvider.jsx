@@ -7,20 +7,27 @@ gsap.registerPlugin(ScrollTrigger);
 
 export default function SmoothScrollProvider({ children }) {
   useEffect(() => {
-    // Initialize Lenis smooth scrolling engine — tuned for fast, responsive, smooth scrolling
+    // Initialize Lenis smooth scrolling engine — tuned for buttery smooth, responsive 60/120fps scrolling
     const lenis = new Lenis({
-      duration: 0.8,
+      duration: 1.05,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       orientation: "vertical",
       gestureOrientation: "vertical",
       smoothWheel: true,
       wheelMultiplier: 1.0,
-      touchMultiplier: 1.0,
+      touchMultiplier: 1.2,
       infinite: false,
     });
 
-    // Synchronize Lenis scroll position with GSAP ScrollTrigger
-    lenis.on("scroll", ScrollTrigger.update);
+    let scrollTimeout = null;
+    lenis.on("scroll", (e) => {
+      ScrollTrigger.update();
+      window.__isScrolling = true;
+      if (scrollTimeout) clearTimeout(scrollTimeout);
+      scrollTimeout = setTimeout(() => {
+        window.__isScrolling = false;
+      }, 120);
+    });
 
     // Sync GSAP ticker with Lenis requestAnimationFrame
     const updateRaf = (time) => {
@@ -28,14 +35,18 @@ export default function SmoothScrollProvider({ children }) {
     };
 
     gsap.ticker.add(updateRaf);
+    // CRITICAL: Disable GSAP lagSmoothing so Lenis delta isn't throttled or skipped during scroll
+    gsap.ticker.lagSmoothing(0);
 
     // Expose lenis globally for smooth navigation clicks
     window.__lenis = lenis;
 
     return () => {
       gsap.ticker.remove(updateRaf);
+      if (scrollTimeout) clearTimeout(scrollTimeout);
       lenis.destroy();
       delete window.__lenis;
+      delete window.__isScrolling;
     };
   }, []);
 

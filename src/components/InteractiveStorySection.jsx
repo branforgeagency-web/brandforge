@@ -807,11 +807,11 @@ const storyStyles = `
       rgba(255, 255, 255, 0.85) 0%,
       rgba(255, 255, 255, 0.65) 100%
     );
-    backdrop-filter: blur(20px) saturate(180%);
-    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    backdrop-filter: blur(10px) saturate(180%);
+    -webkit-backdrop-filter: blur(10px) saturate(180%);
     border: 1px solid rgba(255, 255, 255, 0.95);
     box-shadow:
-      0 14px 30px rgba(10, 10, 12, 0.1),
+      0 10px 24px rgba(10, 10, 12, 0.08),
       inset 0 1px 0 rgba(255, 255, 255, 1);
     font-family: "Plus Jakarta Sans", sans-serif;
     font-size: 0.76rem;
@@ -819,6 +819,7 @@ const storyStyles = `
     color: #0A0A0C;
     pointer-events: none;
     white-space: nowrap;
+    will-change: transform;
   }
 
   .sg-blueprint-glass-badge.badge-top-left {
@@ -847,6 +848,7 @@ const storyStyles = `
   .sg-story-pillar-3d {
     perspective: 1200px;
     transform-style: preserve-3d;
+    will-change: transform;
   }
 
   .sg-story-pillar-inner {

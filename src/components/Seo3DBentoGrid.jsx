@@ -1,12 +1,16 @@
-"use client";
-
-import React from "react";
+import React, { useRef, useLayoutEffect } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import {
   Search, Cpu, Target, Award, Sparkles, Globe, Users, PenTool,
   MessageSquare, Layers, Video, ShieldCheck, BarChart3
 } from "lucide-react";
 import Seo3DBentoCard from "./Seo3DBentoCard";
 import KexsioCanvasBackground from "./KexsioCanvasBackground";
+import SeoNeuralRibbon from "./SeoNeuralRibbon";
+import KineticLetterSwap from "./KineticLetterSwap";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const SERVICE_BENTO_CONFIGS = {
   "seo-geo": {
@@ -802,6 +806,43 @@ SERVICE_BENTO_CONFIGS["brand-reputation-management-coimbatore"] = SERVICE_BENTO_
 export default function Seo3DBentoGrid({ data, slug }) {
   const currentSlug = (data && data.slug) || slug || "seo-geo";
   const config = SERVICE_BENTO_CONFIGS[currentSlug] || SERVICE_BENTO_CONFIGS["seo-geo"];
+  const isSeoGeo = currentSlug === "seo-geo" || currentSlug === "seo-company-coimbatore";
+  const gridRef = useRef(null);
+
+  useLayoutEffect(() => {
+    if (!isSeoGeo) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+    const grid = gridRef.current;
+    if (!grid) return;
+
+    const ctx = gsap.context(() => {
+      const mm = gsap.matchMedia();
+      mm.add("(min-width: 900px)", () => {
+        const cards = grid.querySelectorAll(".bf-bento-card-root, .bento-card-wrap, [data-bento-card]");
+        const parallaxOffsets = [10, -10, 8, -8];
+        cards.forEach((card, idx) => {
+          const offset = parallaxOffsets[idx % parallaxOffsets.length];
+          gsap.fromTo(
+            card,
+            { yPercent: offset },
+            {
+              yPercent: -offset,
+              ease: "none",
+              scrollTrigger: {
+                trigger: grid,
+                start: "top bottom",
+                end: "bottom top",
+                scrub: 1,
+              },
+            }
+          );
+        });
+      });
+    }, grid);
+
+    return () => ctx.revert();
+  }, [isSeoGeo]);
 
   return (
     <section className="bf-bento-section-root" id="seo-bento-grid">
@@ -815,7 +856,12 @@ export default function Seo3DBentoGrid({ data, slug }) {
             <span>{config.eyebrow}</span>
           </div>
           <h2 className="bf-bento-heading">
-            {config.heading} <span className="bf-bento-heading-glow">{config.headingAccent}</span>
+            {config.heading}{" "}
+            {isSeoGeo ? (
+              <KineticLetterSwap text={config.headingAccent} className="bf-bento-heading-glow" />
+            ) : (
+              <span className="bf-bento-heading-glow">{config.headingAccent}</span>
+            )}
           </h2>
           <p className="bf-bento-sub">
             {config.sub}
@@ -823,7 +869,10 @@ export default function Seo3DBentoGrid({ data, slug }) {
         </div>
 
         {/* 2x2 Capability Grid */}
-        <div className="bf-bento-cards-grid">
+        <div ref={gridRef} className="bf-bento-cards-grid" style={{ position: "relative" }}>
+          {/* AWAKE-STYLE DYNAMIC SCROLL-DRAWN VECTOR RIBBON (SEO & GEO ONLY) */}
+          {isSeoGeo && <SeoNeuralRibbon containerSelector=".bf-bento-cards-grid" />}
+
           {config.cards.map((card, idx) => (
             <Seo3DBentoCard
               key={idx}

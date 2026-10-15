@@ -7,6 +7,8 @@ import {
   Target, BarChart3, Users, PenTool, MessageSquare, Layers, Video, ShieldCheck
 } from "lucide-react";
 import KexsioCanvasBackground from "./KexsioCanvasBackground";
+import KineticLetterSwap from "./KineticLetterSwap";
+import SwapArrow from "./SwapArrow";
 
 const SERVICE_HERO_CONFIGS = {
   "seo-geo": {
@@ -257,7 +259,11 @@ export default function CinematicSeoHero({ onOpenModal, data, slug }) {
             {/* Main Headline */}
             <h1 className="bf-cine-h1">
               {currentConfig.leadTitle}{" "}
-              <span className="bf-cine-h1-red">{currentConfig.accentTitle}</span>
+              {(currentSlug === "seo-geo" || currentSlug === "seo-company-coimbatore") ? (
+                <KineticLetterSwap text={currentConfig.accentTitle} className="bf-cine-h1-red" />
+              ) : (
+                <span className="bf-cine-h1-red">{currentConfig.accentTitle}</span>
+              )}
             </h1>
 
             {/* Subtitle */}
@@ -270,7 +276,11 @@ export default function CinematicSeoHero({ onOpenModal, data, slug }) {
               <button onClick={onOpenModal} className="bf-cine-btn-black">
                 <Zap size={18} />
                 <span>{currentConfig.cta}</span>
-                <ArrowRight size={18} className="btn-arrow" />
+                {(currentSlug === "seo-geo" || currentSlug === "seo-company-coimbatore") ? (
+                  <SwapArrow dir="up-right" size={17} color="#FFFFFF" className="btn-arrow" />
+                ) : (
+                  <ArrowRight size={18} className="btn-arrow" />
+                )}
               </button>
 
               <button

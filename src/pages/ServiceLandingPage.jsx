@@ -34,6 +34,12 @@ import InteractiveWhoWeHelpSection from "../components/InteractiveWhoWeHelpSecti
 import InteractiveFaqSection from "../components/InteractiveFaqSection";
 import InteractiveRelatedServicesSection from "../components/InteractiveRelatedServicesSection";
 import InteractiveBottomCtaSection from "../components/InteractiveBottomCtaSection";
+import SeoGoalReelCta from "../components/SeoGoalReelCta";
+import SeoCylindricalStatement from "../components/SeoCylindricalStatement";
+import SeoQueryArchiveDeck from "../components/SeoQueryArchiveDeck";
+import SeoSajanHero from "../components/SeoSajanHero";
+import SeoSajanPhilosophy from "../components/SeoSajanPhilosophy";
+import SeoSajanServicesDial from "../components/SeoSajanServicesDial";
 
 /* ───────────────────────────────────────────────────────────────────────────
    DYNAMIC SERVICE LANDING PAGE COMPONENT (CARDLESS & LIQUID METAL SHADER)
@@ -42,7 +48,7 @@ import InteractiveBottomCtaSection from "../components/InteractiveBottomCtaSecti
    ─────────────────────────────────────────────────────────────────────────── */
 
 const SERVICE_BANNER_ASSETS = {
-  "seo-geo": "/seo-sketch-diagram.png",
+  "seo-geo": "/seo-geo-banner-bg.png",
   "paid-media": "/paid-media-banner-illustration.png",
   "web-foundry": "/web-dev-banner-illustration.png",
   "viral-social": "/viral-social-banner-illustration.png",
@@ -54,7 +60,7 @@ const SERVICE_BANNER_ASSETS = {
   "commercial-video": "/commercial-video-banner-illustration.png",
   "cro-revenue": "/cro-revenue-banner-illustration.png",
   "reputation-shield": "/reputation-shield-banner-illustration.png",
-  "seo-company-coimbatore": "/seo-sketch-diagram.png",
+  "seo-company-coimbatore": "/seo-geo-banner-bg.png",
   "ppc-company-coimbatore": "/paid-media-banner-illustration.png",
   "website-development-company-coimbatore": "/web-dev-banner-illustration.png",
   "web-development-company-coimbatore": "/web-dev-banner-illustration.png",
@@ -737,24 +743,36 @@ export default function ServiceLandingPage({ slug = "seo-geo", onOpenModal, navi
     <div className={`sg-page-root ${isSeoGeo ? "is-seo-geo-page" : ""}`}>
       <style>{styles}</style>
 
-      {/* ANIMATED MARQUEE TICKER STRIP */}
-      <div className="sg-marquee-bar">
-        <div className="sg-marquee-track">
-          <span>⚡ {data.eyebrow}</span>
-          <span>• 100/100 PERFORMANCE BENCHMARK</span>
-          <span>• ENTERPRISE BRAND FORGING</span>
-          <span>• REAL-TIME ROI ESTIMATION</span>
-          <span>• 24/7 DEDICATED STRATEGY TEAM</span>
-          <span>⚡ {data.eyebrow}</span>
-          <span>• 100/100 PERFORMANCE BENCHMARK</span>
-          <span>• ENTERPRISE BRAND FORGING</span>
-          <span>• REAL-TIME ROI ESTIMATION</span>
-          <span>• 24/7 DEDICATED STRATEGY TEAM</span>
+      {/* ANIMATED MARQUEE TICKER STRIP (ON STANDARD 11 SERVICES) */}
+      {!isSeoGeo && (
+        <div className="sg-marquee-bar">
+          <div className="sg-marquee-track">
+            <span>⚡ {data.eyebrow}</span>
+            <span>• 100/100 PERFORMANCE BENCHMARK</span>
+            <span>• ENTERPRISE BRAND FORGING</span>
+            <span>• REAL-TIME ROI ESTIMATION</span>
+            <span>• 24/7 DEDICATED STRATEGY TEAM</span>
+            <span>⚡ {data.eyebrow}</span>
+            <span>• 100/100 PERFORMANCE BENCHMARK</span>
+            <span>• ENTERPRISE BRAND FORGING</span>
+            <span>• REAL-TIME ROI ESTIMATION</span>
+            <span>• 24/7 DEDICATED STRATEGY TEAM</span>
+          </div>
         </div>
-      </div>
+      )}
 
-      {/* CINEMATIC 3D LEVITATING HERO WITH LIQUID GLASS FLOATING CARDS (ALL 12 SERVICES) */}
-      <CinematicSeoHero onOpenModal={onOpenModal} data={data} slug={slug} />
+      {/* 1ST SECTION: HERO (SAJAN PORTAL MASK & SPOTLIGHT HERO ON SEO & GEO, CINEMATIC HERO ON OTHERS) */}
+      {isSeoGeo ? (
+        <SeoSajanHero onOpenModal={onOpenModal} />
+      ) : (
+        <CinematicSeoHero onOpenModal={onOpenModal} data={data} slug={slug} />
+      )}
+
+      {/* 2ND SECTION: SAJAN PHILOSOPHY & REVEAL STATEMENT (PINNED SCROLL SCRUB, SEO & GEO ONLY) */}
+      {isSeoGeo && <SeoSajanPhilosophy onOpenModal={onOpenModal} />}
+
+      {/* 3RD SECTION: SAJAN FREQUENCY DIAL & TUNER (PINNED HORIZONTAL GAUGE, SEO & GEO ONLY) */}
+      {isSeoGeo && <SeoSajanServicesDial onOpenModal={onOpenModal} />}
 
       {/* 3D BENTO GRID & CORE CAPABILITIES (ALL 12 SERVICES) */}
       <Seo3DBentoGrid data={data} slug={slug} />
@@ -789,6 +807,9 @@ export default function ServiceLandingPage({ slug = "seo-geo", onOpenModal, navi
         />
       )}
 
+      {/* AWAKE-INSPIRED LIVE QUERY ARCHIVE DECK (SEO & GEO ONLY) */}
+      {isSeoGeo && <SeoQueryArchiveDeck onOpenModal={onOpenModal} />}
+
       {/* CARDLESS INTERACTIVE 6-PILLAR LIST STREAM */}
       <InteractivePillarsSection data={data} />
 
@@ -814,6 +835,9 @@ export default function ServiceLandingPage({ slug = "seo-geo", onOpenModal, navi
         currentEyebrow={data.eyebrow}
         navigate={navigate}
       />
+
+      {/* AWAKE-INSPIRED INTERACTIVE SEARCH GOAL REEL (SEO & GEO ONLY) */}
+      {isSeoGeo && <SeoGoalReelCta onOpenModal={onOpenModal} />}
 
       {/* BOTTOM BANNER CTA */}
       <InteractiveBottomCtaSection

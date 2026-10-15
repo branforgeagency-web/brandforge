@@ -1,0 +1,424 @@
+"use client";
+
+import React, { useRef, useEffect, useState, useMemo } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { Sparkles, ArrowRight, Bot, Cpu, ShieldCheck } from "lucide-react";
+import SwapArrow from "./SwapArrow";
+
+if (typeof window !== "undefined") {
+  gsap.registerPlugin(ScrollTrigger);
+}
+
+const DIRECTIONS = ["up", "down", "left", "right"];
+const getRandomDirection = () =>
+  DIRECTIONS[Math.floor(Math.random() * DIRECTIONS.length)];
+
+const getDirectionOffset = (dir, dist = 110) => {
+  switch (dir) {
+    case "up":
+      return { x: 0, y: -dist };
+    case "down":
+      return { x: 0, y: dist };
+    case "left":
+      return { x: -dist, y: 0 };
+    case "right":
+      return { x: dist, y: 0 };
+    default:
+      return { x: 0, y: -dist };
+  }
+};
+
+const getOppositeDirection = (dir) => {
+  switch (dir) {
+    case "up":
+      return "down";
+    case "down":
+      return "up";
+    case "left":
+      return "right";
+    case "right":
+      return "left";
+    default:
+      return "down";
+  }
+};
+
+const triggerPortalLoop = (letterEl) => {
+  if (!letterEl || gsap.isTweening(letterEl)) return;
+  const dir = getRandomDirection();
+  const outOffset = getDirectionOffset(dir, 115);
+  const inOffset = getDirectionOffset(getOppositeDirection(dir), 115);
+
+  gsap
+    .timeline()
+    .to(letterEl, {
+      x: `${outOffset.x}%`,
+      y: `${outOffset.y}%`,
+      duration: 0.22,
+      ease: "power2.in",
+    })
+    .set(letterEl, {
+      x: `${inOffset.x}%`,
+      y: `${inOffset.y}%`,
+    })
+    .to(letterEl, {
+      x: "0%",
+      y: "0%",
+      duration: 0.38,
+      ease: "power2.out",
+    });
+};
+
+const STATEMENT_TEXT =
+  "Search engines are transitioning from 10 blue links to AI synthesized answers. Traditional agencies optimize for obsolete algorithms. BrandForge engineers deep entity schema, high-trust seed sets, and neural vector consensus so your business is cited as the undisputed market authority.";
+
+const HIGHLIGHT_WORDS = [
+  "10",
+  "blue",
+  "links",
+  "ai",
+  "synthesized",
+  "answers.",
+  "deep",
+  "entity",
+  "schema,",
+  "neural",
+  "vector",
+  "consensus",
+  "undisputed",
+  "market",
+  "authority.",
+];
+
+export default function SeoSajanPhilosophy({ onOpenModal }) {
+  const sectionRef = useRef(null);
+  const triggerRef = useRef(null);
+  const textRef = useRef(null);
+  const wordsRef = useRef([]);
+  const lettersRef = useRef([]);
+  const hasTriggeredLetters = useRef(false);
+
+  const words = useMemo(() => {
+    return STATEMENT_TEXT.split(" ").map((w, idx) => {
+      const clean = w.toLowerCase().replace(/[.,!?]/g, "");
+      const isHighlight = HIGHLIGHT_WORDS.some(
+        (hw) => hw.toLowerCase().replace(/[.,!?]/g, "") === clean
+      );
+      return {
+        original: w,
+        clean,
+        isHighlight,
+        index: idx,
+      };
+    });
+  }, []);
+
+  useEffect(() => {
+    if (!sectionRef.current || !triggerRef.current) return;
+
+    const prefersReduced =
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    const wordEls = wordsRef.current.filter(Boolean);
+    const letterEls = lettersRef.current.filter(Boolean);
+
+    if (prefersReduced) {
+      wordEls.forEach((w) => gsap.set(w, { opacity: 1 }));
+      letterEls.forEach((l) => gsap.set(l, { x: "0%", y: "0%", opacity: 1 }));
+      return;
+    }
+
+    // Initialize: Dim standard words, conceal portal letters off-canvas
+    wordEls.forEach((w) => gsap.set(w, { opacity: 0.15 }));
+    letterEls.forEach((l) => {
+      const dir = getRandomDirection();
+      const offset = getDirectionOffset(dir, 115);
+      gsap.set(l, { x: `${offset.x}%`, y: `${offset.y}%`, opacity: 0 });
+    });
+
+    // Pinned ScrollTrigger with scrubbed word illumination
+    const st = ScrollTrigger.create({
+      trigger: triggerRef.current,
+      start: "top top",
+      end: () => `+=${Math.round(window.innerHeight * 1.35)}`,
+      pin: sectionRef.current,
+      pinSpacing: true,
+      scrub: 1.8,
+      onUpdate: (self) => {
+        const p = self.progress;
+
+        // Scrub word illumination
+        const total = wordEls.length;
+        wordEls.forEach((el, idx) => {
+          const startP = (idx / total) * 0.75;
+          const endP = startP + 0.25;
+          const wordProgress = Math.max(0, Math.min(1, (p - startP) / (endP - startP)));
+          const op = 0.15 + 0.85 * wordProgress;
+          el.style.opacity = op.toFixed(3);
+        });
+
+        // Kinetic portal letters entrance at threshold
+        if (p >= 0.78 && !hasTriggeredLetters.current) {
+          hasTriggeredLetters.current = true;
+          letterEls.forEach((l) => {
+            const delay = Math.random() * 0.25;
+            gsap.to(l, {
+              x: "0%",
+              y: "0%",
+              opacity: 1,
+              duration: 0.45,
+              delay,
+              ease: "power2.out",
+            });
+          });
+        } else if (p < 0.65 && hasTriggeredLetters.current) {
+          hasTriggeredLetters.current = false;
+          letterEls.forEach((l) => {
+            const dir = getRandomDirection();
+            const offset = getDirectionOffset(dir, 115);
+            gsap.to(l, {
+              x: `${offset.x}%`,
+              y: `${offset.y}%`,
+              opacity: 0,
+              duration: 0.3,
+              ease: "power2.in",
+            });
+          });
+        }
+      },
+    });
+
+    return () => {
+      st.kill();
+    };
+  }, [words]);
+
+  return (
+    <div ref={triggerRef} className="bf-philosophy-trigger">
+      <style>{`
+        .bf-philosophy-trigger {
+          position: relative;
+          width: 100%;
+          background: #08080A;
+        }
+
+        .bf-philosophy-section {
+          width: 100%;
+          min-height: 100vh;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: flex-start;
+          padding: 80px 8%;
+          position: relative;
+          overflow: hidden;
+          background: #09090C;
+          border-top: 1px solid rgba(255, 255, 255, 0.08);
+          border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        /* Ambient Neural Core Glow */
+        .bf-phil-ambient {
+          position: absolute;
+          width: 600px;
+          height: 600px;
+          border-radius: 50%;
+          background: radial-gradient(circle, rgba(239, 65, 54, 0.12) 0%, transparent 70%);
+          filter: blur(90px);
+          pointer-events: none;
+          bottom: -150px;
+          right: 5%;
+          z-index: 0;
+        }
+
+        /* Meta Label Chip */
+        .bf-phil-metalabel {
+          display: inline-flex;
+          align-items: center;
+          gap: 10px;
+          font-size: 0.78rem;
+          font-weight: 700;
+          letter-spacing: 0.16em;
+          text-transform: uppercase;
+          color: #EF4136;
+          margin-bottom: clamp(28px, 4vw, 44px);
+          position: relative;
+          z-index: 2;
+        }
+        .bf-phil-star {
+          width: 14px;
+          height: 14px;
+          color: #EF4136;
+          animation: bf-star-spin 12s linear infinite;
+        }
+        @keyframes bf-star-spin {
+          from { transform: rotate(0deg); }
+          to { transform: rotate(360deg); }
+        }
+
+        /* Statement Headline */
+        .bf-phil-statement {
+          font-size: clamp(2rem, 4.4vw, 4.6rem);
+          font-weight: 800;
+          line-height: 1.15;
+          letter-spacing: -0.035em;
+          text-transform: uppercase;
+          color: #FAFAFC;
+          max-width: 1360px;
+          margin: 0 0 clamp(32px, 4vw, 48px);
+          position: relative;
+          z-index: 2;
+          user-select: none;
+        }
+
+        .bf-phil-word {
+          display: inline-block;
+          margin-right: 0.28em;
+          transition: opacity 0.15s ease-out;
+          will-change: opacity;
+        }
+
+        .bf-phil-word.is-highlight {
+          color: #EF4136;
+          text-shadow: 0 0 25px rgba(239, 65, 54, 0.4);
+        }
+
+        /* Portal Masks on Highlight Letters */
+        .bf-phil-portal-mask {
+          display: inline-block;
+          position: relative;
+          overflow: hidden;
+          vertical-align: baseline;
+          cursor: pointer;
+        }
+        .bf-phil-portal-letter {
+          display: inline-block;
+          position: relative;
+          will-change: transform;
+          backface-visibility: hidden;
+          transition: color 0.18s ease;
+        }
+        .bf-phil-portal-mask:hover .bf-phil-portal-letter {
+          color: #FFFFFF;
+        }
+
+        /* Bottom Status & CTA Row */
+        .bf-phil-footer {
+          position: relative;
+          z-index: 2;
+          display: flex;
+          align-items: center;
+          justify-content: flex-end;
+          width: 100%;
+          max-width: 1360px;
+          border-top: 1px solid rgba(255, 255, 255, 0.08);
+          padding-top: 24px;
+          flex-wrap: wrap;
+          gap: 20px;
+        }
+        .bf-phil-audit-btn {
+          display: inline-flex;
+          align-items: center;
+          gap: 8px;
+          background: transparent;
+          border: 1px solid rgba(239, 65, 54, 0.35);
+          color: #FF6B5E;
+          font-size: 0.85rem;
+          font-weight: 700;
+          padding: 10px 20px;
+          border-radius: 9999px;
+          cursor: pointer;
+          transition: all 0.25s ease;
+        }
+        .bf-phil-audit-btn:hover {
+          background: #EF4136;
+          color: #FFFFFF;
+          border-color: #EF4136;
+          transform: translateY(-2px);
+          box-shadow: 0 8px 24px rgba(239, 65, 54, 0.35);
+        }
+      `}</style>
+
+      <section ref={sectionRef} className="bf-philosophy-section" id="philosophy">
+        <div className="bf-phil-ambient" aria-hidden="true" />
+
+        {/* 02 METALABEL */}
+        <div className="bf-phil-metalabel">
+          <svg
+            className="bf-phil-star"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M12 0C12 0 14.5 9.5 24 12C14.5 14.5 12 24 12 24C12 24 9.5 14.5 0 12C9.5 9.5 12 0 12 0Z"
+              stroke="currentColor"
+              strokeWidth="1.5"
+              strokeLinejoin="round"
+              fill="none"
+            />
+          </svg>
+          <span>02 ★ THE SEARCH PARADIGM SHIFT</span>
+        </div>
+
+        {/* SCRUBBED STATEMENT HEADLINE */}
+        <h2 ref={textRef} className="bf-phil-statement">
+          {words.map((item, idx) => {
+            if (item.isHighlight) {
+              return (
+                <span
+                  key={idx}
+                  ref={(el) => (wordsRef.current[idx] = el)}
+                  className="bf-phil-word is-highlight"
+                >
+                  {item.original.split("").map((ch, cIdx) => (
+                    <span
+                      key={cIdx}
+                      className="bf-phil-portal-mask"
+                      onMouseEnter={(e) => {
+                        const l = e.currentTarget.querySelector(
+                          ".bf-phil-portal-letter"
+                        );
+                        triggerPortalLoop(l);
+                      }}
+                    >
+                      <span
+                        ref={(el) => lettersRef.current.push(el)}
+                        className="bf-phil-portal-letter"
+                      >
+                        {ch}
+                      </span>
+                    </span>
+                  ))}
+                </span>
+              );
+            }
+
+            return (
+              <span
+                key={idx}
+                ref={(el) => (wordsRef.current[idx] = el)}
+                className="bf-phil-word"
+              >
+                {item.original}
+              </span>
+            );
+          })}
+        </h2>
+
+        {/* FOOTER BAR */}
+        <div className="bf-phil-footer">
+          <button
+            type="button"
+            onClick={onOpenModal}
+            className="bf-phil-audit-btn"
+          >
+            <span>Request Dual-Engine Audit</span>
+            <SwapArrow dir="right" size={13} color="currentColor" />
+          </button>
+        </div>
+      </section>
+    </div>
+  );
+}

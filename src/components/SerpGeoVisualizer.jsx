@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Search, Bot, Sparkles, ExternalLink, ShieldCheck, CheckCircle2 } from "lucide-react";
 import KexsioCanvasBackground from "./KexsioCanvasBackground";
+import KineticLetterSwap from "./KineticLetterSwap";
 
 export default function SerpGeoVisualizer() {
   const [mode, setMode] = useState("geo"); // "traditional" | "geo"
@@ -22,7 +23,7 @@ export default function SerpGeoVisualizer() {
           </div>
           <h2 className="bf-serp-geo-title">
             Classic Google SERP <span className="title-muted">vs.</span>{" "}
-            <span className="title-red">AI Answer Engines</span>
+            <KineticLetterSwap text="AI Answer Engines" className="title-red" />
           </h2>
           <p className="bf-serp-geo-sub">
             Compare how traditional search delivers commoditized blue links, while BrandForge GEO extracts your entity directly into ChatGPT, Perplexity, and Gemini answers.

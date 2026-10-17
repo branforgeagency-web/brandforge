@@ -234,14 +234,14 @@ export default function SeoSajanPhilosophy({ onOpenModal }) {
 
         /* Statement Headline */
         .bf-phil-statement {
-          font-size: clamp(2rem, 4.4vw, 4.6rem);
+          font-size: clamp(1.65rem, 3.2vw, 3.2rem);
           font-weight: 800;
-          line-height: 1.15;
-          letter-spacing: -0.035em;
+          line-height: 1.22;
+          letter-spacing: -0.03em;
           text-transform: uppercase;
           color: #FAFAFC;
-          max-width: 1360px;
-          margin: 0 0 clamp(32px, 4vw, 48px);
+          max-width: 1240px;
+          margin: 0 0 clamp(28px, 3.5vw, 44px);
           position: relative;
           z-index: 2;
           user-select: none;

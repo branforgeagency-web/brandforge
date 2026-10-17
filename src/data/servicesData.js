@@ -140,23 +140,23 @@ export const servicesData = {
       title: "What Makes Our SEO Company Different",
       items: [
         {
-          title: "SEO and GEO under one roof",
-          description: "most agencies in Coimbatore are still purely Google-focused; we're already optimizing for the AI search shift",
+          title: "SEO and GEO Under One Roof",
+          description: "While typical agencies in Coimbatore remain purely Google-focused, we simultaneously optimize your brand for ChatGPT, Perplexity, and AI Search shifts.",
           icon: Zap
         },
         {
-          title: "Local market understanding",
-          description: "we know how Coimbatore audiences search and behave online",
+          title: "Deep Local Market Intelligence",
+          description: "Granular search and behavioral insights tailored to how regional and pan-India high-intent buyers discover, evaluate, and convert.",
           icon: Globe
         },
         {
-          title: "Transparent process",
-          description: "no black-box reporting, no vague promises",
+          title: "Radical Transparency & Attribution",
+          description: "Full weekly attribution of commercial rankings, pipeline revenue, and AI engine citation share with zero black-box vanity reporting.",
           icon: ShieldCheck
         },
         {
-          title: "Content built for humans first",
-          description: "because that's still what ranks best, on Google and on AI engines",
+          title: "Content Built for Humans First",
+          description: "Authoritative, domain-led thought leadership that earns top organic rankings on Google and authoritative citations across conversational AI.",
           icon: Users
         }
       ]

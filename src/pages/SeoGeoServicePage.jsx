@@ -22,6 +22,7 @@ import {
   Sliders,
 } from "lucide-react";
 import BrandForgeAnimatedFooter from "../components/BrandForgeAnimatedFooter";
+import seoBannerVideo from "../assets/seobanner.mp4";
 
 /* ───────────────────────────────────────────────────────────────────────────
    SEO & GEO SERVICE LANDING PAGE — BrandForge Digital Agency.
@@ -216,13 +217,23 @@ export default function SeoGeoServicePage({ onOpenModal, navigate }) {
       <header
         className="sg-hero has-banner-bg"
         style={{
-          backgroundImage: `linear-gradient(180deg, rgba(0, 0, 0, 0.75) 0%, rgba(5, 5, 8, 0.88) 60%, rgba(0, 0, 0, 0.98) 100%), url(/banner-seo-geo-bg.jpg)`,
-          backgroundSize: "cover",
-          backgroundPosition: "center top",
-          backgroundRepeat: "no-repeat",
+          position: "relative",
+          overflow: "hidden",
         }}
       >
-        <div className="sg-hero-glow" />
+        <div style={{ position: "absolute", inset: 0, zIndex: 0, overflow: "hidden", pointerEvents: "none" }} aria-hidden="true">
+          <video
+            autoPlay
+            muted
+            loop
+            playsInline
+            style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center", opacity: 0.95 }}
+          >
+            <source src={seoBannerVideo} type="video/mp4" />
+            <source src="/seobanner.mp4" type="video/mp4" />
+          </video>
+        </div>
+        <div className="sg-hero-glow" style={{ position: "relative", zIndex: 1 }} />
 
         <div className="sg-container">
           <motion.div

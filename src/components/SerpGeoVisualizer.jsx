@@ -60,22 +60,17 @@ export default function SerpGeoVisualizer() {
 
         {/* Montarville Split Grid (Left: Parallax Architecture Image / Right: Content) */}
         <div className="montarville-grid">
-          {/* Left Column: Architectural Photo with Parallax */}
+          {/* Left Column: Transparent 3D Dual-Engine Visualizer */}
           <div className="montarville-left-col">
             <div className="montarville-image-frame">
               <motion.div style={{ y: imageY, scale: imageScale }} className="montarville-image-inner">
                 <img
-                  src="/montarville-architecture.jpg"
-                  alt="High Performance Architecture"
+                  src="/seo-geo-floating-3d.png"
+                  alt="SEO & GEO 3D Launch Engine"
                   className="montarville-img"
                   loading="lazy"
                 />
               </motion.div>
-              <div className="montarville-image-vignette" />
-              <div className="montarville-image-badge">
-                <span className="montarville-badge-dot" />
-                <span>ARCHITECTURAL LATENT PROTOCOL</span>
-              </div>
             </div>
           </div>
 
@@ -177,7 +172,7 @@ const visualizerStyles = `
   /* Montarville Split Grid */
   .montarville-grid {
     display: grid;
-    grid-template-columns: 360px 1fr;
+    grid-template-columns: minmax(320px, 410px) 1fr;
     gap: 48px;
     align-items: center;
   }
@@ -190,7 +185,7 @@ const visualizerStyles = `
     }
   }
 
-  /* Left Column: Parallax Architectural Image Frame */
+  /* Left Column: Parallax 3D Asset Frame */
   .montarville-left-col {
     position: relative;
   }
@@ -198,65 +193,28 @@ const visualizerStyles = `
   .montarville-image-frame {
     position: relative;
     width: 100%;
-    aspect-ratio: 4 / 4.6;
-    border-radius: 18px;
-    overflow: hidden;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    background: #000000;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+    aspect-ratio: 1 / 1;
+    overflow: visible;
+    border: none;
+    background: transparent;
+    box-shadow: none;
   }
 
   .montarville-image-inner {
     width: 100%;
     height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   .montarville-img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: contain;
     object-position: center;
-    filter: contrast(1.05) brightness(0.92);
-  }
-
-  .montarville-image-vignette {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(
-      180deg,
-      rgba(9, 9, 12, 0.05) 0%,
-      rgba(9, 9, 12, 0.3) 60%,
-      rgba(9, 9, 12, 0.9) 100%
-    );
-    pointer-events: none;
-  }
-
-  .montarville-image-badge {
-    position: absolute;
-    bottom: 16px;
-    left: 16px;
-    right: 16px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    padding: 8px 14px;
-    background: rgba(9, 9, 12, 0.85);
-    backdrop-filter: blur(8px);
-    border: 1px solid rgba(255, 255, 255, 0.12);
-    border-radius: 8px;
-    font-family: "JetBrains Mono", monospace;
-    font-size: 10px;
-    font-weight: 700;
-    letter-spacing: 0.12em;
-    color: #FAFAFC;
-  }
-
-  .montarville-badge-dot {
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    background: #EF4136;
-    box-shadow: 0 0 6px #EF4136;
+    filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.5));
+    padding: 0;
   }
 
   /* Right Column Styling */

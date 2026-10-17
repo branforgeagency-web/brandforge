@@ -9,6 +9,7 @@ import {
 import KexsioCanvasBackground from "./KexsioCanvasBackground";
 import KineticLetterSwap from "./KineticLetterSwap";
 import SwapArrow from "./SwapArrow";
+import seoBannerVideo from "../assets/seobanner.mp4";
 
 const SERVICE_HERO_CONFIGS = {
   "seo-geo": {
@@ -226,6 +227,22 @@ export default function CinematicSeoHero({ onOpenModal, data, slug }) {
       id="seo-hero-banner"
     >
       <style>{heroStyles}</style>
+
+      {/* ── BACKGROUND VIDEO FOR SEO & GEO ── */}
+      {(currentSlug === "seo-geo" || currentSlug === "seo-company-coimbatore") && (
+        <div className="bf-cine-video-wrap" aria-hidden="true">
+          <video
+            autoPlay
+            muted
+            loop
+            playsInline
+            className="bf-cine-video"
+          >
+            <source src={seoBannerVideo} type="video/mp4" />
+            <source src="/seobanner.mp4" type="video/mp4" />
+          </video>
+        </div>
+      )}
 
       {/* Light Mesh Network Constellation */}
       <KexsioCanvasBackground theme="light" opacity={0.6} />
@@ -470,6 +487,23 @@ export default function CinematicSeoHero({ onOpenModal, data, slug }) {
 }
 
 const heroStyles = `
+  .bf-cine-video-wrap {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: 0;
+    pointer-events: none;
+  }
+  .bf-cine-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    opacity: 0.95;
+  }
+
   .bf-cine-hero-root {
     position: relative;
     min-height: 88vh;

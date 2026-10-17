@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { Zap, Globe, ShieldCheck, Users, ArrowRight, CheckCircle2 } from "lucide-react";
+import { Zap, Globe, ShieldCheck, Users, ArrowRight, CheckCircle2, Sparkles, TrendingUp } from "lucide-react";
 
 function SajanStar({ size = 15, className = "" }) {
   return (
@@ -18,7 +18,8 @@ function SajanStar({ size = 15, className = "" }) {
         stroke="currentColor"
         strokeWidth="1.5"
         strokeLinejoin="round"
-        fill="none"
+        fill="currentColor"
+        fillOpacity="0.2"
       />
     </svg>
   );
@@ -27,39 +28,45 @@ function SajanStar({ size = 15, className = "" }) {
 function MontarvilleCircles({ className = "" }) {
   return (
     <div className={`montarville-circles-wrap ${className}`} aria-hidden="true">
-      <svg width="560" height="450" viewBox="0 0 768 610" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="384" cy="417.5" r="191.5" stroke="rgba(255, 255, 255, 0.05)" strokeWidth="1" />
-        <circle cx="384" cy="192" r="191.5" stroke="rgba(255, 255, 255, 0.05)" strokeWidth="1" />
-        <circle cx="192" cy="304.7" r="191.5" stroke="rgba(255, 255, 255, 0.05)" strokeWidth="1" />
-        <circle cx="576" cy="304.7" r="191.5" stroke="rgba(255, 255, 255, 0.05)" strokeWidth="1" />
+      <svg width="680" height="540" viewBox="0 0 768 610" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="384" cy="417.5" r="191.5" stroke="rgba(255, 255, 255, 0.04)" strokeWidth="1" strokeDasharray="3 3" />
+        <circle cx="384" cy="192" r="191.5" stroke="rgba(255, 255, 255, 0.04)" strokeWidth="1" />
+        <circle cx="192" cy="304.7" r="191.5" stroke="rgba(239, 65, 54, 0.06)" strokeWidth="1" />
+        <circle cx="576" cy="304.7" r="191.5" stroke="rgba(255, 255, 255, 0.04)" strokeWidth="1" />
       </svg>
     </div>
   );
 }
 
+const CARD_METAS = [
+  { coord: "DIFF // 01 · ARCHITECTURE", tag: "AI SEARCH SHIFT READY", iconColor: "#EF4136" },
+  { coord: "DIFF // 02 · LOCAL INTEL", tag: "REGIONAL DOMINANCE", iconColor: "#FF6B00" },
+  { coord: "DIFF // 03 · ATTRIBUTION", tag: "100% AUDITABLE SLA", iconColor: "#EF4136" },
+  { coord: "DIFF // 04 · CONTENT MOAT", tag: "HIGH INFORMATION GAIN", iconColor: "#FF6B00" },
+];
+
 export default function SeoMontarvilleDiff({ differentiators, onOpenModal }) {
   const diffData = differentiators || {};
   const diffTag = diffData.tag || "THE BRANDFORGE ADVANTAGE";
-  const diffTitle = diffData.title || "What Makes Our SEO Company Different";
   const items = diffData.items || [
     {
-      title: "SEO and GEO under one roof",
-      description: "Most agencies in Coimbatore are still purely Google-focused; we're already optimizing for the generative AI search shift.",
+      title: "SEO and GEO Under One Roof",
+      description: "While typical agencies in Coimbatore remain purely Google-focused, we simultaneously optimize your brand for ChatGPT, Perplexity, and AI Search shifts.",
       icon: Zap,
     },
     {
-      title: "Local market understanding",
-      description: "We know how Coimbatore and Tamil Nadu audiences search, compare, and behave online across languages and devices.",
+      title: "Deep Local Market Intelligence",
+      description: "Granular search and behavioral insights tailored to how regional and pan-India high-intent buyers discover, evaluate, and convert.",
       icon: Globe,
     },
     {
-      title: "Transparent, real-time reporting",
-      description: "No black-box reporting or vanity metrics. Full weekly attribution of pipeline revenue, rankings, and AI consensus.",
+      title: "Radical Transparency & Attribution",
+      description: "Full weekly attribution of commercial rankings, pipeline revenue, and AI engine citation share with zero black-box vanity reporting.",
       icon: ShieldCheck,
     },
     {
-      title: "Content built for humans first",
-      description: "Because helpful, quotable human-first insights are exactly what Google algorithms and AI models index and cite best.",
+      title: "Content Built for Humans First",
+      description: "Authoritative, domain-led thought leadership that earns top organic rankings on Google and authoritative citations across conversational AI.",
       icon: Users,
     },
   ];
@@ -68,32 +75,55 @@ export default function SeoMontarvilleDiff({ differentiators, onOpenModal }) {
     <section className="smd-diff-section" id="differentiators">
       <style>{diffComponentStyles}</style>
 
+      {/* Ambient Radial Lights */}
+      <div className="smd-ambient-light smd-ambient-left" aria-hidden="true" />
+      <div className="smd-ambient-light smd-ambient-right" aria-hidden="true" />
+
       {/* Montarville Geometric Line-Art Watermark */}
       <MontarvilleCircles className="smd-watermark" />
 
       <div className="smd-container">
-        {/* Montarville "Ce qui nous distingue" Editorial Split Layout */}
         <div className="smd-split-grid">
           {/* Left Column: Authoritative Editorial Statement */}
           <div className="smd-editorial-col">
             <div className="smd-metalabel">
-              <SajanStar className="smd-star" />
-              <span>CE QUI NOUS DISTINGUE // {diffTag}</span>
+              <span className="smd-pulsing-dot" />
+              <SajanStar className="smd-star" size={13} />
+              <span>WHAT SETS US APART // {diffTag}</span>
             </div>
 
             <h2 className="smd-title">
-              Engineering <span className="title-red">Category Supremacy</span>, Not Short-Lived Spikes.
+              Engineering <span className="title-gradient">Category Supremacy</span>, Not Short-Lived Spikes.
             </h2>
 
             <div className="smd-wysiwyg-2c">
               <p>
-                <strong>BrandForge se distingue</strong> par sa capacité à offrir une architecture intégrée et structurée, bien au-delà de la simple exécution de mots-clés. While generic agencies sell commodity backlink bundles, we build technical entity graphs that make your brand the indisputable answer across Google search and conversational AI models.
+                <strong>BrandForge engineers search architectures</strong> that transcend basic keyword optimization. While generic agencies sell commodity backlink bundles, we build technical entity graphs and generative-ready infrastructure that make your brand the definitive answer across Google Search and conversational AI engines.
               </p>
               <p>
-                Our posture is rooted in radical transparency: zero black-box reporting, sub-200ms Jamstack engineering, and measurable organic revenue growth. We believe in direct, honest partnerships where technical precision yields compounding commercial returns.
+                Our methodology is rooted in radical transparency: zero black-box vanity reporting, sub-200ms Jamstack engineering, and measurable organic revenue growth. We forge compounding organic moats where technical precision yields sustainable commercial dominance.
               </p>
             </div>
 
+            {/* Enterprise Micro-Metrics Strip */}
+            <div className="smd-proof-strip">
+              <div className="smd-proof-item">
+                <span className="smd-proof-val">100%</span>
+                <span className="smd-proof-lbl">Transparent Attribution</span>
+              </div>
+              <div className="smd-proof-sep" />
+              <div className="smd-proof-item">
+                <span className="smd-proof-val">&lt;200ms</span>
+                <span className="smd-proof-lbl">Sub-Second Speed SLA</span>
+              </div>
+              <div className="smd-proof-sep" />
+              <div className="smd-proof-item">
+                <span className="smd-proof-val">GEO + SEO</span>
+                <span className="smd-proof-lbl">AI-Engine Ready</span>
+              </div>
+            </div>
+
+            {/* CTA & Trust Row */}
             <div className="smd-action-row">
               <button
                 type="button"
@@ -101,7 +131,7 @@ export default function SeoMontarvilleDiff({ differentiators, onOpenModal }) {
                 onClick={() => onOpenModal && onOpenModal("Schedule Strategic Briefing")}
               >
                 <span>SCHEDULE STRATEGIC BRIEFING</span>
-                <ArrowRight size={14} />
+                <ArrowRight size={14} className="smd-btn-arrow" />
               </button>
               <span className="smd-guarantee-tag">
                 <CheckCircle2 size={13} className="text-red" />
@@ -110,26 +140,37 @@ export default function SeoMontarvilleDiff({ differentiators, onOpenModal }) {
             </div>
           </div>
 
-          {/* Right Column: 4 Obsidian Architectural Cards Grid */}
+          {/* Right Column: 4 Obsidian Glass Architectural Cards */}
           <div className="smd-cards-col">
             {items.map((item, idx) => {
               const Icon = item.icon || Zap;
+              const meta = CARD_METAS[idx % CARD_METAS.length];
+              const desc = item.description || "";
+              const formattedDesc = desc ? desc.charAt(0).toUpperCase() + desc.slice(1) : "";
+
               return (
                 <div key={item.title || idx} className="smd-obsidian-card">
+                  {/* Subtle Top-Right Cross Accent */}
                   <span className="smd-card-cross" aria-hidden="true">+</span>
 
                   <div className="smd-card-top">
                     <div className="smd-card-icon-wrap">
-                      <Icon size={20} />
+                      <Icon size={20} strokeWidth={2} />
                     </div>
-                    <span className="smd-card-coord">DIFF // 0{idx + 1}</span>
+                    <span className="smd-card-coord">{meta.coord}</span>
                   </div>
 
-                  <h3 className="smd-card-title">{item.title}</h3>
-                  <p className="smd-card-desc">{item.description}</p>
+                  <div className="smd-card-content">
+                    <h3 className="smd-card-title">{item.title}</h3>
+                    <p className="smd-card-desc">{formattedDesc}</p>
+                  </div>
 
                   <div className="smd-card-footer">
-                    <span className="smd-card-check-pill">VERIFIED STANDARD</span>
+                    <span className="smd-card-check-pill">
+                      <span className="smd-pill-indicator" />
+                      {meta.tag}
+                    </span>
+                    <span className="smd-card-arrow">↗</span>
                   </div>
                 </div>
               );
@@ -144,38 +185,67 @@ export default function SeoMontarvilleDiff({ differentiators, onOpenModal }) {
 const diffComponentStyles = `
   .smd-diff-section {
     position: relative;
-    background: #09090C;
-    padding: clamp(70px, 9vw, 110px) 0 clamp(60px, 8vw, 100px);
-    border-top: 1px solid rgba(255, 255, 255, 0.08);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    background: #08080C;
+    padding: clamp(80px, 9vw, 125px) 0 clamp(70px, 8vw, 115px);
+    border-top: 1px solid rgba(255, 255, 255, 0.07);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.07);
     overflow: hidden;
+  }
+
+  /* Ambient Colored Lighting for Depth */
+  .smd-ambient-light {
+    position: absolute;
+    border-radius: 50%;
+    pointer-events: none;
+    filter: blur(80px);
+    z-index: 1;
+  }
+
+  .smd-ambient-left {
+    top: 5%;
+    left: -12%;
+    width: 48vw;
+    height: 48vw;
+    max-width: 600px;
+    max-height: 600px;
+    background: radial-gradient(circle, rgba(239, 65, 54, 0.09) 0%, transparent 70%);
+  }
+
+  .smd-ambient-right {
+    bottom: -8%;
+    right: -8%;
+    width: 42vw;
+    height: 42vw;
+    max-width: 520px;
+    max-height: 520px;
+    background: radial-gradient(circle, rgba(255, 107, 0, 0.07) 0%, transparent 70%);
   }
 
   .smd-watermark {
     position: absolute;
-    bottom: -80px;
-    left: -100px;
+    bottom: -90px;
+    left: -110px;
     pointer-events: none;
-    opacity: 0.5;
+    opacity: 0.6;
     z-index: 1;
   }
 
   .smd-container {
-    max-width: 1240px;
+    max-width: 1260px;
     margin: 0 auto;
-    padding: 0 clamp(20px, 4vw, 40px);
+    padding: 0 clamp(20px, 4vw, 44px);
     position: relative;
     z-index: 2;
   }
 
   .smd-split-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: clamp(40px, 6vw, 75px);
-    align-items: flex-start;
+    grid-template-columns: 1.04fr 1fr;
+    gap: clamp(40px, 5.5vw, 75px);
+    align-items: center;
   }
 
-  /* Left Editorial */
+  /* Left Editorial Presentation */
   .smd-editorial-col {
     display: flex;
     flex-direction: column;
@@ -184,19 +254,38 @@ const diffComponentStyles = `
   .smd-metalabel {
     display: inline-flex;
     align-items: center;
-    gap: 8px;
-    font-family: "JetBrains Mono", monospace;
-    font-size: 0.8rem;
+    gap: 9px;
+    font-family: var(--font-mono, "JetBrains Mono", monospace);
+    font-size: 0.76rem;
     font-weight: 800;
-    letter-spacing: 0.12em;
+    letter-spacing: 0.14em;
     color: #EF4136;
     text-transform: uppercase;
-    margin-bottom: 20px;
+    margin-bottom: 22px;
+    background: rgba(239, 65, 54, 0.08);
+    border: 1px solid rgba(239, 65, 54, 0.22);
+    padding: 6px 14px;
+    border-radius: 999px;
+    width: fit-content;
+  }
+
+  .smd-pulsing-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #EF4136;
+    box-shadow: 0 0 10px #EF4136, 0 0 16px rgba(239, 65, 54, 0.8);
+    animation: smd-pulse 2s infinite ease-in-out;
+  }
+
+  @keyframes smd-pulse {
+    0%, 100% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.4); opacity: 0.5; }
   }
 
   .smd-star {
     color: #EF4136;
-    animation: smd-star-spin 16s linear infinite;
+    animation: smd-star-spin 18s linear infinite;
   }
 
   @keyframes smd-star-spin {
@@ -205,33 +294,33 @@ const diffComponentStyles = `
   }
 
   .smd-title {
-    font-family: "Outfit", sans-serif;
-    font-size: clamp(32px, 4.2vw, 50px);
+    font-family: var(--font-heading, "Outfit", sans-serif);
+    font-size: clamp(34px, 4.4vw, 52px);
     font-weight: 900;
-    line-height: 1.15;
-    letter-spacing: -0.025em;
-    color: #FAFAFC;
-    margin: 0 0 28px;
+    line-height: 1.12;
+    letter-spacing: -0.03em;
+    color: #FFFFFF;
+    margin: 0 0 24px;
   }
 
-  .title-red {
-    color: #EF4136;
-    background: linear-gradient(90deg, #EF4136 0%, #FF5A4E 100%);
+  .title-gradient {
+    background: linear-gradient(135deg, #FF453A 0%, #FF6B4A 50%, #FFA066 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 0 35px rgba(239, 65, 54, 0.3));
   }
 
   .smd-wysiwyg-2c {
     display: flex;
     flex-direction: column;
-    gap: 18px;
-    margin-bottom: 36px;
+    gap: 16px;
+    margin-bottom: 24px;
   }
 
   .smd-wysiwyg-2c p {
-    font-family: "Plus Jakarta Sans", sans-serif;
-    font-size: 16.5px;
-    line-height: 1.8;
+    font-family: var(--font-body, "Plus Jakarta Sans", sans-serif);
+    font-size: 15.5px;
+    line-height: 1.75;
     color: #94A3B8;
     margin: 0;
   }
@@ -241,11 +330,52 @@ const diffComponentStyles = `
     font-weight: 700;
   }
 
-  .smd-action-row {
+  /* Micro Metrics Strip */
+  .smd-proof-strip {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    border-radius: 12px;
+    padding: 12px 18px;
+    margin-bottom: 28px;
+    width: fit-content;
+    max-width: 100%;
+  }
+
+  .smd-proof-item {
     display: flex;
     flex-direction: column;
-    gap: 14px;
-    align-items: flex-start;
+    gap: 2px;
+  }
+
+  .smd-proof-val {
+    font-family: var(--font-mono, "JetBrains Mono", monospace);
+    font-size: 0.95rem;
+    font-weight: 800;
+    color: #FAFAFC;
+    letter-spacing: -0.01em;
+  }
+
+  .smd-proof-lbl {
+    font-family: var(--font-body, "Plus Jakarta Sans", sans-serif);
+    font-size: 0.72rem;
+    color: #64748B;
+    font-weight: 600;
+  }
+
+  .smd-proof-sep {
+    width: 1px;
+    height: 28px;
+    background: rgba(255, 255, 255, 0.08);
+  }
+
+  .smd-action-row {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 18px;
   }
 
   .smd-pill-btn {
@@ -254,69 +384,101 @@ const diffComponentStyles = `
     gap: 10px;
     padding: 14px 28px;
     border-radius: 999px;
-    background: #14141C;
-    border: 1px solid rgba(255, 255, 255, 0.15);
+    background: #101018;
+    border: 1px solid rgba(255, 255, 255, 0.16);
     color: #FAFAFC;
-    font-family: "JetBrains Mono", monospace;
+    font-family: var(--font-mono, "JetBrains Mono", monospace);
     font-size: 0.78rem;
     font-weight: 800;
     letter-spacing: 0.08em;
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.4);
   }
 
   .smd-pill-btn:hover {
     background: #EF4136;
     border-color: #EF4136;
     color: #FFFFFF;
-    box-shadow: 0 8px 25px rgba(239, 65, 54, 0.4);
+    box-shadow: 0 8px 30px rgba(239, 65, 54, 0.45);
     transform: translateY(-2px);
+  }
+
+  .smd-btn-arrow {
+    transition: transform 0.25s ease;
+  }
+
+  .smd-pill-btn:hover .smd-btn-arrow {
+    transform: translateX(4px);
   }
 
   .smd-guarantee-tag {
     display: inline-flex;
     align-items: center;
     gap: 6px;
-    font-family: "JetBrains Mono", monospace;
+    font-family: var(--font-mono, "JetBrains Mono", monospace);
     font-size: 0.72rem;
-    color: #64748B;
+    color: #94A3B8;
   }
 
-  /* Right Cards Column */
+  /* Right Cards Column - Obsidian Glass */
   .smd-cards-col {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 18px;
+    gap: 16px;
   }
 
   .smd-obsidian-card {
-    background: #0E0E14;
+    background: linear-gradient(145deg, rgba(16, 16, 24, 0.78) 0%, rgba(10, 10, 16, 0.92) 100%);
     border: 1px solid rgba(255, 255, 255, 0.08);
-    border-radius: 20px;
+    border-radius: 18px;
     padding: 24px 20px;
     position: relative;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    min-height: 220px;
-    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    min-height: 230px;
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+  }
+
+  .smd-obsidian-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 18px;
+    background: radial-gradient(circle at top right, rgba(239, 65, 54, 0.12), transparent 70%);
+    opacity: 0;
+    transition: opacity 0.35s ease;
+    pointer-events: none;
   }
 
   .smd-obsidian-card:hover {
-    background: #12121A;
+    background: linear-gradient(145deg, rgba(22, 22, 34, 0.85) 0%, rgba(14, 14, 22, 0.95) 100%);
     border-color: rgba(239, 65, 54, 0.45);
-    transform: translateY(-4px);
-    box-shadow: 0 16px 35px rgba(0, 0, 0, 0.5), 0 0 20px rgba(239, 65, 54, 0.1);
+    transform: translateY(-5px);
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.65), 0 0 25px rgba(239, 65, 54, 0.15);
+  }
+
+  .smd-obsidian-card:hover::before {
+    opacity: 1;
   }
 
   .smd-card-cross {
     position: absolute;
-    top: 12px;
-    right: 14px;
-    font-family: "JetBrains Mono", monospace;
+    top: 14px;
+    right: 16px;
+    font-family: var(--font-mono, "JetBrains Mono", monospace);
     font-size: 0.85rem;
     color: rgba(255, 255, 255, 0.2);
+    transition: all 0.25s ease;
+  }
+
+  .smd-obsidian-card:hover .smd-card-cross {
+    color: #EF4136;
+    transform: rotate(45deg) scale(1.1);
   }
 
   .smd-card-top {
@@ -324,70 +486,138 @@ const diffComponentStyles = `
     justify-content: space-between;
     align-items: center;
     margin-bottom: 16px;
+    position: relative;
+    z-index: 2;
   }
 
   .smd-card-icon-wrap {
-    width: 42px;
-    height: 42px;
+    width: 44px;
+    height: 44px;
     border-radius: 12px;
-    background: rgba(239, 65, 54, 0.12);
-    border: 1px solid rgba(239, 65, 54, 0.3);
+    background: linear-gradient(135deg, rgba(239, 65, 54, 0.15) 0%, rgba(239, 65, 54, 0.05) 100%);
+    border: 1px solid rgba(239, 65, 54, 0.32);
     color: #EF4136;
     display: flex;
     align-items: center;
     justify-content: center;
+    box-shadow: 0 0 15px rgba(239, 65, 54, 0.12);
+    transition: all 0.3s ease;
+  }
+
+  .smd-obsidian-card:hover .smd-card-icon-wrap {
+    background: #EF4136;
+    border-color: #EF4136;
+    color: #FFFFFF;
+    box-shadow: 0 0 20px rgba(239, 65, 54, 0.45);
+    transform: scale(1.05);
   }
 
   .smd-card-coord {
-    font-family: "JetBrains Mono", monospace;
-    font-size: 0.68rem;
+    font-family: var(--font-mono, "JetBrains Mono", monospace);
+    font-size: 0.65rem;
     font-weight: 800;
-    color: rgba(255, 255, 255, 0.35);
+    letter-spacing: 0.05em;
+    color: rgba(255, 255, 255, 0.4);
+  }
+
+  .smd-card-content {
+    position: relative;
+    z-index: 2;
+    flex-grow: 1;
+    margin-bottom: 16px;
   }
 
   .smd-card-title {
-    font-family: "Outfit", sans-serif;
+    font-family: var(--font-heading, "Outfit", sans-serif);
     font-size: 1.15rem;
     font-weight: 800;
     color: #FAFAFC;
     margin: 0 0 8px;
-    line-height: 1.3;
+    line-height: 1.32;
+    letter-spacing: -0.015em;
   }
 
   .smd-card-desc {
+    font-family: var(--font-body, "Plus Jakarta Sans", sans-serif);
     font-size: 0.86rem;
-    line-height: 1.55;
+    line-height: 1.6;
     color: #94A3B8;
-    margin: 0 0 16px;
-    flex-grow: 1;
+    margin: 0;
   }
 
   .smd-card-footer {
-    padding-top: 12px;
-    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    padding-top: 14px;
+    border-top: 1px solid rgba(255, 255, 255, 0.07);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    z-index: 2;
   }
 
   .smd-card-check-pill {
-    font-family: "JetBrains Mono", monospace;
-    font-size: 0.64rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-family: var(--font-mono, "JetBrains Mono", monospace);
+    font-size: 0.63rem;
     font-weight: 800;
+    letter-spacing: 0.06em;
     color: #EF4136;
-    background: rgba(239, 65, 54, 0.1);
-    border: 1px solid rgba(239, 65, 54, 0.2);
-    padding: 3px 8px;
-    border-radius: 4px;
-    display: inline-block;
+    background: rgba(239, 65, 54, 0.09);
+    border: 1px solid rgba(239, 65, 54, 0.22);
+    padding: 4px 10px;
+    border-radius: 6px;
+    transition: all 0.25s ease;
   }
 
-  @media (max-width: 1024px) {
+  .smd-pill-indicator {
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: #EF4136;
+    box-shadow: 0 0 6px #EF4136;
+  }
+
+  .smd-obsidian-card:hover .smd-card-check-pill {
+    background: rgba(239, 65, 54, 0.16);
+    border-color: rgba(239, 65, 54, 0.4);
+  }
+
+  .smd-card-arrow {
+    font-family: var(--font-mono, "JetBrains Mono", monospace);
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.25);
+    transition: all 0.25s ease;
+  }
+
+  .smd-obsidian-card:hover .smd-card-arrow {
+    color: #EF4136;
+    transform: translate(2px, -2px);
+  }
+
+  @media (max-width: 1040px) {
     .smd-split-grid {
       grid-template-columns: 1fr;
+      gap: 50px;
+    }
+    .smd-proof-strip {
+      width: 100%;
+      justify-content: space-around;
     }
   }
 
   @media (max-width: 640px) {
     .smd-cards-col {
       grid-template-columns: 1fr;
+    }
+    .smd-proof-strip {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 12px;
+    }
+    .smd-proof-sep {
+      display: none;
     }
   }
 `;

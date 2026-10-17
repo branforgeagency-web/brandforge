@@ -4,6 +4,7 @@ import React, { useRef, useState, useEffect, useCallback } from "react";
 import gsap from "gsap";
 import { ArrowRight } from "lucide-react";
 import SwapArrow from "./SwapArrow";
+import seoBannerVideo from "../assets/seobanner.mp4";
 
 const DIRECTIONS = ["up", "down", "left", "right"];
 const getRandomDirection = () =>
@@ -163,14 +164,33 @@ export default function SeoSajanHero({ onOpenModal }) {
       <style>{`
         .bf-montarville-hero-root {
           position: relative;
-          min-height: 94vh;
+          min-height: 86vh;
           background: #09090C;
           display: flex;
           flex-direction: column;
           justify-content: space-between;
-          padding: clamp(90px, 11vw, 130px) clamp(24px, 5vw, 64px) clamp(30px, 4vw, 50px);
+          padding: clamp(70px, 8.5vw, 105px) clamp(24px, 5vw, 64px) clamp(24px, 3.5vw, 40px);
           overflow: hidden;
           color: #FAFAFC;
+        }
+
+        /* Video Background */
+        .bf-hero-video-wrap {
+          position: absolute;
+          inset: 0;
+          width: 100%;
+          height: 100%;
+          overflow: hidden;
+          z-index: 0;
+          pointer-events: none;
+        }
+
+        .bf-hero-video {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          object-position: center;
+          opacity: 0.95;
         }
 
         /* Ambient Architectural Background Geometry (Montarville Inspired) */
@@ -181,7 +201,7 @@ export default function SeoSajanHero({ onOpenModal }) {
           width: clamp(500px, 55vw, 920px);
           height: auto;
           pointer-events: none;
-          z-index: 0;
+          z-index: 1;
           opacity: 0.42;
         }
 
@@ -191,33 +211,33 @@ export default function SeoSajanHero({ onOpenModal }) {
           z-index: 2;
           display: flex;
           flex-direction: column;
-          max-width: 960px;
+          max-width: 860px;
         }
 
         /* Top Editorial Tracking */
         .bf-sajan-eyebrow {
           display: block;
           font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-          font-size: 0.74rem;
+          font-size: 0.72rem;
           font-weight: 700;
           letter-spacing: 0.18em;
           text-transform: uppercase;
           color: #8E8E93;
-          margin-bottom: clamp(20px, 3vw, 32px);
+          margin-bottom: clamp(16px, 2.5vw, 26px);
         }
 
         /* Headline Block with Kinetic Portal-Mask Letters */
         .bf-sajan-headline-block {
           position: relative;
           z-index: 2;
-          margin-bottom: clamp(28px, 4.5vw, 44px);
+          margin-bottom: clamp(18px, 2.8vw, 30px);
         }
         .bf-sajan-headline-line {
           font-family: 'General Sans', sans-serif, -apple-system, BlinkMacSystemFont;
-          font-size: clamp(2.6rem, 7.4vw, 6.4rem);
+          font-size: clamp(2.1rem, 5.2vw, 4.4rem);
           font-weight: 900;
-          line-height: 0.96;
-          letter-spacing: -0.04em;
+          line-height: 1.02;
+          letter-spacing: -0.035em;
           text-transform: uppercase;
           margin: 0;
           white-space: normal;
@@ -226,7 +246,7 @@ export default function SeoSajanHero({ onOpenModal }) {
         }
         .bf-sajan-headline-line.accent {
           color: #EF4136;
-          text-shadow: 0 0 40px rgba(239, 65, 54, 0.35);
+          text-shadow: 0 0 35px rgba(239, 65, 54, 0.35);
         }
 
         .bf-portal-mask {
@@ -251,14 +271,14 @@ export default function SeoSajanHero({ onOpenModal }) {
         .bf-sajan-tagline-wrap {
           position: relative;
           z-index: 2;
-          max-width: 860px;
-          margin-bottom: clamp(36px, 5.5vw, 54px);
+          max-width: 720px;
+          margin-bottom: clamp(24px, 3.8vw, 38px);
           cursor: pointer;
           overflow: visible;
         }
         .bf-sajan-tagline-base {
-          font-size: clamp(1.05rem, 1.6vw, 1.3rem);
-          line-height: 1.6;
+          font-size: clamp(0.95rem, 1.3vw, 1.12rem);
+          line-height: 1.65;
           color: #94A3B8;
           font-weight: 400;
           margin: 0;
@@ -266,8 +286,8 @@ export default function SeoSajanHero({ onOpenModal }) {
           z-index: 1;
         }
         .bf-sajan-tagline-hidden {
-          font-size: clamp(1.05rem, 1.6vw, 1.3rem);
-          line-height: 1.6;
+          font-size: clamp(0.95rem, 1.3vw, 1.12rem);
+          line-height: 1.65;
           color: #FFFFFF;
           font-weight: 600;
           margin: 0;
@@ -285,7 +305,7 @@ export default function SeoSajanHero({ onOpenModal }) {
           display: inline-flex;
           align-items: center;
           gap: 6px;
-          font-size: 0.72rem;
+          font-size: 0.7rem;
           color: rgba(255, 255, 255, 0.45);
           letter-spacing: 0.08em;
           text-transform: uppercase;
@@ -297,39 +317,39 @@ export default function SeoSajanHero({ onOpenModal }) {
           display: flex;
           align-items: center;
           flex-wrap: wrap;
-          gap: 16px;
-          margin-bottom: clamp(40px, 6vw, 64px);
+          gap: 14px;
+          margin-bottom: clamp(28px, 4.2vw, 44px);
         }
 
         /* Solid Red Primary Button with White Dot */
         .bf-montarville-btn-primary {
           display: inline-flex;
           align-items: center;
-          gap: 12px;
+          gap: 10px;
           background: #EF4136;
           color: #FFFFFF;
-          padding: 16px 32px;
+          padding: 13px 26px;
           border-radius: 8px;
           font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-          font-size: 0.82rem;
+          font-size: 0.76rem;
           font-weight: 700;
           letter-spacing: 0.08em;
           text-transform: uppercase;
           border: 1px solid #EF4136;
           cursor: pointer;
           transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
-          box-shadow: 0 10px 28px rgba(239, 65, 54, 0.28);
+          box-shadow: 0 8px 22px rgba(239, 65, 54, 0.25);
         }
         .bf-montarville-btn-primary:hover {
           background: #DC2626;
           border-color: #DC2626;
           transform: translateY(-2px);
-          box-shadow: 0 16px 36px rgba(239, 65, 54, 0.42);
+          box-shadow: 0 14px 30px rgba(239, 65, 54, 0.4);
         }
 
         .bf-btn-dot-white {
-          width: 7px;
-          height: 7px;
+          width: 6px;
+          height: 6px;
           border-radius: 50%;
           background: #FFFFFF;
           display: inline-block;
@@ -340,14 +360,14 @@ export default function SeoSajanHero({ onOpenModal }) {
         .bf-montarville-btn-secondary {
           display: inline-flex;
           align-items: center;
-          gap: 12px;
+          gap: 10px;
           background: #1B1B20;
           border: 1px solid rgba(255, 255, 255, 0.14);
           color: #FAFAFC;
-          padding: 16px 30px;
+          padding: 13px 24px;
           border-radius: 8px;
           font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-          font-size: 0.82rem;
+          font-size: 0.76rem;
           font-weight: 700;
           letter-spacing: 0.08em;
           text-transform: uppercase;
@@ -419,6 +439,20 @@ export default function SeoSajanHero({ onOpenModal }) {
         }
       `}</style>
 
+      {/* ── BACKGROUND VIDEO ── */}
+      <div className="bf-hero-video-wrap" aria-hidden="true">
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          className="bf-hero-video"
+        >
+          <source src={seoBannerVideo} type="video/mp4" />
+          <source src="/seobanner.mp4" type="video/mp4" />
+        </video>
+      </div>
+
       {/* ARCHITECTURAL BACKGROUND GEOMETRY */}
       <div className="bf-montarville-bg-geometry" aria-hidden="true">
         <svg viewBox="0 0 1000 800" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -431,11 +465,6 @@ export default function SeoSajanHero({ onOpenModal }) {
 
       {/* LEFT-SIDE EDITORIAL CONTENT BLOCK */}
       <div className="bf-montarville-left-col">
-        {/* TOP EDITORIAL CATEGORY TRACKING */}
-        <p className="bf-sajan-eyebrow">
-          DUAL-ENGINE SEARCH ARCHITECTURE // ORGANIC + GENERATIVE AI
-        </p>
-
         {/* MASSIVE KINETIC PORTAL-MASK HEADLINE */}
         <div className="bf-sajan-headline-block">
           <h1 className="bf-sajan-headline-line">

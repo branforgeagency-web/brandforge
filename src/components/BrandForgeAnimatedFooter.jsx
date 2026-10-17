@@ -88,7 +88,7 @@ export default function BrandForgeAnimatedFooter({ onOpenModal }) {
 
       {/* OGL WEBGL PARTICLES BACKGROUND */}
       <Particles
-        particleColors={["#EF4136", "#FFFFFF", "#FFB800"]}
+        particleColors={["#EF4136", "#FFFFFF", "#D2042D"]}
         particleCount={250}
         particleSpread={12}
         speed={0.15}
@@ -109,7 +109,7 @@ export default function BrandForgeAnimatedFooter({ onOpenModal }) {
           <path d="M 0 50 Q 25 20, 50 50 Q 75 20, 100 50 Q 75 35, 50 55 Q 25 35, 0 50 Z" fill="#EF4136" opacity="0.4" />
         </svg>
         <svg className="bf-svg-bird bird-3" viewBox="0 0 100 100">
-          <path d="M 0 50 Q 25 20, 50 50 Q 75 20, 100 50 Q 75 35, 50 55 Q 25 35, 0 50 Z" fill="#FFB800" opacity="0.5" />
+          <path d="M 0 50 Q 25 20, 50 50 Q 75 20, 100 50 Q 75 35, 50 55 Q 25 35, 0 50 Z" fill="#EF4136" opacity="0.5" />
         </svg>
       </div>
 

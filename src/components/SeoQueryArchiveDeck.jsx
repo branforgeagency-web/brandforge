@@ -2,7 +2,7 @@
 
 import React, { useState, useRef, useEffect } from "react";
 import gsap from "gsap";
-import { Sparkles, Bot, Search, Zap, MapPin, Award } from "lucide-react";
+import { Bot, Search, Zap, MapPin, Award } from "lucide-react";
 import SwapArrow from "./SwapArrow";
 
 const QUERY_ITEMS = [
@@ -22,7 +22,7 @@ const QUERY_ITEMS = [
     discipline: "Entity Schema",
     year: "2026",
     badge: "KNOWLEDGE GRAPH VERIFIED",
-    badgeColor: "#3B82F6",
+    badgeColor: "#EF4136",
     title: "Structured Entity Vector Linking",
     description: "Deep JSON-LD schema linking founder credentials, client proof, and Wikipedia entity vectors.",
     icon: Search,
@@ -33,7 +33,7 @@ const QUERY_ITEMS = [
     discipline: "Technical Speed",
     year: "2026",
     badge: "PERFECT 100/100 VITALS",
-    badgeColor: "#10B981",
+    badgeColor: "#EF4136",
     title: "Sub-200ms DOM Hydration",
     description: "Zero render-blocking scripts, edge-cached React assets, and optimal First Contentful Paint.",
     icon: Zap,
@@ -44,7 +44,7 @@ const QUERY_ITEMS = [
     discipline: "Local Proximity",
     year: "2026",
     badge: "LOCAL PACK #1",
-    badgeColor: "#F59E0B",
+    badgeColor: "#EF4136",
     title: "Geo-Targeted Proximity Grid",
     description: "Google Business Profile optimization with consistent local citations and automated review growth.",
     icon: MapPin,
@@ -55,7 +55,7 @@ const QUERY_ITEMS = [
     discipline: "Authority PR",
     year: "2026",
     badge: "EDITORIAL DA 85+",
-    badgeColor: "#EC4899",
+    badgeColor: "#EF4136",
     title: "High-Trust Media Citations",
     description: "Genuine press mentions and authoritative publications that AI models crawl as trusted seed sets.",
     icon: Award,
@@ -118,38 +118,37 @@ export default function SeoQueryArchiveDeck({ onOpenModal }) {
           width: calc(100% - 32px);
           max-width: 1240px;
           margin: 60px auto 80px;
-          background: #FAFAFC;
+          background: #0B0B0E;
           border-radius: 32px;
           padding: 80px 32px;
-          border: 1px solid #E5E7EB;
+          border: 1px solid rgba(255, 255, 255, 0.08);
           position: relative;
           overflow: hidden;
-          box-shadow: 0 10px 40px rgba(0, 0, 0, 0.04);
+          box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
         }
         .bf-seo-archive-header {
           margin-bottom: 48px;
         }
         .bf-seo-archive-tag {
-          display: inline-flex;
-          align-items: center;
-          gap: 6px;
-          font-size: 0.8rem;
+          display: block;
+          font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+          font-size: 0.74rem;
           font-weight: 700;
-          letter-spacing: 0.1em;
+          letter-spacing: 0.16em;
           text-transform: uppercase;
-          color: #EF4136;
+          color: #8E8E93;
           margin-bottom: 12px;
         }
         .bf-seo-archive-title {
           font-size: clamp(2rem, 4vw, 3rem);
           font-weight: 800;
-          color: #0A0A0C;
+          color: #FAFAFC;
           margin: 0 0 12px;
           letter-spacing: -0.025em;
         }
         .bf-seo-archive-sub {
           font-size: 1.05rem;
-          color: #64748B;
+          color: #94A3B8;
           margin: 0;
           max-width: 640px;
         }
@@ -181,9 +180,9 @@ export default function SeoQueryArchiveDeck({ onOpenModal }) {
         }
         .bf-seo-archive-row:hover,
         .bf-seo-archive-row.is-active {
-          background: #FFFFFF;
-          border-color: #E2E8F0;
-          box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+          background: #14141C;
+          border-color: rgba(255, 255, 255, 0.1);
+          box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
         }
         .bf-seo-archive-row-left {
           display: flex;
@@ -193,7 +192,7 @@ export default function SeoQueryArchiveDeck({ onOpenModal }) {
         .bf-seo-archive-query {
           font-size: 1.05rem;
           font-weight: 600;
-          color: #0A0A0C;
+          color: #FAFAFC;
           transition: color 0.2s ease;
         }
         .bf-seo-archive-row.is-active .bf-seo-archive-query {
@@ -213,7 +212,7 @@ export default function SeoQueryArchiveDeck({ onOpenModal }) {
           width: 4px;
           height: 4px;
           border-radius: 50%;
-          background: #CBD5E1;
+          background: rgba(255, 255, 255, 0.2);
         }
         .bf-seo-archive-row.is-active .bf-seo-archive-dot {
           background: #EF4136;
@@ -251,13 +250,15 @@ export default function SeoQueryArchiveDeck({ onOpenModal }) {
           justify-content: space-between;
         }
         .bf-deck-badge {
-          font-size: 0.72rem;
+          font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+          font-size: 0.7rem;
           font-weight: 700;
-          letter-spacing: 0.08em;
+          letter-spacing: 0.1em;
+          text-transform: uppercase;
           padding: 4px 10px;
-          border-radius: 9999px;
-          background: rgba(255, 255, 255, 0.08);
-          border: 1px solid rgba(255, 255, 255, 0.15);
+          border-radius: 4px;
+          background: #11141C;
+          border: 1px solid rgba(255, 255, 255, 0.08);
         }
         .bf-deck-icon-wrap {
           width: 38px;
@@ -314,10 +315,7 @@ export default function SeoQueryArchiveDeck({ onOpenModal }) {
       `}</style>
 
       <div className="bf-seo-archive-header">
-        <div className="bf-seo-archive-tag">
-          <Sparkles size={14} />
-          <span>Awake-Style Neural Query Inspector</span>
-        </div>
+        <p className="bf-seo-archive-tag">LIVE NEURAL QUERY PERFORMANCE ARCHIVE</p>
         <h2 className="bf-seo-archive-title">
           Live Search Queries & <span style={{ color: "#EF4136" }}>Neural Extraction</span>
         </h2>
@@ -347,7 +345,7 @@ export default function SeoQueryArchiveDeck({ onOpenModal }) {
                   <span>{item.year}</span>
                 </div>
               </div>
-              <SwapArrow dir="up-right" size={15} color={activeIdx === idx ? "#EF4136" : "#94A3B8"} />
+              <SwapArrow dir="up-right" size={15} color={activeIdx === idx ? "#EF4136" : "rgba(255, 255, 255, 0.45)"} />
             </li>
           ))}
         </ul>

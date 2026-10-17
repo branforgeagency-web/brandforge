@@ -34,12 +34,22 @@ import InteractiveWhoWeHelpSection from "../components/InteractiveWhoWeHelpSecti
 import InteractiveFaqSection from "../components/InteractiveFaqSection";
 import InteractiveRelatedServicesSection from "../components/InteractiveRelatedServicesSection";
 import InteractiveBottomCtaSection from "../components/InteractiveBottomCtaSection";
-import SeoGoalReelCta from "../components/SeoGoalReelCta";
 import SeoCylindricalStatement from "../components/SeoCylindricalStatement";
 import SeoQueryArchiveDeck from "../components/SeoQueryArchiveDeck";
 import SeoSajanHero from "../components/SeoSajanHero";
 import SeoSajanPhilosophy from "../components/SeoSajanPhilosophy";
 import SeoSajanServicesDial from "../components/SeoSajanServicesDial";
+import SeoSajanOutcomes from "../components/SeoSajanOutcomes";
+import SeoSajanWhyChoose from "../components/SeoSajanWhyChoose";
+import SeoMontarvilleDeliverables from "../components/SeoMontarvilleDeliverables";
+import SeoMontarvilleStory from "../components/SeoMontarvilleStory";
+import SeoMontarvilleEvolution from "../components/SeoMontarvilleEvolution";
+import SeoMontarvillePillars from "../components/SeoMontarvillePillars";
+import SeoMontarvilleBlueprint from "../components/SeoMontarvilleBlueprint";
+import SeoMontarvilleDiff from "../components/SeoMontarvilleDiff";
+import SeoMontarvilleFaq from "../components/SeoMontarvilleFaq";
+import SeoMontarvilleRelatedServices from "../components/SeoMontarvilleRelatedServices";
+import SeoMontarvilleBottomCta from "../components/SeoMontarvilleBottomCta";
 
 /* ───────────────────────────────────────────────────────────────────────────
    DYNAMIC SERVICE LANDING PAGE COMPONENT (CARDLESS & LIQUID METAL SHADER)
@@ -774,51 +784,94 @@ export default function ServiceLandingPage({ slug = "seo-geo", onOpenModal, navi
       {/* 3RD SECTION: SAJAN FREQUENCY DIAL & TUNER (PINNED HORIZONTAL GAUGE, SEO & GEO ONLY) */}
       {isSeoGeo && <SeoSajanServicesDial onOpenModal={onOpenModal} />}
 
-      {/* 3D BENTO GRID & CORE CAPABILITIES (ALL 12 SERVICES) */}
-      <Seo3DBentoGrid data={data} slug={slug} />
+      {/* 4TH SECTION: CAPABILITIES & DELIVERABLES (MONTARVILLE ARCHITECTURAL BLUEPRINTS ON SEO & GEO, 3D BENTO ON OTHERS) */}
+      {isSeoGeo ? (
+        <SeoMontarvilleDeliverables onOpenModal={onOpenModal} />
+      ) : (
+        <Seo3DBentoGrid data={data} slug={slug} />
+      )}
 
       {/* DUAL-ENGINE SEARCH VISUALIZER (ONLY ON SEO & GEO) */}
       {isSeoGeo && <SerpGeoVisualizer />}
 
-      {/* DEDICATED PARAGRAPH STORY & LEAD FORM SECTION (APPLIED TO ALL SERVICES) */}
-      <InteractiveStorySection
-        data={data}
-        storyHeading={storyHeading}
-        topThreePillars={topThreePillars}
-      />
+      {/* DEDICATED PARAGRAPH STORY & LEAD FORM SECTION */}
+      {isSeoGeo ? (
+        <SeoMontarvilleStory
+          data={data}
+          storyHeading={storyHeading}
+          topThreePillars={topThreePillars}
+          onOpenModal={onOpenModal}
+        />
+      ) : (
+        <InteractiveStorySection
+          data={data}
+          storyHeading={storyHeading}
+          topThreePillars={topThreePillars}
+        />
+      )}
 
-      {/* CARDLESS TYPOGRAPHIC METRICS STRIP & CLIENT LOGOS PROOF */}
-      <InteractiveMetricsSection metrics={data.metrics} />
+      {/* OUTCOMES / METRICS STRIP (SAJAN LUMINA BRUTALIST GRID ON SEO & GEO, INTERACTIVE METRICS ON OTHERS) */}
+      {isSeoGeo ? (
+        <SeoSajanOutcomes />
+      ) : (
+        <InteractiveMetricsSection metrics={data.metrics} />
+      )}
 
-      {/* WHY BUSINESSES CHOOSE BRAND FORGE SECTION */}
+      {/* WHY BUSINESSES CHOOSE BRAND FORGE (SAJAN ANGLED MARQUEE RIBBONS ON SEO & GEO, 3D CARDS ON OTHERS) */}
       {data.whyChooseUs && (
-        <InteractiveWhyChooseSection whyChooseUs={data.whyChooseUs} />
+        isSeoGeo ? (
+          <SeoSajanWhyChoose whyChooseUs={data.whyChooseUs} onOpenModal={onOpenModal} />
+        ) : (
+          <InteractiveWhyChooseSection whyChooseUs={data.whyChooseUs} />
+        )
       )}
 
 
       {/* CREATIVE EDITORIAL COMPARISON MATRIX: THE EVOLUTION FROM SEO TO GEO */}
       {data.matrixRows && data.matrixRows.length > 0 && (
-        <InteractiveEvolutionMatrix
-          matrixRows={data.matrixRows}
-          matrixTag={data.matrixTag}
-          matrixTitle={data.matrixTitle}
-          matrixSubtitle={data.matrixSubtitle}
-          evolutionVisual={evolutionVisual}
-        />
+        isSeoGeo ? (
+          <SeoMontarvilleEvolution
+            matrixRows={data.matrixRows}
+            matrixTag={data.matrixTag}
+            matrixTitle={data.matrixTitle}
+            matrixSubtitle={data.matrixSubtitle}
+            evolutionVisual={evolutionVisual}
+          />
+        ) : (
+          <InteractiveEvolutionMatrix
+            matrixRows={data.matrixRows}
+            matrixTag={data.matrixTag}
+            matrixTitle={data.matrixTitle}
+            matrixSubtitle={data.matrixSubtitle}
+            evolutionVisual={evolutionVisual}
+          />
+        )
       )}
 
       {/* AWAKE-INSPIRED LIVE QUERY ARCHIVE DECK (SEO & GEO ONLY) */}
       {isSeoGeo && <SeoQueryArchiveDeck onOpenModal={onOpenModal} />}
 
-      {/* CARDLESS INTERACTIVE 6-PILLAR LIST STREAM */}
-      <InteractivePillarsSection data={data} />
+      {/* COMPREHENSIVE SEO & GEO ARCHITECTURE PILLARS STREAM */}
+      {isSeoGeo ? (
+        <SeoMontarvillePillars data={data} onOpenModal={onOpenModal} />
+      ) : (
+        <InteractivePillarsSection data={data} />
+      )}
 
-      {/* CARDLESS HORIZONTAL TIMELINE PROCESS THREAD */}
-      <InteractiveBlueprintTimeline timeline={data.timeline} />
+      {/* 4-STEP BLUEPRINT ROADMAP TIMELINE */}
+      {isSeoGeo ? (
+        <SeoMontarvilleBlueprint timeline={data.timeline} onOpenModal={onOpenModal} />
+      ) : (
+        <InteractiveBlueprintTimeline timeline={data.timeline} />
+      )}
 
       {/* WHAT MAKES OUR COMPANY DIFFERENT SECTION */}
       {data.differentiators && (
-        <InteractiveDiffSection differentiators={data.differentiators} />
+        isSeoGeo ? (
+          <SeoMontarvilleDiff differentiators={data.differentiators} onOpenModal={onOpenModal} />
+        ) : (
+          <InteractiveDiffSection differentiators={data.differentiators} />
+        )
       )}
 
       {/* WHO WE HELP SECTION */}
@@ -826,25 +879,40 @@ export default function ServiceLandingPage({ slug = "seo-geo", onOpenModal, navi
         <InteractiveWhoWeHelpSection whoWeHelp={data.whoWeHelp} />
       )}
 
-      {/* CARDLESS FAQ ACCORDION LIST */}
-      <InteractiveFaqSection faqs={data.faqs} onOpenModal={onOpenModal} />
+      {/* FREQUENTLY ASKED QUESTIONS */}
+      {isSeoGeo ? (
+        <SeoMontarvilleFaq faqs={data.faqs} onOpenModal={onOpenModal} />
+      ) : (
+        <InteractiveFaqSection faqs={data.faqs} onOpenModal={onOpenModal} />
+      )}
 
       {/* RELATED SERVICES INTERNAL CROSS-LINKING SECTION */}
-      <InteractiveRelatedServicesSection
-        currentSlug={slug}
-        currentEyebrow={data.eyebrow}
-        navigate={navigate}
-      />
-
-      {/* AWAKE-INSPIRED INTERACTIVE SEARCH GOAL REEL (SEO & GEO ONLY) */}
-      {isSeoGeo && <SeoGoalReelCta onOpenModal={onOpenModal} />}
+      {isSeoGeo ? (
+        <SeoMontarvilleRelatedServices
+          currentSlug={slug}
+          navigate={navigate}
+        />
+      ) : (
+        <InteractiveRelatedServicesSection
+          currentSlug={slug}
+          currentEyebrow={data.eyebrow}
+          navigate={navigate}
+        />
+      )}
 
       {/* BOTTOM BANNER CTA */}
-      <InteractiveBottomCtaSection
-        bottomCta={data.bottomCta}
-        eyebrow={data.eyebrow}
-        onOpenModal={onOpenModal}
-      />
+      {isSeoGeo ? (
+        <SeoMontarvilleBottomCta
+          bottomCta={data.bottomCta}
+          onOpenModal={onOpenModal}
+        />
+      ) : (
+        <InteractiveBottomCtaSection
+          bottomCta={data.bottomCta}
+          eyebrow={data.eyebrow}
+          onOpenModal={onOpenModal}
+        />
+      )}
 
 
       {/* SITE FOOTER */}
@@ -868,71 +936,461 @@ const styles = `
 
   .sg-page-root.is-seo-geo-page {
     padding-top: 0;
-    background: #FFFFFF;
+    background: #09090C !important;
+    color: #FAFAFC !important;
   }
 
   .sg-page-root.is-seo-geo-page .sg-marquee-bar {
     margin-top: 0;
     padding-top: 90px;
-    background: #0A0A0C;
+    background: #09090C;
     border-top: none;
-    border-bottom: 1px solid rgba(239, 65, 54, 0.2);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
   }
 
-  /* COHESIVE LIGHT THEME WITH RED, BLACK, AND WHITE ACCENTS */
-  .sg-page-root.is-seo-geo-page .sg-metrics-section {
-    background: #FFFFFF;
-    position: relative;
-    border-top: 1px solid #E5E7EB;
-    border-bottom: 1px solid #E5E7EB;
-  }
-
+  /* COHESIVE ULTRA-LUXURY DARK THEME SCOPED FOR SEO & GEO */
   .sg-page-root.is-seo-geo-page .sg-seo-story-section {
-    background: #FFFFFF;
-    border-top: 1px solid #E5E7EB;
-    border-bottom: 1px solid #E5E7EB;
+    background: #09090C !important;
+    border-top: 1px solid rgba(255, 255, 255, 0.08) !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
   }
 
+  .sg-page-root.is-seo-geo-page .sg-seo-story-heading {
+    color: #FAFAFC !important;
+  }
+
+  .sg-page-root.is-seo-geo-page .sg-seo-story-para {
+    color: #94A3B8 !important;
+  }
+
+  .sg-page-root.is-seo-geo-page .sg-seo-story-para.lead-para {
+    color: #FAFAFC !important;
+  }
+
+  .sg-page-root.is-seo-geo-page .sg-inline-form-wrap {
+    background: #0E0E14 !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.7) !important;
+  }
+
+  .sg-page-root.is-seo-geo-page .sg-inline-form-wrap h2,
+  .sg-page-root.is-seo-geo-page .sg-inline-form-wrap h3,
+  .sg-page-root.is-seo-geo-page .sg-inline-form-wrap h4,
+  .sg-page-root.is-seo-geo-page .sg-inline-form-wrap .lt-title,
+  .sg-page-root.is-seo-geo-page .sg-inline-form-wrap .lt-header-title {
+    color: #FAFAFC !important;
+  }
+
+  .sg-page-root.is-seo-geo-page .sg-inline-form-wrap p,
+  .sg-page-root.is-seo-geo-page .sg-inline-form-wrap .lt-subtitle,
+  .sg-page-root.is-seo-geo-page .sg-inline-form-wrap .lt-header-subtitle {
+    color: #94A3B8 !important;
+  }
+
+  .sg-page-root.is-seo-geo-page .sg-inline-form-wrap input,
+  .sg-page-root.is-seo-geo-page .sg-inline-form-wrap select,
+  .sg-page-root.is-seo-geo-page .sg-inline-form-wrap textarea {
+    background: #14141C !important;
+    border: 1px solid rgba(255, 255, 255, 0.12) !important;
+    color: #FAFAFC !important;
+  }
+
+  .sg-page-root.is-seo-geo-page .sg-inline-form-wrap select option {
+    background: #14141C !important;
+    color: #FAFAFC !important;
+  }
+
+  .sg-page-root.is-seo-geo-page .sg-inline-form-wrap input:focus,
+  .sg-page-root.is-seo-geo-page .sg-inline-form-wrap select:focus,
+  .sg-page-root.is-seo-geo-page .sg-inline-form-wrap textarea:focus {
+    background: #181824 !important;
+    border-color: #EF4136 !important;
+    box-shadow: 0 0 0 3px rgba(239, 65, 54, 0.25) !important;
+    color: #FAFAFC !important;
+  }
+
+  .sg-page-root.is-seo-geo-page .sg-inline-form-wrap input::placeholder,
+  .sg-page-root.is-seo-geo-page .sg-inline-form-wrap textarea::placeholder {
+    color: #64748B !important;
+  }
+
+  .sg-page-root.is-seo-geo-page .sg-inline-form-wrap .lt-submit-btn,
+  .sg-page-root.is-seo-geo-page .sg-inline-form-wrap button[type="submit"],
+  .sg-page-root.is-seo-geo-page .sg-form-btn {
+    background: #EF4136 !important;
+    color: #FFFFFF !important;
+    box-shadow: 0 8px 24px rgba(239, 65, 54, 0.35) !important;
+  }
+
+  .sg-page-root.is-seo-geo-page .sg-inline-form-wrap .lt-submit-btn:hover,
+  .sg-page-root.is-seo-geo-page .sg-inline-form-wrap button[type="submit"]:hover,
+  .sg-page-root.is-seo-geo-page .sg-form-btn:hover {
+    background: #D2042D !important;
+    box-shadow: 0 12px 30px rgba(239, 65, 54, 0.5) !important;
+  }
+
+  .sg-page-root.is-seo-geo-page .sg-inline-form-wrap .lt-footer-note {
+    color: #64748B !important;
+  }
+
+  .sg-page-root.is-seo-geo-page .sg-story-pillar-item {
+    background: #111117 !important;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  }
+
+  .sg-page-root.is-seo-geo-page .sg-story-pillar-item:hover {
+    background: #15151F !important;
+    border-color: #EF4136 !important;
+  }
+
+  .sg-page-root.is-seo-geo-page .sg-story-pillar-item h4 {
+    color: #FAFAFC !important;
+  }
+
+  .sg-page-root.is-seo-geo-page .sg-story-pillar-item p {
+    color: #94A3B8 !important;
+  }
+
+  /* EVOLUTION MATRIX - DARK THEME OVERRIDES */
   .sg-page-root.is-seo-geo-page .sg-evolution-section {
-    background: #FAFAFC;
-    border-top: 1px solid #E5E7EB;
-    border-bottom: 1px solid #E5E7EB;
+    background: #0B0B0E !important;
+    border-top: 1px solid rgba(255, 255, 255, 0.08) !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
   }
 
+  .sg-page-root.is-seo-geo-page .sg-evolution-section .sg-section-title {
+    color: #FAFAFC !important;
+  }
+
+  .sg-page-root.is-seo-geo-page .sg-evolution-section .sg-section-subtitle {
+    color: #94A3B8 !important;
+  }
+
+  .sg-page-root.is-seo-geo-page .sg-pod-chip.chip-trad {
+    background: #14141C !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    color: #94A3B8 !important;
+  }
+
+  .sg-page-root.is-seo-geo-page .sg-pod-title {
+    color: #FAFAFC !important;
+  }
+
+  .sg-page-root.is-seo-geo-page .sg-pod-desc {
+    color: #94A3B8 !important;
+  }
+
+  .sg-page-root.is-seo-geo-page .sg-evolution-compare-item {
+    background: #111117 !important;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4) !important;
+  }
+
+  .sg-page-root.is-seo-geo-page .sg-evolution-compare-item:hover {
+    border-color: rgba(239, 65, 54, 0.5) !important;
+    box-shadow: 0 8px 30px rgba(239, 65, 54, 0.15) !important;
+  }
+
+  .sg-page-root.is-seo-geo-page .sg-compare-header {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+  }
+
+  .sg-page-root.is-seo-geo-page .sg-compare-feature-name {
+    color: #FAFAFC !important;
+  }
+
+  .sg-page-root.is-seo-geo-page .sg-compare-box.box-trad {
+    background: #15151F !important;
+    border: 1px solid rgba(255, 255, 255, 0.07) !important;
+  }
+
+  .sg-page-root.is-seo-geo-page .box-trad .sg-compare-box-label {
+    color: #94A3B8 !important;
+  }
+
+  .sg-page-root.is-seo-geo-page .box-trad .sg-compare-box-text {
+    color: #94A3B8 !important;
+  }
+
+  .sg-page-root.is-seo-geo-page .sg-compare-box.box-geo {
+    background: #1B1216 !important;
+    border: 1.5px solid rgba(239, 65, 54, 0.45) !important;
+    box-shadow: 0 4px 20px rgba(239, 65, 54, 0.12) !important;
+  }
+
+  .sg-page-root.is-seo-geo-page .box-geo .sg-compare-box-text {
+    color: #FAFAFC !important;
+  }
+
+  .sg-page-root.is-seo-geo-page .sg-compare-transfer-arrow {
+    background: #14141C !important;
+    border: 1px solid rgba(255, 255, 255, 0.12) !important;
+    color: #EF4136 !important;
+  }
+
+  /* PILLARS SECTION - DARK THEME OVERRIDES */
   .sg-page-root.is-seo-geo-page .sg-pillars-section {
-    background: #FFFFFF;
-    border-top: 1px solid #E5E7EB;
-    border-bottom: 1px solid #E5E7EB;
+    background: #09090C !important;
+    border-top: 1px solid rgba(255, 255, 255, 0.08) !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
   }
 
+  .sg-page-root.is-seo-geo-page .sg-pillars-section .sg-section-title {
+    color: #FAFAFC !important;
+  }
+
+  .sg-page-root.is-seo-geo-page .sg-pillars-section .sg-section-subtitle {
+    color: #94A3B8 !important;
+  }
+
+  .sg-page-root.is-seo-geo-page .sg-creative-accordion-card {
+    background: #111117 !important;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3) !important;
+  }
+
+  .sg-page-root.is-seo-geo-page .sg-creative-accordion-card:hover {
+    border-color: rgba(239, 65, 54, 0.5) !important;
+  }
+
+  .sg-page-root.is-seo-geo-page .sg-creative-accordion-card.is-expanded {
+    background: #15151F !important;
+    border-color: #EF4136 !important;
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.6), 0 0 25px rgba(239, 65, 54, 0.15) !important;
+  }
+
+  .sg-page-root.is-seo-geo-page .sg-acc-title {
+    color: #FAFAFC !important;
+  }
+
+  .sg-page-root.is-seo-geo-page .sg-acc-summary {
+    color: #94A3B8 !important;
+  }
+
+  .sg-page-root.is-seo-geo-page .sg-acc-body-inner p {
+    color: #CBD5E1 !important;
+  }
+
+  .sg-page-root.is-seo-geo-page .sg-acc-deliv-card {
+    background: #111117 !important;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  }
+
+  .sg-page-root.is-seo-geo-page .sg-acc-deliv-card h5 {
+    color: #FAFAFC !important;
+  }
+
+  .sg-page-root.is-seo-geo-page .sg-acc-deliv-card p {
+    color: #94A3B8 !important;
+  }
+
+  /* PROCESS BLUEPRINT - DARK THEME OVERRIDES */
   .sg-page-root.is-seo-geo-page .sg-process-sec {
-    background: #FAFAFC;
-    border-top: 1px solid #E5E7EB;
-    border-bottom: 1px solid #E5E7EB;
+    background: #09090C !important;
+    border-top: 1px solid rgba(255, 255, 255, 0.08) !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
   }
 
+  .sg-page-root.is-seo-geo-page .sg-process-sec .sg-section-title {
+    color: #FAFAFC !important;
+  }
+
+  .sg-page-root.is-seo-geo-page .sg-process-sec .sg-section-subtitle {
+    color: #94A3B8 !important;
+  }
+
+  .sg-page-root.is-seo-geo-page .sg-timeline-line {
+    background: rgba(255, 255, 255, 0.12) !important;
+  }
+
+  .sg-page-root.is-seo-geo-page .sg-timeline-step {
+    background: #111117 !important;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3) !important;
+  }
+
+  .sg-page-root.is-seo-geo-page .sg-timeline-step:hover {
+    background: #15151F !important;
+    border-color: #EF4136 !important;
+    box-shadow: 0 8px 24px rgba(239, 65, 54, 0.15) !important;
+  }
+
+  .sg-page-root.is-seo-geo-page .sg-timeline-step h4 {
+    color: #FAFAFC !important;
+  }
+
+  .sg-page-root.is-seo-geo-page .sg-timeline-step p {
+    color: #94A3B8 !important;
+  }
+
+  /* DIFFERENTIATORS - DARK THEME OVERRIDES */
   .sg-page-root.is-seo-geo-page .sg-diff-section {
-    background: #FFFFFF;
-    border-top: 1px solid #E5E7EB;
-    border-bottom: 1px solid #E5E7EB;
+    background: #09090C !important;
+    border-top: 1px solid rgba(255, 255, 255, 0.08) !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
   }
 
+  .sg-page-root.is-seo-geo-page .sg-diff-section .sg-section-title {
+    color: #FAFAFC !important;
+  }
+
+  .sg-page-root.is-seo-geo-page .sg-diff-section .sg-section-subtitle {
+    color: #94A3B8 !important;
+  }
+
+  .sg-page-root.is-seo-geo-page .sg-diff-card {
+    background: #111117 !important;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3) !important;
+  }
+
+  .sg-page-root.is-seo-geo-page .sg-diff-card:hover {
+    background: #15151F !important;
+    border-color: #EF4136 !important;
+    box-shadow: 0 12px 30px rgba(239, 65, 54, 0.2) !important;
+  }
+
+  .sg-page-root.is-seo-geo-page .sg-diff-card h3 {
+    color: #FAFAFC !important;
+  }
+
+  .sg-page-root.is-seo-geo-page .sg-diff-card p {
+    color: #94A3B8 !important;
+  }
+
+  /* WHO WE HELP - DARK THEME OVERRIDES */
   .sg-page-root.is-seo-geo-page .sg-who-section {
-    background: #FAFAFC;
-    border-top: 1px solid #E5E7EB;
-    border-bottom: 1px solid #E5E7EB;
+    background: #09090C !important;
+    border-top: 1px solid rgba(255, 255, 255, 0.08) !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
   }
 
+  .sg-page-root.is-seo-geo-page .sg-who-section .sg-section-title {
+    color: #FAFAFC !important;
+  }
+
+  .sg-page-root.is-seo-geo-page .sg-who-section .sg-section-subtitle {
+    color: #94A3B8 !important;
+  }
+
+  .sg-page-root.is-seo-geo-page .sg-who-card {
+    background: #111117 !important;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3) !important;
+  }
+
+  .sg-page-root.is-seo-geo-page .sg-who-card:hover {
+    background: #15151F !important;
+    border-color: #EF4136 !important;
+    box-shadow: 0 8px 24px rgba(239, 65, 54, 0.15) !important;
+  }
+
+  .sg-page-root.is-seo-geo-page .sg-who-content h4 {
+    color: #FAFAFC !important;
+  }
+
+  .sg-page-root.is-seo-geo-page .sg-who-content p {
+    color: #94A3B8 !important;
+  }
+
+  .sg-page-root.is-seo-geo-page .sg-cert-strip {
+    border-top: 1px solid rgba(255, 255, 255, 0.08) !important;
+  }
+
+  .sg-page-root.is-seo-geo-page .sg-cert-badge {
+    background: #14141C !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    color: #FAFAFC !important;
+  }
+
+  /* FAQ - DARK THEME OVERRIDES */
   .sg-page-root.is-seo-geo-page .sg-faq-section {
-    background: #FFFFFF;
-    border-top: 1px solid #E5E7EB;
-    border-bottom: 1px solid #E5E7EB;
+    background: #09090C !important;
+    border-top: 1px solid rgba(255, 255, 255, 0.08) !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
   }
 
+  .sg-page-root.is-seo-geo-page .sg-faq-section .sg-section-title {
+    color: #FAFAFC !important;
+  }
+
+  .sg-page-root.is-seo-geo-page .sg-faq-section .sg-section-subtitle {
+    color: #94A3B8 !important;
+  }
+
+  .sg-page-root.is-seo-geo-page .sg-faq-row {
+    background: #111117 !important;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3) !important;
+  }
+
+  .sg-page-root.is-seo-geo-page .sg-faq-row:hover {
+    background: #14141C !important;
+    border-color: rgba(239, 65, 54, 0.5) !important;
+  }
+
+  .sg-page-root.is-seo-geo-page .sg-faq-row.is-open {
+    background: #15151F !important;
+    border-color: #EF4136 !important;
+  }
+
+  .sg-page-root.is-seo-geo-page .sg-faq-q {
+    color: #FAFAFC !important;
+  }
+
+  .sg-page-root.is-seo-geo-page .sg-faq-a p {
+    color: #94A3B8 !important;
+    border-top: 1px solid rgba(255, 255, 255, 0.08) !important;
+  }
+
+  /* RELATED SERVICES - DARK THEME OVERRIDES */
   .sg-page-root.is-seo-geo-page .sg-related-services-section {
-    background: #FAFAFC;
-    border-top: 1px solid #E5E7EB;
-    border-bottom: 1px solid #E5E7EB;
+    background: #09090C !important;
+    border-top: 1px solid rgba(255, 255, 255, 0.08) !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+  }
+
+  .sg-page-root.is-seo-geo-page .sg-related-services-section .sg-section-title {
+    color: #FAFAFC !important;
+  }
+
+  .sg-page-root.is-seo-geo-page .sg-related-services-section .sg-section-subtitle {
+    color: #94A3B8 !important;
+  }
+
+  .sg-page-root.is-seo-geo-page .sg-related-card {
+    background: #111117 !important;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    color: #FAFAFC !important;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3) !important;
+  }
+
+  .sg-page-root.is-seo-geo-page .sg-related-card:hover {
+    background: #15151F !important;
+    border-color: #EF4136 !important;
+    box-shadow: 0 8px 24px rgba(239, 65, 54, 0.15) !important;
+  }
+
+  .sg-page-root.is-seo-geo-page .sg-related-card h4 {
+    color: #FAFAFC !important;
+  }
+
+  .sg-page-root.is-seo-geo-page .sg-related-card p {
+    color: #94A3B8 !important;
+  }
+
+  .sg-page-root.is-seo-geo-page .sg-related-link-text {
+    color: #FAFAFC !important;
+  }
+
+  .sg-page-root.is-seo-geo-page .sg-related-card:hover .sg-related-link-text {
+    color: #EF4136 !important;
+  }
+
+  /* BOTTOM BANNER CTA */
+  .sg-page-root.is-seo-geo-page .sg-bottom-cta {
+    background: #09090C !important;
+    border-top: 1px solid rgba(255, 255, 255, 0.08) !important;
   }
 
   .sg-bg-overlay {

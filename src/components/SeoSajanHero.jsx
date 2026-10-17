@@ -2,19 +2,7 @@
 
 import React, { useRef, useState, useEffect, useCallback } from "react";
 import gsap from "gsap";
-import {
-  Search,
-  Sparkles,
-  Zap,
-  ArrowRight,
-  ShieldCheck,
-  CheckCircle2,
-  Bot,
-  Layers,
-  Globe,
-  Star,
-  Cpu,
-} from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import SwapArrow from "./SwapArrow";
 
 const DIRECTIONS = ["up", "down", "left", "right"];
@@ -94,7 +82,7 @@ const SKILLS_LIST = [
 export default function SeoSajanHero({ onOpenModal }) {
   const containerRef = useRef(null);
   const taglineContainerRef = useRef(null);
-  const [spotlightActive, setSpotlightActive] = useState(false);
+  const [, setSpotlightActive] = useState(false);
   const spotlightPos = useRef({ x: 0, y: 0 });
   const rectRef = useRef(null);
 
@@ -107,11 +95,16 @@ export default function SeoSajanHero({ onOpenModal }) {
 
   useEffect(() => {
     updateRect();
-    window.addEventListener("resize", updateRect);
-    window.addEventListener("scroll", updateRect, { passive: true });
+    const win = typeof globalThis !== "undefined" ? globalThis.window : null;
+    if (win) {
+      win.addEventListener("resize", updateRect);
+      win.addEventListener("scroll", updateRect, { passive: true });
+    }
     return () => {
-      window.removeEventListener("resize", updateRect);
-      window.removeEventListener("scroll", updateRect);
+      if (win) {
+        win.removeEventListener("resize", updateRect);
+        win.removeEventListener("scroll", updateRect);
+      }
     };
   }, [updateRect]);
 
@@ -166,108 +159,64 @@ export default function SeoSajanHero({ onOpenModal }) {
   const line2 = "COMMAND THE AI ANSWER.";
 
   return (
-    <section ref={containerRef} className="bf-sajan-hero-root">
+    <section ref={containerRef} className="bf-montarville-hero-root">
       <style>{`
-        .bf-sajan-hero-root {
+        .bf-montarville-hero-root {
           position: relative;
           min-height: 94vh;
           background: #09090C;
           display: flex;
           flex-direction: column;
           justify-content: space-between;
-          padding: clamp(100px, 13vw, 150px) 4% clamp(40px, 6vw, 60px);
+          padding: clamp(90px, 11vw, 130px) clamp(24px, 5vw, 64px) clamp(30px, 4vw, 50px);
           overflow: hidden;
           color: #FAFAFC;
         }
 
-        /* Cinematic Background Image */
-        .bf-sajan-hero-bg-img {
+        /* Ambient Architectural Background Geometry (Montarville Inspired) */
+        .bf-montarville-bg-geometry {
           position: absolute;
-          inset: 0;
-          background-image: url("/seo-geo-banner-bg.png");
-          background-size: cover;
-          background-position: center right;
-          background-repeat: no-repeat;
-          opacity: 0.65;
+          right: -80px;
+          top: 8%;
+          width: clamp(500px, 55vw, 920px);
+          height: auto;
+          pointer-events: none;
           z-index: 0;
-          pointer-events: none;
-        }
-        .bf-sajan-hero-bg-overlay {
-          position: absolute;
-          inset: 0;
-          background: 
-            linear-gradient(90deg, rgba(9, 9, 12, 0.94) 0%, rgba(9, 9, 12, 0.78) 45%, rgba(9, 9, 12, 0.45) 75%, rgba(9, 9, 12, 0.7) 100%),
-            linear-gradient(180deg, rgba(9, 9, 12, 0.5) 0%, transparent 40%, rgba(9, 9, 12, 0.92) 100%);
-          z-index: 1;
-          pointer-events: none;
+          opacity: 0.42;
         }
 
-        /* Ambient Glow Backdrop */
-        .bf-sajan-hero-glow {
-          position: absolute;
-          top: -200px;
-          right: -100px;
-          width: 700px;
-          height: 700px;
-          background: radial-gradient(circle, rgba(239, 65, 54, 0.15) 0%, rgba(99, 102, 241, 0.08) 45%, transparent 70%);
-          filter: blur(100px);
-          pointer-events: none;
-          z-index: 1;
-        }
-        .bf-sajan-hero-grid {
-          position: absolute;
-          inset: 0;
-          background-image: 
-            linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
-          background-size: 60px 60px;
-          opacity: 0.45;
-          pointer-events: none;
-          z-index: 1;
-        }
-
-        /* Top Eyebrow Chip */
-        .bf-sajan-eyebrow {
+        /* Left-Side Editorial Layout Column */
+        .bf-montarville-left-col {
           position: relative;
           z-index: 2;
-          display: inline-flex;
-          align-items: center;
-          gap: 10px;
-          padding: 6px 16px;
-          border-radius: 9999px;
-          background: rgba(239, 65, 54, 0.08);
-          border: 1px solid rgba(239, 65, 54, 0.25);
-          color: #FF5A4D;
-          font-size: 0.76rem;
-          font-weight: 700;
-          letter-spacing: 0.14em;
-          text-transform: uppercase;
-          margin-bottom: clamp(24px, 3.5vw, 36px);
-          width: fit-content;
-        }
-        .bf-eyebrow-pulse {
-          width: 7px;
-          height: 7px;
-          border-radius: 50%;
-          background: #EF4136;
-          box-shadow: 0 0 10px #EF4136;
-          animation: bf-pulse 1.8s infinite;
-        }
-        @keyframes bf-pulse {
-          0%, 100% { opacity: 1; transform: scale(1); }
-          50% { opacity: 0.4; transform: scale(0.85); }
+          display: flex;
+          flex-direction: column;
+          max-width: 960px;
         }
 
-        /* Massive Typography & Sajan Portal Mask Architecture */
+        /* Top Editorial Tracking */
+        .bf-sajan-eyebrow {
+          display: block;
+          font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+          font-size: 0.74rem;
+          font-weight: 700;
+          letter-spacing: 0.18em;
+          text-transform: uppercase;
+          color: #8E8E93;
+          margin-bottom: clamp(20px, 3vw, 32px);
+        }
+
+        /* Headline Block with Kinetic Portal-Mask Letters */
         .bf-sajan-headline-block {
           position: relative;
           z-index: 2;
-          margin-bottom: clamp(32px, 5vw, 48px);
+          margin-bottom: clamp(28px, 4.5vw, 44px);
         }
         .bf-sajan-headline-line {
-          font-size: clamp(2.6rem, 7.8vw, 6.8rem);
+          font-family: 'General Sans', sans-serif, -apple-system, BlinkMacSystemFont;
+          font-size: clamp(2.6rem, 7.4vw, 6.4rem);
           font-weight: 900;
-          line-height: 0.95;
+          line-height: 0.96;
           letter-spacing: -0.04em;
           text-transform: uppercase;
           margin: 0;
@@ -298,18 +247,18 @@ export default function SeoSajanHero({ onOpenModal }) {
           color: #FF6B5E;
         }
 
-        /* Sajan Cursor-Spotlight Tagline */
+        /* Dual-Layer Cursor Spotlight Tagline */
         .bf-sajan-tagline-wrap {
           position: relative;
           z-index: 2;
-          max-width: 920px;
-          margin-bottom: clamp(36px, 6vw, 56px);
+          max-width: 860px;
+          margin-bottom: clamp(36px, 5.5vw, 54px);
           cursor: pointer;
           overflow: visible;
         }
         .bf-sajan-tagline-base {
-          font-size: clamp(1.05rem, 1.8vw, 1.35rem);
-          line-height: 1.55;
+          font-size: clamp(1.05rem, 1.6vw, 1.3rem);
+          line-height: 1.6;
           color: #94A3B8;
           font-weight: 400;
           margin: 0;
@@ -317,8 +266,8 @@ export default function SeoSajanHero({ onOpenModal }) {
           z-index: 1;
         }
         .bf-sajan-tagline-hidden {
-          font-size: clamp(1.05rem, 1.8vw, 1.35rem);
-          line-height: 1.55;
+          font-size: clamp(1.05rem, 1.6vw, 1.3rem);
+          line-height: 1.6;
           color: #FFFFFF;
           font-weight: 600;
           margin: 0;
@@ -343,68 +292,96 @@ export default function SeoSajanHero({ onOpenModal }) {
           margin-top: 10px;
         }
 
-        /* CTA Row */
-        .bf-sajan-cta-row {
-          position: relative;
-          z-index: 2;
+        /* Montarville Two-Button CTA Row */
+        .bf-montarville-cta-row {
           display: flex;
           align-items: center;
           flex-wrap: wrap;
-          gap: 20px;
-          margin-bottom: clamp(40px, 7vw, 68px);
+          gap: 16px;
+          margin-bottom: clamp(40px, 6vw, 64px);
         }
-        .bf-sajan-primary-btn {
+
+        /* Solid Red Primary Button with White Dot */
+        .bf-montarville-btn-primary {
           display: inline-flex;
           align-items: center;
           gap: 12px;
           background: #EF4136;
           color: #FFFFFF;
           padding: 16px 32px;
-          border-radius: 9999px;
-          font-size: 0.95rem;
+          border-radius: 8px;
+          font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+          font-size: 0.82rem;
           font-weight: 700;
-          border: none;
+          letter-spacing: 0.08em;
+          text-transform: uppercase;
+          border: 1px solid #EF4136;
           cursor: pointer;
           transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
-          box-shadow: 0 10px 30px rgba(239, 65, 54, 0.32);
+          box-shadow: 0 10px 28px rgba(239, 65, 54, 0.28);
         }
-        .bf-sajan-primary-btn:hover {
+        .bf-montarville-btn-primary:hover {
           background: #DC2626;
+          border-color: #DC2626;
           transform: translateY(-2px);
-          box-shadow: 0 16px 40px rgba(239, 65, 54, 0.45);
+          box-shadow: 0 16px 36px rgba(239, 65, 54, 0.42);
         }
 
-        .bf-sajan-secondary-btn {
+        .bf-btn-dot-white {
+          width: 7px;
+          height: 7px;
+          border-radius: 50%;
+          background: #FFFFFF;
+          display: inline-block;
+          flex-shrink: 0;
+        }
+
+        /* Dark Translucent Secondary Button with Red Dot */
+        .bf-montarville-btn-secondary {
           display: inline-flex;
           align-items: center;
-          gap: 8px;
-          background: rgba(255, 255, 255, 0.05);
-          border: 1px solid rgba(255, 255, 255, 0.12);
+          gap: 12px;
+          background: #1B1B20;
+          border: 1px solid rgba(255, 255, 255, 0.14);
           color: #FAFAFC;
-          padding: 16px 28px;
-          border-radius: 9999px;
-          font-size: 0.92rem;
-          font-weight: 600;
+          padding: 16px 30px;
+          border-radius: 8px;
+          font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+          font-size: 0.82rem;
+          font-weight: 700;
+          letter-spacing: 0.08em;
+          text-transform: uppercase;
           cursor: pointer;
           transition: all 0.25s ease;
           text-decoration: none;
         }
-        .bf-sajan-secondary-btn:hover {
-          background: rgba(255, 255, 255, 0.1);
-          border-color: rgba(255, 255, 255, 0.3);
+        .bf-montarville-btn-secondary:hover {
+          background: #24242C;
+          border-color: rgba(255, 255, 255, 0.32);
           transform: translateY(-2px);
+          color: #FFFFFF;
+        }
+
+        .bf-btn-dot-red {
+          width: 7px;
+          height: 7px;
+          border-radius: 50%;
+          background: #EF4136;
+          box-shadow: 0 0 6px #EF4136;
+          display: inline-block;
+          flex-shrink: 0;
         }
 
         /* Sajan Star Marquee Strip */
         .bf-sajan-marquee-wrapper {
           position: relative;
           z-index: 2;
-          width: calc(100% + 8vw);
-          margin-left: -4vw;
+          width: calc(100% + 10vw);
+          margin-left: -5vw;
           overflow: hidden;
           border-top: 1px solid rgba(255, 255, 255, 0.08);
           border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-          background: rgba(255, 255, 255, 0.02);
+          background: rgba(255, 255, 255, 0.015);
           padding: 18px 0;
         }
         .bf-sajan-marquee-track {
@@ -442,111 +419,118 @@ export default function SeoSajanHero({ onOpenModal }) {
         }
       `}</style>
 
-      {/* CINEMATIC BACKGROUND & AMBIENT VISUALS */}
-      <div className="bf-sajan-hero-bg-img" aria-hidden="true" />
-      <div className="bf-sajan-hero-bg-overlay" aria-hidden="true" />
-      <div className="bf-sajan-hero-glow" aria-hidden="true" />
-      <div className="bf-sajan-hero-grid" aria-hidden="true" />
-
-      {/* TOP EYEBROW */}
-      <div className="bf-sajan-eyebrow">
-        <span className="bf-eyebrow-pulse" />
-        <span>NEXT-GEN SEARCH SUPREMACY • DUAL-ENGINE ARCHITECTURE</span>
+      {/* ARCHITECTURAL BACKGROUND GEOMETRY */}
+      <div className="bf-montarville-bg-geometry" aria-hidden="true">
+        <svg viewBox="0 0 1000 800" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="650" cy="400" r="340" stroke="rgba(255, 255, 255, 0.06)" strokeWidth="1.5" />
+          <circle cx="850" cy="520" r="280" stroke="rgba(255, 255, 255, 0.04)" strokeWidth="1.5" />
+          <circle cx="500" cy="300" r="220" stroke="rgba(239, 65, 54, 0.1)" strokeWidth="1.5" />
+          <line x1="300" y1="120" x2="900" y2="720" stroke="rgba(255, 255, 255, 0.04)" strokeWidth="1.5" />
+        </svg>
       </div>
 
-      {/* MASSIVE KINETIC PORTAL-MASK HEADLINE */}
-      <div className="bf-sajan-headline-block">
-        <h1 className="bf-sajan-headline-line">
-          {line1.split(" ").map((word, wIdx, arr) => (
-            <React.Fragment key={wIdx}>
-              <span style={{ display: "inline-block", whiteSpace: "nowrap" }}>
-                {word.split("").map((char, cIdx) => (
-                  <span
-                    key={cIdx}
-                    className="bf-portal-mask"
-                    onMouseEnter={(e) => {
-                      const letter = e.currentTarget.querySelector(
-                        ".bf-portal-letter"
-                      );
-                      triggerPortalLoop(letter);
-                    }}
-                  >
-                    <span className="bf-portal-letter">{char}</span>
-                  </span>
-                ))}
-              </span>
-              {wIdx < arr.length - 1 && " "}
-            </React.Fragment>
-          ))}
-        </h1>
-
-        <h2 className="bf-sajan-headline-line accent">
-          {line2.split(" ").map((word, wIdx, arr) => (
-            <React.Fragment key={wIdx}>
-              <span style={{ display: "inline-block", whiteSpace: "nowrap" }}>
-                {word.split("").map((char, cIdx) => (
-                  <span
-                    key={cIdx}
-                    className="bf-portal-mask"
-                    onMouseEnter={(e) => {
-                      const letter = e.currentTarget.querySelector(
-                        ".bf-portal-letter"
-                      );
-                      triggerPortalLoop(letter);
-                    }}
-                  >
-                    <span className="bf-portal-letter">{char}</span>
-                  </span>
-                ))}
-              </span>
-              {wIdx < arr.length - 1 && " "}
-            </React.Fragment>
-          ))}
-        </h2>
-      </div>
-
-      {/* SAJAN DUAL-LAYER CURSOR SPOTLIGHT TAGLINE */}
-      <div
-        ref={taglineContainerRef}
-        className="bf-sajan-tagline-wrap"
-        onMouseMove={handleMouseMove}
-        onMouseEnter={handleMouseEnter}
-        onMouseLeave={handleMouseLeave}
-      >
-        <p className="bf-sajan-tagline-base">
-          Traditional SEO captures ten blue links. BrandForge GEO synthesizes
-          your brand into ChatGPT, Perplexity, and Google Gemini vector graphs.
-          We deliver category-leading organic market share across Coimbatore and
-          global enterprise search.
+      {/* LEFT-SIDE EDITORIAL CONTENT BLOCK */}
+      <div className="bf-montarville-left-col">
+        {/* TOP EDITORIAL CATEGORY TRACKING */}
+        <p className="bf-sajan-eyebrow">
+          DUAL-ENGINE SEARCH ARCHITECTURE // ORGANIC + GENERATIVE AI
         </p>
 
-        <p className="bf-sajan-tagline-hidden" aria-hidden="true">
-          Own the Google #1 organic position. Rank inside the Maps 3-Pack. Get
-          cited as the definitive authority across Perplexity, ChatGPT, and
-          Google Gemini AI answer consensus.
-        </p>
+        {/* MASSIVE KINETIC PORTAL-MASK HEADLINE */}
+        <div className="bf-sajan-headline-block">
+          <h1 className="bf-sajan-headline-line">
+            {line1.split(" ").map((word, wIdx, arr) => (
+              <React.Fragment key={wIdx}>
+                <span style={{ display: "inline-block", whiteSpace: "nowrap" }}>
+                  {word.split("").map((char, cIdx) => (
+                    <span
+                      key={cIdx}
+                      className="bf-portal-mask"
+                      onMouseEnter={(e) => {
+                        const letter = e.currentTarget.querySelector(
+                          ".bf-portal-letter"
+                        );
+                        triggerPortalLoop(letter);
+                      }}
+                    >
+                      <span className="bf-portal-letter">{char}</span>
+                    </span>
+                  ))}
+                </span>
+                {wIdx < arr.length - 1 && " "}
+              </React.Fragment>
+            ))}
+          </h1>
 
-        <span className="bf-sajan-spotlight-hint">
-          <Sparkles size={12} color="#EF4136" />
-          <span>Hover cursor across text to reveal neural answer engine layer</span>
-        </span>
-      </div>
+          <h2 className="bf-sajan-headline-line accent">
+            {line2.split(" ").map((word, wIdx, arr) => (
+              <React.Fragment key={wIdx}>
+                <span style={{ display: "inline-block", whiteSpace: "nowrap" }}>
+                  {word.split("").map((char, cIdx) => (
+                    <span
+                      key={cIdx}
+                      className="bf-portal-mask"
+                      onMouseEnter={(e) => {
+                        const letter = e.currentTarget.querySelector(
+                          ".bf-portal-letter"
+                        );
+                        triggerPortalLoop(letter);
+                      }}
+                    >
+                      <span className="bf-portal-letter">{char}</span>
+                    </span>
+                  ))}
+                </span>
+                {wIdx < arr.length - 1 && " "}
+              </React.Fragment>
+            ))}
+          </h2>
+        </div>
 
-      {/* CTA BUTTONS */}
-      <div className="bf-sajan-cta-row">
-        <button
-          type="button"
-          onClick={onOpenModal}
-          className="bf-sajan-primary-btn"
+        {/* DUAL-LAYER CURSOR SPOTLIGHT TAGLINE */}
+        <div
+          ref={taglineContainerRef}
+          className="bf-sajan-tagline-wrap"
+          onMouseMove={handleMouseMove}
+          onMouseEnter={handleMouseEnter}
+          onMouseLeave={handleMouseLeave}
         >
-          <span>Ignite Your Search Dominance</span>
-          <SwapArrow dir="right" size={16} color="#FFFFFF" />
-        </button>
+          <p className="bf-sajan-tagline-base">
+            Traditional SEO captures ten blue links. BrandForge GEO synthesizes
+            your brand into ChatGPT, Perplexity, and Google Gemini vector graphs.
+            We deliver category-leading organic market share across Coimbatore and
+            global enterprise search.
+          </p>
 
-        <a href="#seo-query-archive" className="bf-sajan-secondary-btn">
-          <span>Explore Live Query Citations</span>
-          <ArrowRight size={15} />
-        </a>
+          <p className="bf-sajan-tagline-hidden" aria-hidden="true">
+            Own the Google #1 organic position. Rank inside the Maps 3-Pack. Get
+            cited as the definitive authority across Perplexity, ChatGPT, and
+            Google Gemini AI answer consensus.
+          </p>
+
+          <span className="bf-sajan-spotlight-hint">
+            <span>[ Interactive ] Hover cursor across text to reveal neural answer engine layer</span>
+          </span>
+        </div>
+
+        {/* TWO-BUTTON CTA ROW (MONTARVILLE ARCHITECTURAL STYLE) */}
+        <div className="bf-montarville-cta-row">
+          <button
+            type="button"
+            onClick={onOpenModal}
+            className="bf-montarville-btn-primary"
+          >
+            <span className="bf-btn-dot-white" />
+            <span>IGNITE YOUR SEARCH DOMINANCE</span>
+            <SwapArrow dir="right" size={15} color="#FFFFFF" />
+          </button>
+
+          <a href="#seo-query-archive" className="bf-montarville-btn-secondary">
+            <span className="bf-btn-dot-red" />
+            <span>EXPLORE LIVE QUERY CITATIONS</span>
+            <ArrowRight size={15} />
+          </a>
+        </div>
       </div>
 
       {/* SAJAN STAR MARQUEE TICKER STRIP */}

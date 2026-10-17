@@ -1,12 +1,11 @@
+/* global window, document */
 "use client";
 
 import React, { useRef, useState, useEffect, useMemo, useCallback } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { Search, Bot, Layers, MapPin, Sparkles, ArrowRight } from "lucide-react";
-import SwapArrow from "./SwapArrow";
 
-if (typeof window !== "undefined") {
+if (typeof globalThis !== "undefined" && globalThis.window) {
   gsap.registerPlugin(ScrollTrigger);
 }
 
@@ -91,7 +90,7 @@ const SEO_GEO_FACES = [
   },
 ];
 
-export default function SeoSajanServicesDial({ onOpenModal }) {
+export default function SeoSajanServicesDial({ onOpenModal: _onOpenModal }) {
   const containerRef = useRef(null);
   const shellRef = useRef(null);
   const pinRef = useRef(null);
@@ -432,25 +431,14 @@ export default function SeoSajanServicesDial({ onOpenModal }) {
           margin-bottom: 32px;
         }
         .bf-dial-metalabel {
-          display: inline-flex;
-          align-items: center;
-          gap: 10px;
-          font-size: 0.78rem;
+          display: block;
+          font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+          font-size: 0.74rem;
           font-weight: 700;
-          letter-spacing: 0.16em;
+          letter-spacing: 0.18em;
           text-transform: uppercase;
-          color: #EF4136;
+          color: #8E8E93;
           margin-bottom: clamp(18px, 2.5vw, 28px);
-        }
-        .bf-dial-star {
-          width: 14px;
-          height: 14px;
-          color: #EF4136;
-          animation: bf-star-spin 12s linear infinite;
-        }
-        @keyframes bf-star-spin {
-          from { transform: rotate(0deg); }
-          to { transform: rotate(360deg); }
         }
 
         .bf-dial-heading-row {
@@ -734,23 +722,7 @@ export default function SeoSajanServicesDial({ onOpenModal }) {
       {/* MOBILE STACKED VIEW */}
       {isMobile ? (
         <div className="bf-dial-mobile-stack">
-          <div className="bf-dial-metalabel">
-            <svg
-              className="bf-dial-star"
-              viewBox="0 0 24 24"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M12 0C12 0 14.5 9.5 24 12C14.5 14.5 12 24 12 24C12 24 9.5 14.5 0 12C9.5 9.5 12 0 12 0Z"
-                stroke="currentColor"
-                strokeWidth="1.5"
-                strokeLinejoin="round"
-                fill="none"
-              />
-            </svg>
-            <span>03 ★ THE SEO & GEO CAPABILITY DIAL</span>
-          </div>
+          <p className="bf-dial-metalabel">03 // THE SEO & GEO CAPABILITY DIAL</p>
 
           {SEO_GEO_FACES.map((face, idx) => (
             <div key={idx} className="bf-dial-mobile-card">
@@ -781,23 +753,7 @@ export default function SeoSajanServicesDial({ onOpenModal }) {
           <div ref={pinRef} className="bf-dial-pin-container">
             {/* TOP ROW: HEADLINE & CURRENT LEDE */}
             <div className="bf-dial-top">
-              <div className="bf-dial-metalabel">
-                <svg
-                  className="bf-dial-star"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M12 0C12 0 14.5 9.5 24 12C14.5 14.5 12 24 12 24C12 24 9.5 14.5 0 12C9.5 9.5 12 0 12 0Z"
-                    stroke="currentColor"
-                    strokeWidth="1.5"
-                    strokeLinejoin="round"
-                    fill="none"
-                  />
-                </svg>
-                <span>03 ★ WHAT WE DO — THE CAPABILITY DIAL</span>
-              </div>
+              <p className="bf-dial-metalabel">03 // CORE CAPABILITY ARCHITECTURE</p>
 
               <div className="bf-dial-heading-row">
                 <h2 ref={headlineRef} className="bf-dial-word">

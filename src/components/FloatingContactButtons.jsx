@@ -268,7 +268,7 @@ const styles = `
   .flame-core {
     width: 12px;
     height: 32px;
-    background: linear-gradient(180deg, #FFFFFF 0%, #FFB800 40%, #EF4136 100%);
+    background: linear-gradient(180deg, #FFFFFF 0%, #FF6B5E 40%, #EF4136 100%);
     border-radius: 999px;
     animation: flameFlicker 0.15s ease-in-out infinite alternate;
   }
@@ -300,9 +300,9 @@ const styles = `
   .idle-flame-core {
     width: 9px;
     height: 18px;
-    background: linear-gradient(180deg, #FFFFFF 0%, #FFB800 45%, #EF4136 100%);
+    background: linear-gradient(180deg, #FFFFFF 0%, #FF6B5E 45%, #EF4136 100%);
     border-radius: 999px;
-    box-shadow: 0 0 10px rgba(239, 65, 54, 0.9), 0 0 6px rgba(255, 184, 0, 0.8);
+    box-shadow: 0 0 10px rgba(239, 65, 54, 0.9), 0 0 6px rgba(239, 65, 54, 0.8);
     animation: idleFlameFlicker 0.15s ease-in-out infinite alternate;
   }
 
@@ -311,7 +311,7 @@ const styles = `
     top: 2px;
     width: 16px;
     height: 24px;
-    background: radial-gradient(circle, rgba(239, 65, 54, 0.7) 0%, rgba(255, 184, 0, 0.35) 60%, transparent 100%);
+    background: radial-gradient(circle, rgba(239, 65, 54, 0.7) 0%, rgba(239, 65, 54, 0.35) 60%, transparent 100%);
     border-radius: 50%;
     animation: idleFlameGlowPulse 0.25s ease-in-out infinite alternate;
   }
@@ -339,12 +339,12 @@ const styles = `
   .bf-float-btn.btn-whatsapp {
     background: #0A0A0C;
     color: #FFFFFF;
-    border-color: #25D366;
+    border-color: #EF4136;
   }
 
   .bf-float-btn.btn-whatsapp:hover {
-    background: #25D366;
-    border-color: #25D366;
+    background: #EF4136;
+    border-color: #EF4136;
     color: #FFFFFF;
   }
 

@@ -1,12 +1,11 @@
 "use client";
 
-import React, { useRef, useEffect, useState, useMemo } from "react";
+import React, { useRef, useEffect, useMemo } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { Sparkles, ArrowRight, Bot, Cpu, ShieldCheck } from "lucide-react";
 import SwapArrow from "./SwapArrow";
 
-if (typeof window !== "undefined") {
+if (typeof globalThis !== "undefined" && globalThis.window) {
   gsap.registerPlugin(ScrollTrigger);
 }
 
@@ -117,8 +116,9 @@ export default function SeoSajanPhilosophy({ onOpenModal }) {
   useEffect(() => {
     if (!sectionRef.current || !triggerRef.current) return;
 
+    const win = typeof globalThis !== "undefined" ? globalThis.window : null;
     const prefersReduced =
-      window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      win ? win.matchMedia("(prefers-reduced-motion: reduce)").matches : false;
 
     const wordEls = wordsRef.current.filter(Boolean);
     const letterEls = lettersRef.current.filter(Boolean);
@@ -141,7 +141,7 @@ export default function SeoSajanPhilosophy({ onOpenModal }) {
     const st = ScrollTrigger.create({
       trigger: triggerRef.current,
       start: "top top",
-      end: () => `+=${Math.round(window.innerHeight * 1.35)}`,
+      end: () => `+=${Math.round((win?.innerHeight || 800) * 1.35)}`,
       pin: sectionRef.current,
       pinSpacing: true,
       scrub: 1.8,
@@ -218,43 +218,18 @@ export default function SeoSajanPhilosophy({ onOpenModal }) {
           border-bottom: 1px solid rgba(255, 255, 255, 0.08);
         }
 
-        /* Ambient Neural Core Glow */
-        .bf-phil-ambient {
-          position: absolute;
-          width: 600px;
-          height: 600px;
-          border-radius: 50%;
-          background: radial-gradient(circle, rgba(239, 65, 54, 0.12) 0%, transparent 70%);
-          filter: blur(90px);
-          pointer-events: none;
-          bottom: -150px;
-          right: 5%;
-          z-index: 0;
-        }
-
-        /* Meta Label Chip */
+        /* Meta Label Editorial Tracking */
         .bf-phil-metalabel {
-          display: inline-flex;
-          align-items: center;
-          gap: 10px;
-          font-size: 0.78rem;
+          display: block;
+          font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+          font-size: 0.74rem;
           font-weight: 700;
-          letter-spacing: 0.16em;
+          letter-spacing: 0.18em;
           text-transform: uppercase;
-          color: #EF4136;
-          margin-bottom: clamp(28px, 4vw, 44px);
+          color: #8E8E93;
+          margin-bottom: clamp(24px, 3.5vw, 36px);
           position: relative;
           z-index: 2;
-        }
-        .bf-phil-star {
-          width: 14px;
-          height: 14px;
-          color: #EF4136;
-          animation: bf-star-spin 12s linear infinite;
-        }
-        @keyframes bf-star-spin {
-          from { transform: rotate(0deg); }
-          to { transform: rotate(360deg); }
         }
 
         /* Statement Headline */
@@ -281,7 +256,6 @@ export default function SeoSajanPhilosophy({ onOpenModal }) {
 
         .bf-phil-word.is-highlight {
           color: #EF4136;
-          text-shadow: 0 0 25px rgba(239, 65, 54, 0.4);
         }
 
         /* Portal Masks on Highlight Letters */
@@ -341,26 +315,8 @@ export default function SeoSajanPhilosophy({ onOpenModal }) {
       `}</style>
 
       <section ref={sectionRef} className="bf-philosophy-section" id="philosophy">
-        <div className="bf-phil-ambient" aria-hidden="true" />
-
-        {/* 02 METALABEL */}
-        <div className="bf-phil-metalabel">
-          <svg
-            className="bf-phil-star"
-            viewBox="0 0 24 24"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M12 0C12 0 14.5 9.5 24 12C14.5 14.5 12 24 12 24C12 24 9.5 14.5 0 12C9.5 9.5 12 0 12 0Z"
-              stroke="currentColor"
-              strokeWidth="1.5"
-              strokeLinejoin="round"
-              fill="none"
-            />
-          </svg>
-          <span>02 ★ THE SEARCH PARADIGM SHIFT</span>
-        </div>
+        {/* 02 EDITORIAL TRACKING */}
+        <p className="bf-phil-metalabel">02 // SEARCH PARADIGM SHIFT</p>
 
         {/* SCRUBBED STATEMENT HEADLINE */}
         <h2 ref={textRef} className="bf-phil-statement">

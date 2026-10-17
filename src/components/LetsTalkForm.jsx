@@ -437,9 +437,9 @@ const formStyles = `
   }
 
   .lt-submit-btn.is-success {
-    background: #16A34A;
-    border-color: #16A34A;
-    box-shadow: 0 8px 24px rgba(22, 163, 74, 0.35);
+    background: #EF4136;
+    border-color: #EF4136;
+    box-shadow: 0 8px 24px rgba(239, 65, 54, 0.35);
   }
 
   .lt-loader {

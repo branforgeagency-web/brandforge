@@ -4,7 +4,6 @@ import React, { useRef, useState, useEffect, useCallback } from "react";
 import gsap from "gsap";
 import { ArrowRight } from "lucide-react";
 import SwapArrow from "./SwapArrow";
-import seoBannerVideo from "../assets/seobanner.mp4";
 
 const DIRECTIONS = ["up", "down", "left", "right"];
 const getRandomDirection = () =>
@@ -448,7 +447,6 @@ export default function SeoSajanHero({ onOpenModal }) {
           playsInline
           className="bf-hero-video"
         >
-          <source src={seoBannerVideo} type="video/mp4" />
           <source src="/seobanner.mp4" type="video/mp4" />
         </video>
       </div>

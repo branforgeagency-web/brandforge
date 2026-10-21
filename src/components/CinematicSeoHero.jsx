@@ -3,13 +3,12 @@
 import React, { useRef } from "react";
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 import {
-  Zap, ArrowRight, Search, Cpu, Globe, CheckCircle2, Sparkles, Check, Star,
+  Zap, ArrowRight, Search, Globe, CheckCircle2, Sparkles, Check, Star,
   Target, BarChart3, Users, PenTool, MessageSquare, Layers, Video, ShieldCheck
 } from "lucide-react";
 import KexsioCanvasBackground from "./KexsioCanvasBackground";
 import KineticLetterSwap from "./KineticLetterSwap";
 import SwapArrow from "./SwapArrow";
-import seoBannerVideo from "../assets/seobanner.mp4";
 
 const SERVICE_HERO_CONFIGS = {
   "seo-geo": {
@@ -238,7 +237,6 @@ export default function CinematicSeoHero({ onOpenModal, data, slug }) {
             playsInline
             className="bf-cine-video"
           >
-            <source src={seoBannerVideo} type="video/mp4" />
             <source src="/seobanner.mp4" type="video/mp4" />
           </video>
         </div>

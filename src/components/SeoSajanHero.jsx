@@ -160,7 +160,7 @@ export default function SeoSajanHero({ onOpenModal }) {
   const line2 = "COMMAND THE AI ANSWER.";
 
   return (
-    <section ref={containerRef} className="bf-montarville-hero-root">
+    <section ref={containerRef} id="seo-hero-banner" className="bf-montarville-hero-root">
       <style>{`
         .bf-montarville-hero-root {
           position: relative;

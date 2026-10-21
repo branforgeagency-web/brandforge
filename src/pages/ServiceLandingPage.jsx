@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useLayoutEffect, useRef } from "react";
+import React, { useLayoutEffect, useRef, useState } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import {
   Search,
@@ -50,6 +50,7 @@ import SeoMontarvilleDiff from "../components/SeoMontarvilleDiff";
 import SeoMontarvilleFaq from "../components/SeoMontarvilleFaq";
 import SeoMontarvilleRelatedServices from "../components/SeoMontarvilleRelatedServices";
 import SeoMontarvilleBottomCta from "../components/SeoMontarvilleBottomCta";
+import SeoVideoIntroSection from "../components/SeoVideoIntroSection";
 
 /* ───────────────────────────────────────────────────────────────────────────
    DYNAMIC SERVICE LANDING PAGE COMPONENT (CARDLESS & LIQUID METAL SHADER)
@@ -739,6 +740,7 @@ export default function ServiceLandingPage({ slug = "seo-geo", onOpenModal, navi
   const evolutionVisual = SERVICE_EVOLUTION_VISUALS[data.slug] || SERVICE_EVOLUTION_VISUALS[slug] || SERVICE_EVOLUTION_VISUALS["seo-geo"];
 
   const isSeoGeo = data.slug === "seo-geo" || slug === "seo-geo" || slug === "seo-company-coimbatore";
+  const [seoIntroPhase, setSeoIntroPhase] = useState("playing");
   const storyHeading = SERVICE_STORY_HEADINGS[data.slug] || {
     pill: data.whyChooseUs?.tag || "THE STRATEGY",
     lead: (data.whyChooseUs?.title || data.title || "Engineered for").split(" ").slice(0, 4).join(" ") + " —",
@@ -773,7 +775,23 @@ export default function ServiceLandingPage({ slug = "seo-geo", onOpenModal, navi
 
       {/* 1ST SECTION: HERO (SAJAN PORTAL MASK & SPOTLIGHT HERO ON SEO & GEO, CINEMATIC HERO ON OTHERS) */}
       {isSeoGeo ? (
-        <SeoSajanHero onOpenModal={onOpenModal} />
+        <>
+          {seoIntroPhase !== "done" && (
+            <SeoVideoIntroSection
+              onStartFade={() => setSeoIntroPhase("fading")}
+              onComplete={() => setSeoIntroPhase("done")}
+            />
+          )}
+          <div
+            style={{
+              opacity: seoIntroPhase === "playing" ? 0 : 1,
+              transition: "opacity 1.5s cubic-bezier(0.4, 0, 0.2, 1)",
+              willChange: "opacity",
+            }}
+          >
+            <SeoSajanHero onOpenModal={onOpenModal} />
+          </div>
+        </>
       ) : (
         <CinematicSeoHero onOpenModal={onOpenModal} data={data} slug={slug} />
       )}

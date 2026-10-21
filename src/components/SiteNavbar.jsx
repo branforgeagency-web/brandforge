@@ -263,7 +263,8 @@ const styles = /* css */ `
     transition: transform 0.4s ease, opacity 0.3s ease;
   }
 
-  .liquid-nav__root.is-hidden {
+  .liquid-nav__root.is-hidden,
+  body.is-video-intro-active .liquid-nav__root {
     transform: translateY(-120%);
     opacity: 0;
   }

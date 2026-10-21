@@ -23,6 +23,18 @@ export default function SeoVideoIntroSection({ onStartFade, onComplete }) {
   const [isDone, setIsDone] = useState(false);
   const [isExiting, setIsExiting] = useState(false);
 
+  // Guard flags to guarantee video plays strictly ONCE and never restarts
+  const hasStartedRef = useRef(false);
+  const hasEndedRef = useRef(false);
+
+  // Store latest callbacks in refs so prop changes don't trigger re-renders/effects
+  const onStartFadeRef = useRef(onStartFade);
+  const onCompleteRef = useRef(onComplete);
+  useEffect(() => {
+    onStartFadeRef.current = onStartFade;
+    onCompleteRef.current = onComplete;
+  }, [onStartFade, onComplete]);
+
   // Scroll lock active flag ref
   const isLockedRef = useRef(true);
 
@@ -59,15 +71,28 @@ export default function SeoVideoIntroSection({ onStartFade, onComplete }) {
   }, []);
 
   // Once video finishes playing:
-  // 1. Slowly crossfade out video section over 1.5s
-  // 2. Notify parent to simultaneously fade in the banner section
-  // 3. Unlock scroll & permanently unmount from DOM
+  // 1. Explicitly pause video on its final frame so it NEVER restarts or loops
+  // 2. Slowly crossfade out video section over 1.5s
+  // 3. Notify parent to simultaneously fade in the banner section
+  // 4. Unlock scroll & permanently unmount from DOM
   const handleComplete = useCallback(() => {
-    if (isExiting || isDone) return;
+    if (hasEndedRef.current) return;
+    hasEndedRef.current = true;
+
+    // Immediately pause and freeze the video on the final frame
+    const video = videoRef.current;
+    if (video) {
+      try {
+        video.pause();
+      } catch {
+        // ignore
+      }
+    }
+
     setIsExiting(true);
 
-    if (onStartFade) {
-      onStartFade();
+    if (onStartFadeRef.current) {
+      onStartFadeRef.current();
     }
 
     if (typeof window !== "undefined") {
@@ -81,11 +106,11 @@ export default function SeoVideoIntroSection({ onStartFade, onComplete }) {
     setTimeout(() => {
       unlockScroll();
       setIsDone(true);
-      if (onComplete) {
-        onComplete();
+      if (onCompleteRef.current) {
+        onCompleteRef.current();
       }
     }, 1500);
-  }, [isExiting, isDone, unlockScroll, onStartFade, onComplete]);
+  }, [unlockScroll]);
 
   // Lock scroll on mount and manage listeners
   useEffect(() => {
@@ -110,19 +135,6 @@ export default function SeoVideoIntroSection({ onStartFade, onComplete }) {
     window.addEventListener("touchmove", preventScroll, { passive: false });
     window.addEventListener("keydown", handleKeydown);
 
-    // Attempt video playback (always silent/muted)
-    const video = videoRef.current;
-    if (video) {
-      video.muted = true;
-      const playPromise = video.play();
-      if (playPromise !== undefined) {
-        playPromise.catch(() => {
-          video.muted = true;
-          video.play().catch(() => {});
-        });
-      }
-    }
-
     return () => {
       unlockScroll();
       window.removeEventListener("wheel", preventScroll);
@@ -130,6 +142,24 @@ export default function SeoVideoIntroSection({ onStartFade, onComplete }) {
       window.removeEventListener("keydown", handleKeydown);
     };
   }, [lockScroll, unlockScroll, handleComplete]);
+
+  // Start video playback strictly ONCE on mount
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video || hasStartedRef.current) return;
+    hasStartedRef.current = true;
+
+    video.muted = true;
+    const playPromise = video.play();
+    if (playPromise !== undefined) {
+      playPromise.catch(() => {
+        if (!hasEndedRef.current && video) {
+          video.muted = true;
+          video.play().catch(() => {});
+        }
+      });
+    }
+  }, []);
 
   // Once completed, completely remove from DOM
   if (isDone) {
@@ -201,6 +231,7 @@ export default function SeoVideoIntroSection({ onStartFade, onComplete }) {
           src="/seointro.mp4"
           autoPlay
           muted
+          loop={false}
           playsInline
           preload="auto"
           className="bf-intro-video-element"

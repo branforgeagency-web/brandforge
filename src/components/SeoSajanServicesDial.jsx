@@ -90,7 +90,28 @@ const SEO_GEO_FACES = [
   },
 ];
 
-export default function SeoSajanServicesDial({ onOpenModal: _onOpenModal }) {
+export default function SeoSajanServicesDial({ data, onOpenModal: _onOpenModal }) {
+  const dialFaces = useMemo(() => {
+    if (data?.pillars && data.pillars.length >= 3) {
+      return data.pillars.slice(0, 4).map((p, idx) => {
+        const titleWords = p.title.replace(/—.*$/, "").trim().split(" ");
+        const word = (p.tag || titleWords.slice(0, 2).join(" ")).toUpperCase() + ".";
+        const rail = (p.tag || titleWords.slice(0, 2).join(" ")).toUpperCase();
+        const tools = p.deliverables
+          ? p.deliverables.slice(0, 6).map((d) => d.replace(/—.*$/, "").trim())
+          : [];
+        return {
+          word,
+          rail,
+          num: `0${idx + 1}`,
+          label: `Currently · ${p.title}`,
+          copy: `<b>${p.title}.</b> ${p.description}`,
+          tools: tools.length > 0 ? tools : ["Precision Architecture", "Dedicated Team", "Weekly Audits", "Data Tracking"],
+        };
+      });
+    }
+    return SEO_GEO_FACES;
+  }, [data]);
   const containerRef = useRef(null);
   const shellRef = useRef(null);
   const pinRef = useRef(null);
@@ -113,15 +134,15 @@ export default function SeoSajanServicesDial({ onOpenModal: _onOpenModal }) {
   const dialCells = useMemo(() => {
     const cells = [];
     for (let i = 0; i < 3; i++) cells.push({ zoneIdx: 0, name: "", isPad: true });
-    SEO_GEO_FACES.forEach((face, fIdx) => {
+    dialFaces.forEach((face, fIdx) => {
       face.tools.forEach((tool) => {
         cells.push({ zoneIdx: fIdx, name: tool, isPad: false });
       });
     });
-    const lastZone = SEO_GEO_FACES.length - 1;
+    const lastZone = dialFaces.length - 1;
     for (let i = 0; i < 3; i++) cells.push({ zoneIdx: lastZone, name: "", isPad: true });
     return cells;
-  }, []);
+  }, [dialFaces]);
 
   const nonPadCount = useMemo(
     () => dialCells.filter((c) => !c.isPad).length,
@@ -202,7 +223,7 @@ export default function SeoSajanServicesDial({ onOpenModal: _onOpenModal }) {
         if (zEl) zEl.classList.toggle("is-active", idx === nextZone);
       });
 
-      const nextFace = SEO_GEO_FACES[nextZone];
+      const nextFace = dialFaces[nextZone];
       const headEl = headlineRef.current;
       const ledeEl = ledeRef.current;
       if (!headEl || !ledeEl) {
@@ -269,7 +290,7 @@ export default function SeoSajanServicesDial({ onOpenModal: _onOpenModal }) {
         });
       });
     },
-    [renderHeadline]
+    [renderHeadline, dialFaces]
   );
 
   // GSAP ScrollTrigger Pinned Dial setup
@@ -722,9 +743,9 @@ export default function SeoSajanServicesDial({ onOpenModal: _onOpenModal }) {
       {/* MOBILE STACKED VIEW */}
       {isMobile ? (
         <div className="bf-dial-mobile-stack">
-          <p className="bf-dial-metalabel">03 // THE SEO & GEO CAPABILITY DIAL</p>
+          <p className="bf-dial-metalabel">Core Capabilities</p>
 
-          {SEO_GEO_FACES.map((face, idx) => (
+          {dialFaces.map((face, idx) => (
             <div key={idx} className="bf-dial-mobile-card">
               <div className="bf-dial-mobile-top">
                 <span className="bf-dial-mobile-num">{face.num}</span>
@@ -753,7 +774,7 @@ export default function SeoSajanServicesDial({ onOpenModal: _onOpenModal }) {
           <div ref={pinRef} className="bf-dial-pin-container">
             {/* TOP ROW: HEADLINE & CURRENT LEDE */}
             <div className="bf-dial-top">
-              <p className="bf-dial-metalabel">03 // CORE CAPABILITY ARCHITECTURE</p>
+              <p className="bf-dial-metalabel">Core Capabilities</p>
 
               <div className="bf-dial-heading-row">
                 <h2 ref={headlineRef} className="bf-dial-word">
@@ -813,7 +834,7 @@ export default function SeoSajanServicesDial({ onOpenModal: _onOpenModal }) {
             <div className="bf-dial-zones-container">
               <div className="bf-dial-zones-grid">
                 <div ref={indicatorRef} className="bf-dial-indicator-bar" />
-                {SEO_GEO_FACES.map((face, idx) => (
+                {dialFaces.map((face, idx) => (
                   <button
                     key={idx}
                     type="button"

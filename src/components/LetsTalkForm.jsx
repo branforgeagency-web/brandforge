@@ -9,7 +9,6 @@ import {
   MessageSquare,
   ChevronDown,
   Check,
-  ShieldCheck,
   Sparkles,
 } from "lucide-react";
 
@@ -255,14 +254,6 @@ export default function LetsTalkForm({
           )}
         </button>
       </form>
-
-      <p className="lt-footer-note">
-        <ShieldCheck
-          size={14}
-          style={{ verticalAlign: "middle", marginRight: 6, color: "#EF4136" }}
-        />
-        100% confidential. No spam, guaranteed.
-      </p>
     </div>
   );
 }

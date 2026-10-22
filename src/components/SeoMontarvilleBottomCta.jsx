@@ -1,28 +1,8 @@
 "use client";
 
 import React from "react";
-import { ArrowRight, ShieldCheck, Sparkles, CheckCircle2 } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 
-function SajanStar({ size = 15, className = "" }) {
-  return (
-    <svg
-      width={size}
-      height={size}
-      viewBox="0 0 24 24"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      className={className}
-    >
-      <path
-        d="M12 0C12 0 14.5 9.5 24 12C14.5 14.5 12 24 12 24C12 24 9.5 14.5 0 12C9.5 9.5 12 0 12 0Z"
-        stroke="currentColor"
-        strokeWidth="1.5"
-        strokeLinejoin="round"
-        fill="none"
-      />
-    </svg>
-  );
-}
 
 function MontarvilleCircles({ className = "" }) {
   return (
@@ -41,7 +21,7 @@ export default function SeoMontarvilleBottomCta({
   bottomCta = {},
   onOpenModal,
 }) {
-  const title = bottomCta?.title || "Get Found on Google and AI Search — Starting Today";
+  const _title = bottomCta?.title || "Get Found on Google and AI Search — Starting Today";
   const subtitle = bottomCta?.subtitle || "Get a free audit of where your website currently stands, both on traditional search and emerging AI search engines.";
   const buttonText = bottomCta?.buttonText || "Book Your Free Consultation →";
 
@@ -57,21 +37,16 @@ export default function SeoMontarvilleBottomCta({
           <span className="smc-corner-tick tick-bl">+</span>
           <span className="smc-corner-tick tick-br">+</span>
 
-          {/* Top Live Slot Badge */}
-          <div className="smc-top-row">
-            <div className="smc-metalabel">
-              <SajanStar className="smc-star" />
-              <span>DEPLOYMENT // INITIATE ORGANIC DOMINANCE</span>
-            </div>
-            <span className="smc-live-badge">
-              <span className="live-dot" />
-              Q2 2026 AUDIT SLOTS: 2 AVAILABLE
-            </span>
-          </div>
 
           <h2 className="smc-title">
-            Own the First Page of Google. <br />
-            <span className="title-red">Command the AI Answer.</span>
+            {bottomCta?.title ? (
+              <span>{bottomCta.title}</span>
+            ) : (
+              <>
+                Own the Category. <br />
+                <span className="title-red">Forge Your Unfair Advantage.</span>
+              </>
+            )}
           </h2>
 
           <p className="smc-desc">{subtitle}</p>
@@ -80,27 +55,13 @@ export default function SeoMontarvilleBottomCta({
             <button
               type="button"
               className="smc-primary-btn"
-              onClick={() => onOpenModal && onOpenModal("Book Enterprise SEO Audit")}
+              onClick={() => {
+                if (onOpenModal) onOpenModal(buttonText || "Book Strategy Audit");
+              }}
             >
               <span>{buttonText}</span>
               <ArrowRight size={16} />
             </button>
-          </div>
-
-          {/* Trust Guarantees */}
-          <div className="smc-guarantees-row">
-            <div className="guarantee-item">
-              <CheckCircle2 size={14} className="text-red" />
-              <span>100% Free Strategy Audit</span>
-            </div>
-            <div className="guarantee-item">
-              <ShieldCheck size={14} className="text-red" />
-              <span>Sub-200ms DOM Hydration Guarantee</span>
-            </div>
-            <div className="guarantee-item">
-              <Sparkles size={14} className="text-red" />
-              <span>ChatGPT & Perplexity Vector Mapping</span>
-            </div>
           </div>
         </div>
       </div>
@@ -269,42 +230,5 @@ const bottomCtaStyles = `
     background: #D2042D;
     transform: translateY(-2px);
     box-shadow: 0 16px 40px rgba(239, 65, 54, 0.6);
-  }
-
-  .smc-guarantees-row {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 28px;
-    flex-wrap: wrap;
-    padding-top: 24px;
-    border-top: 1px solid rgba(255, 255, 255, 0.08);
-    position: relative;
-    z-index: 2;
-  }
-
-  .guarantee-item {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    font-family: "JetBrains Mono", monospace;
-    font-size: 0.74rem;
-    font-weight: 700;
-    color: #94A3B8;
-  }
-
-  .guarantee-item .text-red {
-    color: #EF4136;
-  }
-
-  @media (max-width: 768px) {
-    .smc-top-row {
-      flex-direction: column;
-      gap: 12px;
-    }
-    .smc-guarantees-row {
-      flex-direction: column;
-      gap: 10px;
-    }
   }
 `;

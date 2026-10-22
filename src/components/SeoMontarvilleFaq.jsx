@@ -4,26 +4,7 @@ import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Plus, Minus, ArrowRight, MessageSquare, ShieldCheck, Sparkles } from "lucide-react";
 
-function SajanStar({ size = 15, className = "" }) {
-  return (
-    <svg
-      width={size}
-      height={size}
-      viewBox="0 0 24 24"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      className={className}
-    >
-      <path
-        d="M12 0C12 0 14.5 9.5 24 12C14.5 14.5 12 24 12 24C12 24 9.5 14.5 0 12C9.5 9.5 12 0 12 0Z"
-        stroke="currentColor"
-        strokeWidth="1.5"
-        strokeLinejoin="round"
-        fill="none"
-      />
-    </svg>
-  );
-}
+
 
 export default function SeoMontarvilleFaq({ faqs = [], onOpenModal }) {
   const [activeFaq, setActiveFaq] = useState(0);
@@ -64,10 +45,6 @@ export default function SeoMontarvilleFaq({ faqs = [], onOpenModal }) {
       <div className="smf-container">
         {/* Header */}
         <div className="smf-header">
-          <div className="smf-metalabel">
-            <SajanStar className="smf-star" />
-            <span>KNOWLEDGE BASE // 2026 FAQ ARCHIVE</span>
-          </div>
 
           <h2 className="smf-title">
             Frequently Asked <span className="title-red">Questions</span>

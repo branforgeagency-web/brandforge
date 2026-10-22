@@ -4,26 +4,7 @@ import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Plus, Minus, ArrowRight, CheckCircle2, Zap, Cpu, Globe, PenTool, BarChart3, ShieldCheck } from "lucide-react";
 
-function SajanStar({ size = 15, className = "" }) {
-  return (
-    <svg
-      width={size}
-      height={size}
-      viewBox="0 0 24 24"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      className={className}
-    >
-      <path
-        d="M12 0C12 0 14.5 9.5 24 12C14.5 14.5 12 24 12 24C12 24 9.5 14.5 0 12C9.5 9.5 12 0 12 0Z"
-        stroke="currentColor"
-        strokeWidth="1.5"
-        strokeLinejoin="round"
-        fill="none"
-      />
-    </svg>
-  );
-}
+
 
 export default function SeoMontarvillePillars({ data, onOpenModal }) {
   const [expandedIdx, setExpandedIdx] = useState(0);
@@ -40,10 +21,6 @@ export default function SeoMontarvillePillars({ data, onOpenModal }) {
       <div className="smp-container">
         {/* Header */}
         <div className="smp-header">
-          <div className="smp-metalabel">
-            <SajanStar className="smp-star" />
-            <span>{pillarsTag} // SYSTEM ARCHITECTURE</span>
-          </div>
           <h2 className="smp-title">{pillarsTitle}</h2>
           <p className="smp-subtitle">{pillarsSubtitle}</p>
         </div>

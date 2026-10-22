@@ -1,4 +1,4 @@
-import React, { useRef, useLayoutEffect } from "react";
+import React, { useRef, useLayoutEffect, useMemo } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Sparkles, ArrowUpRight } from "lucide-react";
@@ -217,7 +217,7 @@ function PitchBlackArchitecturalCard({ item, onOpenModal }) {
         tabIndex={0}
         onKeyDown={(e) => {
           if (e.key === "Enter" || e.key === " ") {
-            onOpenModal && onOpenModal(`Deliverable: ${item.title}`);
+            if (onOpenModal) onOpenModal(`Deliverable: ${item.title}`);
           }
         }}
         aria-label={`View ${item.title}`}
@@ -233,7 +233,7 @@ function PitchBlackArchitecturalCard({ item, onOpenModal }) {
           <div className="montarville-card-topbar">
             <div className="montarville-pillar-tag">
               <span className="montarville-pillar-indicator" />
-              {item.number} // {item.pillar}
+              {item.pillar}
             </div>
             <div className="montarville-badge">
               <span
@@ -263,7 +263,7 @@ function PitchBlackArchitecturalCard({ item, onOpenModal }) {
               aria-hidden="true"
               onClick={(e) => {
                 e.stopPropagation();
-                onOpenModal && onOpenModal(`Deliverable: ${item.title}`);
+                if (onOpenModal) onOpenModal(`Deliverable: ${item.title}`);
               }}
             >
               <ArrowUpRight size={21} className="montarville-arrow-primary" />
@@ -276,7 +276,25 @@ function PitchBlackArchitecturalCard({ item, onOpenModal }) {
   );
 }
 
-export default function SeoMontarvilleDeliverables({ onOpenModal }) {
+export default function SeoMontarvilleDeliverables({ data, onOpenModal }) {
+  const deliverables = useMemo(() => {
+    if (data?.pillars && data.pillars.length >= 3) {
+      const svgTypes = ["arc-radial", "concentric-diagonal", "elliptical-orbit", "mesh-quadrant"];
+      return data.pillars.slice(0, 4).map((p, idx) => ({
+        number: `0${idx + 1}`,
+        total: "04",
+        pillar: p.tag || `Pillar 0${idx + 1}`,
+        title: p.title,
+        badge: p.tag || "Enterprise",
+        badgeDotColor: "#EF4136",
+        description: p.description,
+        metricValue: data?.metrics?.[idx]?.value || "100%",
+        metricLabel: data?.metrics?.[idx]?.label || "Performance Benchmark",
+        svgType: svgTypes[idx % svgTypes.length],
+      }));
+    }
+    return DELIVERABLES_DATA;
+  }, [data]);
   const sectionRef = useRef(null);
   const cardsContainerRef = useRef(null);
 
@@ -298,7 +316,7 @@ export default function SeoMontarvilleDeliverables({ onOpenModal }) {
             if (typeof el.getTotalLength === "function") {
               length = el.getTotalLength() || 800;
             }
-          } catch (e) {
+          } catch {
             length = 800;
           }
           el.style.strokeDasharray = `${length} ${length}`;
@@ -376,7 +394,7 @@ export default function SeoMontarvilleDeliverables({ onOpenModal }) {
               if (typeof el.getTotalLength === "function") {
                 length = el.getTotalLength() || 800;
               }
-            } catch (e) {
+            } catch {
               length = 800;
             }
             el.style.strokeDashoffset = `${length}`;
@@ -779,19 +797,26 @@ export default function SeoMontarvilleDeliverables({ onOpenModal }) {
         </div>
 
         <h2 className="montarville-title montarville-header-anim">
-          Complete Search & AI
-          <span className="montarville-title-accent">Growth Strategy</span>
+          {data?.title ? (
+            <>
+              Engineered <span className="montarville-title-accent">{data.eyebrow ? data.eyebrow.split("|")[0].trim() : "Growth Strategy"}</span>
+            </>
+          ) : (
+            <>
+              Complete Search & AI{" "}
+              <span className="montarville-title-accent">Growth Strategy</span>
+            </>
+          )}
         </h2>
 
         <p className="montarville-subtitle montarville-header-anim">
-          We combine proven technical SEO with modern AI search optimization so your business ranks
-          higher and gets recommended first.
+          {data?.pillarsSubtitle || "We combine proven technical infrastructure with modern creative precision so your business scales faster and converts higher."}
         </p>
       </div>
 
       {/* CARDS LIST IN PITCH BLACK & DYNAMIC ASYMMETRICAL STAGGER */}
       <div ref={cardsContainerRef} className="montarville-cards-wrapper">
-        {DELIVERABLES_DATA.map((item) => (
+        {deliverables.map((item) => (
           <PitchBlackArchitecturalCard
             key={item.number}
             item={item}

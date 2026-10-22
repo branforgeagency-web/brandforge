@@ -19,28 +19,32 @@ function MontarvilleCircles({ className = "" }) {
   );
 }
 
-export default function SeoMontarvilleStory({ data }) {
+export default function SeoMontarvilleStory({ data, storyHeading, onOpenModal: _onOpenModal }) {
   const paragraphs = Array.isArray(data?.subtitle) ? data.subtitle : [data?.subtitle || ""];
 
   return (
-    <section className="sm-story-section" id="seo-growth-story">
+    <section className="sm-story-section" id="growth-story">
       <style>{storyComponentStyles}</style>
 
       {/* Architectural Line-Art Watermark */}
       <MontarvilleCircles className="sm-story-watermark" />
 
       <div className="sm-story-container">
-        {/* Editorial Tracking Header */}
-        <div className="sm-metalabel-row">
-          <p className="sm-metalabel">05 // THE STRATEGIC THESIS</p>
-          <span className="sm-metalabel-coord">[45° 21' N // COIMBATORE HUB]</span>
-        </div>
 
         {/* Editorial Story Header & 2-Column Body */}
         <div className="sm-story-editorial">
           <h2 className="sm-story-heading">
-            Why High-Performance SEO &{" "}
-            <span className="text-red">Generative Engine Optimization</span> Matters
+            {storyHeading?.lead ? (
+              <>
+                {storyHeading.lead}{" "}
+                <span className="text-red">{storyHeading.accent}</span>
+              </>
+            ) : (
+              <>
+                Why High-Performance{" "}
+                <span className="text-red">{data?.eyebrow ? data.eyebrow.split("|")[0].trim() : "Strategy"}</span> Matters
+              </>
+            )}
           </h2>
 
           <div className="sm-editorial-body">

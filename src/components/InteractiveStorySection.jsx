@@ -2,7 +2,7 @@
 
 import React, { useRef, useState } from "react";
 import { motion, useMotionValue, useSpring, useTransform, useMotionTemplate } from "framer-motion";
-import { Zap, Sparkles, Activity, ShieldCheck, ArrowRight, Bot, Search, CheckCircle2 } from "lucide-react";
+import { Zap, Sparkles, CheckCircle2 } from "lucide-react";
 import LetsTalkForm from "./LetsTalkForm";
 import KexsioCanvasBackground from "./KexsioCanvasBackground";
 
@@ -47,13 +47,6 @@ function StoryPillarCard({ pillar, index }) {
     ? (pillar.description.length > 130 ? pillar.description.slice(0, 127) + "..." : pillar.description)
     : (pillar.deliverables?.[0] || "");
 
-  const proofTags = [
-    "#1 Maps Pack & SERP",
-    "Top 3 AI Source Citations",
-    "+340% Organic Pipeline"
-  ];
-  const proofTag = pillar.proof || proofTags[index % proofTags.length];
-
   return (
     <motion.div
       animate={{
@@ -91,8 +84,7 @@ function StoryPillarCard({ pillar, index }) {
 
         {/* Top pillar row */}
         <div className="sg-pillar-top-meta" style={{ transform: "translateZ(28px)" }}>
-          <span className="sg-pillar-node-id">0{index + 1} / CORE PILLAR</span>
-          <span className="sg-pillar-proof-tag">{proofTag}</span>
+          <span className="sg-pillar-node-id">Core Pillar 0{index + 1}</span>
         </div>
 
         {/* Center content */}

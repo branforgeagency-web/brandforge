@@ -1,29 +1,9 @@
 "use client";
 
 import React from "react";
-import { Zap, Globe, ShieldCheck, Users, ArrowRight, CheckCircle2, Sparkles, TrendingUp } from "lucide-react";
+import { Zap, Globe, ShieldCheck, Users, ArrowRight } from "lucide-react";
 
-function SajanStar({ size = 15, className = "" }) {
-  return (
-    <svg
-      width={size}
-      height={size}
-      viewBox="0 0 24 24"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      className={className}
-    >
-      <path
-        d="M12 0C12 0 14.5 9.5 24 12C14.5 14.5 12 24 12 24C12 24 9.5 14.5 0 12C9.5 9.5 12 0 12 0Z"
-        stroke="currentColor"
-        strokeWidth="1.5"
-        strokeLinejoin="round"
-        fill="currentColor"
-        fillOpacity="0.2"
-      />
-    </svg>
-  );
-}
+
 
 function MontarvilleCircles({ className = "" }) {
   return (
@@ -39,37 +19,44 @@ function MontarvilleCircles({ className = "" }) {
 }
 
 const CARD_METAS = [
-  { coord: "DIFF // 01 · ARCHITECTURE", tag: "AI SEARCH SHIFT READY", iconColor: "#EF4136" },
-  { coord: "DIFF // 02 · LOCAL INTEL", tag: "REGIONAL DOMINANCE", iconColor: "#FF6B00" },
-  { coord: "DIFF // 03 · ATTRIBUTION", tag: "100% AUDITABLE SLA", iconColor: "#EF4136" },
-  { coord: "DIFF // 04 · CONTENT MOAT", tag: "HIGH INFORMATION GAIN", iconColor: "#FF6B00" },
+  { coord: "Architecture", iconColor: "#EF4136" },
+  { coord: "Local Intelligence", iconColor: "#FF6B00" },
+  { coord: "Attribution", iconColor: "#EF4136" },
+  { coord: "Content Strategy", iconColor: "#FF6B00" },
+];
+
+const DEFAULT_ITEMS = [
+  {
+    title: "SEO and GEO Under One Roof",
+    description: "While typical agencies remain purely single-channel focused, we simultaneously optimize your brand across modern AI answer engines and search algorithms.",
+    icon: Zap,
+  },
+  {
+    title: "Deep Local & Enterprise Market Intelligence",
+    description: "Granular behavioral insights tailored to how regional and global high-intent buyers discover, evaluate, and convert.",
+    icon: Globe,
+  },
+  {
+    title: "Radical Transparency & Attribution",
+    description: "Full attribution of rankings, pipeline revenue, and conversion metrics with zero black-box vanity reporting.",
+    icon: ShieldCheck,
+  },
+  {
+    title: "Engineered for Conversion & Speed",
+    description: "Sub-second load times, bespoke user journeys, and high-converting copy that turns visitors into qualified pipeline.",
+    icon: Users,
+  },
 ];
 
 export default function SeoMontarvilleDiff({ differentiators, onOpenModal }) {
   const diffData = differentiators || {};
-  const diffTag = diffData.tag || "THE BRANDFORGE ADVANTAGE";
-  const items = diffData.items || [
-    {
-      title: "SEO and GEO Under One Roof",
-      description: "While typical agencies in Coimbatore remain purely Google-focused, we simultaneously optimize your brand for ChatGPT, Perplexity, and AI Search shifts.",
-      icon: Zap,
-    },
-    {
-      title: "Deep Local Market Intelligence",
-      description: "Granular search and behavioral insights tailored to how regional and pan-India high-intent buyers discover, evaluate, and convert.",
-      icon: Globe,
-    },
-    {
-      title: "Radical Transparency & Attribution",
-      description: "Full weekly attribution of commercial rankings, pipeline revenue, and AI engine citation share with zero black-box vanity reporting.",
-      icon: ShieldCheck,
-    },
-    {
-      title: "Content Built for Humans First",
-      description: "Authoritative, domain-led thought leadership that earns top organic rankings on Google and authoritative citations across conversational AI.",
-      icon: Users,
-    },
-  ];
+  const icons = [Zap, Globe, ShieldCheck, Users];
+  const items = (diffData.items && diffData.items.length > 0)
+    ? diffData.items.map((it, idx) => ({
+        ...it,
+        icon: it.icon || icons[idx % icons.length],
+      }))
+    : DEFAULT_ITEMS;
 
   return (
     <section className="smd-diff-section" id="differentiators">
@@ -86,23 +73,32 @@ export default function SeoMontarvilleDiff({ differentiators, onOpenModal }) {
         <div className="smd-split-grid">
           {/* Left Column: Authoritative Editorial Statement */}
           <div className="smd-editorial-col">
-            <div className="smd-metalabel">
-              <span className="smd-pulsing-dot" />
-              <SajanStar className="smd-star" size={13} />
-              <span>WHAT SETS US APART // {diffTag}</span>
-            </div>
 
             <h2 className="smd-title">
-              Engineering <span className="title-gradient">Category Supremacy</span>, Not Short-Lived Spikes.
+              {diffData.title ? (
+                <span>{diffData.title}</span>
+              ) : (
+                <>
+                  Engineering <span className="title-gradient">Category Supremacy</span>, Not Short-Lived Spikes.
+                </>
+              )}
             </h2>
 
             <div className="smd-wysiwyg-2c">
-              <p>
-                <strong>BrandForge engineers search architectures</strong> that transcend basic keyword optimization. While generic agencies sell commodity backlink bundles, we build technical entity graphs and generative-ready infrastructure that make your brand the definitive answer across Google Search and conversational AI engines.
-              </p>
-              <p>
-                Our methodology is rooted in radical transparency: zero black-box vanity reporting, sub-200ms Jamstack engineering, and measurable organic revenue growth. We forge compounding organic moats where technical precision yields sustainable commercial dominance.
-              </p>
+              {diffData.description ? (
+                <p>
+                  <strong>BrandForge engineers performance architectures</strong> that transcend generic agency deliverables. {diffData.description}
+                </p>
+              ) : (
+                <>
+                  <p>
+                    <strong>BrandForge engineers performance architectures</strong> that transcend basic agency outputs. While generic agencies sell commodity templates, we build high-converting infrastructure and technical moats that make your brand the definitive category choice.
+                  </p>
+                  <p>
+                    Our methodology is rooted in radical transparency: zero black-box vanity reporting, sub-200ms engineering, and measurable commercial growth. We forge compounding value where technical precision yields sustainable market dominance.
+                  </p>
+                </>
+              )}
             </div>
 
             {/* Enterprise Micro-Metrics Strip */}
@@ -133,10 +129,6 @@ export default function SeoMontarvilleDiff({ differentiators, onOpenModal }) {
                 <span>SCHEDULE STRATEGIC BRIEFING</span>
                 <ArrowRight size={14} className="smd-btn-arrow" />
               </button>
-              <span className="smd-guarantee-tag">
-                <CheckCircle2 size={13} className="text-red" />
-                Guaranteed Senior Engineer Oversight
-              </span>
             </div>
           </div>
 
@@ -163,14 +155,6 @@ export default function SeoMontarvilleDiff({ differentiators, onOpenModal }) {
                   <div className="smd-card-content">
                     <h3 className="smd-card-title">{item.title}</h3>
                     <p className="smd-card-desc">{formattedDesc}</p>
-                  </div>
-
-                  <div className="smd-card-footer">
-                    <span className="smd-card-check-pill">
-                      <span className="smd-pill-indicator" />
-                      {meta.tag}
-                    </span>
-                    <span className="smd-card-arrow">↗</span>
                   </div>
                 </div>
               );
@@ -410,15 +394,6 @@ const diffComponentStyles = `
 
   .smd-pill-btn:hover .smd-btn-arrow {
     transform: translateX(4px);
-  }
-
-  .smd-guarantee-tag {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    font-family: var(--font-mono, "JetBrains Mono", monospace);
-    font-size: 0.72rem;
-    color: #94A3B8;
   }
 
   /* Right Cards Column - Obsidian Glass */

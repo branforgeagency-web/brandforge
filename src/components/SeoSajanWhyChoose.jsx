@@ -1,8 +1,8 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { CheckCircle2, ArrowUpRight, ShieldCheck, Sparkles, MapPin, Search, Cpu, Database } from "lucide-react";
+import { ArrowUpRight, Sparkles, MapPin, Search, Cpu, Database } from "lucide-react";
 
 // Sajan 4-point star SVG icon
 function SajanStar({ size = 16, color = "#EF4136", className = "" }) {
@@ -27,71 +27,99 @@ function SajanStar({ size = 16, color = "#EF4136", className = "" }) {
   );
 }
 
+const DEFAULT_WHY_PILLARS = [
+  {
+    id: "01",
+    tag: "01",
+    shortTitle: "organic search",
+    marqueeText: "ranking on google organic search",
+    marqueeSub: "first page serp dominance",
+    fullText: "Ranking on Google organic search results with zero black-hat risk and pure algorithmic velocity.",
+    metaCategory: "SYSTEM",
+    metaYear: "#01",
+    badgeColor: "#EF4136",
+    icon: Search,
+    tilt: -1.8,
+    speed: 28,
+    isOutline: false,
+  },
+  {
+    id: "02",
+    tag: "02",
+    shortTitle: "maps & local pack",
+    marqueeText: "google local pack & near me maps",
+    marqueeSub: "regional market proximity",
+    fullText: "Appearing in Google Local Pack and Maps for high-intent searches across regional industrial belts.",
+    metaCategory: "SYSTEM",
+    metaYear: "#02",
+    badgeColor: "#0A0A0C",
+    icon: MapPin,
+    tilt: 1.6,
+    speed: 32,
+    isOutline: true,
+  },
+  {
+    id: "03",
+    tag: "03",
+    shortTitle: "ai engine citation",
+    marqueeText: "ai answers & generative citations",
+    marqueeSub: "chatgpt · perplexity · gemini",
+    fullText: "Getting cited by AI search engines and answer models through verified knowledge graph entities.",
+    metaCategory: "SYSTEM",
+    metaYear: "#03",
+    badgeColor: "#EF4136",
+    icon: Cpu,
+    tilt: -1.2,
+    speed: 26,
+    isOutline: false,
+  },
+  {
+    id: "04",
+    tag: "04",
+    shortTitle: "long-term authority",
+    marqueeText: "building long-term market authority",
+    marqueeSub: "sustainable organic compounding",
+    fullText: "Building long-term market authority and digital moats, not short-lived vanity spikes.",
+    metaCategory: "SYSTEM",
+    metaYear: "#04",
+    badgeColor: "#EF4136",
+    icon: Database,
+    tilt: 1.9,
+    speed: 30,
+    isOutline: true,
+  },
+];
+
 export default function SeoSajanWhyChoose({ whyChooseUs, onOpenModal }) {
   const [activePill, setActivePill] = useState(null);
 
-  const pillars = [
-    {
-      id: "01",
-      tag: "ENTERPRISE SLA",
-      shortTitle: "organic search",
-      marqueeText: "ranking on google's organic search",
-      marqueeSub: "first page serp dominance",
-      fullText: "Ranking on Google's organic search results with zero black-hat risk and pure algorithmic velocity.",
-      metaCategory: "ORGANIC SERP",
-      metaYear: "2025",
-      badgeColor: "#EF4136",
-      icon: Search,
-      tilt: -1.8,
-      speed: 28,
-      isOutline: false,
-    },
-    {
-      id: "02",
-      tag: "ZERO-CLICK PROOF",
-      shortTitle: "maps & local pack",
-      marqueeText: "google local pack & near me maps",
-      marqueeSub: "coimbatore regional proximity",
-      fullText: "Appearing in Google's Local Pack and Maps for high-intent \"near me\" searches across Coimbatore and regional industrial belts.",
-      metaCategory: "MAPS & LOCAL",
-      metaYear: "3-PACK",
-      badgeColor: "#0A0A0C",
-      icon: MapPin,
-      tilt: 1.6,
-      speed: 32,
-      isOutline: true,
-    },
-    {
-      id: "03",
-      tag: "SUB-SECOND STACK",
-      shortTitle: "ai overviews citation",
-      marqueeText: "ai overviews & generative citations",
-      marqueeSub: "chatgpt · perplexity · gemini",
-      fullText: "Getting cited by AI search engines and AI Overviews through GEO Services, turning LLMs into direct recommendation engines.",
-      metaCategory: "NEURAL GEO",
-      metaYear: "AI LLM",
-      badgeColor: "#EF4136",
-      icon: Cpu,
-      tilt: -1.2,
-      speed: 26,
-      isOutline: false,
-    },
-    {
-      id: "04",
-      tag: "KNOWLEDGE GRAPH",
-      shortTitle: "entity authority",
-      marqueeText: "long-term organic entity authority",
-      marqueeSub: "knowledge graph verified",
-      fullText: "Building long-term organic authority and topical knowledge graph entities, not short-lived algorithmic ranking spikes.",
-      metaCategory: "ENTITY GRAPH",
-      metaYear: "LIFETIME",
-      badgeColor: "#EF4136",
-      icon: Database,
-      tilt: 1.9,
-      speed: 30,
-      isOutline: true,
-    },
-  ];
+  const pillars = useMemo(() => {
+    if (whyChooseUs?.points && whyChooseUs.points.length > 0) {
+      const tilts = [-1.8, 1.6, -1.2, 1.9];
+      const speeds = [28, 32, 26, 30];
+      const icons = [Search, MapPin, Cpu, Database];
+      return whyChooseUs.points.map((pt, idx) => {
+        const words = pt.split(" ");
+        const shortTitle = words.slice(0, 3).join(" ").toLowerCase();
+        return {
+          id: `0${idx + 1}`,
+          tag: `0${idx + 1}`,
+          shortTitle,
+          marqueeText: pt.toLowerCase(),
+          marqueeSub: words.slice(3).join(" ").toLowerCase() || shortTitle,
+          fullText: pt,
+          metaCategory: "SYSTEM",
+          metaYear: `#0${idx + 1}`,
+          badgeColor: idx % 2 === 0 ? "#EF4136" : "#0A0A0C",
+          icon: icons[idx % icons.length],
+          tilt: tilts[idx % tilts.length],
+          speed: speeds[idx % speeds.length],
+          isOutline: idx % 2 !== 0,
+        };
+      });
+    }
+    return DEFAULT_WHY_PILLARS;
+  }, [whyChooseUs]);
 
   return (
     <section className="bf-sajan-why-root" aria-label="Why Coimbatore Businesses Choose Brand Forge">
@@ -485,13 +513,8 @@ export default function SeoSajanWhyChoose({ whyChooseUs, onOpenModal }) {
           transition={{ duration: 0.6 }}
         >
           <div>
-            <div className="bf-why-eyebrow">
-              <SajanStar size={15} color="#EF4136" />
-              <span>{whyChooseUs.tag || "WHY CHOOSE BRAND FORGE"}</span>
-            </div>
             <h2 className="bf-why-title">
-              Why Businesses in Coimbatore Choose Brand Forge as Their{" "}
-              <span className="bf-why-title-accent">SEO Company</span>
+              {whyChooseUs?.title || "Why Businesses Choose Brand Forge"}
             </h2>
           </div>
 
@@ -507,7 +530,7 @@ export default function SeoSajanWhyChoose({ whyChooseUs, onOpenModal }) {
         {/* STACKED ANGLED MARQUEE RIBBON PILLS */}
         <div className="bf-why-ribbons-stack">
           {pillars.map((pill, idx) => {
-            const Icon = pill.icon;
+            const _Icon = pill.icon;
             const isOpen = activePill === pill.id;
 
             return (

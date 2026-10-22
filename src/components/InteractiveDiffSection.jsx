@@ -35,13 +35,6 @@ function DiffCard({ item, idx }) {
 
   const DiffIcon = item.icon || Sparkles;
 
-  const guaranteeTags = [
-    "100% ATTRIBUTION SLA",
-    "ZERO-CLICK CITATION PROOF",
-    "SUB-SECOND CODE GUARANTEE"
-  ];
-  const tag = guaranteeTags[idx % guaranteeTags.length];
-
   return (
     <motion.div
       animate={{
@@ -87,7 +80,6 @@ function DiffCard({ item, idx }) {
             >
               <DiffIcon size={24} className="diff-lucide-icon" />
             </motion.div>
-            <span className="sg-diff-guarantee-badge">{tag}</span>
           </div>
 
           <div style={{ transform: "translateZ(36px)" }}>
@@ -96,10 +88,6 @@ function DiffCard({ item, idx }) {
           </div>
 
           {/* Bottom Status Conduit */}
-          <div className="sg-diff-card-footer" style={{ transform: "translateZ(24px)" }}>
-            <div className="footer-line" />
-            <span className="footer-code">BENCHMARK 0{idx + 1} // VERIFIED</span>
-          </div>
         </div>
       </motion.div>
     </motion.div>

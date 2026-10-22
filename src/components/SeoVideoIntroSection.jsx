@@ -143,18 +143,20 @@ export default function SeoVideoIntroSection({ onStartFade, onComplete }) {
     };
   }, [lockScroll, unlockScroll, handleComplete]);
 
-  // Start video playback strictly ONCE on mount
+  // Start video playback strictly ONCE on mount at 1.5x speed
   useEffect(() => {
     const video = videoRef.current;
     if (!video || hasStartedRef.current) return;
     hasStartedRef.current = true;
 
     video.muted = true;
+    video.playbackRate = 1.5;
     const playPromise = video.play();
     if (playPromise !== undefined) {
       playPromise.catch(() => {
         if (!hasEndedRef.current && video) {
           video.muted = true;
+          video.playbackRate = 1.5;
           video.play().catch(() => {});
         }
       });
@@ -203,11 +205,13 @@ export default function SeoVideoIntroSection({ onStartFade, onComplete }) {
           pointer-events: none;
         }
 
-        /* Video Frame: 100% Width edge-to-edge */
+        /* Video Frame: Smaller to 0.7x centered */
         .bf-intro-video-chassis {
           position: relative;
-          width: 100vw;
-          height: 100vh;
+          width: 70vw;
+          height: 70vh;
+          max-width: 70vw;
+          max-height: 70vh;
           display: flex;
           align-items: center;
           justify-content: center;
@@ -215,13 +219,39 @@ export default function SeoVideoIntroSection({ onStartFade, onComplete }) {
           overflow: hidden;
         }
 
-        /* 100% Width Video (Muted at all times, zero text) */
+        /* Video element scaled to 0.6 inside frame with soft feathered blurred edges */
         .bf-intro-video-element {
           width: 100%;
           height: 100%;
           object-fit: contain;
           display: block;
           background: #000000;
+          transform: scale(0.6);
+          transform-origin: center center;
+          -webkit-mask-image: radial-gradient(ellipse 86% 82% at 50% 50%, #000000 60%, rgba(0, 0, 0, 0.4) 82%, transparent 100%);
+          mask-image: radial-gradient(ellipse 86% 82% at 50% 50%, #000000 60%, rgba(0, 0, 0, 0.4) 82%, transparent 100%);
+        }
+
+        /* Subtle edge feathering vignette overlay */
+        .bf-intro-edge-blur {
+          position: absolute;
+          inset: 0;
+          pointer-events: none;
+          background: radial-gradient(ellipse 88% 85% at 50% 50%, transparent 60%, rgba(0, 0, 0, 0.8) 85%, #000000 100%);
+          box-shadow: inset 0 0 60px 40px #000000;
+          z-index: 2;
+        }
+
+        @media (max-width: 768px) {
+          .bf-intro-video-chassis {
+            width: 85vw;
+            height: 70vh;
+            max-width: 85vw;
+            max-height: 70vh;
+          }
+          .bf-intro-video-element {
+            transform: scale(0.6);
+          }
         }
       `}</style>
 
@@ -235,8 +265,15 @@ export default function SeoVideoIntroSection({ onStartFade, onComplete }) {
           playsInline
           preload="auto"
           className="bf-intro-video-element"
+          onLoadedMetadata={(e) => {
+            e.currentTarget.playbackRate = 1.5;
+          }}
+          onPlay={(e) => {
+            e.currentTarget.playbackRate = 1.5;
+          }}
           onEnded={handleComplete}
         />
+        <div className="bf-intro-edge-blur" aria-hidden="true" />
       </div>
     </div>
   );

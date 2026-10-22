@@ -1,12 +1,10 @@
 "use client";
 
-import React, { useLayoutEffect, useRef, useState } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import React, { useLayoutEffect, useState } from "react";
 import {
   Search,
   Sparkles,
   Zap,
-  ArrowRight,
   Globe,
   ShieldCheck,
   Users,
@@ -19,22 +17,8 @@ import {
 } from "lucide-react";
 import { servicesData } from "../data/servicesData";
 import BrandForgeAnimatedFooter from "../components/BrandForgeAnimatedFooter";
-import KexsioCanvasBackground from "../components/KexsioCanvasBackground";
-import CinematicSeoHero from "../components/CinematicSeoHero";
 import SerpGeoVisualizer from "../components/SerpGeoVisualizer";
-import Seo3DBentoGrid from "../components/Seo3DBentoGrid";
-import InteractiveStorySection from "../components/InteractiveStorySection";
-import InteractiveMetricsSection from "../components/InteractiveMetricsSection";
-import InteractiveWhyChooseSection from "../components/InteractiveWhyChooseSection";
-import InteractiveEvolutionMatrix from "../components/InteractiveEvolutionMatrix";
-import InteractivePillarsSection from "../components/InteractivePillarsSection";
-import InteractiveBlueprintTimeline from "../components/InteractiveBlueprintTimeline";
-import InteractiveDiffSection from "../components/InteractiveDiffSection";
 import InteractiveWhoWeHelpSection from "../components/InteractiveWhoWeHelpSection";
-import InteractiveFaqSection from "../components/InteractiveFaqSection";
-import InteractiveRelatedServicesSection from "../components/InteractiveRelatedServicesSection";
-import InteractiveBottomCtaSection from "../components/InteractiveBottomCtaSection";
-import SeoCylindricalStatement from "../components/SeoCylindricalStatement";
 import SeoQueryArchiveDeck from "../components/SeoQueryArchiveDeck";
 import SeoSajanHero from "../components/SeoSajanHero";
 import SeoSajanPhilosophy from "../components/SeoSajanPhilosophy";
@@ -58,7 +42,7 @@ import SeoVideoIntroSection from "../components/SeoVideoIntroSection";
    Unified high-tech split hero banner & story lead section for all 12 services.
    ─────────────────────────────────────────────────────────────────────────── */
 
-const SERVICE_BANNER_ASSETS = {
+const _SERVICE_BANNER_ASSETS = {
   "seo-geo": "/seo-geo-banner-bg.png",
   "paid-media": "/paid-media-banner-illustration.png",
   "web-foundry": "/web-dev-banner-illustration.png",
@@ -424,7 +408,7 @@ const _SERVICE_BADGES = {
   }
 };
 
-const SERVICE_PILL_TAGS = {
+const _SERVICE_PILL_TAGS = {
   "seo-geo": "IT SOLUTIONS & SEARCH DOMINANCE",
   "paid-media": "PAID MEDIA & PPC SCALING",
   "web-foundry": "HIGH-PERFORMANCE WEB FOUNDRY",
@@ -441,7 +425,7 @@ const SERVICE_PILL_TAGS = {
   "ppc-company-coimbatore": "PAID MEDIA & PPC SCALING",
 };
 
-const SERVICE_MICRO_DESCS = {
+const _SERVICE_MICRO_DESCS = {
   "seo-geo": "Providing enterprise SEO, GEO (Generative Engine Optimization), and sub-second performance engineering to scale your brand’s organic revenue.",
   "paid-media": "High-intent Google Ads, Meta scaling, and algorithmic paid media that turns ad spend into verified customer acquisition.",
   "web-foundry": "High-performance websites, ultra-fast custom web applications, and conversion-optimized architectures built on modern Jamstack.",
@@ -537,7 +521,7 @@ const SEO_DEFAULT_PILLARS = [
   }
 ];
 
-function renderHeroTitle(data) {
+function _renderHeroTitle(data) {
   const title = data.title || "";
   if (data.slug === "seo-geo" || data.slug === "seo-company-coimbatore") {
     return (
@@ -752,144 +736,77 @@ export default function ServiceLandingPage({ slug = "seo-geo", onOpenModal, navi
     : (data.pillars && data.pillars.length >= 3 ? data.pillars.slice(0, 3) : (data.pillars || []));
 
   return (
-    <div className={`sg-page-root ${isSeoGeo ? "is-seo-geo-page" : ""}`}>
+    <div className="sg-page-root is-seo-geo-page">
       <style>{styles}</style>
 
-      {/* ANIMATED MARQUEE TICKER STRIP (ON STANDARD 11 SERVICES) */}
-      {!isSeoGeo && (
-        <div className="sg-marquee-bar">
-          <div className="sg-marquee-track">
-            <span>⚡ {data.eyebrow}</span>
-            <span>• 100/100 PERFORMANCE BENCHMARK</span>
-            <span>• ENTERPRISE BRAND FORGING</span>
-            <span>• REAL-TIME ROI ESTIMATION</span>
-            <span>• 24/7 DEDICATED STRATEGY TEAM</span>
-            <span>⚡ {data.eyebrow}</span>
-            <span>• 100/100 PERFORMANCE BENCHMARK</span>
-            <span>• ENTERPRISE BRAND FORGING</span>
-            <span>• REAL-TIME ROI ESTIMATION</span>
-            <span>• 24/7 DEDICATED STRATEGY TEAM</span>
-          </div>
-        </div>
+      {/* 1ST SECTION: HERO (SAJAN PORTAL MASK & SPOTLIGHT HERO) */}
+      {isSeoGeo && seoIntroPhase !== "done" && (
+        <SeoVideoIntroSection
+          onStartFade={() => setSeoIntroPhase("fading")}
+          onComplete={() => setSeoIntroPhase("done")}
+        />
       )}
+      <div
+        style={{
+          opacity: (isSeoGeo && seoIntroPhase === "playing") ? 0 : 1,
+          transition: "opacity 1.5s cubic-bezier(0.4, 0, 0.2, 1)",
+          willChange: "opacity",
+        }}
+      >
+        <SeoSajanHero data={data} slug={slug} onOpenModal={onOpenModal} />
+      </div>
 
-      {/* 1ST SECTION: HERO (SAJAN PORTAL MASK & SPOTLIGHT HERO ON SEO & GEO, CINEMATIC HERO ON OTHERS) */}
-      {isSeoGeo ? (
-        <>
-          {seoIntroPhase !== "done" && (
-            <SeoVideoIntroSection
-              onStartFade={() => setSeoIntroPhase("fading")}
-              onComplete={() => setSeoIntroPhase("done")}
-            />
-          )}
-          <div
-            style={{
-              opacity: seoIntroPhase === "playing" ? 0 : 1,
-              transition: "opacity 1.5s cubic-bezier(0.4, 0, 0.2, 1)",
-              willChange: "opacity",
-            }}
-          >
-            <SeoSajanHero onOpenModal={onOpenModal} />
-          </div>
-        </>
-      ) : (
-        <CinematicSeoHero onOpenModal={onOpenModal} data={data} slug={slug} />
-      )}
+      {/* 2ND SECTION: SAJAN PHILOSOPHY & REVEAL STATEMENT (PINNED SCROLL SCRUB) */}
+      <SeoSajanPhilosophy data={data} onOpenModal={onOpenModal} />
 
-      {/* 2ND SECTION: SAJAN PHILOSOPHY & REVEAL STATEMENT (PINNED SCROLL SCRUB, SEO & GEO ONLY) */}
-      {isSeoGeo && <SeoSajanPhilosophy onOpenModal={onOpenModal} />}
+      {/* 3RD SECTION: SAJAN FREQUENCY DIAL & TUNER (PINNED HORIZONTAL GAUGE) */}
+      <SeoSajanServicesDial data={data} onOpenModal={onOpenModal} />
 
-      {/* 3RD SECTION: SAJAN FREQUENCY DIAL & TUNER (PINNED HORIZONTAL GAUGE, SEO & GEO ONLY) */}
-      {isSeoGeo && <SeoSajanServicesDial onOpenModal={onOpenModal} />}
-
-      {/* 4TH SECTION: CAPABILITIES & DELIVERABLES (MONTARVILLE ARCHITECTURAL BLUEPRINTS ON SEO & GEO, 3D BENTO ON OTHERS) */}
-      {isSeoGeo ? (
-        <SeoMontarvilleDeliverables onOpenModal={onOpenModal} />
-      ) : (
-        <Seo3DBentoGrid data={data} slug={slug} />
-      )}
+      {/* 4TH SECTION: CAPABILITIES & DELIVERABLES (MONTARVILLE ARCHITECTURAL BLUEPRINTS) */}
+      <SeoMontarvilleDeliverables data={data} onOpenModal={onOpenModal} />
 
       {/* DUAL-ENGINE SEARCH VISUALIZER (ONLY ON SEO & GEO) */}
       {isSeoGeo && <SerpGeoVisualizer />}
 
       {/* DEDICATED PARAGRAPH STORY & LEAD FORM SECTION */}
-      {isSeoGeo ? (
-        <SeoMontarvilleStory
-          data={data}
-          storyHeading={storyHeading}
-          topThreePillars={topThreePillars}
-          onOpenModal={onOpenModal}
-        />
-      ) : (
-        <InteractiveStorySection
-          data={data}
-          storyHeading={storyHeading}
-          topThreePillars={topThreePillars}
-        />
-      )}
+      <SeoMontarvilleStory
+        data={data}
+        storyHeading={storyHeading}
+        topThreePillars={topThreePillars}
+        onOpenModal={onOpenModal}
+      />
 
-      {/* OUTCOMES / METRICS STRIP (SAJAN LUMINA BRUTALIST GRID ON SEO & GEO, INTERACTIVE METRICS ON OTHERS) */}
-      {isSeoGeo ? (
-        <SeoSajanOutcomes />
-      ) : (
-        <InteractiveMetricsSection metrics={data.metrics} />
-      )}
+      {/* OUTCOMES / METRICS STRIP (SAJAN LUMINA BRUTALIST GRID) */}
+      <SeoSajanOutcomes data={data} metrics={data.metrics} />
 
-      {/* WHY BUSINESSES CHOOSE BRAND FORGE (SAJAN ANGLED MARQUEE RIBBONS ON SEO & GEO, 3D CARDS ON OTHERS) */}
+      {/* WHY BUSINESSES CHOOSE BRAND FORGE (SAJAN ANGLED MARQUEE RIBBONS) */}
       {data.whyChooseUs && (
-        isSeoGeo ? (
-          <SeoSajanWhyChoose whyChooseUs={data.whyChooseUs} onOpenModal={onOpenModal} />
-        ) : (
-          <InteractiveWhyChooseSection whyChooseUs={data.whyChooseUs} />
-        )
+        <SeoSajanWhyChoose whyChooseUs={data.whyChooseUs} onOpenModal={onOpenModal} />
       )}
 
-
-      {/* CREATIVE EDITORIAL COMPARISON MATRIX: THE EVOLUTION FROM SEO TO GEO */}
+      {/* CREATIVE EDITORIAL COMPARISON MATRIX */}
       {data.matrixRows && data.matrixRows.length > 0 && (
-        isSeoGeo ? (
-          <SeoMontarvilleEvolution
-            matrixRows={data.matrixRows}
-            matrixTag={data.matrixTag}
-            matrixTitle={data.matrixTitle}
-            matrixSubtitle={data.matrixSubtitle}
-            evolutionVisual={evolutionVisual}
-          />
-        ) : (
-          <InteractiveEvolutionMatrix
-            matrixRows={data.matrixRows}
-            matrixTag={data.matrixTag}
-            matrixTitle={data.matrixTitle}
-            matrixSubtitle={data.matrixSubtitle}
-            evolutionVisual={evolutionVisual}
-          />
-        )
+        <SeoMontarvilleEvolution
+          matrixRows={data.matrixRows}
+          matrixTag={data.matrixTag}
+          matrixTitle={data.matrixTitle}
+          matrixSubtitle={data.matrixSubtitle}
+          evolutionVisual={evolutionVisual}
+        />
       )}
 
       {/* AWAKE-INSPIRED LIVE QUERY ARCHIVE DECK (SEO & GEO ONLY) */}
       {isSeoGeo && <SeoQueryArchiveDeck onOpenModal={onOpenModal} />}
 
-      {/* COMPREHENSIVE SEO & GEO ARCHITECTURE PILLARS STREAM */}
-      {isSeoGeo ? (
-        <SeoMontarvillePillars data={data} onOpenModal={onOpenModal} />
-      ) : (
-        <InteractivePillarsSection data={data} />
-      )}
+      {/* COMPREHENSIVE ARCHITECTURE PILLARS STREAM */}
+      <SeoMontarvillePillars data={data} onOpenModal={onOpenModal} />
 
       {/* 4-STEP BLUEPRINT ROADMAP TIMELINE */}
-      {isSeoGeo ? (
-        <SeoMontarvilleBlueprint timeline={data.timeline} onOpenModal={onOpenModal} />
-      ) : (
-        <InteractiveBlueprintTimeline timeline={data.timeline} />
-      )}
+      <SeoMontarvilleBlueprint timeline={data.timeline} onOpenModal={onOpenModal} />
 
       {/* WHAT MAKES OUR COMPANY DIFFERENT SECTION */}
       {data.differentiators && (
-        isSeoGeo ? (
-          <SeoMontarvilleDiff differentiators={data.differentiators} onOpenModal={onOpenModal} />
-        ) : (
-          <InteractiveDiffSection differentiators={data.differentiators} />
-        )
+        <SeoMontarvilleDiff differentiators={data.differentiators} onOpenModal={onOpenModal} />
       )}
 
       {/* WHO WE HELP SECTION */}
@@ -898,40 +815,19 @@ export default function ServiceLandingPage({ slug = "seo-geo", onOpenModal, navi
       )}
 
       {/* FREQUENTLY ASKED QUESTIONS */}
-      {isSeoGeo ? (
-        <SeoMontarvilleFaq faqs={data.faqs} onOpenModal={onOpenModal} />
-      ) : (
-        <InteractiveFaqSection faqs={data.faqs} onOpenModal={onOpenModal} />
-      )}
+      <SeoMontarvilleFaq faqs={data.faqs} onOpenModal={onOpenModal} />
 
       {/* RELATED SERVICES INTERNAL CROSS-LINKING SECTION */}
-      {isSeoGeo ? (
-        <SeoMontarvilleRelatedServices
-          currentSlug={slug}
-          navigate={navigate}
-        />
-      ) : (
-        <InteractiveRelatedServicesSection
-          currentSlug={slug}
-          currentEyebrow={data.eyebrow}
-          navigate={navigate}
-        />
-      )}
+      <SeoMontarvilleRelatedServices
+        currentSlug={slug}
+        navigate={navigate}
+      />
 
       {/* BOTTOM BANNER CTA */}
-      {isSeoGeo ? (
-        <SeoMontarvilleBottomCta
-          bottomCta={data.bottomCta}
-          onOpenModal={onOpenModal}
-        />
-      ) : (
-        <InteractiveBottomCtaSection
-          bottomCta={data.bottomCta}
-          eyebrow={data.eyebrow}
-          onOpenModal={onOpenModal}
-        />
-      )}
-
+      <SeoMontarvilleBottomCta
+        bottomCta={data.bottomCta}
+        onOpenModal={onOpenModal}
+      />
 
       {/* SITE FOOTER */}
       <BrandForgeAnimatedFooter onOpenModal={onOpenModal} />

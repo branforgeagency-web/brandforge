@@ -2,7 +2,7 @@
 
 import React, { useRef, useState } from "react";
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
-import { CheckCircle2, ShieldCheck, ArrowRight, Building2, Stethoscope, Factory, ShoppingBag, Laptop } from "lucide-react";
+import { CheckCircle2, ShieldCheck } from "lucide-react";
 import KexsioCanvasBackground from "./KexsioCanvasBackground";
 
 function WhoIndustryCard({ ind, idx, winTag }) {
@@ -78,10 +78,6 @@ function WhoIndustryCard({ ind, idx, winTag }) {
           <h4>{ind.title}</h4>
           <p>{ind.desc}</p>
         </div>
-
-        <div className="sg-who-bottom-bar" style={{ transform: "translateZ(22px)" }}>
-          <span className="who-sector-code">SECTOR 0{idx + 1} // DOMINANCE ARCHITECTURE</span>
-        </div>
       </motion.div>
     </motion.div>
   );
@@ -104,7 +100,25 @@ export default function InteractiveWhoWeHelpSection({
   return (
     <section className="sg-section sg-who-section">
       <style>{whoStyles}</style>
-      <KexsioCanvasBackground theme="light" opacity={0.65} />
+
+      {/* High-Performance Neural Constellation Background */}
+      <KexsioCanvasBackground theme="dark" opacity={0.88} />
+
+      {/* Montarville Signature Intersecting Circle Line-Art Watermark */}
+      <div className="sg-who-watermark-wrap" aria-hidden="true">
+        <svg
+          width="768"
+          height="610"
+          viewBox="0 0 768 610"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <circle cx="384" cy="417.5" r="191.5" stroke="rgba(255, 255, 255, 0.04)" strokeWidth="1.2" />
+          <circle cx="384" cy="192" r="191.5" stroke="rgba(255, 255, 255, 0.04)" strokeWidth="1.2" />
+          <circle cx="192" cy="304.7" r="191.5" stroke="rgba(239, 65, 54, 0.06)" strokeWidth="1.2" />
+          <circle cx="576" cy="304.7" r="191.5" stroke="rgba(255, 255, 255, 0.04)" strokeWidth="1.2" />
+        </svg>
+      </div>
 
       <div className="sg-container">
         {/* HEADER */}
@@ -115,7 +129,7 @@ export default function InteractiveWhoWeHelpSection({
           viewport={{ once: false, amount: 0.2 }}
           transition={{ duration: 0.7 }}
         >
-          <span className="sg-section-tag">{whoWeHelp.tag || "WHO WE HELP"}</span>
+          <span className="sg-section-tag">{whoWeHelp.tag || "WHO WE BUILD FOR"}</span>
           <h2 className="sg-section-title">{whoWeHelp.title}</h2>
           {whoWeHelp.subtitle && (
             <p className="sg-section-subtitle">{whoWeHelp.subtitle}</p>
@@ -134,7 +148,7 @@ export default function InteractiveWhoWeHelpSection({
           ))}
         </div>
 
-        {/* CERTIFICATIONS STRIP WITH ROTATING AURA */}
+        {/* CERTIFICATIONS STRIP */}
         {whoWeHelp.certifications && (
           <div className="sg-cert-strip">
             {whoWeHelp.certifications.map((cert, idx) => (
@@ -161,20 +175,75 @@ export default function InteractiveWhoWeHelpSection({
 
 const whoStyles = `
   .sg-who-section {
-    background: #FFFFFF;
-    border-top: 1px solid #E5E7EB;
-    border-bottom: 1px solid #E5E7EB;
-    padding: clamp(70px, 9vw, 110px) 0;
+    background: #09090C !important;
+    background-image: 
+      radial-gradient(circle at 50% 0%, rgba(239, 65, 54, 0.12) 0%, transparent 60%),
+      radial-gradient(circle at 85% 85%, rgba(239, 65, 54, 0.06) 0%, transparent 50%),
+      radial-gradient(circle at 15% 75%, rgba(255, 255, 255, 0.02) 0%, transparent 40%) !important;
+    border-top: 1px solid rgba(255, 255, 255, 0.08) !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+    padding: clamp(80px, 9vw, 130px) 0;
     position: relative;
     overflow: hidden;
+    color: #FAFAFC;
+  }
+
+  .sg-who-watermark-wrap {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    z-index: 1;
+    opacity: 0.7;
+  }
+
+  .sg-who-section .sg-container {
+    position: relative;
+    z-index: 2;
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 0 clamp(20px, 4vw, 40px);
+  }
+
+  .sg-who-section .sg-section-header {
+    text-align: center;
+    max-width: 860px;
+    margin: 0 auto clamp(40px, 5vw, 64px);
+  }
+
+  .sg-who-section .sg-section-tag {
+    display: inline-block;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 0.14em;
+    color: #EF4136;
+    background: rgba(239, 65, 54, 0.08);
+    border: 1px solid rgba(239, 65, 54, 0.25);
+    padding: 5px 14px;
+    border-radius: 9999px;
+    text-transform: uppercase;
+    margin-bottom: 16px;
   }
 
   .sg-who-section .sg-section-title {
-    color: #0A0A0C;
+    font-family: "General Sans", "Outfit", -apple-system, sans-serif;
+    font-size: clamp(32px, 4.4vw, 56px);
+    font-weight: 800;
+    letter-spacing: -0.035em;
+    line-height: 1.12;
+    color: #FAFAFC !important;
+    margin: 0 0 16px 0;
   }
 
   .sg-who-section .sg-section-subtitle {
-    color: #4B5563;
+    font-family: "Plus Jakarta Sans", sans-serif;
+    font-size: clamp(15.5px, 1.2vw, 17.5px);
+    line-height: 1.68;
+    color: rgba(250, 250, 252, 0.68) !important;
+    max-width: 820px;
+    margin: 0 auto;
   }
 
   .sg-who-grid {
@@ -185,37 +254,39 @@ const whoStyles = `
   }
 
   .sg-who-card {
-    padding: 28px 24px 22px;
+    padding: 28px 24px 24px;
     border-radius: 20px;
-    background: #FAFAFC;
-    border: 1px solid #E5E7EB;
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.03);
+    background: #0E0E14 !important;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5) !important;
     transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    position: relative;
   }
 
   .sg-who-card:hover,
   .sg-who-card.is-hovered {
-    border-color: #EF4136;
-    background: #FFFFFF;
-    box-shadow: 0 12px 30px rgba(239, 65, 54, 0.1), 0 0 0 1px rgba(239, 65, 54, 0.2);
+    border-color: #EF4136 !important;
+    background: #14141C !important;
+    box-shadow: 0 16px 40px rgba(239, 65, 54, 0.2), 0 0 0 1px rgba(239, 65, 54, 0.4) !important;
+    transform: translateY(-4px);
   }
 
   .sg-who-top-row {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 18px;
+    margin-bottom: 20px;
   }
 
   .sg-who-icon {
-    width: 36px;
-    height: 36px;
+    width: 38px;
+    height: 38px;
     border-radius: 10px;
-    background: rgba(239, 65, 54, 0.1);
-    border: 1px solid rgba(239, 65, 54, 0.25);
+    background: rgba(239, 65, 54, 0.12);
+    border: 1px solid rgba(239, 65, 54, 0.3);
     color: #EF4136;
     display: flex;
     align-items: center;
@@ -224,38 +295,31 @@ const whoStyles = `
   }
 
   .sg-who-metric-tag {
-    font-family: "JetBrains Mono", monospace;
-    font-size: 0.68rem;
-    font-weight: 800;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    font-size: 0.7rem;
+    font-weight: 700;
     color: #EF4136;
     background: rgba(239, 65, 54, 0.08);
-    padding: 3px 8px;
+    padding: 4px 10px;
     border-radius: 6px;
-    border: 1px solid rgba(239, 65, 54, 0.2);
+    border: 1px solid rgba(239, 65, 54, 0.22);
+    letter-spacing: 0.04em;
   }
 
   .sg-who-content h4 {
     font-family: "Outfit", sans-serif;
     font-size: 1.15rem;
     font-weight: 800;
-    color: #0A0A0C;
-    margin: 0 0 8px;
+    color: #FAFAFC !important;
+    margin: 0 0 10px;
     letter-spacing: -0.01em;
   }
 
   .sg-who-content p {
     font-size: 0.88rem;
-    line-height: 1.6;
-    color: #4B5563;
-    margin: 0 0 20px;
-  }
-
-  .sg-who-bottom-bar {
-    padding-top: 12px;
-    border-top: 1px solid #F3F4F6;
-    font-family: "JetBrains Mono", monospace;
-    font-size: 0.68rem;
-    color: #9CA3AF;
+    line-height: 1.62;
+    color: rgba(250, 250, 252, 0.65) !important;
+    margin: 0;
   }
 
   /* CERTIFICATIONS STRIP */
@@ -265,8 +329,9 @@ const whoStyles = `
     align-items: center;
     gap: 16px;
     flex-wrap: wrap;
-    padding-top: 28px;
-    border-top: 1px solid #E5E7EB;
+    padding-top: 36px;
+    border-top: 1px solid rgba(255, 255, 255, 0.08) !important;
+    margin-top: 24px;
   }
 
   .sg-cert-badge {
@@ -276,21 +341,28 @@ const whoStyles = `
     gap: 8px;
     padding: 10px 22px;
     border-radius: 999px;
-    background: #FFFFFF;
-    border: 1px solid #E5E7EB;
-    font-family: "JetBrains Mono", monospace;
+    background: #0E0E14 !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
     font-size: 0.8rem;
-    font-weight: 800;
-    color: #0A0A0C;
-    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.04);
+    font-weight: 700;
+    color: #FAFAFC !important;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4) !important;
     cursor: default;
     overflow: hidden;
+    transition: all 0.25s ease;
+  }
+
+  .sg-cert-badge:hover {
+    border-color: #EF4136 !important;
+    background: #14141C !important;
+    transform: translateY(-2px);
   }
 
   .cert-aura-ring {
     position: absolute;
     inset: -50%;
-    background: radial-gradient(circle at 50% 50%, rgba(239, 65, 54, 0.08) 0%, transparent 60%);
+    background: radial-gradient(circle at 50% 50%, rgba(239, 65, 54, 0.12) 0%, transparent 60%);
     pointer-events: none;
   }
 
@@ -302,5 +374,6 @@ const whoStyles = `
 
   @media (max-width: 640px) {
     .sg-who-grid { grid-template-columns: 1fr; }
+    .sg-who-section { padding: 60px 0; }
   }
 `;

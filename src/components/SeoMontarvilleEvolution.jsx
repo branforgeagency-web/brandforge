@@ -6,8 +6,8 @@ import { ArrowRight, CheckCircle2, Sparkles, Zap, ChevronDown } from "lucide-rea
 
 export default function SeoMontarvilleEvolution({
   matrixRows = [],
-  matrixTag = "PARADIGM SHIFT",
-  matrixTitle: _matrixTitle = "The Evolution from Traditional SEO to Generative AI Optimization",
+  matrixTag: _matrixTag = "PARADIGM SHIFT",
+  matrixTitle = "The Evolution from Traditional SEO to Generative AI Optimization",
   matrixSubtitle = "Search is no longer just typing keywords into a box. Millions of buyers now ask AI assistants for direct brand recommendations.",
 }) {
   const [activeFilter, setActiveFilter] = useState("all"); // "all" | "01" | "02" | "03" | "04"
@@ -126,14 +126,29 @@ export default function SeoMontarvilleEvolution({
       <div className="sme-container">
         {/* Header with Montarville Signature Red Surtitle */}
         <div className="sme-header">
-          <div className="sme-surtitle">
-            <span className="sme-surtitle-rect" />
-            <span>{matrixTag} // COMPARISON MATRIX</span>
-          </div>
 
           <h2 className="sme-title">
-            The Evolution from <span className="title-muted">Traditional SEO</span> to{" "}
-            <span className="title-red">Generative AI Optimization</span>
+            {matrixTitle ? (
+              matrixTitle.includes("VS") ? (
+                <>
+                  <span className="title-muted">{matrixTitle.split("VS")[0].trim()}</span>{" "}
+                  <span className="title-muted">VS</span>{" "}
+                  <span className="title-red">{matrixTitle.split("VS")[1].trim()}</span>
+                </>
+              ) : matrixTitle.toLowerCase().includes(" to ") ? (
+                <>
+                  {matrixTitle.split(/ to /i)[0].trim()}{" "}
+                  to <span className="title-red">{matrixTitle.split(/ to /i)[1].trim()}</span>
+                </>
+              ) : (
+                <span>{matrixTitle}</span>
+              )
+            ) : (
+              <>
+                The Evolution from <span className="title-muted">Traditional SEO</span> to{" "}
+                <span className="title-red">Generative AI Optimization</span>
+              </>
+            )}
           </h2>
 
           <p className="sme-subtitle">{matrixSubtitle}</p>
@@ -155,7 +170,7 @@ export default function SeoMontarvilleEvolution({
                   onClick={() => setActiveFilter(r.id)}
                   className={`sme-filter-btn ${activeFilter === r.id ? "is-active" : ""}`}
                 >
-                  № {r.num} · {r.feature.split(" ")[0]}
+                  {r.feature.split(" ")[0]}
                 </button>
               ))}
             </div>
@@ -245,7 +260,7 @@ export default function SeoMontarvilleEvolution({
                     {/* Left Column: Number & Feature Name */}
                     <div className="sme-col-dim">
                       <div className="sme-dim-badge-row">
-                        <span className="sme-dim-index">№ {row.num}</span>
+                        <span className="sme-dim-index">{row.num}</span>
                         <span className="sme-expand-hint">
                           {isExpanded ? "Collapse" : "Inspect Protocol"}
                           <ChevronDown size={11} className={`sme-chevron ${isExpanded ? "is-open" : ""}`} />

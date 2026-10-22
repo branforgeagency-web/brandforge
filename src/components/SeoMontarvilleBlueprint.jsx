@@ -1,31 +1,9 @@
 "use client";
 
 import React, { useState } from "react";
-import { motion } from "framer-motion";
-import { CheckCircle2, ArrowRight, ShieldCheck, Zap, Activity } from "lucide-react";
+import { CheckCircle2 } from "lucide-react";
 
-function SajanStar({ size = 15, className = "" }) {
-  return (
-    <svg
-      width={size}
-      height={size}
-      viewBox="0 0 24 24"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      className={className}
-    >
-      <path
-        d="M12 0C12 0 14.5 9.5 24 12C14.5 14.5 12 24 12 24C12 24 9.5 14.5 0 12C9.5 9.5 12 0 12 0Z"
-        stroke="currentColor"
-        strokeWidth="1.5"
-        strokeLinejoin="round"
-        fill="none"
-      />
-    </svg>
-  );
-}
-
-export default function SeoMontarvilleBlueprint({ timeline = [], onOpenModal }) {
+export default function SeoMontarvilleBlueprint({ timeline = [], title, subtitle, onOpenModal: _onOpenModal }) {
   const [activeStep, setActiveStep] = useState(0);
 
   const defaultSteps = [
@@ -76,15 +54,17 @@ export default function SeoMontarvilleBlueprint({ timeline = [], onOpenModal }) 
       <div className="smb-container">
         {/* Header */}
         <div className="smb-header">
-          <div className="smb-metalabel">
-            <SajanStar className="smb-star" />
-            <span>EXECUTION PROTOCOL // 4-STEP BLUEPRINT</span>
-          </div>
           <h2 className="smb-title">
-            The Roadmap to <span className="title-red">Search & AI Supremacy</span>
+            {title ? (
+              <span>{title}</span>
+            ) : (
+              <>
+                The Roadmap to <span className="title-red">Execution Supremacy</span>
+              </>
+            )}
           </h2>
           <p className="smb-subtitle">
-            A battle-tested deployment framework engineered for sub-200ms DOM hydration, category keyword dominance, and top generative AI citation.
+            {subtitle || "A battle-tested deployment framework engineered for measurable business impact and compounding digital ROI."}
           </p>
         </div>
 

@@ -1,38 +1,29 @@
 "use client";
 
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useMemo } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { ArrowUpRight, Shuffle } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import { servicesData, serviceUrl } from "../data/servicesData";
 
 // Sajan Star SVG Icon
-function SajanStar({ size = 15, className = "" }) {
-  return (
-    <svg
-      width={size}
-      height={size}
-      viewBox="0 0 24 24"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      className={className}
-    >
-      <path
-        d="M12 0C12 0 14.5 9.5 24 12C14.5 14.5 12 24 12 24C12 24 9.5 14.5 0 12C9.5 9.5 12 0 12 0Z"
-        stroke="currentColor"
-        strokeWidth="1.5"
-        strokeLinejoin="round"
-        fill="none"
-      />
-    </svg>
-  );
-}
+
+
+const ALL_RELATED_SERVICES = [
+  { key: "seo-geo", role: "Organic SEO & AI Citations", floatDuration: 5.2 },
+  { key: "paid-media", role: "Paid Media Acquisition", floatDuration: 4.5 },
+  { key: "web-foundry", role: "Web Performance & Vitals", floatDuration: 5.8 },
+  { key: "content-smithy", role: "Content Marketing & Authority", floatDuration: 4.8 },
+  { key: "viral-social", role: "Viral Social & Video", floatDuration: 5.0 },
+  { key: "inbox-edge", role: "Email Systems & Retention", floatDuration: 4.6 },
+  { key: "cro-revenue", role: "Conversion Rate Optimization", floatDuration: 6.2 },
+  { key: "brand-anvil", role: "Strategic Brand Positioning", floatDuration: 5.5 },
+];
 
 export default function SeoMontarvilleRelatedServices({
   currentSlug: _currentSlug = "seo-geo",
   navigate,
 }) {
   const sectionRef = useRef(null);
-  const [shuffleSeed, setShuffleSeed] = useState(0);
   const [activeHoverId, setActiveHoverId] = useState(null);
 
   // Scroll Parallax Scrub on Red & Black Gradient Background Layers
@@ -47,40 +38,25 @@ export default function SeoMontarvilleRelatedServices({
   const parallaxSecondaryY = useTransform(scrollYProgress, [0, 1], [120, -120]);
   const parallaxWatermarkY = useTransform(scrollYProgress, [0, 1], [-80, 80]);
 
-  const relatedKeys = [
-    {
-      key: "paid-media",
-      num: "01",
-      role: "IMMEDIATE BOTTOM-FUNNEL REVENUE",
-      stat: "+310% Blended ROAS",
-      customOffset: { x: "-2%", y: "0px", rotate: "-1deg" },
-      floatDuration: 4.5,
-    },
-    {
-      key: "web-foundry",
-      num: "02",
-      role: "INFRASTRUCTURE SPEED & VITALS",
-      stat: "100/100 Core Web Vitals",
-      customOffset: { x: "4%", y: "30px", rotate: "1.5deg" },
-      floatDuration: 5.8,
-    },
-    {
-      key: "content-smithy",
-      num: "03",
-      role: "KNOWLEDGE GRAPH ENTITY SEEDING",
-      stat: "Top 3 AI Source Citations",
-      customOffset: { x: "-1%", y: "-15px", rotate: "1deg" },
-      floatDuration: 4.8,
-    },
-    {
-      key: "cro-revenue",
-      num: "04",
-      role: "PIPELINE CONVERSION MULTIPLIER",
-      stat: "+42% Conversion Lift",
-      customOffset: { x: "3%", y: "20px", rotate: "-1.5deg" },
-      floatDuration: 6.2,
-    },
-  ];
+  const cleanSlug = (_currentSlug || "").replace(/^\/services\//, "").replace(/^\//, "");
+  const currentKey = servicesData[cleanSlug]?.slug || cleanSlug || "seo-geo";
+
+  const relatedKeys = useMemo(() => {
+    const offsets = [
+      { x: "-2%", y: "0px", rotate: "-1deg" },
+      { x: "4%", y: "30px", rotate: "1.5deg" },
+      { x: "-1%", y: "-15px", rotate: "1deg" },
+      { x: "3%", y: "20px", rotate: "-1.5deg" },
+    ];
+    return ALL_RELATED_SERVICES
+      .filter((s) => s.key !== currentKey)
+      .slice(0, 4)
+      .map((s, idx) => ({
+        ...s,
+        num: `0${idx + 1}`,
+        customOffset: offsets[idx % offsets.length],
+      }));
+  }, [currentKey]);
 
   // Dynamic random permutation offsets when user clicks "Reshuffle Constellation"
   const randomOffsets = [
@@ -104,7 +80,7 @@ export default function SeoMontarvilleRelatedServices({
     ],
   ];
 
-  const currentPermutation = randomOffsets[shuffleSeed % randomOffsets.length];
+  const currentPermutation = randomOffsets[0];
 
   return (
     <section className="smr-constellation-root" id="synergistic-capabilities" ref={sectionRef}>
@@ -157,10 +133,6 @@ export default function SeoMontarvilleRelatedServices({
       <div className="smr-container">
         {/* Header with Montarville Red Surtitle & Reshuffle Trigger */}
         <div className="smr-header">
-          <div className="smr-metalabel">
-            <SajanStar className="smr-star" />
-            <span>FULL-FUNNEL ECOSYSTEM // CROSS-DISCIPLINARY</span>
-          </div>
 
           <h2 className="smr-title">
             Synergistic <span className="title-red">Growth Capabilities</span>
@@ -169,20 +141,6 @@ export default function SeoMontarvilleRelatedServices({
           <p className="smr-subtitle">
             SEO & GEO deliver peak organic ROI when reinforced by precision paid acquisition, sub-200ms Jamstack engineering, and high-conversion landing pages.
           </p>
-
-          {/* Interactive Dynamic Reshuffle Pill */}
-          <div className="smr-shuffle-wrap">
-            <button
-              type="button"
-              onClick={() => setShuffleSeed((prev) => prev + 1)}
-              className="smr-shuffle-btn"
-              title="Click to dynamically re-scatter the constellation"
-            >
-              <Shuffle size={13} className="shuffle-icon" />
-              <span>DYNAMIC CONSTELLATION SHIFT</span>
-              <span className="shuffle-seed-tag">VAR 0{ (shuffleSeed % 3) + 1 }</span>
-            </button>
-          </div>
         </div>
 
         {/* Creative Random Organic Constellation Cluster (ZERO CARDS, ZERO BORDERS) */}
@@ -244,12 +202,7 @@ export default function SeoMontarvilleRelatedServices({
 
                   {/* Node Header Row: Big Floating Index & Telemetry Pill */}
                   <div className="smr-node-meta">
-                    <span className="smr-node-index">№ {item.num}</span>
                     <span className="smr-node-role">{item.role}</span>
-                    <div className="smr-node-metric-pill">
-                      <span className="pill-dot" />
-                      <span>{item.stat}</span>
-                    </div>
                   </div>
 
                   {/* Big Architectural Title (Zero Cards) */}
@@ -416,55 +369,7 @@ const constellationStyles = `
     font-size: clamp(15.5px, 1.2vw, 18px);
     line-height: 1.68;
     color: rgba(255, 255, 255, 0.68);
-    margin: 0 auto 24px;
-  }
-
-  /* Dynamic Re-Scatter Button */
-  .smr-shuffle-wrap {
-    display: flex;
-    justify-content: center;
-  }
-
-  .smr-shuffle-btn {
-    appearance: none;
-    cursor: pointer;
-    background: rgba(255, 255, 255, 0.04);
-    border: 1px solid rgba(255, 255, 255, 0.14);
-    border-radius: 999px;
-    padding: 8px 18px;
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    font-family: "JetBrains Mono", monospace;
-    font-size: 0.7rem;
-    font-weight: 700;
-    letter-spacing: 0.08em;
-    color: #FAFAFC;
-    transition: all 0.25s ease;
-  }
-
-  .smr-shuffle-btn:hover {
-    border-color: #EF4136;
-    background: rgba(239, 65, 54, 0.1);
-    color: #FAFAFC;
-    box-shadow: 0 0 14px rgba(239, 65, 54, 0.25);
-  }
-
-  .shuffle-icon {
-    color: #EF4136;
-    transition: transform 0.4s ease;
-  }
-
-  .smr-shuffle-btn:hover .shuffle-icon {
-    transform: rotate(180deg);
-  }
-
-  .shuffle-seed-tag {
-    font-size: 0.62rem;
-    color: #EF4136;
-    background: rgba(239, 65, 54, 0.14);
-    padding: 2px 6px;
-    border-radius: 3px;
+    margin: 0 auto;
   }
 
   /* Organic Constellation Field (ZERO CARDS, ZERO BORDERS) */

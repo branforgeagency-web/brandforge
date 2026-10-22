@@ -73,24 +73,12 @@ const STATEMENT_TEXT =
   "Search engines are transitioning from 10 blue links to AI synthesized answers. Traditional agencies optimize for obsolete algorithms. BrandForge engineers deep entity schema, high-trust seed sets, and neural vector consensus so your business is cited as the undisputed market authority.";
 
 const HIGHLIGHT_WORDS = [
-  "10",
-  "blue",
-  "links",
-  "ai",
-  "synthesized",
-  "answers.",
-  "deep",
-  "entity",
-  "schema,",
-  "neural",
-  "vector",
-  "consensus",
-  "undisputed",
-  "market",
-  "authority.",
+  "10", "blue", "links", "ai", "synthesized", "answers.",
+  "deep", "entity", "schema,", "neural", "vector", "consensus",
+  "undisputed", "market", "authority.", "performance", "revenue", "scale"
 ];
 
-export default function SeoSajanPhilosophy({ onOpenModal }) {
+export default function SeoSajanPhilosophy({ data, onOpenModal }) {
   const sectionRef = useRef(null);
   const triggerRef = useRef(null);
   const textRef = useRef(null);
@@ -98,12 +86,28 @@ export default function SeoSajanPhilosophy({ onOpenModal }) {
   const lettersRef = useRef([]);
   const hasTriggeredLetters = useRef(false);
 
+  const statementText = useMemo(() => {
+    if (data?.whyChooseUs?.description) {
+      return data.whyChooseUs.description;
+    }
+    if (Array.isArray(data?.subtitle)) {
+      return data.subtitle.join(" ");
+    }
+    return data?.subtitle || STATEMENT_TEXT;
+  }, [data]);
+
+  const highlightSet = useMemo(() => {
+    const set = new Set(HIGHLIGHT_WORDS.map((w) => w.toLowerCase()));
+    if (data?.title) {
+      data.title.toLowerCase().split(/\s+/).forEach((w) => set.add(w.replace(/[.,!?]/g, "")));
+    }
+    return set;
+  }, [data]);
+
   const words = useMemo(() => {
-    return STATEMENT_TEXT.split(" ").map((w, idx) => {
+    return statementText.split(/\s+/).map((w, idx) => {
       const clean = w.toLowerCase().replace(/[.,!?]/g, "");
-      const isHighlight = HIGHLIGHT_WORDS.some(
-        (hw) => hw.toLowerCase().replace(/[.,!?]/g, "") === clean
-      );
+      const isHighlight = highlightSet.has(clean) || clean.length > 8 || /^\d+/.test(clean);
       return {
         original: w,
         clean,
@@ -111,7 +115,7 @@ export default function SeoSajanPhilosophy({ onOpenModal }) {
         index: idx,
       };
     });
-  }, []);
+  }, [statementText, highlightSet]);
 
   useEffect(() => {
     if (!sectionRef.current || !triggerRef.current) return;
@@ -129,7 +133,6 @@ export default function SeoSajanPhilosophy({ onOpenModal }) {
       return;
     }
 
-    // Initialize: Dim standard words, conceal portal letters off-canvas
     wordEls.forEach((w) => gsap.set(w, { opacity: 0.15 }));
     letterEls.forEach((l) => {
       const dir = getRandomDirection();
@@ -137,7 +140,6 @@ export default function SeoSajanPhilosophy({ onOpenModal }) {
       gsap.set(l, { x: `${offset.x}%`, y: `${offset.y}%`, opacity: 0 });
     });
 
-    // Pinned ScrollTrigger with scrubbed word illumination
     const st = ScrollTrigger.create({
       trigger: triggerRef.current,
       start: "top top",
@@ -148,7 +150,6 @@ export default function SeoSajanPhilosophy({ onOpenModal }) {
       onUpdate: (self) => {
         const p = self.progress;
 
-        // Scrub word illumination
         const total = wordEls.length;
         wordEls.forEach((el, idx) => {
           const startP = (idx / total) * 0.75;
@@ -158,7 +159,6 @@ export default function SeoSajanPhilosophy({ onOpenModal }) {
           el.style.opacity = op.toFixed(3);
         });
 
-        // Kinetic portal letters entrance at threshold
         if (p >= 0.78 && !hasTriggeredLetters.current) {
           hasTriggeredLetters.current = true;
           letterEls.forEach((l) => {
@@ -194,6 +194,9 @@ export default function SeoSajanPhilosophy({ onOpenModal }) {
     };
   }, [words]);
 
+  const metalabel = data?.matrixTag || (data?.eyebrow ? data.eyebrow.split("|")[0].trim() : "Strategic Paradigm Shift");
+  const auditBtnText = data?.heroButtonText ? data.heroButtonText.replace("→", "").trim() : "Request Strategy Consultation";
+
   return (
     <div ref={triggerRef} className="bf-philosophy-trigger">
       <style>{`
@@ -218,39 +221,33 @@ export default function SeoSajanPhilosophy({ onOpenModal }) {
           border-bottom: 1px solid rgba(255, 255, 255, 0.08);
         }
 
-        /* Meta Label Editorial Tracking */
         .bf-phil-metalabel {
-          display: block;
           font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-          font-size: 0.74rem;
+          font-size: 0.72rem;
           font-weight: 700;
-          letter-spacing: 0.18em;
+          letter-spacing: 0.16em;
           text-transform: uppercase;
-          color: #8E8E93;
-          margin-bottom: clamp(24px, 3.5vw, 36px);
-          position: relative;
-          z-index: 2;
+          color: #EF4136;
+          margin-bottom: clamp(24px, 3.5vw, 40px);
         }
 
-        /* Statement Headline */
         .bf-phil-statement {
-          font-size: clamp(1.65rem, 3.2vw, 3.2rem);
-          font-weight: 800;
-          line-height: 1.22;
+          font-family: "General Sans", "Outfit", -apple-system, sans-serif;
+          font-size: clamp(28px, 4vw, 54px);
+          font-weight: 700;
+          line-height: 1.25;
           letter-spacing: -0.03em;
-          text-transform: uppercase;
           color: #FAFAFC;
-          max-width: 1240px;
-          margin: 0 0 clamp(28px, 3.5vw, 44px);
-          position: relative;
-          z-index: 2;
-          user-select: none;
+          max-width: 1180px;
+          margin: 0 0 clamp(36px, 4.5vw, 52px) 0;
+          display: flex;
+          flex-wrap: wrap;
+          column-gap: 0.32em;
+          row-gap: 0.12em;
         }
 
         .bf-phil-word {
           display: inline-block;
-          margin-right: 0.28em;
-          transition: opacity 0.15s ease-out;
           will-change: opacity;
         }
 
@@ -258,45 +255,40 @@ export default function SeoSajanPhilosophy({ onOpenModal }) {
           color: #EF4136;
         }
 
-        /* Portal Masks on Highlight Letters */
         .bf-phil-portal-mask {
           display: inline-block;
-          position: relative;
           overflow: hidden;
-          vertical-align: baseline;
+          vertical-align: top;
           cursor: pointer;
         }
+
         .bf-phil-portal-letter {
           display: inline-block;
-          position: relative;
           will-change: transform;
-          backface-visibility: hidden;
-          transition: color 0.18s ease;
+          user-select: none;
+          transition: color 0.15s ease;
         }
+
         .bf-phil-portal-mask:hover .bf-phil-portal-letter {
           color: #FFFFFF;
         }
 
-        /* Bottom Status & CTA Row */
         .bf-phil-footer {
-          position: relative;
-          z-index: 2;
+          width: 100%;
           display: flex;
           align-items: center;
-          justify-content: flex-end;
-          width: 100%;
-          max-width: 1360px;
+          justify-content: space-between;
           border-top: 1px solid rgba(255, 255, 255, 0.08);
           padding-top: 24px;
-          flex-wrap: wrap;
-          gap: 20px;
         }
+
         .bf-phil-audit-btn {
+          appearance: none;
           display: inline-flex;
           align-items: center;
-          gap: 8px;
-          background: transparent;
-          border: 1px solid rgba(239, 65, 54, 0.35);
+          gap: 10px;
+          background: rgba(239, 65, 54, 0.08);
+          border: 1px solid rgba(239, 65, 54, 0.3);
           color: #FF6B5E;
           font-size: 0.85rem;
           font-weight: 700;
@@ -315,10 +307,8 @@ export default function SeoSajanPhilosophy({ onOpenModal }) {
       `}</style>
 
       <section ref={sectionRef} className="bf-philosophy-section" id="philosophy">
-        {/* 02 EDITORIAL TRACKING */}
-        <p className="bf-phil-metalabel">02 // SEARCH PARADIGM SHIFT</p>
+        <p className="bf-phil-metalabel">{metalabel}</p>
 
-        {/* SCRUBBED STATEMENT HEADLINE */}
         <h2 ref={textRef} className="bf-phil-statement">
           {words.map((item, idx) => {
             if (item.isHighlight) {
@@ -363,14 +353,13 @@ export default function SeoSajanPhilosophy({ onOpenModal }) {
           })}
         </h2>
 
-        {/* FOOTER BAR */}
         <div className="bf-phil-footer">
           <button
             type="button"
             onClick={onOpenModal}
             className="bf-phil-audit-btn"
           >
-            <span>Request Dual-Engine Audit</span>
+            <span>{auditBtnText}</span>
             <SwapArrow dir="right" size={13} color="currentColor" />
           </button>
         </div>

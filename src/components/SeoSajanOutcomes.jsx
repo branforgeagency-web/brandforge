@@ -1,53 +1,30 @@
 "use client";
 
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useMemo } from "react";
 import { motion, useInView } from "framer-motion";
-import { ShieldCheck } from "lucide-react";
 
 // Sajan 4-point star SVG icon
-function SajanStar({ size = 16, color = "#EF4136", className = "" }) {
-  return (
-    <svg
-      width={size}
-      height={size}
-      viewBox="0 0 24 24"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      className={className}
-      aria-hidden="true"
-    >
-      <path
-        d="M12 0C12 0 14.5 9.5 24 12C14.5 14.5 12 24 12 24C12 24 9.5 14.5 0 12C9.5 9.5 12 0 12 0Z"
-        stroke={color}
-        strokeWidth="1.6"
-        strokeLinejoin="round"
-        fill="none"
-      />
-    </svg>
-  );
-}
+
 
 // Eased number counter for brutalist metrics - re-triggers every time the section enters view
-function AnimatedMetric({ target, prefix = "", suffix = "", delay = 0, isPrefixBlock = false }) {
+function AnimatedMetric({ target, rawString = null, prefix = "", suffix = "", delay = 0, isPrefixBlock = false }) {
   const [val, setVal] = useState(0);
   const ref = useRef(null);
   const isInView = useInView(ref, { once: false, amount: 0.25 });
 
   useEffect(() => {
-    if (!isInView) {
+    if (!isInView || !target) {
       setVal(0);
       return;
     }
-    if (!target) return;
 
     let start = null;
     let animId = null;
-    const duration = 1600; // 1.6s duration
+    const duration = 1600;
 
     const step = (timestamp) => {
       if (!start) start = timestamp;
       const progress = Math.min((timestamp - start) / duration, 1);
-      // easeOutExpo
       const eased = progress === 1 ? 1 : 1 - Math.pow(2, -10 * progress);
       setVal(Math.floor(eased * target));
 
@@ -68,6 +45,14 @@ function AnimatedMetric({ target, prefix = "", suffix = "", delay = 0, isPrefixB
     };
   }, [isInView, target, delay]);
 
+  if (rawString) {
+    return (
+      <span ref={ref} className="bf-outcomes-val-num">
+        <span>{rawString}</span>
+      </span>
+    );
+  }
+
   return (
     <span ref={ref} className="bf-outcomes-val-num">
       {isPrefixBlock && <span className="bf-outcomes-sub-prefix">{prefix}</span>}
@@ -78,51 +63,87 @@ function AnimatedMetric({ target, prefix = "", suffix = "", delay = 0, isPrefixB
   );
 }
 
-export default function SeoSajanOutcomes() {
+const DEFAULT_OUTCOMES_DATA = [
+  {
+    id: "01",
+    tag: "MOM ORGANIC GROWTH",
+    targetNum: 340,
+    prefix: "+",
+    suffix: "%",
+    isPrefixBlock: false,
+    title: "ORGANIC REVENUE LIFT",
+    desc: "Average L12M increase across client portfolio",
+  },
+  {
+    id: "02",
+    tag: "LIGHTHOUSE BENCHMARK",
+    targetNum: 1,
+    prefix: "#",
+    suffix: "Rank",
+    isPrefixBlock: false,
+    title: "AI ANSWER CITATION",
+    desc: "Top recommendation position on ChatGPT & Perplexity",
+  },
+  {
+    id: "03",
+    tag: "VERIFIED POSITION",
+    targetNum: 200,
+    prefix: "sub-",
+    suffix: "ms",
+    isPrefixBlock: true,
+    title: "CORE WEB VITALS",
+    desc: "100/100 Lighthouse performance benchmark",
+  },
+  {
+    id: "04",
+    tag: "AVERAGE OPEN RATE",
+    targetNum: 10,
+    prefix: "",
+    suffix: "x",
+    isPrefixBlock: false,
+    title: "GEO SEARCH DOMINANCE",
+    desc: "Faster indexing across AI LLM Knowledge Graphs",
+  },
+];
+
+export default function SeoSajanOutcomes({ metrics = [], data }) {
   const [hoveredLogo, setHoveredLogo] = useState(null);
 
-  const outcomesData = [
-    {
-      id: "01",
-      tag: "MOM ORGANIC GROWTH",
-      targetNum: 340,
-      prefix: "+",
-      suffix: "%",
-      isPrefixBlock: false,
-      title: "ORGANIC REVENUE LIFT",
-      desc: "Average L12M increase across client portfolio",
-    },
-    {
-      id: "02",
-      tag: "LIGHTHOUSE BENCHMARK",
-      targetNum: 1,
-      prefix: "#",
-      suffix: "Rank",
-      isPrefixBlock: false,
-      title: "AI ANSWER CITATION",
-      desc: "Top recommendation position on ChatGPT & Perplexity",
-    },
-    {
-      id: "03",
-      tag: "VERIFIED POSITION",
-      targetNum: 200,
-      prefix: "sub-",
-      suffix: "ms",
-      isPrefixBlock: true,
-      title: "CORE WEB VITALS",
-      desc: "100/100 Lighthouse performance benchmark",
-    },
-    {
-      id: "04",
-      tag: "AVERAGE OPEN RATE",
-      targetNum: 10,
-      prefix: "",
-      suffix: "x",
-      isPrefixBlock: false,
-      title: "GEO SEARCH DOMINANCE",
-      desc: "Faster indexing across AI LLM Knowledge Graphs",
-    },
-  ];
+  const resolvedMetrics = useMemo(() => {
+    const list = (metrics && metrics.length > 0) ? metrics : (data?.metrics || []);
+    if (list.length > 0) {
+      return list.slice(0, 4).map((m, idx) => {
+        const valStr = String(m.value || "").trim();
+        const match = valStr.match(/^([^\d]*)([\d,.]+)([^\d]*)$/);
+        if (match && !valStr.includes("→") && !valStr.includes("/")) {
+          const num = parseFloat(match[2].replace(/,/g, "")) || 0;
+          return {
+            id: `0${idx + 1}`,
+            tag: (m.label || `METRIC 0${idx + 1}`).toUpperCase(),
+            targetNum: num,
+            prefix: match[1] || "",
+            suffix: match[3] || "",
+            isPrefixBlock: (match[1] || "").length > 2,
+            rawString: null,
+            title: (m.label || "VERIFIED LIFT").toUpperCase(),
+            desc: m.desc || "Performance benchmark across client accounts",
+          };
+        }
+        return {
+          id: `0${idx + 1}`,
+          tag: (m.label || `METRIC 0${idx + 1}`).toUpperCase(),
+          targetNum: 0,
+          prefix: "",
+          suffix: "",
+          isPrefixBlock: false,
+          rawString: valStr,
+          title: (m.label || "VERIFIED LIFT").toUpperCase(),
+          desc: m.desc || "Performance benchmark across client accounts",
+        };
+      });
+    }
+    return DEFAULT_OUTCOMES_DATA;
+  }, [metrics, data]);
 
   const clientWins = [
     {
@@ -547,10 +568,6 @@ export default function SeoSajanOutcomes() {
           viewport={{ once: false, amount: 0.2 }}
           transition={{ duration: 0.55 }}
         >
-          <div className="bf-outcomes-eyebrow">
-            <SajanStar size={15} color="#EF4136" />
-            <span>OUTCOME</span>
-          </div>
           <h2 className="bf-outcomes-title">
             WHAT IT EARNED,
             <br />
@@ -560,7 +577,7 @@ export default function SeoSajanOutcomes() {
 
         {/* 4-COLUMN BRUTALIST METRICS CONTAINER */}
         <div className="bf-outcomes-grid">
-          {outcomesData.map((item, idx) => (
+          {resolvedMetrics.map((item, idx) => (
             <motion.div
               key={item.id}
               className="bf-outcomes-cell"
@@ -573,6 +590,7 @@ export default function SeoSajanOutcomes() {
               <div className="bf-outcomes-val-wrap">
                 <AnimatedMetric
                   target={item.targetNum}
+                  rawString={item.rawString}
                   prefix={item.prefix}
                   suffix={item.suffix}
                   delay={idx * 0.08}
@@ -583,7 +601,7 @@ export default function SeoSajanOutcomes() {
               {/* BOTTOM METRIC LABELS & SUBTITLE */}
               <div className="bf-outcomes-label-block">
                 <span className="bf-outcomes-micro-badge">
-                  {item.id} // {item.tag}
+                  {item.tag}
                 </span>
                 <h3 className="bf-outcomes-cell-title">{item.title}</h3>
                 <p className="bf-outcomes-cell-desc">{item.desc}</p>

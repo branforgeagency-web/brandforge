@@ -44,7 +44,7 @@ export default function SerpGeoVisualizer() {
           viewport={{ once: true }}
           transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
         >
-          04 // DUAL-ENGINE SEARCH VISUALIZER
+          Dual-Engine Search Architecture
         </motion.div>
 
         {/* Hero Title Line 1 */}

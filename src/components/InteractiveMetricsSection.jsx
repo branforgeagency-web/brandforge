@@ -60,16 +60,9 @@ export default function InteractiveMetricsSection({ metrics = [] }) {
 
   const clientWins = [
     { name: "Sonic Prints", logo: "/client-sonicprints.png", scale: 1.4, win: "4.8x Organic Inquiries in 90 Days", tag: "E-Commerce" },
-    { name: "ThoughtFlows", logo: "/client-thoughtflows.png", scale: 1.35, win: "620% Traffic Surge // #1 AI Citation", tag: "B2B SaaS" },
+    { name: "ThoughtFlows", logo: "/client-thoughtflows.png", scale: 1.35, win: "620% Traffic Surge • Top AI Citation", tag: "B2B SaaS" },
     { name: "Talentera", logo: "/client-talentera.png", scale: 1.0, win: "Rank #1 for 48 High-Intent Keywords", tag: "HR Tech" },
     { name: "ThoughtSpace", logo: "/client-thoughtspace.png", scale: 1.4, win: "12x Pipeline Scale & Zero-Click Dominance", tag: "Enterprise" },
-  ];
-
-  const microBadges = [
-    "MoM Organic Growth",
-    "Lighthouse Benchmark",
-    "Verified Position",
-    "Average Open Rate"
   ];
 
   return (
@@ -91,10 +84,6 @@ export default function InteractiveMetricsSection({ metrics = [] }) {
               whileHover={{ y: -6, transition: { duration: 0.2 } }}
             >
               <div className="sg-metric-glow-ring" />
-              
-              <div className="sg-metric-badge-row">
-                <span className="sg-metric-badge">0{idx + 1} // {microBadges[idx % microBadges.length]}</span>
-              </div>
 
               <AnimatedMetricCounter value={m.value} />
 

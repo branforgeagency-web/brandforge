@@ -12,21 +12,21 @@ export default function BrandForgeClientMarqueeStrip() {
         <div className="bf-marquee-viewport">
           <div className="bf-marquee-track">
             {/* FIRST SET */}
-            <div className="bf-marquee-item"><img src="/client-thoughtspace.png" alt="ThoughtSpace" /></div>
-            <div className="bf-marquee-item"><img src="/client-sonicprints.png" alt="Sonic Prints" /></div>
+            <div className="bf-marquee-item"><img src="/client-thoughtspace.png" alt="ThoughtSpace" loading="lazy" decoding="async" /></div>
+            <div className="bf-marquee-item"><img src="/client-sonicprints.png" alt="Sonic Prints" loading="lazy" decoding="async" /></div>
             <div className="bf-marquee-item"><span className="logo-impact">[IMPACT]</span></div>
-            <div className="bf-marquee-item"><img src="/client-thoughtflows.png" alt="ThoughtFlows" /></div>
-            <div className="bf-marquee-item"><img src="/client-talentera.png" alt="TalentEra" /></div>
+            <div className="bf-marquee-item"><img src="/client-thoughtflows.png" alt="ThoughtFlows" loading="lazy" decoding="async" /></div>
+            <div className="bf-marquee-item"><img src="/client-talentera.png" alt="TalentEra" loading="lazy" decoding="async" /></div>
             <div className="bf-marquee-item"><span className="logo-et"><strong>ET BRAND EQUITY</strong><small>An initiative of The Economic Times</small></span></div>
             <div className="bf-marquee-item"><span className="logo-dh">❖ dailyhunt</span></div>
             <div className="bf-marquee-item"><span className="logo-e4m">exchange<span>4</span>media.com</span></div>
 
             {/* DUPLICATE SET FOR INFINITE LOOPING */}
-            <div className="bf-marquee-item"><img src="/client-thoughtspace.png" alt="ThoughtSpace" /></div>
-            <div className="bf-marquee-item"><img src="/client-sonicprints.png" alt="Sonic Prints" /></div>
+            <div className="bf-marquee-item"><img src="/client-thoughtspace.png" alt="ThoughtSpace" loading="lazy" decoding="async" /></div>
+            <div className="bf-marquee-item"><img src="/client-sonicprints.png" alt="Sonic Prints" loading="lazy" decoding="async" /></div>
             <div className="bf-marquee-item"><span className="logo-impact">[IMPACT]</span></div>
-            <div className="bf-marquee-item"><img src="/client-thoughtflows.png" alt="ThoughtFlows" /></div>
-            <div className="bf-marquee-item"><img src="/client-talentera.png" alt="TalentEra" /></div>
+            <div className="bf-marquee-item"><img src="/client-thoughtflows.png" alt="ThoughtFlows" loading="lazy" decoding="async" /></div>
+            <div className="bf-marquee-item"><img src="/client-talentera.png" alt="TalentEra" loading="lazy" decoding="async" /></div>
             <div className="bf-marquee-item"><span className="logo-et"><strong>ET BRAND EQUITY</strong><small>An initiative of The Economic Times</small></span></div>
             <div className="bf-marquee-item"><span className="logo-dh">❖ dailyhunt</span></div>
             <div className="bf-marquee-item"><span className="logo-e4m">exchange<span>4</span>media.com</span></div>
@@ -38,7 +38,7 @@ export default function BrandForgeClientMarqueeStrip() {
 }
 
 const styles = `
-  @import url("https://fonts.googleapis.com/css2?family=Outfit:wght@700;800;900&display=swap");
+
 
   .bf-marquee-section {
     width: 100%;

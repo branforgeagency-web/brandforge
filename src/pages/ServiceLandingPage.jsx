@@ -836,7 +836,7 @@ export default function ServiceLandingPage({ slug = "seo-geo", onOpenModal, navi
 }
 
 const styles = `
-  @import url("https://fonts.googleapis.com/css2?family=Outfit:wght@700;800;900&family=Plus+Jakarta+Sans:wght@500;600;700;800&family=JetBrains+Mono:wght@700;800&display=swap");
+
 
   .sg-page-root {
     background: #FAFAFC;

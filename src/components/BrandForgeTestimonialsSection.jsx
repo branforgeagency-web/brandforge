@@ -103,7 +103,7 @@ export default function BrandForgeTestimonialsSection({ onOpenModal, theme }) {
           <div className="image">
             <div className="clip" />
             <div className="polaroid-frame">
-              <img src={current.logo} alt={`${current.name} logo`} />
+              <img src={current.logo} alt={`${current.name} logo`} loading="lazy" decoding="async" />
             </div>
           </div>
 
@@ -153,7 +153,7 @@ export default function BrandForgeTestimonialsSection({ onOpenModal, theme }) {
 }
 
 const styles = `
-  @import url("https://fonts.googleapis.com/css2?family=Outfit:wght@600;700;800;900&family=Inter:wght@400;500;600;700&display=swap");
+
 
   .bf-paperclip-testimonials {
     position: relative;

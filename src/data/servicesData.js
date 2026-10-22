@@ -12,7 +12,7 @@ import {
   Gauge,
   ShieldCheck,
   Cpu,
-  Database,
+
   Zap,
   BarChart3,
   Layers,

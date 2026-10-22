@@ -209,15 +209,23 @@ function ThreadsBackground({
     let isVisible = true;
     const intersectionObserver = new IntersectionObserver(
       entries => {
-        isVisible = entries[0].isIntersecting;
+        const next = entries[0].isIntersecting;
+        if (next && !isVisible) {
+          isVisible = true;
+          cancelAnimationFrame(animationFrameId.current);
+          animationFrameId.current = requestAnimationFrame(update);
+        } else {
+          isVisible = next;
+        }
       },
       { threshold: 0 }
     );
     intersectionObserver.observe(container);
 
     function update(t) {
-      animationFrameId.current = requestAnimationFrame(update);
       if (!isVisible || document.hidden) return;
+
+      animationFrameId.current = requestAnimationFrame(update);
 
       const { color, amplitude, distance, enableMouseInteraction } = propsRef.current;
 
@@ -382,8 +390,11 @@ export default function BrandForgeAboutUsSection({ onOpenModal, navigate }) {
             style={{ y: blobY }}
           >
             <img
-              src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1200&q=90"
+
+              src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1200&q=80"
               alt="BrandForge Creative Team"
+              loading="lazy"
+              decoding="async"
               className="bf-blob-img"
             />
             <div className="bf-blob-overlay-glow" />
@@ -395,7 +406,7 @@ export default function BrandForgeAboutUsSection({ onOpenModal, navigate }) {
 }
 
 const styles = `
-@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap");
+
 
 .bf-about-section {
   position: relative;

@@ -158,7 +158,9 @@ function ParticleCanvas() {
       }
     };
 
+    let isPaused = false;
     const animate = () => {
+      if (isPaused) return;
       ctx.clearRect(0, 0, W, H);
       ctx.fillStyle = "#060509";
       ctx.fillRect(0, 0, W, H);
@@ -176,6 +178,22 @@ function ParticleCanvas() {
 
     resize();
     const layoutTimer = setTimeout(resize, 300);
+    let io;
+    if (typeof IntersectionObserver !== "undefined" && canvas.parentElement) {
+      io = new IntersectionObserver(([entry]) => {
+        if (entry.isIntersecting) {
+          if (isPaused) {
+            isPaused = false;
+            animId = requestAnimationFrame(animate);
+          }
+        } else {
+          isPaused = true;
+          if (io) io.disconnect();
+      cancelAnimationFrame(animId);
+        }
+      }, { threshold: 0.05 });
+      io.observe(canvas.parentElement);
+    }
     animate();
 
     const ro = new ResizeObserver(resize);
@@ -184,6 +202,7 @@ function ParticleCanvas() {
     document.addEventListener("mouseleave", onLeave);
 
     return () => {
+      if (io) io.disconnect();
       cancelAnimationFrame(animId);
       clearTimeout(layoutTimer);
       ro.disconnect();
@@ -531,6 +550,8 @@ export default function BrandForgeProcessBoard() {
               <img
                 src="/rocket.png?v=3"
                 alt="rocket"
+                loading="lazy"
+                decoding="async"
                 style={{ width: "100%", height: "100%", objectFit: "contain", position: "relative", zIndex: 1 }}
               />
             </div>

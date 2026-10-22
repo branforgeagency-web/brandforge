@@ -639,6 +639,8 @@ export default function SeoSajanOutcomes({ metrics = [], data }) {
                   <img
                     src={client.logo}
                     alt={client.name}
+                    loading="lazy"
+                    decoding="async"
                     className="bf-outcomes-logo-img"
                     style={{
                       transform: isHovered
@@ -653,6 +655,8 @@ export default function SeoSajanOutcomes({ metrics = [], data }) {
                         <img
                           src={client.logo}
                           alt={client.name}
+                    loading="lazy"
+                    decoding="async"
                           className="bf-popup-logo-img"
                           style={{
                             transform: `scale(${client.popupScale || client.scale * 1.15})`,

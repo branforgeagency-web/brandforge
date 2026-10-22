@@ -364,6 +364,8 @@ export default function CinematicSeoHero({ onOpenModal, data, slug }) {
                     e.currentTarget.src = "/seo-rocket-3d.png";
                   }}
                   alt={`${currentConfig.accentTitle} 3D Engine`}
+                  fetchpriority="high"
+                  decoding="async"
                   className="bf-3d-model-img"
                 />
               </motion.div>

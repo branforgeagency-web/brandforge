@@ -92,6 +92,9 @@ export default function ContactPage({ onOpenModal }) {
               <img
                 src="/brandforge-logo.png"
                 alt="BrandForge Logo"
+                width="200"
+                height="45"
+                decoding="async"
                 className="brand-logo-img"
               />
             </div>
@@ -175,7 +178,7 @@ export default function ContactPage({ onOpenModal }) {
 }
 
 const styles = `
-  @import url("https://fonts.googleapis.com/css2?family=Outfit:wght@700;800;900&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap");
+
 
   .contact-page {
     --background: #040306;

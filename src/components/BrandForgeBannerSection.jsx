@@ -4,7 +4,7 @@ import React, { useEffect, useRef } from "react";
 import * as THREE from "three";
 import { EffectComposer, RenderPass, EffectPass, BloomEffect, SMAAEffect, SMAAPreset } from "postprocessing";
 import { motion } from "framer-motion";
-import { ArrowRight, Sparkles, Zap } from "lucide-react";
+
 
 /* ───────────────────────────────────────────────────────────────────────────
    BRANDFORGE HYPERSPEED BANNER SECTION
@@ -715,6 +715,7 @@ class App {
     this.clock = new THREE.Clock();
     this.assets = {};
     this.disposed = false;
+    this.isPaused = false;
 
     this.road = new Road(this, options);
     this.leftCarLights = new CarLights(
@@ -980,7 +981,7 @@ class App {
   }
 
   tick() {
-    if (this.disposed) return;
+    if (this.disposed || this.isPaused) return;
 
     if (!this.hasValidSize) {
       const w = this.container.offsetWidth;
@@ -1019,7 +1020,7 @@ class App {
   }
 }
 
-export default function BrandForgeBannerSection({ onOpenModal }) {
+export default function BrandForgeBannerSection({ _onOpenModal }) {
   const hyperspeedRef = useRef(null);
   const appRef = useRef(null);
 
@@ -1058,7 +1059,27 @@ export default function BrandForgeBannerSection({ onOpenModal }) {
       })
       .catch((err) => console.warn("Banner assets load error:", err));
 
+    let observer;
+    if (typeof IntersectionObserver !== "undefined") {
+      observer = new IntersectionObserver(
+        ([entry]) => {
+          if (!myApp || myApp.disposed) return;
+          if (entry.isIntersecting) {
+            if (myApp.isPaused) {
+              myApp.isPaused = false;
+              requestAnimationFrame(myApp.tick);
+            }
+          } else {
+            myApp.isPaused = true;
+          }
+        },
+        { threshold: 0.05 }
+      );
+      observer.observe(container);
+    }
+
     return () => {
+      if (observer) observer.disconnect();
       if (appRef.current) {
         appRef.current.dispose();
         appRef.current = null;
@@ -1089,6 +1110,10 @@ export default function BrandForgeBannerSection({ onOpenModal }) {
           <img
             src="/brandforge-logo.png"
             alt="BrandForge 3D Logo"
+            width="420"
+            height="96"
+            fetchpriority="high"
+            decoding="async"
             className="bf-banner-logo"
           />
         </motion.div>

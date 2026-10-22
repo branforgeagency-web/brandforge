@@ -1,8 +1,8 @@
 "use client";
 
 import React, { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { CheckCircle2, ChevronRight, Sparkles, Clock, Target } from "lucide-react";
+import { motion } from "framer-motion";
+import { Clock } from "lucide-react";
 import KexsioCanvasBackground from "./KexsioCanvasBackground";
 
 export default function InteractiveBlueprintTimeline({

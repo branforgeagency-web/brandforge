@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Plus, Minus, ArrowRight, MessageSquare, ShieldCheck, Sparkles } from "lucide-react";
+import { Plus, ArrowRight, MessageSquare } from "lucide-react";
 
 
 

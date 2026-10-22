@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ChevronDown, MessageSquare, Sparkles, ArrowRight } from "lucide-react";
+import { ChevronDown, Sparkles, ArrowRight } from "lucide-react";
 import KexsioCanvasBackground from "./KexsioCanvasBackground";
 
 export default function InteractiveFaqSection({

@@ -636,6 +636,9 @@ export default function SeoSajanHero({ data, slug, onOpenModal }) {
           <img
             src={data?.bannerBg || "/banner-seo-geo-bg.jpg"}
             alt=""
+            loading="eager"
+            fetchpriority="high"
+            decoding="async"
             className="bf-hero-bg-img"
           />
           <div className="bf-hero-img-overlay" />

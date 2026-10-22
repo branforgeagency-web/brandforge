@@ -85,7 +85,7 @@ const SHADERS = {
   ],
 };
 
-export default function BrandForgeFluidSection({ onOpenModal }) {
+export default function BrandForgeFluidSection({ _onOpenModal }) {
   const rootRef = useRef(null);
   const canvasRef = useRef(null);
 
@@ -350,8 +350,31 @@ export default function BrandForgeFluidSection({ onOpenModal }) {
       }
       simulate(dt);
       render();
-      raf = requestAnimationFrame(loop);
+      if (!isPaused) {
+        raf = requestAnimationFrame(loop);
+      }
     };
+    let isPaused = false;
+    let observer;
+    if (typeof IntersectionObserver !== "undefined" && rootRef.current) {
+      observer = new IntersectionObserver(
+        ([entry]) => {
+          if (entry.isIntersecting) {
+            if (isPaused) {
+              isPaused = false;
+              raf = requestAnimationFrame(loop);
+            }
+          } else {
+            isPaused = true;
+            if (observer) observer.disconnect();
+      cancelAnimationFrame(raf);
+          }
+        },
+        { threshold: 0.05 }
+      );
+      observer.observe(rootRef.current);
+    }
+
     loop();
 
     const onResize = () => {
@@ -365,6 +388,7 @@ export default function BrandForgeFluidSection({ onOpenModal }) {
     window.addEventListener("resize", onResize);
 
     return () => {
+      if (observer) observer.disconnect();
       cancelAnimationFrame(raf);
       window.removeEventListener("pointermove", onPointer);
       window.removeEventListener("resize", onResize);
@@ -402,7 +426,7 @@ export default function BrandForgeFluidSection({ onOpenModal }) {
 
       <div className="pl-logo-layer">
         <div className="pl-logo-wrap">
-          <img src="/brandforge-logo.png" alt="BrandForge Logo" className="pl-brand-logo" />
+          <img src="/brandforge-logo.png" alt="BrandForge Logo" loading="lazy" decoding="async" className="pl-brand-logo" />
         </div>
       </div>
 
@@ -421,7 +445,7 @@ export default function BrandForgeFluidSection({ onOpenModal }) {
 }
 
 const css = `
-@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@800;900&family=Plus+Jakarta+Sans:wght@500;700;800&display=swap");
+
 
 .pl-root {
   position: relative;

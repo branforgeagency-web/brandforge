@@ -2,7 +2,7 @@
 
 import React, { useRef, useState } from "react";
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
-import { CheckCircle2, ShieldCheck, Zap, Cpu, Sparkles, Activity } from "lucide-react";
+import { CheckCircle2, Activity } from "lucide-react";
 import KexsioCanvasBackground from "./KexsioCanvasBackground";
 
 function WhyPointCard({ point, idx }) {

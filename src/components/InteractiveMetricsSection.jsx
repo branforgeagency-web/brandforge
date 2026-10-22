@@ -123,6 +123,8 @@ export default function InteractiveMetricsSection({ metrics = [] }) {
                 <img
                   src={client.logo}
                   alt={client.name}
+                  loading="lazy"
+                  decoding="async"
                   className="png-client-logo"
                   style={{ transform: `scale(${client.scale})` }}
                 />

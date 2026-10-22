@@ -2,7 +2,7 @@
 
 import React, { useRef, useState } from "react";
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
-import { Sparkles, ShieldCheck, Zap, Award } from "lucide-react";
+import { Sparkles } from "lucide-react";
 import KexsioCanvasBackground from "./KexsioCanvasBackground";
 
 function DiffCard({ item, idx }) {

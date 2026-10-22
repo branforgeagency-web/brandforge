@@ -69,6 +69,7 @@ export default function SerpGeoVisualizer() {
                   alt="SEO & GEO 3D Launch Engine"
                   className="montarville-img"
                   loading="lazy"
+                  decoding="async"
                 />
               </motion.div>
             </div>

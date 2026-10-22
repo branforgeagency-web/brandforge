@@ -305,7 +305,7 @@ export default function BrandForgeAnimatedFooter({ onOpenModal }) {
 }
 
 const styles = `
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@600;800&display=swap');
+
 
 .bf-animated-footer {
   position: relative;

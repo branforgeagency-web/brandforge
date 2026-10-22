@@ -1,6 +1,6 @@
 import React, { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { ArrowRight, ChevronDown, Quote, ShieldCheck, Zap, TrendingUp, Users } from "lucide-react";
+import { ArrowRight, ChevronDown, Quote } from "lucide-react";
 
 export default function AboutHeroSection({ onOpenModal }) {
   const containerRef = useRef(null);
@@ -28,6 +28,8 @@ export default function AboutHeroSection({ onOpenModal }) {
         <img
           src="/banner-about-hero.jpg"
           alt="BrandForge Creative Headquarters Studio"
+          fetchpriority="high"
+          decoding="async"
           className="bf-modern-about-img"
         />
         <div className="bf-modern-about-overlay" />
@@ -119,6 +121,7 @@ export default function AboutHeroSection({ onOpenModal }) {
             <img
               src="/brandforge-full-logo.png"
               alt="BrandForge — Turning Ideas Into Digital Power"
+              decoding="async"
               className="bf-modern-logo-media"
             />
           </motion.div>
@@ -206,7 +209,7 @@ export default function AboutHeroSection({ onOpenModal }) {
 }
 
 const styles = `
-  @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@600;700;800;900&family=Inter:wght@400;500;600;700;800&display=swap');
+
 
   .bf-modern-about-root {
     position: relative;

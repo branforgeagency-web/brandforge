@@ -148,11 +148,15 @@ export default function BrandForgeOrbitGallerySection({ onOpenModal }) {
         Math.max(0, (clientX - bounds.left) / bounds.width),
       );
       targetX = -maxTravel() * ratio;
+      cancelAnimationFrame(frame);
+      frame = requestAnimationFrame(animate);
     };
 
     const onPointerMove = (event) => {
       if (dragging) {
         targetX = clamp(dragStartTarget + event.clientX - dragStartX);
+        cancelAnimationFrame(frame);
+        frame = requestAnimationFrame(animate);
         return;
       }
       if (event.pointerType === "mouse") {
@@ -179,17 +183,23 @@ export default function BrandForgeOrbitGallerySection({ onOpenModal }) {
     resetRef.current = () => {
       currentX = 0;
       targetX = 0;
+      cancelAnimationFrame(frame);
+      frame = requestAnimationFrame(animate);
     };
 
     const animate = () => {
       currentX += (targetX - currentX) * 0.07;
       track.style.transform = `translate3d(${currentX}px, -50%, 0)`;
-      frame = requestAnimationFrame(animate);
+      if (Math.abs(targetX - currentX) > 0.08) {
+        frame = requestAnimationFrame(animate);
+      }
     };
 
     const resizeObserver = new ResizeObserver(() => {
       targetX = clamp(targetX);
       currentX = clamp(currentX);
+      cancelAnimationFrame(frame);
+      frame = requestAnimationFrame(animate);
     });
 
     resizeObserver.observe(root);
@@ -319,7 +329,8 @@ export default function BrandForgeOrbitGallerySection({ onOpenModal }) {
                   src={item.image}
                   alt={item.title}
                   draggable={false}
-                  loading={index < 6 ? "eager" : "lazy"}
+                  decoding="async"
+                  loading={index < 4 ? "eager" : "lazy"}
                   style={{
                     objectPosition: item.position ?? "center",
                   }}

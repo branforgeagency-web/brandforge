@@ -436,6 +436,8 @@ export default function InteractiveStorySection({
                   <img
                     src={sketchImg}
                     alt={`BrandForge ${data.title || "Enterprise"} Architecture Schematic`}
+                    loading="lazy"
+                    decoding="async"
                     className="sg-story-blueprint-img"
                   />
                 </motion.div>

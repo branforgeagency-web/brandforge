@@ -50,6 +50,8 @@ export default function BrandForgeFoundersSection() {
         <img
           src="/banner-who-we-are.jpg"
           alt="BrandForge Studio Headquarters"
+          loading="lazy"
+          decoding="async"
           className="bf-founders-bg-img"
         />
         <div className="bf-founders-bg-overlay" />
@@ -68,7 +70,7 @@ export default function BrandForgeFoundersSection() {
               viewport={{ once: false, amount: 0.3 }}
               transition={{ duration: 0.6 }}
             >
-              <img src={FOUNDERS[0].photo} alt={`${FOUNDERS[0].name} — ${FOUNDERS[0].role} of BrandForge`} />
+              <img src={FOUNDERS[0].photo} alt={`${FOUNDERS[0].name} — ${FOUNDERS[0].role} of BrandForge`} loading="lazy" decoding="async" />
             </motion.div>
           </div>
 
@@ -155,7 +157,7 @@ export default function BrandForgeFoundersSection() {
               viewport={{ once: false, amount: 0.3 }}
               transition={{ duration: 0.6 }}
             >
-              <img src={FOUNDERS[1].photo} alt={`${FOUNDERS[1].name} — ${FOUNDERS[1].role} of BrandForge`} />
+              <img src={FOUNDERS[1].photo} alt={`${FOUNDERS[1].name} — ${FOUNDERS[1].role} of BrandForge`} loading="lazy" decoding="async" />
             </motion.div>
           </div>
 
@@ -204,7 +206,7 @@ function RevealLine({ progress, range, children }) {
 
 /* ─── STYLES ────────────────────────────────────────────────────── */
 const styles = `
-  @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@700;800;900&family=Inter:wght@400;500;600;700;800&display=swap');
+
 
   .bf-founders-root {
     --bg: #060509;

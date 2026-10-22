@@ -20,7 +20,7 @@ export default function SmoothScrollProvider({ children }) {
     });
 
     let scrollTimeout = null;
-    lenis.on("scroll", (e) => {
+    lenis.on("scroll", () => {
       ScrollTrigger.update();
       window.__isScrolling = true;
       if (scrollTimeout) clearTimeout(scrollTimeout);

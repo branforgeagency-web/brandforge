@@ -160,7 +160,7 @@ export default function RiftStageHero({
 }
 
 const styles = `
-@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap");
+
 
 .rr-root {
   --ink: #060509;

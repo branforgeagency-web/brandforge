@@ -238,6 +238,8 @@ export default function BrandForgeRatingsTrustStrip() {
                       <img
                         src={client.logo}
                         alt={client.name}
+                        loading="lazy"
+                        decoding="async"
                         className="bf-client-img"
                         style={{ transform: `scale(${client.scale})` }}
                       />
@@ -266,7 +268,7 @@ export default function BrandForgeRatingsTrustStrip() {
 }
 
 const styles = `
-  @import url("https://fonts.googleapis.com/css2?family=Outfit:wght@700;800;900&family=Plus+Jakarta+Sans:wght@600;700;800&family=JetBrains+Mono:wght@700;800&display=swap");
+
 
   .bf-trust-strip-root {
     position: relative;

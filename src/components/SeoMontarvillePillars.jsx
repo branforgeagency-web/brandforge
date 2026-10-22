@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Plus, Minus, ArrowRight, CheckCircle2, Zap, Cpu, Globe, PenTool, BarChart3, ShieldCheck } from "lucide-react";
+import { Plus, Minus, ArrowRight, CheckCircle2, Zap } from "lucide-react";
 
 
 
@@ -10,7 +10,7 @@ export default function SeoMontarvillePillars({ data, onOpenModal }) {
   const [expandedIdx, setExpandedIdx] = useState(0);
 
   const pillars = data?.pillars || [];
-  const pillarsTag = data?.pillarsTag || "OUR FULL SERVICE SPECTRUM";
+
   const pillarsTitle = data?.pillarsTitle || "Our SEO & GEO Services in Coimbatore";
   const pillarsSubtitle = data?.pillarsSubtitle || "As a full-service SEO company in Coimbatore, we handle every layer of organic search visibility and generative AI answers.";
 

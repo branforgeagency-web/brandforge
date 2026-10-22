@@ -100,7 +100,7 @@ export default function SiteNavbar({ path, navigate, onOpenModal }) {
           style={{ cursor: "pointer", textDecoration: "none" }}
           aria-label="BrandForge Home"
         >
-          <img src="/brandforge-logo.png" alt="BrandForge Logo" className="liquid-nav__logo-img" />
+          <img src="/brandforge-logo.png" alt="BrandForge Logo" width="160" height="36" decoding="async" fetchpriority="high" className="liquid-nav__logo-img" />
         </a>
 
         {/* DESKTOP NAVIGATION RAIL */}
@@ -247,7 +247,7 @@ export default function SiteNavbar({ path, navigate, onOpenModal }) {
 }
 
 const styles = /* css */ `
-  @import url("https://fonts.googleapis.com/css2?family=Outfit:wght@700;800;900&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap");
+
 
   .liquid-nav__root {
     position: fixed;

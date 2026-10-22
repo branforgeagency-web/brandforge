@@ -445,13 +445,37 @@ export default function FloatingLines({
       }
 
       renderer.render(scene, camera);
-      raf = requestAnimationFrame(renderLoop);
+      if (!isPaused) {
+        raf = requestAnimationFrame(renderLoop);
+      }
     };
+
+    let isPaused = false;
+    let io;
+    if (typeof IntersectionObserver !== "undefined" && containerRef.current) {
+      io = new IntersectionObserver(
+        ([entry]) => {
+          if (entry.isIntersecting) {
+            if (isPaused) {
+              isPaused = false;
+              raf = requestAnimationFrame(renderLoop);
+            }
+          } else {
+            isPaused = true;
+            cancelAnimationFrame(raf);
+          }
+        },
+        { threshold: 0.05 }
+      );
+      io.observe(containerRef.current);
+    }
+
     renderLoop();
 
     return () => {
       active = false;
 
+      if (io) io.disconnect();
       cancelAnimationFrame(raf);
 
       if (ro) ro.disconnect();

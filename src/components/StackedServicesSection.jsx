@@ -190,6 +190,14 @@ export default function StackedServicesSection({ onSelectService, navigate }) {
   };
 
   useEffect(() => {
+    let isVisible = true;
+    let io;
+    if (typeof IntersectionObserver !== "undefined" && sectionRef.current) {
+      io = new IntersectionObserver(([entry]) => {
+        isVisible = entry.isIntersecting;
+      }, { threshold: 0 });
+      io.observe(sectionRef.current);
+    }
     const handleScroll = () => {
       if (!sectionRef.current) return;
       const rect = sectionRef.current.getBoundingClientRect();
@@ -198,6 +206,10 @@ export default function StackedServicesSection({ onSelectService, navigate }) {
     };
 
     const render = () => {
+      if (!isVisible) {
+        animFrameRef.current = requestAnimationFrame(render);
+        return;
+      }
       const isMobile = typeof window !== "undefined" && window.innerWidth <= 768;
       const lerpSpeed = isMobile ? 0.055 : 0.065;
       currentRef.current += (targetRef.current - currentRef.current) * lerpSpeed;
@@ -253,6 +265,7 @@ export default function StackedServicesSection({ onSelectService, navigate }) {
     animFrameRef.current = requestAnimationFrame(render);
 
     return () => {
+      if (io) io.disconnect();
       window.removeEventListener("scroll", handleScroll);
       window.removeEventListener("resize", handleScroll);
       if (animFrameRef.current) cancelAnimationFrame(animFrameRef.current);

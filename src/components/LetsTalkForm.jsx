@@ -128,6 +128,8 @@ export default function LetsTalkForm({
           <img
             src="/brandforge-logo.png"
             alt="BrandForge Logo"
+            loading="lazy"
+            decoding="async"
             className="lt-logo"
           />
         )}

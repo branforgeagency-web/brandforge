@@ -231,6 +231,8 @@ const styles = `
   background-size: 100% 100%, 100% 8rem;
 }
 
+
+
 .rr-panel {
   display: flex;
   align-items: center;

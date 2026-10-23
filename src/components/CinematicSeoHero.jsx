@@ -227,20 +227,6 @@ export default function CinematicSeoHero({ onOpenModal, data, slug }) {
     >
       <style>{heroStyles}</style>
 
-      {/* ── BACKGROUND VIDEO FOR SEO & GEO ── */}
-      {(currentSlug === "seo-geo" || currentSlug === "seo-company-coimbatore") && (
-        <div className="bf-cine-video-wrap" aria-hidden="true">
-          <video
-            autoPlay
-            muted
-            loop
-            playsInline
-            className="bf-cine-video"
-          >
-            <source src="/seobanner.mp4" type="video/mp4" />
-          </video>
-        </div>
-      )}
 
       {/* Light Mesh Network Constellation */}
       <KexsioCanvasBackground theme="light" opacity={0.6} />
@@ -525,7 +511,7 @@ const heroStyles = `
   .bf-cine-radar-ring {
     position: absolute;
     border-radius: 50%;
-    border: 1px solid rgba(239, 65, 54, 0.08);
+    border: 1px solid rgba(255, 24, 1, 0.08);
   }
 
   .ring-outer {
@@ -549,7 +535,7 @@ const heroStyles = `
     width: 500px;
     height: 500px;
     border-radius: 50%;
-    background: radial-gradient(circle, rgba(239, 65, 54, 0.08) 0%, transparent 70%);
+    background: radial-gradient(circle, rgba(255, 24, 1, 0.08) 0%, transparent 70%);
     top: 50%;
     right: 0;
     transform: translateY(-50%);
@@ -589,7 +575,7 @@ const heroStyles = `
     font-family: "JetBrains Mono", monospace;
     font-size: 0.72rem;
     font-weight: 800;
-    color: #EF4136;
+    color: #FF1801;
     letter-spacing: 0.04em;
     margin-bottom: 22px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
@@ -609,7 +595,7 @@ const heroStyles = `
     width: 14px;
     height: 14px;
     border-radius: 50%;
-    background: rgba(239, 65, 54, 0.4);
+    background: rgba(255, 24, 1, 0.4);
     animation: cinePing 1.8s infinite ease-out;
   }
 
@@ -617,7 +603,7 @@ const heroStyles = `
     width: 6px;
     height: 6px;
     border-radius: 50%;
-    background: #EF4136;
+    background: #FF1801;
   }
 
   @keyframes cinePing {
@@ -636,8 +622,8 @@ const heroStyles = `
   }
 
   .bf-cine-h1-red {
-    color: #EF4136;
-    background: linear-gradient(90deg, #EF4136 0%, #D2042D 100%);
+    color: #FF1801;
+    background: linear-gradient(90deg, #FF2B1A 0%, #FF1801 50%, #D80010 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
   }
@@ -679,10 +665,10 @@ const heroStyles = `
   }
 
   .bf-cine-btn-black:hover {
-    background: #EF4136;
-    border-color: #EF4136;
+    background: #FF1801;
+    border-color: #FF1801;
     transform: translateY(-2px);
-    box-shadow: 0 14px 35px rgba(239, 65, 54, 0.35);
+    box-shadow: 0 14px 35px rgba(255, 24, 1, 0.35);
   }
 
   .bf-cine-btn-black .btn-arrow {
@@ -712,10 +698,10 @@ const heroStyles = `
   }
 
   .bf-cine-btn-white:hover {
-    border-color: #EF4136;
-    color: #EF4136;
+    border-color: #FF1801;
+    color: #FF1801;
     transform: translateY(-2px);
-    box-shadow: 0 8px 20px rgba(239, 65, 54, 0.1);
+    box-shadow: 0 8px 20px rgba(255, 24, 1, 0.1);
   }
 
   .bf-cine-proof-strip {
@@ -737,7 +723,7 @@ const heroStyles = `
   }
 
   .proof-icon {
-    color: #EF4136;
+    color: #FF1801;
   }
 
   .proof-sep {
@@ -768,7 +754,7 @@ const heroStyles = `
     width: 380px;
     height: 380px;
     border-radius: 50%;
-    background: radial-gradient(circle, rgba(239, 65, 54, 0.18) 0%, rgba(239, 65, 54, 0.03) 50%, transparent 70%);
+    background: radial-gradient(circle, rgba(255, 24, 1, 0.18) 0%, rgba(255, 24, 1, 0.03) 50%, transparent 70%);
     filter: blur(30px);
     pointer-events: none;
   }
@@ -781,7 +767,7 @@ const heroStyles = `
     display: flex;
     justify-content: center;
     align-items: center;
-    filter: drop-shadow(0 25px 50px rgba(0, 0, 0, 0.14)) drop-shadow(0 0 35px rgba(239, 65, 54, 0.18));
+    filter: drop-shadow(0 25px 50px rgba(0, 0, 0, 0.14)) drop-shadow(0 0 35px rgba(255, 24, 1, 0.18));
   }
 
   .bf-3d-model-img {
@@ -834,10 +820,10 @@ const heroStyles = `
     background: linear-gradient(135deg, rgba(255, 255, 255, 0.88) 0%, rgba(255, 255, 255, 0.52) 45%, rgba(255, 255, 255, 0.8) 100%);
     border-color: rgba(255, 255, 255, 0.98);
     box-shadow:
-      0 32px 75px rgba(239, 65, 54, 0.14),
+      0 32px 75px rgba(255, 24, 1, 0.14),
       0 12px 30px rgba(0, 0, 0, 0.06),
       inset 0 2px 2px 0 rgba(255, 255, 255, 1),
-      inset 0 -1.5px 2px 0 rgba(239, 65, 54, 0.18),
+      inset 0 -1.5px 2px 0 rgba(255, 24, 1, 0.18),
       inset 0 0 24px 0 rgba(255, 255, 255, 0.7);
   }
 
@@ -898,7 +884,7 @@ const heroStyles = `
     display: inline-flex;
     align-items: center;
     gap: 4px;
-    background: #EF4136;
+    background: #FF1801;
     color: #FFFFFF;
     padding: 3px 8px;
     border-radius: 999px;
@@ -906,7 +892,7 @@ const heroStyles = `
     font-size: 0.65rem;
     font-weight: 800;
     letter-spacing: 0.05em;
-    box-shadow: 0 4px 12px rgba(239, 65, 54, 0.35);
+    box-shadow: 0 4px 12px rgba(255, 24, 1, 0.35);
   }
 
   .trophy-star {
@@ -966,9 +952,9 @@ const heroStyles = `
   }
 
   .bf-engine-chip:hover {
-    border-color: #EF4136;
+    border-color: #FF1801;
     background: rgba(255, 255, 255, 0.95);
-    color: #EF4136;
+    color: #FF1801;
     transform: translateY(-1px);
   }
 
@@ -987,7 +973,7 @@ const heroStyles = `
     width: 94%;
     height: 100%;
     border-radius: 999px;
-    background: linear-gradient(90deg, #EF4136 0%, #D2042D 100%);
+    background: linear-gradient(90deg, #FF1801 0%, #D61400 100%);
   }
 
   /* CARD 3: BOTTOM LEFT */

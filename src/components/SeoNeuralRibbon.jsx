@@ -134,22 +134,22 @@ export default function SeoNeuralRibbon({ containerSelector = ".bf-bento-cards-g
       <style>{`
         .bf-seo-neural-ribbon-path {
           fill: none;
-          stroke: #EF4136;
+          stroke: #FF1801;
           stroke-width: 2.2px;
           stroke-linecap: round;
           stroke-linejoin: round;
           opacity: 0.72;
-          filter: drop-shadow(0 0 8px rgba(239, 65, 54, 0.45));
+          filter: drop-shadow(0 0 8px rgba(255, 24, 1, 0.45));
           transition: stroke-dashoffset 0.12s linear;
         }
         .bf-seo-neural-node {
-          fill: #EF4136;
+          fill: #FF1801;
           transition: opacity 0.35s ease, transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
           transform-origin: center;
         }
         .bf-seo-neural-halo {
           fill: none;
-          stroke: rgba(239, 65, 54, 0.3);
+          stroke: rgba(255, 24, 1, 0.3);
           stroke-width: 1.5px;
           stroke-dasharray: 3 3;
           animation: bf-spin-halo 12s linear infinite;
@@ -171,10 +171,10 @@ export default function SeoNeuralRibbon({ containerSelector = ".bf-bento-cards-g
       >
         <defs>
           <linearGradient id="bf-seo-ribbon-grad" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stopColor="#EF4136" stopOpacity="0.2" />
-            <stop offset="40%" stopColor="#EF4136" stopOpacity="0.85" />
+            <stop offset="0%" stopColor="#FF1801" stopOpacity="0.2" />
+            <stop offset="40%" stopColor="#FF1801" stopOpacity="0.85" />
             <stop offset="70%" stopColor="#FF7A6E" stopOpacity="0.9" />
-            <stop offset="100%" stopColor="#D2042D" stopOpacity="0.3" />
+            <stop offset="100%" stopColor="#D61400" stopOpacity="0.3" />
           </linearGradient>
         </defs>
         <path

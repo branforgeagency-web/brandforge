@@ -177,7 +177,7 @@ const styles = `
     padding: 6px 14px;
     border-radius: 8px;
     background: #0A0A0C;
-    border: 1px solid #EF4136;
+    border: 1px solid #FF1801;
     color: #FFFFFF;
     font-family: "Outfit", sans-serif;
     font-size: 0.78rem;
@@ -203,7 +203,7 @@ const styles = `
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    border: 2px solid #EF4136;
+    border: 2px solid #FF1801;
     background: #0A0A0C;
     color: #FFFFFF;
     transition: border-color 0.25s ease, background 0.25s ease;
@@ -268,7 +268,7 @@ const styles = `
   .flame-core {
     width: 12px;
     height: 32px;
-    background: linear-gradient(180deg, #FFFFFF 0%, #FF6B5E 40%, #EF4136 100%);
+    background: linear-gradient(180deg, #FFFFFF 0%, #FF4D3D 40%, #FF1801 100%);
     border-radius: 999px;
     animation: flameFlicker 0.15s ease-in-out infinite alternate;
   }
@@ -278,7 +278,7 @@ const styles = `
     top: 4px;
     width: 20px;
     height: 42px;
-    background: linear-gradient(180deg, rgba(239, 65, 54, 0.9) 0%, rgba(255, 77, 77, 0.4) 70%, transparent 100%);
+    background: linear-gradient(180deg, rgba(255, 24, 1, 0.9) 0%, rgba(255, 77, 77, 0.4) 70%, transparent 100%);
     border-radius: 999px;
     animation: flamePulse 0.2s ease-in-out infinite alternate;
   }
@@ -300,9 +300,9 @@ const styles = `
   .idle-flame-core {
     width: 9px;
     height: 18px;
-    background: linear-gradient(180deg, #FFFFFF 0%, #FF6B5E 45%, #EF4136 100%);
+    background: linear-gradient(180deg, #FFFFFF 0%, #FF4D3D 45%, #FF1801 100%);
     border-radius: 999px;
-    box-shadow: 0 0 10px rgba(239, 65, 54, 0.9), 0 0 6px rgba(239, 65, 54, 0.8);
+    box-shadow: 0 0 10px rgba(255, 24, 1, 0.9), 0 0 6px rgba(255, 24, 1, 0.8);
     animation: idleFlameFlicker 0.15s ease-in-out infinite alternate;
   }
 
@@ -311,7 +311,7 @@ const styles = `
     top: 2px;
     width: 16px;
     height: 24px;
-    background: radial-gradient(circle, rgba(239, 65, 54, 0.7) 0%, rgba(239, 65, 54, 0.35) 60%, transparent 100%);
+    background: radial-gradient(circle, rgba(255, 24, 1, 0.7) 0%, rgba(255, 24, 1, 0.35) 60%, transparent 100%);
     border-radius: 50%;
     animation: idleFlameGlowPulse 0.25s ease-in-out infinite alternate;
   }
@@ -339,24 +339,24 @@ const styles = `
   .bf-float-btn.btn-whatsapp {
     background: #0A0A0C;
     color: #FFFFFF;
-    border-color: #EF4136;
+    border-color: #FF1801;
   }
 
   .bf-float-btn.btn-whatsapp:hover {
-    background: #EF4136;
-    border-color: #EF4136;
+    background: #FF1801;
+    border-color: #FF1801;
     color: #FFFFFF;
   }
 
   .bf-float-btn.btn-call {
     background: #0A0A0C;
     color: #FFFFFF;
-    border-color: #EF4136;
+    border-color: #FF1801;
   }
 
   .bf-float-btn.btn-call:hover {
-    background: #EF4136;
-    border-color: #EF4136;
+    background: #FF1801;
+    border-color: #FF1801;
     color: #FFFFFF;
   }
 

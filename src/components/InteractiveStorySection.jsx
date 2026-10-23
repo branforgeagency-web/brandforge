@@ -23,7 +23,7 @@ function StoryPillarCard({ pillar, index }) {
   const translateX = useTransform(mouseXSpring, [-0.5, 0.5], [-8, 8]);
   const translateY = useTransform(mouseYSpring, [-0.5, 0.5], [-8, 8]);
 
-  const glareBg = useMotionTemplate`radial-gradient(280px circle at ${pxX}px ${pxY}px, rgba(239, 65, 54, 0.14), transparent 75%)`;
+  const glareBg = useMotionTemplate`radial-gradient(280px circle at ${pxX}px ${pxY}px, rgba(255, 24, 1, 0.14), transparent 75%)`;
 
   const handleMouseMove = (e) => {
     if (!cardRef.current) return;
@@ -605,7 +605,7 @@ const storyStyles = `
   }
 
   .telemetry-metric strong {
-    color: #EF4136;
+    color: #FF1801;
   }
 
   .telemetry-sep {
@@ -623,7 +623,7 @@ const storyStyles = `
   }
 
   .sg-seo-story-heading span {
-    color: #EF4136;
+    color: #FF1801;
   }
 
   .sg-story-interactive-pills {
@@ -638,7 +638,7 @@ const storyStyles = `
     font-family: "JetBrains Mono", monospace;
     font-size: 0.72rem;
     font-weight: 800;
-    color: #EF4136;
+    color: #FF1801;
     letter-spacing: 0.08em;
     margin-right: 4px;
   }
@@ -662,14 +662,14 @@ const storyStyles = `
 
   .sg-interactive-kw-pill:hover,
   .sg-interactive-kw-pill.is-active {
-    background: rgba(239, 65, 54, 0.08);
-    border-color: #EF4136;
-    color: #EF4136;
-    box-shadow: 0 4px 12px rgba(239, 65, 54, 0.15);
+    background: rgba(255, 24, 1, 0.08);
+    border-color: #FF1801;
+    color: #FF1801;
+    box-shadow: 0 4px 12px rgba(255, 24, 1, 0.15);
   }
 
   .kw-icon {
-    color: #EF4136;
+    color: #FF1801;
   }
 
   .sg-kw-tooltip {
@@ -680,13 +680,13 @@ const storyStyles = `
     width: 240px;
     padding: 10px 14px;
     background: #0A0A0C;
-    border: 1px solid #EF4136;
+    border: 1px solid #FF1801;
     border-radius: 10px;
     color: #FFFFFF;
     font-size: 0.75rem;
     line-height: 1.45;
     font-family: "Plus Jakarta Sans", sans-serif;
-    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5), 0 0 15px rgba(239, 65, 54, 0.2);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5), 0 0 15px rgba(255, 24, 1, 0.2);
     pointer-events: none;
     z-index: 50;
   }
@@ -733,11 +733,11 @@ const storyStyles = `
   }
 
   .blueprint-indicator {
-    color: #EF4136;
-    background: rgba(239, 65, 54, 0.08);
+    color: #FF1801;
+    background: rgba(255, 24, 1, 0.08);
     padding: 3px 8px;
     border-radius: 6px;
-    border: 1px solid rgba(239, 65, 54, 0.2);
+    border: 1px solid rgba(255, 24, 1, 0.2);
   }
 
   .blueprint-img-wrap {
@@ -759,7 +759,7 @@ const storyStyles = `
     width: 65%;
     height: 65%;
     border-radius: 50%;
-    background: radial-gradient(circle, rgba(239, 65, 54, 0.12) 0%, transparent 70%);
+    background: radial-gradient(circle, rgba(255, 24, 1, 0.12) 0%, transparent 70%);
     filter: blur(28px);
     pointer-events: none;
     z-index: 0;
@@ -785,7 +785,7 @@ const storyStyles = `
 
   .sg-story-blueprint-card:hover .sg-story-blueprint-img {
     transform: scale(1.03);
-    filter: drop-shadow(0 24px 36px rgba(239, 65, 54, 0.14));
+    filter: drop-shadow(0 24px 36px rgba(255, 24, 1, 0.14));
   }
 
   .sg-blueprint-glass-badge {
@@ -830,12 +830,12 @@ const storyStyles = `
     width: 7px;
     height: 7px;
     border-radius: 50%;
-    background: #EF4136;
-    box-shadow: 0 0 8px rgba(239, 65, 54, 0.6);
+    background: #FF1801;
+    box-shadow: 0 0 8px rgba(255, 24, 1, 0.6);
   }
 
   .glass-badge-chk {
-    color: #EF4136;
+    color: #FF1801;
   }
 
   /* 3D PILLAR CARDS */
@@ -861,16 +861,16 @@ const storyStyles = `
   }
 
   .sg-story-pillar-inner.is-hovered {
-    border-color: #EF4136;
+    border-color: #FF1801;
     background: #FFFFFF;
-    box-shadow: 0 16px 36px rgba(239, 65, 54, 0.12);
+    box-shadow: 0 16px 36px rgba(255, 24, 1, 0.12);
     transform: translateZ(10px);
   }
 
   .sg-pillar-glare {
     position: absolute;
     inset: -50%;
-    background: radial-gradient(circle at 50% 50%, rgba(239, 65, 54, 0.08) 0%, transparent 60%);
+    background: radial-gradient(circle at 50% 50%, rgba(255, 24, 1, 0.08) 0%, transparent 60%);
     pointer-events: none;
     transition: opacity 0.3s ease;
   }
@@ -891,11 +891,11 @@ const storyStyles = `
   }
 
   .sg-pillar-proof-tag {
-    color: #EF4136;
-    background: rgba(239, 65, 54, 0.08);
+    color: #FF1801;
+    background: rgba(255, 24, 1, 0.08);
     padding: 3px 8px;
     border-radius: 6px;
-    border: 1px solid rgba(239, 65, 54, 0.25);
+    border: 1px solid rgba(255, 24, 1, 0.25);
   }
 
   .sg-pillar-main {
@@ -907,12 +907,12 @@ const storyStyles = `
     width: 44px;
     height: 44px;
     border-radius: 12px;
-    background: rgba(239, 65, 54, 0.1);
-    border: 1px solid rgba(239, 65, 54, 0.3);
+    background: rgba(255, 24, 1, 0.1);
+    border: 1px solid rgba(255, 24, 1, 0.3);
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #EF4136;
+    color: #FF1801;
     margin-bottom: 16px;
   }
 
@@ -920,7 +920,7 @@ const storyStyles = `
     position: absolute;
     inset: -3px;
     border-radius: 14px;
-    border: 1px dashed rgba(239, 65, 54, 0.3);
+    border: 1px dashed rgba(255, 24, 1, 0.3);
     animation: spinSlow 20s linear infinite;
   }
 
@@ -955,7 +955,7 @@ const storyStyles = `
   .sg-pillar-conduit-bar {
     width: 32px;
     height: 2px;
-    background: linear-gradient(90deg, #EF4136, transparent);
+    background: linear-gradient(90deg, #FF1801, transparent);
   }
 
   .sg-pillar-status-text {

@@ -115,7 +115,7 @@ export default function InteractiveWhoWeHelpSection({
         >
           <circle cx="384" cy="417.5" r="191.5" stroke="rgba(255, 255, 255, 0.04)" strokeWidth="1.2" />
           <circle cx="384" cy="192" r="191.5" stroke="rgba(255, 255, 255, 0.04)" strokeWidth="1.2" />
-          <circle cx="192" cy="304.7" r="191.5" stroke="rgba(239, 65, 54, 0.06)" strokeWidth="1.2" />
+          <circle cx="192" cy="304.7" r="191.5" stroke="rgba(255, 24, 1, 0.06)" strokeWidth="1.2" />
           <circle cx="576" cy="304.7" r="191.5" stroke="rgba(255, 255, 255, 0.04)" strokeWidth="1.2" />
         </svg>
       </div>
@@ -177,8 +177,8 @@ const whoStyles = `
   .sg-who-section {
     background: #09090C !important;
     background-image: 
-      radial-gradient(circle at 50% 0%, rgba(239, 65, 54, 0.12) 0%, transparent 60%),
-      radial-gradient(circle at 85% 85%, rgba(239, 65, 54, 0.06) 0%, transparent 50%),
+      radial-gradient(circle at 50% 0%, rgba(255, 24, 1, 0.12) 0%, transparent 60%),
+      radial-gradient(circle at 85% 85%, rgba(255, 24, 1, 0.06) 0%, transparent 50%),
       radial-gradient(circle at 15% 75%, rgba(255, 255, 255, 0.02) 0%, transparent 40%) !important;
     border-top: 1px solid rgba(255, 255, 255, 0.08) !important;
     border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
@@ -218,9 +218,9 @@ const whoStyles = `
     font-size: 0.72rem;
     font-weight: 800;
     letter-spacing: 0.14em;
-    color: #EF4136;
-    background: rgba(239, 65, 54, 0.08);
-    border: 1px solid rgba(239, 65, 54, 0.25);
+    color: #FF1801;
+    background: rgba(255, 24, 1, 0.08);
+    border: 1px solid rgba(255, 24, 1, 0.25);
     padding: 5px 14px;
     border-radius: 9999px;
     text-transform: uppercase;
@@ -268,9 +268,9 @@ const whoStyles = `
 
   .sg-who-card:hover,
   .sg-who-card.is-hovered {
-    border-color: #EF4136 !important;
+    border-color: #FF1801 !important;
     background: #14141C !important;
-    box-shadow: 0 16px 40px rgba(239, 65, 54, 0.2), 0 0 0 1px rgba(239, 65, 54, 0.4) !important;
+    box-shadow: 0 16px 40px rgba(255, 24, 1, 0.2), 0 0 0 1px rgba(255, 24, 1, 0.4) !important;
     transform: translateY(-4px);
   }
 
@@ -285,9 +285,9 @@ const whoStyles = `
     width: 38px;
     height: 38px;
     border-radius: 10px;
-    background: rgba(239, 65, 54, 0.12);
-    border: 1px solid rgba(239, 65, 54, 0.3);
-    color: #EF4136;
+    background: rgba(255, 24, 1, 0.12);
+    border: 1px solid rgba(255, 24, 1, 0.3);
+    color: #FF1801;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -298,11 +298,11 @@ const whoStyles = `
     font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
     font-size: 0.7rem;
     font-weight: 700;
-    color: #EF4136;
-    background: rgba(239, 65, 54, 0.08);
+    color: #FF1801;
+    background: rgba(255, 24, 1, 0.08);
     padding: 4px 10px;
     border-radius: 6px;
-    border: 1px solid rgba(239, 65, 54, 0.22);
+    border: 1px solid rgba(255, 24, 1, 0.22);
     letter-spacing: 0.04em;
   }
 
@@ -354,7 +354,7 @@ const whoStyles = `
   }
 
   .sg-cert-badge:hover {
-    border-color: #EF4136 !important;
+    border-color: #FF1801 !important;
     background: #14141C !important;
     transform: translateY(-2px);
   }
@@ -362,11 +362,11 @@ const whoStyles = `
   .cert-aura-ring {
     position: absolute;
     inset: -50%;
-    background: radial-gradient(circle at 50% 50%, rgba(239, 65, 54, 0.12) 0%, transparent 60%);
+    background: radial-gradient(circle at 50% 50%, rgba(255, 24, 1, 0.12) 0%, transparent 60%);
     pointer-events: none;
   }
 
-  .cert-icon { color: #EF4136; }
+  .cert-icon { color: #FF1801; }
 
   @media (max-width: 1024px) {
     .sg-who-grid { grid-template-columns: repeat(2, 1fr); }

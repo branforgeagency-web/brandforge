@@ -125,7 +125,7 @@ const faqStyles = `
   }
 
   .sg-faq-section .sg-section-title span {
-    color: #EF4136;
+    color: #FF1801;
   }
 
   .sg-faq-section .sg-section-subtitle {
@@ -157,14 +157,14 @@ const faqStyles = `
   .sg-faq-cat-btn:hover {
     background: #E5E7EB;
     color: #0A0A0C;
-    border-color: rgba(239, 65, 54, 0.4);
+    border-color: rgba(255, 24, 1, 0.4);
   }
 
   .sg-faq-cat-btn.is-active {
-    background: #EF4136;
-    border-color: #EF4136;
+    background: #FF1801;
+    border-color: #FF1801;
     color: #FFFFFF;
-    box-shadow: 0 4px 16px rgba(239, 65, 54, 0.35);
+    box-shadow: 0 4px 16px rgba(255, 24, 1, 0.35);
   }
 
   .sg-faq-stream {
@@ -186,14 +186,14 @@ const faqStyles = `
   }
 
   .sg-faq-row:hover {
-    border-color: rgba(239, 65, 54, 0.4);
+    border-color: rgba(255, 24, 1, 0.4);
     background: #FFFFFF;
   }
 
   .sg-faq-row.is-open {
-    border-color: #EF4136;
+    border-color: #FF1801;
     background: #FFFFFF;
-    box-shadow: 0 12px 30px rgba(239, 65, 54, 0.1);
+    box-shadow: 0 12px 30px rgba(255, 24, 1, 0.1);
   }
 
   .sg-faq-q {
@@ -217,12 +217,12 @@ const faqStyles = `
     font-family: "JetBrains Mono", monospace;
     font-size: 0.8rem;
     font-weight: 800;
-    color: #EF4136;
+    color: #FF1801;
     flex-shrink: 0;
   }
 
   .sg-faq-arrow {
-    color: #EF4136;
+    color: #FF1801;
     transition: transform 0.3s ease;
     flex-shrink: 0;
   }
@@ -252,8 +252,8 @@ const faqStyles = `
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    background: rgba(239, 65, 54, 0.08);
-    border: 1px solid rgba(239, 65, 54, 0.25);
+    background: rgba(255, 24, 1, 0.08);
+    border: 1px solid rgba(255, 24, 1, 0.25);
     color: #0A0A0C;
     padding: 8px 16px;
     border-radius: 8px;
@@ -265,8 +265,8 @@ const faqStyles = `
   }
 
   .sg-faq-ask-link:hover {
-    background: #EF4136;
-    border-color: #EF4136;
+    background: #FF1801;
+    border-color: #FF1801;
     color: #FFFFFF;
   }
 `;

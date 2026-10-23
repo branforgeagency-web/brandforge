@@ -155,13 +155,13 @@ const pillarsComponentStyles = `
     font-size: 0.8rem;
     font-weight: 800;
     letter-spacing: 0.12em;
-    color: #EF4136;
+    color: #FF1801;
     text-transform: uppercase;
     margin-bottom: 16px;
   }
 
   .smp-star {
-    color: #EF4136;
+    color: #FF1801;
     animation: smp-star-spin 16s linear infinite;
   }
 
@@ -204,14 +204,14 @@ const pillarsComponentStyles = `
   }
 
   .smp-stream-row:hover {
-    border-color: rgba(239, 65, 54, 0.4);
+    border-color: rgba(255, 24, 1, 0.4);
     background: #111118;
   }
 
   .smp-stream-row.is-expanded {
-    border-color: #EF4136;
+    border-color: #FF1801;
     background: #12121A;
-    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.5), 0 0 20px rgba(239, 65, 54, 0.1);
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.5), 0 0 20px rgba(255, 24, 1, 0.1);
   }
 
   .smp-row-header-btn {
@@ -241,7 +241,7 @@ const pillarsComponentStyles = `
   }
 
   .smp-stream-row.is-expanded .smp-row-num {
-    color: #EF4136;
+    color: #FF1801;
   }
 
   .smp-icon-wrap {
@@ -250,7 +250,7 @@ const pillarsComponentStyles = `
     border-radius: 12px;
     background: rgba(255, 255, 255, 0.05);
     border: 1px solid rgba(255, 255, 255, 0.1);
-    color: #EF4136;
+    color: #FF1801;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -258,10 +258,10 @@ const pillarsComponentStyles = `
   }
 
   .smp-stream-row.is-expanded .smp-icon-wrap {
-    background: #EF4136;
-    border-color: #EF4136;
+    background: #FF1801;
+    border-color: #FF1801;
     color: #FFFFFF;
-    box-shadow: 0 0 16px rgba(239, 65, 54, 0.5);
+    box-shadow: 0 0 16px rgba(255, 24, 1, 0.5);
   }
 
   .smp-title-col {
@@ -274,7 +274,7 @@ const pillarsComponentStyles = `
     font-family: "JetBrains Mono", monospace;
     font-size: 0.68rem;
     font-weight: 800;
-    color: #EF4136;
+    color: #FF1801;
     letter-spacing: 0.06em;
   }
 
@@ -309,7 +309,7 @@ const pillarsComponentStyles = `
     border-radius: 50%;
     background: #14141C;
     border: 1px solid rgba(255, 255, 255, 0.1);
-    color: #EF4136;
+    color: #FF1801;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -317,7 +317,7 @@ const pillarsComponentStyles = `
   }
 
   .smp-stream-row.is-expanded .smp-toggle-glyph {
-    background: #EF4136;
+    background: #FF1801;
     color: #FFFFFF;
   }
 
@@ -352,8 +352,8 @@ const pillarsComponentStyles = `
     display: flex;
     align-items: flex-start;
     gap: 14px;
-    background: rgba(239, 65, 54, 0.08);
-    border: 1px solid rgba(239, 65, 54, 0.25);
+    background: rgba(255, 24, 1, 0.08);
+    border: 1px solid rgba(255, 24, 1, 0.25);
     border-radius: 12px;
     padding: 14px 18px;
     margin-bottom: 22px;
@@ -362,7 +362,7 @@ const pillarsComponentStyles = `
   .callout-bar {
     width: 3px;
     height: 100%;
-    background: #EF4136;
+    background: #FF1801;
     border-radius: 2px;
     flex-shrink: 0;
   }
@@ -394,7 +394,7 @@ const pillarsComponentStyles = `
   }
 
   .smp-check-icon {
-    color: #EF4136;
+    color: #FF1801;
     flex-shrink: 0;
     margin-top: 3px;
   }
@@ -411,7 +411,7 @@ const pillarsComponentStyles = `
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    background: #EF4136;
+    background: #FF1801;
     color: #FFFFFF;
     border: none;
     border-radius: 10px;
@@ -422,13 +422,13 @@ const pillarsComponentStyles = `
     letter-spacing: 0.06em;
     cursor: pointer;
     transition: all 0.25s ease;
-    box-shadow: 0 4px 16px rgba(239, 65, 54, 0.35);
+    box-shadow: 0 4px 16px rgba(255, 24, 1, 0.35);
   }
 
   .smp-cta-btn:hover {
-    background: #D2042D;
+    background: #D61400;
     transform: translateY(-2px);
-    box-shadow: 0 8px 24px rgba(239, 65, 54, 0.5);
+    box-shadow: 0 8px 24px rgba(255, 24, 1, 0.5);
   }
 
   .smp-blueprint-note {

@@ -553,14 +553,14 @@ const css = `
   gap: 0.85rem;
   padding: 1.1rem 2.5rem;
   border-radius: 9999px;
-  background: #EF4136;
+  background: #FF1801;
   color: #FFFFFF;
   font-family: 'Outfit', sans-serif;
   font-weight: 800;
   font-size: 0.95rem;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  border: 1px solid rgba(239, 65, 54, 0.4);
+  border: 1px solid rgba(255, 24, 1, 0.4);
   cursor: pointer;
   transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), background 0.3s ease;
 }
@@ -598,7 +598,7 @@ const css = `
   font-weight: 900;
   font-size: 14px;
   letter-spacing: 0.08em;
-  color: #EF4136;
+  color: #FF1801;
 }
 
 .pl-tag {
@@ -631,7 +631,7 @@ const css = `
 }
 
 .pl-index b {
-  color: #EF4136;
+  color: #FF1801;
 }
 
 @media (max-width: 1000px) {

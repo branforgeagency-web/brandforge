@@ -289,7 +289,7 @@ const formStyles = `
   }
 
   .lt-sparkle {
-    color: #EF4136;
+    color: #FF1801;
   }
 
   .lt-title {
@@ -327,7 +327,7 @@ const formStyles = `
     position: absolute;
     left: 14px;
     z-index: 2;
-    color: #EF4136;
+    color: #FF1801;
     display: flex;
     align-items: center;
     pointer-events: none;
@@ -392,17 +392,17 @@ const formStyles = `
   .lt-field input:focus,
   .lt-field select:focus,
   .lt-field textarea:focus {
-    border-color: #EF4136;
+    border-color: #FF1801;
     background: rgba(18, 22, 30, 0.9);
-    box-shadow: 0 0 0 3px rgba(239, 65, 54, 0.15);
+    box-shadow: 0 0 0 3px rgba(255, 24, 1, 0.15);
   }
 
   .lt-submit-btn {
     height: 48px;
     width: 100%;
     margin-top: 6px;
-    background: #EF4136;
-    border: 1px solid #EF4136;
+    background: #FF1801;
+    border: 1px solid #FF1801;
     border-radius: 10px;
     color: #FFFFFF;
     font-size: 0.92rem;
@@ -415,14 +415,14 @@ const formStyles = `
     justify-content: center;
     gap: 8px;
     transition: background 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
-    box-shadow: 0 8px 24px rgba(239, 65, 54, 0.35);
+    box-shadow: 0 8px 24px rgba(255, 24, 1, 0.35);
   }
 
   .lt-submit-btn:hover:not(:disabled) {
     background: #D8342A;
     border-color: #D8342A;
     transform: translateY(-1px);
-    box-shadow: 0 12px 28px rgba(239, 65, 54, 0.45);
+    box-shadow: 0 12px 28px rgba(255, 24, 1, 0.45);
   }
 
   .lt-submit-btn:active:not(:disabled) {
@@ -430,9 +430,9 @@ const formStyles = `
   }
 
   .lt-submit-btn.is-success {
-    background: #EF4136;
-    border-color: #EF4136;
-    box-shadow: 0 8px 24px rgba(239, 65, 54, 0.35);
+    background: #FF1801;
+    border-color: #FF1801;
+    box-shadow: 0 8px 24px rgba(255, 24, 1, 0.35);
   }
 
   .lt-loader {

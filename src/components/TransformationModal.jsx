@@ -87,8 +87,8 @@ const modalStyles = `
     background: rgba(12, 14, 20, 0.92);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
-    border: 1px solid rgba(239, 65, 54, 0.35);
-    box-shadow: 0 25px 70px rgba(0, 0, 0, 0.75), 0 0 40px rgba(239, 65, 54, 0.12);
+    border: 1px solid rgba(255, 24, 1, 0.35);
+    box-shadow: 0 25px 70px rgba(0, 0, 0, 0.75), 0 0 40px rgba(255, 24, 1, 0.12);
     border-radius: 20px;
     color: #FFFFFF;
     font-family: "Outfit", "Plus Jakarta Sans", sans-serif;
@@ -115,7 +115,7 @@ const modalStyles = `
   }
 
   .bf-modal-close:hover {
-    background: #EF4136;
-    border-color: #EF4136;
+    background: #FF1801;
+    border-color: #FF1801;
   }
 `;

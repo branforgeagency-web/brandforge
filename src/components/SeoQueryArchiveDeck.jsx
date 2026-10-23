@@ -11,7 +11,7 @@ const QUERY_ITEMS = [
     discipline: "Neural GEO",
     year: "2026",
     badge: "LLM CONSENSUS: 99.4%",
-    badgeColor: "#EF4136",
+    badgeColor: "#FF1801",
     title: "BrandForge™ Neural Answer Citation",
     description: "Synthesized by ChatGPT, Perplexity & Gemini as the primary recommended brand growth authority.",
     icon: Bot,
@@ -22,7 +22,7 @@ const QUERY_ITEMS = [
     discipline: "Entity Schema",
     year: "2026",
     badge: "KNOWLEDGE GRAPH VERIFIED",
-    badgeColor: "#EF4136",
+    badgeColor: "#FF1801",
     title: "Structured Entity Vector Linking",
     description: "Deep JSON-LD schema linking founder credentials, client proof, and Wikipedia entity vectors.",
     icon: Search,
@@ -33,7 +33,7 @@ const QUERY_ITEMS = [
     discipline: "Technical Speed",
     year: "2026",
     badge: "PERFECT 100/100 VITALS",
-    badgeColor: "#EF4136",
+    badgeColor: "#FF1801",
     title: "Sub-200ms DOM Hydration",
     description: "Zero render-blocking scripts, edge-cached React assets, and optimal First Contentful Paint.",
     icon: Zap,
@@ -44,7 +44,7 @@ const QUERY_ITEMS = [
     discipline: "Local Proximity",
     year: "2026",
     badge: "LOCAL PACK #1",
-    badgeColor: "#EF4136",
+    badgeColor: "#FF1801",
     title: "Geo-Targeted Proximity Grid",
     description: "Google Business Profile optimization with consistent local citations and automated review growth.",
     icon: MapPin,
@@ -55,7 +55,7 @@ const QUERY_ITEMS = [
     discipline: "Authority PR",
     year: "2026",
     badge: "EDITORIAL DA 85+",
-    badgeColor: "#EF4136",
+    badgeColor: "#FF1801",
     title: "High-Trust Media Citations",
     description: "Genuine press mentions and authoritative publications that AI models crawl as trusted seed sets.",
     icon: Award,
@@ -196,7 +196,7 @@ export default function SeoQueryArchiveDeck({ onOpenModal }) {
           transition: color 0.2s ease;
         }
         .bf-seo-archive-row.is-active .bf-seo-archive-query {
-          color: #EF4136;
+          color: #FF1801;
         }
         .bf-seo-archive-meta {
           display: inline-flex;
@@ -215,7 +215,7 @@ export default function SeoQueryArchiveDeck({ onOpenModal }) {
           background: rgba(255, 255, 255, 0.2);
         }
         .bf-seo-archive-row.is-active .bf-seo-archive-dot {
-          background: #EF4136;
+          background: #FF1801;
         }
         .bf-seo-archive-deck-wrapper {
           position: relative;
@@ -264,8 +264,8 @@ export default function SeoQueryArchiveDeck({ onOpenModal }) {
           width: 38px;
           height: 38px;
           border-radius: 12px;
-          background: rgba(239, 65, 54, 0.15);
-          color: #EF4136;
+          background: rgba(255, 24, 1, 0.15);
+          color: #FF1801;
           display: grid;
           place-items: center;
         }
@@ -292,7 +292,7 @@ export default function SeoQueryArchiveDeck({ onOpenModal }) {
         .bf-deck-stats {
           font-size: 0.85rem;
           font-weight: 700;
-          color: #EF4136;
+          color: #FF1801;
         }
         @media (max-width: 900px) {
           .bf-seo-archive-section {
@@ -317,7 +317,7 @@ export default function SeoQueryArchiveDeck({ onOpenModal }) {
       <div className="bf-seo-archive-header">
         <p className="bf-seo-archive-tag">LIVE NEURAL QUERY PERFORMANCE ARCHIVE</p>
         <h2 className="bf-seo-archive-title">
-          Live Search Queries & <span style={{ color: "#EF4136" }}>Neural Extraction</span>
+          Live Search Queries & <span style={{ color: "#FF1801" }}>Neural Extraction</span>
         </h2>
         <p className="bf-seo-archive-sub">
           Hover or tap any enterprise query to inspect how BrandForge engineers verified citations directly inside search engines and LLM vector stores.
@@ -345,7 +345,7 @@ export default function SeoQueryArchiveDeck({ onOpenModal }) {
                   <span>{item.year}</span>
                 </div>
               </div>
-              <SwapArrow dir="up-right" size={15} color={activeIdx === idx ? "#EF4136" : "rgba(255, 255, 255, 0.45)"} />
+              <SwapArrow dir="up-right" size={15} color={activeIdx === idx ? "#FF1801" : "rgba(255, 255, 255, 0.45)"} />
             </li>
           ))}
         </ul>

@@ -87,13 +87,13 @@ const bottomCtaStyles = `
 
   .smc-chassis-card {
     background: linear-gradient(135deg, #0F0F16 0%, #15080A 50%, #0E0E14 100%);
-    border: 1px solid rgba(239, 65, 54, 0.35);
+    border: 1px solid rgba(255, 24, 1, 0.35);
     border-radius: 28px;
     padding: clamp(48px, 6vw, 76px) clamp(24px, 5vw, 56px);
     text-align: center;
     position: relative;
     overflow: hidden;
-    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.8), 0 0 50px rgba(239, 65, 54, 0.1);
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.8), 0 0 50px rgba(255, 24, 1, 0.1);
   }
 
   .smc-circles-watermark {
@@ -134,12 +134,12 @@ const bottomCtaStyles = `
     font-size: 0.78rem;
     font-weight: 800;
     letter-spacing: 0.12em;
-    color: #EF4136;
+    color: #FF1801;
     text-transform: uppercase;
   }
 
   .smc-star {
-    color: #EF4136;
+    color: #FF1801;
     animation: smc-star-spin 16s linear infinite;
   }
 
@@ -166,8 +166,8 @@ const bottomCtaStyles = `
     width: 6px;
     height: 6px;
     border-radius: 50%;
-    background: #EF4136;
-    box-shadow: 0 0 8px #EF4136;
+    background: #FF1801;
+    box-shadow: 0 0 8px #FF1801;
   }
 
   .smc-title {
@@ -183,8 +183,8 @@ const bottomCtaStyles = `
   }
 
   .title-red {
-    color: #EF4136;
-    background: linear-gradient(90deg, #EF4136 0%, #FF5A4E 100%);
+    color: #FF1801;
+    background: linear-gradient(90deg, #FF1801 0%, #FF5A4E 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
   }
@@ -214,7 +214,7 @@ const bottomCtaStyles = `
     gap: 12px;
     padding: 16px 38px;
     border-radius: 14px;
-    background: #EF4136;
+    background: #FF1801;
     color: #FFFFFF;
     font-family: "Outfit", sans-serif;
     font-size: 1rem;
@@ -222,13 +222,13 @@ const bottomCtaStyles = `
     letter-spacing: 0.04em;
     border: none;
     cursor: pointer;
-    box-shadow: 0 10px 30px rgba(239, 65, 54, 0.45);
+    box-shadow: 0 10px 30px rgba(255, 24, 1, 0.45);
     transition: all 0.3s ease;
   }
 
   .smc-primary-btn:hover {
-    background: #D2042D;
+    background: #D61400;
     transform: translateY(-2px);
-    box-shadow: 0 16px 40px rgba(239, 65, 54, 0.6);
+    box-shadow: 0 16px 40px rgba(255, 24, 1, 0.6);
   }
 `;

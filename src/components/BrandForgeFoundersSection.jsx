@@ -210,7 +210,7 @@ const styles = `
 
   .bf-founders-root {
     --bg: #060509;
-    --red: #EF4136;
+    --red: #FF1801;
     --white: #FFFFFF;
     --muted: rgba(255, 255, 255, 0.55);
     --line: rgba(255, 255, 255, 0.08);
@@ -370,8 +370,8 @@ const styles = `
     align-items: center;
     gap: 8px;
     padding: 6px 18px;
-    background: rgba(239, 65, 54, 0.1);
-    border: 1px solid rgba(239, 65, 54, 0.3);
+    background: rgba(255, 24, 1, 0.1);
+    border: 1px solid rgba(255, 24, 1, 0.3);
     border-radius: 999px;
     font-family: "Inter", sans-serif;
     font-size: 11px;

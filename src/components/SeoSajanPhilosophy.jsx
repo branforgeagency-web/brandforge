@@ -227,7 +227,7 @@ export default function SeoSajanPhilosophy({ data, onOpenModal }) {
           font-weight: 700;
           letter-spacing: 0.16em;
           text-transform: uppercase;
-          color: #EF4136;
+          color: #FF1801;
           margin-bottom: clamp(24px, 3.5vw, 40px);
         }
 
@@ -252,7 +252,7 @@ export default function SeoSajanPhilosophy({ data, onOpenModal }) {
         }
 
         .bf-phil-word.is-highlight {
-          color: #EF4136;
+          color: #FF1801;
         }
 
         .bf-phil-portal-mask {
@@ -287,9 +287,9 @@ export default function SeoSajanPhilosophy({ data, onOpenModal }) {
           display: inline-flex;
           align-items: center;
           gap: 10px;
-          background: rgba(239, 65, 54, 0.08);
-          border: 1px solid rgba(239, 65, 54, 0.3);
-          color: #FF6B5E;
+          background: rgba(255, 24, 1, 0.08);
+          border: 1px solid rgba(255, 24, 1, 0.3);
+          color: #FF4D3D;
           font-size: 0.85rem;
           font-weight: 700;
           padding: 10px 20px;
@@ -298,11 +298,11 @@ export default function SeoSajanPhilosophy({ data, onOpenModal }) {
           transition: all 0.25s ease;
         }
         .bf-phil-audit-btn:hover {
-          background: #EF4136;
+          background: #FF1801;
           color: #FFFFFF;
-          border-color: #EF4136;
+          border-color: #FF1801;
           transform: translateY(-2px);
-          box-shadow: 0 8px 24px rgba(239, 65, 54, 0.35);
+          box-shadow: 0 8px 24px rgba(255, 24, 1, 0.35);
         }
       `}</style>
 

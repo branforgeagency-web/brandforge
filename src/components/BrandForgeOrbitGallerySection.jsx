@@ -382,7 +382,7 @@ const styles = `
   background:
     radial-gradient(
       circle at 14% 15%,
-      rgba(239, 65, 54, 0.15),
+      rgba(255, 24, 1, 0.15),
       transparent 30%
     ),
     radial-gradient(
@@ -417,12 +417,12 @@ const styles = `
 
   background-image:
     linear-gradient(
-      rgba(239, 65, 54, .12) 1px,
+      rgba(255, 24, 1, .12) 1px,
       transparent 1px
     ),
     linear-gradient(
       90deg,
-      rgba(239, 65, 54, .12) 1px,
+      rgba(255, 24, 1, .12) 1px,
       transparent 1px
     );
 
@@ -457,7 +457,7 @@ const styles = `
   justify-self: start;
   font-size: 12px;
   font-weight: 900;
-  color: #EF4136;
+  color: #FF1801;
   letter-spacing: .02em;
 }
 
@@ -502,7 +502,7 @@ const styles = `
   letter-spacing: .16em;
   text-transform: uppercase;
 
-  color: #EF4136;
+  color: #FF1801;
 }
 
 .zsg-heading h1 {
@@ -587,14 +587,14 @@ const styles = `
 
 .zsg-filters button:hover {
   transform: translateX(-5px);
-  border-color: rgba(239, 65, 54, 0.5);
+  border-color: rgba(255, 24, 1, 0.5);
 }
 
 .zsg-filters button.active {
-  border-color: #EF4136;
-  background: #EF4136;
+  border-color: #FF1801;
+  background: #FF1801;
   color: #FFFFFF;
-  box-shadow: 0 4px 18px rgba(239, 65, 54, 0.4);
+  box-shadow: 0 4px 18px rgba(255, 24, 1, 0.4);
 }
 
 .zsg-filters button.active i {
@@ -646,7 +646,7 @@ const styles = `
   overflow: hidden;
 
   border-radius: 12px;
-  border: 1px solid rgba(239, 65, 54, 0.3);
+  border: 1px solid rgba(255, 24, 1, 0.3);
   background: #0D0C12;
 
   box-shadow:
@@ -735,7 +735,7 @@ const styles = `
 
 .zsg-card:hover {
   transform: translateY(-10px);
-  border-color: #EF4136;
+  border-color: #FF1801;
 }
 
 .zsg-card:hover img {
@@ -756,7 +756,7 @@ const styles = `
   height: 22px;
 
   border:
-    1px solid rgba(239, 65, 54, 0.4);
+    1px solid rgba(255, 24, 1, 0.4);
 
   border-radius: 999px;
 
@@ -768,7 +768,7 @@ const styles = `
   font-size: 8.5px;
   font-weight: 900;
   letter-spacing: .08em;
-  color: #EF4136;
+  color: #FF1801;
 }
 
 .zsg-card-copy {
@@ -800,7 +800,7 @@ const styles = `
   letter-spacing: .12em;
   text-transform: uppercase;
 
-  color: #EF4136;
+  color: #FF1801;
 }
 
 .zsg-footer-note {
@@ -825,7 +825,7 @@ const styles = `
   width: 54px;
   height: 2px;
 
-  background: #EF4136;
+  background: #FF1801;
   transform-origin: left;
 
   animation:

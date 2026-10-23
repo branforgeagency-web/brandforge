@@ -1,6 +1,6 @@
 import React, { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { ArrowRight, ChevronDown, Quote } from "lucide-react";
+import { ArrowRight, ChevronDown, Quote, Users } from "lucide-react";
 
 export default function AboutHeroSection({ onOpenModal }) {
   const containerRef = useRef(null);
@@ -75,7 +75,7 @@ export default function AboutHeroSection({ onOpenModal }) {
                 cx="320"
                 cy="320"
                 r="220"
-                stroke="rgba(239, 65, 54, 0.45)"
+                stroke="rgba(255, 24, 1, 0.45)"
                 strokeWidth="1.2"
                 strokeDasharray="6 8"
                 className="bf-svg-spin-cw"
@@ -89,10 +89,10 @@ export default function AboutHeroSection({ onOpenModal }) {
                 strokeDasharray="4 6"
                 className="bf-svg-spin-ccw"
               />
-              <line x1="170" y1="170" x2="230" y2="230" stroke="#EF4136" strokeWidth="3" strokeLinecap="round" />
-              <line x1="470" y1="170" x2="410" y2="230" stroke="#EF4136" strokeWidth="3" strokeLinecap="round" />
-              <line x1="170" y1="470" x2="230" y2="410" stroke="#EF4136" strokeWidth="3" strokeLinecap="round" />
-              <line x1="470" y1="470" x2="410" y2="410" stroke="#EF4136" strokeWidth="3" strokeLinecap="round" />
+              <line x1="170" y1="170" x2="230" y2="230" stroke="#FF1801" strokeWidth="3" strokeLinecap="round" />
+              <line x1="470" y1="170" x2="410" y2="230" stroke="#FF1801" strokeWidth="3" strokeLinecap="round" />
+              <line x1="170" y1="470" x2="230" y2="410" stroke="#FF1801" strokeWidth="3" strokeLinecap="round" />
+              <line x1="470" y1="470" x2="410" y2="410" stroke="#FF1801" strokeWidth="3" strokeLinecap="round" />
               <line
                 x1="20"
                 y1="320"
@@ -101,13 +101,13 @@ export default function AboutHeroSection({ onOpenModal }) {
                 stroke="rgba(255, 255, 255, 0.28)"
                 strokeWidth="1"
               />
-              <circle cx="515" cy="225" r="18" fill="#EF4136" />
+              <circle cx="515" cy="225" r="18" fill="#FF1801" />
               <circle cx="215" cy="445" r="14" fill="#FFFFFF" fillOpacity="0.85" />
-              <circle cx="150" cy="270" r="7" fill="#EF4136" />
+              <circle cx="150" cy="270" r="7" fill="#FF1801" />
               <circle cx="395" cy="460" r="8" fill="#FF5733" />
               <circle cx="290" cy="150" r="5" fill="#FFFFFF" />
-              <path d="M315 45 L320 35 L325 45 Z" fill="#EF4136" />
-              <path d="M315 595 L320 605 L325 595 Z" fill="#EF4136" />
+              <path d="M315 45 L320 35 L325 45 Z" fill="#FF1801" />
+              <path d="M315 595 L320 605 L325 595 Z" fill="#FF1801" />
             </svg>
           </motion.div>
 
@@ -271,7 +271,7 @@ const styles = `
   .bf-modern-about-grid {
     position: absolute;
     inset: 0;
-    background-image: radial-gradient(rgba(239, 65, 54, 0.08) 1px, transparent 1px);
+    background-image: radial-gradient(rgba(255, 24, 1, 0.08) 1px, transparent 1px);
     background-size: 32px 32px;
     opacity: 0.4;
   }
@@ -305,7 +305,7 @@ const styles = `
     width: 6px;
     height: 6px;
     border-radius: 50%;
-    background: #EF4136;
+    background: #FF1801;
   }
 
   .bf-modern-pill-text {
@@ -429,7 +429,7 @@ const styles = `
   }
 
   .bf-quote-icon {
-    color: #EF4136;
+    color: #FF1801;
     margin-bottom: 10px;
   }
 
@@ -457,7 +457,7 @@ const styles = `
     font-family: 'Outfit', sans-serif;
     font-size: 13.5px;
     font-weight: 800;
-    color: #EF4136;
+    color: #FF1801;
     letter-spacing: 0.04em;
     text-transform: uppercase;
   }
@@ -484,7 +484,7 @@ const styles = `
     align-items: center;
     gap: 10px;
     padding: 14px 30px;
-    background: #EF4136;
+    background: #FF1801;
     color: #FFFFFF;
     font-family: 'Inter', sans-serif;
     font-size: 14px;
@@ -537,7 +537,7 @@ const styles = `
   }
 
   .bf-modern-scroll-down:hover {
-    color: #EF4136;
+    color: #FF1801;
   }
 
   .bf-scroll-lbl {

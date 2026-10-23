@@ -50,7 +50,7 @@ export default function Seo3DBentoCard({
   const floatBadgeY = useTransform(springY, [-0.5, 0.5], [8, -8]);
 
   // Dynamic cursor spotlight glare
-  const spotlightBg = useMotionTemplate`radial-gradient(380px circle at ${pixelX}px ${pixelY}px, rgba(239, 65, 54, 0.12), rgba(255, 255, 255, 0.4) 45%, transparent 80%)`;
+  const spotlightBg = useMotionTemplate`radial-gradient(380px circle at ${pixelX}px ${pixelY}px, rgba(255, 24, 1, 0.12), rgba(255, 255, 255, 0.4) 45%, transparent 80%)`;
 
   const handleMouseMove = (e) => {
     if (!cardRef.current) return;
@@ -237,10 +237,10 @@ const cardStyles = `
   }
 
   .bf-pro-bento-card.is-hovered {
-    border-color: rgba(239, 65, 54, 0.45);
+    border-color: rgba(255, 24, 1, 0.45);
     box-shadow:
       0 30px 60px -15px rgba(10, 10, 12, 0.13),
-      0 12px 28px -6px rgba(239, 65, 54, 0.12),
+      0 12px 28px -6px rgba(255, 24, 1, 0.12),
       inset 0 1px 0 0 rgba(255, 255, 255, 1);
   }
 
@@ -259,7 +259,7 @@ const cardStyles = `
     width: 180px;
     height: 180px;
     border-radius: 50%;
-    background: radial-gradient(circle, rgba(239, 65, 54, 0.12) 0%, transparent 70%);
+    background: radial-gradient(circle, rgba(255, 24, 1, 0.12) 0%, transparent 70%);
     pointer-events: none;
     z-index: 0;
     transition: transform 0.5s ease, opacity 0.5s ease;
@@ -276,7 +276,7 @@ const cardStyles = `
     z-index: 2;
     height: 3.5px;
     width: 100%;
-    background: linear-gradient(90deg, #EF4136 0%, #0A0A0C 100%);
+    background: linear-gradient(90deg, #FF1801 0%, #0A0A0C 100%);
     transform: scaleX(0);
     transform-origin: left;
     transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
@@ -328,21 +328,21 @@ const cardStyles = `
   }
 
   .bf-pro-bento-card.is-hovered .bf-pro-icon-box {
-    background: #EF4136;
+    background: #FF1801;
     transform: translateY(-2px) scale(1.06);
-    box-shadow: 0 10px 22px rgba(239, 65, 54, 0.35);
+    box-shadow: 0 10px 22px rgba(255, 24, 1, 0.35);
   }
 
   .bf-pro-icon-ring {
     position: absolute;
     inset: -3px;
     border-radius: 16px;
-    border: 1.5px solid rgba(239, 65, 54, 0);
+    border: 1.5px solid rgba(255, 24, 1, 0);
     transition: border-color 0.3s ease;
   }
 
   .bf-pro-bento-card.is-hovered .bf-pro-icon-ring {
-    border-color: rgba(239, 65, 54, 0.35);
+    border-color: rgba(255, 24, 1, 0.35);
   }
 
   .bf-pro-meta-text {
@@ -356,7 +356,7 @@ const cardStyles = `
   }
 
   .bf-pro-step-num {
-    color: #EF4136;
+    color: #FF1801;
     font-weight: 800;
   }
 
@@ -390,14 +390,14 @@ const cardStyles = `
     width: 6px;
     height: 6px;
     border-radius: 50%;
-    background: #EF4136;
-    box-shadow: 0 0 8px rgba(239, 65, 54, 0.6);
+    background: #FF1801;
+    box-shadow: 0 0 8px rgba(255, 24, 1, 0.6);
   }
 
   .bf-pro-bento-card.is-hovered .bf-pro-badge-pill {
-    background: rgba(239, 65, 54, 0.08);
-    border-color: rgba(239, 65, 54, 0.35);
-    color: #EF4136;
+    background: rgba(255, 24, 1, 0.08);
+    border-color: rgba(255, 24, 1, 0.35);
+    color: #FF1801;
   }
 
   .bf-pro-copy-block {
@@ -438,7 +438,7 @@ const cardStyles = `
 
   .bf-pro-bento-card.is-hovered .bf-pro-highlights-box {
     background: rgba(255, 255, 255, 0.95);
-    border-color: rgba(239, 65, 54, 0.2);
+    border-color: rgba(255, 24, 1, 0.2);
     box-shadow: 0 8px 24px rgba(10, 10, 12, 0.04);
   }
 
@@ -453,7 +453,7 @@ const cardStyles = `
   }
 
   .bf-pro-highlight-row.is-active-row {
-    background: rgba(239, 65, 54, 0.06);
+    background: rgba(255, 24, 1, 0.06);
   }
 
   .bf-pro-highlight-left {
@@ -466,8 +466,8 @@ const cardStyles = `
     width: 21px;
     height: 21px;
     border-radius: 50%;
-    background: rgba(239, 65, 54, 0.12);
-    color: #EF4136;
+    background: rgba(255, 24, 1, 0.12);
+    color: #FF1801;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -477,9 +477,9 @@ const cardStyles = `
 
   .bf-pro-highlight-row.is-active-row .bf-pro-check-circle,
   .bf-pro-bento-card.is-hovered .bf-pro-highlight-row.is-active-row .bf-pro-check-circle {
-    background: #EF4136;
+    background: #FF1801;
     color: #FFFFFF;
-    box-shadow: 0 3px 8px rgba(239, 65, 54, 0.3);
+    box-shadow: 0 3px 8px rgba(255, 24, 1, 0.3);
   }
 
   .bf-pro-highlight-label {
@@ -503,8 +503,8 @@ const cardStyles = `
   }
 
   .bf-pro-highlight-row.is-active-row .bf-pro-highlight-tag {
-    border-color: rgba(239, 65, 54, 0.35);
-    color: #EF4136;
+    border-color: rgba(255, 24, 1, 0.35);
+    color: #FF1801;
     background: #FFFFFF;
   }
 
@@ -533,7 +533,7 @@ const cardStyles = `
   }
 
   .bf-pro-bento-card.is-hovered .bf-pro-metric-val {
-    color: #EF4136;
+    color: #FF1801;
   }
 
   .bf-pro-metric-lbl {
@@ -556,10 +556,10 @@ const cardStyles = `
   }
 
   .bf-pro-bento-card.is-hovered .bf-pro-arrow-circle {
-    background: #EF4136;
+    background: #FF1801;
     color: #FFFFFF;
     transform: translate(3px, -3px);
-    box-shadow: 0 6px 16px rgba(239, 65, 54, 0.3);
+    box-shadow: 0 6px 16px rgba(255, 24, 1, 0.3);
   }
 
   @media (max-width: 640px) {

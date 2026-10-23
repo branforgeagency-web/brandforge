@@ -181,19 +181,19 @@ const metricsStyles = `
     gap: 8px;
     font-size: 0.75rem;
     font-weight: 800;
-    color: #EF4136;
-    background: rgba(239, 65, 54, 0.08);
+    color: #FF1801;
+    background: rgba(255, 24, 1, 0.08);
     padding: 4px 12px;
     border-radius: 999px;
-    border: 1px solid rgba(239, 65, 54, 0.25);
+    border: 1px solid rgba(255, 24, 1, 0.25);
   }
 
   .live-radar-ping {
     width: 6px;
     height: 6px;
-    background: #EF4136;
+    background: #FF1801;
     border-radius: 50%;
-    box-shadow: 0 0 8px #EF4136;
+    box-shadow: 0 0 8px #FF1801;
     animation: livePing 1.8s infinite;
   }
 
@@ -229,9 +229,9 @@ const metricsStyles = `
   }
 
   .sg-metric-item:hover {
-    border-color: rgba(239, 65, 54, 0.5);
+    border-color: rgba(255, 24, 1, 0.5);
     background: #FFFFFF;
-    box-shadow: 0 16px 36px rgba(239, 65, 54, 0.1), 0 0 0 1px rgba(239, 65, 54, 0.15);
+    box-shadow: 0 16px 36px rgba(255, 24, 1, 0.1), 0 0 0 1px rgba(255, 24, 1, 0.15);
   }
 
   .sg-metric-glow-ring {
@@ -240,7 +240,7 @@ const metricsStyles = `
     right: 0;
     width: 120px;
     height: 120px;
-    background: radial-gradient(circle at 100% 0%, rgba(239, 65, 54, 0.08) 0%, transparent 70%);
+    background: radial-gradient(circle at 100% 0%, rgba(255, 24, 1, 0.08) 0%, transparent 70%);
     pointer-events: none;
   }
 
@@ -269,7 +269,7 @@ const metricsStyles = `
   }
 
   .metric-prefix, .metric-suffix {
-    color: #EF4136;
+    color: #FF1801;
   }
 
   .sg-metric-lbl {
@@ -300,7 +300,7 @@ const metricsStyles = `
   .sg-metric-progress-line {
     width: 40%;
     height: 100%;
-    background: linear-gradient(90deg, #EF4136, #FFA07A);
+    background: linear-gradient(90deg, #FF1801, #FFA07A);
     transition: width 0.4s ease;
   }
 
@@ -380,11 +380,11 @@ const metricsStyles = `
     width: 250px;
     padding: 12px 14px;
     background: #0A0A0C;
-    border: 1px solid rgba(239, 65, 54, 0.4);
+    border: 1px solid rgba(255, 24, 1, 0.4);
     border-radius: 12px;
     color: #FFFFFF;
     text-align: left;
-    box-shadow: 0 14px 35px rgba(0, 0, 0, 0.3), 0 0 15px rgba(239, 65, 54, 0.2);
+    box-shadow: 0 14px 35px rgba(0, 0, 0, 0.3), 0 0 15px rgba(255, 24, 1, 0.2);
     z-index: 50;
     pointer-events: none;
   }
@@ -393,7 +393,7 @@ const metricsStyles = `
     font-family: "JetBrains Mono", monospace;
     font-size: 0.65rem;
     font-weight: 800;
-    color: #EF4136;
+    color: #FF1801;
     letter-spacing: 0.06em;
     text-transform: uppercase;
     margin-bottom: 4px;

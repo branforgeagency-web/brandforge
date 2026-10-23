@@ -75,7 +75,7 @@ export default function ContactPage({ onOpenModal }) {
           interactive={true}
           bendRadius={7.0}
           bendStrength={-1.5}
-          linesGradient={["#D9382E", "#C5221F", "#B91C1C", "#991B1B", "#7F1D1D"]}
+          linesGradient={["#D61400", "#C5221F", "#B91C1C", "#991B1B", "#7F1D1D"]}
           mixBlendMode="screen"
           style={{ opacity: 0.55 }}
         />
@@ -185,8 +185,8 @@ const styles = `
     --card: #0A0A0C;
     --text: #FFFFFF;
     --muted: #94A3B8;
-    --red: #EF4136;
-    --border: rgba(239, 65, 54, 0.25);
+    --red: #FF1801;
+    --border: rgba(255, 24, 1, 0.25);
 
     width: 100%;
     min-height: 100vh;
@@ -211,8 +211,8 @@ const styles = `
     display: grid;
     grid-template-columns: 1fr 1fr;
     background: 
-      radial-gradient(ellipse 70% 60% at 18% 25%, rgba(239, 65, 54, 0.1) 0%, rgba(239, 65, 54, 0.02) 50%, transparent 80%),
-      radial-gradient(ellipse 65% 55% at 85% 65%, rgba(239, 65, 54, 0.08) 0%, rgba(255, 87, 51, 0.01) 50%, transparent 75%),
+      radial-gradient(ellipse 70% 60% at 18% 25%, rgba(255, 24, 1, 0.1) 0%, rgba(255, 24, 1, 0.02) 50%, transparent 80%),
+      radial-gradient(ellipse 65% 55% at 85% 65%, rgba(255, 24, 1, 0.08) 0%, rgba(255, 87, 51, 0.01) 50%, transparent 75%),
       linear-gradient(135deg, #09060E 0%, #050407 35%, #07040A 70%, #030205 100%);
   }
 
@@ -230,7 +230,7 @@ const styles = `
     left: -5%;
     width: 500px;
     height: 500px;
-    background: radial-gradient(circle, rgba(239, 65, 54, 0.16) 0%, rgba(239, 65, 54, 0.03) 55%, transparent 75%);
+    background: radial-gradient(circle, rgba(255, 24, 1, 0.16) 0%, rgba(255, 24, 1, 0.03) 55%, transparent 75%);
   }
 
   .glow-bottom-right {
@@ -238,7 +238,7 @@ const styles = `
     right: -5%;
     width: 580px;
     height: 580px;
-    background: radial-gradient(circle, rgba(239, 65, 54, 0.12) 0%, rgba(180, 20, 20, 0.02) 60%, transparent 80%);
+    background: radial-gradient(circle, rgba(255, 24, 1, 0.12) 0%, rgba(180, 20, 20, 0.02) 60%, transparent 80%);
   }
 
   .glow-center-pulse {
@@ -247,7 +247,7 @@ const styles = `
     transform: translate(-50%, -50%);
     width: 400px;
     height: 400px;
-    background: radial-gradient(circle, rgba(239, 65, 54, 0.05) 0%, transparent 70%);
+    background: radial-gradient(circle, rgba(255, 24, 1, 0.05) 0%, transparent 70%);
   }
 
   .visual-panel {
@@ -380,12 +380,12 @@ const styles = `
     width: 100%;
     max-width: 620px;
     padding: clamp(28px, 4vh, 48px) clamp(28px, 4vw, 50px);
-    border: 1px solid rgba(239, 65, 54, 0.35);
+    border: 1px solid rgba(255, 24, 1, 0.35);
     border-radius: 20px;
     background: rgba(10, 8, 14, 0.35);
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5), 0 0 35px rgba(239, 65, 54, 0.08);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5), 0 0 35px rgba(255, 24, 1, 0.08);
     box-sizing: border-box;
   }
 
@@ -540,7 +540,7 @@ const styles = `
   }
 
   .submit-button:hover {
-    background: #D9382E;
+    background: #D61400;
     transform: translateY(-2px);
   }
 
@@ -587,7 +587,7 @@ const styles = `
   }
 
   .contact-info-pill:hover {
-    border-color: rgba(239, 65, 54, 0.5);
+    border-color: rgba(255, 24, 1, 0.5);
     background: rgba(14, 13, 18, 0.75);
     transform: translateY(-2px);
   }
@@ -635,11 +635,11 @@ const styles = `
   }
 
   .status-message.error {
-    color: #EF4136;
-    background: rgba(239, 65, 54, 0.1);
+    color: #FF1801;
+    background: rgba(255, 24, 1, 0.1);
     padding: 10px 14px;
     border-radius: 8px;
-    border: 1px solid rgba(239, 65, 54, 0.25);
+    border: 1px solid rgba(255, 24, 1, 0.25);
   }
 
   @media (max-width: 900px) {

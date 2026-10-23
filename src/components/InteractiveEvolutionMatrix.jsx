@@ -111,7 +111,7 @@ export default function InteractiveEvolutionMatrix({
                       cx="180"
                       cy="180"
                       r="142"
-                      stroke="rgba(239, 65, 54, 0.16)"
+                      stroke="rgba(255, 24, 1, 0.16)"
                       strokeWidth="1.5"
                       strokeDasharray="8 10"
                       className="evo-orbit-ring-outer"
@@ -125,7 +125,7 @@ export default function InteractiveEvolutionMatrix({
                       strokeDasharray="4 8"
                       className="evo-orbit-ring-inner"
                     />
-                    <circle cx="180" cy="38" r="5" fill="#EF4136" className="evo-orbit-node" />
+                    <circle cx="180" cy="38" r="5" fill="#FF1801" className="evo-orbit-node" />
                     <circle cx="322" cy="180" r="4" fill="#111827" className="evo-orbit-node-alt" />
                   </svg>
 
@@ -368,7 +368,7 @@ const evolutionStyles = `
     padding: 6px 14px;
     border-radius: 12px;
     background: #0A0A0C;
-    border: 1px solid rgba(239, 65, 54, 0.4);
+    border: 1px solid rgba(255, 24, 1, 0.4);
     color: #FFFFFF;
     font-family: "JetBrains Mono", monospace;
     font-size: 0.72rem;
@@ -378,7 +378,7 @@ const evolutionStyles = `
   }
 
   .badge-icon-cpu {
-    color: #EF4136;
+    color: #FF1801;
   }
 
   .sg-evolution-pod-caption {
@@ -416,15 +416,15 @@ const evolutionStyles = `
   }
 
   .sg-pod-chip.chip-geo {
-    background: rgba(239, 65, 54, 0.09);
-    border: 1px solid rgba(239, 65, 54, 0.35);
-    color: #EF4136;
+    background: rgba(255, 24, 1, 0.09);
+    border: 1px solid rgba(255, 24, 1, 0.35);
+    color: #FF1801;
   }
   .sg-pod-chip.chip-geo.is-selected {
-    background: #EF4136;
-    border-color: #EF4136;
+    background: #FF1801;
+    border-color: #FF1801;
     color: #FFFFFF;
-    box-shadow: 0 0 14px rgba(239, 65, 54, 0.35);
+    box-shadow: 0 0 14px rgba(255, 24, 1, 0.35);
   }
 
   .sg-pod-arrow {
@@ -483,8 +483,8 @@ const evolutionStyles = `
 
   .sg-evolution-compare-item:hover,
   .sg-evolution-compare-item.is-current-stage {
-    border-color: #EF4136;
-    box-shadow: 0 10px 28px rgba(239, 65, 54, 0.12);
+    border-color: #FF1801;
+    box-shadow: 0 10px 28px rgba(255, 24, 1, 0.12);
     transform: translateY(-2px);
   }
 
@@ -501,9 +501,9 @@ const evolutionStyles = `
     width: 38px;
     height: 38px;
     border-radius: 10px;
-    background: rgba(239, 65, 54, 0.08);
-    border: 1px solid rgba(239, 65, 54, 0.25);
-    color: #EF4136;
+    background: rgba(255, 24, 1, 0.08);
+    border: 1px solid rgba(255, 24, 1, 0.25);
+    color: #FF1801;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -511,9 +511,9 @@ const evolutionStyles = `
   }
 
   .sg-compare-icon-wrap.is-active-icon {
-    background: #EF4136;
+    background: #FF1801;
     color: #FFFFFF;
-    box-shadow: 0 0 12px rgba(239, 65, 54, 0.4);
+    box-shadow: 0 0 12px rgba(255, 24, 1, 0.4);
   }
 
   .sg-compare-feature-name {
@@ -529,11 +529,11 @@ const evolutionStyles = `
     font-family: "JetBrains Mono", monospace;
     font-size: 0.72rem;
     font-weight: 800;
-    color: #EF4136;
-    background: rgba(239, 65, 54, 0.08);
+    color: #FF1801;
+    background: rgba(255, 24, 1, 0.08);
     padding: 4px 10px;
     border-radius: 6px;
-    border: 1px solid rgba(239, 65, 54, 0.2);
+    border: 1px solid rgba(255, 24, 1, 0.2);
   }
 
   .sg-compare-dual-grid {
@@ -560,13 +560,13 @@ const evolutionStyles = `
 
   .sg-compare-box.box-geo {
     background: #FFF8F8;
-    border: 1.5px solid rgba(239, 65, 54, 0.35);
-    box-shadow: 0 4px 16px rgba(239, 65, 54, 0.06);
+    border: 1.5px solid rgba(255, 24, 1, 0.35);
+    box-shadow: 0 4px 16px rgba(255, 24, 1, 0.06);
   }
 
   .sg-compare-box.box-highlight {
-    border-color: #EF4136;
-    box-shadow: 0 0 18px rgba(239, 65, 54, 0.15);
+    border-color: #FF1801;
+    box-shadow: 0 0 18px rgba(255, 24, 1, 0.15);
   }
 
   .sg-compare-box-label {
@@ -581,7 +581,7 @@ const evolutionStyles = `
   }
 
   .box-trad .sg-compare-box-label { color: #6B7280; }
-  .box-geo .sg-compare-box-label { color: #EF4136; }
+  .box-geo .sg-compare-box-label { color: #FF1801; }
 
   .status-dot {
     width: 6px;
@@ -589,7 +589,7 @@ const evolutionStyles = `
     border-radius: 50%;
   }
   .status-dot.dot-gray { background: #9CA3AF; }
-  .status-dot.dot-red { background: #EF4136; box-shadow: 0 0 8px #EF4136; }
+  .status-dot.dot-red { background: #FF1801; box-shadow: 0 0 8px #FF1801; }
 
   .sg-compare-box-text {
     font-size: 0.88rem;
@@ -605,7 +605,7 @@ const evolutionStyles = `
     border-radius: 50%;
     background: #FFFFFF;
     border: 1px solid #E5E7EB;
-    color: #EF4136;
+    color: #FF1801;
     display: flex;
     align-items: center;
     justify-content: center;

@@ -212,7 +212,6 @@ export default function SeoSajanHero({ data, slug, onOpenModal }) {
   const rectRef = useRef(null);
 
   const currentSlug = data?.slug || slug || "seo-geo";
-  const isSeoGeo = currentSlug === "seo-geo" || currentSlug === "seo-company-coimbatore";
 
   const updateRect = useCallback(() => {
     if (taglineContainerRef.current) {
@@ -404,7 +403,7 @@ export default function SeoSajanHero({ data, slug, onOpenModal }) {
         }
 
         .bf-sajan-headline-line.accent {
-          color: #EF4136;
+          color: #FF1801;
           margin-top: 4px;
         }
 
@@ -423,7 +422,7 @@ export default function SeoSajanHero({ data, slug, onOpenModal }) {
         }
 
         .bf-portal-mask:hover .bf-portal-letter {
-          color: #EF4136;
+          color: #FF1801;
         }
 
         .bf-sajan-headline-line.accent .bf-portal-mask:hover .bf-portal-letter {
@@ -489,8 +488,8 @@ export default function SeoSajanHero({ data, slug, onOpenModal }) {
 
         .bf-montarville-btn-primary {
           appearance: none;
-          background: #EF4136;
-          border: 1px solid #EF4136;
+          background: #FF1801;
+          border: 1px solid #FF1801;
           color: #FFFFFF;
           padding: 16px 28px;
           border-radius: 9999px;
@@ -508,7 +507,7 @@ export default function SeoSajanHero({ data, slug, onOpenModal }) {
 
         .bf-montarville-btn-primary:hover {
           transform: translateY(-2px);
-          box-shadow: 0 10px 30px rgba(239, 65, 54, 0.4);
+          box-shadow: 0 10px 30px rgba(255, 24, 1, 0.4);
           background: #d8352b;
         }
 
@@ -524,7 +523,7 @@ export default function SeoSajanHero({ data, slug, onOpenModal }) {
           width: 7px;
           height: 7px;
           border-radius: 50%;
-          background: #EF4136;
+          background: #FF1801;
           display: inline-block;
         }
 
@@ -549,8 +548,8 @@ export default function SeoSajanHero({ data, slug, onOpenModal }) {
         }
 
         .bf-montarville-btn-secondary:hover {
-          border-color: #EF4136;
-          background: rgba(239, 65, 54, 0.08);
+          border-color: #FF1801;
+          background: rgba(255, 24, 1, 0.08);
           transform: translateY(-2px);
         }
 
@@ -599,7 +598,7 @@ export default function SeoSajanHero({ data, slug, onOpenModal }) {
         .bf-sajan-star-icon {
           width: 14px;
           height: 14px;
-          color: #EF4136;
+          color: #FF1801;
           flex-shrink: 0;
         }
 
@@ -619,38 +618,24 @@ export default function SeoSajanHero({ data, slug, onOpenModal }) {
       `}</style>
 
       {/* ── BACKGROUND MEDIA ── */}
-      {isSeoGeo ? (
-        <div className="bf-hero-video-wrap" aria-hidden="true">
-          <video
-            autoPlay
-            muted
-            loop
-            playsInline
-            className="bf-hero-video"
-          >
-            <source src="/seobanner.mp4" type="video/mp4" />
-          </video>
-        </div>
-      ) : (
-        <div className="bf-hero-image-wrap" aria-hidden="true">
-          <img
-            src={data?.bannerBg || "/banner-seo-geo-bg.jpg"}
-            alt=""
-            loading="eager"
-            fetchpriority="high"
-            decoding="async"
-            className="bf-hero-bg-img"
-          />
-          <div className="bf-hero-img-overlay" />
-        </div>
-      )}
+      <div className="bf-hero-image-wrap" aria-hidden="true">
+        <img
+          src={data?.bannerBg || "/banner-seo-geo-bg.jpg"}
+          alt=""
+          loading="eager"
+          fetchpriority="high"
+          decoding="async"
+          className="bf-hero-bg-img"
+        />
+        <div className="bf-hero-img-overlay" />
+      </div>
 
       {/* ARCHITECTURAL BACKGROUND GEOMETRY */}
       <div className="bf-montarville-bg-geometry" aria-hidden="true">
         <svg viewBox="0 0 1000 800" fill="none" xmlns="http://www.w3.org/2000/svg">
           <circle cx="650" cy="400" r="340" stroke="rgba(255, 255, 255, 0.06)" strokeWidth="1.5" />
           <circle cx="850" cy="520" r="280" stroke="rgba(255, 255, 255, 0.04)" strokeWidth="1.5" />
-          <circle cx="500" cy="300" r="220" stroke="rgba(239, 65, 54, 0.1)" strokeWidth="1.5" />
+          <circle cx="500" cy="300" r="220" stroke="rgba(255, 24, 1, 0.1)" strokeWidth="1.5" />
           <line x1="300" y1="120" x2="900" y2="720" stroke="rgba(255, 255, 255, 0.04)" strokeWidth="1.5" />
         </svg>
       </div>

@@ -71,11 +71,11 @@ export default function BrandForgeRatingsTrustStrip() {
             <svg className="bf-arch-track-svg" viewBox="0 0 1000 130" fill="none">
               <defs>
                 <linearGradient id="rocketArchGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-                  <stop offset="0%" stopColor="#EF4136" stopOpacity="0.25" />
-                  <stop offset="25%" stopColor="#EF4136" stopOpacity="0.85" />
+                  <stop offset="0%" stopColor="#FF1801" stopOpacity="0.25" />
+                  <stop offset="25%" stopColor="#FF1801" stopOpacity="0.85" />
                   <stop offset="50%" stopColor="#FFB800" stopOpacity="0.95" />
-                  <stop offset="75%" stopColor="#EF4136" stopOpacity="0.85" />
-                  <stop offset="100%" stopColor="#EF4136" stopOpacity="0.25" />
+                  <stop offset="75%" stopColor="#FF1801" stopOpacity="0.85" />
+                  <stop offset="100%" stopColor="#FF1801" stopOpacity="0.25" />
                 </linearGradient>
 
                 <linearGradient id="rocketBodyGrad" x1="18" y1="0" x2="-8" y2="0" gradientUnits="userSpaceOnUse">
@@ -88,15 +88,15 @@ export default function BrandForgeRatingsTrustStrip() {
                 <radialGradient id="flameOuterRadial" cx="85%" cy="50%" r="75%">
                   <stop offset="0%" stopColor="#FFDC50" stopOpacity="0.95" />
                   <stop offset="35%" stopColor="#FF7A18" stopOpacity="0.85" />
-                  <stop offset="70%" stopColor="#EF4136" stopOpacity="0.5" />
-                  <stop offset="100%" stopColor="#EF4136" stopOpacity="0" />
+                  <stop offset="70%" stopColor="#FF1801" stopOpacity="0.5" />
+                  <stop offset="100%" stopColor="#FF1801" stopOpacity="0" />
                 </radialGradient>
 
                 <radialGradient id="flameMidRadial" cx="85%" cy="50%" r="65%">
                   <stop offset="0%" stopColor="#FFFFFF" stopOpacity="1" />
                   <stop offset="25%" stopColor="#FFFFB4" stopOpacity="0.95" />
                   <stop offset="60%" stopColor="#FFA014" stopOpacity="0.85" />
-                  <stop offset="100%" stopColor="#EF4136" stopOpacity="0" />
+                  <stop offset="100%" stopColor="#FF1801" stopOpacity="0" />
                 </radialGradient>
 
                 <radialGradient id="flameCoreRadial" cx="80%" cy="50%" r="60%">
@@ -191,18 +191,18 @@ export default function BrandForgeRatingsTrustStrip() {
                     {/* Trailing Particle Sparks */}
                     <circle cx="-32" cy="-3" r="1.3" fill="#FFDC50" className="bf-svg-spark s1" />
                     <circle cx="-38" cy="2.5" r="1.5" fill="#FFA014" className="bf-svg-spark s2" />
-                    <circle cx="-43" cy="-1.5" r="1.1" fill="#EF4136" className="bf-svg-spark s3" />
+                    <circle cx="-43" cy="-1.5" r="1.1" fill="#FF1801" className="bf-svg-spark s3" />
                     <circle cx="-48" cy="2.8" r="0.9" fill="#FFDC50" className="bf-svg-spark s4" />
                   </g>
 
                   {/* ROCKET GRAPHICS (POINTING FORWARD ALONG +X AXIS) */}
                   <g className="bf-rocket-graphics">
                     {/* Outer Engine Glow Aura */}
-                    <circle cx="2" cy="0" r="12" fill="#EF4136" opacity="0.3" filter="url(#rocketAura)" />
+                    <circle cx="2" cy="0" r="12" fill="#FF1801" opacity="0.3" filter="url(#rocketAura)" />
 
                     {/* Top & Bottom Stabilizer Fins */}
-                    <path d="M -7 -4 L -15 -10 L -11 -3 Z" fill="#D8342A" stroke="#FF6B5E" strokeWidth="0.8" />
-                    <path d="M -7 4 L -15 10 L -11 3 Z" fill="#D8342A" stroke="#FF6B5E" strokeWidth="0.8" />
+                    <path d="M -7 -4 L -15 -10 L -11 -3 Z" fill="#D8342A" stroke="#FF4D3D" strokeWidth="0.8" />
+                    <path d="M -7 4 L -15 10 L -11 3 Z" fill="#D8342A" stroke="#FF4D3D" strokeWidth="0.8" />
 
                     {/* Aerodynamic Fuselage */}
                     <path
@@ -213,7 +213,7 @@ export default function BrandForgeRatingsTrustStrip() {
                     />
 
                     {/* Crimson Nose Cone */}
-                    <path d="M 18 0 C 14 -4 9 -5 7 -5 C 7 -5 7 5 7 5 C 9 5 14 4 18 0 Z" fill="#EF4136" />
+                    <path d="M 18 0 C 14 -4 9 -5 7 -5 C 7 -5 7 5 7 5 C 9 5 14 4 18 0 Z" fill="#FF1801" />
 
                     {/* High-Tech Porthole Window */}
                     <circle cx="2.5" cy="0" r="3.2" fill="#0A0A10" stroke="#00F0FF" strokeWidth="1" />
@@ -289,7 +289,7 @@ const styles = `
     border-radius: 22px;
     padding: clamp(32px, 4vw, 44px) clamp(20px, 3vw, 44px);
     backdrop-filter: blur(18px);
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7), 0 0 35px rgba(239, 65, 54, 0.08);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7), 0 0 35px rgba(255, 24, 1, 0.08);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -305,7 +305,7 @@ const styles = `
     left: 20%;
     right: 20%;
     height: 1px;
-    background: linear-gradient(90deg, transparent, rgba(239, 65, 54, 0.6), transparent);
+    background: linear-gradient(90deg, transparent, rgba(255, 24, 1, 0.6), transparent);
   }
 
   .bf-trust-header {
@@ -321,7 +321,7 @@ const styles = `
     font-size: 11px;
     font-weight: 800;
     letter-spacing: 0.14em;
-    color: #EF4136;
+    color: #FF1801;
     text-transform: uppercase;
   }
 
@@ -456,7 +456,7 @@ const styles = `
   }
 
   .bf-trust-col:hover .bf-client-img {
-    filter: brightness(0) invert(1) opacity(1) drop-shadow(0 4px 18px rgba(239, 65, 54, 0.7));
+    filter: brightness(0) invert(1) opacity(1) drop-shadow(0 4px 18px rgba(255, 24, 1, 0.7));
   }
 
   .bf-trust-divider {

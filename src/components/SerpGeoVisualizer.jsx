@@ -151,7 +151,7 @@ const visualizerStyles = `
     display: inline-block;
     width: 16px;
     height: 3px;
-    background-color: #EF4136;
+    background-color: #FF1801;
     border-radius: 1px;
   }
 
@@ -240,7 +240,7 @@ const visualizerStyles = `
   }
 
   .title-red {
-    color: #EF4136;
+    color: #FF1801;
   }
 
   /* Montarville --2c Editorial Wysiwyg Copy */

@@ -41,11 +41,11 @@ const defaultOptions = {
     roadColor: 0x020104,
     islandColor: 0x060508,
     background: 0x020104,
-    shoulderLines: 0xef4136,
+    shoulderLines: 0xff1801,
     brokenLines: 0xffffff,
-    leftCars: [0xef4136, 0xd9382e, 0xff5548],
+    leftCars: [0xff1801, 0xd61400, 0xff5548],
     rightCars: [0xffffff, 0xf8fafc, 0xffa048],
-    sticks: 0xef4136,
+    sticks: 0xff1801,
   },
 };
 
@@ -1040,11 +1040,11 @@ export default function BrandForgeBannerSection({ _onOpenModal }) {
         roadColor: 0x020104,
         islandColor: 0x060508,
         background: 0x020104,
-        shoulderLines: 0xef4136,
+        shoulderLines: 0xff1801,
         brokenLines: 0xffffff,
-        leftCars: [0xef4136, 0xd9382e, 0xff5548],
+        leftCars: [0xff1801, 0xd61400, 0xff5548],
         rightCars: [0xffffff, 0xf8fafc, 0xffa048],
-        sticks: 0xef4136,
+        sticks: 0xff1801,
       },
     };
 
@@ -1203,7 +1203,7 @@ const styles = `
   }
 
   .badge-red {
-    color: #EF4136;
+    color: #FF1801;
   }
 
   .bf-banner-title {
@@ -1218,8 +1218,8 @@ const styles = `
 
   .bf-banner-title span {
     display: block;
-    color: #EF4136;
-    text-shadow: 0 0 30px rgba(239, 65, 54, 0.35);
+    color: #FF1801;
+    text-shadow: 0 0 30px rgba(255, 24, 1, 0.35);
   }
 
   .bf-banner-desc {
@@ -1257,15 +1257,15 @@ const styles = `
 
   .bf-banner-btn.primary {
     border: none;
-    background: #EF4136;
+    background: #FF1801;
     color: #FFFFFF;
-    box-shadow: 0 12px 32px rgba(239, 65, 54, 0.4);
+    box-shadow: 0 12px 32px rgba(255, 24, 1, 0.4);
   }
 
   .bf-banner-btn.primary:hover {
-    background: #D9382E;
+    background: #D61400;
     transform: translateY(-2px);
-    box-shadow: 0 16px 42px rgba(239, 65, 54, 0.6);
+    box-shadow: 0 16px 42px rgba(255, 24, 1, 0.6);
   }
 
   .bf-banner-btn.secondary {
@@ -1276,8 +1276,8 @@ const styles = `
   }
 
   .bf-banner-btn.secondary:hover {
-    border-color: rgba(239, 65, 54, 0.5);
-    background: rgba(239, 65, 54, 0.12);
+    border-color: rgba(255, 24, 1, 0.5);
+    background: rgba(255, 24, 1, 0.12);
     transform: translateY(-2px);
   }
 

@@ -150,7 +150,7 @@ export default function SeoMontarvilleRelatedServices({
             <line x1="20%" y1="20%" x2="75%" y2="28%" stroke="rgba(255, 255, 255, 0.06)" strokeDasharray="4 6" />
             <line x1="75%" y1="28%" x2="80%" y2="72%" stroke="rgba(255, 255, 255, 0.06)" strokeDasharray="4 6" />
             <line x1="80%" y1="72%" x2="25%" y2="65%" stroke="rgba(255, 255, 255, 0.06)" strokeDasharray="4 6" />
-            <line x1="25%" y1="65%" x2="20%" y2="20%" stroke="rgba(239, 65, 54, 0.12)" strokeDasharray="2 4" />
+            <line x1="25%" y1="65%" x2="20%" y2="20%" stroke="rgba(255, 24, 1, 0.12)" strokeDasharray="2 4" />
           </svg>
 
           {relatedKeys.map((item, idx) => {
@@ -262,7 +262,7 @@ const constellationStyles = `
     border-radius: 50%;
     background: radial-gradient(
       ellipse at 50% 50%,
-      rgba(239, 65, 54, 0.28) 0%,
+      rgba(255, 24, 1, 0.28) 0%,
       rgba(210, 4, 45, 0.16) 35%,
       rgba(15, 2, 4, 0.8) 65%,
       transparent 80%
@@ -280,7 +280,7 @@ const constellationStyles = `
     border-radius: 50%;
     background: radial-gradient(
       circle at 60% 60%,
-      rgba(239, 65, 54, 0.22) 0%,
+      rgba(255, 24, 1, 0.22) 0%,
       rgba(180, 0, 30, 0.12) 40%,
       transparent 70%
     );
@@ -341,7 +341,7 @@ const constellationStyles = `
   }
 
   .smr-star {
-    color: #EF4136;
+    color: #FF1801;
     animation: smrSpin 14s linear infinite;
   }
 
@@ -361,7 +361,7 @@ const constellationStyles = `
   }
 
   .title-red {
-    color: #EF4136;
+    color: #FF1801;
   }
 
   .smr-subtitle {
@@ -448,7 +448,7 @@ const constellationStyles = `
     border-radius: 24px;
     background: radial-gradient(
       ellipse at 30% 30%,
-      rgba(239, 65, 54, 0.16) 0%,
+      rgba(255, 24, 1, 0.16) 0%,
       transparent 70%
     );
     opacity: 0;
@@ -474,7 +474,7 @@ const constellationStyles = `
     font-family: "JetBrains Mono", monospace;
     font-size: 1.15rem;
     font-weight: 800;
-    color: #EF4136;
+    color: #FF1801;
     letter-spacing: -0.02em;
     line-height: 1;
   }
@@ -495,9 +495,9 @@ const constellationStyles = `
     font-family: "JetBrains Mono", monospace;
     font-size: 0.68rem;
     font-weight: 700;
-    color: #EF4136;
-    background: rgba(239, 65, 54, 0.1);
-    border: 1px solid rgba(239, 65, 54, 0.28);
+    color: #FF1801;
+    background: rgba(255, 24, 1, 0.1);
+    border: 1px solid rgba(255, 24, 1, 0.28);
     padding: 3px 8px;
     border-radius: 999px;
     margin-left: auto;
@@ -507,8 +507,8 @@ const constellationStyles = `
     width: 5px;
     height: 5px;
     border-radius: 50%;
-    background: #EF4136;
-    box-shadow: 0 0 6px #EF4136;
+    background: #FF1801;
+    box-shadow: 0 0 6px #FF1801;
   }
 
   /* Node Title (Large Typographic Statement, Zero Card Frames) */
@@ -524,7 +524,7 @@ const constellationStyles = `
   }
 
   .smr-node-cluster:hover .smr-node-title {
-    color: #EF4136;
+    color: #FF1801;
   }
 
   /* Node Description */
@@ -540,7 +540,7 @@ const constellationStyles = `
   }
 
   .smr-node-cluster:hover .smr-node-desc {
-    border-left-color: #EF4136;
+    border-left-color: #FF1801;
     color: rgba(255, 255, 255, 0.85);
   }
 
@@ -575,12 +575,12 @@ const constellationStyles = `
   }
 
   .smr-node-cluster:hover .smr-node-action {
-    color: #EF4136;
+    color: #FF1801;
   }
 
   .smr-node-cluster:hover .action-arrow-circle {
-    background: #EF4136;
-    border-color: #EF4136;
+    background: #FF1801;
+    border-color: #FF1801;
     transform: translate(2px, -2px);
   }
 

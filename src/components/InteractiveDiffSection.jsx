@@ -173,16 +173,16 @@ const diffStyles = `
   }
 
   .sg-diff-card.is-hovered {
-    border-color: #EF4136;
+    border-color: #FF1801;
     background: #FFFFFF;
     transform: translateZ(10px);
-    box-shadow: 0 16px 40px rgba(239, 65, 54, 0.12);
+    box-shadow: 0 16px 40px rgba(255, 24, 1, 0.12);
   }
 
   .sg-diff-glare {
     position: absolute;
     inset: -50%;
-    background: radial-gradient(circle at 50% 50%, rgba(239, 65, 54, 0.08) 0%, transparent 60%);
+    background: radial-gradient(circle at 50% 50%, rgba(255, 24, 1, 0.08) 0%, transparent 60%);
     pointer-events: none;
     transition: opacity 0.3s ease;
   }
@@ -198,9 +198,9 @@ const diffStyles = `
     width: 48px;
     height: 48px;
     border-radius: 14px;
-    background: rgba(239, 65, 54, 0.1);
-    border: 1px solid rgba(239, 65, 54, 0.3);
-    color: #EF4136;
+    background: rgba(255, 24, 1, 0.1);
+    border: 1px solid rgba(255, 24, 1, 0.3);
+    color: #FF1801;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -210,11 +210,11 @@ const diffStyles = `
     font-family: "JetBrains Mono", monospace;
     font-size: 0.68rem;
     font-weight: 800;
-    color: #EF4136;
-    background: rgba(239, 65, 54, 0.08);
+    color: #FF1801;
+    background: rgba(255, 24, 1, 0.08);
     padding: 3px 8px;
     border-radius: 6px;
-    border: 1px solid rgba(239, 65, 54, 0.25);
+    border: 1px solid rgba(255, 24, 1, 0.25);
     letter-spacing: 0.05em;
   }
 
@@ -249,7 +249,7 @@ const diffStyles = `
   .footer-line {
     width: 24px;
     height: 2px;
-    background: #EF4136;
+    background: #FF1801;
   }
 
   @media (max-width: 1024px) {

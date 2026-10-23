@@ -101,7 +101,7 @@ export default function SeoCylindricalStatement() {
           position: absolute;
           width: 500px;
           height: 300px;
-          background: radial-gradient(circle, rgba(239, 65, 54, 0.15) 0%, rgba(239, 65, 54, 0) 70%);
+          background: radial-gradient(circle, rgba(255, 24, 1, 0.15) 0%, rgba(255, 24, 1, 0) 70%);
           top: 50%;
           left: 50%;
           transform: translate(-50%, -50%);
@@ -145,9 +145,9 @@ export default function SeoCylindricalStatement() {
           color: rgba(255, 255, 255, 0.7);
         }
         .bf-seo-drum-badge.geo {
-          background: rgba(239, 65, 54, 0.12);
-          border: 1px solid rgba(239, 65, 54, 0.35);
-          color: #FF6B5E;
+          background: rgba(255, 24, 1, 0.12);
+          border: 1px solid rgba(255, 24, 1, 0.35);
+          color: #FF4D3D;
         }
         .bf-seo-drum-heading {
           font-size: clamp(2.2rem, 5.2vw, 4.2rem);
@@ -162,8 +162,8 @@ export default function SeoCylindricalStatement() {
           color: rgba(255, 255, 255, 0.45);
         }
         .bf-seo-drum-heading .highlight-red {
-          color: #EF4136;
-          text-shadow: 0 0 30px rgba(239, 65, 54, 0.4);
+          color: #FF1801;
+          text-shadow: 0 0 30px rgba(255, 24, 1, 0.4);
         }
         .bf-seo-drum-sub {
           font-size: clamp(1rem, 1.8vw, 1.25rem);

@@ -341,17 +341,17 @@ const styles = /* css */ `
   }
 
   .liquid-nav__item:hover svg {
-    color: #EF4136;
+    color: #FF1801;
   }
 
   .liquid-nav__item.is-active {
     color: #FFFFFF;
-    background: rgba(239, 65, 54, 0.15);
-    border-color: rgba(239, 65, 54, 0.4);
+    background: rgba(255, 24, 1, 0.15);
+    border-color: rgba(255, 24, 1, 0.4);
   }
 
   .liquid-nav__item.is-active svg {
-    color: #EF4136;
+    color: #FF1801;
   }
 
   .liquid-nav__actions {
@@ -365,7 +365,7 @@ const styles = /* css */ `
     align-items: center;
     gap: 6px;
     padding: 9px 20px;
-    background: #EF4136;
+    background: #FF1801;
     color: #FFFFFF;
     border: none;
     border-radius: 999px;
@@ -398,8 +398,8 @@ const styles = /* css */ `
   }
 
   .liquid-nav__burger:hover {
-    background: rgba(239, 65, 54, 0.25);
-    border-color: #EF4136;
+    background: rgba(255, 24, 1, 0.25);
+    border-color: #FF1801;
   }
 
   /* MOBILE DRAWER STYLES */
@@ -411,7 +411,7 @@ const styles = /* css */ `
     background: rgba(10, 10, 14, 0.96);
     backdrop-filter: blur(28px);
     -webkit-backdrop-filter: blur(28px);
-    border: 1.5px solid rgba(239, 65, 54, 0.35);
+    border: 1.5px solid rgba(255, 24, 1, 0.35);
     border-radius: 24px;
     padding: 10px;
     box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7);
@@ -437,12 +437,12 @@ const styles = /* css */ `
   }
 
   .liquid-nav__mobile-link:hover, .liquid-nav__mobile-link.is-active {
-    background: rgba(239, 65, 54, 0.15);
-    color: #EF4136;
+    background: rgba(255, 24, 1, 0.15);
+    color: #FF1801;
   }
 
   .mob-icon {
-    color: #EF4136;
+    color: #FF1801;
   }
 
   .liquid-nav__mobile-sub {
@@ -470,16 +470,16 @@ const styles = /* css */ `
   }
 
   .sub-item.view-all {
-    color: #EF4136;
+    color: #FF1801;
     font-weight: 800;
-    background: rgba(239, 65, 54, 0.1);
-    border-color: rgba(239, 65, 54, 0.25);
+    background: rgba(255, 24, 1, 0.1);
+    border-color: rgba(255, 24, 1, 0.25);
   }
 
   .sub-item:hover, .sub-item.is-active {
-    background: rgba(239, 65, 54, 0.2);
+    background: rgba(255, 24, 1, 0.2);
     color: #FFFFFF;
-    border-color: rgba(239, 65, 54, 0.4);
+    border-color: rgba(255, 24, 1, 0.4);
   }
 
   .liquid-nav__mobile-cta-wrap {
@@ -493,7 +493,7 @@ const styles = /* css */ `
     gap: 8px;
     width: 100%;
     height: 48px;
-    background: #EF4136;
+    background: #FF1801;
     color: #FFFFFF;
     border: none;
     border-radius: 14px;

@@ -83,10 +83,10 @@ const styles = `
   }
 
   .bf-news-awards-pill:hover {
-    background: #EF4136;
-    border-color: #EF4136;
+    background: #FF1801;
+    border-color: #FF1801;
     color: #FFFFFF;
-    box-shadow: 0 6px 20px rgba(239, 65, 54, 0.35);
+    box-shadow: 0 6px 20px rgba(255, 24, 1, 0.35);
   }
 
   .bf-marquee-viewport {
@@ -154,7 +154,7 @@ const styles = `
 
   .logo-et strong {
     font-size: 0.88rem;
-    color: #EF4136;
+    color: #FF1801;
     font-weight: 900;
   }
 
@@ -179,7 +179,7 @@ const styles = `
   }
 
   .logo-e4m span {
-    color: #EF4136;
+    color: #FF1801;
   }
 
   @media (max-width: 768px) {

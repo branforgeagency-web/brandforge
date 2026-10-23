@@ -127,8 +127,8 @@ const hexToRgb = hex => {
 const clamp = (value, min, max) => Math.min(Math.max(value, min), max);
 
 const GlowCursor = ({
-  color = '#EF4136',
-  secondaryColor = '#FF6B5E',
+  color = '#FF1801',
+  secondaryColor = '#FF4D3D',
   trailLength = 40,
   trailWidth = 8,
   trailTaper = 0.8,

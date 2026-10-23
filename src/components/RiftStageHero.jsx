@@ -165,7 +165,7 @@ const styles = `
 .rr-root {
   --ink: #060509;
   --paper: #FFFFFF;
-  --acid: #EF4136;
+  --acid: #FF1801;
   position: relative;
   width: 100%;
   height: 100%;
@@ -215,7 +215,7 @@ const styles = `
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   background:
-    radial-gradient(circle at 50% 50%, rgba(239, 65, 54, 0.08), transparent 34%),
+    radial-gradient(circle at 50% 50%, rgba(255, 24, 1, 0.08), transparent 34%),
     var(--ink);
   color: var(--paper);
 }
@@ -226,7 +226,7 @@ const styles = `
   inset: 0;
   pointer-events: none;
   background:
-    linear-gradient(90deg, transparent calc(50% - 0.5px), rgba(239, 65, 54, 0.25) 50%, transparent calc(50% + 0.5px)),
+    linear-gradient(90deg, transparent calc(50% - 0.5px), rgba(255, 24, 1, 0.25) 50%, transparent calc(50% + 0.5px)),
     linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px);
   background-size: 100% 100%, 100% 8rem;
 }
@@ -241,7 +241,7 @@ const styles = `
 .rr-panel-right {
   justify-content: flex-end;
   text-align: right;
-  border-left: 1px solid rgba(239, 65, 54, 0.25);
+  border-left: 1px solid rgba(255, 24, 1, 0.25);
 }
 
 .rr-panel-copy {
@@ -447,7 +447,7 @@ const styles = `
 
   .rr-panel-right {
     align-items: flex-end;
-    border-top: 1px solid rgba(239, 65, 54, 0.25);
+    border-top: 1px solid rgba(255, 24, 1, 0.25);
     border-left: 0;
     padding-bottom: 12vh;
   }

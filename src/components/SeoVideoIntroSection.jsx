@@ -149,13 +149,17 @@ export default function SeoVideoIntroSection({ onStartFade, onComplete }) {
     if (!video || hasStartedRef.current) return;
     hasStartedRef.current = true;
 
+    video.defaultMuted = true;
     video.muted = true;
+    video.volume = 0;
     video.playbackRate = 1.5;
     const playPromise = video.play();
     if (playPromise !== undefined) {
       playPromise.catch(() => {
         if (!hasEndedRef.current && video) {
+          video.defaultMuted = true;
           video.muted = true;
+          video.volume = 0;
           video.playbackRate = 1.5;
           video.play().catch(() => {});
         }
@@ -261,15 +265,29 @@ export default function SeoVideoIntroSection({ onStartFade, onComplete }) {
           src="/seointro.mp4"
           autoPlay
           muted
+          defaultMuted
           loop={false}
           playsInline
           preload="auto"
           className="bf-intro-video-element"
           onLoadedMetadata={(e) => {
+            e.currentTarget.defaultMuted = true;
+            e.currentTarget.muted = true;
+            e.currentTarget.volume = 0;
             e.currentTarget.playbackRate = 1.5;
           }}
           onPlay={(e) => {
+            e.currentTarget.defaultMuted = true;
+            e.currentTarget.muted = true;
+            e.currentTarget.volume = 0;
             e.currentTarget.playbackRate = 1.5;
+          }}
+          onVolumeChange={(e) => {
+            if (!e.currentTarget.muted || e.currentTarget.volume > 0) {
+              e.currentTarget.defaultMuted = true;
+              e.currentTarget.muted = true;
+              e.currentTarget.volume = 0;
+            }
           }}
           onEnded={handleComplete}
         />

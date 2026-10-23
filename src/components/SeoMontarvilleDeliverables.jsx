@@ -12,7 +12,7 @@ const DELIVERABLES_DATA = [
     pillar: "Technical Foundation",
     title: "Technical SEO & Site Speed",
     badge: "Site Health",
-    badgeDotColor: "#EF4136",
+    badgeDotColor: "#FF1801",
     description:
       "We fix crawl errors, speed up page load times, and structure your website so search engines can index every page effortlessly.",
     metricValue: "100/100",
@@ -25,7 +25,7 @@ const DELIVERABLES_DATA = [
     pillar: "AI Search Visibility",
     title: "Generative Engine Optimization (GEO)",
     badge: "ChatGPT & Gemini",
-    badgeDotColor: "#EF4136",
+    badgeDotColor: "#FF1801",
     description:
       "More buyers now ask ChatGPT, Perplexity, and Google AI for recommendations. We structure your brand content so AI tools cite you directly.",
     metricValue: "Top 3",
@@ -38,7 +38,7 @@ const DELIVERABLES_DATA = [
     pillar: "Commercial Keywords",
     title: "High-Intent Keyword & Local SEO",
     badge: "Lead Generation",
-    badgeDotColor: "#EF4136",
+    badgeDotColor: "#FF1801",
     description:
       "Instead of chasing empty traffic, we target the exact search terms and local map queries your ready-to-buy customers are searching for.",
     metricValue: "+340%",
@@ -51,7 +51,7 @@ const DELIVERABLES_DATA = [
     pillar: "Authority & Trust",
     title: "Digital PR & Quality Link Building",
     badge: "White-Hat Only",
-    badgeDotColor: "#EF4136",
+    badgeDotColor: "#FF1801",
     description:
       "We earn genuine backlinks and editorial mentions from trusted industry publications to build lasting domain authority.",
     metricValue: "DA 80+",
@@ -286,7 +286,7 @@ export default function SeoMontarvilleDeliverables({ data, onOpenModal }) {
         pillar: p.tag || `Pillar 0${idx + 1}`,
         title: p.title,
         badge: p.tag || "Enterprise",
-        badgeDotColor: "#EF4136",
+        badgeDotColor: "#FF1801",
         description: p.description,
         metricValue: data?.metrics?.[idx]?.value || "100%",
         metricLabel: data?.metrics?.[idx]?.label || "Performance Benchmark",
@@ -434,7 +434,7 @@ export default function SeoMontarvilleDeliverables({ data, onOpenModal }) {
         .montarville-expertises-section {
           background-color: #000000 !important;
           background-image: 
-            radial-gradient(circle at 50% 0%, rgba(239, 65, 54, 0.08) 0%, transparent 60%),
+            radial-gradient(circle at 50% 0%, rgba(255, 24, 1, 0.08) 0%, transparent 60%),
             radial-gradient(circle at 10% 40%, rgba(255, 255, 255, 0.015) 1px, transparent 1px),
             radial-gradient(circle at 90% 70%, rgba(255, 255, 255, 0.015) 1px, transparent 1px);
           background-size: 100% 100%, 36px 36px, 36px 36px;
@@ -446,14 +446,14 @@ export default function SeoMontarvilleDeliverables({ data, onOpenModal }) {
           gap: 8px;
           padding: 6px 16px;
           border-radius: 999px;
-          background: rgba(239, 65, 54, 0.08);
-          border: 1px solid rgba(239, 65, 54, 0.28);
+          background: rgba(255, 24, 1, 0.08);
+          border: 1px solid rgba(255, 24, 1, 0.28);
           color: #FAFAFC;
           font-size: 11px;
           font-weight: 700;
           text-transform: uppercase;
           letter-spacing: 0.14em;
-          box-shadow: 0 0 24px rgba(239, 65, 54, 0.16);
+          box-shadow: 0 0 24px rgba(255, 24, 1, 0.16);
         }
 
         .montarville-title {
@@ -468,7 +468,7 @@ export default function SeoMontarvilleDeliverables({ data, onOpenModal }) {
         }
 
         .montarville-title-accent {
-          color: #EF4136;
+          color: #FF1801;
           display: block;
         }
 
@@ -549,7 +549,7 @@ export default function SeoMontarvilleDeliverables({ data, onOpenModal }) {
           border-radius: inherit;
           background: radial-gradient(
             620px circle at var(--mouse-x, -999px) var(--mouse-y, -999px),
-            rgba(239, 65, 54, 0.14),
+            rgba(255, 24, 1, 0.14),
             rgba(255, 255, 255, 0.03) 40%,
             transparent 70%
           );
@@ -572,7 +572,7 @@ export default function SeoMontarvilleDeliverables({ data, onOpenModal }) {
           padding: 1px;
           background: radial-gradient(
             380px circle at var(--mouse-x, -999px) var(--mouse-y, -999px),
-            rgba(239, 65, 54, 0.7),
+            rgba(255, 24, 1, 0.7),
             rgba(255, 255, 255, 0.2) 35%,
             transparent 70%
           );
@@ -590,8 +590,8 @@ export default function SeoMontarvilleDeliverables({ data, onOpenModal }) {
         }
 
         .montarville-card:hover {
-          border-color: rgba(239, 65, 54, 0.4);
-          box-shadow: 0 28px 60px rgba(0, 0, 0, 0.95), 0 0 40px rgba(239, 65, 54, 0.14);
+          border-color: rgba(255, 24, 1, 0.4);
+          box-shadow: 0 28px 60px rgba(0, 0, 0, 0.95), 0 0 40px rgba(255, 24, 1, 0.14);
         }
 
         /* Architectural SVG Line Art Parallax Layer */
@@ -609,7 +609,7 @@ export default function SeoMontarvilleDeliverables({ data, onOpenModal }) {
         }
 
         .montarville-card:hover .montarville-svg-layer {
-          color: rgba(239, 65, 54, 0.38);
+          color: rgba(255, 24, 1, 0.38);
         }
 
         .montarville-blueprint-svg {
@@ -642,7 +642,7 @@ export default function SeoMontarvilleDeliverables({ data, onOpenModal }) {
           font-weight: 700;
           letter-spacing: 0.14em;
           text-transform: uppercase;
-          color: #EF4136;
+          color: #FF1801;
           display: inline-flex;
           align-items: center;
           gap: 8px;
@@ -652,8 +652,8 @@ export default function SeoMontarvilleDeliverables({ data, onOpenModal }) {
           width: 8px;
           height: 8px;
           border-radius: 50%;
-          background: #EF4136;
-          box-shadow: 0 0 10px rgba(239, 65, 54, 0.8);
+          background: #FF1801;
+          box-shadow: 0 0 10px rgba(255, 24, 1, 0.8);
           animation: pulseGlow 2s infinite ease-in-out;
         }
 
@@ -738,8 +738,8 @@ export default function SeoMontarvilleDeliverables({ data, onOpenModal }) {
           width: 52px;
           height: 52px;
           border-radius: 50%;
-          background: #EF4136;
-          border: 1px solid #EF4136;
+          background: #FF1801;
+          border: 1px solid #FF1801;
           display: flex;
           align-items: center;
           justify-content: center;
@@ -791,7 +791,7 @@ export default function SeoMontarvilleDeliverables({ data, onOpenModal }) {
       <div style={{ textAlign: "center", maxWidth: "860px", margin: "0 auto" }}>
         <div className="montarville-header-anim" style={{ display: "inline-block" }}>
           <span className="montarville-header-badge">
-            <Sparkles size={13} style={{ color: "#EF4136" }} />
+            <Sparkles size={13} style={{ color: "#FF1801" }} />
             WHAT WE DELIVER
           </span>
         </div>

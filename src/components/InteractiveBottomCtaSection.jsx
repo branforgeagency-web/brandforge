@@ -91,11 +91,11 @@ const ctaStyles = `
   .sg-cta-box-cockpit {
     position: relative;
     background: radial-gradient(circle at 50% 0%, #151014 0%, #0A0A0C 100%);
-    border: 1px solid rgba(239, 65, 54, 0.4);
+    border: 1px solid rgba(255, 24, 1, 0.4);
     border-radius: 32px;
     padding: clamp(50px, 7vw, 84px) clamp(24px, 5vw, 64px);
     text-align: center;
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15), 0 0 45px rgba(239, 65, 54, 0.15);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15), 0 0 45px rgba(255, 24, 1, 0.15);
     overflow: hidden;
   }
 
@@ -111,7 +111,7 @@ const ctaStyles = `
     top: -50%;
     left: 50%;
     transform: translateX(-50%);
-    border: 1px dashed rgba(239, 65, 54, 0.15);
+    border: 1px dashed rgba(255, 24, 1, 0.15);
     border-radius: 50%;
   }
   .cta-ring-1 { width: 600px; height: 600px; }
@@ -124,7 +124,7 @@ const ctaStyles = `
     transform: translateX(-50%);
     width: 500px;
     height: 300px;
-    background: radial-gradient(circle, rgba(239, 65, 54, 0.15) 0%, transparent 70%);
+    background: radial-gradient(circle, rgba(255, 24, 1, 0.15) 0%, transparent 70%);
     filter: blur(40px);
   }
 
@@ -134,8 +134,8 @@ const ctaStyles = `
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    background: rgba(239, 65, 54, 0.12);
-    border: 1px solid rgba(239, 65, 54, 0.35);
+    background: rgba(255, 24, 1, 0.12);
+    border: 1px solid rgba(255, 24, 1, 0.35);
     padding: 6px 16px;
     border-radius: 999px;
     font-family: "JetBrains Mono", monospace;
@@ -168,7 +168,7 @@ const ctaStyles = `
   }
 
   .sg-cta-box-cockpit h2 span {
-    color: #EF4136;
+    color: #FF1801;
   }
 
   .sg-cta-box-cockpit p {
@@ -197,7 +197,7 @@ const ctaStyles = `
     gap: 12px;
     padding: 18px 40px;
     border-radius: 16px;
-    background: #EF4136;
+    background: #FF1801;
     color: #FFFFFF;
     font-family: "Outfit", sans-serif;
     font-size: 1rem;
@@ -205,14 +205,14 @@ const ctaStyles = `
     letter-spacing: 0.04em;
     border: none;
     cursor: pointer;
-    box-shadow: 0 12px 30px rgba(239, 65, 54, 0.45);
+    box-shadow: 0 12px 30px rgba(255, 24, 1, 0.45);
     transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
   }
 
   .sg-btn-liquid-red:hover {
-    background: #D2042D;
+    background: #D61400;
     transform: translateY(-3px) scale(1.02);
-    box-shadow: 0 18px 45px rgba(239, 65, 54, 0.65), 0 0 25px rgba(239, 65, 54, 0.4);
+    box-shadow: 0 18px 45px rgba(255, 24, 1, 0.65), 0 0 25px rgba(255, 24, 1, 0.4);
   }
 
   .sg-cta-hotline-strip {
@@ -235,7 +235,7 @@ const ctaStyles = `
   }
 
   .hotline-icon {
-    color: #EF4136;
+    color: #FF1801;
   }
 
   .hotline-sep {

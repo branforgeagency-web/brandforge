@@ -3,7 +3,7 @@
 import React, { useEffect, useRef } from 'react';
 import { Renderer, Camera, Geometry, Program, Mesh } from 'ogl';
 
-const defaultColors = ['#EF4136', '#FFFFFF', '#FFB800'];
+const defaultColors = ['#FF1801', '#FFFFFF', '#FFB800'];
 
 const hexToRgb = (hex) => {
   hex = hex.replace(/^#/, '');

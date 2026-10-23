@@ -88,7 +88,7 @@ export default function BrandForgeAnimatedFooter({ onOpenModal }) {
 
       {/* OGL WEBGL PARTICLES BACKGROUND */}
       <Particles
-        particleColors={["#EF4136", "#FFFFFF", "#D2042D"]}
+        particleColors={["#FF1801", "#FFFFFF", "#D61400"]}
         particleCount={250}
         particleSpread={12}
         speed={0.15}
@@ -103,13 +103,13 @@ export default function BrandForgeAnimatedFooter({ onOpenModal }) {
       {/* FLYING PARALLAX SVG BIRDS LAYER */}
       <div className="bf-birds-parallax-layer" aria-hidden="true">
         <svg className="bf-svg-bird bird-1" viewBox="0 0 100 100">
-          <path d="M 0 50 Q 25 20, 50 50 Q 75 20, 100 50 Q 75 35, 50 55 Q 25 35, 0 50 Z" fill="#EF4136" opacity="0.6" />
+          <path d="M 0 50 Q 25 20, 50 50 Q 75 20, 100 50 Q 75 35, 50 55 Q 25 35, 0 50 Z" fill="#FF1801" opacity="0.6" />
         </svg>
         <svg className="bf-svg-bird bird-2" viewBox="0 0 100 100">
-          <path d="M 0 50 Q 25 20, 50 50 Q 75 20, 100 50 Q 75 35, 50 55 Q 25 35, 0 50 Z" fill="#EF4136" opacity="0.4" />
+          <path d="M 0 50 Q 25 20, 50 50 Q 75 20, 100 50 Q 75 35, 50 55 Q 25 35, 0 50 Z" fill="#FF1801" opacity="0.4" />
         </svg>
         <svg className="bf-svg-bird bird-3" viewBox="0 0 100 100">
-          <path d="M 0 50 Q 25 20, 50 50 Q 75 20, 100 50 Q 75 35, 50 55 Q 25 35, 0 50 Z" fill="#EF4136" opacity="0.5" />
+          <path d="M 0 50 Q 25 20, 50 50 Q 75 20, 100 50 Q 75 35, 50 55 Q 25 35, 0 50 Z" fill="#FF1801" opacity="0.5" />
         </svg>
       </div>
 
@@ -369,8 +369,8 @@ const styles = `
   width: 200%;
   height: 600px;
   background-image: 
-    linear-gradient(rgba(239, 65, 54, 0.12) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(239, 65, 54, 0.12) 1px, transparent 1px);
+    linear-gradient(rgba(255, 24, 1, 0.12) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 24, 1, 0.12) 1px, transparent 1px);
   background-size: 60px 60px;
   transform-origin: center bottom;
   pointer-events: none;
@@ -418,7 +418,7 @@ const styles = `
 }
 
 .marquee-icon {
-  color: #EF4136;
+  color: #FF1801;
 }
 
 /* CONTENT CONTAINER */
@@ -447,9 +447,9 @@ const styles = `
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  background: rgba(239, 65, 54, 0.12);
-  border: 1px solid rgba(239, 65, 54, 0.35);
-  color: #EF4136;
+  background: rgba(255, 24, 1, 0.12);
+  border: 1px solid rgba(255, 24, 1, 0.35);
+  color: #FF1801;
   font-family: 'JetBrains Mono', monospace;
   font-size: 0.75rem;
   font-weight: 800;
@@ -471,7 +471,7 @@ const styles = `
 }
 
 .text-glow-red {
-  color: #EF4136;
+  color: #FF1801;
   text-shadow: none;
 }
 
@@ -488,7 +488,7 @@ const styles = `
   display: inline-flex;
   align-items: center;
   gap: 14px;
-  background: linear-gradient(135deg, #EF4136 0%, #BF342B 100%);
+  background: linear-gradient(135deg, #FF1801 0%, #D61400 100%);
   color: #FFFFFF;
   border: 1px solid rgba(255, 255, 255, 0.3);
   font-family: 'Outfit', sans-serif;
@@ -514,7 +514,7 @@ const styles = `
   height: 36px;
   border-radius: 50%;
   background: #FFFFFF;
-  color: #EF4136;
+  color: #FF1801;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -554,7 +554,7 @@ const styles = `
 .logo-dot {
   width: 10px;
   height: 10px;
-  background: #EF4136;
+  background: #FF1801;
   border-radius: 50%;
   box-shadow: none;
 }
@@ -598,7 +598,7 @@ const styles = `
 }
 
 .newsletter-input:focus {
-  border-color: #EF4136;
+  border-color: #FF1801;
   background: rgba(6, 5, 9, 0.75);
   box-shadow: none;
 }
@@ -607,7 +607,7 @@ const styles = `
   width: 44px;
   height: 44px;
   border-radius: 12px;
-  background: #EF4136;
+  background: #FF1801;
   color: #FFFFFF;
   border: none;
   display: flex;
@@ -618,7 +618,7 @@ const styles = `
 }
 
 .newsletter-submit-btn:hover {
-  background: #BF342B;
+  background: #D61400;
   transform: scale(1.05);
 }
 
@@ -634,7 +634,7 @@ const styles = `
   font-size: 0.78rem;
   font-weight: 800;
   letter-spacing: 0.15em;
-  color: #EF4136;
+  color: #FF1801;
   margin-bottom: 20px;
 }
 
@@ -662,11 +662,11 @@ const styles = `
 }
 
 .social-icon-btn:hover {
-  background: #EF4136;
-  border-color: #EF4136;
+  background: #FF1801;
+  border-color: #FF1801;
   color: #FFFFFF;
   transform: translateY(-4px);
-  box-shadow: 0 8px 24px rgba(239, 65, 54, 0.4);
+  box-shadow: 0 8px 24px rgba(255, 24, 1, 0.4);
 }
 
 .footer-link-list {

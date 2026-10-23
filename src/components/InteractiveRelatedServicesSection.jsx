@@ -179,9 +179,9 @@ const relatedStyles = `
 
   .sg-related-card:hover,
   .sg-related-card.is-hovered {
-    border-color: #EF4136;
+    border-color: #FF1801;
     background: #FFFFFF;
-    box-shadow: 0 14px 35px rgba(239, 65, 54, 0.1), 0 0 0 1px rgba(239, 65, 54, 0.15);
+    box-shadow: 0 14px 35px rgba(255, 24, 1, 0.1), 0 0 0 1px rgba(255, 24, 1, 0.15);
   }
 
   .sg-related-top-row {
@@ -195,11 +195,11 @@ const relatedStyles = `
     font-family: "JetBrains Mono", monospace;
     font-size: 0.72rem;
     font-weight: 800;
-    color: #EF4136;
-    background: rgba(239, 65, 54, 0.08);
+    color: #FF1801;
+    background: rgba(255, 24, 1, 0.08);
     padding: 3px 8px;
     border-radius: 6px;
-    border: 1px solid rgba(239, 65, 54, 0.2);
+    border: 1px solid rgba(255, 24, 1, 0.2);
   }
 
   .sg-related-synergy-badge {
@@ -245,7 +245,7 @@ const relatedStyles = `
   }
 
   .sg-related-card:hover .sg-related-link-text {
-    color: #EF4136;
+    color: #FF1801;
   }
 
   @media (max-width: 1024px) {

@@ -269,7 +269,7 @@ function BlackParticleGlobeCanvas({ theme }) {
 
         if (P.ph[i]) {
           ctx.fillStyle = isDark
-            ? `rgba(239, 65, 54, ${a * 0.6})`
+            ? `rgba(255, 24, 1, ${a * 0.6})`
             : `rgba(255, 77, 77, ${a * 0.25})`;
           ctx.beginPath();
           ctx.arc(x, y, s * 2.5, 0, Math.PI * 2);
@@ -356,14 +356,14 @@ function FAQCard({ item, index, isOpen, onToggle, isMobile, theme }) {
           WebkitBackdropFilter: "blur(16px) saturate(180%)",
           border: isDark
             ? isOpen
-              ? "1.5px solid #EF4136"
+              ? "1.5px solid #FF1801"
               : "1px solid rgba(255, 255, 255, 0.08)"
             : isOpen
             ? "1.5px solid #FF4D4D"
             : "1px solid rgba(255, 255, 255, 0.8)",
           boxShadow: isDark
             ? isOpen
-              ? "0 20px 48px -12px rgba(239, 65, 54, 0.25), inset 0 1px 0 0 rgba(255, 255, 255, 0.08)"
+              ? "0 20px 48px -12px rgba(255, 24, 1, 0.25), inset 0 1px 0 0 rgba(255, 255, 255, 0.08)"
               : "0 8px 32px 0 rgba(0, 0, 0, 0.45), inset 0 1px 0 0 rgba(255, 255, 255, 0.04)"
             : isOpen
             ? "0 20px 48px -12px rgba(255, 77, 77, 0.22), inset 0 1px 0 0 rgba(255, 255, 255, 1)"
@@ -385,8 +385,8 @@ function FAQCard({ item, index, isOpen, onToggle, isMobile, theme }) {
               left: 0,
               bottom: 0,
               width: 4,
-              background: "linear-gradient(180deg, #EF4136 0%, #FF8A65 100%)",
-              boxShadow: "0 0 12px rgba(239, 65, 54, 0.8)",
+              background: "linear-gradient(180deg, #FF1801 0%, #FF8A65 100%)",
+              boxShadow: "0 0 12px rgba(255, 24, 1, 0.8)",
             }}
           />
         )}
@@ -412,21 +412,21 @@ function FAQCard({ item, index, isOpen, onToggle, isMobile, theme }) {
                 textTransform: "uppercase",
                 color: isDark
                   ? isOpen
-                    ? "#EF4136"
+                    ? "#FF1801"
                     : "#FFFFFF"
                   : isOpen
                   ? "#FF4D4D"
                   : "#9CA3AF",
                 background: isDark
                   ? isOpen
-                    ? "rgba(239,65,54,0.18)"
+                    ? "rgba(255, 24, 1,0.18)"
                     : "rgba(255,255,255,0.08)"
                   : isOpen
                   ? "rgba(255,77,77,0.08)"
                   : "rgba(0,0,0,0.03)",
                 border: isDark
                   ? isOpen
-                    ? "1px solid rgba(239,65,54,0.45)"
+                    ? "1px solid rgba(255, 24, 1,0.45)"
                     : "1px solid rgba(255,255,255,0.12)"
                   : "none",
                 padding: "3px 10px",
@@ -465,7 +465,7 @@ function FAQCard({ item, index, isOpen, onToggle, isMobile, theme }) {
             animate={{
               rotate: isOpen ? 135 : 0,
               background: isOpen
-                ? "#EF4136"
+                ? "#FF1801"
                 : isDark
                 ? "rgba(255,255,255,0.1)"
                 : "rgba(0,0,0,0.04)",
@@ -481,7 +481,7 @@ function FAQCard({ item, index, isOpen, onToggle, isMobile, theme }) {
               alignItems: "center",
               justifyContent: "center",
               border: isDark ? "1px solid rgba(255,255,255,0.15)" : "none",
-              boxShadow: isOpen ? "0 4px 14px rgba(239,65,54,0.45)" : "none",
+              boxShadow: isOpen ? "0 4px 14px rgba(255, 24, 1,0.45)" : "none",
             }}
           >
             <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
@@ -514,7 +514,7 @@ function FAQCard({ item, index, isOpen, onToggle, isMobile, theme }) {
                 height: 1,
                 width: "100%",
                 background: isDark
-                  ? "linear-gradient(90deg, #EF4136 0%, rgba(255,255,255,0.2) 60%, transparent 100%)"
+                  ? "linear-gradient(90deg, #FF1801 0%, rgba(255,255,255,0.2) 60%, transparent 100%)"
                   : "linear-gradient(90deg, rgba(255,77,77,0.2), transparent)",
                 marginBottom: 16,
               }}
@@ -575,7 +575,7 @@ export default function BrandForgeFAQ({ theme }) {
           height: 500,
           borderRadius: "50%",
           background: isDark
-            ? "radial-gradient(circle, rgba(239,65,54,0.08) 0%, transparent 70%)"
+            ? "radial-gradient(circle, rgba(255, 24, 1,0.08) 0%, transparent 70%)"
             : "radial-gradient(circle, rgba(255,77,77,0.04) 0%, transparent 70%)",
           filter: "blur(60px)",
           pointerEvents: "none",
@@ -621,14 +621,14 @@ export default function BrandForgeFAQ({ theme }) {
               alignItems: "center",
               gap: 8,
               padding: "6px 18px",
-              background: isDark ? "rgba(239,65,54,0.12)" : "rgba(255,77,77,0.08)",
-              border: isDark ? "1px solid rgba(239,65,54,0.3)" : "1px solid rgba(255,77,77,0.2)",
+              background: isDark ? "rgba(255, 24, 1,0.12)" : "rgba(255,77,77,0.08)",
+              border: isDark ? "1px solid rgba(255, 24, 1,0.3)" : "1px solid rgba(255,77,77,0.2)",
               borderRadius: 999,
               fontFamily: "'Inter', sans-serif",
               fontSize: 11,
               fontWeight: 800,
               letterSpacing: "0.14em",
-              color: "#EF4136",
+              color: "#FF1801",
               textTransform: "uppercase",
               marginBottom: 20,
             }}
@@ -638,8 +638,8 @@ export default function BrandForgeFAQ({ theme }) {
                 width: 6,
                 height: 6,
                 borderRadius: "50%",
-                background: "#EF4136",
-                boxShadow: "0 0 8px rgba(239,65,54,0.8)",
+                background: "#FF1801",
+                boxShadow: "0 0 8px rgba(255, 24, 1,0.8)",
               }}
             />
             Got Questions? We Have Answers
@@ -659,7 +659,7 @@ export default function BrandForgeFAQ({ theme }) {
             Frequently Asked{" "}
             <span
               style={{
-                background: "linear-gradient(135deg, #EF4136 0%, #FF8A65 100%)",
+                background: "linear-gradient(135deg, #FF1801 0%, #FF8A65 100%)",
                 WebkitBackgroundClip: "text",
                 WebkitTextFillColor: "transparent",
               }}

@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { ArrowUpRight, Sparkles, MapPin, Search, Cpu, Database } from "lucide-react";
 
 // Sajan 4-point star SVG icon
-function SajanStar({ size = 16, color = "#EF4136", className = "" }) {
+function SajanStar({ size = 16, color = "#FF1801", className = "" }) {
   return (
     <svg
       width={size}
@@ -37,7 +37,7 @@ const DEFAULT_WHY_PILLARS = [
     fullText: "Ranking on Google organic search results with zero black-hat risk and pure algorithmic velocity.",
     metaCategory: "SYSTEM",
     metaYear: "#01",
-    badgeColor: "#EF4136",
+    badgeColor: "#FF1801",
     icon: Search,
     tilt: -1.8,
     speed: 28,
@@ -67,7 +67,7 @@ const DEFAULT_WHY_PILLARS = [
     fullText: "Getting cited by AI search engines and answer models through verified knowledge graph entities.",
     metaCategory: "SYSTEM",
     metaYear: "#03",
-    badgeColor: "#EF4136",
+    badgeColor: "#FF1801",
     icon: Cpu,
     tilt: -1.2,
     speed: 26,
@@ -82,7 +82,7 @@ const DEFAULT_WHY_PILLARS = [
     fullText: "Building long-term market authority and digital moats, not short-lived vanity spikes.",
     metaCategory: "SYSTEM",
     metaYear: "#04",
-    badgeColor: "#EF4136",
+    badgeColor: "#FF1801",
     icon: Database,
     tilt: 1.9,
     speed: 30,
@@ -110,7 +110,7 @@ export default function SeoSajanWhyChoose({ whyChooseUs, onOpenModal }) {
           fullText: pt,
           metaCategory: "SYSTEM",
           metaYear: `#0${idx + 1}`,
-          badgeColor: idx % 2 === 0 ? "#EF4136" : "#0A0A0C",
+          badgeColor: idx % 2 === 0 ? "#FF1801" : "#0A0A0C",
           icon: icons[idx % icons.length],
           tilt: tilts[idx % tilts.length],
           speed: speeds[idx % speeds.length],
@@ -139,7 +139,7 @@ export default function SeoSajanWhyChoose({ whyChooseUs, onOpenModal }) {
         .bf-why-plus-grid {
           position: absolute;
           inset: 0;
-          background-color: #EF4136;
+          background-color: #FF1801;
           opacity: 0.08;
           --_plus-svg: url("data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect x='11.5' y='7' width='1' height='10' fill='black'/%3E%3Crect x='7' y='11.5' width='10' height='1' fill='black'/%3E%3C/svg%3E");
           -webkit-mask-image: var(--_plus-svg);
@@ -176,7 +176,7 @@ export default function SeoSajanWhyChoose({ whyChooseUs, onOpenModal }) {
           font-weight: 800;
           letter-spacing: 0.16em;
           text-transform: uppercase;
-          color: #EF4136;
+          color: #FF1801;
           margin-bottom: 18px;
         }
 
@@ -192,7 +192,7 @@ export default function SeoSajanWhyChoose({ whyChooseUs, onOpenModal }) {
         }
 
         .bf-why-title-accent {
-          color: #EF4136;
+          color: #FF1801;
         }
 
         .bf-why-narrative {
@@ -258,8 +258,8 @@ export default function SeoSajanWhyChoose({ whyChooseUs, onOpenModal }) {
         }
 
         .bf-why-ribbon-item:hover .bf-why-ribbon-pill {
-          box-shadow: 8px 8px 0px #EF4136;
-          border-color: #EF4136;
+          box-shadow: 8px 8px 0px #FF1801;
+          border-color: #FF1801;
           background: #14141E;
         }
 
@@ -291,8 +291,8 @@ export default function SeoSajanWhyChoose({ whyChooseUs, onOpenModal }) {
         }
 
         .bf-why-ribbon-item:hover .bf-ribbon-num-circle {
-          background: #EF4136;
-          border-color: #EF4136;
+          background: #FF1801;
+          border-color: #FF1801;
           transform: scale(1.05);
         }
 
@@ -415,7 +415,7 @@ export default function SeoSajanWhyChoose({ whyChooseUs, onOpenModal }) {
         .bf-ribbon-drawer {
           margin-top: 10px;
           background: #0E0E14;
-          border: 1.5px solid #EF4136;
+          border: 1.5px solid #FF1801;
           box-shadow: 6px 6px 0px #000000;
           border-radius: 20px;
           padding: clamp(20px, 2.5vw, 28px);
@@ -441,7 +441,7 @@ export default function SeoSajanWhyChoose({ whyChooseUs, onOpenModal }) {
           align-items: center;
           gap: 8px;
           padding: 10px 20px;
-          background: #EF4136;
+          background: #FF1801;
           color: #FFFFFF;
           border-radius: 9999px;
           font-size: 0.85rem;
@@ -452,7 +452,7 @@ export default function SeoSajanWhyChoose({ whyChooseUs, onOpenModal }) {
         }
 
         .bf-drawer-cta-btn:hover {
-          background: #D2042D;
+          background: #D61400;
           transform: translateY(-2px);
         }
 
@@ -521,7 +521,7 @@ export default function SeoSajanWhyChoose({ whyChooseUs, onOpenModal }) {
           <div className="bf-why-narrative">
             <p className="bf-why-desc">{whyChooseUs.description}</p>
             <div className="bf-why-lead-in">
-              <Sparkles size={16} color="#EF4136" />
+              <Sparkles size={16} color="#FF1801" />
               <span>{whyChooseUs.leadIn || "Our approach covers the full picture of modern search visibility:"}</span>
             </div>
           </div>
@@ -576,11 +576,11 @@ export default function SeoSajanWhyChoose({ whyChooseUs, onOpenModal }) {
                           <span className={`bf-ribbon-text-primary ${pill.isOutline ? "is-outline" : ""}`}>
                             {pill.marqueeText}
                           </span>
-                          <SajanStar size={16} color="#EF4136" />
+                          <SajanStar size={16} color="#FF1801" />
                           <span className="bf-ribbon-text-secondary">
                             {pill.marqueeSub}
                           </span>
-                          <SajanStar size={16} color="#EF4136" />
+                          <SajanStar size={16} color="#FF1801" />
                         </div>
                       ))}
                     </motion.div>

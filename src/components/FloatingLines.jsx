@@ -60,7 +60,7 @@ uniform vec3 lineGradient[8];
 uniform int lineGradientCount;
 
 const vec3 BLACK = vec3(0.0);
-const vec3 PINK  = vec3(239.0, 65.0, 54.0) / 255.0; // BrandForge Crimson Red
+const vec3 PINK  = vec3(255.0, 24.0, 1.0) / 255.0; // BrandForge Fury Red
 const vec3 BLUE  = vec3(255.0, 87.0, 51.0) / 255.0; // BrandForge Fiery Coral
 
 mat2 rotate(float r) {
@@ -232,7 +232,7 @@ function hexToVec3(hex) {
 }
 
 export default function FloatingLines({
-  linesGradient = ["#EF4136", "#FF5733", "#FF9F1C", "#E63946"],
+  linesGradient = ["#FF1801", "#FF5733", "#FF9F1C", "#E63946"],
   enabledWaves = ["top", "middle", "bottom"],
   lineCount = [8, 8, 8],
   lineDistance = [6, 6, 6],

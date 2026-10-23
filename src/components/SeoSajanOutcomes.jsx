@@ -199,7 +199,7 @@ export default function SeoSajanOutcomes({ metrics = [], data }) {
         .bf-outcomes-plus-grid {
           position: absolute;
           inset: 0;
-          background-color: #EF4136;
+          background-color: #FF1801;
           opacity: 0.12;
           --_plus-svg: url("data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect x='11.5' y='7' width='1' height='10' fill='white'/%3E%3Crect x='7' y='11.5' width='10' height='1' fill='white'/%3E%3C/svg%3E");
           -webkit-mask-image: var(--_plus-svg);
@@ -232,7 +232,7 @@ export default function SeoSajanOutcomes({ metrics = [], data }) {
           font-weight: 800;
           letter-spacing: 0.16em;
           text-transform: uppercase;
-          color: #EF4136;
+          color: #FF1801;
           margin-bottom: 16px;
         }
 
@@ -249,7 +249,7 @@ export default function SeoSajanOutcomes({ metrics = [], data }) {
         }
 
         .bf-outcomes-title-accent {
-          color: #EF4136;
+          color: #FF1801;
         }
 
         /* BRUTALIST 4-COLUMN OUTCOMES BOX */
@@ -309,7 +309,7 @@ export default function SeoSajanOutcomes({ metrics = [], data }) {
           font-size: clamp(20px, 2.2vw, 36px);
           font-weight: 800;
           letter-spacing: -0.03em;
-          color: #EF4136;
+          color: #FF1801;
           line-height: 1;
           margin-bottom: 4px;
           text-transform: uppercase;
@@ -319,7 +319,7 @@ export default function SeoSajanOutcomes({ metrics = [], data }) {
           font-size: 0.35em;
           vertical-align: top;
           margin-left: 4px;
-          color: #EF4136;
+          color: #FF1801;
           font-weight: 800;
           line-height: 1;
         }
@@ -338,7 +338,7 @@ export default function SeoSajanOutcomes({ metrics = [], data }) {
           font-weight: 700;
           letter-spacing: 0.1em;
           text-transform: uppercase;
-          color: #EF4136;
+          color: #FF1801;
           margin-bottom: 4px;
         }
 
@@ -415,8 +415,8 @@ export default function SeoSajanOutcomes({ metrics = [], data }) {
 
         .bf-outcomes-logo-card:hover {
           transform: translate(-3px, -3px);
-          box-shadow: 0 8px 30px rgba(239, 65, 54, 0.25);
-          border-color: #EF4136;
+          box-shadow: 0 8px 30px rgba(255, 24, 1, 0.25);
+          border-color: #FF1801;
         }
 
         .bf-outcomes-logo-img {
@@ -439,8 +439,8 @@ export default function SeoSajanOutcomes({ metrics = [], data }) {
           left: 50%;
           transform: translateX(-50%);
           background: #0E0E14;
-          border: 1px solid #EF4136;
-          box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8), 0 0 30px rgba(239, 65, 54, 0.2);
+          border: 1px solid #FF1801;
+          box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8), 0 0 30px rgba(255, 24, 1, 0.2);
           padding: 16px 20px;
           border-radius: 12px;
           min-width: 250px;
@@ -463,7 +463,7 @@ export default function SeoSajanOutcomes({ metrics = [], data }) {
           transform: translateX(-50%);
           border-width: 7px 7px 0 7px;
           border-style: solid;
-          border-color: #EF4136 transparent transparent transparent;
+          border-color: #FF1801 transparent transparent transparent;
         }
 
         @keyframes bf-popup-spring {
@@ -506,7 +506,7 @@ export default function SeoSajanOutcomes({ metrics = [], data }) {
           font-weight: 800;
           letter-spacing: 0.12em;
           text-transform: uppercase;
-          color: #EF4136;
+          color: #FF1801;
           margin: 0;
         }
 

@@ -935,7 +935,7 @@ const gridStyles = `
   }
 
   .eyebrow-icon {
-    color: #EF4136;
+    color: #FF1801;
   }
 
   .bf-bento-heading {
@@ -949,7 +949,7 @@ const gridStyles = `
   }
 
   .bf-bento-heading-glow {
-    color: #EF4136;
+    color: #FF1801;
   }
 
   .bf-bento-sub {

@@ -10,8 +10,8 @@
 }
 
 :root {
-  --color-primary: #EF4136;
-  --color-primary-glow: rgba(239, 65, 54, 0.45);
+  --color-primary: #FF1801;
+  --color-primary-glow: rgba(255, 24, 1, 0.45);
   --color-accent-orange: #FF6B00;
   --color-accent-gold: #FFB800;
   --color-accent-cyan: #00F0FF;
@@ -20,7 +20,7 @@
   --color-bg-card-hover: #141416;
   --color-text-main: #FFFFFF;
   --color-text-sub: #94A3B8;
-  --color-border-glow: rgba(239, 65, 54, 0.25);
+  --color-border-glow: rgba(255, 24, 1, 0.25);
   --font-heading: 'Outfit', sans-serif;
   --font-body: 'Plus Jakarta Sans', sans-serif;
   --font-mono: 'JetBrains Mono', monospace;
@@ -61,12 +61,12 @@ body {
   left: 0;
   width: 8px;
   height: 8px;
-  background-color: #EF4136;
+  background-color: #FF1801;
   border-radius: 50%;
   pointer-events: none;
   z-index: 99999;
   transform: translate(-50%, -50%);
-  box-shadow: 0 0 10px #EF4136, 0 0 20px #EF4136;
+  box-shadow: 0 0 10px #FF1801, 0 0 20px #FF1801;
 }
 
 .custom-cursor-ring {
@@ -75,7 +75,7 @@ body {
   left: 0;
   width: 36px;
   height: 36px;
-  border: 1.5px solid rgba(239, 65, 54, 0.6);
+  border: 1.5px solid rgba(255, 24, 1, 0.6);
   border-radius: 50%;
   pointer-events: none;
   z-index: 99998;
@@ -86,8 +86,8 @@ body {
 .custom-cursor-ring.active {
   width: 56px;
   height: 56px;
-  border-color: #EF4136;
-  background-color: rgba(239, 65, 54, 0.1);
+  border-color: #FF1801;
+  background-color: rgba(255, 24, 1, 0.1);
 }
 
 /* FULL-SCREEN STACKED EDITORIAL 12 SERVICES CARDS */
@@ -152,7 +152,7 @@ body {
   font-size: 0.75rem;
   font-weight: 700;
   letter-spacing: 0.2em;
-  color: #EF4136;
+  color: #FF1801;
   z-index: 20;
   pointer-events: none;
 }
@@ -160,9 +160,9 @@ body {
 .side-red-dot {
   width: 8px;
   height: 8px;
-  background: #EF4136;
+  background: #FF1801;
   border-radius: 50%;
-  box-shadow: 0 0 12px #EF4136;
+  box-shadow: 0 0 12px #FF1801;
 }
 
 /* 3D CARDS PERSPECTIVE STAGE (3 CARDS PER ROW) */
@@ -209,7 +209,7 @@ body {
 
 /* RED CARD STYLING - HIGH VISIBILITY */
 .card-theme-red {
-  background: linear-gradient(135deg, #EF4136 0%, #BF342B 100%);
+  background: linear-gradient(135deg, #FF1801 0%, #D61400 100%);
   color: #FFFFFF;
   border: 1px solid rgba(255, 255, 255, 0.45);
   box-shadow: 0 18px 45px rgba(255, 59, 48, 0.4);
@@ -252,13 +252,13 @@ body {
 .card-theme-black {
   background: linear-gradient(135deg, #16171B 0%, #090A0C 100%);
   color: #FFFFFF;
-  border: 1.5px solid rgba(239, 65, 54, 0.5);
+  border: 1.5px solid rgba(255, 24, 1, 0.5);
   box-shadow: 0 18px 45px rgba(0, 0, 0, 0.85), inset 0 1px 1px rgba(255, 255, 255, 0.1);
 }
 
 .card-theme-black:hover {
-  box-shadow: 0 30px 65px rgba(239, 65, 54, 0.45), 0 0 30px rgba(239, 65, 54, 0.25);
-  border-color: #EF4136;
+  box-shadow: 0 30px 65px rgba(255, 24, 1, 0.45), 0 0 30px rgba(255, 24, 1, 0.25);
+  border-color: #FF1801;
 }
 
 .card-theme-black .editorial-card-title {
@@ -273,16 +273,16 @@ body {
 }
 
 .card-theme-black .editorial-tag-item {
-  background: rgba(239, 65, 54, 0.18);
-  color: #EF4136;
+  background: rgba(255, 24, 1, 0.18);
+  color: #FF1801;
   font-weight: 800;
-  border: 1px solid rgba(239, 65, 54, 0.45);
+  border: 1px solid rgba(255, 24, 1, 0.45);
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
 }
 
 .card-theme-black .editorial-card-num {
-  color: #EF4136;
-  text-shadow: 0 0 18px rgba(239, 65, 54, 0.7);
+  color: #FF1801;
+  text-shadow: 0 0 18px rgba(255, 24, 1, 0.7);
 }
 
 .card-theme-black .editorial-card-footer {
@@ -366,8 +366,8 @@ body {
 
 .progress-bar-fill {
   height: 100%;
-  background: #EF4136;
-  box-shadow: 0 0 10px #EF4136;
+  background: #FF1801;
+  box-shadow: 0 0 10px #FF1801;
   transition: width 0.3s ease;
 }
 

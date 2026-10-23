@@ -503,7 +503,7 @@ export default function SeoSajanServicesDial({ data, onOpenModal: _onOpenModal }
           will-change: transform;
         }
         .bf-dial-accent {
-          color: #EF4136;
+          color: #FF1801;
         }
 
         .bf-dial-lede {
@@ -578,8 +578,8 @@ export default function SeoSajanServicesDial({ data, onOpenModal: _onOpenModal }
         .bf-dial-bar {
           width: 2px;
           height: 70px;
-          background: #EF4136;
-          box-shadow: 0 0 10px rgba(239, 65, 54, 0.5);
+          background: #FF1801;
+          box-shadow: 0 0 10px rgba(255, 24, 1, 0.5);
           transform-origin: bottom center;
           will-change: transform, opacity;
         }
@@ -610,8 +610,8 @@ export default function SeoSajanServicesDial({ data, onOpenModal: _onOpenModal }
         .bf-dial-notch.is-major::after {
           height: 18px;
           width: 2px;
-          background: #EF4136;
-          box-shadow: 0 0 8px #EF4136;
+          background: #FF1801;
+          box-shadow: 0 0 8px #FF1801;
         }
 
         /* Fixed Center Reticle Needle */
@@ -622,8 +622,8 @@ export default function SeoSajanServicesDial({ data, onOpenModal: _onOpenModal }
           left: 50%;
           transform: translateX(-50%);
           width: 2px;
-          background: #EF4136;
-          box-shadow: 0 0 16px rgba(239, 65, 54, 0.85);
+          background: #FF1801;
+          box-shadow: 0 0 16px rgba(255, 24, 1, 0.85);
           pointer-events: none;
           z-index: 10;
         }
@@ -634,7 +634,7 @@ export default function SeoSajanServicesDial({ data, onOpenModal: _onOpenModal }
           transform: translateX(-50%);
           width: 18px;
           height: 18px;
-          color: #EF4136;
+          color: #FF1801;
         }
         .bf-needle-star-top { top: 4px; }
         .bf-needle-star-bot { bottom: 4px; }
@@ -657,8 +657,8 @@ export default function SeoSajanServicesDial({ data, onOpenModal: _onOpenModal }
           top: -1px;
           left: 0;
           height: 2px;
-          background: #EF4136;
-          box-shadow: 0 0 12px #EF4136;
+          background: #FF1801;
+          box-shadow: 0 0 12px #FF1801;
           transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
           width: 25%;
         }
@@ -683,7 +683,7 @@ export default function SeoSajanServicesDial({ data, onOpenModal: _onOpenModal }
         }
         .bf-dial-zone-num {
           font-size: 0.72rem;
-          color: #EF4136;
+          color: #FF1801;
           opacity: 0.8;
         }
 
@@ -709,7 +709,7 @@ export default function SeoSajanServicesDial({ data, onOpenModal: _onOpenModal }
         .bf-dial-mobile-num {
           font-size: 0.76rem;
           font-weight: 700;
-          color: #EF4136;
+          color: #FF1801;
         }
         .bf-dial-mobile-title {
           font-size: 1.6rem;

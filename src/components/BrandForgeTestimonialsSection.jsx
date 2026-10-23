@@ -10,7 +10,7 @@ const REVIEWS = [
     quote:
       "BrandForge helped us translate the ThoughtSpace experience — train, work, create, grow — into a digital presence that finally feels like our space.",
     logo: "/client-thoughtspace.png",
-    cardBg: "#EF4136", // Vibrant Crimson Red Card
+    cardBg: "#FF1801", // Vibrant Crimson Red Card
     accentColor: "#FFFFFF", // Bold White Speech Bubble Border
   },
   {
@@ -21,7 +21,7 @@ const REVIEWS = [
     quote:
       "Our brand finally looks as sharp as our print work. BrandForge gave Sonic Prints an identity that stands out and holds up across every touchpoint.",
     logo: "/client-sonicprints.png",
-    cardBg: "#EF4136", // Vibrant Crimson Red Card
+    cardBg: "#FF1801", // Vibrant Crimson Red Card
     accentColor: "#FFFFFF", // Bold White Speech Bubble Border
   },
   {
@@ -32,7 +32,7 @@ const REVIEWS = [
     quote:
       "BrandForge helped ThoughtFlows reach more students actively searching for medical coding training, with a brand presence that matches our position as a leading academy.",
     logo: "/client-thoughtflows.png",
-    cardBg: "#EF4136", // Vibrant Crimson Red Card
+    cardBg: "#FF1801", // Vibrant Crimson Red Card
     accentColor: "#FFFFFF", // Bold White Speech Bubble Border
   },
   {
@@ -43,7 +43,7 @@ const REVIEWS = [
     quote:
       "From strategy to launch, BrandForge just got it. They turned TalentEra into a brand that stands out in a crowded hiring market.",
     logo: "/client-talentera.png",
-    cardBg: "#EF4136", // Vibrant Crimson Red Card
+    cardBg: "#FF1801", // Vibrant Crimson Red Card
     accentColor: "#FFFFFF", // Bold White Speech Bubble Border
   },
 ];
@@ -209,7 +209,7 @@ const styles = `
     font-weight: 800;
     letter-spacing: 0.14em;
     text-transform: uppercase;
-    color: #EF4136;
+    color: #FF1801;
     margin-bottom: 12px;
   }
 
@@ -217,7 +217,7 @@ const styles = `
     width: 7px;
     height: 7px;
     border-radius: 50%;
-    background: #EF4136;
+    background: #FF1801;
   }
 
   .bf-test-header h2 {
@@ -253,7 +253,7 @@ const styles = `
     width: 490px;
     max-width: 100%;
     min-height: 310px;
-    background: #EF4136;
+    background: #FF1801;
     padding: 2.8em 2.4em 1.8em 2.4em;
     display: flex;
     flex-direction: column;
@@ -306,7 +306,7 @@ const styles = `
     width: 38px;
     height: 38px;
     background: #FFFFFF;
-    color: #EF4136;
+    color: #FF1801;
     text-align: center;
     line-height: 1.2;
     z-index: 5;
@@ -423,7 +423,7 @@ const styles = `
 
   /* STRICT CRIMSON RED PAPER CLIP FOR ALL CARDS */
   .clip {
-    border: 3px solid #EF4136 !important;
+    border: 3px solid #FF1801 !important;
     border-right: none !important;
     height: 72px;
     width: 18px;
@@ -458,7 +458,7 @@ const styles = `
     right: 0;
     height: 9px;
     width: 14px;
-    border: 3px solid #EF4136 !important;
+    border: 3px solid #FF1801 !important;
     border-bottom: none !important;
     border-top-left-radius: 22px;
     border-top-right-radius: 22px;
@@ -472,7 +472,7 @@ const styles = `
     right: 0;
     height: 38px;
     width: 14px;
-    border: 3px solid #EF4136 !important;
+    border: 3px solid #FF1801 !important;
     border-top: none !important;
     border-bottom-left-radius: 22px;
     border-bottom-right-radius: 22px;
@@ -505,8 +505,8 @@ const styles = `
   }
 
   .bf-test-arrow:hover {
-    background: #EF4136;
-    border-color: #EF4136;
+    background: #FF1801;
+    border-color: #FF1801;
     transform: scale(1.08);
   }
 
@@ -526,9 +526,9 @@ const styles = `
   }
 
   .bf-test-dot-btn.is-active {
-    background: var(--dot-accent, #EF4136);
+    background: var(--dot-accent, #FF1801);
     transform: scale(1.3);
-    box-shadow: 0 0 10px var(--dot-accent, #EF4136);
+    box-shadow: 0 0 10px var(--dot-accent, #FF1801);
   }
 
   .bf-test-cta {
@@ -541,19 +541,19 @@ const styles = `
     gap: 10px;
     padding: 14px 34px;
     border-radius: 999px;
-    background: #EF4136;
+    background: #FF1801;
     color: #ffffff;
     font-weight: 800;
     font-size: 14px;
     border: none;
     cursor: pointer;
-    box-shadow: 0 10px 30px rgba(239, 65, 54, 0.4);
+    box-shadow: 0 10px 30px rgba(255, 24, 1, 0.4);
     transition: all 0.3s;
   }
 
   .bf-cta-primary:hover {
     transform: translateY(-2px);
-    box-shadow: 0 14px 40px rgba(239, 65, 54, 0.6);
+    box-shadow: 0 14px 40px rgba(255, 24, 1, 0.6);
   }
 
   /* ── BLACK THEME CUSTOMIZATION ── */
@@ -563,20 +563,20 @@ const styles = `
 
   .is-black-theme .testimonial {
     background: #110F18 !important;
-    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.85), 0 0 35px rgba(239, 65, 54, 0.15) !important;
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.85), 0 0 35px rgba(255, 24, 1, 0.15) !important;
     border: 1px solid rgba(255, 255, 255, 0.08) !important;
   }
 
   .is-black-theme .testimonial:after {
-    border: 6px solid #EF4136 !important;
+    border: 6px solid #FF1801 !important;
   }
 
   .is-black-theme .testimonial:before {
-    border-color: #EF4136 transparent transparent transparent !important;
+    border-color: #FF1801 transparent transparent transparent !important;
   }
 
   .is-black-theme .quote {
-    background: #EF4136 !important;
+    background: #FF1801 !important;
     color: #FFFFFF !important;
   }
 
@@ -585,7 +585,7 @@ const styles = `
   }
 
   .is-black-theme .rating-stars {
-    color: #EF4136 !important;
+    color: #FF1801 !important;
   }
 
   .is-black-theme .rating-stars strong {

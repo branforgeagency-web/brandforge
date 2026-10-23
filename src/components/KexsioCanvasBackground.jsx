@@ -1,14 +1,14 @@
 import React, { useEffect, useRef } from "react";
 
 const DARK_PARTICLE_COLORS = [
-  { r: 239, g: 65,  b: 54  }, // Crimson Red
+  { r: 255, g: 24,  b: 1   }, // Fury Red
   { r: 255, g: 77,  b: 77  }, // Electric Red
   { r: 255, g: 255, b: 255 }, // White
   { r: 191, g: 52,  b: 43  }, // Deep Crimson
 ];
 
 const LIGHT_PARTICLE_COLORS = [
-  { r: 239, g: 65,  b: 54  }, // Crimson Red
+  { r: 255, g: 24,  b: 1   }, // Fury Red
   { r: 210, g: 4,   b: 45  }, // Brand Red
   { r: 160, g: 170, b: 185 }, // Subtle Slate
   { r: 100, g: 110, b: 125 }, // Muted Slate
@@ -167,7 +167,7 @@ export default function KexsioCanvasBackground({ showOverlay = true, opacity = 1
           ctx.lineTo(particles[b].x, particles[b].y);
         }
       }
-      ctx.strokeStyle = theme === "light" ? "rgba(239, 65, 54, 0.14)" : "rgba(239, 65, 54, 0.22)";
+      ctx.strokeStyle = theme === "light" ? "rgba(255, 24, 1, 0.14)" : "rgba(255, 24, 1, 0.22)";
       ctx.lineWidth = 0.75;
       ctx.stroke();
     };

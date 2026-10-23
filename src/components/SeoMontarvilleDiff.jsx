@@ -11,7 +11,7 @@ function MontarvilleCircles({ className = "" }) {
       <svg width="680" height="540" viewBox="0 0 768 610" fill="none" xmlns="http://www.w3.org/2000/svg">
         <circle cx="384" cy="417.5" r="191.5" stroke="rgba(255, 255, 255, 0.04)" strokeWidth="1" strokeDasharray="3 3" />
         <circle cx="384" cy="192" r="191.5" stroke="rgba(255, 255, 255, 0.04)" strokeWidth="1" />
-        <circle cx="192" cy="304.7" r="191.5" stroke="rgba(239, 65, 54, 0.06)" strokeWidth="1" />
+        <circle cx="192" cy="304.7" r="191.5" stroke="rgba(255, 24, 1, 0.06)" strokeWidth="1" />
         <circle cx="576" cy="304.7" r="191.5" stroke="rgba(255, 255, 255, 0.04)" strokeWidth="1" />
       </svg>
     </div>
@@ -19,9 +19,9 @@ function MontarvilleCircles({ className = "" }) {
 }
 
 const CARD_METAS = [
-  { coord: "Architecture", iconColor: "#EF4136" },
+  { coord: "Architecture", iconColor: "#FF1801" },
   { coord: "Local Intelligence", iconColor: "#FF6B00" },
-  { coord: "Attribution", iconColor: "#EF4136" },
+  { coord: "Attribution", iconColor: "#FF1801" },
   { coord: "Content Strategy", iconColor: "#FF6B00" },
 ];
 
@@ -192,7 +192,7 @@ const diffComponentStyles = `
     height: 48vw;
     max-width: 600px;
     max-height: 600px;
-    background: radial-gradient(circle, rgba(239, 65, 54, 0.09) 0%, transparent 70%);
+    background: radial-gradient(circle, rgba(255, 24, 1, 0.09) 0%, transparent 70%);
   }
 
   .smd-ambient-right {
@@ -243,11 +243,11 @@ const diffComponentStyles = `
     font-size: 0.76rem;
     font-weight: 800;
     letter-spacing: 0.14em;
-    color: #EF4136;
+    color: #FF1801;
     text-transform: uppercase;
     margin-bottom: 22px;
-    background: rgba(239, 65, 54, 0.08);
-    border: 1px solid rgba(239, 65, 54, 0.22);
+    background: rgba(255, 24, 1, 0.08);
+    border: 1px solid rgba(255, 24, 1, 0.22);
     padding: 6px 14px;
     border-radius: 999px;
     width: fit-content;
@@ -257,8 +257,8 @@ const diffComponentStyles = `
     width: 6px;
     height: 6px;
     border-radius: 50%;
-    background: #EF4136;
-    box-shadow: 0 0 10px #EF4136, 0 0 16px rgba(239, 65, 54, 0.8);
+    background: #FF1801;
+    box-shadow: 0 0 10px #FF1801, 0 0 16px rgba(255, 24, 1, 0.8);
     animation: smd-pulse 2s infinite ease-in-out;
   }
 
@@ -268,7 +268,7 @@ const diffComponentStyles = `
   }
 
   .smd-star {
-    color: #EF4136;
+    color: #FF1801;
     animation: smd-star-spin 18s linear infinite;
   }
 
@@ -291,7 +291,7 @@ const diffComponentStyles = `
     background: linear-gradient(135deg, #FF453A 0%, #FF6B4A 50%, #FFA066 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    filter: drop-shadow(0 0 35px rgba(239, 65, 54, 0.3));
+    filter: drop-shadow(0 0 35px rgba(255, 24, 1, 0.3));
   }
 
   .smd-wysiwyg-2c {
@@ -381,10 +381,10 @@ const diffComponentStyles = `
   }
 
   .smd-pill-btn:hover {
-    background: #EF4136;
-    border-color: #EF4136;
+    background: #FF1801;
+    border-color: #FF1801;
     color: #FFFFFF;
-    box-shadow: 0 8px 30px rgba(239, 65, 54, 0.45);
+    box-shadow: 0 8px 30px rgba(255, 24, 1, 0.45);
     transform: translateY(-2px);
   }
 
@@ -424,7 +424,7 @@ const diffComponentStyles = `
     position: absolute;
     inset: 0;
     border-radius: 18px;
-    background: radial-gradient(circle at top right, rgba(239, 65, 54, 0.12), transparent 70%);
+    background: radial-gradient(circle at top right, rgba(255, 24, 1, 0.12), transparent 70%);
     opacity: 0;
     transition: opacity 0.35s ease;
     pointer-events: none;
@@ -432,9 +432,9 @@ const diffComponentStyles = `
 
   .smd-obsidian-card:hover {
     background: linear-gradient(145deg, rgba(22, 22, 34, 0.85) 0%, rgba(14, 14, 22, 0.95) 100%);
-    border-color: rgba(239, 65, 54, 0.45);
+    border-color: rgba(255, 24, 1, 0.45);
     transform: translateY(-5px);
-    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.65), 0 0 25px rgba(239, 65, 54, 0.15);
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.65), 0 0 25px rgba(255, 24, 1, 0.15);
   }
 
   .smd-obsidian-card:hover::before {
@@ -452,7 +452,7 @@ const diffComponentStyles = `
   }
 
   .smd-obsidian-card:hover .smd-card-cross {
-    color: #EF4136;
+    color: #FF1801;
     transform: rotate(45deg) scale(1.1);
   }
 
@@ -469,21 +469,21 @@ const diffComponentStyles = `
     width: 44px;
     height: 44px;
     border-radius: 12px;
-    background: linear-gradient(135deg, rgba(239, 65, 54, 0.15) 0%, rgba(239, 65, 54, 0.05) 100%);
-    border: 1px solid rgba(239, 65, 54, 0.32);
-    color: #EF4136;
+    background: linear-gradient(135deg, rgba(255, 24, 1, 0.15) 0%, rgba(255, 24, 1, 0.05) 100%);
+    border: 1px solid rgba(255, 24, 1, 0.32);
+    color: #FF1801;
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 0 15px rgba(239, 65, 54, 0.12);
+    box-shadow: 0 0 15px rgba(255, 24, 1, 0.12);
     transition: all 0.3s ease;
   }
 
   .smd-obsidian-card:hover .smd-card-icon-wrap {
-    background: #EF4136;
-    border-color: #EF4136;
+    background: #FF1801;
+    border-color: #FF1801;
     color: #FFFFFF;
-    box-shadow: 0 0 20px rgba(239, 65, 54, 0.45);
+    box-shadow: 0 0 20px rgba(255, 24, 1, 0.45);
     transform: scale(1.05);
   }
 
@@ -538,9 +538,9 @@ const diffComponentStyles = `
     font-size: 0.63rem;
     font-weight: 800;
     letter-spacing: 0.06em;
-    color: #EF4136;
-    background: rgba(239, 65, 54, 0.09);
-    border: 1px solid rgba(239, 65, 54, 0.22);
+    color: #FF1801;
+    background: rgba(255, 24, 1, 0.09);
+    border: 1px solid rgba(255, 24, 1, 0.22);
     padding: 4px 10px;
     border-radius: 6px;
     transition: all 0.25s ease;
@@ -550,13 +550,13 @@ const diffComponentStyles = `
     width: 4px;
     height: 4px;
     border-radius: 50%;
-    background: #EF4136;
-    box-shadow: 0 0 6px #EF4136;
+    background: #FF1801;
+    box-shadow: 0 0 6px #FF1801;
   }
 
   .smd-obsidian-card:hover .smd-card-check-pill {
-    background: rgba(239, 65, 54, 0.16);
-    border-color: rgba(239, 65, 54, 0.4);
+    background: rgba(255, 24, 1, 0.16);
+    border-color: rgba(255, 24, 1, 0.4);
   }
 
   .smd-card-arrow {
@@ -567,7 +567,7 @@ const diffComponentStyles = `
   }
 
   .smd-obsidian-card:hover .smd-card-arrow {
-    color: #EF4136;
+    color: #FF1801;
     transform: translate(2px, -2px);
   }
 

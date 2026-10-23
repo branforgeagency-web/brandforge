@@ -157,13 +157,13 @@ const blueprintComponentStyles = `
     font-size: 0.8rem;
     font-weight: 800;
     letter-spacing: 0.12em;
-    color: #EF4136;
+    color: #FF1801;
     text-transform: uppercase;
     margin-bottom: 16px;
   }
 
   .smb-star {
-    color: #EF4136;
+    color: #FF1801;
     animation: smb-star-spin 16s linear infinite;
   }
 
@@ -183,8 +183,8 @@ const blueprintComponentStyles = `
   }
 
   .title-red {
-    color: #EF4136;
-    background: linear-gradient(90deg, #EF4136 0%, #FF5A4E 100%);
+    color: #FF1801;
+    background: linear-gradient(90deg, #FF1801 0%, #FF5A4E 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
   }
@@ -216,8 +216,8 @@ const blueprintComponentStyles = `
 
   .smb-laser-progress {
     height: 100%;
-    background: linear-gradient(90deg, #EF4136, #FF5A4E);
-    box-shadow: 0 0 12px #EF4136;
+    background: linear-gradient(90deg, #FF1801, #FF5A4E);
+    box-shadow: 0 0 12px #FF1801;
     transition: width 0.4s ease;
   }
 
@@ -245,9 +245,9 @@ const blueprintComponentStyles = `
   .smb-step-card:hover,
   .smb-step-card.is-active {
     background: #12121A;
-    border-color: #EF4136;
+    border-color: #FF1801;
     transform: translateY(-4px);
-    box-shadow: 0 16px 35px rgba(0, 0, 0, 0.5), 0 0 20px rgba(239, 65, 54, 0.12);
+    box-shadow: 0 16px 35px rgba(0, 0, 0, 0.5), 0 0 20px rgba(255, 24, 1, 0.12);
   }
 
   .smb-corner-cross {
@@ -279,9 +279,9 @@ const blueprintComponentStyles = `
   }
 
   .smb-step-card.is-active .smb-node-bubble {
-    border-color: #EF4136;
-    background: #EF4136;
-    box-shadow: 0 0 16px rgba(239, 65, 54, 0.6);
+    border-color: #FF1801;
+    background: #FF1801;
+    box-shadow: 0 0 16px rgba(255, 24, 1, 0.6);
   }
 
   .node-num {
@@ -295,9 +295,9 @@ const blueprintComponentStyles = `
     font-family: "JetBrains Mono", monospace;
     font-size: 0.68rem;
     font-weight: 800;
-    color: #EF4136;
-    background: rgba(239, 65, 54, 0.12);
-    border: 1px solid rgba(239, 65, 54, 0.25);
+    color: #FF1801;
+    background: rgba(255, 24, 1, 0.12);
+    border: 1px solid rgba(255, 24, 1, 0.25);
     padding: 3px 8px;
     border-radius: 6px;
   }
@@ -339,7 +339,7 @@ const blueprintComponentStyles = `
   }
 
   .task-check {
-    color: #EF4136;
+    color: #FF1801;
     flex-shrink: 0;
     margin-top: 2px;
   }

@@ -153,13 +153,13 @@ const faqComponentStyles = `
     font-size: 0.8rem;
     font-weight: 800;
     letter-spacing: 0.12em;
-    color: #EF4136;
+    color: #FF1801;
     text-transform: uppercase;
     margin-bottom: 16px;
   }
 
   .smf-star {
-    color: #EF4136;
+    color: #FF1801;
     animation: smf-star-spin 16s linear infinite;
   }
 
@@ -179,8 +179,8 @@ const faqComponentStyles = `
   }
 
   .title-red {
-    color: #EF4136;
-    background: linear-gradient(90deg, #EF4136 0%, #FF5A4E 100%);
+    color: #FF1801;
+    background: linear-gradient(90deg, #FF1801 0%, #FF5A4E 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
   }
@@ -210,14 +210,14 @@ const faqComponentStyles = `
   }
 
   .smf-faq-card:hover {
-    border-color: rgba(239, 65, 54, 0.4);
+    border-color: rgba(255, 24, 1, 0.4);
     background: #111118;
   }
 
   .smf-faq-card.is-open {
-    border-color: #EF4136;
+    border-color: #FF1801;
     background: #12121A;
-    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.5), 0 0 20px rgba(239, 65, 54, 0.08);
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.5), 0 0 20px rgba(255, 24, 1, 0.08);
   }
 
   .smf-faq-btn {
@@ -250,7 +250,7 @@ const faqComponentStyles = `
   }
 
   .smf-faq-card.is-open .smf-faq-num {
-    color: #EF4136;
+    color: #FF1801;
   }
 
   .smf-faq-question {
@@ -268,7 +268,7 @@ const faqComponentStyles = `
     border-radius: 50%;
     background: #14141C;
     border: 1px solid rgba(255, 255, 255, 0.1);
-    color: #EF4136;
+    color: #FF1801;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -278,7 +278,7 @@ const faqComponentStyles = `
 
   .smf-glyph-wrap.is-rotated {
     transform: rotate(45deg);
-    background: #EF4136;
+    background: #FF1801;
     color: #FFFFFF;
   }
 
@@ -294,7 +294,7 @@ const faqComponentStyles = `
 
   .smf-answer-bar {
     width: 2px;
-    background: #EF4136;
+    background: #FF1801;
     border-radius: 1px;
     flex-shrink: 0;
   }
@@ -328,7 +328,7 @@ const faqComponentStyles = `
   }
 
   .smf-ask-left .text-red {
-    color: #EF4136;
+    color: #FF1801;
     flex-shrink: 0;
   }
 
@@ -350,10 +350,10 @@ const faqComponentStyles = `
   }
 
   .smf-ask-btn:hover {
-    background: #EF4136;
-    border-color: #EF4136;
+    background: #FF1801;
+    border-color: #FF1801;
     color: #FFFFFF;
-    box-shadow: 0 4px 16px rgba(239, 65, 54, 0.35);
+    box-shadow: 0 4px 16px rgba(255, 24, 1, 0.35);
   }
 
   @media (max-width: 768px) {

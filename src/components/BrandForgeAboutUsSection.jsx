@@ -129,7 +129,7 @@ void main() {
 `;
 
 function ThreadsBackground({
-  color = [0.937, 0.255, 0.212], // BrandForge Crimson Red (#EF4136)
+  color = [1.0, 0.094, 0.004], // BrandForge Crimson Red (#FF1801)
   amplitude = 1.1,
   distance = 0.15,
   enableMouseInteraction = true,
@@ -296,7 +296,7 @@ export default function BrandForgeAboutUsSection({ onOpenModal, navigate }) {
       {/* THREADS WEBGL BACKGROUND (BRANDFORGE CRIMSON RED THEME) */}
       <motion.div className="bf-about-threads-wrap" style={{ y: bgParallaxY }}>
         <ThreadsBackground
-          color={[0.937, 0.255, 0.212]}
+          color={[1.0, 0.094, 0.004]}
           amplitude={1.1}
           distance={0.15}
           enableMouseInteraction
@@ -442,8 +442,8 @@ const styles = `
   z-index: 1;
   pointer-events: none;
   background-image:
-    linear-gradient(rgba(239, 65, 54, 0.06) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(239, 65, 54, 0.06) 1px, transparent 1px);
+    linear-gradient(rgba(255, 24, 1, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 24, 1, 0.06) 1px, transparent 1px);
   background-size: 80px 80px;
   opacity: 0.5;
 }
@@ -476,7 +476,7 @@ const styles = `
   font-weight: 800;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: #EF4136;
+  color: #FF1801;
   margin-bottom: 16px;
 }
 
@@ -484,7 +484,7 @@ const styles = `
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background: #EF4136;
+  background: #FF1801;
 }
 
 .bf-about-heading {
@@ -511,7 +511,7 @@ const styles = `
   bottom: 4px;
   width: 100%;
   height: 12px;
-  background: rgba(239, 65, 54, 0.45);
+  background: rgba(255, 24, 1, 0.45);
   border-radius: 4px;
   z-index: -1;
   transform-origin: left center;
@@ -537,7 +537,7 @@ const styles = `
 .bf-about-quote-tagline {
   margin: 8px 0 0 0;
   padding-left: 16px;
-  border-left: 3px solid #EF4136;
+  border-left: 3px solid #FF1801;
   font-family: "Outfit", sans-serif;
   font-size: clamp(1.05rem, 1.3vw, 1.25rem);
   font-weight: 800;
@@ -553,7 +553,7 @@ const styles = `
   gap: 14px;
   padding: 15px 30px;
   margin-bottom: 28px;
-  background: #EF4136;
+  background: #FF1801;
   color: #FFFFFF;
   border: none;
   border-radius: 12px;
@@ -575,7 +575,7 @@ const styles = `
   height: 30px;
   border-radius: 50%;
   background: #FFFFFF;
-  color: #EF4136;
+  color: #FF1801;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -606,7 +606,7 @@ const styles = `
   font-family: "Outfit", sans-serif;
   font-size: clamp(1.7rem, 2.5vw, 2.4rem);
   font-weight: 900;
-  color: #EF4136;
+  color: #FF1801;
   line-height: 1;
   letter-spacing: -0.02em;
 }
@@ -650,7 +650,7 @@ const styles = `
   background: #14111D;
   border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
   z-index: 1;
-  border: 1px solid rgba(239, 65, 54, 0.3);
+  border: 1px solid rgba(255, 24, 1, 0.3);
 }
 
 /* MAIN BLOB IMAGE WRAPPER WITH ORGANIC CUTOUT MASK */

@@ -420,9 +420,9 @@ const evolutionStyles = `
     display: inline-block;
     width: 20px;
     height: 8px;
-    background-color: #EF4136;
+    background-color: #FF1801;
     border-radius: 2px;
-    box-shadow: 0 0 10px rgba(239, 65, 54, 0.5);
+    box-shadow: 0 0 10px rgba(255, 24, 1, 0.5);
   }
 
   .sme-title {
@@ -441,7 +441,7 @@ const evolutionStyles = `
   }
 
   .title-red {
-    color: #EF4136;
+    color: #FF1801;
   }
 
   .sme-subtitle {
@@ -489,10 +489,10 @@ const evolutionStyles = `
   }
 
   .sme-filter-btn.is-active {
-    background: #EF4136;
-    border-color: #EF4136;
+    background: #FF1801;
+    border-color: #FF1801;
     color: #FAFAFC;
-    box-shadow: 0 0 12px rgba(239, 65, 54, 0.35);
+    box-shadow: 0 0 12px rgba(255, 24, 1, 0.35);
   }
 
   .sme-view-toggle {
@@ -530,7 +530,7 @@ const evolutionStyles = `
   }
 
   .inline-sparkle {
-    color: #EF4136;
+    color: #FF1801;
   }
 
   /* Typographic Ledger Table (Zero Cards) */
@@ -580,8 +580,8 @@ const evolutionStyles = `
   }
 
   .dot-red {
-    background: #EF4136;
-    box-shadow: 0 0 6px #EF4136;
+    background: #FF1801;
+    box-shadow: 0 0 6px #FF1801;
   }
 
   /* Ledger Rows */
@@ -603,7 +603,7 @@ const evolutionStyles = `
     top: 0;
     bottom: 0;
     width: 3px;
-    background: #EF4136;
+    background: #FF1801;
     opacity: 0;
     transition: opacity 0.25s ease;
     z-index: 3;
@@ -648,7 +648,7 @@ const evolutionStyles = `
     font-family: "JetBrains Mono", monospace;
     font-size: 0.72rem;
     font-weight: 800;
-    color: #EF4136;
+    color: #FF1801;
     letter-spacing: 0.08em;
   }
 
@@ -663,7 +663,7 @@ const evolutionStyles = `
   }
 
   .sme-row-group:hover .sme-expand-hint {
-    color: #EF4136;
+    color: #FF1801;
   }
 
   .sme-chevron {
@@ -744,8 +744,8 @@ const evolutionStyles = `
 
   .sme-row-group.is-hovered .sme-arrow-pill,
   .sme-row-group.is-expanded .sme-arrow-pill {
-    background: #EF4136;
-    border-color: #EF4136;
+    background: #FF1801;
+    border-color: #FF1801;
     transform: translateX(3px);
   }
 
@@ -788,8 +788,8 @@ const evolutionStyles = `
     display: inline-block;
     width: 14px;
     height: 2px;
-    background: #EF4136;
-    box-shadow: 0 0 6px #EF4136;
+    background: #FF1801;
+    box-shadow: 0 0 6px #FF1801;
   }
 
   /* Deep-Dive Interactive Telemetry Expander (ZERO CARDS, Clean Architectural Lines) */
@@ -823,8 +823,8 @@ const evolutionStyles = `
   }
 
   .sme-deepdive-box.is-geo {
-    border-left-color: #EF4136;
-    background: rgba(239, 65, 54, 0.04);
+    border-left-color: #FF1801;
+    background: rgba(255, 24, 1, 0.04);
   }
 
   .deepdive-subhead {
@@ -862,7 +862,7 @@ const evolutionStyles = `
     line-height: 1.7;
     color: rgba(255, 255, 255, 0.78);
     margin: 0;
-    border-left: 2px solid #EF4136;
+    border-left: 2px solid #FF1801;
     padding-left: 16px;
   }
 
@@ -917,7 +917,7 @@ const evolutionStyles = `
   }
 
   .text-red {
-    color: #EF4136;
+    color: #FF1801;
   }
 
   .font-bold {

@@ -29,7 +29,7 @@ const services = [
     items: ["Technical SEO", "GEO Optimization", "Core Web Vitals"],
     number: "01",
     icon: Search,
-    color: "#EF4136",
+    color: "#FF1801",
     textColor: "#FFFFFF",
     accentTag: "rgba(255, 255, 255, 0.2)",
   },
@@ -43,7 +43,7 @@ const services = [
     icon: Megaphone,
     color: "#0B0B0C",
     textColor: "#F8F9FA",
-    accentTag: "rgba(239, 65, 54, 0.25)",
+    accentTag: "rgba(255, 24, 1, 0.25)",
   },
   {
     slug: "web-foundry",
@@ -67,7 +67,7 @@ const services = [
     icon: Rocket,
     color: "#060509",
     textColor: "#F8F9FA",
-    accentTag: "rgba(239, 65, 54, 0.25)",
+    accentTag: "rgba(255, 24, 1, 0.25)",
   },
   {
     slug: "influencer-network",
@@ -77,7 +77,7 @@ const services = [
     items: ["Creator Network", "Contract Vetting", "ROI Tracking"],
     number: "05",
     icon: Users,
-    color: "#EF4136",
+    color: "#FF1801",
     textColor: "#FFFFFF",
     accentTag: "rgba(255, 255, 255, 0.2)",
   },
@@ -103,7 +103,7 @@ const services = [
     icon: Mail,
     color: "#0B0B0C",
     textColor: "#F8F9FA",
-    accentTag: "rgba(239, 65, 54, 0.25)",
+    accentTag: "rgba(255, 24, 1, 0.25)",
   },
   {
     slug: "brand-anvil",
@@ -113,7 +113,7 @@ const services = [
     items: ["360° Growth Blueprints", "Market Research", "Unit Economics"],
     number: "08",
     icon: Target,
-    color: "#EF4136",
+    color: "#FF1801",
     textColor: "#FFFFFF",
     accentTag: "rgba(255, 255, 255, 0.2)",
   },
@@ -139,7 +139,7 @@ const services = [
     icon: Video,
     color: "#060509",
     textColor: "#F8F9FA",
-    accentTag: "rgba(239, 65, 54, 0.25)",
+    accentTag: "rgba(255, 24, 1, 0.25)",
   },
   {
     slug: "cro-revenue",
@@ -149,7 +149,7 @@ const services = [
     items: ["A/B Testing Engine", "Friction Removal", "Revenue Lift"],
     number: "11",
     icon: Gauge,
-    color: "#EF4136",
+    color: "#FF1801",
     textColor: "#FFFFFF",
     accentTag: "rgba(255, 255, 255, 0.2)",
   },
@@ -289,7 +289,7 @@ export default function StackedServicesSection({ onSelectService, navigate }) {
           {/* 3D CARDS STACK STAGE */}
           <div className="card-stack">
             {services.map((service, index) => {
-              const isRed = service.color === "#EF4136";
+              const isRed = service.color === "#FF1801";
               const isDark = service.color === "#0B0B0C" || service.color === "#060509";
               const Icon = service.icon;
 
@@ -330,7 +330,7 @@ export default function StackedServicesSection({ onSelectService, navigate }) {
                   </ul>
 
                   <div className="card-footer-right">
-                    <span className="card-number" style={{ color: service.color === "#EF4136" ? "#FFFFFF" : "#EF4136" }}>
+                    <span className="card-number" style={{ color: service.color === "#FF1801" ? "#FFFFFF" : "#FF1801" }}>
                       {service.number}
                     </span>
                     <a
@@ -434,7 +434,7 @@ const styles = `
   top: 2.5%; 
   left: 1%; 
   font-size: clamp(55px, 14.5cqw, 230px); 
-  color: rgba(239, 65, 54, 0.22);
+  color: rgba(255, 24, 1, 0.22);
 }
 .word-2 { 
   top: 40.5%; 
@@ -445,7 +445,7 @@ const styles = `
 .word-3 { 
   top: 73%; 
   left: 25%; 
-  color: rgba(239, 65, 54, 0.18); 
+  color: rgba(255, 24, 1, 0.18); 
   font-size: clamp(65px, 16.5cqw, 260px); 
 }
 
@@ -480,13 +480,13 @@ const styles = `
 }
 
 .service-card:hover {
-  border-color: #EF4136;
-  box-shadow: 0 26px 60px rgba(239, 65, 54, 0.35);
+  border-color: #FF1801;
+  box-shadow: 0 26px 60px rgba(255, 24, 1, 0.35);
 }
 
 .dark-theme-card {
-  border: 1px solid rgba(239, 65, 54, 0.35);
-  box-shadow: 0 20px 50px rgba(239, 65, 54, 0.15);
+  border: 1px solid rgba(255, 24, 1, 0.35);
+  box-shadow: 0 20px 50px rgba(255, 24, 1, 0.15);
 }
 
 /* Diagonal light sweep on hover */
@@ -515,9 +515,9 @@ const styles = `
   height: clamp(38px, 4.6cqw, 58px);
   margin-bottom: clamp(12px, 1.6cqw, 22px);
   border-radius: 16px;
-  background: rgba(239, 65, 54, 0.12);
-  border: 1px solid rgba(239, 65, 54, 0.3);
-  color: #EF4136;
+  background: rgba(255, 24, 1, 0.12);
+  border: 1px solid rgba(255, 24, 1, 0.3);
+  color: #FF1801;
   animation: bfIconPulse 2.6s ease-in-out infinite;
 }
 
@@ -530,9 +530,9 @@ const styles = `
 }
 
 .dark-theme-card .card-icon-badge {
-  background: rgba(239, 65, 54, 0.16);
-  border-color: rgba(239, 65, 54, 0.4);
-  color: #EF4136;
+  background: rgba(255, 24, 1, 0.16);
+  border-color: rgba(255, 24, 1, 0.4);
+  color: #FF1801;
 }
 
 .red-theme-card .card-icon-badge {
@@ -543,8 +543,8 @@ const styles = `
 }
 
 @keyframes bfIconPulse {
-  0%, 100% { box-shadow: 0 0 0 0 rgba(239, 65, 54, 0.35); }
-  50% { box-shadow: 0 0 0 9px rgba(239, 65, 54, 0); }
+  0%, 100% { box-shadow: 0 0 0 0 rgba(255, 24, 1, 0.35); }
+  50% { box-shadow: 0 0 0 9px rgba(255, 24, 1, 0); }
 }
 
 @keyframes bfIconPulseWhite {
@@ -567,11 +567,11 @@ const styles = `
 }
 
 .accent-title {
-  color: #EF4136;
+  color: #FF1801;
 }
 
 .dark-theme-card .accent-title {
-  color: #EF4136;
+  color: #FF1801;
 }
 
 .red-theme-card .accent-title {
@@ -618,7 +618,7 @@ const styles = `
 }
 
 .item-check-icon {
-  color: #EF4136;
+  color: #FF1801;
 }
 
 .card-footer-right {
@@ -636,7 +636,7 @@ const styles = `
   letter-spacing: -.075em;
   line-height: .75;
   font-family: 'Outfit', sans-serif;
-  color: #EF4136;
+  color: #FF1801;
 }
 
 .card-number::before {
@@ -658,7 +658,7 @@ const styles = `
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  background: #EF4136;
+  background: #FF1801;
   color: #FFFFFF;
   border: none;
   font-family: 'Outfit', sans-serif;
@@ -682,7 +682,7 @@ const styles = `
   align-items: center;
   gap: 5px;
   padding: 6px 3px;
-  background: #EF4136;
+  background: #FF1801;
   color: #fff;
   border-top-left-radius: 6px;
   border-bottom-left-radius: 6px;
@@ -731,7 +731,7 @@ const styles = `
 .progress-fill-line {
   position: absolute;
   inset: 0;
-  background: #EF4136;
+  background: #FF1801;
   transform-origin: left;
 }
 

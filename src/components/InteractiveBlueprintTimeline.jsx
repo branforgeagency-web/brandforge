@@ -142,8 +142,8 @@ const blueprintStyles = `
     left: 0;
     width: 25%;
     height: 100%;
-    background: linear-gradient(90deg, transparent, #EF4136, #FFA07A, transparent);
-    box-shadow: 0 0 10px #EF4136;
+    background: linear-gradient(90deg, transparent, #FF1801, #FFA07A, transparent);
+    box-shadow: 0 0 10px #FF1801;
     animation: laserTravel 3.2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
   }
 
@@ -169,9 +169,9 @@ const blueprintStyles = `
 
   .sg-timeline-step:hover,
   .sg-timeline-step.is-active-step {
-    border-color: #EF4136;
+    border-color: #FF1801;
     background: #FFFFFF;
-    box-shadow: 0 14px 35px rgba(239, 65, 54, 0.12), 0 0 0 1px rgba(239, 65, 54, 0.2);
+    box-shadow: 0 14px 35px rgba(255, 24, 1, 0.12), 0 0 0 1px rgba(255, 24, 1, 0.2);
   }
 
   .sg-node-dot-wrap {
@@ -187,7 +187,7 @@ const blueprintStyles = `
     border-radius: 50%;
     background: #0A0A0C;
     color: #FFFFFF;
-    border: 2px solid #EF4136;
+    border: 2px solid #FF1801;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -199,16 +199,16 @@ const blueprintStyles = `
   }
 
   .sg-node-dot.is-selected-dot {
-    background: #EF4136;
+    background: #FF1801;
     border-color: #FFFFFF;
-    box-shadow: 0 0 18px rgba(239, 65, 54, 0.5);
+    box-shadow: 0 0 18px rgba(255, 24, 1, 0.5);
   }
 
   .node-active-ring {
     position: absolute;
     inset: -4px;
     border-radius: 50%;
-    border: 1px dashed rgba(239, 65, 54, 0.6);
+    border: 1px dashed rgba(255, 24, 1, 0.6);
     animation: ringSpin 10s linear infinite;
   }
 
@@ -238,8 +238,8 @@ const blueprintStyles = `
     font-family: "JetBrains Mono", monospace;
     font-size: 0.68rem;
     font-weight: 700;
-    color: #EF4136;
-    background: rgba(239, 65, 54, 0.08);
+    color: #FF1801;
+    background: rgba(255, 24, 1, 0.08);
     padding: 2px 7px;
     border-radius: 6px;
   }
@@ -276,7 +276,7 @@ const blueprintStyles = `
   }
 
   .kpi-icon {
-    color: #EF4136;
+    color: #FF1801;
     flex-shrink: 0;
   }
 

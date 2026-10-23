@@ -23,8 +23,8 @@ export default function App() {
       <div className="app-main-wrap">
         {/* SITE-WIDE GLOW CURSOR (RED THEME) */}
         <GlowCursor
-          color="#EF4136"
-          secondaryColor="#FF6B5E"
+          color="#FF1801"
+          secondaryColor="#FF4D3D"
           trailLength={15}
           trailWidth={2}
           trailTaper={1}

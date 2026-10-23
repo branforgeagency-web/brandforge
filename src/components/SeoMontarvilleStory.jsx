@@ -139,7 +139,7 @@ const storyComponentStyles = `
   }
 
   .text-red {
-    color: #EF4136;
+    color: #FF1801;
   }
 
   /* Montarville --2c Editorial Prose */
@@ -169,7 +169,7 @@ const storyComponentStyles = `
     font-weight: 600;
     color: #FAFAFC;
     line-height: 1.7;
-    border-left: 2px solid #EF4136;
+    border-left: 2px solid #FF1801;
     padding-left: 18px;
   }
 

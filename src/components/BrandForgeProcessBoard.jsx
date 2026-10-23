@@ -3,7 +3,7 @@ import { motion, useScroll, useMotionValueEvent } from "framer-motion";
 
 /* ─── BrandForge particle colours ─── */
 const PARTICLE_COLORS = [
-  { r: 239, g: 65,  b: 54  },
+  { r: 255, g: 24,  b: 1   },
   { r: 255, g: 120, b: 100 },
   { r: 255, g: 255, b: 255 },
   { r: 191, g: 52,  b: 43  },
@@ -152,7 +152,7 @@ function ParticleCanvas() {
           ctx.beginPath();
           ctx.moveTo(particles[a].x, particles[a].y);
           ctx.lineTo(particles[b].x, particles[b].y);
-          ctx.strokeStyle = `rgba(239, 65, 54, ${op})`;
+          ctx.strokeStyle = `rgba(255, 24, 1, ${op})`;
           ctx.stroke();
         }
       }
@@ -270,9 +270,9 @@ function ProcessCard({ step, index, placement, isMobile }) {
       <div style={{
         borderRadius: 24,
         border: isRed ? "1px solid rgba(255,255,255,0.15)" : "1px solid #e5e7eb",
-        background: isRed ? "#EF4136" : "#FFFFFF",
+        background: isRed ? "#FF1801" : "#FFFFFF",
         padding: "12px 10px 10px",
-        boxShadow: isRed ? "0 8px 32px rgba(239, 65, 54,0.3)" : "0 8px 24px rgba(0,0,0,0.5)",
+        boxShadow: isRed ? "0 8px 32px rgba(255, 24, 1,0.3)" : "0 8px 24px rgba(0,0,0,0.5)",
         cursor: "default",
         position: "relative",
       }}>
@@ -297,13 +297,13 @@ function ProcessCard({ step, index, placement, isMobile }) {
             transform: isLeft ? "rotate(-10deg)" : "rotate(10deg)",
           }}
         >
-          <PinIcon color={isRed ? "#FFFFFF" : "#EF4136"} />
+          <PinIcon color={isRed ? "#FFFFFF" : "#FF1801"} />
         </motion.div>
 
         <div style={{
           borderRadius: 16,
-          border: isRed ? "1px solid #f3f4f6" : "1px solid rgba(239, 65, 54,0.2)",
-          background: isRed ? "#FFFFFF" : "#EF4136",
+          border: isRed ? "1px solid #f3f4f6" : "1px solid rgba(255, 24, 1,0.2)",
+          background: isRed ? "#FFFFFF" : "#FF1801",
           padding: "20px 18px 24px",
         }}>
           <span style={{
@@ -312,7 +312,7 @@ function ProcessCard({ step, index, placement, isMobile }) {
             fontSize: "2.8rem",
             lineHeight: 1,
             fontWeight: 900,
-            color: isRed ? "#EF4136" : "#FFFFFF",
+            color: isRed ? "#FF1801" : "#FFFFFF",
             marginBottom: 14,
           }}>
             {step.number}
@@ -414,7 +414,7 @@ export default function BrandForgeProcessBoard() {
       <div aria-hidden="true" style={{
         position: "absolute", top: "40%", right: -100, zIndex: 1,
         width: 600, height: 600, borderRadius: "50%",
-        background: "radial-gradient(circle, rgba(239, 65, 54,0.1) 0%, transparent 70%)",
+        background: "radial-gradient(circle, rgba(255, 24, 1,0.1) 0%, transparent 70%)",
         filter: "blur(80px)", pointerEvents: "none",
       }} />
 
@@ -437,7 +437,7 @@ export default function BrandForgeProcessBoard() {
             margin: "0 0 20px",
           }}>
             How We Work at{" "}
-            <span style={{ color: "#EF4136" }}>BrandForge</span>
+            <span style={{ color: "#FF1801" }}>BrandForge</span>
           </h2>
 
           <p style={{
@@ -471,7 +471,7 @@ export default function BrandForgeProcessBoard() {
                 ref={pathRef}
                 d={ROUTE}
                 fill="none"
-                stroke="rgba(239, 65, 54,0.35)"
+                stroke="rgba(255, 24, 1,0.35)"
                 strokeWidth="2"
                 strokeDasharray="10 8"
                 strokeLinecap="round"

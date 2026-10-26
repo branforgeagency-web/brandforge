@@ -209,7 +209,7 @@ const styles = `
 
 
   .bf-founders-root {
-    --bg: #060509;
+    --bg: #000000;
     --red: #FF1801;
     --white: #FFFFFF;
     --muted: rgba(255, 255, 255, 0.55);

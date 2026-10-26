@@ -679,7 +679,7 @@ const storyStyles = `
     transform: translateX(-50%);
     width: 240px;
     padding: 10px 14px;
-    background: #0A0A0C;
+    background: #000000;
     border: 1px solid #FF1801;
     border-radius: 10px;
     color: #FFFFFF;

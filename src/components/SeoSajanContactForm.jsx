@@ -545,7 +545,7 @@ const sajanFormStyles = `
     top: 50%;
     transform: translateY(-50%);
     border-radius: 50%;
-    background: #09090C;
+    background: #000000;
     border: 2px solid #FF1801;
   }
 

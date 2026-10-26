@@ -398,7 +398,7 @@ export default function BrandForgeProcessBoard() {
 
   return (
     <section ref={sectionRef} style={{
-      background: "#060509",
+      background: "#000000",
       width: "100%",
       padding: isMobile ? "80px 20px" : "100px 40px 140px",
       position: "relative",
@@ -408,7 +408,7 @@ export default function BrandForgeProcessBoard() {
 
       <div aria-hidden="true" style={{
         position: "absolute", inset: 0, zIndex: 1, pointerEvents: "none",
-        background: "radial-gradient(circle at center, transparent 10%, rgba(6,5,9,0.25) 55%, rgba(6,5,9,0.7) 100%)",
+        background: "radial-gradient(circle at center, transparent 10%, rgba(0,0,0,0.25) 55%, rgba(0,0,0,0.7) 100%)",
       }} />
 
       <div aria-hidden="true" style={{

@@ -102,7 +102,7 @@ const visualizerStyles = `
   /* Montarville Section Foundation (Pitch Black, Pure White, Electric Red ONLY) */
   .montarville-visualizer-root {
     position: relative;
-    background: #09090C;
+    background: #000000;
     color: #FAFAFC;
     padding: 100px 24px 110px;
     overflow: hidden;

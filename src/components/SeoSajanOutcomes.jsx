@@ -185,7 +185,7 @@ export default function SeoSajanOutcomes({ metrics = [], data }) {
       <style>{`
         .bf-sajan-outcomes-root {
           position: relative;
-          background: #09090C;
+          background: #000000;
           color: #FAFAFC;
           width: 100%;
           min-height: 90vh;

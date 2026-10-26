@@ -118,7 +118,7 @@ export default function SeoQueryArchiveDeck({ onOpenModal }) {
           width: calc(100% - 32px);
           max-width: 1240px;
           margin: 60px auto 80px;
-          background: #0B0B0E;
+          background: #000000;
           border-radius: 32px;
           padding: 80px 32px;
           border: 1px solid rgba(255, 255, 255, 0.08);
@@ -232,7 +232,7 @@ export default function SeoQueryArchiveDeck({ onOpenModal }) {
         .bf-seo-deck-card {
           position: absolute;
           inset: 0;
-          background: #0A0A0C;
+          background: #000000;
           border: 1px solid rgba(255, 255, 255, 0.12);
           border-radius: 24px;
           padding: 26px;

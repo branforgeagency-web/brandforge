@@ -66,7 +66,7 @@ export default function SeoMontarvilleStory({ data, storyHeading, onOpenModal: _
 const storyComponentStyles = `
   .sm-story-section {
     position: relative;
-    background: #09090C;
+    background: #000000;
     padding: clamp(80px, 9vw, 120px) 0 clamp(70px, 8vw, 110px);
     border-top: 1px solid rgba(255, 255, 255, 0.08);
     border-bottom: 1px solid rgba(255, 255, 255, 0.08);

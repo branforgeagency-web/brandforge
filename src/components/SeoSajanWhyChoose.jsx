@@ -126,7 +126,7 @@ export default function SeoSajanWhyChoose({ whyChooseUs, onOpenModal }) {
       <style>{`
         .bf-sajan-why-root {
           position: relative;
-          background: #09090C;
+          background: #000000;
           color: #FAFAFC;
           width: 100%;
           padding: clamp(90px, 12vh, 150px) 4% clamp(90px, 11vh, 140px);

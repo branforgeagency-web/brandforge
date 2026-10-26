@@ -310,7 +310,7 @@ const styles = `
 .bf-animated-footer {
   position: relative;
   width: 100%;
-  background-color: #030305;
+  background-color: #000000;
   color: #FFFFFF;
   font-family: 'Plus Jakarta Sans', sans-serif;
   overflow: hidden;

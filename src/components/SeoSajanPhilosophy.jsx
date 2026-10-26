@@ -203,7 +203,7 @@ export default function SeoSajanPhilosophy({ data, onOpenModal }) {
         .bf-philosophy-trigger {
           position: relative;
           width: 100%;
-          background: #08080A;
+          background: #000000;
         }
 
         .bf-philosophy-section {
@@ -216,7 +216,7 @@ export default function SeoSajanPhilosophy({ data, onOpenModal }) {
           padding: 80px 8%;
           position: relative;
           overflow: hidden;
-          background: #09090C;
+          background: #000000;
           border-top: 1px solid rgba(255, 255, 255, 0.08);
           border-bottom: 1px solid rgba(255, 255, 255, 0.08);
         }

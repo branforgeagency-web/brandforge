@@ -169,7 +169,7 @@ export default function SeoMontarvilleDiff({ differentiators, onOpenModal }) {
 const diffComponentStyles = `
   .smd-diff-section {
     position: relative;
-    background: #08080C;
+    background: #000000;
     padding: clamp(80px, 9vw, 125px) 0 clamp(70px, 8vw, 115px);
     border-top: 1px solid rgba(255, 255, 255, 0.07);
     border-bottom: 1px solid rgba(255, 255, 255, 0.07);

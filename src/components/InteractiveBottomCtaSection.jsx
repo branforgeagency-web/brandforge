@@ -90,7 +90,7 @@ const ctaStyles = `
 
   .sg-cta-box-cockpit {
     position: relative;
-    background: radial-gradient(circle at 50% 0%, #151014 0%, #0A0A0C 100%);
+    background: radial-gradient(circle at 50% 0%, #151014 0%, #000000 100%);
     border: 1px solid rgba(255, 24, 1, 0.4);
     border-radius: 32px;
     padding: clamp(50px, 7vw, 84px) clamp(24px, 5vw, 64px);

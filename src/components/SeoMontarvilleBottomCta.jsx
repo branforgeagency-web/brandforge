@@ -72,7 +72,7 @@ export default function SeoMontarvilleBottomCta({
 const bottomCtaStyles = `
   .smc-bottom-section {
     position: relative;
-    background: #09090C;
+    background: #000000;
     padding: clamp(60px, 8vw, 100px) 0 clamp(80px, 9vw, 120px);
     border-top: 1px solid rgba(255, 255, 255, 0.08);
   }

@@ -367,7 +367,7 @@ const evolutionStyles = `
     gap: 8px;
     padding: 6px 14px;
     border-radius: 12px;
-    background: #0A0A0C;
+    background: #000000;
     border: 1px solid rgba(255, 24, 1, 0.4);
     color: #FFFFFF;
     font-family: "JetBrains Mono", monospace;

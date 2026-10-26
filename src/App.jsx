@@ -46,7 +46,7 @@ export default function App() {
         <SiteNavbar path={path} navigate={navigate} onOpenModal={openModal} />    
 
         {/* ROUTES WITH ASYNC CODE-SPLITTING SUSPENSE */}
-        <Suspense fallback={<div style={{ minHeight: '100vh', background: '#0A0A0C' }} />}>
+        <Suspense fallback={<div style={{ minHeight: '100vh', background: '#000000' }} />}>
           {path === '/about' ? (
             <AboutPage onOpenModal={openModal} />
           ) : path === '/contact' ? (

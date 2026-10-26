@@ -5,7 +5,7 @@ import React, { useRef, useState, useEffect, useCallback } from "react";
 /**
  * ─────────────────────────────────────────────────────────────────────────────
  * SEO & GEO CINEMATIC VIDEO INTRO TAKEOVER
- * - Displays /seointro.mp4 on initial page load / reload.
+ * - Displays /seobannerrightvideo.mp4 on initial page load / reload.
  * - Pure video presentation with zero text overlays (clean, cinematic).
  * - Always 100% silent without audio (muted at all times).
  * - Full 100% width display with object-fit: contain (no zoom-in).
@@ -143,7 +143,7 @@ export default function SeoVideoIntroSection({ onStartFade, onComplete }) {
     };
   }, [lockScroll, unlockScroll, handleComplete]);
 
-  // Start video playback strictly ONCE on mount at 1.5x speed
+  // Start video playback strictly ONCE on mount at 1.3x speed
   useEffect(() => {
     const video = videoRef.current;
     if (!video || hasStartedRef.current) return;
@@ -152,7 +152,7 @@ export default function SeoVideoIntroSection({ onStartFade, onComplete }) {
     video.defaultMuted = true;
     video.muted = true;
     video.volume = 0;
-    video.playbackRate = 1.5;
+    video.playbackRate = 1.3;
     const playPromise = video.play();
     if (playPromise !== undefined) {
       playPromise.catch(() => {
@@ -160,7 +160,7 @@ export default function SeoVideoIntroSection({ onStartFade, onComplete }) {
           video.defaultMuted = true;
           video.muted = true;
           video.volume = 0;
-          video.playbackRate = 1.5;
+          video.playbackRate = 1.3;
           video.play().catch(() => {});
         }
       });
@@ -209,52 +209,52 @@ export default function SeoVideoIntroSection({ onStartFade, onComplete }) {
           pointer-events: none;
         }
 
-        /* Video Frame: Smaller to 0.7x centered */
+        /* Video Frame: Centered 16:9 frame with soft feathered edges (compact intro size) */
         .bf-intro-video-chassis {
           position: relative;
-          width: 70vw;
-          height: 70vh;
-          max-width: 70vw;
-          max-height: 70vh;
+          width: min(65vw, 760px);
+          aspect-ratio: 16 / 9;
           display: flex;
           align-items: center;
           justify-content: center;
           background: #000000;
           overflow: hidden;
+          border-radius: 20px;
         }
 
-        /* Video element scaled to 0.6 inside frame with soft feathered blurred edges */
+        /* Video element with smooth radial feather mask */
         .bf-intro-video-element {
           width: 100%;
           height: 100%;
-          object-fit: contain;
+          object-fit: cover;
           display: block;
           background: #000000;
-          transform: scale(0.6);
-          transform-origin: center center;
-          -webkit-mask-image: radial-gradient(ellipse 86% 82% at 50% 50%, #000000 60%, rgba(0, 0, 0, 0.4) 82%, transparent 100%);
-          mask-image: radial-gradient(ellipse 86% 82% at 50% 50%, #000000 60%, rgba(0, 0, 0, 0.4) 82%, transparent 100%);
+          border-radius: 20px;
+          -webkit-mask-image: radial-gradient(ellipse 92% 88% at 50% 50%, #000000 64%, rgba(0, 0, 0, 0.45) 82%, transparent 100%);
+          mask-image: radial-gradient(ellipse 92% 88% at 50% 50%, #000000 64%, rgba(0, 0, 0, 0.45) 82%, transparent 100%);
         }
 
-        /* Subtle edge feathering vignette overlay */
+        /* Subtle edge feathering vignette overlay to completely dissolve sharp borders */
         .bf-intro-edge-blur {
           position: absolute;
           inset: 0;
           pointer-events: none;
-          background: radial-gradient(ellipse 88% 85% at 50% 50%, transparent 60%, rgba(0, 0, 0, 0.8) 85%, #000000 100%);
-          box-shadow: inset 0 0 60px 40px #000000;
+          border-radius: 20px;
+          box-shadow: inset 0 0 30px 18px #000000, inset 0 0 60px 36px rgba(0, 0, 0, 0.85);
           z-index: 2;
         }
 
         @media (max-width: 768px) {
           .bf-intro-video-chassis {
-            width: 85vw;
-            height: 70vh;
-            max-width: 85vw;
-            max-height: 70vh;
+            width: 82vw;
+            border-radius: 14px;
           }
           .bf-intro-video-element {
-            transform: scale(0.6);
+            border-radius: 14px;
+          }
+          .bf-intro-edge-blur {
+            border-radius: 14px;
+            box-shadow: inset 0 0 20px 12px #000000, inset 0 0 40px 24px rgba(0, 0, 0, 0.85);
           }
         }
       `}</style>
@@ -262,7 +262,7 @@ export default function SeoVideoIntroSection({ onStartFade, onComplete }) {
       <div className="bf-intro-video-chassis">
         <video
           ref={videoRef}
-          src="/seointro.mp4"
+          src="/seobannerrightvideo.mp4"
           autoPlay
           muted
           defaultMuted
@@ -274,13 +274,13 @@ export default function SeoVideoIntroSection({ onStartFade, onComplete }) {
             e.currentTarget.defaultMuted = true;
             e.currentTarget.muted = true;
             e.currentTarget.volume = 0;
-            e.currentTarget.playbackRate = 1.5;
+            e.currentTarget.playbackRate = 1.3;
           }}
           onPlay={(e) => {
             e.currentTarget.defaultMuted = true;
             e.currentTarget.muted = true;
             e.currentTarget.volume = 0;
-            e.currentTarget.playbackRate = 1.5;
+            e.currentTarget.playbackRate = 1.3;
           }}
           onVolumeChange={(e) => {
             if (!e.currentTarget.muted || e.currentTarget.volume > 0) {

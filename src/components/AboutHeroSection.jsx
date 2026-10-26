@@ -219,7 +219,7 @@ const styles = `
     display: flex;
     align-items: center;
     justify-content: center;
-    background: #060509;
+    background: #000000;
     overflow: hidden;
     padding: clamp(90px, 11vw, 130px) 24px 50px;
     isolation: isolate;

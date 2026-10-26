@@ -558,7 +558,7 @@ const styles = `
 
   /* ── BLACK THEME CUSTOMIZATION ── */
   .is-black-theme {
-    background: #060509 !important;
+    background: #000000 !important;
   }
 
   .is-black-theme .testimonial {

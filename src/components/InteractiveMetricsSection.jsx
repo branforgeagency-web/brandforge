@@ -379,7 +379,7 @@ const metricsStyles = `
     transform: translateX(-50%);
     width: 250px;
     padding: 12px 14px;
-    background: #0A0A0C;
+    background: #000000;
     border: 1px solid rgba(255, 24, 1, 0.4);
     border-radius: 12px;
     color: #FFFFFF;

@@ -423,7 +423,7 @@ export default function SeoSajanServicesDial({ data, onOpenModal: _onOpenModal }
         .bf-sajan-dial-root {
           position: relative;
           width: 100%;
-          background: #09090C;
+          background: #000000;
           color: #FAFAFC;
         }
 
@@ -439,9 +439,9 @@ export default function SeoSajanServicesDial({ data, onOpenModal: _onOpenModal }
           padding: clamp(60px, 8vw, 90px) 5% clamp(40px, 6vw, 60px);
           position: relative;
           overflow: hidden;
-          background: #09090C;
+          background: #000000;
           border-top: 1px solid rgba(255, 255, 255, 0.08);
-          border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+          border-bottom: none;
         }
 
         /* Top Meta Row */

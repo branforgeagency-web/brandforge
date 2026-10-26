@@ -560,7 +560,7 @@ export default function BrandForgeFAQ({ theme }) {
         position: "relative",
         width: "100%",
         padding: isMobile ? "70px 16px 90px" : "110px 24px 130px",
-        background: isDark ? "#060509" : "#FBFBFC",
+        background: isDark ? "#000000" : "#FBFBFC",
         overflow: "hidden",
       }}
     >

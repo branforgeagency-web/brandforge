@@ -185,7 +185,7 @@ const blueprintStyles = `
     width: 48px;
     height: 48px;
     border-radius: 50%;
-    background: #0A0A0C;
+    background: #000000;
     color: #FFFFFF;
     border: 2px solid #FF1801;
     display: flex;

@@ -4,6 +4,7 @@ import React, { useRef, useState, useEffect, useCallback } from "react";
 import gsap from "gsap";
 import { ArrowRight } from "lucide-react";
 import SwapArrow from "./SwapArrow";
+import SeoBannerRightVideo from "./SeoBannerRightVideo";
 
 const DIRECTIONS = ["up", "down", "left", "right"];
 const getRandomDirection = () =>
@@ -212,6 +213,11 @@ export default function SeoSajanHero({ data, slug, onOpenModal }) {
   const rectRef = useRef(null);
 
   const currentSlug = data?.slug || slug || "seo-geo";
+  const isSeo =
+    currentSlug === "seo-geo" ||
+    currentSlug === "seo-company-coimbatore" ||
+    data?.slug === "seo-geo" ||
+    data?.slug === "seo-company-coimbatore";
 
   const updateRect = useCallback(() => {
     if (taglineContainerRef.current) {
@@ -309,7 +315,7 @@ export default function SeoSajanHero({ data, slug, onOpenModal }) {
         .bf-montarville-hero-root {
           position: relative;
           min-height: 86vh;
-          background: #09090C;
+          background: #000000;
           display: flex;
           flex-direction: column;
           justify-content: space-between;
@@ -361,8 +367,8 @@ export default function SeoSajanHero({ data, slug, onOpenModal }) {
         .bf-hero-img-overlay {
           position: absolute;
           inset: 0;
-          background: radial-gradient(circle at 60% 40%, rgba(9, 9, 12, 0.45) 0%, #09090C 85%),
-                      linear-gradient(to bottom, rgba(9, 9, 12, 0.4) 0%, #09090C 100%);
+          background: radial-gradient(circle at 60% 40%, rgba(9, 9, 12, 0.45) 0%, #000000 85%),
+                      linear-gradient(to bottom, rgba(9, 9, 12, 0.4) 0%, #000000 100%);
         }
 
         /* Ambient Architectural Background Geometry */
@@ -375,6 +381,51 @@ export default function SeoSajanHero({ data, slug, onOpenModal }) {
           pointer-events: none;
           z-index: 1;
           opacity: 0.42;
+        }
+
+        /* 2-Column Hero Main Row */
+        .bf-hero-main-row {
+          position: relative;
+          z-index: 2;
+          width: 100%;
+        }
+
+        .bf-hero-main-row.has-right-video {
+          display: grid;
+          grid-template-columns: 1fr 1.05fr;
+          align-items: center;
+          gap: clamp(28px, 4vw, 56px);
+        }
+
+        .bf-hero-main-row.has-right-video .bf-montarville-left-col {
+          max-width: 100%;
+        }
+
+        .bf-hero-main-row.has-right-video .bf-sajan-headline-line {
+          font-size: clamp(28px, 3.8vw, 62px);
+        }
+
+        .bf-hero-main-row.has-right-video .bf-sajan-tagline-wrap {
+          max-width: 580px;
+          margin-bottom: clamp(24px, 3vw, 36px);
+        }
+
+        .bf-hero-right-col {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          width: 100%;
+          position: relative;
+        }
+
+        @media (max-width: 1024px) {
+          .bf-hero-main-row.has-right-video {
+            grid-template-columns: 1fr;
+            gap: 40px;
+          }
+          .bf-hero-main-row.has-right-video .bf-sajan-headline-line {
+            font-size: clamp(30px, 5.5vw, 54px);
+          }
         }
 
         /* Left-Side Editorial Layout Column */
@@ -618,118 +669,132 @@ export default function SeoSajanHero({ data, slug, onOpenModal }) {
       `}</style>
 
       {/* ── BACKGROUND MEDIA ── */}
-      <div className="bf-hero-image-wrap" aria-hidden="true">
-        <img
-          src={data?.bannerBg || "/banner-seo-geo-bg.jpg"}
-          alt=""
-          loading="eager"
-          fetchpriority="high"
-          decoding="async"
-          className="bf-hero-bg-img"
-        />
-        <div className="bf-hero-img-overlay" />
-      </div>
+      {!isSeo && (
+        <div className="bf-hero-image-wrap" aria-hidden="true">
+          <img
+            src={data?.bannerBg || "/banner-seo-geo-bg.jpg"}
+            alt=""
+            loading="eager"
+            fetchpriority="high"
+            decoding="async"
+            className="bf-hero-bg-img"
+          />
+          <div className="bf-hero-img-overlay" />
+        </div>
+      )}
 
       {/* ARCHITECTURAL BACKGROUND GEOMETRY */}
-      <div className="bf-montarville-bg-geometry" aria-hidden="true">
-        <svg viewBox="0 0 1000 800" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <circle cx="650" cy="400" r="340" stroke="rgba(255, 255, 255, 0.06)" strokeWidth="1.5" />
-          <circle cx="850" cy="520" r="280" stroke="rgba(255, 255, 255, 0.04)" strokeWidth="1.5" />
-          <circle cx="500" cy="300" r="220" stroke="rgba(255, 24, 1, 0.1)" strokeWidth="1.5" />
-          <line x1="300" y1="120" x2="900" y2="720" stroke="rgba(255, 255, 255, 0.04)" strokeWidth="1.5" />
-        </svg>
-      </div>
-
-      {/* LEFT-SIDE EDITORIAL CONTENT BLOCK */}
-      <div className="bf-montarville-left-col">
-        {/* MASSIVE KINETIC PORTAL-MASK HEADLINE */}
-        <div className="bf-sajan-headline-block">
-          <h1 className="bf-sajan-headline-line">
-            {line1.split(" ").map((word, wIdx, arr) => (
-              <React.Fragment key={wIdx}>
-                <span style={{ display: "inline-block", whiteSpace: "nowrap" }}>
-                  {word.split("").map((char, cIdx) => (
-                    <span
-                      key={cIdx}
-                      className="bf-portal-mask"
-                      onMouseEnter={(e) => {
-                        const letter = e.currentTarget.querySelector(
-                          ".bf-portal-letter"
-                        );
-                        triggerPortalLoop(letter);
-                      }}
-                    >
-                      <span className="bf-portal-letter">{char}</span>
-                    </span>
-                  ))}
-                </span>
-                {wIdx < arr.length - 1 && " "}
-              </React.Fragment>
-            ))}
-          </h1>
-
-          <h2 className="bf-sajan-headline-line accent">
-            {line2.split(" ").map((word, wIdx, arr) => (
-              <React.Fragment key={wIdx}>
-                <span style={{ display: "inline-block", whiteSpace: "nowrap" }}>
-                  {word.split("").map((char, cIdx) => (
-                    <span
-                      key={cIdx}
-                      className="bf-portal-mask"
-                      onMouseEnter={(e) => {
-                        const letter = e.currentTarget.querySelector(
-                          ".bf-portal-letter"
-                        );
-                        triggerPortalLoop(letter);
-                      }}
-                    >
-                      <span className="bf-portal-letter">{char}</span>
-                    </span>
-                  ))}
-                </span>
-                {wIdx < arr.length - 1 && " "}
-              </React.Fragment>
-            ))}
-          </h2>
+      {!isSeo && (
+        <div className="bf-montarville-bg-geometry" aria-hidden="true">
+          <svg viewBox="0 0 1000 800" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="650" cy="400" r="340" stroke="rgba(255, 255, 255, 0.06)" strokeWidth="1.5" />
+            <circle cx="850" cy="520" r="280" stroke="rgba(255, 255, 255, 0.04)" strokeWidth="1.5" />
+            <circle cx="500" cy="300" r="220" stroke="rgba(255, 24, 1, 0.1)" strokeWidth="1.5" />
+            <line x1="300" y1="120" x2="900" y2="720" stroke="rgba(255, 255, 255, 0.04)" strokeWidth="1.5" />
+          </svg>
         </div>
+      )}
 
-        {/* DUAL-LAYER CURSOR SPOTLIGHT TAGLINE */}
-        <div
-          ref={taglineContainerRef}
-          className="bf-sajan-tagline-wrap"
-          onMouseMove={handleMouseMove}
-          onMouseEnter={handleMouseEnter}
-          onMouseLeave={handleMouseLeave}
-        >
-          <p className="bf-sajan-tagline-base">{taglineBase}</p>
+      {/* 2-COLUMN HERO MAIN ROW */}
+      <div className={`bf-hero-main-row ${isSeo ? "has-right-video" : ""}`}>
+        {/* LEFT-SIDE EDITORIAL CONTENT BLOCK */}
+        <div className="bf-montarville-left-col">
+          {/* MASSIVE KINETIC PORTAL-MASK HEADLINE */}
+          <div className="bf-sajan-headline-block">
+            <h1 className="bf-sajan-headline-line">
+              {line1.split(" ").map((word, wIdx, arr) => (
+                <React.Fragment key={wIdx}>
+                  <span style={{ display: "inline-block", whiteSpace: "nowrap" }}>
+                    {word.split("").map((char, cIdx) => (
+                      <span
+                        key={cIdx}
+                        className="bf-portal-mask"
+                        onMouseEnter={(e) => {
+                          const letter = e.currentTarget.querySelector(
+                            ".bf-portal-letter"
+                          );
+                          triggerPortalLoop(letter);
+                        }}
+                      >
+                        <span className="bf-portal-letter">{char}</span>
+                      </span>
+                    ))}
+                  </span>
+                  {wIdx < arr.length - 1 && " "}
+                </React.Fragment>
+              ))}
+            </h1>
 
-          <p className="bf-sajan-tagline-hidden" aria-hidden="true">
-            {taglineHidden}
-          </p>
+            <h2 className="bf-sajan-headline-line accent">
+              {line2.split(" ").map((word, wIdx, arr) => (
+                <React.Fragment key={wIdx}>
+                  <span style={{ display: "inline-block", whiteSpace: "nowrap" }}>
+                    {word.split("").map((char, cIdx) => (
+                      <span
+                        key={cIdx}
+                        className="bf-portal-mask"
+                        onMouseEnter={(e) => {
+                          const letter = e.currentTarget.querySelector(
+                            ".bf-portal-letter"
+                          );
+                          triggerPortalLoop(letter);
+                        }}
+                      >
+                        <span className="bf-portal-letter">{char}</span>
+                      </span>
+                    ))}
+                  </span>
+                  {wIdx < arr.length - 1 && " "}
+                </React.Fragment>
+              ))}
+            </h2>
+          </div>
 
-          <span className="bf-sajan-spotlight-hint">
-            <span>[ Interactive ] Hover cursor across text to reveal deeper strategy layer</span>
-          </span>
-        </div>
-
-        {/* TWO-BUTTON CTA ROW */}
-        <div className="bf-montarville-cta-row">
-          <button
-            type="button"
-            onClick={onOpenModal}
-            className="bf-montarville-btn-primary"
+          {/* DUAL-LAYER CURSOR SPOTLIGHT TAGLINE */}
+          <div
+            ref={taglineContainerRef}
+            className="bf-sajan-tagline-wrap"
+            onMouseMove={handleMouseMove}
+            onMouseEnter={handleMouseEnter}
+            onMouseLeave={handleMouseLeave}
           >
-            <span className="bf-btn-dot-white" />
-            <span>{primaryBtnText}</span>
-            <SwapArrow dir="right" size={15} color="#FFFFFF" />
-          </button>
+            <p className="bf-sajan-tagline-base">{taglineBase}</p>
 
-          <a href="#deliverables" className="bf-montarville-btn-secondary">
-            <span className="bf-btn-dot-red" />
-            <span>EXPLORE CAPABILITIES</span>
-            <ArrowRight size={15} />
-          </a>
+            <p className="bf-sajan-tagline-hidden" aria-hidden="true">
+              {taglineHidden}
+            </p>
+
+            <span className="bf-sajan-spotlight-hint">
+              <span>[ Interactive ] Hover cursor across text to reveal deeper strategy layer</span>
+            </span>
+          </div>
+
+          {/* TWO-BUTTON CTA ROW */}
+          <div className="bf-montarville-cta-row">
+            <button
+              type="button"
+              onClick={onOpenModal}
+              className="bf-montarville-btn-primary"
+            >
+              <span className="bf-btn-dot-white" />
+              <span>{primaryBtnText}</span>
+              <SwapArrow dir="right" size={15} color="#FFFFFF" />
+            </button>
+
+            <a href="#deliverables" className="bf-montarville-btn-secondary">
+              <span className="bf-btn-dot-red" />
+              <span>EXPLORE CAPABILITIES</span>
+              <ArrowRight size={15} />
+            </a>
+          </div>
         </div>
+
+        {/* RIGHT-SIDE VIDEO COLUMN */}
+        {isSeo && (
+          <div className="bf-hero-right-col">
+            <SeoBannerRightVideo />
+          </div>
+        )}
       </div>
 
       {/* MARQUEE TICKER STRIP */}

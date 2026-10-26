@@ -126,7 +126,7 @@ export default function SeoMontarvillePillars({ data, onOpenModal }) {
 const pillarsComponentStyles = `
   .smp-pillars-section {
     position: relative;
-    background: #09090C;
+    background: #000000;
     padding: clamp(70px, 9vw, 110px) 0 clamp(60px, 8vw, 100px);
     border-top: 1px solid rgba(255, 255, 255, 0.08);
     border-bottom: 1px solid rgba(255, 255, 255, 0.08);

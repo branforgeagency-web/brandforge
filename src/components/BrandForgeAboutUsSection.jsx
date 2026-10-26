@@ -412,7 +412,7 @@ const styles = `
   position: relative;
   width: 100%;
   padding: clamp(60px, 8vw, 130px) 20px;
-  background-color: #060509;
+  background-color: #000000;
   color: #FFFFFF;
   font-family: "Plus Jakarta Sans", sans-serif;
   overflow: hidden;

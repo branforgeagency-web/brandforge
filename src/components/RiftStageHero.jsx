@@ -163,7 +163,7 @@ const styles = `
 
 
 .rr-root {
-  --ink: #060509;
+  --ink: #000000;
   --paper: #FFFFFF;
   --acid: #FF1801;
   position: relative;

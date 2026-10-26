@@ -15,7 +15,7 @@
   --color-accent-orange: #FF6B00;
   --color-accent-gold: #FFB800;
   --color-accent-cyan: #00F0FF;
-  --color-bg-obsidian: #030305;
+  --color-bg-obsidian: #000000;
   --color-bg-card: #0B0B0C;
   --color-bg-card-hover: #141416;
   --color-text-main: #FFFFFF;
@@ -95,7 +95,7 @@ body {
   position: relative;
   width: 100%;
   height: 480vh; /* 4 Rows x 1.2 viewport scroll distance */
-  background-color: #030305;
+  background-color: #000000;
 }
 
 .stacked-services-sticky-stage {
@@ -110,7 +110,7 @@ body {
   position: relative;
   width: 100%;
   height: 100%;
-  background: radial-gradient(120% 120% at 50% 50%, #0D0A12 0%, #050408 60%, #030305 100%);
+  background: #000000;
   overflow: hidden;
 }
 

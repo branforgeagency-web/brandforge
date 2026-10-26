@@ -475,7 +475,7 @@ const css = `
   width: 100%;
   min-height: 100vh;
   overflow: hidden;
-  background: #060509;
+  background: #000000;
   font-family: 'Plus Jakarta Sans', sans-serif;
   cursor: crosshair;
 }

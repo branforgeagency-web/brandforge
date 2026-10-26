@@ -380,7 +380,7 @@ const styles = `
 .scroll-story {
   position: relative;
   height: 680vh;
-  background: #030305;
+  background: #000000;
 }
 
 .stage {
@@ -392,7 +392,7 @@ const styles = `
   height: 100vh;
   place-items: center;
   overflow: hidden;
-  background: #030305;
+  background: #000000;
 }
 
 .showcase {
@@ -403,7 +403,7 @@ const styles = `
   overflow: hidden;
   border: 0;
   border-radius: 0;
-  background: #060509;
+  background: #000000;
   box-shadow: none;
   isolation: isolate;
 }

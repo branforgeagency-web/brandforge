@@ -850,21 +850,21 @@ const styles = `
 
   .sg-page-root.is-seo-geo-page {
     padding-top: 0;
-    background: #09090C !important;
+    background: #000000 !important;
     color: #FAFAFC !important;
   }
 
   .sg-page-root.is-seo-geo-page .sg-marquee-bar {
     margin-top: 0;
     padding-top: 90px;
-    background: #09090C;
+    background: #000000;
     border-top: none;
     border-bottom: 1px solid rgba(255, 255, 255, 0.08);
   }
 
   /* COHESIVE ULTRA-LUXURY DARK THEME SCOPED FOR SEO & GEO */
   .sg-page-root.is-seo-geo-page .sg-seo-story-section {
-    background: #09090C !important;
+    background: #000000 !important;
     border-top: 1px solid rgba(255, 255, 255, 0.08) !important;
     border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
   }
@@ -967,7 +967,7 @@ const styles = `
 
   /* EVOLUTION MATRIX - DARK THEME OVERRIDES */
   .sg-page-root.is-seo-geo-page .sg-evolution-section {
-    background: #0B0B0E !important;
+    background: #000000 !important;
     border-top: 1px solid rgba(255, 255, 255, 0.08) !important;
     border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
   }
@@ -1044,7 +1044,7 @@ const styles = `
 
   /* PILLARS SECTION - DARK THEME OVERRIDES */
   .sg-page-root.is-seo-geo-page .sg-pillars-section {
-    background: #09090C !important;
+    background: #000000 !important;
     border-top: 1px solid rgba(255, 255, 255, 0.08) !important;
     border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
   }
@@ -1100,7 +1100,7 @@ const styles = `
 
   /* PROCESS BLUEPRINT - DARK THEME OVERRIDES */
   .sg-page-root.is-seo-geo-page .sg-process-sec {
-    background: #09090C !important;
+    background: #000000 !important;
     border-top: 1px solid rgba(255, 255, 255, 0.08) !important;
     border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
   }
@@ -1139,7 +1139,7 @@ const styles = `
 
   /* DIFFERENTIATORS - DARK THEME OVERRIDES */
   .sg-page-root.is-seo-geo-page .sg-diff-section {
-    background: #09090C !important;
+    background: #000000 !important;
     border-top: 1px solid rgba(255, 255, 255, 0.08) !important;
     border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
   }
@@ -1174,7 +1174,7 @@ const styles = `
 
   /* WHO WE HELP - DARK THEME OVERRIDES */
   .sg-page-root.is-seo-geo-page .sg-who-section {
-    background: #09090C !important;
+    background: #000000 !important;
     border-top: 1px solid rgba(255, 255, 255, 0.08) !important;
     border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
   }
@@ -1219,7 +1219,7 @@ const styles = `
 
   /* FAQ - DARK THEME OVERRIDES */
   .sg-page-root.is-seo-geo-page .sg-faq-section {
-    background: #09090C !important;
+    background: #000000 !important;
     border-top: 1px solid rgba(255, 255, 255, 0.08) !important;
     border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
   }
@@ -1259,7 +1259,7 @@ const styles = `
 
   /* RELATED SERVICES - DARK THEME OVERRIDES */
   .sg-page-root.is-seo-geo-page .sg-related-services-section {
-    background: #09090C !important;
+    background: #000000 !important;
     border-top: 1px solid rgba(255, 255, 255, 0.08) !important;
     border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
   }
@@ -1303,7 +1303,7 @@ const styles = `
 
   /* BOTTOM BANNER CTA */
   .sg-page-root.is-seo-geo-page .sg-bottom-cta {
-    background: #09090C !important;
+    background: #000000 !important;
     border-top: 1px solid rgba(255, 255, 255, 0.08) !important;
   }
 
@@ -1325,7 +1325,7 @@ const styles = `
      SECTION 1: TICKER & HERO BANNER (LIGHT THEME)
      ========================================================================== */
   .sg-marquee-bar {
-    background: #0A0A0C;
+    background: #000000;
     border-top: 1px solid #1F2937;
     border-bottom: 1px solid #1F2937;
     color: #FFFFFF;
@@ -1541,7 +1541,7 @@ const styles = `
   .sg-tech-start-btn:hover {
     transform: translateY(-3px);
     box-shadow: 0 12px 30px rgba(10, 10, 12, 0.25);
-    background: #0A0A0C;
+    background: #000000;
   }
 
   .sg-tech-play-btn {
@@ -1559,7 +1559,7 @@ const styles = `
     width: 44px;
     height: 44px;
     border-radius: 50%;
-    background: #0A0A0C;
+    background: #000000;
     color: #FFFFFF;
     display: inline-flex;
     align-items: center;
@@ -1696,7 +1696,7 @@ const styles = `
     padding: clamp(70px, 9vw, 110px) 0 clamp(50px, 6vw, 80px);
     position: relative;
     z-index: 2;
-    background: #0A0A0C;
+    background: #000000;
     border-top: 1px solid rgba(255, 255, 255, 0.1);
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   }
@@ -1855,7 +1855,7 @@ const styles = `
   .sg-inline-form-wrap button[type="submit"],
   .sg-form-btn {
     height: 52px !important;
-    background: #0A0A0C !important;
+    background: #000000 !important;
     color: #FFFFFF !important;
     border: none !important;
     border-radius: 12px !important;
@@ -2070,7 +2070,7 @@ const styles = `
     position: relative;
     border-top: 1px solid rgba(255, 255, 255, 0.1);
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    background: #0A0A0C;
+    background: #000000;
   }
 
   .sg-why-grid {
@@ -2255,7 +2255,7 @@ const styles = `
     gap: 8px;
     padding: 6px 14px;
     border-radius: 12px;
-    background: #0A0A0C;
+    background: #000000;
     border: 1px solid rgba(255, 24, 1, 0.4);
     color: #FFFFFF;
     font-family: "JetBrains Mono", monospace;
@@ -2478,7 +2478,7 @@ const styles = `
      SECTION 6: OUR SEO & GEO SERVICES ACCORDION (BLACK BACKGROUND)
      ========================================================================== */
   .sg-pillars-section {
-    background: #0A0A0C;
+    background: #000000;
     border-top: 1px solid rgba(255, 255, 255, 0.1);
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   }
@@ -2760,7 +2760,7 @@ const styles = `
     width: 44px;
     height: 44px;
     border-radius: 50%;
-    background: #0A0A0C;
+    background: #000000;
     color: #FFFFFF;
     border: 2px solid #FF1801;
     display: flex;
@@ -2791,7 +2791,7 @@ const styles = `
      SECTION 8: WHAT MAKES US DIFFERENT (BLACK BACKGROUND)
      ========================================================================== */
   .sg-diff-section {
-    background: #0A0A0C;
+    background: #000000;
     border-top: 1px solid rgba(255, 255, 255, 0.1);
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   }
@@ -2954,7 +2954,7 @@ const styles = `
      SECTION 10: FREQUENTLY ASKED QUESTIONS (BLACK BACKGROUND)
      ========================================================================== */
   .sg-faq-section {
-    background: #0A0A0C;
+    background: #000000;
     border-top: 1px solid rgba(255, 255, 255, 0.1);
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   }
@@ -3115,7 +3115,7 @@ const styles = `
      SECTION 12: BOTTOM BANNER CTA (BLACK BACKGROUND)
      ========================================================================== */
   .sg-bottom-cta {
-    background: #0A0A0C;
+    background: #000000;
     border-top: 1px solid rgba(255, 255, 255, 0.1);
     padding: clamp(60px, 8vw, 100px) 0;
     position: relative;
@@ -3123,7 +3123,7 @@ const styles = `
   }
 
   .sg-cta-box-cardless {
-    background: linear-gradient(135deg, #111116 0%, #1A0508 50%, #111116 100%);
+    background: #000000;
     border: 1px solid rgba(255, 24, 1, 0.35);
     border-radius: 28px;
     padding: clamp(48px, 6vw, 76px) clamp(24px, 5vw, 56px);

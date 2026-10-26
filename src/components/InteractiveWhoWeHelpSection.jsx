@@ -175,7 +175,7 @@ export default function InteractiveWhoWeHelpSection({
 
 const whoStyles = `
   .sg-who-section {
-    background: #09090C !important;
+    background: #000000 !important;
     background-image: 
       radial-gradient(circle at 50% 0%, rgba(255, 24, 1, 0.12) 0%, transparent 60%),
       radial-gradient(circle at 85% 85%, rgba(255, 24, 1, 0.06) 0%, transparent 50%),

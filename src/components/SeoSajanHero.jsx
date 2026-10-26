@@ -205,7 +205,7 @@ HERO_SKILLS["influencer-marketing-coimbatore"] = HERO_SKILLS["influencer-network
 HERO_SKILLS["brand-reputation-management-coimbatore"] = HERO_SKILLS["reputation-shield"];
 HERO_SKILLS["video-production-editing-company-coimbatore"] = HERO_SKILLS["commercial-video"];
 
-export default function SeoSajanHero({ data, slug, onOpenModal }) {
+export default function SeoSajanHero({ data, slug, onOpenModal, isActive = true }) {
   const containerRef = useRef(null);
   const taglineContainerRef = useRef(null);
   const [, setSpotlightActive] = useState(false);
@@ -218,6 +218,27 @@ export default function SeoSajanHero({ data, slug, onOpenModal }) {
     currentSlug === "seo-company-coimbatore" ||
     data?.slug === "seo-geo" ||
     data?.slug === "seo-company-coimbatore";
+
+  const isPaidMedia =
+    currentSlug === "paid-media" ||
+    currentSlug === "ppc-company-coimbatore" ||
+    data?.slug === "paid-media" ||
+    data?.slug === "ppc-company-coimbatore";
+
+  const isWebFoundry =
+    currentSlug === "web-foundry" ||
+    currentSlug === "website-development-company-coimbatore" ||
+    currentSlug === "web-development-company-coimbatore" ||
+    data?.slug === "web-foundry" ||
+    data?.slug === "website-development-company-coimbatore" ||
+    data?.slug === "web-development-company-coimbatore";
+
+  const hasRightVideo = isSeo || isPaidMedia || isWebFoundry;
+  const bannerVideoSrc = isPaidMedia
+    ? "/paidmediabannervideo.mp4"
+    : isWebFoundry
+    ? "/websitebannervideo.mp4"
+    : "/seobannerrightvideo.mp4";
 
   const updateRect = useCallback(() => {
     if (taglineContainerRef.current) {
@@ -268,6 +289,11 @@ export default function SeoSajanHero({ data, slug, onOpenModal }) {
     const letters = containerRef.current?.querySelectorAll(".bf-portal-letter");
     if (!letters?.length) return;
 
+    if (!isActive) {
+      gsap.set(letters, { opacity: 0 });
+      return;
+    }
+
     letters.forEach((el, idx) => {
       const dir = getRandomDirection();
       const offset = getDirectionOffset(dir, 120);
@@ -279,12 +305,12 @@ export default function SeoSajanHero({ data, slug, onOpenModal }) {
           y: "0%",
           opacity: 1,
           duration: 0.65,
-          delay: 0.08 + idx * 0.02,
+          delay: 0.12 + idx * 0.02,
           ease: "power3.out",
         }
       );
     });
-  }, [currentSlug]);
+  }, [currentSlug, isActive]);
 
   const headlineConfig = HERO_HEADLINES[currentSlug] || {
     line1: data?.title ? data.title.split(" ").slice(0, 4).join(" ").toUpperCase() + "." : "OWN THE CATEGORY.",
@@ -675,7 +701,7 @@ export default function SeoSajanHero({ data, slug, onOpenModal }) {
       `}</style>
 
       {/* ── BACKGROUND MEDIA ── */}
-      {!isSeo && (
+      {!hasRightVideo && (
         <div className="bf-hero-image-wrap" aria-hidden="true">
           <img
             src={data?.bannerBg || "/banner-seo-geo-bg.jpg"}
@@ -690,7 +716,7 @@ export default function SeoSajanHero({ data, slug, onOpenModal }) {
       )}
 
       {/* ARCHITECTURAL BACKGROUND GEOMETRY */}
-      {!isSeo && (
+      {!hasRightVideo && (
         <div className="bf-montarville-bg-geometry" aria-hidden="true">
           <svg viewBox="0 0 1000 800" fill="none" xmlns="http://www.w3.org/2000/svg">
             <circle cx="650" cy="400" r="340" stroke="rgba(255, 255, 255, 0.06)" strokeWidth="1.5" />
@@ -702,7 +728,7 @@ export default function SeoSajanHero({ data, slug, onOpenModal }) {
       )}
 
       {/* 2-COLUMN HERO MAIN ROW */}
-      <div className={`bf-hero-main-row ${isSeo ? "has-right-video" : ""}`}>
+      <div className={`bf-hero-main-row ${hasRightVideo ? "has-right-video" : ""}`}>
         {/* LEFT-SIDE EDITORIAL CONTENT BLOCK */}
         <div className="bf-montarville-left-col">
           {/* MASSIVE KINETIC PORTAL-MASK HEADLINE */}
@@ -796,9 +822,9 @@ export default function SeoSajanHero({ data, slug, onOpenModal }) {
         </div>
 
         {/* RIGHT-SIDE VIDEO COLUMN */}
-        {isSeo && (
+        {hasRightVideo && (
           <div className="bf-hero-right-col">
-            <SeoBannerRightVideo />
+            <SeoBannerRightVideo videoSrc={bannerVideoSrc} isActive={isActive} />
           </div>
         )}
       </div>

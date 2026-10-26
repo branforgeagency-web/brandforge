@@ -18,7 +18,7 @@ import React, { useRef, useState, useEffect, useCallback } from "react";
  * ─────────────────────────────────────────────────────────────────────────────
  */
 
-export default function SeoVideoIntroSection({ onStartFade, onComplete }) {
+export default function SeoVideoIntroSection({ videoSrc = "/seobannerrightvideo.mp4", onStartFade, onComplete }) {
   const videoRef = useRef(null);
   const [isDone, setIsDone] = useState(false);
   const [isExiting, setIsExiting] = useState(false);
@@ -262,7 +262,7 @@ export default function SeoVideoIntroSection({ onStartFade, onComplete }) {
       <div className="bf-intro-video-chassis">
         <video
           ref={videoRef}
-          src="/seobannerrightvideo.mp4"
+          src={videoSrc}
           autoPlay
           muted
           defaultMuted

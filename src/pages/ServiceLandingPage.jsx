@@ -724,7 +724,15 @@ export default function ServiceLandingPage({ slug = "seo-geo", onOpenModal, navi
   const evolutionVisual = SERVICE_EVOLUTION_VISUALS[data.slug] || SERVICE_EVOLUTION_VISUALS[slug] || SERVICE_EVOLUTION_VISUALS["seo-geo"];
 
   const isSeoGeo = data.slug === "seo-geo" || slug === "seo-geo" || slug === "seo-company-coimbatore";
-  const [seoIntroPhase, setSeoIntroPhase] = useState("playing");
+  const isPaidMedia = data.slug === "paid-media" || slug === "paid-media" || slug === "ppc-company-coimbatore";
+  const isWebFoundry = data.slug === "web-foundry" || slug === "web-foundry" || slug === "website-development-company-coimbatore" || slug === "web-development-company-coimbatore";
+  const hasIntroVideo = isSeoGeo || isPaidMedia || isWebFoundry;
+  const introVideoSrc = isPaidMedia
+    ? "/paidmediabannervideo.mp4"
+    : isWebFoundry
+    ? "/websitebannervideo.mp4"
+    : "/seobannerrightvideo.mp4";
+  const [introPhase, setIntroPhase] = useState("playing");
   const storyHeading = SERVICE_STORY_HEADINGS[data.slug] || {
     pill: data.whyChooseUs?.tag || "THE STRATEGY",
     lead: (data.whyChooseUs?.title || data.title || "Engineered for").split(" ").slice(0, 4).join(" ") + " —",
@@ -740,20 +748,26 @@ export default function ServiceLandingPage({ slug = "seo-geo", onOpenModal, navi
       <style>{styles}</style>
 
       {/* 1ST SECTION: HERO (SAJAN PORTAL MASK & SPOTLIGHT HERO) */}
-      {isSeoGeo && seoIntroPhase !== "done" && (
+      {hasIntroVideo && introPhase !== "done" && (
         <SeoVideoIntroSection
-          onStartFade={() => setSeoIntroPhase("fading")}
-          onComplete={() => setSeoIntroPhase("done")}
+          videoSrc={introVideoSrc}
+          onStartFade={() => setIntroPhase("fading")}
+          onComplete={() => setIntroPhase("done")}
         />
       )}
       <div
         style={{
-          opacity: (isSeoGeo && seoIntroPhase === "playing") ? 0 : 1,
+          opacity: (hasIntroVideo && introPhase === "playing") ? 0 : 1,
           transition: "opacity 1.5s cubic-bezier(0.4, 0, 0.2, 1)",
           willChange: "opacity",
         }}
       >
-        <SeoSajanHero data={data} slug={slug} onOpenModal={onOpenModal} />
+        <SeoSajanHero
+          data={data}
+          slug={slug}
+          onOpenModal={onOpenModal}
+          isActive={!hasIntroVideo || introPhase !== "playing"}
+        />
       </div>
 
       {/* 2ND SECTION: SAJAN PHILOSOPHY & REVEAL STATEMENT (PINNED SCROLL SCRUB) */}

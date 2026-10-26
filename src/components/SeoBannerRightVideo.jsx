@@ -2,9 +2,9 @@
 
 import React, { useRef, useState, useEffect, useCallback } from "react";
 
-export default function SeoBannerRightVideo() {
+export default function SeoBannerRightVideo({ videoSrc = "/seobannerrightvideo.mp4", isActive = true }) {
   const videoRef = useRef(null);
-  const [opacity, setOpacity] = useState(1);
+  const [opacity, setOpacity] = useState(isActive ? 1 : 0);
   const isFadingOutRef = useRef(false);
 
   // Enforce 0.8x playback speed
@@ -17,7 +17,7 @@ export default function SeoBannerRightVideo() {
   // Smooth fade-in restart after fade-out
   const handleRestart = useCallback(() => {
     const video = videoRef.current;
-    if (!video) return;
+    if (!video || !isActive) return;
 
     // Reset while hidden (opacity: 0)
     video.currentTime = 0;
@@ -38,11 +38,11 @@ export default function SeoBannerRightVideo() {
           setOpacity(1);
         });
     }
-  }, []);
+  }, [isActive]);
 
   const handleTimeUpdate = useCallback(() => {
     const video = videoRef.current;
-    if (!video || !video.duration) return;
+    if (!video || !video.duration || !isActive) return;
 
     const timeLeft = video.duration - video.currentTime;
 
@@ -56,7 +56,35 @@ export default function SeoBannerRightVideo() {
     if (timeLeft <= 0.08 && isFadingOutRef.current) {
       handleRestart();
     }
-  }, [handleRestart]);
+  }, [handleRestart, isActive]);
+
+  // Activate video playback strictly when isActive is true
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    if (!isActive) {
+      try {
+        video.pause();
+        video.currentTime = 0;
+      } catch {}
+      setOpacity(0);
+      return;
+    }
+
+    applyPlaybackRate();
+    video.currentTime = 0;
+    const playPromise = video.play();
+    if (playPromise !== undefined) {
+      playPromise
+        .then(() => {
+          setOpacity(1);
+        })
+        .catch(() => {
+          setOpacity(1);
+        });
+    }
+  }, [isActive, applyPlaybackRate]);
 
   useEffect(() => {
     const video = videoRef.current;
@@ -66,9 +94,11 @@ export default function SeoBannerRightVideo() {
 
     const handleLoadedMetadata = () => {
       applyPlaybackRate();
-      const p = video.play();
-      if (p !== undefined) {
-        p.catch(() => {});
+      if (isActive) {
+        const p = video.play();
+        if (p !== undefined) {
+          p.catch(() => {});
+        }
       }
     };
 
@@ -84,7 +114,7 @@ export default function SeoBannerRightVideo() {
       video.removeEventListener("loadedmetadata", handleLoadedMetadata);
       video.removeEventListener("play", applyPlaybackRate);
     };
-  }, [applyPlaybackRate]);
+  }, [applyPlaybackRate, isActive]);
 
   return (
     <div className="bf-seo-video-showcase">
@@ -145,8 +175,8 @@ export default function SeoBannerRightVideo() {
       <div className="bf-seo-video-chassis">
         <video
           ref={videoRef}
-          src="/seobannerrightvideo.mp4"
-          autoPlay
+          src={videoSrc}
+          autoPlay={isActive}
           muted
           playsInline
           preload="auto"

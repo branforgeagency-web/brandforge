@@ -63,8 +63,8 @@ export default function RiftStageHero({
         scrollTrigger: {
           trigger: stage,
           start: "top top",
-          end: "+=320%",
-          scrub: 0.9,
+          end: "+=180%",
+          scrub: 0.6,
           pin: true,
           anticipatePin: 1,
           invalidateOnRefresh: true,

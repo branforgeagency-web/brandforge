@@ -402,12 +402,18 @@ export default function SeoSajanHero({ data, slug, onOpenModal }) {
         }
 
         .bf-hero-main-row.has-right-video .bf-sajan-headline-line {
-          font-size: clamp(28px, 3.8vw, 62px);
+          font-size: clamp(34px, 4.6vw, 74px);
         }
 
         .bf-hero-main-row.has-right-video .bf-sajan-tagline-wrap {
-          max-width: 580px;
+          max-width: 600px;
           margin-bottom: clamp(24px, 3vw, 36px);
+        }
+
+        .bf-hero-main-row.has-right-video .bf-sajan-tagline-base,
+        .bf-hero-main-row.has-right-video .bf-sajan-tagline-hidden {
+          font-size: clamp(13.5px, 1.05vw, 15.5px);
+          line-height: 1.65;
         }
 
         .bf-hero-right-col {
@@ -424,7 +430,7 @@ export default function SeoSajanHero({ data, slug, onOpenModal }) {
             gap: 40px;
           }
           .bf-hero-main-row.has-right-video .bf-sajan-headline-line {
-            font-size: clamp(30px, 5.5vw, 54px);
+            font-size: clamp(32px, 5.8vw, 60px);
           }
         }
 
@@ -493,7 +499,7 @@ export default function SeoSajanHero({ data, slug, onOpenModal }) {
 
         .bf-sajan-tagline-base {
           font-family: "Plus Jakarta Sans", sans-serif;
-          font-size: clamp(15.5px, 1.25vw, 18.5px);
+          font-size: clamp(14px, 1.1vw, 16.5px);
           line-height: 1.62;
           color: rgba(250, 250, 252, 0.68);
           font-weight: 450;
@@ -505,7 +511,7 @@ export default function SeoSajanHero({ data, slug, onOpenModal }) {
           position: absolute;
           inset: 0;
           font-family: "Plus Jakarta Sans", sans-serif;
-          font-size: clamp(15.5px, 1.25vw, 18.5px);
+          font-size: clamp(14px, 1.1vw, 16.5px);
           line-height: 1.62;
           color: #FFFFFF;
           font-weight: 600;

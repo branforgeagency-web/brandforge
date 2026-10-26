@@ -233,11 +233,21 @@ export default function SeoSajanHero({ data, slug, onOpenModal, isActive = true 
     data?.slug === "website-development-company-coimbatore" ||
     data?.slug === "web-development-company-coimbatore";
 
-  const hasRightVideo = isSeo || isPaidMedia || isWebFoundry;
+  const isViralSocial =
+    currentSlug === "viral-social" ||
+    currentSlug === "social-media-marketing-company-coimbatore" ||
+    currentSlug === "social-media-agency-coimbatore" ||
+    data?.slug === "viral-social" ||
+    data?.slug === "social-media-marketing-company-coimbatore" ||
+    data?.slug === "social-media-agency-coimbatore";
+
+  const hasRightVideo = isSeo || isPaidMedia || isWebFoundry || isViralSocial;
   const bannerVideoSrc = isPaidMedia
     ? "/paidmediabannervideo.mp4"
     : isWebFoundry
     ? "/websitebannervideo.mp4"
+    : isViralSocial
+    ? "/socialmediabannervideo.mp4"
     : "/seobannerrightvideo.mp4";
 
   const updateRect = useCallback(() => {

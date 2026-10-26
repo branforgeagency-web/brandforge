@@ -726,11 +726,14 @@ export default function ServiceLandingPage({ slug = "seo-geo", onOpenModal, navi
   const isSeoGeo = data.slug === "seo-geo" || slug === "seo-geo" || slug === "seo-company-coimbatore";
   const isPaidMedia = data.slug === "paid-media" || slug === "paid-media" || slug === "ppc-company-coimbatore";
   const isWebFoundry = data.slug === "web-foundry" || slug === "web-foundry" || slug === "website-development-company-coimbatore" || slug === "web-development-company-coimbatore";
-  const hasIntroVideo = isSeoGeo || isPaidMedia || isWebFoundry;
+  const isViralSocial = data.slug === "viral-social" || slug === "viral-social" || slug === "social-media-marketing-company-coimbatore" || slug === "social-media-agency-coimbatore";
+  const hasIntroVideo = isSeoGeo || isPaidMedia || isWebFoundry || isViralSocial;
   const introVideoSrc = isPaidMedia
     ? "/paidmediabannervideo.mp4"
     : isWebFoundry
     ? "/websitebannervideo.mp4"
+    : isViralSocial
+    ? "/socialmediabannervideo.mp4"
     : "/seobannerrightvideo.mp4";
   const [introPhase, setIntroPhase] = useState("playing");
   const storyHeading = SERVICE_STORY_HEADINGS[data.slug] || {

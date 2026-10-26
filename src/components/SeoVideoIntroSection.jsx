@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useRef, useState, useEffect, useCallback } from "react";
+import { getStorageUrl } from "../utils/storageAsset";
 
 /**
  * ─────────────────────────────────────────────────────────────────────────────
@@ -262,7 +263,7 @@ export default function SeoVideoIntroSection({ videoSrc = "/seobannerrightvideo.
       <div className="bf-intro-video-chassis">
         <video
           ref={videoRef}
-          src={videoSrc}
+          src={getStorageUrl(videoSrc)}
           autoPlay
           muted
           defaultMuted

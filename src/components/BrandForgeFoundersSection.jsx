@@ -6,13 +6,13 @@ const HEADING_WORDS = ["Who", "We", "Are"];
 
 const FOUNDERS = [
   {
-    photo: "/team-balamurali.png",
+    photo: getStorageUrl("/team-balamurali.png"),
     role: "Founder & MD",
     name: "Mr. BalaMurali",
     side: "left",
   },
   {
-    photo: "/team-banumathy.png",
+    photo: getStorageUrl("/team-banumathy.png"),
     role: "Founder & CEO",
     name: "Ms. Banumathy",
     side: "right",
@@ -48,7 +48,7 @@ export default function BrandForgeFoundersSection() {
       {/* CINEMATIC BRANDFORGE HERO BANNER BACKGROUND */}
       <div className="bf-founders-bg-image-wrap" aria-hidden="true">
         <img
-          src="/banner-who-we-are.jpg"
+          src={getStorageUrl("/banner-who-we-are.jpg")}
           alt="BrandForge Studio Headquarters"
           loading="lazy"
           decoding="async"

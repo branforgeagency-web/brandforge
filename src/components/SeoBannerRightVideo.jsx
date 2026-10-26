@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useRef, useState, useEffect, useCallback } from "react";
+import { getStorageUrl } from "../utils/storageAsset";
 
 export default function SeoBannerRightVideo({ videoSrc = "/seobannerrightvideo.mp4", isActive = true }) {
   const videoRef = useRef(null);
@@ -175,7 +176,7 @@ export default function SeoBannerRightVideo({ videoSrc = "/seobannerrightvideo.m
       <div className="bf-seo-video-chassis">
         <video
           ref={videoRef}
-          src={videoSrc}
+          src={getStorageUrl(videoSrc)}
           autoPlay={isActive}
           muted
           playsInline

@@ -26,7 +26,7 @@ export default function AboutHeroSection({ onOpenModal }) {
       {/* CINEMATIC DIGITAL AGENCY STUDIO BACKGROUND */}
       <motion.div className="bf-modern-about-bg" style={{ y: bgY }}>
         <img
-          src="/banner-about-hero.jpg"
+          src={getStorageUrl("/banner-about-hero.jpg")}
           alt="BrandForge Creative Headquarters Studio"
           fetchpriority="high"
           decoding="async"
@@ -119,7 +119,7 @@ export default function AboutHeroSection({ onOpenModal }) {
             transition={{ duration: 0.6, delay: 0.15 }}
           >
             <img
-              src="/brandforge-full-logo.png"
+              src={getStorageUrl("/brandforge-full-logo.png")}
               alt="BrandForge — Turning Ideas Into Digital Power"
               decoding="async"
               className="bf-modern-logo-media"

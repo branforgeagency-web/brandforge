@@ -714,7 +714,7 @@ export default function SeoSajanHero({ data, slug, onOpenModal, isActive = true 
       {!hasRightVideo && (
         <div className="bf-hero-image-wrap" aria-hidden="true">
           <img
-            src={data?.bannerBg || "/banner-seo-geo-bg.jpg"}
+            src={getStorageUrl(data?.bannerBg || "/banner-seo-geo-bg.jpg")}
             alt=""
             loading="eager"
             fetchpriority="high"

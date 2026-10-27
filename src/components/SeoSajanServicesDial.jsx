@@ -1,7 +1,7 @@
 /* global window, document */
 "use client";
 
-import React, { useRef, useState, useEffect, useMemo, useCallback } from "react";
+import React, { useRef, useState, useEffect, useLayoutEffect, useMemo, useCallback } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -294,7 +294,7 @@ export default function SeoSajanServicesDial({ data, onOpenModal: _onOpenModal }
   );
 
   // GSAP ScrollTrigger Pinned Dial setup
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (isMobile) return;
     const triggerEl = containerRef.current;
     const pinEl = pinRef.current;
@@ -394,25 +394,27 @@ export default function SeoSajanServicesDial({ data, onOpenModal: _onOpenModal }
 
     updatePhysics(0);
 
-    const st = ScrollTrigger.create({
-      trigger: triggerEl,
-      start: "top top",
-      end: () => `+=${Math.round(window.innerHeight * 5.2)}`,
-      pin: pinEl,
-      pinSpacing: true,
-      scrub: 1.1,
-      anticipatePin: 1,
-      onUpdate: (self) => updatePhysics(self.progress),
-      onRefresh: (self) => {
-        onResize();
-        updatePhysics(self ? self.progress : 0);
-      },
-    });
+    let ctx = gsap.context(() => {
+      ScrollTrigger.create({
+        trigger: triggerEl,
+        start: "top top",
+        end: () => `+=${Math.round(window.innerHeight * 5.2)}`,
+        pin: pinEl,
+        pinSpacing: true,
+        scrub: 1.1,
+        anticipatePin: 1,
+        onUpdate: (self) => updatePhysics(self.progress),
+        onRefresh: (self) => {
+          onResize();
+          updatePhysics(self ? self.progress : 0);
+        },
+      });
+    }, shellRef.current);
 
     ScrollTrigger.refresh();
 
     return () => {
-      st.kill();
+      if (ctx) ctx.revert();
       window.removeEventListener("resize", onResize);
     };
   }, [dialCells, isMobile, nonPadCount, switchZone]);
@@ -777,15 +779,8 @@ export default function SeoSajanServicesDial({ data, onOpenModal: _onOpenModal }
               <p className="bf-dial-metalabel">Core Capabilities</p>
 
               <div className="bf-dial-heading-row">
-                <h2 ref={headlineRef} className="bf-dial-word">
-                  ORGANIC SERP.
-                </h2>
-                <p ref={ledeRef} className="bf-dial-lede">
-                  <b>Organic SERP.</b> Dominate high-intent commercial searches with
-                  sub-200ms Core Web Vitals, semantic schema clustering, and
-                  high-trust editorial seed backlinks that permanently lock in #1
-                  rankings.
-                </p>
+                <h2 ref={headlineRef} className="bf-dial-word" />
+                <p ref={ledeRef} className="bf-dial-lede" />
               </div>
             </div>
 

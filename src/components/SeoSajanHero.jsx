@@ -5,6 +5,7 @@ import gsap from "gsap";
 import { ArrowRight } from "lucide-react";
 import SwapArrow from "./SwapArrow";
 import SeoBannerRightVideo from "./SeoBannerRightVideo";
+import { getStorageUrl } from "../utils/storageAsset";
 
 const DIRECTIONS = ["up", "down", "left", "right"];
 const getRandomDirection = () =>
@@ -240,7 +241,6 @@ export default function SeoSajanHero({ data, slug, onOpenModal, isActive = true 
     data?.slug === "viral-social" ||
     data?.slug === "social-media-marketing-company-coimbatore" ||
     data?.slug === "social-media-agency-coimbatore";
-
   const hasRightVideo = isSeo || isPaidMedia || isWebFoundry || isViralSocial;
   const bannerVideoSrc = isPaidMedia
     ? "/paidmediabannervideo.mp4"
@@ -500,6 +500,12 @@ export default function SeoSajanHero({ data, slug, onOpenModal, isActive = true 
           margin-top: 4px;
         }
 
+        .bf-portal-word {
+          display: inline-block;
+          white-space: nowrap;
+          margin-right: 0.28em;
+        }
+
         .bf-portal-mask {
           display: inline-block;
           overflow: hidden;
@@ -717,7 +723,7 @@ export default function SeoSajanHero({ data, slug, onOpenModal, isActive = true 
             src={getStorageUrl(data?.bannerBg || "/banner-seo-geo-bg.jpg")}
             alt=""
             loading="eager"
-            fetchpriority="high"
+            fetchPriority="high"
             decoding="async"
             className="bf-hero-bg-img"
           />
@@ -744,50 +750,44 @@ export default function SeoSajanHero({ data, slug, onOpenModal, isActive = true 
           {/* MASSIVE KINETIC PORTAL-MASK HEADLINE */}
           <div className="bf-sajan-headline-block">
             <h1 className="bf-sajan-headline-line">
-              {line1.split(" ").map((word, wIdx, arr) => (
-                <React.Fragment key={wIdx}>
-                  <span style={{ display: "inline-block", whiteSpace: "nowrap" }}>
-                    {word.split("").map((char, cIdx) => (
-                      <span
-                        key={cIdx}
-                        className="bf-portal-mask"
-                        onMouseEnter={(e) => {
-                          const letter = e.currentTarget.querySelector(
-                            ".bf-portal-letter"
-                          );
-                          triggerPortalLoop(letter);
-                        }}
-                      >
-                        <span className="bf-portal-letter">{char}</span>
-                      </span>
-                    ))}
-                  </span>
-                  {wIdx < arr.length - 1 && " "}
-                </React.Fragment>
+              {line1.split(" ").map((word, wIdx) => (
+                <span key={wIdx} className="bf-portal-word">
+                  {word.split("").map((char, cIdx) => (
+                    <span
+                      key={cIdx}
+                      className="bf-portal-mask"
+                      onMouseEnter={(e) => {
+                        const letter = e.currentTarget.querySelector(
+                          ".bf-portal-letter"
+                        );
+                        triggerPortalLoop(letter);
+                      }}
+                    >
+                      <span className="bf-portal-letter">{char}</span>
+                    </span>
+                  ))}
+                </span>
               ))}
             </h1>
 
             <h2 className="bf-sajan-headline-line accent">
-              {line2.split(" ").map((word, wIdx, arr) => (
-                <React.Fragment key={wIdx}>
-                  <span style={{ display: "inline-block", whiteSpace: "nowrap" }}>
-                    {word.split("").map((char, cIdx) => (
-                      <span
-                        key={cIdx}
-                        className="bf-portal-mask"
-                        onMouseEnter={(e) => {
-                          const letter = e.currentTarget.querySelector(
-                            ".bf-portal-letter"
-                          );
-                          triggerPortalLoop(letter);
-                        }}
-                      >
-                        <span className="bf-portal-letter">{char}</span>
-                      </span>
-                    ))}
-                  </span>
-                  {wIdx < arr.length - 1 && " "}
-                </React.Fragment>
+              {line2.split(" ").map((word, wIdx) => (
+                <span key={wIdx} className="bf-portal-word">
+                  {word.split("").map((char, cIdx) => (
+                    <span
+                      key={cIdx}
+                      className="bf-portal-mask"
+                      onMouseEnter={(e) => {
+                        const letter = e.currentTarget.querySelector(
+                          ".bf-portal-letter"
+                        );
+                        triggerPortalLoop(letter);
+                      }}
+                    >
+                      <span className="bf-portal-letter">{char}</span>
+                    </span>
+                  ))}
+                </span>
               ))}
             </h2>
           </div>

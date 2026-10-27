@@ -140,57 +140,59 @@ export default function SeoSajanPhilosophy({ data, onOpenModal }) {
       gsap.set(l, { x: `${offset.x}%`, y: `${offset.y}%`, opacity: 0 });
     });
 
-    const st = ScrollTrigger.create({
-      trigger: triggerRef.current,
-      start: "top top",
-      end: () => `+=${Math.round((win?.innerHeight || 800) * 0.85)}`,
-      pin: sectionRef.current,
-      pinSpacing: true,
-      scrub: 0.8,
-      onUpdate: (self) => {
-        const p = self.progress;
+    const ctx = gsap.context(() => {
+      ScrollTrigger.create({
+        trigger: triggerRef.current,
+        start: "top top",
+        end: () => `+=${Math.round((win?.innerHeight || 800) * 0.85)}`,
+        pin: sectionRef.current,
+        pinSpacing: true,
+        scrub: 0.8,
+        onUpdate: (self) => {
+          const p = self.progress;
 
-        const total = wordEls.length;
-        wordEls.forEach((el, idx) => {
-          const startP = (idx / total) * 0.7;
-          const endP = startP + 0.22;
-          const wordProgress = Math.max(0, Math.min(1, (p - startP) / (endP - startP)));
-          const op = 0.15 + 0.85 * wordProgress;
-          el.style.opacity = op.toFixed(3);
-        });
+          const total = wordEls.length;
+          wordEls.forEach((el, idx) => {
+            const startP = (idx / total) * 0.7;
+            const endP = startP + 0.22;
+            const wordProgress = Math.max(0, Math.min(1, (p - startP) / (endP - startP)));
+            const op = 0.15 + 0.85 * wordProgress;
+            el.style.opacity = op.toFixed(3);
+          });
 
-        if (p >= 0.72 && !hasTriggeredLetters.current) {
-          hasTriggeredLetters.current = true;
-          letterEls.forEach((l) => {
-            const delay = Math.random() * 0.18;
-            gsap.to(l, {
-              x: "0%",
-              y: "0%",
-              opacity: 1,
-              duration: 0.35,
-              delay,
-              ease: "power2.out",
+          if (p >= 0.72 && !hasTriggeredLetters.current) {
+            hasTriggeredLetters.current = true;
+            letterEls.forEach((l) => {
+              const delay = Math.random() * 0.18;
+              gsap.to(l, {
+                x: "0%",
+                y: "0%",
+                opacity: 1,
+                duration: 0.35,
+                delay,
+                ease: "power2.out",
+              });
             });
-          });
-        } else if (p < 0.6 && hasTriggeredLetters.current) {
-          hasTriggeredLetters.current = false;
-          letterEls.forEach((l) => {
-            const dir = getRandomDirection();
-            const offset = getDirectionOffset(dir, 115);
-            gsap.to(l, {
-              x: `${offset.x}%`,
-              y: `${offset.y}%`,
-              opacity: 0,
-              duration: 0.25,
-              ease: "power2.in",
+          } else if (p < 0.6 && hasTriggeredLetters.current) {
+            hasTriggeredLetters.current = false;
+            letterEls.forEach((l) => {
+              const dir = getRandomDirection();
+              const offset = getDirectionOffset(dir, 115);
+              gsap.to(l, {
+                x: `${offset.x}%`,
+                y: `${offset.y}%`,
+                opacity: 0,
+                duration: 0.25,
+                ease: "power2.in",
+              });
             });
-          });
-        }
-      },
-    });
+          }
+        },
+      });
+    }, sectionRef.current);
 
     return () => {
-      st.kill();
+      ctx.revert();
     };
   }, [words]);
 

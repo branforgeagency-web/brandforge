@@ -489,8 +489,8 @@ export default function FloatingLines({
       material.dispose();
       renderer.dispose();
       renderer.forceContextLoss();
-      if (renderer.domElement.parentElement) {
-        renderer.domElement.parentElement.removeChild(renderer.domElement);
+      if (renderer.domElement) {
+        renderer.domElement.remove?.();
       }
     };
   }, [

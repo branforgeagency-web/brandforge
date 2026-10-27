@@ -1,6 +1,7 @@
 import React, { useRef } from "react";
 import { motion, useScroll, useTransform, useSpring } from "framer-motion";
 import { ChevronDown } from "lucide-react";
+import { getStorageUrl } from "../utils/storageAsset";
 
 const HEADING_WORDS = ["Who", "We", "Are"];
 

@@ -953,8 +953,8 @@ class App {
     if (this.renderer) {
       this.renderer.dispose();
       this.renderer.forceContextLoss();
-      if (this.renderer.domElement && this.renderer.domElement.parentNode) {
-        this.renderer.domElement.parentNode.removeChild(this.renderer.domElement);
+      if (this.renderer.domElement) {
+        this.renderer.domElement.remove?.();
       }
     }
     if (this.composer) {
@@ -1113,7 +1113,7 @@ export default function BrandForgeBannerSection({ _onOpenModal }) {
             alt="BrandForge 3D Logo"
             width="420"
             height="96"
-            fetchpriority="high"
+            fetchPriority="high"
             decoding="async"
             className="bf-banner-logo"
           />

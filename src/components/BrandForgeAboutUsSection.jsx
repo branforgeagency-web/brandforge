@@ -256,7 +256,7 @@ function ThreadsBackground({
       window.removeEventListener('resize', resize);
       container.removeEventListener('mousemove', handleMouseMove);
       container.removeEventListener('mouseleave', handleMouseLeave);
-      if (container.contains(gl.canvas)) container.removeChild(gl.canvas);
+      gl.canvas?.remove?.();
       gl.getExtension('WEBGL_lose_context')?.loseContext();
     };
   }, []);

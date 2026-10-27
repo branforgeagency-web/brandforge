@@ -1,6 +1,7 @@
 import React, { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { ArrowRight, ChevronDown, Quote, Users } from "lucide-react";
+import { getStorageUrl } from "../utils/storageAsset";
 
 export default function AboutHeroSection({ onOpenModal }) {
   const containerRef = useRef(null);
@@ -28,7 +29,7 @@ export default function AboutHeroSection({ onOpenModal }) {
         <img
           src={getStorageUrl("/banner-about-hero.jpg")}
           alt="BrandForge Creative Headquarters Studio"
-          fetchpriority="high"
+          fetchPriority="high"
           decoding="async"
           className="bf-modern-about-img"
         />

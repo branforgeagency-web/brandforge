@@ -16,6 +16,7 @@ import {
   Video,
 } from "lucide-react";
 import { servicesData } from "../data/servicesData";
+import { getRouteSeo, applySeoMetadata } from "../utils/seoMetadata";
 import BrandForgeAnimatedFooter from "../components/BrandForgeAnimatedFooter";
 import SerpGeoVisualizer from "../components/SerpGeoVisualizer";
 import InteractiveWhoWeHelpSection from "../components/InteractiveWhoWeHelpSection";
@@ -707,18 +708,9 @@ export default function ServiceLandingPage({ slug = "seo-geo", onOpenModal, navi
     if (window.__lenis) {
       window.__lenis.scrollTo(0, { immediate: true });
     }
-    if (data.metaTitle) {
-      document.title = data.metaTitle;
-    }
-    if (data.metaDescription) {
-      let metaDesc = document.querySelector('meta[name="description"]');
-      if (!metaDesc) {
-        metaDesc = document.createElement('meta');
-        metaDesc.name = 'description';
-        document.head.appendChild(metaDesc);
-      }
-      metaDesc.setAttribute('content', data.metaDescription);
-    }
+    const currentPath = slug ? (slug.startsWith("/") ? slug : (slug.startsWith("services/") ? `/${slug}` : `/services/${slug}`)) : data?.urlSlug;
+    const seo = getRouteSeo(currentPath, data);
+    applySeoMetadata(seo);
   }, [slug, data]);
 
   const evolutionVisual = SERVICE_EVOLUTION_VISUALS[data.slug] || SERVICE_EVOLUTION_VISUALS[slug] || SERVICE_EVOLUTION_VISUALS["seo-geo"];

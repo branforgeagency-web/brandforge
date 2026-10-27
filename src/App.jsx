@@ -1,10 +1,11 @@
-import React, { useState, Suspense, lazy } from 'react';
+import React, { useState, useLayoutEffect, Suspense, lazy } from 'react';
 import GlowCursor from './components/GlowCursor';
 import SiteNavbar from './components/SiteNavbar';
 import TransformationModal from './components/TransformationModal';
 import FloatingContactButtons from './components/FloatingContactButtons';
 import SmoothScrollProvider from './components/SmoothScrollProvider';
 import useRoute from './useRoute';
+import { getRouteSeo, applySeoMetadata } from './utils/seoMetadata';
 
 const HomePage = lazy(() => import('./pages/HomePage'));
 const AboutPage = lazy(() => import('./pages/AboutPage'));
@@ -17,6 +18,11 @@ export default function App() {
   const openModal = () => setModalOpen(true);
 
   const serviceSlug = path.startsWith('/services/') ? path.replace('/services/', '') : null;
+
+  useLayoutEffect(() => {
+    const seo = getRouteSeo(path);
+    applySeoMetadata(seo);
+  }, [path]);
 
   return (
     <SmoothScrollProvider>

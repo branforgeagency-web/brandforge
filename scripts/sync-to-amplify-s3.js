@@ -32,16 +32,21 @@ if (fs.existsSync(envPath)) {
     const eqIdx = trimmed.indexOf('=');
     if (eqIdx !== -1) {
       const key = trimmed.slice(0, eqIdx).trim();
-      const val = trimmed.slice(eqIdx + 1).trim().replace(/^['"]|['"]$/g, '');
-      if (!process.env[key]) {
+      let val = trimmed.slice(eqIdx + 1).trim();
+      // Remove inline comments
+      if (val.includes('#')) {
+        val = val.slice(0, val.indexOf('#')).trim();
+      }
+      val = val.replace(/^['"]|['"]$/g, '');
+      if (val) {
         process.env[key] = val;
       }
     }
   }
 }
 
-const BUCKET_NAME = process.env.S3_BUCKET_NAME || process.env.VITE_AWS_STORAGE_BUCKET_NAME;
-const REGION = process.env.AWS_REGION || process.env.VITE_AWS_REGION || 'us-east-1';
+const BUCKET_NAME = process.env.VITE_AWS_STORAGE_BUCKET_NAME || process.env.S3_BUCKET_NAME;
+const REGION = process.env.VITE_AWS_REGION || process.env.AWS_REGION || 'us-east-1';
 const IS_DRY_RUN = process.argv.includes('--dry-run');
 const IS_FORCE = process.argv.includes('--force');
 
@@ -70,19 +75,30 @@ async function main() {
   console.log(`Mode:       ${IS_DRY_RUN ? 'DRY RUN (no files modified)' : 'LIVE SYNC'}`);
   console.log('----------------------------------------------------');
 
-  if (!BUCKET_NAME && !IS_DRY_RUN) {
-    console.error('\n[ERROR] S3 bucket name not found.');
-    console.error('Please configure VITE_AWS_STORAGE_BUCKET_NAME or S3_BUCKET_NAME in .env');
-    console.error('Run with --dry-run to preview files without uploading.\n');
+  if (!BUCKET_NAME) {
+    console.error('\n[ERROR] S3 bucket name is missing in .env.');
+    console.error('Please set VITE_AWS_STORAGE_BUCKET_NAME in your .env file.\n');
     process.exit(1);
+  }
+
+  const accessKeyId = process.env.AWS_ACCESS_KEY_ID?.trim();
+  const secretAccessKey = process.env.AWS_SECRET_ACCESS_KEY?.trim();
+
+  if (!IS_DRY_RUN && (!accessKeyId || !secretAccessKey)) {
+    console.log('\n[NOTICE] AWS CLI Access Keys are not yet entered in .env.');
+    console.log('To upload automatically via this script, add these two lines in .env:');
+    console.log('  AWS_ACCESS_KEY_ID=AKIA...');
+    console.log('  AWS_SECRET_ACCESS_KEY=...');
+    console.log('\nTIP: Alternatively, you can drag and drop your media files directly');
+    console.log(`into the AWS S3 Console for bucket "${BUCKET_NAME}".\n`);
   }
 
   const s3 = new S3Client({
     region: REGION,
-    credentials: (process.env.AWS_ACCESS_KEY_ID && process.env.AWS_SECRET_ACCESS_KEY) ? {
-      accessKeyId: process.env.AWS_ACCESS_KEY_ID,
-      secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
-    } : undefined, // Will fallback to AWS SSO, default profile or instance IAM role
+    credentials: (accessKeyId && secretAccessKey) ? {
+      accessKeyId,
+      secretAccessKey,
+    } : undefined,
   });
 
   const files = [];
@@ -122,13 +138,12 @@ async function main() {
     const mbSize = (file.size / (1024 * 1024)).toFixed(2);
 
     if (IS_DRY_RUN) {
-      console.log(`[DRY-RUN] Would sync -> s3://${BUCKET_NAME || 'target-bucket'}/${file.s3Key} (${mbSize} MB, ${contentType})`);
+      console.log(`[DRY-RUN] Would sync -> s3://${BUCKET_NAME}/${file.s3Key} (${mbSize} MB, ${contentType})`);
       uploadedCount++;
       continue;
     }
 
     try {
-      // Check if file already exists in S3 with identical size
       if (!IS_FORCE) {
         try {
           const head = await s3.send(new HeadObjectCommand({
@@ -141,7 +156,7 @@ async function main() {
             continue;
           }
         } catch (headErr) {
-          // Object does not exist, proceed to upload
+          // Object does not exist, proceed
         }
       }
 
@@ -161,6 +176,12 @@ async function main() {
     } catch (err) {
       console.error(`  -> FAILED: ${file.s3Key}:`, err.message);
       failedCount++;
+      // Stop loop early if auth fails completely to avoid 123 error logs
+      if (err.message && err.message.includes('Access Key Id')) {
+        console.error('\n[AUTH ERROR] Invalid or missing AWS Access Key ID.');
+        console.error('Please check your AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY in .env\n');
+        break;
+      }
     }
   }
 

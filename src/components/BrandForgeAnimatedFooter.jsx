@@ -1,3 +1,4 @@
+import { getStorageUrl } from "../utils/storageAsset";
 "use client";
 
 import React, { useState, useRef } from "react";
@@ -288,7 +289,7 @@ export default function BrandForgeAnimatedFooter({ onOpenModal }) {
 
         {/* GIANT SCROLL-EXPANDING BRANDFORGE LOGO IMAGE WITH SMOOTH REVEAL */}
         <motion.img
-          src="/brandforge-logo.png"
+          src={getStorageUrl("/brandforge-logo.png")}
           alt="BrandForge Logo"
           className="bf-giant-footer-logo"
           initial={{ opacity: 0, scale: 0.65, y: 50 }}

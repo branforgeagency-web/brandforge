@@ -45,10 +45,28 @@ if (fs.existsSync(envPath)) {
   }
 }
 
-const BUCKET_NAME = process.env.VITE_AWS_STORAGE_BUCKET_NAME || process.env.S3_BUCKET_NAME;
-const REGION = process.env.VITE_AWS_REGION || process.env.AWS_REGION || 'us-east-1';
+// Auto-detect Amplify Gen 2 outputs if present
+let amplifyOutputs = null;
+const outputsPath = path.resolve(__dirname, '../amplify_outputs.json');
+if (fs.existsSync(outputsPath)) {
+  try {
+    amplifyOutputs = JSON.parse(fs.readFileSync(outputsPath, 'utf8'));
+  } catch {
+    // Ignore parse errors
+  }
+}
+
+const BUCKET_NAME = process.env.VITE_AWS_STORAGE_BUCKET_NAME || process.env.S3_BUCKET_NAME || amplifyOutputs?.storage?.bucket_name;
+const REGION = process.env.VITE_AWS_REGION || process.env.AWS_REGION || amplifyOutputs?.storage?.aws_region || 'us-east-1';
 const IS_DRY_RUN = process.argv.includes('--dry-run');
 const IS_FORCE = process.argv.includes('--force');
+
+// Optional target prefix (e.g. --prefix media or --prefix public)
+let targetPrefix = '';
+const prefixIdx = process.argv.findIndex(arg => arg === '--prefix' || arg === '--folder');
+if (prefixIdx !== -1 && process.argv[prefixIdx + 1]) {
+  targetPrefix = process.argv[prefixIdx + 1].replace(/^\/+|\/+$/g, '');
+}
 
 const MEDIA_EXTENSIONS = new Set([
   '.mp4', '.webm', '.ogg', '.mov',
@@ -72,6 +90,7 @@ async function main() {
   console.log('====================================================');
   console.log(`Region:     ${REGION}`);
   console.log(`Bucket:     ${BUCKET_NAME || '[Not configured]'}`);
+  console.log(`Folder:     ${targetPrefix ? targetPrefix + '/' : '[Root]'}`);
   console.log(`Mode:       ${IS_DRY_RUN ? 'DRY RUN (no files modified)' : 'LIVE SYNC'}`);
   console.log('----------------------------------------------------');
 
@@ -111,7 +130,10 @@ async function main() {
         const ext = path.extname(entry.name).toLowerCase();
         if (EXCLUDED_FILES.has(entry.name)) continue;
         if (MEDIA_EXTENSIONS.has(ext)) {
-          const relativeKey = prefix ? `${prefix}/${entry.name}` : entry.name;
+          let relativeKey = prefix ? `${prefix}/${entry.name}` : entry.name;
+          if (targetPrefix) {
+            relativeKey = `${targetPrefix}/${relativeKey}`;
+          }
           files.push({
             fullPath: path.join(dir, entry.name),
             s3Key: relativeKey,

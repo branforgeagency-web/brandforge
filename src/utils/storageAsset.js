@@ -13,7 +13,7 @@ export function getStorageBaseUrl() {
   }
   if (awsConfig.storageBucket) {
     const region = awsConfig.region || 'us-east-1';
-    return `https://${awsConfig.storageBucket}.s3.${region}.amazonaws.com`;
+    return `https://${awsConfig.storageBucket}.s3.${region}.amazonaws.com/media`;
   }
   return '';
 }
@@ -43,10 +43,13 @@ export function getStorageUrl(path) {
     return path;
   }
 
-  const cleanPath = path.startsWith('/') ? path.slice(1) : path;
+  let cleanPath = path.startsWith('/') ? path.slice(1) : path;
   const baseUrl = getStorageBaseUrl();
 
   if (baseUrl) {
+    if (baseUrl.endsWith('/media') && cleanPath.startsWith('media/')) {
+      cleanPath = cleanPath.slice(6);
+    }
     return `${baseUrl}/${cleanPath}`;
   }
 

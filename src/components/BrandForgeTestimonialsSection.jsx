@@ -1,3 +1,4 @@
+import { getStorageUrl } from "../utils/storageAsset";
 import React, { useState, useEffect } from "react";
 import KexsioCanvasBackground from "./KexsioCanvasBackground";
 
@@ -9,7 +10,7 @@ const REVIEWS = [
     rating: "5.0",
     quote:
       "BrandForge helped us translate the ThoughtSpace experience — train, work, create, grow — into a digital presence that finally feels like our space.",
-    logo: "/client-thoughtspace.png",
+    logo: getStorageUrl("/client-thoughtspace.png"),
     cardBg: "#FF1801", // Vibrant Crimson Red Card
     accentColor: "#FFFFFF", // Bold White Speech Bubble Border
   },
@@ -20,7 +21,7 @@ const REVIEWS = [
     rating: "4.9",
     quote:
       "Our brand finally looks as sharp as our print work. BrandForge gave Sonic Prints an identity that stands out and holds up across every touchpoint.",
-    logo: "/client-sonicprints.png",
+    logo: getStorageUrl("/client-sonicprints.png"),
     cardBg: "#FF1801", // Vibrant Crimson Red Card
     accentColor: "#FFFFFF", // Bold White Speech Bubble Border
   },
@@ -31,7 +32,7 @@ const REVIEWS = [
     rating: "5.0",
     quote:
       "BrandForge helped ThoughtFlows reach more students actively searching for medical coding training, with a brand presence that matches our position as a leading academy.",
-    logo: "/client-thoughtflows.png",
+    logo: getStorageUrl("/client-thoughtflows.png"),
     cardBg: "#FF1801", // Vibrant Crimson Red Card
     accentColor: "#FFFFFF", // Bold White Speech Bubble Border
   },
@@ -42,7 +43,7 @@ const REVIEWS = [
     rating: "5.0",
     quote:
       "From strategy to launch, BrandForge just got it. They turned TalentEra into a brand that stands out in a crowded hiring market.",
-    logo: "/client-talentera.png",
+    logo: getStorageUrl("/client-talentera.png"),
     cardBg: "#FF1801", // Vibrant Crimson Red Card
     accentColor: "#FFFFFF", // Bold White Speech Bubble Border
   },

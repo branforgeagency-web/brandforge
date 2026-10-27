@@ -1,3 +1,4 @@
+import { getStorageUrl } from "../utils/storageAsset";
 import React, { useState, useRef, useEffect } from "react";
 import { motion } from "framer-motion";
 
@@ -727,7 +728,7 @@ export default function BrandForgeFAQ({ theme }) {
               <motion.img
                 whileHover={{ scale: 1.03, rotate: -1 }}
                 transition={{ duration: 0.4 }}
-                src="/faq-illustration.png"
+                src={getStorageUrl("/faq-illustration.png")}
                 alt="Frequently Asked Questions illustration"
                 style={{
                   width: isMobile ? "85%" : "100%",

@@ -1,3 +1,4 @@
+import { getStorageUrl } from "../utils/storageAsset";
 import React from "react";
 import BrandForgeAnimatedFooter from "../components/BrandForgeAnimatedFooter";
 import FloatingLines from "../components/FloatingLines";
@@ -90,7 +91,7 @@ export default function ContactPage({ onOpenModal }) {
           <div className="visual-content">
             <div className="brand">
               <img
-                src="/brandforge-logo.png"
+                src={getStorageUrl("/brandforge-logo.png")}
                 alt="BrandForge Logo"
                 width="200"
                 height="45"

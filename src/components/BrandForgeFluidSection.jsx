@@ -1,3 +1,4 @@
+import { getStorageUrl } from "../utils/storageAsset";
 import React, { useEffect, useRef } from "react";
 import * as THREE from "three";
 import { motion } from "framer-motion";
@@ -163,7 +164,7 @@ export default function BrandForgeFluidSection({ _onOpenModal }) {
     const num = (v = 0) => ({ value: v });
     const vec2 = () => ({ value: new THREE.Vector2() });
 
-    const fireTexture = new THREE.TextureLoader().load("/fire-flame.png");
+    const fireTexture = new THREE.TextureLoader().load(getStorageUrl("/fire-flame.png"));
     fireTexture.wrapS = THREE.RepeatWrapping;
     fireTexture.wrapT = THREE.RepeatWrapping;
 
@@ -449,7 +450,7 @@ export default function BrandForgeFluidSection({ _onOpenModal }) {
 
       <div className="pl-logo-layer">
         <div className="pl-logo-wrap">
-          <img src="/brandforge-logo.png" alt="BrandForge Logo" loading="lazy" decoding="async" className="pl-brand-logo" />
+          <img src={getStorageUrl("/brandforge-logo.png")} alt="BrandForge Logo" loading="lazy" decoding="async" className="pl-brand-logo" />
         </div>
       </div>
 

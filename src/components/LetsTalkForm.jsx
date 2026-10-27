@@ -1,3 +1,4 @@
+import { getStorageUrl } from "../utils/storageAsset";
 "use client";
 
 import React, { useState } from "react";
@@ -126,7 +127,7 @@ export default function LetsTalkForm({
       <header className="lt-header">
         {showLogo && (
           <img
-            src="/brandforge-logo.png"
+            src={getStorageUrl("/brandforge-logo.png")}
             alt="BrandForge Logo"
             loading="lazy"
             decoding="async"

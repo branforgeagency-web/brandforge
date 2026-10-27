@@ -1,3 +1,4 @@
+import { getStorageUrl } from "../utils/storageAsset";
 "use client";
 
 import React, { useState } from "react";
@@ -80,7 +81,7 @@ export default function FloatingContactButtons({
             whileTap={{ scale: 0.92 }}
             transition={{ type: "spring", stiffness: 350, damping: 22 }}
           >
-            <img src="/rocket.png" alt="Rocket" loading="lazy" decoding="async" className="bf-rocket-img" />
+            <img src={getStorageUrl("/rocket.png")} alt="Rocket" loading="lazy" decoding="async" className="bf-rocket-img" />
 
             {/* IDLE SMALL THRUSTER FLAME EFFECT */}
             {!isLaunching && (

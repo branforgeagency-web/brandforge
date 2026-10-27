@@ -1,3 +1,4 @@
+import { getStorageUrl } from "../utils/storageAsset";
 "use client";
 
 import React, { useEffect, useRef } from "react";
@@ -1108,7 +1109,7 @@ export default function BrandForgeBannerSection({ _onOpenModal }) {
         >
           {/* CENTERED NEW 3D LOGO ASSET */}
           <img
-            src="/brandforge-logo.png"
+            src={getStorageUrl("/brandforge-logo.png")}
             alt="BrandForge 3D Logo"
             width="420"
             height="96"

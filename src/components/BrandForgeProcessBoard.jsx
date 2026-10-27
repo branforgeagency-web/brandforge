@@ -1,3 +1,4 @@
+import { getStorageUrl } from "../utils/storageAsset";
 import React, { useRef, useEffect } from "react";
 import { motion, useScroll, useMotionValueEvent } from "framer-motion";
 
@@ -548,7 +549,7 @@ export default function BrandForgeProcessBoard() {
               </div>
 
               <img
-                src="/rocket.png?v=3"
+                src={getStorageUrl("/rocket.png")}
                 alt="rocket"
                 loading="lazy"
                 decoding="async"

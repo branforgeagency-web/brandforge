@@ -1,3 +1,4 @@
+import { getStorageUrl } from "../utils/storageAsset";
 "use client";
 
 import React, { useRef } from "react";
@@ -65,7 +66,7 @@ export default function SerpGeoVisualizer() {
             <div className="montarville-image-frame">
               <motion.div style={{ y: imageY, scale: imageScale }} className="montarville-image-inner">
                 <img
-                  src="/seo-geo-floating-3d.png"
+                  src={getStorageUrl("/seo-geo-floating-3d.png")}
                   alt="SEO & GEO 3D Launch Engine"
                   className="montarville-img"
                   loading="lazy"

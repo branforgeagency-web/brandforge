@@ -1,3 +1,4 @@
+import { getStorageUrl } from "../utils/storageAsset";
 "use client";
 
 import { serviceUrl, isServicePath } from "../data/servicesData";
@@ -100,7 +101,7 @@ export default function SiteNavbar({ path, navigate, onOpenModal }) {
           style={{ cursor: "pointer", textDecoration: "none" }}
           aria-label="BrandForge Home"
         >
-          <img src="/brandforge-logo.png" alt="BrandForge Logo" width="160" height="36" decoding="async" fetchpriority="high" className="liquid-nav__logo-img" />
+          <img src={getStorageUrl("/brandforge-logo.png")} alt="BrandForge Logo" width="160" height="36" decoding="async" fetchpriority="high" className="liquid-nav__logo-img" />
         </a>
 
         {/* DESKTOP NAVIGATION RAIL */}

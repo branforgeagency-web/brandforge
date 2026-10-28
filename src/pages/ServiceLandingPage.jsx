@@ -719,13 +719,17 @@ export default function ServiceLandingPage({ slug = "seo-geo", onOpenModal, navi
   const isPaidMedia = data.slug === "paid-media" || slug === "paid-media" || slug === "ppc-company-coimbatore";
   const isWebFoundry = data.slug === "web-foundry" || slug === "web-foundry" || slug === "website-development-company-coimbatore" || slug === "web-development-company-coimbatore";
   const isViralSocial = data.slug === "viral-social" || slug === "viral-social" || slug === "social-media-marketing-company-coimbatore" || slug === "social-media-agency-coimbatore";
-  const hasIntroVideo = isSeoGeo || isPaidMedia || isWebFoundry || isViralSocial;
+  const isInfluencer = data.slug === "influencer-network" || slug === "influencer-network" || slug === "influencer-marketing-coimbatore";
+  const hasIntroVideo = isSeoGeo || isPaidMedia || isWebFoundry || isViralSocial || isInfluencer;
+  const isIntroVideoLocal = isInfluencer;
   const introVideoSrc = isPaidMedia
     ? "/paidmediabannervideo.mp4"
     : isWebFoundry
     ? "/websitebannervideo.mp4"
     : isViralSocial
     ? "/socialmediabannervideo.mp4"
+    : isInfluencer
+    ? "/influencerbannervideo.mp4"
     : "/seobannerrightvideo.mp4";
   const [introPhase, setIntroPhase] = useState("playing");
   const storyHeading = SERVICE_STORY_HEADINGS[data.slug] || {
@@ -746,6 +750,7 @@ export default function ServiceLandingPage({ slug = "seo-geo", onOpenModal, navi
       {hasIntroVideo && introPhase !== "done" && (
         <SeoVideoIntroSection
           videoSrc={introVideoSrc}
+          isLocal={isIntroVideoLocal}
           onStartFade={() => setIntroPhase("fading")}
           onComplete={() => setIntroPhase("done")}
         />

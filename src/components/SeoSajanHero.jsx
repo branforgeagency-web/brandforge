@@ -209,9 +209,44 @@ HERO_SKILLS["video-production-editing-company-coimbatore"] = HERO_SKILLS["commer
 export default function SeoSajanHero({ data, slug, onOpenModal, isActive = true }) {
   const containerRef = useRef(null);
   const taglineContainerRef = useRef(null);
-  const [, setSpotlightActive] = useState(false);
-  const spotlightPos = useRef({ x: 0, y: 0 });
   const rectRef = useRef(null);
+
+  const updateRect = useCallback(() => {
+    if (taglineContainerRef.current) {
+      rectRef.current = taglineContainerRef.current.getBoundingClientRect();
+    }
+  }, []);
+
+  const handleMouseMove = (e) => {
+    if (!taglineContainerRef.current) return;
+    if (!rectRef.current) updateRect();
+    const rect = rectRef.current;
+    if (!rect) return;
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    taglineContainerRef.current.style.setProperty("--spotlight-x", `${x}px`);
+    taglineContainerRef.current.style.setProperty("--spotlight-y", `${y}px`);
+  };
+
+  const handleMouseEnter = (e) => {
+    updateRect();
+    if (taglineContainerRef.current) {
+      if (rectRef.current) {
+        const x = e.clientX - rectRef.current.left;
+        const y = e.clientY - rectRef.current.top;
+        taglineContainerRef.current.style.setProperty("--spotlight-x", `${x}px`);
+        taglineContainerRef.current.style.setProperty("--spotlight-y", `${y}px`);
+      }
+      taglineContainerRef.current.style.setProperty("--spotlight-size", "75px");
+    }
+  };
+
+  const handleMouseLeave = () => {
+    if (taglineContainerRef.current) {
+      taglineContainerRef.current.style.setProperty("--spotlight-size", "0px");
+    }
+  };
+
 
   const currentSlug = data?.slug || slug || "seo-geo";
   const isSeo =
@@ -241,20 +276,23 @@ export default function SeoSajanHero({ data, slug, onOpenModal, isActive = true 
     data?.slug === "viral-social" ||
     data?.slug === "social-media-marketing-company-coimbatore" ||
     data?.slug === "social-media-agency-coimbatore";
-  const hasRightVideo = isSeo || isPaidMedia || isWebFoundry || isViralSocial;
+  const isInfluencer =
+    currentSlug === "influencer-network" ||
+    currentSlug === "influencer-marketing-coimbatore" ||
+    data?.slug === "influencer-network" ||
+    data?.slug === "influencer-marketing-coimbatore";
+
+  const hasRightVideo = isSeo || isPaidMedia || isWebFoundry || isViralSocial || isInfluencer;
+  const isBannerVideoLocal = isInfluencer;
   const bannerVideoSrc = isPaidMedia
     ? "/paidmediabannervideo.mp4"
     : isWebFoundry
     ? "/websitebannervideo.mp4"
     : isViralSocial
     ? "/socialmediabannervideo.mp4"
+    : isInfluencer
+    ? "/influencerbannervideo.mp4"
     : "/seobannerrightvideo.mp4";
-
-  const updateRect = useCallback(() => {
-    if (taglineContainerRef.current) {
-      rectRef.current = taglineContainerRef.current.getBoundingClientRect();
-    }
-  }, []);
 
   useEffect(() => {
     updateRect();
@@ -270,30 +308,6 @@ export default function SeoSajanHero({ data, slug, onOpenModal, isActive = true 
       }
     };
   }, [updateRect]);
-
-  const handleMouseMove = (e) => {
-    if (!taglineContainerRef.current || !rectRef.current) return;
-    const x = e.clientX - rectRef.current.left;
-    const y = e.clientY - rectRef.current.top;
-    spotlightPos.current = { x, y };
-    taglineContainerRef.current.style.setProperty("--spotlight-x", `${x}px`);
-    taglineContainerRef.current.style.setProperty("--spotlight-y", `${y}px`);
-  };
-
-  const handleMouseEnter = () => {
-    updateRect();
-    setSpotlightActive(true);
-    if (taglineContainerRef.current) {
-      taglineContainerRef.current.style.setProperty("--spotlight-size", "140px");
-    }
-  };
-
-  const handleMouseLeave = () => {
-    setSpotlightActive(false);
-    if (taglineContainerRef.current) {
-      taglineContainerRef.current.style.setProperty("--spotlight-size", "0px");
-    }
-  };
 
   useEffect(() => {
     const letters = containerRef.current?.querySelectorAll(".bf-portal-letter");
@@ -336,10 +350,6 @@ export default function SeoSajanHero({ data, slug, onOpenModal, isActive = true 
   const taglineBase = Array.isArray(data?.subtitle)
     ? data.subtitle[0]
     : data?.subtitle || "Traditional agencies rely on generic templates and unverified vanity metrics. BrandForge engineers high-performance architectures that command market authority.";
-
-  const taglineHidden = Array.isArray(data?.subtitle) && data.subtitle[1]
-    ? data.subtitle[1]
-    : data?.whyChooseUs?.description || data?.metaDescription || "We combine on-ground market knowledge with precision engineering to scale revenue, not just vanity impressions.";
 
   const primaryBtnText = data?.heroButtonText
     ? data.heroButtonText.replace("→", "").trim().toUpperCase()
@@ -447,7 +457,7 @@ export default function SeoSajanHero({ data, slug, onOpenModal, isActive = true 
         }
 
         .bf-hero-main-row.has-right-video .bf-sajan-tagline-base,
-        .bf-hero-main-row.has-right-video .bf-sajan-tagline-hidden {
+        .bf-hero-main-row.has-right-video .bf-sajan-tagline-inverted {
           font-size: clamp(13.5px, 1.05vw, 15.5px);
           line-height: 1.65;
         }
@@ -528,53 +538,45 @@ export default function SeoSajanHero({ data, slug, onOpenModal, isActive = true 
           color: #FFFFFF;
         }
 
-        /* Dual-Layer Cursor Spotlight Tagline */
         .bf-sajan-tagline-wrap {
           position: relative;
           max-width: 760px;
           margin-bottom: clamp(30px, 4vw, 44px);
-          cursor: crosshair;
           --spotlight-size: 0px;
           --spotlight-x: 0px;
           --spotlight-y: 0px;
+          cursor: crosshair;
         }
 
         .bf-sajan-tagline-base {
           font-family: "Plus Jakarta Sans", sans-serif;
           font-size: clamp(14px, 1.1vw, 16.5px);
           line-height: 1.62;
-          color: rgba(250, 250, 252, 0.68);
-          font-weight: 450;
+          color: rgba(250, 250, 252, 0.72);
+          font-weight: 400;
           margin: 0;
-          user-select: none;
         }
 
-        .bf-sajan-tagline-hidden {
+        /* Inverted Lens: White circle with Black text */
+        .bf-sajan-tagline-spotlight {
           position: absolute;
           inset: 0;
+          background: #FFFFFF;
+          clip-path: circle(var(--spotlight-size) at var(--spotlight-x) var(--spotlight-y));
+          -webkit-clip-path: circle(var(--spotlight-size) at var(--spotlight-x) var(--spotlight-y));
+          transition: clip-path 0.04s linear, -webkit-clip-path 0.04s linear;
+          pointer-events: none;
+          user-select: none;
+          overflow: hidden;
+        }
+
+        .bf-sajan-tagline-inverted {
           font-family: "Plus Jakarta Sans", sans-serif;
           font-size: clamp(14px, 1.1vw, 16.5px);
           line-height: 1.62;
-          color: #FFFFFF;
+          color: #000000;
           font-weight: 600;
           margin: 0;
-          user-select: none;
-          pointer-events: none;
-          clip-path: circle(var(--spotlight-size) at var(--spotlight-x) var(--spotlight-y));
-          -webkit-clip-path: circle(var(--spotlight-size) at var(--spotlight-x) var(--spotlight-y));
-          transition: clip-path 0.05s linear;
-        }
-
-        .bf-sajan-spotlight-hint {
-          display: inline-flex;
-          align-items: center;
-          gap: 6px;
-          margin-top: 10px;
-          font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-          font-size: 0.68rem;
-          color: rgba(255, 255, 255, 0.45);
-          letter-spacing: 0.04em;
-          text-transform: uppercase;
         }
 
         /* Two-Button CTA Row */
@@ -792,7 +794,7 @@ export default function SeoSajanHero({ data, slug, onOpenModal, isActive = true 
             </h2>
           </div>
 
-          {/* DUAL-LAYER CURSOR SPOTLIGHT TAGLINE */}
+          {/* INVERTED SPOTLIGHT TAGLINE */}
           <div
             ref={taglineContainerRef}
             className="bf-sajan-tagline-wrap"
@@ -800,15 +802,13 @@ export default function SeoSajanHero({ data, slug, onOpenModal, isActive = true 
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
           >
+            {/* BASE LAYER: Light text on dark background */}
             <p className="bf-sajan-tagline-base">{taglineBase}</p>
 
-            <p className="bf-sajan-tagline-hidden" aria-hidden="true">
-              {taglineHidden}
-            </p>
-
-            <span className="bf-sajan-spotlight-hint">
-              <span>[ Interactive ] Hover cursor across text to reveal deeper strategy layer</span>
-            </span>
+            {/* SPOTLIGHT LENS: White circle with black text */}
+            <div className="bf-sajan-tagline-spotlight" aria-hidden="true">
+              <p className="bf-sajan-tagline-inverted">{taglineBase}</p>
+            </div>
           </div>
 
           {/* TWO-BUTTON CTA ROW */}
@@ -834,7 +834,7 @@ export default function SeoSajanHero({ data, slug, onOpenModal, isActive = true 
         {/* RIGHT-SIDE VIDEO COLUMN */}
         {hasRightVideo && (
           <div className="bf-hero-right-col">
-            <SeoBannerRightVideo videoSrc={bannerVideoSrc} isActive={isActive} />
+            <SeoBannerRightVideo videoSrc={bannerVideoSrc} isLocal={isBannerVideoLocal} isActive={isActive} />
           </div>
         )}
       </div>

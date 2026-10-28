@@ -407,10 +407,9 @@ export default function SeoMontarvilleDeliverables({ data, onOpenModal }) {
 
       ScrollTrigger.create({
         trigger: section,
-        start: "top 80%",
+        start: "top 88%",
+        once: true,
         onEnter: playAnimation,
-        onEnterBack: playAnimation,
-        onLeaveBack: resetAnimation,
       });
     }, sectionRef);
 

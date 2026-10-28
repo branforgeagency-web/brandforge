@@ -3,7 +3,7 @@
 import React, { useRef, useState, useEffect, useCallback } from "react";
 import { getStorageUrl } from "../utils/storageAsset";
 
-export default function SeoBannerRightVideo({ videoSrc = "/seobannerrightvideo.mp4", isActive = true }) {
+export default function SeoBannerRightVideo({ videoSrc = "/seobannerrightvideo.mp4", isLocal = false, isActive = true }) {
   const videoRef = useRef(null);
   const [opacity, setOpacity] = useState(isActive ? 1 : 0);
   const isFadingOutRef = useRef(false);
@@ -176,7 +176,7 @@ export default function SeoBannerRightVideo({ videoSrc = "/seobannerrightvideo.m
       <div className="bf-seo-video-chassis">
         <video
           ref={videoRef}
-          src={getStorageUrl(videoSrc)}
+          src={isLocal ? videoSrc : getStorageUrl(videoSrc)}
           autoPlay={isActive}
           muted
           playsInline

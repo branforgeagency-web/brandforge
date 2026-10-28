@@ -19,7 +19,7 @@ import { getStorageUrl } from "../utils/storageAsset";
  * ─────────────────────────────────────────────────────────────────────────────
  */
 
-export default function SeoVideoIntroSection({ videoSrc = "/seobannerrightvideo.mp4", onStartFade, onComplete }) {
+export default function SeoVideoIntroSection({ videoSrc = "/seobannerrightvideo.mp4", isLocal = false, onStartFade, onComplete }) {
   const videoRef = useRef(null);
   const [isDone, setIsDone] = useState(false);
   const [isExiting, setIsExiting] = useState(false);
@@ -155,6 +155,13 @@ export default function SeoVideoIntroSection({ videoSrc = "/seobannerrightvideo.
     video.volume = 0;
     video.playbackRate = 1.3;
     const playPromise = video.play();
+    // Failsafe timer so screen never stays locked if video playback stalls
+    const failsafeTimer = setTimeout(() => {
+      if (!hasEndedRef.current) {
+        handleComplete();
+      }
+    }, 14000);
+
     if (playPromise !== undefined) {
       playPromise.catch(() => {
         if (!hasEndedRef.current && video) {
@@ -263,7 +270,7 @@ export default function SeoVideoIntroSection({ videoSrc = "/seobannerrightvideo.
       <div className="bf-intro-video-chassis">
         <video
           ref={videoRef}
-          src={getStorageUrl(videoSrc)}
+          src={isLocal ? videoSrc : getStorageUrl(videoSrc)}
           autoPlay
           muted
           defaultMuted
@@ -291,6 +298,7 @@ export default function SeoVideoIntroSection({ videoSrc = "/seobannerrightvideo.
             }
           }}
           onEnded={handleComplete}
+          onError={handleComplete}
         />
         <div className="bf-intro-edge-blur" aria-hidden="true" />
       </div>

@@ -115,6 +115,7 @@ export default function SeoSajanServicesDial({ data, onOpenModal: _onOpenModal }
   const containerRef = useRef(null);
   const shellRef = useRef(null);
   const pinRef = useRef(null);
+  const contentRef = useRef(null);
   const dialwrapRef = useRef(null);
   const dialStripRef = useRef(null);
   const notchesRef = useRef(null);
@@ -353,7 +354,9 @@ export default function SeoSajanServicesDial({ data, onOpenModal: _onOpenModal }
     switchZone(0);
 
     const updatePhysics = (progress) => {
-      const t = progress * Math.max(0, nonPadCount - 1) + 3;
+      // Allocate 0.00 to 0.82 for smooth full tuning through all 4 zones
+      const dialProgress = Math.min(1, progress / 0.82);
+      const t = dialProgress * Math.max(0, nonPadCount - 1) + 3;
       const xPos = halfWidth - (t + 0.5) * 220;
 
       gsap.set([stripEl, notchesEl], { x: xPos });
@@ -390,6 +393,19 @@ export default function SeoSajanServicesDial({ data, onOpenModal: _onOpenModal }
           switchZone(centerCell.zoneIdx);
         }
       }
+
+      // Smooth exit transition into next section (progress 0.86 to 1.0)
+      // Zone 4 remains settled between 0.82 and 0.86 for comfortable reading
+      // Then the stage gracefully dissolves and elevates upward
+      const exitProgress = Math.max(0, Math.min(1, (progress - 0.86) / 0.14));
+      if (contentRef.current) {
+        const exitOpacity = 1 - exitProgress;
+        const exitY = -Math.round(exitProgress * 44);
+        const exitScale = 1 - exitProgress * 0.03;
+        contentRef.current.style.opacity = exitOpacity.toFixed(3);
+        contentRef.current.style.transform = `translate3d(0, ${exitY}px, 0) scale(${exitScale.toFixed(3)})`;
+        contentRef.current.style.pointerEvents = exitProgress > 0.85 ? "none" : "auto";
+      }
     };
 
     updatePhysics(0);
@@ -401,7 +417,7 @@ export default function SeoSajanServicesDial({ data, onOpenModal: _onOpenModal }
         end: () => `+=${Math.round(window.innerHeight * 5.2)}`,
         pin: pinEl,
         pinSpacing: true,
-        scrub: 1.1,
+        scrub: 0.8,
         anticipatePin: 1,
         onUpdate: (self) => updatePhysics(self.progress),
         onRefresh: (self) => {
@@ -409,7 +425,7 @@ export default function SeoSajanServicesDial({ data, onOpenModal: _onOpenModal }
           updatePhysics(self ? self.progress : 0);
         },
       });
-    }, shellRef.current);
+    }, containerRef.current);
 
     ScrollTrigger.refresh();
 
@@ -435,15 +451,24 @@ export default function SeoSajanServicesDial({ data, onOpenModal: _onOpenModal }
 
         .bf-dial-pin-container {
           min-height: 100vh;
-          display: flex;
-          flex-direction: column;
-          justify-content: space-between;
-          padding: clamp(60px, 8vw, 90px) 5% clamp(40px, 6vw, 60px);
+          height: 100vh;
           position: relative;
           overflow: hidden;
           background: #000000;
           border-top: 1px solid rgba(255, 255, 255, 0.08);
           border-bottom: none;
+        }
+
+        .bf-dial-inner-stage {
+          width: 100%;
+          height: 100%;
+          min-height: 100vh;
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+          padding: clamp(60px, 8vw, 90px) 5% clamp(40px, 6vw, 60px);
+          position: relative;
+          will-change: transform, opacity;
         }
 
         /* Top Meta Row */
@@ -774,75 +799,77 @@ export default function SeoSajanServicesDial({ data, onOpenModal: _onOpenModal }
         /* DESKTOP PINNED ANALOG FREQUENCY DIAL */
         <div ref={shellRef} className="bf-dial-shell">
           <div ref={pinRef} className="bf-dial-pin-container">
-            {/* TOP ROW: HEADLINE & CURRENT LEDE */}
-            <div className="bf-dial-top">
-              <p className="bf-dial-metalabel">Core Capabilities</p>
+            <div ref={contentRef} className="bf-dial-inner-stage">
+              {/* TOP ROW: HEADLINE & CURRENT LEDE */}
+              <div className="bf-dial-top">
+                <p className="bf-dial-metalabel">Core Capabilities</p>
 
-              <div className="bf-dial-heading-row">
-                <h2 ref={headlineRef} className="bf-dial-word" />
-                <p ref={ledeRef} className="bf-dial-lede" />
+                <div className="bf-dial-heading-row">
+                  <h2 ref={headlineRef} className="bf-dial-word" />
+                  <p ref={ledeRef} className="bf-dial-lede" />
+                </div>
               </div>
-            </div>
 
-            {/* CENTER HORIZONTAL FREQUENCY TUNER GAUGE */}
-            <div ref={dialwrapRef} className="bf-dial-wrap">
-              <span className="bf-dial-rule-top" aria-hidden="true" />
-              <span className="bf-dial-rule-bot" aria-hidden="true" />
+              {/* CENTER HORIZONTAL FREQUENCY TUNER GAUGE */}
+              <div ref={dialwrapRef} className="bf-dial-wrap">
+                <span className="bf-dial-rule-top" aria-hidden="true" />
+                <span className="bf-dial-rule-bot" aria-hidden="true" />
 
-              <div ref={dialStripRef} className="bf-dial-strip" />
-              <div ref={notchesRef} className="bf-dial-notches" aria-hidden="true" />
+                <div ref={dialStripRef} className="bf-dial-strip" />
+                <div ref={notchesRef} className="bf-dial-notches" aria-hidden="true" />
 
-              {/* CENTER FIXED RETICLE NEEDLE */}
-              <div className="bf-dial-needle" aria-hidden="true">
-                <svg
-                  className="bf-needle-star-top"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M12 0C12 0 14.5 9.5 24 12C14.5 14.5 12 24 12 24C12 24 9.5 14.5 0 12C9.5 9.5 12 0 12 0Z"
-                    stroke="currentColor"
-                    strokeWidth="1.5"
-                    strokeLinejoin="round"
+                {/* CENTER FIXED RETICLE NEEDLE */}
+                <div className="bf-dial-needle" aria-hidden="true">
+                  <svg
+                    className="bf-needle-star-top"
+                    viewBox="0 0 24 24"
                     fill="none"
-                  />
-                </svg>
-                <svg
-                  className="bf-needle-star-bot"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M12 0C12 0 14.5 9.5 24 12C14.5 14.5 12 24 12 24C12 24 9.5 14.5 0 12C9.5 9.5 12 0 12 0Z"
-                    stroke="currentColor"
-                    strokeWidth="1.5"
-                    strokeLinejoin="round"
-                    fill="none"
-                  />
-                </svg>
-              </div>
-            </div>
-
-            {/* BOTTOM ZONES SEGMENT SELECTOR */}
-            <div className="bf-dial-zones-container">
-              <div className="bf-dial-zones-grid">
-                <div ref={indicatorRef} className="bf-dial-indicator-bar" />
-                {dialFaces.map((face, idx) => (
-                  <button
-                    key={idx}
-                    type="button"
-                    ref={(el) => (zoneRefs.current[idx] = el)}
-                    className={`bf-dial-zone-btn ${
-                      activeZone === idx ? "is-active" : ""
-                    }`}
-                    onClick={() => switchZone(idx)}
+                    xmlns="http://www.w3.org/2000/svg"
                   >
-                    <span className="bf-dial-zone-num">{face.num}</span>
-                    <span>{face.rail}</span>
-                  </button>
-                ))}
+                    <path
+                      d="M12 0C12 0 14.5 9.5 24 12C14.5 14.5 12 24 12 24C12 24 9.5 14.5 0 12C9.5 9.5 12 0 12 0Z"
+                      stroke="currentColor"
+                      strokeWidth="1.5"
+                      strokeLinejoin="round"
+                      fill="none"
+                    />
+                  </svg>
+                  <svg
+                    className="bf-needle-star-bot"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M12 0C12 0 14.5 9.5 24 12C14.5 14.5 12 24 12 24C12 24 9.5 14.5 0 12C9.5 9.5 12 0 12 0Z"
+                      stroke="currentColor"
+                      strokeWidth="1.5"
+                      strokeLinejoin="round"
+                      fill="none"
+                    />
+                  </svg>
+                </div>
+              </div>
+
+              {/* BOTTOM ZONES SEGMENT SELECTOR */}
+              <div className="bf-dial-zones-container">
+                <div className="bf-dial-zones-grid">
+                  <div ref={indicatorRef} className="bf-dial-indicator-bar" />
+                  {dialFaces.map((face, idx) => (
+                    <button
+                      key={idx}
+                      type="button"
+                      ref={(el) => (zoneRefs.current[idx] = el)}
+                      className={`bf-dial-zone-btn ${
+                        activeZone === idx ? "is-active" : ""
+                      }`}
+                      onClick={() => switchZone(idx)}
+                    >
+                      <span className="bf-dial-zone-num">{face.num}</span>
+                      <span>{face.rail}</span>
+                    </button>
+                  ))}
+                </div>
               </div>
             </div>
           </div>

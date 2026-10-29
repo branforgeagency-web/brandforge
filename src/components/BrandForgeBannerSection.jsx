@@ -4,7 +4,7 @@ import { getStorageUrl } from "../utils/storageAsset";
 import React, { useEffect, useRef } from "react";
 import * as THREE from "three";
 import { EffectComposer, RenderPass, EffectPass, BloomEffect, SMAAEffect, SMAAPreset } from "postprocessing";
-import { motion } from "framer-motion";
+import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 
 
 /* ───────────────────────────────────────────────────────────────────────────
@@ -1024,6 +1024,46 @@ class App {
 export default function BrandForgeBannerSection({ _onOpenModal }) {
   const hyperspeedRef = useRef(null);
   const appRef = useRef(null);
+  const sectionRef = useRef(null);
+
+  // Dynamic interactive mouse cursor motion values
+  const mouseX = useMotionValue(0);
+  const mouseY = useMotionValue(0);
+
+  // Silky smooth spring damping physics
+  const springConfig = { damping: 24, stiffness: 160, mass: 0.6 };
+  const smoothX = useSpring(mouseX, springConfig);
+  const smoothY = useSpring(mouseY, springConfig);
+
+  // 3D Tilt angles (in degrees)
+  const rotateX = useTransform(smoothY, [-0.5, 0.5], [14, -14]);
+  const rotateY = useTransform(smoothX, [-0.5, 0.5], [-18, 18]);
+
+  // Subtle parallax translation
+  const translateX = useTransform(smoothX, [-0.5, 0.5], [-26, 26]);
+  const translateY = useTransform(smoothY, [-0.5, 0.5], [-18, 18]);
+
+  // Reactive shadow displacement in opposite direction of mouse
+  const shadowX = useTransform(smoothX, [-0.5, 0.5], [16, -16]);
+  const shadowY = useTransform(smoothY, [-0.5, 0.5], [24, 6]);
+  const logoFilter = useTransform(
+    [shadowX, shadowY],
+    ([sx, sy]) => `drop-shadow(${sx}px ${sy}px 26px rgba(0, 0, 0, 0.75))`
+  );
+
+  const handleMouseMove = (e) => {
+    if (!sectionRef.current) return;
+    const rect = sectionRef.current.getBoundingClientRect();
+    const normX = (e.clientX - rect.left) / rect.width - 0.5;
+    const normY = (e.clientY - rect.top) / rect.height - 0.5;
+    mouseX.set(normX);
+    mouseY.set(normY);
+  };
+
+  const handleMouseLeave = () => {
+    mouseX.set(0);
+    mouseY.set(0);
+  };
 
   useEffect(() => {
     if (appRef.current) {
@@ -1089,7 +1129,12 @@ export default function BrandForgeBannerSection({ _onOpenModal }) {
   }, []);
 
   return (
-    <section className="bf-banner-root">
+    <section
+      ref={sectionRef}
+      className="bf-banner-root"
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
+    >
       <style>{styles}</style>
 
       {/* 3D HYPERSPEED LIGHT TRAILS CANVAS */}
@@ -1107,16 +1152,43 @@ export default function BrandForgeBannerSection({ _onOpenModal }) {
           viewport={{ once: true }}
           transition={{ duration: 1.0, ease: [0.16, 1, 0.3, 1] }}
         >
-          {/* CENTERED NEW 3D LOGO ASSET */}
-          <img
-            src={getStorageUrl("/brandforge-logo.png")}
-            alt="BrandForge 3D Logo"
-            width="420"
-            height="96"
-            fetchPriority="high"
-            decoding="async"
-            className="bf-banner-logo"
-          />
+          {/* INTERACTIVE 3D TILT & LIGHT-TRACKING WRAPPER */}
+          <motion.div
+            className="bf-banner-logo-wrap"
+            style={{
+              rotateX,
+              rotateY,
+              x: translateX,
+              y: translateY,
+              transformStyle: "preserve-3d",
+            }}
+            whileHover={{ scale: 1.06 }}
+            whileTap={{ scale: 0.98 }}
+            animate={{
+              y: [0, -6, 0],
+            }}
+            transition={{
+              y: {
+                duration: 4.8,
+                repeat: Infinity,
+                ease: "easeInOut",
+              },
+            }}
+          >
+            {/* CENTERED NEW 3D LOGO ASSET */}
+            <motion.img
+              src={getStorageUrl("/brandforge-logo.png")}
+              alt="BrandForge 3D Logo"
+              width="420"
+              height="96"
+              fetchPriority="high"
+              decoding="async"
+              className="bf-banner-logo"
+              style={{
+                filter: logoFilter,
+              }}
+            />
+          </motion.div>
         </motion.div>
       </div>
     </section>
@@ -1177,15 +1249,37 @@ const styles = `
     justify-content: center;
     text-align: center;
     max-width: min(880px, 92vw);
+    perspective: 1200px;
+    transform-style: preserve-3d;
+  }
+
+  .bf-banner-logo-wrap {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transform-style: preserve-3d;
+    background: transparent !important;
+    border: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+    will-change: transform, filter;
   }
 
   .bf-banner-logo {
+    position: relative;
+    z-index: 1;
     height: auto;
     max-height: clamp(65px, 10vw, 130px);
     width: 100%;
     max-width: 720px;
     object-fit: contain;
-    filter: drop-shadow(0 15px 35px rgba(0, 0, 0, 0.6));
+    user-select: none;
+    -webkit-user-drag: none;
+    pointer-events: auto;
+    display: block;
+    background: transparent !important;
   }
 
   .bf-banner-badge {

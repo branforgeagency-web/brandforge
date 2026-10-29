@@ -49,7 +49,8 @@ export function getStorageUrl(path) {
   if (
     cleanPath === 'influencerbannervideo.mp4' ||
     cleanPath.startsWith('influencerbannervideo.') ||
-    cleanPath.endsWith('-logo-transparent.png')
+    cleanPath.endsWith('-logo-transparent.png') ||
+    cleanPath === 'brandforge-logo.png'
   ) {
     return `/${cleanPath}`;
   }

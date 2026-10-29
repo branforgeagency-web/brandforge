@@ -4,6 +4,7 @@ import { getStorageUrl } from "../utils/storageAsset";
 import { serviceUrl, isServicePath } from "../data/servicesData";
 import React, { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import ServicesMegaMenu from "./ServicesMegaMenu";
 import {
   Home,
   Users,
@@ -28,18 +29,25 @@ const NAVIGATION_ITEMS = [
 ];
 
 const MOBILE_SERVICES = [
-  { label: "SEO & GEO Supremacy", slug: "seo-geo" },
-  { label: "Website Development", slug: "web-foundry" },
-  { label: "Paid Media Scaling", slug: "paid-media" },
-  { label: "Social Media Dominance", slug: "viral-social" },
-  { label: "Branding & Identity", slug: "brand-anvil" },
-  { label: "CRO & Conversions", slug: "cro-revenue" },
+  { label: "01 · SEO & GEO Supremacy", slug: "seo-geo" },
+  { label: "02 · Paid Media Scaling", slug: "paid-media" },
+  { label: "03 · Website Development", slug: "web-foundry" },
+  { label: "04 · Social Media Dominance", slug: "viral-social" },
+  { label: "05 · Influencer Marketing", slug: "influencer-network" },
+  { label: "06 · Content Marketing", slug: "content-smithy" },
+  { label: "07 · Email Marketing", slug: "inbox-edge" },
+  { label: "08 · Brand Positioning", slug: "brand-anvil" },
+  { label: "09 · Brand Identity Design", slug: "visual-id" },
+  { label: "10 · Commercial Video", slug: "commercial-video" },
+  { label: "11 · CRO Revenue Lift", slug: "cro-revenue" },
+  { label: "12 · Reputation Management", slug: "reputation-shield" },
 ];
 
 export default function SiteNavbar({ path, navigate, onOpenModal }) {
   const [scrolledPastHero, setScrolledPastHero] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
+  const [servicesMegaOpen, setServicesMegaOpen] = useState(false);
 
   const isLightLandingPage = isServicePath(path);
 
@@ -61,6 +69,7 @@ export default function SiteNavbar({ path, navigate, onOpenModal }) {
   useEffect(() => {
     setMenuOpen(false);
     setMobileServicesOpen(false);
+    setServicesMegaOpen(false);
   }, [path]);
 
   const go = (to) => {
@@ -81,169 +90,234 @@ export default function SiteNavbar({ path, navigate, onOpenModal }) {
     }
     setMenuOpen(false);
     setMobileServicesOpen(false);
+    setServicesMegaOpen(false);
   };
 
   return (
-    <header className={`liquid-nav__root ${scrolledPastHero && !isLightLandingPage ? "is-hidden" : ""}`}>
-      <style>{styles}</style>
+    <>
+      <header className={`liquid-nav__root ${scrolledPastHero && !isLightLandingPage && !servicesMegaOpen ? "is-hidden" : ""}`}>
+        <style>{styles}</style>
 
-      <nav className="liquid-nav__bar" aria-label="Primary navigation">
-        {/* BRANDFORGE LOGO */}
-        <a
-          href="/"
-          className="liquid-nav__brand-logo"
-          onClick={(e) => {
-            if (!e.ctrlKey && !e.metaKey) {
-              e.preventDefault();
-              go("/");
-            }
-          }}
-          style={{ cursor: "pointer", textDecoration: "none" }}
-          aria-label="BrandForge Home"
-        >
-          <img src={getStorageUrl("/brandforge-logo.png")} alt="BrandForge Logo" width="160" height="36" decoding="async" fetchPriority="high" className="liquid-nav__logo-img" />
-        </a>
-
-        {/* DESKTOP NAVIGATION RAIL */}
-        <div className="liquid-nav__rail">
-          {NAVIGATION_ITEMS.map(({ label, to, icon: Icon }) => {
-            const isActive = path === to || (label === "Services" && isServicePath(path));
-
-            return (
-              <a
-                key={label}
-                href={to}
-                className={`liquid-nav__item${isActive ? " is-active" : ""}`}
-                aria-current={isActive ? "page" : undefined}
-                onClick={(e) => {
-                  if (!e.ctrlKey && !e.metaKey) {
-                    e.preventDefault();
-                    go(to);
-                  }
-                }}
-              >
-                <Icon aria-hidden="true" size={15} />
-                <span>{label}</span>
-              </a>
-            );
-          })}
-        </div>
-
-        {/* CTA ACTION & MOBILE HAMBURGER BUTTON */}
-        <div className="liquid-nav__actions">
-          <button type="button" className="liquid-nav__cta" onClick={onOpenModal}>
-            <span>LET'S TALK</span>
-            <ArrowUpRight size={15} />
-          </button>
-
-          <button
-            type="button"
-            className="liquid-nav__burger"
-            onClick={() => setMenuOpen((o) => !o)}
-            aria-label={menuOpen ? "Close menu" : "Open menu"}
+        <nav className="liquid-nav__bar" aria-label="Primary navigation">
+          {/* BRANDFORGE LOGO */}
+          <a
+            href="/"
+            className="liquid-nav__brand-logo"
+            onClick={(e) => {
+              if (!e.ctrlKey && !e.metaKey) {
+                e.preventDefault();
+                setServicesMegaOpen(false);
+                go("/");
+              }
+            }}
+            style={{ cursor: "pointer", textDecoration: "none" }}
+            aria-label="BrandForge Home"
           >
-            {menuOpen ? <X size={22} /> : <Menu size={22} />}
-          </button>
-        </div>
-      </nav>
+            <img src={getStorageUrl("/brandforge-logo.png")} alt="BrandForge Logo" width="160" height="36" decoding="async" fetchPriority="high" className="liquid-nav__logo-img" />
+          </a>
 
-      {/* MOBILE OVERLAY DRAWER */}
-      <AnimatePresence>
-        {menuOpen && (
-          <motion.div
-            className="liquid-nav__mobile"
-            initial={{ opacity: 0, y: -12, scale: 0.98 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: -12, scale: 0.98 }}
-            transition={{ duration: 0.25, ease: "easeOut" }}
-          >
-            {NAVIGATION_ITEMS.map(({ label, to, icon: Icon, isServices }) => (
-              <React.Fragment key={label}>
+          {/* DESKTOP NAVIGATION RAIL */}
+          <div className="liquid-nav__rail">
+            {NAVIGATION_ITEMS.map(({ label, to, icon: Icon, isServices }) => {
+              const isServicesBtn = Boolean(isServices);
+              const isActive =
+                path === to ||
+                (isServicesBtn && (isServicePath(path) || servicesMegaOpen));
+
+              return (
                 <a
+                  key={label}
                   href={to}
-                  className={`liquid-nav__mobile-link ${path === to ? "is-active" : ""}`}
+                  className={`liquid-nav__item${isActive ? " is-active" : ""}`}
+                  aria-current={isActive ? "page" : undefined}
+                  aria-expanded={isServicesBtn ? servicesMegaOpen : undefined}
                   onClick={(e) => {
-                    if (isServices) {
+                    if (isServicesBtn) {
                       e.preventDefault();
-                      setMobileServicesOpen((prev) => !prev);
+                      setServicesMegaOpen((prev) => !prev);
                     } else {
                       if (!e.ctrlKey && !e.metaKey) {
                         e.preventDefault();
+                        setServicesMegaOpen(false);
                         go(to);
                       }
                     }
                   }}
                 >
-                  <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
-                    <Icon size={18} className="mob-icon" />
-                    <span>{label}</span>
-                  </div>
-                  {isServices ? (
+                  <Icon aria-hidden="true" size={15} />
+                  <span>{label}</span>
+                  {isServicesBtn && (
                     <ChevronDown
-                      size={18}
+                      size={13}
                       style={{
-                        transform: mobileServicesOpen ? "rotate(180deg)" : "rotate(0deg)",
-                        transition: "transform 0.25s ease",
+                        marginLeft: "-2px",
+                        transform: servicesMegaOpen ? "rotate(180deg)" : "rotate(0deg)",
+                        transition: "transform 0.22s ease",
+                        opacity: 0.75,
                       }}
                     />
-                  ) : (
-                    <ArrowUpRight size={15} style={{ opacity: 0.5 }} />
                   )}
                 </a>
+              );
+            })}
+          </div>
 
-                {/* NESTED MOBILE SERVICES SUBMENU */}
-                {isServices && mobileServicesOpen && (
-                  <div className="liquid-nav__mobile-sub">
-                    <a
-                      href="/#stacked-services"
-                      className="sub-item view-all"
-                      onClick={(e) => {
+          {/* CTA ACTION & MOBILE HAMBURGER BUTTON */}
+          <div className="liquid-nav__actions">
+            <button
+              type="button"
+              className="liquid-nav__cta"
+              onClick={() => {
+                setServicesMegaOpen(false);
+                onOpenModal();
+              }}
+            >
+              <span>LET'S TALK</span>
+              <ArrowUpRight size={15} />
+            </button>
+
+            <button
+              type="button"
+              className="liquid-nav__burger"
+              onClick={() => {
+                setServicesMegaOpen(false);
+                setMenuOpen((o) => !o);
+              }}
+              aria-label={menuOpen ? "Close menu" : "Open menu"}
+            >
+              {menuOpen ? <X size={22} /> : <Menu size={22} />}
+            </button>
+          </div>
+        </nav>
+
+        {/* MOBILE OVERLAY DRAWER */}
+        <AnimatePresence>
+          {menuOpen && (
+            <motion.div
+              className="liquid-nav__mobile"
+              initial={{ opacity: 0, y: -12, scale: 0.98 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={{ opacity: 0, y: -12, scale: 0.98 }}
+              transition={{ duration: 0.25, ease: "easeOut" }}
+            >
+              {NAVIGATION_ITEMS.map(({ label, to, icon: Icon, isServices }) => (
+                <React.Fragment key={label}>
+                  <a
+                    href={to}
+                    className={`liquid-nav__mobile-link ${path === to ? "is-active" : ""}`}
+                    onClick={(e) => {
+                      if (isServices) {
+                        e.preventDefault();
+                        setMobileServicesOpen((prev) => !prev);
+                      } else {
                         if (!e.ctrlKey && !e.metaKey) {
                           e.preventDefault();
-                          go("/#stacked-services");
+                          go(to);
                         }
-                      }}
-                    >
-                      ⚡ View All 12 Services
-                    </a>
-                    {MOBILE_SERVICES.map((srv) => (
-                      <a
-                        key={srv.slug}
-                        href={serviceUrl(srv.slug)}
-                        className={`sub-item ${path === serviceUrl(srv.slug) ? "is-active" : ""}`}
-                        onClick={(e) => {
-                          if (!e.ctrlKey && !e.metaKey) {
-                            e.preventDefault();
-                            go(serviceUrl(srv.slug));
-                          }
+                      }
+                    }}
+                  >
+                    <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
+                      <Icon size={18} className="mob-icon" />
+                      <span>{label}</span>
+                    </div>
+                    {isServices ? (
+                      <ChevronDown
+                        size={18}
+                        style={{
+                          transform: mobileServicesOpen ? "rotate(180deg)" : "rotate(0deg)",
+                          transition: "transform 0.25s ease",
+                        }}
+                      />
+                    ) : (
+                      <ArrowUpRight size={15} style={{ opacity: 0.5 }} />
+                    )}
+                  </a>
+
+                  {/* NESTED MOBILE SERVICES SUBMENU */}
+                  {isServices && mobileServicesOpen && (
+                    <div className="liquid-nav__mobile-sub">
+                      <button
+                        type="button"
+                        className="sub-item view-all"
+                        style={{
+                          width: "100%",
+                          display: "flex",
+                          alignItems: "center",
+                          justifyContent: "space-between",
+                          background: "rgba(255, 24, 1, 0.12)",
+                          border: "1px solid rgba(255, 24, 1, 0.35)",
+                          borderRadius: "10px",
+                          padding: "10px 14px",
+                          color: "#FF1801",
+                          fontWeight: 700,
+                          fontSize: "0.85rem",
+                          cursor: "pointer",
+                          marginBottom: "6px",
+                          boxSizing: "border-box",
+                        }}
+                        onClick={() => {
+                          setMenuOpen(false);
+                          setServicesMegaOpen(true);
                         }}
                       >
-                        <span>{srv.label}</span>
-                        <ArrowUpRight size={13} />
-                      </a>
-                    ))}
-                  </div>
-                )}
-              </React.Fragment>
-            ))}
+                        <span>⚡ View All 12 Services Arsenal</span>
+                        <ArrowUpRight size={14} />
+                      </button>
 
-            <div className="liquid-nav__mobile-cta-wrap">
-              <button
-                type="button"
-                className="liquid-nav__mobile-cta"
-                onClick={() => {
-                  setMenuOpen(false);
-                  onOpenModal();
-                }}
-              >
-                <span>LET'S TALK NOW</span>
-                <ArrowUpRight size={16} />
-              </button>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </header>
+                      {MOBILE_SERVICES.map((srv) => (
+                        <a
+                          key={srv.slug}
+                          href={serviceUrl(srv.slug)}
+                          className={`sub-item ${path === serviceUrl(srv.slug) ? "is-active" : ""}`}
+                          onClick={(e) => {
+                            if (!e.ctrlKey && !e.metaKey) {
+                              e.preventDefault();
+                              go(serviceUrl(srv.slug));
+                            }
+                          }}
+                        >
+                          <span>{srv.label}</span>
+                          <ArrowUpRight size={13} />
+                        </a>
+                      ))}
+                    </div>
+                  )}
+                </React.Fragment>
+              ))}
+
+              <div className="liquid-nav__mobile-cta-wrap">
+                <button
+                  type="button"
+                  className="liquid-nav__mobile-cta"
+                  onClick={() => {
+                    setMenuOpen(false);
+                    onOpenModal();
+                  }}
+                >
+                  <span>LET'S TALK NOW</span>
+                  <ArrowUpRight size={16} />
+                </button>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </header>
+
+      {/* 12 SERVICES MEGA LAYOUT MODAL */}
+      <ServicesMegaMenu
+        isOpen={servicesMegaOpen}
+        onClose={() => setServicesMegaOpen(false)}
+        onSelectService={(targetUrl) => {
+          setServicesMegaOpen(false);
+          go(targetUrl);
+        }}
+        onOpenConsultation={() => {
+          setServicesMegaOpen(false);
+          onOpenModal();
+        }}
+      />
+    </>
   );
 }
 
@@ -255,7 +329,7 @@ const styles = /* css */ `
     top: 18px;
     left: 0;
     right: 0;
-    z-index: 100;
+    z-index: 130;
     display: flex;
     flex-direction: column;
     align-items: center;

@@ -46,7 +46,11 @@ export function getStorageUrl(path) {
   let cleanPath = path.startsWith('/') ? path.slice(1) : path;
 
   // Local-only assets stored directly in /public (not in remote S3/CloudFront)
-  if (cleanPath === 'influencerbannervideo.mp4' || cleanPath.startsWith('influencerbannervideo.')) {
+  if (
+    cleanPath === 'influencerbannervideo.mp4' ||
+    cleanPath.startsWith('influencerbannervideo.') ||
+    cleanPath.endsWith('-logo-transparent.png')
+  ) {
     return `/${cleanPath}`;
   }
   const baseUrl = getStorageBaseUrl();

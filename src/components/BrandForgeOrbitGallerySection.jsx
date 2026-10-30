@@ -7,6 +7,7 @@ import React, {
   useState,
 } from "react";
 import { motion } from "framer-motion";
+import { getStorageUrl } from "../utils/storageAsset";
 
 const FILTERS = [
   "All",
@@ -21,14 +22,14 @@ const GALLERY = [
   {
     title: "Farmer Fresh",
     label: "FMCG / Brand Packaging",
-    image: "/farmer_fresh_mockup_1786784237105.jpg",
+    image: getStorageUrl("/farmer_fresh_mockup_1786784237105.jpg"),
     categories: ["All", "Branding", "Campaigns"],
     position: "center 42%",
   },
   {
     title: "Jugg Jugg Ply",
     label: "Print & Digital Media",
-    image: "/jugg_jugg_mockup_1786784296597.jpg",
+    image: getStorageUrl("/jugg_jugg_mockup_1786784296597.jpg"),
     categories: ["All", "Branding", "Media & ROAS"],
     position: "center 48%",
   },

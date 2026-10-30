@@ -1,4 +1,7 @@
+"use client";
+
 import React, { useRef } from "react";
+import Image from "next/image";
 import { motion, useScroll, useTransform, useSpring } from "framer-motion";
 import { ChevronDown } from "lucide-react";
 import { getStorageUrl } from "../utils/storageAsset";
@@ -71,7 +74,7 @@ export default function BrandForgeFoundersSection() {
               viewport={{ once: false, amount: 0.3 }}
               transition={{ duration: 0.6 }}
             >
-              <img src={FOUNDERS[0].photo} alt={`${FOUNDERS[0].name} — ${FOUNDERS[0].role} of BrandForge`} loading="lazy" decoding="async" />
+              <Image src={FOUNDERS[0].photo} alt={`${FOUNDERS[0].name} — ${FOUNDERS[0].role} of BrandForge`} width={400} height={500} priority />
             </motion.div>
           </div>
 
@@ -158,7 +161,7 @@ export default function BrandForgeFoundersSection() {
               viewport={{ once: false, amount: 0.3 }}
               transition={{ duration: 0.6 }}
             >
-              <img src={FOUNDERS[1].photo} alt={`${FOUNDERS[1].name} — ${FOUNDERS[1].role} of BrandForge`} loading="lazy" decoding="async" />
+              <Image src={FOUNDERS[1].photo} alt={`${FOUNDERS[1].name} — ${FOUNDERS[1].role} of BrandForge`} width={400} height={500} priority />
             </motion.div>
           </div>
 

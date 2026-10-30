@@ -1,9 +1,12 @@
-import { getStorageUrl } from "../utils/storageAsset";
 "use client";
+
+import { getStorageUrl } from "../utils/storageAsset";
 
 import { serviceUrl, isServicePath } from "../data/servicesData";
 import React, { useEffect, useState } from "react";
+import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
+import { usePathname, useRouter } from "next/navigation";
 import ServicesMegaMenu from "./ServicesMegaMenu";
 import {
   Home,
@@ -43,7 +46,11 @@ const MOBILE_SERVICES = [
   { label: "12 · Reputation Management", slug: "reputation-shield" },
 ];
 
-export default function SiteNavbar({ path, navigate, onOpenModal }) {
+export default function SiteNavbar({ path: propPath, navigate: propNavigate, onOpenModal }) {
+  const router = useRouter();
+  const pathname = usePathname();
+  const path = propPath || pathname;
+  const navigate = propNavigate || ((to) => router.push(to));
   const [scrolledPastHero, setScrolledPastHero] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
@@ -113,7 +120,7 @@ export default function SiteNavbar({ path, navigate, onOpenModal }) {
             style={{ cursor: "pointer", textDecoration: "none" }}
             aria-label="BrandForge Home"
           >
-            <img src={getStorageUrl("/brandforge-logo.png")} alt="BrandForge Logo" width="160" height="36" decoding="async" fetchPriority="high" className="liquid-nav__logo-img" />
+            <Image src={getStorageUrl("/brandforge-logo.png")} alt="BrandForge Logo" width={160} height={36} priority className="liquid-nav__logo-img" style={{ width: "auto", height: "auto" }} />
           </a>
 
           {/* DESKTOP NAVIGATION RAIL */}
@@ -356,7 +363,7 @@ const styles = /* css */ `
     padding: 6px 16px;
     border: 1px solid rgba(255, 255, 255, 0.18);
     border-radius: 999px;
-    background: rgba(10, 10, 14, 0.92);
+    background: #000000;
     backdrop-filter: blur(24px);
     -webkit-backdrop-filter: blur(24px);
     box-shadow: 0 12px 35px rgba(0, 0, 0, 0.45);
@@ -483,7 +490,7 @@ const styles = /* css */ `
     width: min(980px, calc(100vw - 32px));
     pointer-events: auto;
     overflow: hidden;
-    background: rgba(10, 10, 14, 0.96);
+    background: #000000;
     backdrop-filter: blur(28px);
     -webkit-backdrop-filter: blur(28px);
     border: 1.5px solid rgba(255, 24, 1, 0.35);

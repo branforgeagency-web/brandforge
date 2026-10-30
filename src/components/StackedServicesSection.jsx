@@ -2,6 +2,7 @@
 
 import React, { useEffect, useRef, useState } from "react";
 import { serviceUrl } from "../data/servicesData";
+import { useRouter } from "next/navigation";
 import {
   CheckCircle2,
   ArrowRight,
@@ -169,7 +170,9 @@ const services = [
 
 const clamp = (value, min, max) => Math.min(Math.max(value, min), max);
 
-export default function StackedServicesSection({ onSelectService, navigate }) {
+export default function StackedServicesSection({ onSelectService, navigate: propNavigate }) {
+  const router = useRouter();
+  const navigate = propNavigate || ((to) => router.push(to));
   const sectionRef = useRef(null);
   const stageRef = useRef(null);
   const wordsRef = useRef([]);

@@ -1,5 +1,6 @@
-/* global window, document */
 "use client";
+
+/* global window, document */
 
 import React, { useRef, useState, useEffect, useLayoutEffect, useMemo, useCallback } from "react";
 import gsap from "gsap";

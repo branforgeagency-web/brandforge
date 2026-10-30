@@ -1,3 +1,5 @@
+"use client";
+
 import { getStorageUrl } from "../utils/storageAsset";
 import React, { useState, useEffect } from "react";
 import KexsioCanvasBackground from "./KexsioCanvasBackground";

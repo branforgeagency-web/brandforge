@@ -3,6 +3,7 @@
 import React, { useEffect, useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
+import { useRouter } from "next/navigation";
 import { Renderer, Program, Mesh, Triangle, Color } from "ogl";
 
 // ULTRA-SMOOTH CUBIC BEZIER EASING CURVE
@@ -264,7 +265,9 @@ function ThreadsBackground({
   return <div ref={containerRef} className="bf-threads-container" />;
 }
 
-export default function BrandForgeAboutUsSection({ onOpenModal, navigate }) {
+export default function BrandForgeAboutUsSection({ onOpenModal, navigate: propNavigate }) {
+  const router = useRouter();
+  const navigate = propNavigate || ((to) => router.push(to));
   const containerRef = useRef(null);
 
   const handleAboutClick = (e) => {

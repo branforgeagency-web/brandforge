@@ -1,5 +1,6 @@
-import { getStorageUrl } from "../utils/storageAsset";
 "use client";
+
+import { getStorageUrl } from "../utils/storageAsset";
 
 import React, { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";

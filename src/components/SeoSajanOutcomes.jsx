@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect, useRef, useMemo } from "react";
 import { motion, useInView } from "framer-motion";
+import { getStorageUrl } from "../utils/storageAsset";
 
 // Sajan 4-point star SVG icon
 
@@ -148,7 +149,7 @@ export default function SeoSajanOutcomes({ metrics = [], data }) {
   const clientWins = [
     {
       name: "Sonic Prints",
-      logo: "/client-sonicprints.png",
+      logo: getStorageUrl("/client-sonicprints.png"),
       scale: 1.4,
       popupScale: 1.45,
       tag: "E-Commerce",
@@ -156,7 +157,7 @@ export default function SeoSajanOutcomes({ metrics = [], data }) {
     },
     {
       name: "ThoughtFlows",
-      logo: "/client-thoughtflows.png",
+      logo: getStorageUrl("/client-thoughtflows.png"),
       scale: 1.35,
       popupScale: 1.4,
       tag: "B2B SaaS",
@@ -164,7 +165,7 @@ export default function SeoSajanOutcomes({ metrics = [], data }) {
     },
     {
       name: "Talentera",
-      logo: "/client-talentera.png",
+      logo: getStorageUrl("/client-talentera.png"),
       scale: 1.0,
       popupScale: 1.25,
       tag: "HR Tech",
@@ -172,7 +173,7 @@ export default function SeoSajanOutcomes({ metrics = [], data }) {
     },
     {
       name: "ThoughtSpace",
-      logo: "/client-thoughtspace.png",
+      logo: getStorageUrl("/client-thoughtspace.png"),
       scale: 1.4,
       popupScale: 1.45,
       tag: "Enterprise",

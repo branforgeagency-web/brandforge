@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 import React, { useEffect, useRef } from 'react';
 import { Mesh, Program, Renderer, Triangle } from 'ogl';
@@ -147,9 +147,9 @@ const GlowCursor = ({
   maxDevicePixelRatio = 1.5,
   enabled = true,
   fixed = false,
-  children,
+  children = undefined,
   className = '',
-  style,
+  style = undefined,
   ...rest
 }) => {
   const containerRef = useRef(null);

@@ -1,7 +1,9 @@
-import { getStorageUrl } from "../utils/storageAsset";
 "use client";
 
+import { getStorageUrl } from "../utils/storageAsset";
+
 import React, { useState } from "react";
+import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { Phone } from "lucide-react";
 
@@ -81,7 +83,7 @@ export default function FloatingContactButtons({
             whileTap={{ scale: 0.92 }}
             transition={{ type: "spring", stiffness: 350, damping: 22 }}
           >
-            <img src={getStorageUrl("/rocket.png")} alt="Rocket" loading="lazy" decoding="async" className="bf-rocket-img" />
+            <Image src={getStorageUrl("/rocket.png")} alt="Rocket" width={48} height={48} className="bf-rocket-img" />
 
             {/* IDLE SMALL THRUSTER FLAME EFFECT */}
             {!isLaunching && (

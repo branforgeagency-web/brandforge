@@ -1,10 +1,10 @@
 "use client";
+
 /* FloatingLines — self-contained Three.js WebGL background.
    Preset customized for BrandForge Crimson & Obsidian theme. */
 
 import React, { useEffect, useRef } from "react";
 import {
-  Clock,
   Mesh,
   OrthographicCamera,
   PlaneGeometry,
@@ -370,7 +370,7 @@ export default function FloatingLines({
     const mesh = new Mesh(geometry, material);
     scene.add(mesh);
 
-    const clock = new Clock();
+    const startTime = typeof performance !== "undefined" ? performance.now() : Date.now();
 
     const setSize = () => {
       if (!containerRef.current) return;
@@ -429,7 +429,7 @@ export default function FloatingLines({
     const renderLoop = () => {
       if (!active) return;
 
-      uniforms.iTime.value = clock.getElapsedTime();
+      uniforms.iTime.value = ((typeof performance !== "undefined" ? performance.now() : Date.now()) - startTime) * 0.001;
 
       if (interactive) {
         currentMouseRef.current.lerp(targetMouseRef.current, mouseDamping);

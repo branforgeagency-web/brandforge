@@ -1,3 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Next.js dev indicator overlay */
+nextjs-portal,
+[data-nextjs-dev-indicator],
+#nextjs-dev-indicator,
+[data-nextjs-toast] {
+  display: none !important;
+}
+
 
 
 /* ==========================================================================

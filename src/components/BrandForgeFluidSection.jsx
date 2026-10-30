@@ -1,5 +1,8 @@
+"use client";
+
 import { getStorageUrl } from "../utils/storageAsset";
 import React, { useEffect, useRef } from "react";
+import Image from "next/image";
 import * as THREE from "three";
 import { motion } from "framer-motion";
 
@@ -450,7 +453,7 @@ export default function BrandForgeFluidSection({ _onOpenModal }) {
 
       <div className="pl-logo-layer">
         <div className="pl-logo-wrap">
-          <img src={getStorageUrl("/brandforge-logo.png")} alt="BrandForge Logo" loading="lazy" decoding="async" className="pl-brand-logo" />
+          <Image src={getStorageUrl("/brandforge-logo.png")} alt="BrandForge Logo" width={240} height={54} className="pl-brand-logo" style={{ width: "auto", height: "auto" }} />
         </div>
       </div>
 

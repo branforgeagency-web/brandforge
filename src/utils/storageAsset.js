@@ -1,5 +1,5 @@
 import { getUrl, uploadData } from 'aws-amplify/storage';
-import { awsConfig, configureAmplify } from '../config/amplify';
+import { awsConfig, configureAmplify } from '../config/amplify.js';
 
 /**
  * Derives the base URL for Amplify Storage / S3 / CloudFront.
@@ -50,7 +50,15 @@ export function getStorageUrl(path) {
     cleanPath === 'influencerbannervideo.mp4' ||
     cleanPath.startsWith('influencerbannervideo.') ||
     cleanPath.endsWith('-logo-transparent.png') ||
-    cleanPath === 'brandforge-logo.png'
+    cleanPath === 'brandforge-logo.png' ||
+    cleanPath === 'fire-flame.png' ||
+    cleanPath.startsWith('client-') ||
+    cleanPath.startsWith('favicon') ||
+    cleanPath.startsWith('android-chrome') ||
+    cleanPath === 'apple-touch-icon.png' ||
+    cleanPath === 'rocket.png' ||
+    cleanPath.startsWith('farmer_fresh_') ||
+    cleanPath.startsWith('jugg_jugg_')
   ) {
     return `/${cleanPath}`;
   }

@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useEffect, useRef } from "react";
 
 const DARK_PARTICLE_COLORS = [

@@ -25,20 +25,20 @@ Create or edit your `.env` file in the project root (see [`.env.example`](file:/
 
 ```bash
 # AWS Region where your Amplify Storage S3 bucket is hosted
-VITE_AWS_REGION=us-east-1
+NEXT_PUBLIC_AWS_REGION=us-east-1
 
 # S3 Bucket Name provisioned by AWS Amplify Storage
-VITE_AWS_STORAGE_BUCKET_NAME=your-amplify-storage-bucket-name
+NEXT_PUBLIC_AWS_STORAGE_BUCKET_NAME=your-amplify-storage-bucket-name
 
 # (Recommended for production) CloudFront distribution or custom CDN domain
 # e.g., https://d123456abcdef8.cloudfront.net or https://media.brandforgeagency.in
-VITE_AWS_CLOUDFRONT_URL=https://media.brandforgeagency.in
+NEXT_PUBLIC_AWS_CLOUDFRONT_URL=https://media.brandforgeagency.in
 
 # Optional override base URL
-VITE_STORAGE_BASE_URL=
+NEXT_PUBLIC_STORAGE_BASE_URL=
 
 # AWS Cognito Identity Pool ID (if using Amplify Storage SDK for guest S3 access)
-VITE_AWS_IDENTITY_POOL_ID=us-east-1:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+NEXT_PUBLIC_AWS_IDENTITY_POOL_ID=us-east-1:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
 
 # S3 Sync Script Credentials (CLI upload only)
 AWS_ACCESS_KEY_ID=AKIA...

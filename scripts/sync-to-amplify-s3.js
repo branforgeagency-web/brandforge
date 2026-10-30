@@ -56,8 +56,8 @@ if (fs.existsSync(outputsPath)) {
   }
 }
 
-const BUCKET_NAME = process.env.VITE_AWS_STORAGE_BUCKET_NAME || process.env.S3_BUCKET_NAME || amplifyOutputs?.storage?.bucket_name;
-const REGION = process.env.VITE_AWS_REGION || process.env.AWS_REGION || amplifyOutputs?.storage?.aws_region || 'us-east-1';
+const BUCKET_NAME = process.env.NEXT_PUBLIC_AWS_STORAGE_BUCKET_NAME || process.env.VITE_AWS_STORAGE_BUCKET_NAME || process.env.S3_BUCKET_NAME || amplifyOutputs?.storage?.bucket_name;
+const REGION = process.env.NEXT_PUBLIC_AWS_REGION || process.env.VITE_AWS_REGION || process.env.AWS_REGION || amplifyOutputs?.storage?.aws_region || 'us-east-1';
 const IS_DRY_RUN = process.argv.includes('--dry-run');
 const IS_FORCE = process.argv.includes('--force');
 

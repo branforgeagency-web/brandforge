@@ -1,5 +1,6 @@
-import { getStorageUrl } from "../utils/storageAsset";
 "use client";
+
+import { getStorageUrl } from "../utils/storageAsset";
 
 import React from "react";
 

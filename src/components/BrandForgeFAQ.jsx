@@ -1,3 +1,5 @@
+"use client";
+
 import { getStorageUrl } from "../utils/storageAsset";
 import React, { useState, useRef, useEffect } from "react";
 import { motion } from "framer-motion";

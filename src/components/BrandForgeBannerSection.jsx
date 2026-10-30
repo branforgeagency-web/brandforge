@@ -1,5 +1,6 @@
-import { getStorageUrl } from "../utils/storageAsset";
 "use client";
+
+import { getStorageUrl } from "../utils/storageAsset";
 
 import React, { useEffect, useRef } from "react";
 import * as THREE from "three";
@@ -713,7 +714,8 @@ class App {
       fogFar: { value: fog.far },
     };
 
-    this.clock = new THREE.Clock();
+    this.lastTime = typeof performance !== "undefined" ? performance.now() : Date.now();
+    this.elapsedTime = 0;
     this.assets = {};
     this.disposed = false;
     this.isPaused = false;
@@ -892,7 +894,7 @@ class App {
     const lerpPercentage = Math.exp(-(-60 * Math.log2(1 - 0.1)) * delta);
     this.speedUp += lerp(this.speedUp, this.speedUpTarget, lerpPercentage, 0.00001);
     this.timeOffset += this.speedUp * delta;
-    const time = this.clock.elapsedTime + this.timeOffset;
+    const time = this.elapsedTime + this.timeOffset;
 
     this.rightCarLights.update(time);
     this.leftCarLights.update(time);
@@ -1012,7 +1014,10 @@ class App {
     }
 
     if (this.hasValidSize) {
-      const delta = this.clock.getDelta();
+      const now = typeof performance !== "undefined" ? performance.now() : Date.now();
+      const delta = Math.min((now - this.lastTime) / 1000, 0.1);
+      this.lastTime = now;
+      this.elapsedTime += delta;
       this.render(delta);
       this.update(delta);
     }

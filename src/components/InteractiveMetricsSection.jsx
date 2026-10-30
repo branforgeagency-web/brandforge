@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from "react";
 import { motion, useInView } from "framer-motion";
 import { ShieldCheck } from "lucide-react";
+import { getStorageUrl } from "../utils/storageAsset";
 import KexsioCanvasBackground from "./KexsioCanvasBackground";
 
 function AnimatedMetricCounter({ value }) {
@@ -59,10 +60,10 @@ export default function InteractiveMetricsSection({ metrics = [] }) {
   const [hoveredLogo, setHoveredLogo] = useState(null);
 
   const clientWins = [
-    { name: "Sonic Prints", logo: "/client-sonicprints.png", scale: 1.4, win: "4.8x Organic Inquiries in 90 Days", tag: "E-Commerce" },
-    { name: "ThoughtFlows", logo: "/client-thoughtflows.png", scale: 1.35, win: "620% Traffic Surge • Top AI Citation", tag: "B2B SaaS" },
-    { name: "Talentera", logo: "/client-talentera.png", scale: 1.0, win: "Rank #1 for 48 High-Intent Keywords", tag: "HR Tech" },
-    { name: "ThoughtSpace", logo: "/client-thoughtspace.png", scale: 1.4, win: "12x Pipeline Scale & Zero-Click Dominance", tag: "Enterprise" },
+    { name: "Sonic Prints", logo: getStorageUrl("/client-sonicprints.png"), scale: 1.4, win: "4.8x Organic Inquiries in 90 Days", tag: "E-Commerce" },
+    { name: "ThoughtFlows", logo: getStorageUrl("/client-thoughtflows.png"), scale: 1.35, win: "620% Traffic Surge • Top AI Citation", tag: "B2B SaaS" },
+    { name: "Talentera", logo: getStorageUrl("/client-talentera.png"), scale: 1.0, win: "Rank #1 for 48 High-Intent Keywords", tag: "HR Tech" },
+    { name: "ThoughtSpace", logo: getStorageUrl("/client-thoughtspace.png"), scale: 1.4, win: "12x Pipeline Scale & Zero-Click Dominance", tag: "Enterprise" },
   ];
 
   return (

@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useRef, useLayoutEffect } from "react";
 
 export default function SeoNeuralRibbon({ containerSelector = ".bf-bento-cards-grid" }) {

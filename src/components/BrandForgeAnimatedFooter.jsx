@@ -1,7 +1,9 @@
-import { getStorageUrl } from "../utils/storageAsset";
 "use client";
 
+import { getStorageUrl } from "../utils/storageAsset";
+
 import React, { useState, useRef } from "react";
+import Link from "next/link";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { ArrowUpRight, Zap, Sparkles, Send } from "lucide-react";
 import Particles from "./Particles";
@@ -223,13 +225,13 @@ export default function BrandForgeAnimatedFooter({ onOpenModal }) {
           >
             <h4 className="col-title">SERVICES</h4>
             <ul className="footer-link-list">
-              <li><a href="/seo-company-coimbatore">SEO & GEO Supremacy</a></li>
-              <li><a href="/website-development-company-coimbatore">3D Web Development</a></li>
-              <li><a href="/ppc-company-coimbatore">Paid Media Scaling</a></li>
-              <li><a href="/social-media-marketing-company-coimbatore">Viral Social Network</a></li>
-              <li><a href="/influencer-marketing-coimbatore">Influencer Marketing</a></li>
-              <li><a href="/content-marketing-agency-coimbatore">Content Marketing & Authority</a></li>
-              <li><a href="/services/cro-revenue">CRO Revenue Engine</a></li>
+              <li><Link href="/seo-company-coimbatore">SEO & GEO Supremacy</Link></li>
+              <li><Link href="/website-development-company-coimbatore">3D Web Development</Link></li>
+              <li><Link href="/ppc-company-coimbatore">Paid Media Scaling</Link></li>
+              <li><Link href="/social-media-marketing-company-coimbatore">Viral Social Network</Link></li>
+              <li><Link href="/influencer-marketing-coimbatore">Influencer Marketing</Link></li>
+              <li><Link href="/content-marketing-agency-coimbatore">Content Marketing & Authority</Link></li>
+              <li><Link href="/services/cro-revenue">CRO Revenue Engine</Link></li>
             </ul>
           </motion.div>
 
@@ -243,14 +245,14 @@ export default function BrandForgeAnimatedFooter({ onOpenModal }) {
           >
             <h4 className="col-title">COMPANY</h4>
             <ul className="footer-link-list">
-              <li><a href="/">Home</a></li>
-              <li><a href="/about">Who We Are / About Us</a></li>
-              <li><a href="/contact">Contact & Strategy Consultation</a></li>
-              <li><a href="/brand-positioning-agency-coimbatore">Brand Growth Architecture</a></li>
-              <li><a href="/brand-identity-design-agency-coimbatore">Visual Identity Forge</a></li>
-              <li><a href="/video-production-editing-company-coimbatore">Video Production & Editing</a></li>
-              <li><a href="/email-marketing-company-coimbatore">Inbox Retention Loops</a></li>
-              <li><a href="/brand-reputation-management-coimbatore">Brand Reputation Management</a></li>
+              <li><Link href="/">Home</Link></li>
+              <li><Link href="/about">Who We Are / About Us</Link></li>
+              <li><Link href="/contact">Contact & Strategy Consultation</Link></li>
+              <li><Link href="/brand-positioning-agency-coimbatore">Brand Growth Architecture</Link></li>
+              <li><Link href="/brand-identity-design-agency-coimbatore">Visual Identity Forge</Link></li>
+              <li><Link href="/video-production-editing-company-coimbatore">Video Production & Editing</Link></li>
+              <li><Link href="/email-marketing-company-coimbatore">Inbox Retention Loops</Link></li>
+              <li><Link href="/brand-reputation-management-coimbatore">Brand Reputation Management</Link></li>
             </ul>
           </motion.div>
 

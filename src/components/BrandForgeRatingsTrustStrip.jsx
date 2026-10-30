@@ -1,6 +1,9 @@
+"use client";
+
 import React from "react";
 import { motion } from "framer-motion";
 import { Star } from "lucide-react";
+import { getStorageUrl } from "../utils/storageAsset";
 
 /* ───────────────────────────────────────────────────────────────────────────
    BRANDFORGE CLIENT RATINGS & TRUST STRIP WITH PRECISION PATH-FOLLOWING ROCKET
@@ -12,7 +15,7 @@ const CLIENT_REVIEWS = [
   {
     id: "sonic",
     name: "Sonic Prints",
-    logo: "/client-sonicprints.png",
+    logo: getStorageUrl("/client-sonicprints.png"),
     scale: 1.45,
     tag: "Brand & Packaging Scale",
     rating: 5.0,
@@ -20,7 +23,7 @@ const CLIENT_REVIEWS = [
   {
     id: "thoughtflows",
     name: "ThoughtFlows",
-    logo: "/client-thoughtflows.png",
+    logo: getStorageUrl("/client-thoughtflows.png"),
     scale: 1.38,
     tag: "No.1 Medical Coding Academy",
     rating: 5.0,
@@ -28,7 +31,7 @@ const CLIENT_REVIEWS = [
   {
     id: "talentera",
     name: "Talentera",
-    logo: "/client-talentera.png",
+    logo: getStorageUrl("/client-talentera.png"),
     scale: 1.05,
     tag: "Era of Talent Platform",
     rating: 5.0,
@@ -36,7 +39,7 @@ const CLIENT_REVIEWS = [
   {
     id: "thoughtspace",
     name: "ThoughtSpace",
-    logo: "/client-thoughtspace.png",
+    logo: getStorageUrl("/client-thoughtspace.png"),
     scale: 1.45,
     tag: "Enterprise Workspace Network",
     rating: 5.0,

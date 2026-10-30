@@ -1,4 +1,5 @@
 {
+  "framework": "nextjs",
   "trailingSlash": false,
   "redirects": [
     { "source": "/web-development-company-coimbatore", "destination": "/website-development-company-coimbatore", "permanent": true },

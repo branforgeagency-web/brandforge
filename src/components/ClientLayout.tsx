@@ -9,6 +9,7 @@ import SiteNavbar from "@/src/components/SiteNavbar";
 import FloatingContactButtons from "@/src/components/FloatingContactButtons";
 import TransformationModal from "@/src/components/TransformationModal";
 import GlowCursor from "@/src/components/GlowCursor";
+import WebsiteLoadingScreen from "@/src/components/WebsiteLoadingScreen";
 
 function LayoutInner({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
@@ -31,6 +32,9 @@ function LayoutInner({ children }: { children: React.ReactNode }) {
   return (
     <SmoothScrollProvider>
       <div className="app-main-wrap">
+        {/* CINEMATIC 3-SECOND VIDEO LOADING SCREEN */}
+        <WebsiteLoadingScreen />
+
         {/* SITE-WIDE GLOW CURSOR (RED THEME) - Mounted on client to eliminate SSR hydration mismatch */}
         {mounted && (
           <GlowCursor

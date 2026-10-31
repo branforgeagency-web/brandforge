@@ -9,16 +9,22 @@ gsap.registerPlugin(ScrollTrigger);
 
 export default function SmoothScrollProvider({ children }) {
   useEffect(() => {
-    // Initialize Lenis smooth scrolling engine — tuned for buttery smooth, responsive 60/120fps scrolling
+    const isTouch = typeof window !== "undefined" && ('ontouchstart' in window || navigator.maxTouchPoints > 0);
+
+    // Initialize Lenis smooth scrolling engine — tuned for buttery smooth, responsive 60/120fps scrolling on both desktop and mobile
     const lenis = new Lenis({
-      duration: 1.05,
+      duration: isTouch ? 1.0 : 1.2,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       orientation: "vertical",
       gestureOrientation: "vertical",
       smoothWheel: true,
-      wheelMultiplier: 1.0,
-      touchMultiplier: 1.2,
+      wheelMultiplier: 0.95,
+      touchMultiplier: 1.0,
+      syncTouch: true,
+      syncTouchLerp: 0.09,
+      touchInertiaExponent: 1.6,
       infinite: false,
+      autoResize: true,
     });
 
     let scrollTimeout = null;

@@ -66,7 +66,7 @@ export default function SiteNavbar({ path: propPath, navigate: propNavigate, onO
       }
       const heroThreshold = Math.min(window.innerHeight * 0.75, 650);
       const isPast = window.scrollY > heroThreshold;
-      setScrolledPastHero(isPast);
+      setScrolledPastHero((prev) => (prev !== isPast ? isPast : prev));
     };
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });

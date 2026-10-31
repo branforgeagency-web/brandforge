@@ -194,30 +194,62 @@ export default function StackedServicesSection({ onSelectService, navigate: prop
 
   useEffect(() => {
     let isVisible = true;
+    let isRendering = false;
+    let cachedTop = 0;
+    let cachedDistance = 1;
     let io;
+
+    const measure = () => {
+      if (!sectionRef.current) return;
+      const rect = sectionRef.current.getBoundingClientRect();
+      const scrollY = window.scrollY || document.documentElement.scrollTop;
+      cachedTop = rect.top + scrollY;
+      const height = sectionRef.current.offsetHeight;
+      const windowHeight = window.innerHeight;
+      cachedDistance = Math.max(height - windowHeight, 1);
+      targetRef.current = clamp((scrollY - cachedTop) / cachedDistance, 0, 1);
+      startRender();
+    };
+
     if (typeof IntersectionObserver !== "undefined" && sectionRef.current) {
       io = new IntersectionObserver(([entry]) => {
         isVisible = entry.isIntersecting;
+        if (isVisible) {
+          measure();
+          startRender();
+        }
       }, { threshold: 0 });
       io.observe(sectionRef.current);
     }
+
+    const startRender = () => {
+      if (!isRendering) {
+        isRendering = true;
+        animFrameRef.current = requestAnimationFrame(render);
+      }
+    };
+
     const handleScroll = () => {
-      if (!sectionRef.current) return;
-      const rect = sectionRef.current.getBoundingClientRect();
-      const distance = sectionRef.current.offsetHeight - window.innerHeight;
-      targetRef.current = distance > 0 ? clamp(-rect.top / distance, 0, 1) : 0;
+      if (!isVisible) return;
+      const scrollY = window.scrollY || document.documentElement.scrollTop;
+      targetRef.current = clamp((scrollY - cachedTop) / cachedDistance, 0, 1);
+      startRender();
     };
 
     const render = () => {
       if (!isVisible) {
-        animFrameRef.current = requestAnimationFrame(render);
+        isRendering = false;
         return;
       }
       const isMobile = typeof window !== "undefined" && window.innerWidth <= 768;
-      const lerpSpeed = isMobile ? 0.055 : 0.065;
-      currentRef.current += (targetRef.current - currentRef.current) * lerpSpeed;
-      if (Math.abs(targetRef.current - currentRef.current) < 0.0001) {
+      // Ultra-smooth progressive lerp: responsive & fluid on mobile touch (0.14), velvety & cinematic on desktop (0.085)
+      const lerpSpeed = isMobile ? 0.14 : 0.085;
+      const diff = targetRef.current - currentRef.current;
+      
+      if (Math.abs(diff) < 0.0002) {
         currentRef.current = targetRef.current;
+      } else {
+        currentRef.current += diff * lerpSpeed;
       }
 
       const scene = currentRef.current * (services.length - 1);
@@ -230,28 +262,60 @@ export default function StackedServicesSection({ onSelectService, navigate: prop
         stageRef.current.style.setProperty("--progress", currentRef.current.toFixed(4));
       }
 
-      // 3D Card Stack Physics Animation — continuous tight card stacking with crisp cards
+      // 3D Card Stack Physics Animation with balanced harmonic easing and culling
       cardRefs.current.forEach((card, index) => {
         if (!card) return;
         const delta = index - scene;
-        const capped = clamp(delta, -1.4, 1.65);
-        const y = capped < 0 ? capped * 120 : capped * 32;
-        const rotation = capped < 0 ? capped * 5 : capped * 6;
-        const scale = capped < 0 ? 1 - Math.min(Math.abs(capped), 1) * 0.06 : 1 - Math.min(capped, 1) * 0.04;
-        const opacity = delta < -0.85 ? clamp((delta + 1.16) / 0.31, 0, 1) : delta > 1.2 ? clamp((1.55 - delta) / 0.35, 0, 1) : 1;
 
-        card.style.transform = `translate3d(-50%, calc(-50% + ${y}%), 0) rotate(${rotation}deg) scale(${scale})`;
+        // Cull cards outside the visible stack to save GPU composite layers & battery
+        if (delta < -1.35 || delta > 1.7) {
+          if (card.style.visibility !== "hidden") {
+            card.style.visibility = "hidden";
+            card.style.opacity = "0";
+            card.style.pointerEvents = "none";
+          }
+          return;
+        }
+
+        if (card.style.visibility === "hidden") {
+          card.style.visibility = "visible";
+          card.style.pointerEvents = "auto";
+        }
+
+        let y, rotation, scale, opacity;
+
+        if (delta >= 0) {
+          // Arriving card in stack: smooth organic approach
+          const t = Math.min(delta, 1.5);
+          y = Math.pow(t, 0.96) * 42;
+          rotation = Math.pow(t, 0.96) * 4.8;
+          scale = 1 - t * 0.045;
+          opacity = clamp((1.55 - delta) / 0.65, 0, 1);
+        } else {
+          // Departing card: fluid acceleration upward without sudden velocity jumps
+          const t = Math.min(-delta, 1.4);
+          y = -(t * 36 + Math.pow(t, 1.35) * 56);
+          rotation = -Math.pow(t, 1.05) * 5.2;
+          scale = 1 - t * 0.038;
+          opacity = clamp((delta + 1.25) / 0.6, 0, 1);
+        }
+
+        card.style.transform = `translate3d(-50%, calc(-50% + ${y.toFixed(2)}%), 0) rotate(${rotation.toFixed(2)}deg) scale(${scale.toFixed(3)})`;
         card.style.opacity = opacity.toFixed(3);
-        card.style.filter = "none";
-        card.style.zIndex = 50 - Math.round(Math.abs(delta) * 10) + index;
+        
+        const newZ = 50 - Math.round(Math.abs(delta) * 4) + index;
+        if (card.__lastZ !== newZ) {
+          card.style.zIndex = newZ;
+          card.__lastZ = newZ;
+        }
       });
 
-      // Background Kinetic Typography Animation matching exact code
+      // Background Kinetic Typography Animation
       wordsRef.current.forEach((word, index) => {
         if (!word) return;
         const direction = index === 1 ? 1 : -1;
         const travel = scene * (4.5 + index * 1.4) * direction;
-        word.style.transform = `translate3d(${travel}px, ${-scene * (5 + index * 3)}px, 0)`;
+        word.style.transform = `translate3d(${travel.toFixed(1)}px, ${(-scene * (5 + index * 3)).toFixed(1)}px, 0)`;
       });
 
       const activeNum = String(Math.round(scene) + 1).padStart(2, "0");
@@ -259,18 +323,27 @@ export default function StackedServicesSection({ onSelectService, navigate: prop
         currentIndexRef.current.textContent = activeNum;
       }
 
-      animFrameRef.current = requestAnimationFrame(render);
+      if (currentRef.current !== targetRef.current) {
+        animFrameRef.current = requestAnimationFrame(render);
+      } else {
+        isRendering = false;
+      }
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });
-    window.addEventListener("resize", handleScroll);
-    handleScroll();
-    animFrameRef.current = requestAnimationFrame(render);
+    window.addEventListener("resize", measure, { passive: true });
+    if (typeof window !== "undefined" && window.__lenis) {
+      window.__lenis.on("scroll", handleScroll);
+    }
+    measure();
 
     return () => {
       if (io) io.disconnect();
       window.removeEventListener("scroll", handleScroll);
-      window.removeEventListener("resize", handleScroll);
+      window.removeEventListener("resize", measure);
+      if (typeof window !== "undefined" && window.__lenis) {
+        window.__lenis.off("scroll", handleScroll);
+      }
       if (animFrameRef.current) cancelAnimationFrame(animFrameRef.current);
     };
   }, []);
@@ -477,6 +550,8 @@ const styles = `
   transform-origin: 50% 50%;
   will-change: transform, opacity;
   backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  transform-style: flat;
   cursor: pointer;
   border: 1px solid rgba(255, 255, 255, 0.2);
   transition: border-color 0.3s ease, box-shadow 0.3s ease;
@@ -739,21 +814,25 @@ const styles = `
 }
 
 @media (max-width: 1024px) {
-  .scroll-story { height: 750vh; }
+  .scroll-story { height: 600vh; }
 }
 
 @media (max-width: 768px) {
-  .scroll-story { height: 850vh; }
+  .scroll-story { height: 480vh; }
   .showcase { width: 100vw; height: 100vh; }
-  .background-type { filter: blur(5px); opacity: 0.65; }
+  .background-type { filter: none !important; opacity: 0.12; }
   .word-1 { top: 6%; left: 2%; font-size: clamp(38px, 14cqw, 90px); }
   .word-2 { top: 44%; right: 2%; font-size: clamp(34px, 12.5cqw, 82px); }
   .word-3 { top: 76%; left: 4%; font-size: clamp(42px, 15.5cqw, 100px); }
   
   .service-card { 
-    width: min(86cqw, 54cqh); 
+    width: min(88cqw, 54cqh); 
     padding: clamp(18px, 4.8cqw, 28px);
     border-radius: 22px;
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.55);
+  }
+  .dark-theme-card {
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.55);
   }
   .card-heading h2 { font-size: clamp(22px, 7.2cqw, 38px); line-height: 0.95; }
   .card-heading p { 
@@ -765,7 +844,18 @@ const styles = `
   .card-items-list li { font-size: clamp(8px, 2.4cqw, 12px); padding: 3px 8px; }
   .card-number { font-size: clamp(28px, 8cqw, 48px); }
   .card-action-btn { font-size: 0.68rem; padding: 5px 12px; }
-  .card-icon-badge { width: clamp(34px, 9cqw, 44px); height: clamp(34px, 9cqw, 44px); margin-bottom: 10px; }
+  .card-icon-badge { 
+    width: clamp(34px, 9cqw, 44px); 
+    height: clamp(34px, 9cqw, 44px); 
+    margin-bottom: 10px;
+    animation: none !important;
+  }
+  .card-number::before {
+    animation: none !important;
+  }
+  .card-shine {
+    display: none !important;
+  }
   .side-mark { opacity: 0.7; scale: 0.85; right: -2px; }
   .scroll-index { right: 14px; bottom: 14px; }
 }

@@ -47,6 +47,8 @@ export function getStorageUrl(path) {
 
   // Local-only assets stored directly in /public (not in remote S3/CloudFront)
   if (
+    cleanPath === 'websiteloading.mp4' ||
+    cleanPath.startsWith('websiteloading.') ||
     cleanPath === 'influencerbannervideo.mp4' ||
     cleanPath.startsWith('influencerbannervideo.') ||
     cleanPath.endsWith('-logo-transparent.png') ||

@@ -149,26 +149,26 @@ export default function WebsiteLoadingScreen() {
           user-select: none;
         }
 
-        /* Top: Compact Video Frame with Deeply Blurred & Feathered Edges (No Sharp Borders) */
+        /* Top: Prominent Video Frame with Deeply Blurred & Feathered Edges (No Sharp Borders) */
         .bf-combo-video-frame {
           position: relative;
-          width: min(400px, 80vw);
+          width: min(640px, 92vw);
           aspect-ratio: 16 / 9;
-          max-height: 32vh;
+          max-height: 48vh;
           background: #000000;
           display: flex;
           align-items: center;
           justify-content: center;
           /* 4-way intersecting linear gradient feather mask removes all hard boundaries */
           -webkit-mask-image: 
-            linear-gradient(to right, transparent 0%, #000000 18%, #000000 82%, transparent 100%),
-            linear-gradient(to bottom, transparent 0%, #000000 18%, #000000 82%, transparent 100%);
+            linear-gradient(to right, transparent 0%, #000000 15%, #000000 85%, transparent 100%),
+            linear-gradient(to bottom, transparent 0%, #000000 15%, #000000 85%, transparent 100%);
           -webkit-mask-composite: source-in;
           mask-image: 
-            linear-gradient(to right, transparent 0%, #000000 18%, #000000 82%, transparent 100%),
-            linear-gradient(to bottom, transparent 0%, #000000 18%, #000000 82%, transparent 100%);
+            linear-gradient(to right, transparent 0%, #000000 15%, #000000 85%, transparent 100%),
+            linear-gradient(to bottom, transparent 0%, #000000 15%, #000000 85%, transparent 100%);
           mask-composite: intersect;
-          box-shadow: 0 0 50px 25px #000000;
+          box-shadow: 0 0 60px 30px #000000;
         }
 
         .bf-combo-video {
@@ -185,12 +185,12 @@ export default function WebsiteLoadingScreen() {
           inset: 0;
           pointer-events: none;
           background: radial-gradient(ellipse 85% 80% at 50% 50%, transparent 35%, rgba(0, 0, 0, 0.5) 65%, #000000 98%);
-          box-shadow: inset 0 0 25px 12px #000000;
+          box-shadow: inset 0 0 30px 15px #000000;
         }
 
         /* Bottom: Compact Retro 8-bit Loading Bar in BrandForge Red & White Theme */
         .bf-retro-container {
-          width: min(210px, 64vw);
+          width: min(240px, 68vw);
           display: flex;
           flex-direction: column;
         }
@@ -248,19 +248,19 @@ export default function WebsiteLoadingScreen() {
 
         @media (max-width: 768px) {
           .bf-combo-video-frame {
-            width: min(250px, 78vw);
-            max-height: 28vh;
+            width: min(380px, 88vw);
+            max-height: 38vh;
             -webkit-mask-image: 
-              linear-gradient(to right, transparent 0%, #000000 16%, #000000 84%, transparent 100%),
-              linear-gradient(to bottom, transparent 0%, #000000 16%, #000000 84%, transparent 100%);
+              linear-gradient(to right, transparent 0%, #000000 14%, #000000 86%, transparent 100%),
+              linear-gradient(to bottom, transparent 0%, #000000 14%, #000000 86%, transparent 100%);
             -webkit-mask-composite: source-in;
             mask-image: 
-              linear-gradient(to right, transparent 0%, #000000 16%, #000000 84%, transparent 100%),
-              linear-gradient(to bottom, transparent 0%, #000000 16%, #000000 84%, transparent 100%);
+              linear-gradient(to right, transparent 0%, #000000 14%, #000000 86%, transparent 100%),
+              linear-gradient(to bottom, transparent 0%, #000000 14%, #000000 86%, transparent 100%);
             mask-composite: intersect;
           }
           .bf-retro-container {
-            width: min(175px, 60vw);
+            width: min(190px, 64vw);
           }
           .bf-retro-bar-frame {
             height: 13.5px;

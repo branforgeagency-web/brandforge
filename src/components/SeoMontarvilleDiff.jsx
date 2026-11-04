@@ -85,9 +85,9 @@ export default function SeoMontarvilleDiff({ differentiators, onOpenModal }) {
             </h2>
 
             <div className="smd-wysiwyg-2c">
-              {diffData.description ? (
+              {(diffData.subtitle || diffData.description) ? (
                 <p>
-                  <strong>BrandForge engineers performance architectures</strong> that transcend generic agency deliverables. {diffData.description}
+                  {diffData.subtitle || diffData.description}
                 </p>
               ) : (
                 <>

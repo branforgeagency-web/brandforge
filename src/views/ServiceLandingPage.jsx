@@ -33,6 +33,7 @@ import SeoMontarvilleStory from "../components/SeoMontarvilleStory";
 import SeoMontarvilleEvolution from "../components/SeoMontarvilleEvolution";
 import SeoMontarvillePillars from "../components/SeoMontarvillePillars";
 import SeoMontarvilleBlueprint from "../components/SeoMontarvilleBlueprint";
+import SeoMontarvilleWhatWeDo from "../components/SeoMontarvilleWhatWeDo";
 import SeoMontarvilleDiff from "../components/SeoMontarvilleDiff";
 import SeoMontarvilleFaq from "../components/SeoMontarvilleFaq";
 import SeoMontarvilleRelatedServices from "../components/SeoMontarvilleRelatedServices";
@@ -808,6 +809,7 @@ export default function ServiceLandingPage({ slug = "seo-geo", onOpenModal: prop
           matrixTag={data.matrixTag}
           matrixTitle={data.matrixTitle}
           matrixSubtitle={data.matrixSubtitle}
+          matrixClosing={data.matrixClosing}
           evolutionVisual={evolutionVisual}
         />
       )}
@@ -818,13 +820,18 @@ export default function ServiceLandingPage({ slug = "seo-geo", onOpenModal: prop
       {/* COMPREHENSIVE ARCHITECTURE PILLARS STREAM */}
       <SeoMontarvillePillars data={data} onOpenModal={onOpenModal} />
 
-      {/* 4-STEP BLUEPRINT ROADMAP TIMELINE */}
-      <SeoMontarvilleBlueprint timeline={data.timeline} onOpenModal={onOpenModal} />
-
       {/* WHAT MAKES OUR COMPANY DIFFERENT SECTION */}
       {data.differentiators && (
         <SeoMontarvilleDiff differentiators={data.differentiators} onOpenModal={onOpenModal} />
       )}
+
+      {/* WHAT BRANDFORGE WILL DO FOR YOU SECTION */}
+      {data.whatWeDo && (
+        <SeoMontarvilleWhatWeDo whatWeDo={data.whatWeDo} onOpenModal={onOpenModal} />
+      )}
+
+      {/* 4-STEP / 6-STEP BLUEPRINT ROADMAP TIMELINE */}
+      <SeoMontarvilleBlueprint timeline={data.timeline} onOpenModal={onOpenModal} />
 
       {/* WHO WE HELP SECTION */}
       {data.whoWeHelp && (

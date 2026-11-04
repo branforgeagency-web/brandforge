@@ -69,40 +69,48 @@ const triggerPortalLoop = (letterEl) => {
 
 const HERO_HEADLINES = {
   "seo-geo": {
-    line1: "OWN THE SEARCH ENGINE.",
-    line2: "COMMAND THE AI ANSWER.",
+    line1: "BEST SEO COMPANY IN COIMBATORE.",
+    line2: "FOR GOOGLE & AI SEARCH RANKINGS.",
   },
   "paid-media": {
-    line1: "MAXIMIZE PAID ACQUISITION.",
-    line2: "CONVERT CLICKS INTO REVENUE.",
+    line1: "PPC COMPANY IN COIMBATORE.",
+    line2: "THAT TURNS AD SPEND INTO REAL LEADS.",
   },
   "web-foundry": {
-    line1: "HIGH-PERFORMANCE WEB FOUNDRY.",
-    line2: "SUB-200MS SPEED THAT SELLS.",
+    line1: "WEBSITE DEVELOPMENT COMPANY IN COIMBATORE.",
+    line2: "THAT BUILDS SITES THAT SELL.",
+  },
+  "website-development-company-coimbatore": {
+    line1: "WEBSITE DEVELOPMENT COMPANY IN COIMBATORE.",
+    line2: "THAT BUILDS SITES THAT SELL.",
+  },
+  "web-development-company-coimbatore": {
+    line1: "WEBSITE DEVELOPMENT COMPANY IN COIMBATORE.",
+    line2: "THAT BUILDS SITES THAT SELL.",
   },
   "viral-social": {
-    line1: "CULTURE-DEFINING SOCIAL MEDIA.",
-    line2: "ATTENTION THAT CONVERTS.",
+    line1: "SOCIAL MEDIA MARKETING COMPANY IN COIMBATORE.",
+    line2: "THAT GROWS REAL FOLLOWERS INTO CUSTOMERS.",
   },
   "influencer-network": {
-    line1: "CREATOR PERFORMANCE MATRIX.",
-    line2: "VERIFIED INFLUENCER REVENUE.",
+    line1: "INFLUENCER MARKETING AGENCY IN COIMBATORE.",
+    line2: "THAT TURNS CREATORS INTO CUSTOMERS.",
   },
   "content-smithy": {
-    line1: "AUTHORITATIVE CONTENT SMITHY.",
-    line2: "OWN THE INDUSTRY CONVERSATION.",
+    line1: "CONTENT MARKETING AGENCY IN COIMBATORE.",
+    line2: "THAT TURNS WORDS INTO CUSTOMERS.",
   },
   "inbox-edge": {
-    line1: "HIGH-LTV EMAIL SYSTEMS.",
-    line2: "INBOX RETENTION THAT PRINTS.",
+    line1: "EMAIL MARKETING COMPANY IN COIMBATORE.",
+    line2: "THAT TURNS YOUR LIST INTO REVENUE.",
   },
   "brand-anvil": {
-    line1: "CATEGORY-DEFINING POSITIONING.",
-    line2: "FORGE AN UNBEATABLE MOAT.",
+    line1: "BRAND POSITIONING AGENCY IN COIMBATORE.",
+    line2: "THAT MAKES YOU THE OBVIOUS CHOICE.",
   },
   "visual-id": {
-    line1: "ICONIC BRAND IDENTITY.",
-    line2: "VISUAL SYSTEMS THAT SCALE.",
+    line1: "BRAND IDENTITY DESIGN AGENCY IN COIMBATORE.",
+    line2: "THAT MAKES YOU UNFORGETTABLE.",
   },
   "commercial-video": {
     line1: "CINEMATIC COMMERCIAL VIDEO.",

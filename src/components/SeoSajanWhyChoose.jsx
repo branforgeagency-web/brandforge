@@ -456,6 +456,21 @@ export default function SeoSajanWhyChoose({ whyChooseUs, onOpenModal }) {
           transform: translateY(-2px);
         }
 
+        .bf-why-conclusion-bar {
+          margin-top: clamp(24px, 3.5vw, 40px);
+          padding: 18px 24px;
+          background: rgba(255, 24, 1, 0.05);
+          border-left: 3px solid #FF1801;
+          border-radius: 4px;
+        }
+        .bf-why-conclusion-text {
+          font-size: clamp(1.05rem, 1.35vw, 1.2rem);
+          font-weight: 600;
+          color: #FAFAFC;
+          margin: 0;
+          line-height: 1.5;
+        }
+
         /* RESPONSIVE QUERIES */
         @media (max-width: 900px) {
           .bf-why-header {
@@ -628,6 +643,18 @@ export default function SeoSajanWhyChoose({ whyChooseUs, onOpenModal }) {
             );
           })}
         </div>
+
+        {whyChooseUs?.conclusion && (
+          <motion.div
+            className="bf-why-conclusion-bar"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: false, amount: 0.2 }}
+            transition={{ duration: 0.5 }}
+          >
+            <p className="bf-why-conclusion-text">{whyChooseUs.conclusion}</p>
+          </motion.div>
+        )}
       </div>
     </section>
   );

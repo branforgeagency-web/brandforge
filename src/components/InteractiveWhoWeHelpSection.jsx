@@ -168,12 +168,43 @@ export default function InteractiveWhoWeHelpSection({
             ))}
           </div>
         )}
+
+        {/* CONSULTATION CTA BANNER */}
+        {whoWeHelp.ctaText && (
+          <motion.div
+            className="sg-who-cta-banner"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: false, amount: 0.2 }}
+            transition={{ duration: 0.5 }}
+          >
+            <p className="sg-who-cta-text">{whoWeHelp.ctaText}</p>
+          </motion.div>
+        )}
       </div>
     </section>
   );
 }
 
 const whoStyles = `
+  .sg-who-cta-banner {
+    margin-top: clamp(36px, 5vw, 56px);
+    text-align: center;
+    max-width: 860px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 18px 28px;
+    background: rgba(255, 24, 1, 0.05);
+    border: 1px solid rgba(255, 24, 1, 0.2);
+    border-radius: 9999px;
+  }
+  .sg-who-cta-text {
+    font-size: clamp(14px, 1.1vw, 16px);
+    font-weight: 600;
+    color: #FAFAFC;
+    margin: 0;
+    line-height: 1.5;
+  }
   .sg-who-section {
     background: #000000 !important;
     background-image: 

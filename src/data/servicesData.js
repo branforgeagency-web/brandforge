@@ -1,5 +1,6 @@
 import {
   Search,
+  Sparkles,
   Megaphone,
   Box,
   Rocket,
@@ -69,7 +70,7 @@ export const servicesData = {
       { feature: "Search Output Format", traditional: "10 Blue Links & Ad Banners", brandforge: "Direct Conversational AI Answers & Recommended Citations" },
       { feature: "User Conversion", traditional: "Multi-click browsing loop", brandforge: "Immediate single-prompt purchase decision" },
     ],
-    pillarsTag: "OUR FULL SERVICE SPECTRUM",
+    pillarsTag: "OUR SERVICES",
     pillarsTitle: "Our SEO & GEO Services in Coimbatore",
     pillarsSubtitle: "As a full-service SEO company in Coimbatore, we handle every layer of organic search visibility and generative AI answers.",
     pillars: [
@@ -90,7 +91,7 @@ export const servicesData = {
       },
       {
         icon: Cpu,
-        tag: "GEO SYSTEM",
+        tag: "GEO SERVICES",
         title: "GEO Services (Generative Engine Optimization)",
         description: "Search isn't limited to Google anymore. Our GEO Services help your brand get discovered and cited inside AI-generated answers:",
         callout: "Think of GEO as the natural evolution of SEO — the goal is still visibility, but the destination has expanded from search result pages to AI-generated answers.",
@@ -121,42 +122,48 @@ export const servicesData = {
         title: "Content Marketing",
         description: "Search engines and AI engines both reward genuinely useful content. We create content that reads naturally for your audience while satisfying the technical structure search engines and AI models look for — no robotic, keyword-stuffed writing.",
         deliverables: [
-          "Search engines and AI engines both reward genuinely useful content.",
-          "We create content that reads naturally for your audience while satisfying the technical structure search engines and AI models look for — no robotic, keyword-stuffed writing."
+          "Audience-first educational articles and guides",
+          "Technical schema markup integration",
+          "Natural semantic keyword density",
+          "High-conversion informational assets"
         ]
       },
       {
         icon: BarChart3,
-        tag: "TRANSPARENT ROADMAP",
+        tag: "TRANSPARENCY",
         title: "SEO Strategy & Reporting",
         description: "Every engagement includes a clear roadmap and monthly performance reporting, so you always know what's working, what's next, and why.",
         deliverables: [
-          "Every engagement includes a clear roadmap and monthly performance reporting, so you always know what's working, what's next, and why."
+          "Transparent monthly ranking & traffic dashboards",
+          "Competitor gap and opportunity tracking",
+          "Clear next-month roadmap deliverables",
+          "Conversion and lead attribution metrics"
         ]
       }
     ],
     differentiators: {
-      tag: "THE BRANDFORGE ADVANTAGE",
+      tag: "THE BRAND FORGE DIFFERENCE",
       title: "What Makes Our SEO Company Different",
+      subtitle: "Most agencies in Coimbatore are still purely Google-focused; we're already optimizing for the AI search shift.",
       items: [
         {
           title: "SEO and GEO Under One Roof",
-          description: "While typical agencies in Coimbatore remain purely Google-focused, we simultaneously optimize your brand for ChatGPT, Perplexity, and AI Search shifts.",
+          description: "Most agencies in Coimbatore are still purely Google-focused; we're already optimizing for the AI search shift.",
           icon: Zap
         },
         {
-          title: "Deep Local Market Intelligence",
-          description: "Granular search and behavioral insights tailored to how regional and pan-India high-intent buyers discover, evaluate, and convert.",
+          title: "Local Market Understanding",
+          description: "We know how Coimbatore audiences search and behave online.",
           icon: Globe
         },
         {
-          title: "Radical Transparency & Attribution",
-          description: "Full weekly attribution of commercial rankings, pipeline revenue, and AI engine citation share with zero black-box vanity reporting.",
+          title: "Transparent Process",
+          description: "No black-box reporting, no vague promises.",
           icon: ShieldCheck
         },
         {
           title: "Content Built for Humans First",
-          description: "Authoritative, domain-led thought leadership that earns top organic rankings on Google and authoritative citations across conversational AI.",
+          description: "Because that's still what ranks best, on Google and on AI engines.",
           icon: Users
         }
       ]
@@ -193,16 +200,16 @@ export const servicesData = {
       buttonText: "Book Your Free Consultation →"
     }
   },
-
+  
   "paid-media": {
     slug: "paid-media",
     urlSlug: "/ppc-company-coimbatore",
     metaTitle: "PPC Company in Coimbatore | Google & Meta Ads | BrandForge",
     metaDescription: "Looking for a PPC company in Coimbatore? BrandForge runs Google, Meta, YouTube & lead-gen ads that convert. Get a free ad account audit this week.",
     number: "02",
-    eyebrow: "PPC Company in Coimbatore | Google & Meta Ads by BrandForge",
+    eyebrow: "PPC Company in Coimbatore | Ignition Ads by BrandForge",
     title: "PPC Company in Coimbatore That Turns Ad Spend Into Real Leads",
-    heroButtonText: "Get a Free Ad Account Audit →",
+    heroButtonText: "Get a Free Ad Account Audit This Week →",
     subtitle: [
       "Most businesses in Coimbatore don't have an ads problem — they have a wasted budget problem. If you're paying for clicks that never turn into customers, that's a targeting and tracking issue, not a reason to give up on paid ads.",
       "BrandForge is a PPC company in Coimbatore built for one outcome: turning every rupee of ad spend into measurable leads and sales. Our paid media studio, Ignition Ads, plans and manages campaigns across Google, Meta, YouTube, and more — with proper tracking wired in from day one."
@@ -211,21 +218,22 @@ export const servicesData = {
     icon: Megaphone,
     metrics: [
       { value: "₹420 → ₹95", label: "Cost-Per-Lead Cut", desc: "Average 77% drop in CPL across accounts" },
-      { value: "4.8x", label: "Average Blended ROAS", desc: "Direct response media efficiency benchmark" },
+      { value: "5.8x", label: "Average Blended ROAS", desc: "Direct response media efficiency benchmark" },
       { value: "₹45M+", label: "Ad Spend Managed", desc: "Google Ads & Meta Blueprint certified team" },
       { value: "100%", label: "Conversion Tracking", desc: "GA4, Meta CAPI & call tracking wired before spend" },
     ],
     whyChooseUs: {
-      tag: "FAST ACCOUNTABLE GROWTH",
+      tag: "WHY PPC BRINGS FASTER RESULTS THAN SEO",
       title: "Why PPC Brings Faster Results Than SEO",
-      description: "SEO builds long-term authority. Paid ads bring leads this week. For local service businesses, coaching institutes, clinics, and online stores across Coimbatore and Tamil Nadu, that speed is the whole point.",
-      leadIn: "Done right, PPC is the most accountable marketing you can run — every result is a number you can check:",
+      description: "SEO builds long-term authority. Paid ads bring leads this week. For local service businesses, coaching institutes, clinics, and online stores, that speed is the whole point. Done right, PPC is the most accountable marketing you can run — every result is a number you can check.",
+      leadIn: "For local service businesses, coaching institutes, clinics, and online stores, that speed is the whole point:",
       points: [
         "You appear at the top of Google the day you launch",
         "You reach exact audiences by location, age, interest, and intent",
         "You see your real cost per lead, not guesswork",
         "You scale what works and cut what doesn't, fast"
-      ]
+      ],
+      conclusion: "Done right, PPC is the most accountable marketing you can run — every result is a number you can check."
     },
     matrixTag: "MEDIA REVOLUTION",
     matrixTitle: "OLD TRADITIONAL AGENCIES VS BRANDFORGE AD SCALING",
@@ -236,150 +244,206 @@ export const servicesData = {
       { feature: "Post-Click Experience", traditional: "Traffic dumped onto slow homepage or broken form", brandforge: "High-converting bespoke landing pages built by our Web Foundry team" },
       { feature: "Reporting & Accountability", traditional: "Vague monthly PDF full of vanity impression metrics", brandforge: "Transparent weekly reporting: spend, real leads, and cost-per-lead in plain numbers" },
     ],
-    pillarsTag: "MULTI-CHANNEL AD ENGINE",
+    pillarsTag: "EVERY TYPE OF AD WE RUN",
     pillarsTitle: "Every Type of Ad We Run",
-    pillarsSubtitle: "We don't push one channel. We match the platform to your buyer. Here's what Ignition Ads manages across Google, Meta, and LinkedIn.",
+    pillarsSubtitle: "We don't push one channel. We match the platform to your buyer. Here's what Ignition Ads manages.",
     pillars: [
       {
         icon: Search,
-        tag: "GOOGLE SEARCH",
-        title: "Google Search Ads — High-Intent Leads",
-        description: "When someone in Coimbatore searches for your service on Google, your ad shows first. We capture bottom-funnel buyers at the exact moment they are ready to call or purchase.",
-        deliverables: ["Negative Keyword Shield (Zero Wasted Clicks)", "High-Intent Keyword Match Strategy", "Ad Copy & Extension Optimization", "Bid & Quality Score Management"]
-      },
-      {
-        icon: Zap,
-        tag: "META PERFORMANCE",
-        title: "Meta Ads (Facebook & Instagram)",
-        description: "The best channel for lead-generation and brand demand in Coimbatore. We deploy high-converting UGC reels, carousel stacks, and advantage+ shopping campaigns.",
-        deliverables: ["Advantage+ Audience Targeting", "Server-Side Meta CAPI Tracking", "In-House Video & Reel Creative Matrix", "High-Converting Lead Gen Funnels"]
-      },
-      {
-        icon: Video,
-        tag: "REELS & SHORTS",
-        title: "Instagram Reels & Story Ads",
-        description: "Short-form vertical video where younger, mobile-first buyers spend their time. Built with native hooks designed to stop the scroll and trigger immediate DM inquiries.",
-        deliverables: ["Hook Testing Engine (15+ variants/mo)", "Native Creator Scripting & UGC", "Fast Creative Refreshes (Zero Ad Fatigue)"]
+        tag: "HIGH-INTENT LEADS",
+        title: "Google Search Ads",
+        description: "When someone searches for your service, your ad shows first. High-intent bottom-funnel leads ready to convert.",
+        deliverables: [
+          "Negative Keyword Shield (Zero Wasted Clicks)",
+          "High-Intent Exact Match Strategy",
+          "Ad Copy & Dynamic Asset Testing",
+          "Bid & Quality Score Optimization"
+        ]
       },
       {
         icon: Globe,
-        tag: "GOOGLE DISPLAY",
-        title: "Google Display Ads & Banner Networks",
-        description: "Eye-catching visual banner ads across millions of websites and apps, ideal for massive brand recall and keeping your business top-of-mind across Coimbatore.",
-        deliverables: ["Custom Intent & Affinity Audiences", "Responsive Display Ad Formats", "Strict Placement & Fraud Filtering"]
+        tag: "BRAND RECALL",
+        title: "Google Display Ads",
+        description: "Banner ads across websites and apps, ideal for retargeting and building wide visual recognition.",
+        deliverables: [
+          "Custom Intent & Affinity Audiences",
+          "Responsive Display Creative Assets",
+          "Strict Placement & Fraud Filtering",
+          "Cross-Device Frequency Capping"
+        ]
       },
       {
         icon: Video,
-        tag: "YOUTUBE ADS",
-        title: "YouTube Ads — High-Recall Video Campaigns",
-        description: "Video ads for brand recall, coaching course launches, clinic walk-throughs, and product demos. Reach targeted viewers before they watch industry videos.",
-        deliverables: ["Skippable In-Stream Video Ads", "Non-Skippable 15s Brand Stories", "YouTube Bumper Ads (6s High-Impact)"]
+        tag: "VIDEO IMPACT",
+        title: "YouTube Ads",
+        description: "Video ads for brand recall, course launches, and product demos that engage viewers before they watch.",
+        deliverables: [
+          "Skippable In-Stream Video Ads",
+          "Non-Skippable 15s Brand Stories",
+          "YouTube Bumper Ads (6s High-Impact)",
+          "Viewer Retargeting Lists"
+        ]
       },
       {
         icon: ShieldCheck,
         tag: "E-COMMERCE",
         title: "Google Shopping Ads",
-        description: "Direct product listings with image, customer review ratings, and price for e-commerce brands looking for immediate sales and high blended ROAS.",
-        deliverables: ["Google Merchant Center Feed Setup", "Smart Shopping Campaign Optimization", "Dynamic Product Remarketing Feeds"]
+        description: "Product listings with image and price for e-commerce, showing directly in search results.",
+        deliverables: [
+          "Google Merchant Center Feed Setup",
+          "Smart Shopping Feed Optimization",
+          "Negative Keyword Filtering",
+          "Dynamic Product Remarketing"
+        ]
       },
       {
         icon: Cpu,
-        tag: "GOOGLE AI",
-        title: "Performance Max (PMax)",
-        description: "Google's unified AI ad format running across Search, Display, YouTube, Gmail, and Google Maps simultaneously with automated machine-learning optimization.",
-        deliverables: ["PMax Asset Group & Copy Testing", "Custom First-Party Audience Signals", "Search Theme & Negative Keyword Control"]
+        tag: "AI OMNICHANNEL",
+        title: "Performance Max",
+        description: "Google's AI format running across Search, Display, YouTube, Gmail, and Maps simultaneously.",
+        deliverables: [
+          "PMax Asset Group & Copy Matrix",
+          "Custom First-Party Audience Signals",
+          "Search Theme & Negative Keyword Shield",
+          "Value-Based Smart Bidding Rules"
+        ]
+      },
+      {
+        icon: Zap,
+        tag: "LEAD GENERATION",
+        title: "Meta Ads (Facebook & Instagram)",
+        description: "The best channel for lead-generation and demand. Targeting local Coimbatore buyers where they scroll daily.",
+        deliverables: [
+          "Advantage+ Audience Modeling",
+          "Server-Side Meta CAPI Tracking",
+          "Scroll-Stopping UGC & Reel Creatives",
+          "Direct WhatsApp & Instant Form Funnels"
+        ]
+      },
+      {
+        icon: Video,
+        tag: "SHORT-FORM VIDEO",
+        title: "Instagram Reels & Story Ads",
+        description: "Short-form video where younger buyers spend their time. Native hooks built to stop the scroll.",
+        deliverables: [
+          "3-Second Hook Video Testing",
+          "Vertical 9:16 Creator Video Assets",
+          "Trending Audio & Fast Visual Pacing",
+          "Interactive Poll & Sticker CTAs"
+        ]
       },
       {
         icon: TrendingUp,
-        tag: "HIGH ROI",
-        title: "Retargeting Ads — Recapture Lost Visitors",
-        description: "Chasing past website visitors across Google and Meta. Retargeting ads are usually the cheapest leads in any account because intent is already established.",
-        deliverables: ["Cart Abandonment Retargeting Sequences", "Dynamic Carousel Retargeting", "Sequential Storytelling Ad Flows"]
+        tag: "LOWEST CPL",
+        title: "Retargeting Ads",
+        description: "Chasing past visitors across Google and Meta; usually the cheapest leads in any account.",
+        deliverables: [
+          "Past Website Visitor Dynamic Drips",
+          "Abandoned Form & Cart Sequences",
+          "VIP Repeat Customer Re-engagement",
+          "Exclusion Lists to Prevent Wasted Spend"
+        ]
       },
       {
         icon: Award,
-        tag: "INSTANT FORMS",
+        tag: "NO SLOW PAGES",
         title: "Lead Generation Campaigns",
-        description: "Instant-form ads on Meta and LinkedIn that capture verified name, phone number, and email without forcing users to wait for a slow landing page.",
-        deliverables: ["Native Instant Forms with Pre-Fill", "Instant CRM & WhatsApp Webhook Sync", "Lead Qualification Questions to Filter Junk"]
+        description: "Instant-form ads that capture name and phone without a slow landing page, syncing straight to your CRM.",
+        deliverables: [
+          "Native Instant Lead Forms",
+          "Instant WhatsApp Webhook Routing",
+          "Qualifying Questions to Filter Junk",
+          "Real-Time Sales Team Notification"
+        ]
       },
       {
         icon: Globe,
-        tag: "LOCAL CALLS",
+        tag: "FOOT TRAFFIC & CALLS",
         title: "Local & Google Maps Ads",
-        description: "Engineered specifically for Coimbatore businesses that need direct foot walk-ins and phone calls from nearby customers searching on Google Maps.",
-        deliverables: ["Google Business Profile Ad Extensions", "Promoted Pins on Google Maps", "Call-Only Ad Campaigns with Click-to-Call"]
+        description: "For businesses that need walk-ins and calls nearby. Promoted pins and click-to-call extensions.",
+        deliverables: [
+          "Google Business Profile Sync",
+          "Promoted Pins on Google Maps",
+          "Call-Only Ad Mobile Campaigns",
+          "Local Radius Geo-Fencing"
+        ]
       },
       {
         icon: Target,
-        tag: "B2B PIPELINE",
-        title: "LinkedIn Ads — B2B Decision-Maker Targeting",
-        description: "For B2B companies and premium corporate services in Coimbatore targeting founders, managing directors, purchase managers, and corporate decision-makers.",
-        deliverables: ["Job-Title & Company Industry ABM Targeting", "LinkedIn Lead Gen Forms", "Sponsored Thought Leadership Content"]
+        tag: "B2B DECISION MAKERS",
+        title: "LinkedIn Ads",
+        description: "For B2B and premium services targeting decision-makers, managing directors, and corporate buyers.",
+        deliverables: [
+          "Job-Title & Company Size ABM Targeting",
+          "LinkedIn Native Lead Gen Forms",
+          "Sponsored Executive Content",
+          "High-Ticket B2B Lead Pipelines"
+        ]
       }
     ],
     differentiators: {
-      tag: "THE BRANDFORGE ADVANTAGE",
-      title: "What Makes BrandForge Different as a PPC Company in Coimbatore",
-      subtitle: "Plenty of agencies run ads. Fewer make them profitable. As a full-service agency that also handles branding, Web Foundry, and Story Smithy in-house, we connect the ad to the page to the follow-up.",
+      tag: "WHAT MAKES BRANDFORGE DIFFERENT",
+      title: "What Makes BrandForge Different",
+      subtitle: "Plenty of agencies run ads. Fewer make them profitable. As a PPC company in Coimbatore that also handles branding, web, and content in-house, we connect the ad to the page to the follow-up.",
       items: [
         {
           title: "Tracking First",
-          description: "GA4, Meta pixel, CAPI server tracking, and phone call tracking installed and verified before a single rupee of ad spend.",
+          description: "GA4, pixel, and call tracking installed before any spend so every single rupee is accounted for.",
           icon: ShieldCheck
         },
         {
           title: "Scroll-Stopping Creative",
-          description: "Built in-house by our Story Smithy studio with dynamic UGC video, reels, and custom graphics — never generic templates.",
+          description: "Built in-house by our Story Smithy studio, not templated — reels, UGC, and custom motion graphics.",
           icon: PenTool
         },
         {
           title: "Landing Pages That Convert",
-          description: "Engineered by our Web Foundry team with sub-second speeds so your expensive paid traffic never hits a dead end.",
+          description: "Engineered by our Web Foundry team with sub-second speeds so your traffic doesn't hit a dead end.",
           icon: TrendingUp
         },
         {
-          title: "Weekly Plain-Number Reporting",
-          description: "Spend, verified leads, and real cost-per-lead delivered in plain numbers — no vanity metrics or black-box jargon.",
+          title: "Weekly Reporting",
+          description: "Spend, leads, and cost-per-lead in plain numbers delivered weekly — zero vanity jargon.",
           icon: BarChart3
         },
         {
-          title: "Data-Led Weekly Optimization",
-          description: "We cut losing ad sets, prune negative search terms, and scale high-ROAS winners every single week.",
+          title: "Data-Led Optimization",
+          description: "We cut losers and scale winners every week, continually lowering your cost per acquisition.",
           icon: Zap
         }
       ]
     },
     timeline: {
-      tag: "6-STEP PPC PROCESS",
-      title: "How We Work — From Audit to Profitable Scale",
-      subtitle: "A transparent, data-backed 6-step framework to maximize ROAS and eliminate ad budget leaks.",
+      tag: "HOW WE WORK",
+      title: "How We Work",
+      subtitle: "Our systematic 6-step framework to maximize your return on ad spend and eliminate budget waste.",
       steps: [
-        { num: "01", title: "FREE AD ACCOUNT AUDIT", desc: "We analyze your past spend, search terms, and landing pages to find where your budget is leaking." },
-        { num: "02", title: "PLATFORM STRATEGY", desc: "We pick the platforms your buyers actually use (Google, Meta, YouTube) rather than spreading budget thin." },
-        { num: "03", title: "BUILD & ASSETS", desc: "Custom targeting, scroll-stopping creatives by Story Smithy, copy, tracking, and Web Foundry landing pages." },
-        { num: "04", title: "LAUNCH & CLOSE MONITORING", desc: "Live launch with close, hands-on monitoring during the critical first 72 hours to calibrate bids." },
-        { num: "05", title: "WEEKLY OPTIMIZATION", desc: "A/B testing hooks, pruning negative keywords, and lowering your cost per lead week over week." },
-        { num: "06", title: "AGGRESSIVE SCALING", desc: "Confidently scale ad spend into verified winning campaigns to double your revenue." }
+        { num: "01", title: "Free ad account audit", desc: "We find where your budget is leaking" },
+        { num: "02", title: "Strategy", desc: "We pick the platforms your buyers actually use" },
+        { num: "03", title: "Build", desc: "Targeting, creatives, copy, tracking, landing pages" },
+        { num: "04", title: "Launch", desc: "Close watch on the first critical days" },
+        { num: "05", title: "Optimize", desc: "Lower your cost per lead week over week" },
+        { num: "06", title: "Scale", desc: "Grow what's already working" }
       ]
     },
     whoWeHelp: {
       tag: "WHO WE HELP",
       title: "Who We Help in Coimbatore and Tamil Nadu",
-      subtitle: "If you have a budget and a product or service people want, we'll put it in front of the right buyers with profitable paid ads.",
+      subtitle: "We run paid ads for coaching institutes, clinics, real estate, e-commerce brands, local service businesses, and B2B companies across Coimbatore and Tamil Nadu. If you have a budget and a product people want, we'll put it in front of the right buyers.",
+      ctaText: "Get your free ad account audit this week — we'll show you exactly where your spend is leaking and how much cheaper your leads could be.",
       industries: [
-        { title: "Coaching & Education Institutes", desc: "High-intent student enrollment leads for NEET, JEE, IELTS, UPSC, and skills academies across Coimbatore." },
-        { title: "Clinics & Healthcare Centers", desc: "Qualified patient appointment bookings for dental, fertility, eye care, and multi-specialty hospitals." },
+        { title: "Coaching Institutes", desc: "High-intent student enrollment leads for NEET, JEE, IELTS, UPSC, and technical courses across Coimbatore." },
+        { title: "Clinics & Healthcare", desc: "Qualified patient appointment bookings for dental, fertility, eye care, and multi-specialty practices." },
         { title: "Real Estate & Builders", desc: "High-ticket buyer site visit inquiries for luxury villas, gated apartments, and commercial plots." },
-        { title: "E-Commerce & D2C Brands", desc: "High-ROAS Google Shopping and Meta advantage+ shopping campaigns that scale profitable sales." },
-        { title: "Local Service Businesses", desc: "Direct phone calls and walk-in leads for interior designers, solar installers, modular kitchens, and local pros." },
-        { title: "B2B & Enterprise Services", desc: "Account-based LinkedIn and Google Search ads targeting founders, CEOs, and purchase managers." }
+        { title: "E-Commerce Brands", desc: "High-ROAS Google Shopping and Meta advantage+ shopping campaigns that scale profitable sales." },
+        { title: "Local Service Businesses", desc: "Direct phone calls and walk-in leads for interior designers, solar installers, and local service pros." },
+        { title: "B2B Companies", desc: "Account-based LinkedIn and Google Search ads targeting founders, CEOs, and purchase managers." }
       ],
       certifications: [
-        { label: "Google Ads Certified Partner" },
-        { label: "Meta Blueprint Certified Agency" },
-        { label: "Real Client Result: CPL Cut from ₹420 to ₹95" },
-        { label: "₹45M+ Lifetime Ad Spend Managed" }
+        { label: "Google Ads Help (support.google.com/google-ads) & Meta Business (facebook.com/business/help) Compliant" },
+        { label: "Real Client Result: Cost-per-lead cut from ₹420 to ₹95 for Coimbatore education institute & 5.8x ROAS" },
+        { label: "Certified Team: Google Ads Search & Display Certified + Meta Blueprint Certified Media Buyers" },
+        { label: "Reviewed by BalaMurali, Paid Media Lead, Ignition Ads by BrandForge" }
       ]
     },
     faqs: [
@@ -410,11 +474,11 @@ export const servicesData = {
     ],
     bottomCta: {
       title: "Get Your Free Ad Account Audit This Week",
-      subtitle: "We'll show you exactly where your spend is leaking, how much cheaper your leads could be, and the step-by-step roadmap to scale.",
+      subtitle: "We'll show you exactly where your spend is leaking and how much cheaper your leads could be.",
       buttonText: "Claim Your Free Ad Audit →"
     }
   },
-
+  
   "web-foundry": {
     slug: "web-foundry",
     urlSlug: "/website-development-company-coimbatore",
@@ -439,57 +503,59 @@ export const servicesData = {
     whyChooseUs: {
       tag: "THE REAL COST OF A BAD SITE",
       title: "Why Your Website Is Losing You Customers",
-      description: "Most business websites in Coimbatore fail for the same few reasons. Fixing them is where growth starts. A good website fixes all five — that's the difference between a site that just exists and one that actually earns.",
-      leadIn: "Here are the 5 critical reasons your current site is leaking customers every day:",
+      description: "Most business websites in Coimbatore fail for the same few reasons. Fixing them is where growth starts.",
+      conclusion: "A good website fixes all five. That's the difference between a site that just exists and one that actually earns.",
+      leadIn: "Fixing them is where growth starts:",
       points: [
-        "It loads too slowly — visitors leave before it even opens (Google data shows over 53% of mobile visits are abandoned if pages take over 3 seconds).",
-        "It breaks on mobile, where over 80% of your customer traffic in Coimbatore comes from.",
-        "It has no clear call to action, so visitors browse aimlessly and leave without contacting.",
-        "It isn't built for SEO, so Google never crawls, indexes, or shows it to high-intent buyers.",
-        "It looks dated, which quietly tells premium buyers you're behind the times."
+        "It loads too slowly — visitors leave before it even opens",
+        "It breaks on mobile, where most of your traffic comes from",
+        "It has no clear call to action, so people browse and leave",
+        "It isn't built for SEO, so Google never shows it",
+        "It looks dated, which quietly tells buyers you're behind the times"
       ]
     },
     matrixTag: "CRITICAL FUNDAMENTALS",
-    matrixTitle: "WHAT MAKES THE BEST WEBSITE DEVELOPMENT COMPANY IN COIMBATORE?",
+    matrixTitle: "What Makes the Best Website Development Company in Coimbatore?",
     matrixSubtitle: "If you're comparing agencies, look past the price tag. The best website development company in Coimbatore is the one that gets these fundamentals right:",
+    matrixClosing: "Ask any agency to show proof on all five before you sign. Vague answers are a red flag.",
     matrixRows: [
       {
-        feature: "Speed & Performance",
-        traditional: "Bloated templates taking 6–10s to load on mobile data",
-        brandforge: "Pages that load in under 3 seconds on mobile data (verified on Google PageSpeed Insights)"
+        feature: "Speed",
+        brandforge: "Pages that load in under 3 seconds on mobile data",
+        traditional: "Bloated templates taking 6–10s to load on mobile data"
       },
       {
-        feature: "SEO-Ready Code",
-        traditional: "Messy spaghetti code with missing meta tags and zero schema",
-        brandforge: "Clean semantic HTML & schema markup structured so Google can index and rank you"
+        feature: "SEO-ready code",
+        brandforge: "Clean structure so Google can rank you",
+        traditional: "Messy spaghetti code with missing meta tags and zero schema"
       },
       {
-        feature: "Mobile-First Design",
-        traditional: "Desktop layouts shrunken down to mobile screens with broken buttons",
-        brandforge: "Engineered for phones first with thumb-friendly navigation and touch responsiveness"
+        feature: "Mobile-first design",
+        brandforge: "Built for phones first, not desktop",
+        traditional: "Desktop layouts shrunken down to mobile screens with broken buttons"
       },
       {
-        feature: "Conversion Focus",
-        traditional: "Vague artistic layouts with hidden contact forms and zero CTAs",
-        brandforge: "Clear CTAs, frictionless enquiry forms, and instant WhatsApp & click-to-call buttons"
+        feature: "Conversion focus",
+        brandforge: "Clear CTAs, forms, and WhatsApp/call buttons",
+        traditional: "Vague artistic layouts with hidden contact forms and zero CTAs"
       },
       {
-        feature: "Ongoing Support",
-        traditional: "Agency vanishes after launch; zero help when plugins break",
-        brandforge: "Direct developer support line, automated cloud backups, and proactive maintenance"
+        feature: "Ongoing support",
+        brandforge: "Someone to call when something breaks",
+        traditional: "Agency vanishes after launch; zero help when plugins break"
       }
     ],
     pillarsTag: "FULL-STACK CAPABILITIES",
     pillarsTitle: "Website Development Services We Offer",
-    pillarsSubtitle: "We don't do one-size-fits-all. We build the right type of site engineered for your exact business goals.",
+    pillarsSubtitle: "We don't do one-size-fits-all. We build the right type of site for your goal.",
     pillars: [
       {
         icon: Globe,
         tag: "TRUST & ENQUIRIES",
         title: "Business Websites",
-        description: "Professional company sites that build enterprise trust, explain your capabilities clearly, and generate consistent inbound enquiries from high-intent clients.",
+        description: "Professional company sites that build trust and generate enquiries.",
         deliverables: [
-          "Brand positioning & high-converting copywriting",
+          "Professional company sites that build trust and generate enquiries.",
           "Mobile-optimized service & portfolio pages",
           "Prominent WhatsApp and click-to-call triggers",
           "Instant lead capture & CRM notification sync"
@@ -499,84 +565,84 @@ export const servicesData = {
         icon: ShieldCheck,
         tag: "ONLINE STORES",
         title: "E-Commerce Websites",
-        description: "Online stores with secure payment gateways (Razorpay, Stripe, UPI), dynamic product catalogues, category filtering, cart systems, and frictionless checkout.",
+        description: "Online stores with secure payments, product pages, and cart.",
         deliverables: [
+          "Online stores with secure payments, product pages, and cart.",
           "Frictionless 1-page checkout experience",
           "Automated inventory & order management",
-          "Secure payment gateway & UPI integration",
-          "Abandoned cart recovery & retargeting loops"
+          "Secure payment gateway & UPI integration"
         ]
       },
       {
         icon: Target,
         tag: "HIGH-ROAS FUNNELS",
         title: "Landing Pages",
-        description: "Single high-converting pages purpose-built for Google Ads and Meta ad campaigns to maximize conversion rate and drop your blended cost per lead.",
+        description: "Single high-converting pages built for ad campaigns.",
         deliverables: [
-          "A/B hook testing & variant framework",
+          "Single high-converting pages built for ad campaigns.",
           "Above-the-fold lead form architecture",
           "Sub-second mobile loading speed (<1.8s)",
-          "Direct pixel sync with Meta CAPI & Google Ads"
+          "Direct conversion tracking for Google Ads & Meta"
         ]
       },
       {
         icon: Cpu,
         tag: "CUSTOM SOFTWARE",
         title: "Custom Web Applications",
-        description: "Custom dashboards, online booking systems, customer portals, and internal business tools built on modern React, Node.js, and serverless edge databases.",
+        description: "Dashboards, booking systems, and internal tools.",
         deliverables: [
-          "Custom React/Vite single-page architecture",
+          "Dashboards, booking systems, and internal tools.",
           "Role-based authentication & data security",
           "Automated database synchronizations",
-          "Scalable serverless API integrations"
+          "Scalable modern web application architecture"
         ]
       },
       {
         icon: Layers,
         tag: "CMS FREEDOM",
         title: "WordPress Development",
-        description: "Easy-to-edit WordPress & headless CMS websites with custom Gutenberg blocks that your internal team can update yourself without touching a line of code.",
+        description: "Easy-to-edit sites you can update yourself.",
         deliverables: [
+          "Easy-to-edit sites you can update yourself.",
           "Custom lightweight block themes (zero bloated plugins)",
           "Hardened security, SSL & daily backups",
-          "Intuitive drag-and-drop page editor",
-          "Staff training video walkthroughs"
+          "Intuitive drag-and-drop page editor"
         ]
       },
       {
         icon: Zap,
         tag: "MODERNIZATION",
         title: "Website Redesign",
-        description: "Modernizing slow, outdated sites without losing existing SEO rankings. We overhaul visual aesthetics, mobile responsiveness, and page speed while preserving URL structure.",
+        description: "Modernizing slow, outdated sites without losing SEO.",
         deliverables: [
+          "Modernizing slow, outdated sites without losing SEO.",
           "Comprehensive 301 SEO redirect mapping",
           "Google Core Web Vitals speed overhaul",
-          "Modern responsive 2026 UI/UX design",
-          "Brand authority & conversion rate refresh"
+          "Modern responsive mobile-first redesign"
         ]
       },
       {
         icon: Gauge,
         tag: "PERFORMANCE",
         title: "Speed & SEO Optimization",
-        description: "Making an existing website significantly faster and search-ready. We eliminate render-blocking code, compress assets, and optimize technical infrastructure for Google ranking.",
+        description: "Making an existing site faster and search-ready.",
         deliverables: [
+          "Making an existing site faster and search-ready.",
           "Lighthouse 95+ performance optimization",
           "Image & JavaScript code minification",
-          "Cloudflare CDN edge caching setup",
-          "Structured schema markup injection"
+          "Clean code structure so Google can rank you"
         ]
       },
       {
         icon: ShieldCheck,
         tag: "24/7 PEACE OF MIND",
         title: "Maintenance & Support",
-        description: "Ongoing updates, daily cloud backups, security monitoring, and direct technical help handled for you so your site is always live, fast, and secure.",
+        description: "Updates, backups, and security handled for you.",
         deliverables: [
+          "Updates, backups, and security handled for you.",
           "Automated daily cloud backups",
           "Malware scanning & firewall protection",
-          "24/7 uptime & server monitoring",
-          "Priority developer support line"
+          "Direct developer support line when something breaks"
         ]
       }
     ],
@@ -586,27 +652,27 @@ export const servicesData = {
       subtitle: "As a website development company in Coimbatore that also runs branding, SEO, and ads in-house, we don't just hand over a site and disappear. Your website is built to work with everything else that drives your growth.",
       items: [
         {
-          title: "Built for Speed and Google Ranking from Day One",
+          title: "Built for speed and Google ranking from day one",
           description: "Clean code structure, sub-2s mobile loading, and complete technical SEO foundation built into every page from Day 1.",
           icon: Search
         },
         {
-          title: "Mobile-First, So It Looks Sharp on Every Phone",
+          title: "Mobile-first, so it looks sharp on every phone",
           description: "Built for mobile screens and thumbs first, ensuring razor-sharp typography and effortless navigation on every smartphone.",
           icon: Globe
         },
         {
-          title: "Designed to Convert Visitors into Leads, Not Just Look Pretty",
+          title: "Designed to convert visitors into leads, not just look pretty",
           description: "Strategic layout hierarchy, friction-free forms, and prominent call/WhatsApp buttons that turn casual clicks into real enquiries.",
           icon: TrendingUp
         },
         {
-          title: "Connected to Our In-House SEO and Ads Teams",
-          description: "Seamlessly connected to our SEO services (Rank Forge) and PPC services (Ignition Ads) for unified digital growth.",
+          title: "Connected to our SEO and ads teams for real results",
+          description: "Seamlessly connected to our SEO (Rank Forge) and ads (Ignition Ads) teams for unified digital growth.",
           icon: Zap
         },
         {
-          title: "Clear Timelines and Honest Pricing — No Surprises",
+          title: "Clear timelines and honest pricing — no surprises",
           description: "Fixed transparent quotes, milestone-based deliverables, and zero hidden charges.",
           icon: ShieldCheck
         }
@@ -614,34 +680,35 @@ export const servicesData = {
     },
     timeline: {
       tag: "OUR WEB DEVELOPMENT PROCESS",
-      title: "Our 6-Step Web Development Process",
+      title: "Our Web Development Process",
       subtitle: "A transparent, milestone-driven framework that takes your website from initial concept to high-converting launch.",
       steps: [
-        { num: "01", title: "DISCOVERY", desc: "We learn your business, target audience, competitive landscape, and revenue goals." },
-        { num: "02", title: "PLAN & WIREFRAME", desc: "Structure and page layout wireframes agreed before visual design begins." },
-        { num: "03", title: "DESIGN", desc: "A modern, bespoke look that matches your brand and commands instant authority." },
-        { num: "04", title: "BUILD", desc: "Fast, clean, SEO-ready development with sub-second loading speed." },
-        { num: "05", title: "TEST & LAUNCH", desc: "Checked on every mobile device, browser, and screen size, then go live." },
-        { num: "06", title: "SUPPORT", desc: "Updates, backups, and developer help whenever you need it." }
+        { num: "01", step: "01", title: "Discovery", desc: "we learn your business, goals, and audience", description: "we learn your business, goals, and audience" },
+        { num: "02", step: "02", title: "Plan & wireframe", desc: "structure and page layout agreed before design", description: "structure and page layout agreed before design" },
+        { num: "03", step: "03", title: "Design", desc: "a modern look that matches your brand", description: "a modern look that matches your brand" },
+        { num: "04", step: "04", title: "Build", desc: "fast, clean, SEO-ready development", description: "fast, clean, SEO-ready development" },
+        { num: "05", step: "05", title: "Test & launch", desc: "checked on every device, then go live", description: "checked on every device, then go live" },
+        { num: "06", step: "06", title: "Support", desc: "updates and help whenever you need it", description: "updates and help whenever you need it" }
       ]
     },
     whoWeHelp: {
       tag: "WHO WE BUILD FOR",
-      title: "Who We Build For Across Coimbatore & Tamil Nadu",
+      title: "Who We Build For",
       subtitle: "We build websites for coaching institutes, clinics and hospitals, retail and e-commerce brands, real estate, manufacturers, and local service businesses across Coimbatore and Tamil Nadu. If your customers are searching online, you need a site that shows up and closes.",
+      ctaText: "Get a free website consultation today — we'll review your current site (or your idea) and show you exactly what a high-converting website would look like for your business.",
       industries: [
-        { title: "Coaching & Education Institutes", desc: "High-trust admissions portals, course syllabi, and fast enrollment enquiry funnels for academies in Coimbatore." },
-        { title: "Clinics & Hospitals", desc: "Patient-friendly healthcare websites with doctor profiles, treatment details, and instant appointment booking." },
-        { title: "Retail & E-Commerce Brands", desc: "Lightning-fast online stores with secure checkout, product catalogues, and mobile shopping experiences." },
-        { title: "Real Estate & Builders", desc: "Luxury project showcases, floor plans, virtual tours, and high-ticket site visit lead funnels." },
-        { title: "Manufacturers & Industrialists", desc: "B2B industrial websites showcasing precision machinery, ISO certifications, and RFQ enquiry forms." },
-        { title: "Local Service Businesses", desc: "Direct phone calls and quote requests for interior designers, solar companies, modular kitchens, and local pros." }
+        { title: "Coaching Institutes", desc: "High-trust admissions portals, course syllabi, and fast enrollment enquiry funnels for academies in Coimbatore." },
+        { title: "Clinics and Hospitals", desc: "Patient-friendly healthcare websites with doctor profiles, treatment details, and instant appointment booking." },
+        { title: "Retail and E-Commerce Brands", desc: "Lightning-fast online stores with secure checkout, product catalogues, and mobile shopping experiences." },
+        { title: "Real Estate", desc: "Luxury project showcases, floor plans, virtual tours, and high-ticket site visit lead funnels." },
+        { title: "Manufacturers", desc: "B2B industrial websites showcasing precision machinery, ISO certifications, and RFQ enquiry forms." },
+        { title: "Local Service Businesses", desc: "Direct phone calls and quote requests for service businesses across Coimbatore and Tamil Nadu." }
       ],
       certifications: [
-        { label: "Google PageSpeed Insights Certified (<3s Mobile Load)" },
+        { label: "Google PageSpeed Insights Verified (<3s Mobile Load)" },
         { label: "Google Search Central SEO-Ready Architecture" },
-        { label: "Real Client Metric: Cut Load Time from 6s to 1.8s" },
-        { label: "Reviewed by BalaMurali, Lead Developer & Technical Architect, Web Foundry" }
+        { label: "Real Client Metric: Cut load time from 6s to 1.8s" },
+        { label: "Reviewed by BalaMurali, Lead Developer, Web Foundry" }
       ]
     },
     faqs: [
@@ -875,17 +942,57 @@ export const servicesData = {
         }
       ]
     },
-    timeline: {
+    whatWeDo: {
       tag: "WHAT BRANDFORGE WILL DO FOR YOU",
       title: "What BrandForge Will Do For You",
-      subtitle: "Here's what actually lands in your account every month — no vague promises, just the work. Most agencies post and vanish. We treat your page like it's our own brand on the line.",
+      subtitle: "Here's what actually lands in your account every month — no vague promises, just the work.",
+      items: [
+        {
+          title: "A monthly content calendar",
+          description: "You'll always know what's going out and when, planned around festivals, offers, and trends"
+        },
+        {
+          title: "Trend-jacking",
+          description: "We jump on trending audios and reel formats fast, while they're still getting reach"
+        },
+        {
+          title: "Competitor watch",
+          description: "We track what rival Coimbatore brands are posting and beat it"
+        },
+        {
+          title: "A dedicated account manager",
+          description: "One person who knows your brand, not a call centre"
+        },
+        {
+          title: "Festival & local moment content",
+          description: "Pongal, Diwali, and city moments turned into posts that connect"
+        },
+        {
+          title: "Reels shot and edited for you",
+          description: "Hooks in the first 3 seconds, captions, and trending audio built in"
+        },
+        {
+          title: "WhatsApp & DM funnels",
+          description: "We turn comments and DMs into actual enquiries, not dead-end likes"
+        },
+        {
+          title: "A monthly review call",
+          description: "We sit with you, show the numbers, and plan the next month together"
+        }
+      ],
+      conclusion: "Most agencies post and vanish. We treat your page like it's our own brand on the line."
+    },
+    timeline: {
+      tag: "HOW WE WORK",
+      title: "How We Work",
+      subtitle: "Our systematic 6-step roadmap engineered for sustained social growth and high-converting audience engagement.",
       steps: [
-        { num: "01", title: "MONTHLY CONTENT CALENDAR", desc: "You'll always know what's going out and when, planned around festivals, offers, and trends." },
-        { num: "02", title: "TREND-JACKING & AUDIO", desc: "We jump on trending audios and reel formats fast, while they're still getting viral reach." },
-        { num: "03", title: "COMPETITOR WATCH", desc: "We track what rival Coimbatore brands are posting and engineer better creative angles to beat them." },
-        { num: "04", title: "REELS SHOT & EDITED", desc: "Hooks in the first 3 seconds, kinetic animated captions, and trending audio built in." },
-        { num: "05", title: "WHATSAPP & DM FUNNELS", desc: "We turn comments and DMs into actual phone and WhatsApp enquiries, not dead-end likes." },
-        { num: "06", title: "MONTHLY REVIEW CALL", desc: "We sit with you, show the plain numbers, and plan the next month of growth together." }
+        { num: "01", title: "Audit", desc: "We review your current pages and competitors" },
+        { num: "02", title: "Strategy", desc: "Content plan, themes, and posting calendar" },
+        { num: "03", title: "Create", desc: "Posts, reels, and stories designed to perform" },
+        { num: "04", title: "Publish & engage", desc: "Consistent posting plus active replies" },
+        { num: "05", title: "Promote", desc: "Paid ads to boost the best-performing content" },
+        { num: "06", title: "Report & improve", desc: "Monthly numbers, then we double down on winners" }
       ]
     },
     whoWeHelp: {
@@ -940,121 +1047,318 @@ export const servicesData = {
     slug: "influencer-network",
     urlSlug: "/influencer-marketing-coimbatore",
     metaTitle: "Influencer Marketing Agency in Coimbatore | BrandForge",
-    metaDescription: "Looking for influencer marketing in Coimbatore? BrandForge finds genuine local creators, runs your campaigns end to end, and tracks every sale. Book a free call.",
+    metaDescription: "Looking for an influencer marketing agency in Coimbatore? BrandForge connects your brand with the right local creators to drive real sales. Book a free call.",
     number: "05",
     eyebrow: "Influencer Marketing Agency in Coimbatore | Creator Network by BrandForge",
     title: "Influencer Marketing Agency in Coimbatore That Turns Creators Into Customers",
     heroButtonText: "Book a Free Influencer Strategy Call →",
     subtitle: [
-      "People in Coimbatore trust people, not ads. When a local food blogger, fashion creator, or tech reviewer they already follow recommends your brand, it lands in a way no banner ever will. That's the power of influencer marketing — if it's done with the right creators.",
-      "BrandForge is an influencer marketing agency in Coimbatore that connects your business with genuine creators across Instagram and YouTube. We find the right influencers, check that their followers are real, manage the whole campaign, and track the leads and sales each creator brings in — so you know exactly what your money is doing."
+      "One reel from the right local creator can do what months of ads can't — put your brand in front of thousands of people who actually trust the recommendation. The hard part is picking the right creator and not wasting money on fake followers.",
+      "BrandForge is an influencer marketing agency in Coimbatore that connects your brand with genuine local creators who drive real reach and sales. We handle everything — finding the right influencers, negotiating, briefing, and tracking results — so you get outcomes, not just posts."
     ],
     bannerBg: "/influencer-banner-illustration.png",
     icon: Users,
     metrics: [
-      { value: "Nano → Macro", label: "Creator Tiers Covered", desc: "From 5K local voices to 1M+ state-wide creators" },
-      { value: "100%", label: "Creators Audited", desc: "Every creator checked for fake followers before signing" },
-      { value: "Tamil + English", label: "Campaign Languages", desc: "Content that feels native to Coimbatore audiences" },
-      { value: "Code + UTM", label: "Sales Tracking", desc: "Unique codes and links to measure each creator's results" },
+      { value: "100%", label: "Real Followers Vetted", desc: "Every creator screened for engagement pods & bots" },
+      { value: "90K+", label: "Viral Reel Reach", desc: "Local Coimbatore cafe campaign benchmark" },
+      { value: "₹0 Waste", label: "Zero Bot Budget", desc: "Every rupee targeted at real Coimbatore buyers" },
+      { value: "Code + UTM", label: "Sales Attribution", desc: "Unique trackable coupon codes for clear ROI" },
     ],
     whyChooseUs: {
-      tag: "WHY INFLUENCER MARKETING WORKS",
-      title: "Why Influencer Marketing Works for Coimbatore Businesses",
-      description: "Coimbatore is a word-of-mouth city. Buyers check what people they trust are saying before they visit a store, book a clinic, or order online. Influencer marketing puts your brand into those trusted conversations — through creators your customers already watch every day.",
-      leadIn: "Done right, a creator campaign gives your business:",
+      tag: "WHY INFLUENCER MARKETING WORKS SO WELL",
+      title: "Why Influencer Marketing Works So Well",
+      description: "People trust people, not ads. That's why a creator's recommendation converts far better than a banner. The catch? It only works if you pick creators with real, engaged followers — and that's exactly where most brands go wrong.",
+      leadIn: "Done right, influencer marketing gives you:",
       points: [
-        "Instant trust from an audience that already believes the creator",
-        "Reach into local neighbourhoods and communities ads struggle to win",
-        "Authentic photo and video content you can reuse in your own ads",
-        "Measurable leads and sales, not just likes and views",
-        "Faster awareness for a new store, product, or launch in Coimbatore"
+        "Instant trust — the creator's audience already believes them",
+        "Real local reach — followers who live in and around Coimbatore",
+        "Authentic content you can reuse on your own pages and ads",
+        "Faster results than building an audience from scratch",
+        "Better cost-per-view than most paid campaigns"
       ]
     },
     matrixTag: "WHAT AN AGENCY ACTUALLY DOES",
     matrixTitle: "WHAT DOES AN INFLUENCER MARKETING AGENCY IN COIMBATORE DO?",
-    matrixSubtitle: "Sending free products to a few popular accounts isn't a strategy. Here's the difference between random influencer posts and a managed BrandForge campaign:",
+    matrixSubtitle: "A good influencer marketing agency in Coimbatore takes the guesswork and risk out of the whole process. Here's what we handle for you:",
     matrixRows: [
-      { feature: "Creator Selection", traditional: "Picking whoever has the most followers", brandforge: "Choosing creators whose audience matches your real buyers" },
-      { feature: "Fake Follower Check", traditional: "Trusting follower counts at face value", brandforge: "Auditing engagement, comments, and audience location first" },
-      { feature: "Briefing", traditional: "Stiff scripts that feel like ads", brandforge: "Clear briefs that keep the creator's own voice and style" },
-      { feature: "Contracts & Rights", traditional: "No agreement on deadlines or reuse", brandforge: "Written deliverables, timelines, and content usage rights" },
-      { feature: "Tracking", traditional: "Guessing results from views and likes", brandforge: "Promo codes, UTM links, and a clear results report" },
-      { feature: "Content Reuse", traditional: "Post disappears after 24 hours", brandforge: "Creator content repurposed into your ads and website" }
+      {
+        feature: "Creator research",
+        traditional: "Random searching on Instagram with no audience vetting",
+        brandforge: "Finding influencers who match your brand and real target audience"
+      },
+      {
+        feature: "Fake-follower checks",
+        traditional: "Relying blindly on inflated follower counts",
+        brandforge: "Screening bots and pods so you don't pay for empty reach"
+      },
+      {
+        feature: "Negotiation",
+        traditional: "Overpaying inflated creator quotes with no clear scope",
+        brandforge: "Fair rates, clear deliverables, and guaranteed terms"
+      },
+      {
+        feature: "Content briefing",
+        traditional: "Stiff robotic scripts that ruin creator authenticity",
+        brandforge: "Guiding the creator without killing their authentic style"
+      },
+      {
+        feature: "Campaign management",
+        traditional: "Missed deadlines, delayed posts, and constant chasing",
+        brandforge: "Timelines, approvals, and posting handled end to end"
+      },
+      {
+        feature: "Results tracking",
+        traditional: "Vague vanity likes and unverified view screenshots",
+        brandforge: "Reach, engagement, clicks, and enquiries in one report"
+      }
     ],
     pillarsTag: "OUR SERVICES",
     pillarsTitle: "Our Influencer Marketing Services",
-    pillarsSubtitle: "Whether you're launching a new store, a product, or a brand, we plan and run creator campaigns that fit your goal and budget.",
+    pillarsSubtitle: "We build the right creator mix for your goal and budget — not the same list for everyone.",
     pillars: [
-      { icon: Search, tag: "DISCOVERY", title: "Creator Discovery & Matching", description: "We shortlist Coimbatore and Tamil Nadu creators whose followers match your ideal customers by age, location, and interests.", deliverables: ["Niche Creator Shortlist", "Audience Match Report", "Local & Regional Options", "Budget-Tier Recommendations"] },
-      { icon: ShieldCheck, tag: "VETTING", title: "Fake Follower & Brand Safety Audit", description: "Every creator is checked for bought followers, engagement pods, and past content that could hurt your brand.", deliverables: ["Engagement Quality Check", "Follower Growth Review", "Audience Location Check", "Brand Safety Review"] },
-      { icon: PenTool, tag: "BRIEFS", title: "Campaign Strategy & Creative Briefs", description: "We define the campaign idea and give creators a brief that highlights your key message without killing their natural style.", deliverables: ["Campaign Concept", "Key Message & Hooks", "Do's & Don'ts Guide", "Content Approval Flow"] },
-      { icon: Layers, tag: "MANAGEMENT", title: "End-to-End Campaign Management", description: "Outreach, negotiation, contracts, product dispatch, content approvals, and creator payments — handled for you.", deliverables: ["Creator Outreach", "Rate Negotiation", "Written Agreements", "Timeline Management"] },
-      { icon: TrendingUp, tag: "SEEDING", title: "Product Gifting & Micro-Influencer Seeding", description: "Send products to a group of smaller local creators to create a wave of genuine unboxings and reviews.", deliverables: ["Seeding List", "Gifting Coordination", "Unboxing Content Wave", "Mention Tracking"] },
-      { icon: Rocket, tag: "AMPLIFY", title: "Creator Content in Paid Ads", description: "With the creator's permission, we run their best-performing content as Meta and YouTube ads to reach far more people.", deliverables: ["Usage Rights Setup", "Partnership Ads", "Retargeting Audiences", "Ad Creative Variants"] },
-      { icon: BarChart3, tag: "TRACKING", title: "Results Tracking & Reporting", description: "Unique promo codes and tracked links show you the leads, sales, and reach each creator generated.", deliverables: ["Custom Promo Codes", "UTM Link Tracking", "Creator-Wise Results", "Campaign Report"] },
-      { icon: Award, tag: "PARTNERSHIPS", title: "Long-Term Brand Ambassadors", description: "Turn your best-performing creators into ongoing ambassadors who keep your brand in front of their audience.", deliverables: ["Ambassador Programme", "Monthly Content Plan", "Affiliate Commission Setup", "Relationship Management"] }
+      {
+        icon: Users,
+        tag: "HIGH ENGAGEMENT",
+        title: "Nano & Micro-Influencers",
+        description: "Small, highly-trusted local creators with strong engagement across Coimbatore communities.",
+        deliverables: [
+          "5K–50K Follower Local Creators",
+          "Hyper-Local Community Trust",
+          "High Comment-to-View Ratios",
+          "Authentic Lifestyle Storytelling"
+        ]
+      },
+      {
+        icon: Megaphone,
+        tag: "WIDE AWARENESS",
+        title: "Macro-Influencers",
+        description: "Larger Tamil creators for wide brand awareness and major launch visibility across Tamil Nadu.",
+        deliverables: [
+          "State-Wide Tamil Creators",
+          "High-Impact Brand Amplification",
+          "Category Authority Endorsement",
+          "Multi-Platform Syndication"
+        ]
+      },
+      {
+        icon: Video,
+        tag: "HIGHEST REACH",
+        title: "Instagram Reels Campaigns",
+        description: "The highest-reach format today. High-retention video reels scripted and delivered by top local voices.",
+        deliverables: [
+          "3-Second Hook Video Reels",
+          "Trending Audio Integration",
+          "Visual Product Demonstrations",
+          "Pinned Collab Tagging"
+        ]
+      },
+      {
+        icon: Award,
+        tag: "PRODUCT SEEDING",
+        title: "Product Seeding & Reviews",
+        description: "Getting your product into creators' hands and feeds for organic, authentic unboxings and reviews.",
+        deliverables: [
+          "Targeted Gifting Coordination",
+          "Unboxing Video Waves",
+          "Honest First-Impression Reviews",
+          "Tag & Mention Monitoring"
+        ]
+      },
+      {
+        icon: Sparkles,
+        tag: "SMART BUDGET",
+        title: "Barter Collaborations",
+        description: "Creator posts in exchange for product, ideal for smaller budgets and testing new creator angles.",
+        deliverables: [
+          "Product-for-Post Agreements",
+          "Zero Media Fee Outreach",
+          "High-Volume Content Generation",
+          "Local Creator Relationship Setup"
+        ]
+      },
+      {
+        icon: Globe,
+        tag: "LIVE BUZZ",
+        title: "Event & Launch Coverage",
+        description: "Creators covering your store opening or launch live to create instant local footfall and buzz.",
+        deliverables: [
+          "Store Opening Creator Visits",
+          "Live Instagram Stories & Broadcasts",
+          "On-Site Fan Engagements",
+          "Launch Day Footfall Spikes"
+        ]
+      },
+      {
+        icon: Cpu,
+        tag: "DEEP REVIEWS",
+        title: "YouTube & Long-Form",
+        description: "Deeper reviews and integrations for high-consideration products requiring detailed buyer education.",
+        deliverables: [
+          "In-Depth YouTube Video Reviews",
+          "Dedicated Feature Integrations",
+          "Permanent SEO Video Authority",
+          "Detailed Buyer Comparison Guides"
+        ]
+      },
+      {
+        icon: PenTool,
+        tag: "PAID ASSETS",
+        title: "UGC Content",
+        description: "Creator-style videos you own and run as ads to lower cost-per-click and boost conversions.",
+        deliverables: [
+          "Raw Authentic Creator Videos",
+          "High-Conversion Ad Variations",
+          "Full Perpetual Commercial Rights",
+          "Platform-Native Video Formats"
+        ]
+      }
     ],
     differentiators: {
       tag: "THE BRANDFORGE ADVANTAGE",
-      title: "Why Businesses Choose BrandForge for Influencer Marketing",
-      subtitle: "We're a full-service digital marketing agency in Coimbatore, so your creator campaigns connect with your social media, ads, and website instead of running in isolation.",
+      title: "Why Businesses Choose BrandForge",
+      subtitle: "As an influencer marketing agency in Coimbatore that also manages social media, paid ads, and content in-house, we connect your creator campaigns to everything else that drives growth — so they deliver real business results, not just vanity reach.",
       items: [
-        { title: "Real Audiences Only", description: "We audit every creator before recommending them, so your budget goes to real people, not bots.", icon: ShieldCheck },
-        { title: "Local Creator Knowledge", description: "We know the Coimbatore and Tamil Nadu creator scene — food, fashion, lifestyle, tech, education, and family content.", icon: Users },
-        { title: "Results You Can Measure", description: "Every campaign is tracked with codes and links, and you get a clear report on what each creator delivered.", icon: BarChart3 },
-        { title: "Content That Works Twice", description: "We plan campaigns so creator content can be reused in your ads, website, and social media.", icon: Zap },
-        { title: "One Team, Every Channel", description: "Influencer, social media, paid ads, and content are handled in-house, so your message stays consistent.", icon: Layers }
+        {
+          title: "Vetted Creators Only — Zero Fake Reach",
+          description: "We audit every creator's engagement rate, audience location, and follower legitimacy before you spend a single rupee.",
+          icon: ShieldCheck
+        },
+        {
+          title: "Ground-Level Coimbatore Knowledge",
+          description: "We know the local creator scene intimately across Coimbatore, Erode, Tirupur, and Salem — knowing who actually moves products.",
+          icon: Users
+        },
+        {
+          title: "Contracts & Commercial Usage Rights Handled",
+          description: "We secure full rights upfront so you can repurpose creator photos and reels across your website and paid ad campaigns.",
+          icon: PenTool
+        },
+        {
+          title: "Ads & Influencer Combined for Exponential ROAS",
+          description: "We whitelist and boost top creator reels with paid ad targeting, dramatically lowering customer acquisition costs.",
+          icon: Zap
+        },
+        {
+          title: "Clear Sales Attribution & Reports",
+          description: "Every creator is tracked via unique promo codes and custom UTM parameters so you know exactly which collaboration drove sales.",
+          icon: BarChart3
+        }
       ]
     },
+    whatWeDo: {
+      tag: "WHAT BRANDFORGE WILL DO FOR YOU",
+      title: "What BrandForge Will Do For You",
+      subtitle: "No guesswork, no fake reach, no chasing creators yourself. Here's what you actually get:",
+      items: [
+        {
+          title: "A vetted creator shortlist",
+          description: "Real, engaged Coimbatore and Tamil Nadu influencers matched to your brand."
+        },
+        {
+          title: "Engagement-rate checks",
+          description: "We verify every creator's numbers before you spend a rupee."
+        },
+        {
+          title: "End-to-end handling",
+          description: "Outreach, negotiation, briefs, and follow-up all done for you."
+        },
+        {
+          title: "Content you keep",
+          description: "We get usage rights so you can reuse reels in your ads and pages."
+        },
+        {
+          title: "A clear results report",
+          description: "Reach, saves, shares, clicks, and enquiries, not just likes."
+        },
+        {
+          title: "Ads + influencer combined",
+          description: "We boost the best creator content with paid ads for even more reach."
+        },
+        {
+          title: "Trackable coupon codes",
+          description: "Each creator gets a unique code, so you see exactly which one drove sales."
+        },
+        {
+          title: "Giveaway & contest campaigns",
+          description: "Creator-led giveaways that spike followers and enquiries fast."
+        },
+        {
+          title: "Creator whitelisting",
+          description: "Run ads from the creator's own handle for higher trust and better results."
+        },
+        {
+          title: "A growing local creator network",
+          description: "We already know Coimbatore creators, so campaigns launch faster."
+        },
+        {
+          title: "Competitor creator intel",
+          description: "We see which creators your rivals use and find you better ones."
+        }
+      ],
+      conclusion: "We've run local creator outreach across Coimbatore, Erode, and Vellore — we know which creators actually deliver and which just look big."
+    },
     timeline: {
-      tag: "HOW WE RUN YOUR CAMPAIGN",
-      title: "How We Run Your Influencer Campaign",
-      subtitle: "A clear, step-by-step process — from understanding your goal to reporting on results.",
+      tag: "HOW WE WORK",
+      title: "How We Work",
+      subtitle: "A proven, transparent 6-step blueprint engineered to turn local creator influence into measurable business revenue.",
       steps: [
-        { num: "01", title: "GOAL & BUDGET CALL", desc: "We understand your product, target customers, and what success looks like — footfall, leads, or sales." },
-        { num: "02", title: "CREATOR SHORTLIST", desc: "You receive a shortlist of matched creators with audience details and estimated costs." },
-        { num: "03", title: "AUDIT & APPROVAL", desc: "We run fake-follower and brand-safety checks, and you approve the final line-up." },
-        { num: "04", title: "BRIEF & AGREEMENTS", desc: "Creators get a clear brief, and deliverables, deadlines, and usage rights are agreed in writing." },
-        { num: "05", title: "CONTENT REVIEW", desc: "We review drafts before they go live to make sure your message and details are accurate." },
-        { num: "06", title: "GO LIVE & AMPLIFY", desc: "Content goes live on schedule, and the best posts can be boosted as ads." },
-        { num: "07", title: "TRACK RESULTS", desc: "Promo codes and tracked links show which creators drive real leads and sales." },
-        { num: "08", title: "REPORT & SCALE", desc: "You get a clear report and a plan to scale what worked with the best creators." }
+        { num: "01", title: "Goal & brief", desc: "We define what a win looks like: reach, sales, or launch buzz" },
+        { num: "02", title: "Creator shortlist", desc: "We find and vet the right influencers for you" },
+        { num: "03", title: "Approve & negotiate", desc: "You pick, we handle the deal" },
+        { num: "04", title: "Brief & create", desc: "Clear direction, authentic creator content" },
+        { num: "05", title: "Go live & amplify", desc: "Posts published, best ones boosted with ads" },
+        { num: "06", title: "Report", desc: "Full breakdown of what the campaign delivered" }
       ]
     },
     whoWeHelp: {
       tag: "WHO WE WORK WITH",
       title: "Who We Work With in Coimbatore & Tamil Nadu",
-      subtitle: "We run influencer campaigns for restaurants and cafés, fashion and jewellery stores, D2C brands, clinics, education institutes, real estate projects, and local service businesses across Coimbatore and Tamil Nadu.",
+      subtitle: "We run influencer campaigns for restaurants and cafes, fashion and retail brands, clinics and wellness, coaching institutes, and product launches across Coimbatore and Tamil Nadu. If your customers scroll Instagram, the right creator can put you right in front of them.",
+      ctaText: "Book a free influencer strategy call — tell us your product and budget, and we'll show you which local creators can actually move sales for you.",
       industries: [
-        { title: "Restaurants, Cafés & Bakeries", desc: "Food blogger visits, reels, and reviews that bring new diners through the door." },
-        { title: "Fashion, Textiles & Jewellery", desc: "Try-on reels, festive collections, and styling content with local fashion creators." },
-        { title: "D2C & E-commerce Brands", desc: "Unboxings, reviews, and tracked promo codes that drive online orders." },
-        { title: "Clinics, Salons & Wellness", desc: "Trusted experience-led content that helps people feel confident booking with you." },
-        { title: "Education & Coaching Institutes", desc: "Student and parent-focused creators who build trust before admissions season." },
-        { title: "Real Estate & Local Services", desc: "Walkthroughs and local lifestyle content that put your project or service in front of the right families." }
+        { title: "Restaurants, Cafes & Food Brands", desc: "Local food vlogger visits, taste-test reels, and viral ambience tours that drive footfall." },
+        { title: "Fashion & Retail Brands", desc: "Styling lookbooks, store walkthroughs, and festive collection try-on reels." },
+        { title: "Clinics & Wellness", desc: "Doctor trust features, treatment walkthroughs, and patient educational experiences." },
+        { title: "Coaching Institutes", desc: "Student journey videos, course reviews, and campus walk-ins that boost enrollments." },
+        { title: "Product Launches & D2C", desc: "High-impact unboxings, product seeding waves, and trackable discount codes." },
+        { title: "Real Estate & Hospitality", desc: "Property site tours, aerial walk-ins, and weekend destination features." }
       ],
       certifications: [
-        { label: "Every creator audited for fake followers and brand safety before recommendation" },
-        { label: "Campaigns tracked with unique promo codes and UTM links" },
-        { label: "Content aligned with ASCI influencer advertising disclosure guidelines" },
-        { label: "Reviewed by BalaMurali, Founder & MD, BrandForge" }
+        { label: "Every creator audited for fake followers and real Coimbatore audience alignment" },
+        { label: "Compliant with ASCI influencer advertising disclosure guidelines (ascionline.in)" },
+        { label: "Real Campaign Result: A Coimbatore cafe reel hit 90K views & 300+ store visits" },
+        { label: "Reviewed by BalaMurali, Influencer & Creator Lead, Story Smithy" }
       ]
     },
     faqs: [
-      { q: "How much does influencer marketing cost in Coimbatore?", a: "It depends on the number and size of creators. Local nano and micro-influencers are very affordable, while larger creators cost more. After a short call, we share a clear quote with the creator fees and our management fee listed separately." },
-      { q: "Do you work with local Coimbatore influencers?", a: "Yes. We work with Coimbatore and Tamil Nadu creators across food, fashion, lifestyle, tech, parenting, and education, in both Tamil and English, as well as national creators when your goal needs wider reach." },
-      { q: "How do you make sure an influencer's followers are real?", a: "Before we recommend any creator, we check engagement rates, comment quality, sudden follower spikes, and where their audience is located. Creators with signs of fake followers are removed from the list." },
-      { q: "Is micro-influencer marketing better than using a big celebrity?", a: "For most local businesses, yes. Micro-influencers usually have closer, more engaged audiences and cost far less, so you can work with several creators and reach the right people for the same budget." },
-      { q: "How do you measure the results of an influencer campaign?", a: "Each creator gets a unique promo code and tracked link. We report on reach, engagement, clicks, leads, and sales per creator so you can see exactly which partnerships are worth repeating." },
-      { q: "Do influencers need to mark posts as paid partnerships?", a: "Yes. Under ASCI guidelines in India, paid or gifted content must be clearly disclosed. We make sure every post follows the rules, which also protects your brand's credibility." }
+      {
+        q: "How much does influencer marketing cost in Coimbatore?",
+        a: "It varies widely — nano-creators may post for free products, while larger creators charge per post. We work to your budget and always aim for the best reach and engagement per rupee. You get a clear plan before spending."
+      },
+      {
+        q: "How do you find the right influencers for my brand?",
+        a: "We match creators to your audience, not just follower count. We check engagement rates, audience location, and content style, and we screen for fake followers so your money reaches real people."
+      },
+      {
+        q: "Do small businesses benefit from influencer marketing?",
+        a: "Yes — often more than big brands. Nano and micro-creators have loyal, local audiences and cost far less, which makes them ideal for small Coimbatore businesses wanting real, trusted reach."
+      },
+      {
+        q: "Can I reuse the influencer's content in my own ads?",
+        a: "Yes. We negotiate usage rights upfront so you can run the creator's reels and photos as your own ads and website content, getting far more value from a single collaboration."
+      },
+      {
+        q: "How do I know if the campaign actually worked?",
+        a: "We track reach, engagement, saves, shares, link clicks, and enquiries — then give you a clear report. You'll see exactly what the campaign delivered, not just a vanity like count."
+      }
     ],
     bottomCta: {
       title: "Book a Free Influencer Strategy Call",
-      subtitle: "In 30 minutes we'll suggest the type of creators, budget range, and campaign idea that fits your business.",
-      buttonText: "Get My Free Creator Plan →"
+      subtitle: "Tell us your product and budget, and we'll show you which local creators can actually move sales for you.",
+      buttonText: "Book Your Free Strategy Call →"
     }
   },
-
+  
   "content-smithy": {
     slug: "content-smithy",
     urlSlug: "/content-marketing-agency-coimbatore",
@@ -1077,51 +1381,52 @@ export const servicesData = {
       { value: "100%", label: "SEO & Conversion Ready", desc: "Zero generic AI fluff, pure human authority" },
     ],
     whyChooseUs: {
-      tag: "WHY CONTENT MARKETING WINS",
+      tag: "WHY CONTENT MARKETING BEATS ONE-OFF ADS",
       title: "Why Content Marketing Beats One-Off Ads",
       description: "A single ad gets a click and disappears. A single blog post can rank on Google and pull in leads every month for years. The catch is consistency. One blog won't move the needle — a steady stream of the right content will. That's what an agency handles for you.",
-      leadIn: "Here is why strategic content marketing wins over time:",
+      leadIn: "Here's why content wins over time:",
       points: [
         "It keeps working after you stop paying",
         "It builds trust — helpful content makes you the expert",
         "It ranks on Google, bringing free traffic every month",
         "It gives your ads and social pages something worth sharing",
         "It answers buyer questions, so they choose you over rivals"
-      ]
+      ],
+      conclusion: "The catch is consistency. One blog won't move the needle — a steady stream of the right content will. That's what an agency handles for you."
     },
     matrixTag: "WHAT AN AGENCY ACTUALLY DOES",
     matrixTitle: "WHAT DOES A CONTENT MARKETING AGENCY IN COIMBATORE DO?",
     matrixSubtitle: "A real content marketing agency in Coimbatore does far more than write blogs. Here's what we handle end to end:",
     matrixRows: [
       {
-        feature: "Content Strategy",
+        feature: "Strategy",
         traditional: "Writing random articles with no audience search demand",
-        brandforge: "A clear content plan tied to what your customers actually search"
+        brandforge: "A content plan tied to what your customers actually search"
       },
       {
-        feature: "SEO & Keyword Research",
+        feature: "SEO research",
         traditional: "Guessing topics or stuffing useless generic keywords",
-        brandforge: "Finding the exact high-intent keywords and questions worth ranking for"
+        brandforge: "Finding the keywords and questions worth ranking for"
       },
       {
-        feature: "Multi-Format Creation",
-        traditional: "Shallow 500-word text copied from existing search results",
-        brandforge: "Deep blogs, high-hook video scripts, graphics, and social carousels"
+        feature: "Creation",
+        traditional: "Shallow text copied from existing search results",
+        brandforge: "Blogs, videos, graphics, and social content"
       },
       {
-        feature: "Conversion Optimization",
+        feature: "Optimization",
         traditional: "Dead-end articles with zero next steps or lead captures",
-        brandforge: "Every piece built to rank and convert readers into paying customers"
+        brandforge: "Every piece built to rank and convert, not just fill space"
       },
       {
-        feature: "Content Distribution",
+        feature: "Distribution",
         traditional: "Publishing on a hidden blog and letting it sit unread",
-        brandforge: "Active syndication across search, email newsletters, and social channels"
+        brandforge: "Getting content in front of people, not leaving it to sit"
       },
       {
-        feature: "Measurement & Refresh",
+        feature: "Measurement",
         traditional: "Never checking traffic or letting old articles decay",
-        brandforge: "Monthly tracking of traffic, rankings, leads, and proactive content refreshes"
+        brandforge: "Tracking traffic, rankings, and leads each month"
       }
     ],
     pillarsTag: "OUR SERVICES",
@@ -1132,7 +1437,7 @@ export const servicesData = {
         icon: Search,
         tag: "ORGANIC TRAFFIC",
         title: "SEO Blog Writing",
-        description: "Articles built with deep keyword research and technical structure to rank on Google and pull in high-intent traffic for months and years.",
+        description: "Articles built to rank and pull in Google traffic for months.",
         deliverables: [
           "Target Keyword Intent Mapping",
           "Original Research & Insights",
@@ -1144,7 +1449,7 @@ export const servicesData = {
         icon: Globe,
         tag: "HIGH CONVERSION",
         title: "Website Content",
-        description: "Homepage, service, and landing page copy that clearly positions your authority, overcomes objections, and turns casual visitors into enquiries.",
+        description: "Homepage, service, and landing page copy that converts.",
         deliverables: [
           "Hero Value Proposition Copy",
           "Service Page Deep Dives",
@@ -1156,7 +1461,7 @@ export const servicesData = {
         icon: Video,
         tag: "VIRAL RETENTION",
         title: "Video & Reel Scripts",
-        description: "High-hook video concepts and scripts for short-form Reels, YouTube Shorts, and brand showreels designed to capture and hold attention.",
+        description: "Hooks and scripts for short-form video that gets watched.",
         deliverables: [
           "3-Second Dopamine Hooks",
           "Visual Direction & B-Roll Cues",
@@ -1168,7 +1473,7 @@ export const servicesData = {
         icon: Megaphone,
         tag: "BRAND AUTHORITY",
         title: "Social Media Content",
-        description: "Educational carousel slide decks, thought leadership posts, and engaging captions that build an obsessed brand following across platforms.",
+        description: "Captions, carousels, and posts that build your brand.",
         deliverables: [
           "Carousel Educational Guides",
           "Thought Leadership Articles",
@@ -1180,7 +1485,7 @@ export const servicesData = {
         icon: Mail,
         tag: "RETENTION LOOPS",
         title: "Email & Newsletter Content",
-        description: "High-open-rate newsletter sequences and automated nurture drips that build relationships and convert cold subscribers into repeat buyers.",
+        description: "Sequences that nurture leads into buyers.",
         deliverables: [
           "Welcome Onboarding Sequences",
           "Weekly Editorial Newsletters",
@@ -1192,7 +1497,7 @@ export const servicesData = {
         icon: Award,
         tag: "PROOF & TRUST",
         title: "Case Studies & Testimonials",
-        description: "Compelling, metrics-driven customer success stories and transformation breakdowns that eliminate buyer skepticism and close high-ticket deals.",
+        description: "Trust-building proof content that closes sales.",
         deliverables: [
           "Customer Interview Framework",
           "Before & After Metrics Proof",
@@ -1204,7 +1509,7 @@ export const servicesData = {
         icon: Layers,
         tag: "PRODUCT COPY",
         title: "Product & Service Descriptions",
-        description: "Clear, persuasive, benefit-led product and service descriptions for e-commerce catalogues and premium service brochures.",
+        description: "Clear, persuasive copy for e-commerce and services.",
         deliverables: [
           "Benefit-Driven Feature Bullets",
           "Technical Specification Tables",
@@ -1216,7 +1521,7 @@ export const servicesData = {
         icon: TrendingUp,
         tag: "MULTIPLIER ENGINE",
         title: "Content Repurposing",
-        description: "Turning one single in-depth pillar blog into 5 short-form reels, 3 LinkedIn carousels, and a weekly newsletter so nothing goes to waste.",
+        description: "Turning one blog into reels, posts, and emails.",
         deliverables: [
           "1 Pillar into 10+ Micro Assets",
           "Cross-Platform Formatting",
@@ -1228,7 +1533,7 @@ export const servicesData = {
     differentiators: {
       tag: "THE BRANDFORGE ADVANTAGE",
       title: "Why Businesses Choose BrandForge",
-      subtitle: "As a content marketing agency in Coimbatore that also runs SEO, web, and paid ads in-house, we connect your content to everything else that drives growth — so it's never just writing for the sake of it.",
+      subtitle: "Because we run SEO, web, and social in-house too, your content isn't a lonely blog — it's wired into everything that brings you customers.",
       items: [
         {
           title: "Strategy First — Content Mapped to Search",
@@ -1257,36 +1562,77 @@ export const servicesData = {
         }
       ]
     },
-    timeline: {
+    whatWeDo: {
       tag: "WHAT BRANDFORGE WILL DO FOR YOU",
       title: "What BrandForge Will Do For You",
-      subtitle: "No random posts, no filler articles. Here's what actually lands for you every month. Because we run SEO, web, and social in-house too, your content isn't a lonely blog — it's wired into everything that brings you customers.",
+      subtitle: "No random posts, no filler articles. Here's what actually lands for you every month:",
+      items: [
+        {
+          title: "A content plan mapped to real searches",
+          description: "We build topics around what Coimbatore customers actually type into Google"
+        },
+        {
+          title: "SEO baked in from the start",
+          description: "Every blog is keyword-researched, so it works for rankings, not just reading"
+        },
+        {
+          title: "One idea, many formats",
+          description: "We turn a single blog into reels, posts, and an email, so nothing goes to waste"
+        },
+        {
+          title: "A monthly content calendar",
+          description: "You always know what's coming and why"
+        },
+        {
+          title: "Content that feeds your other channels",
+          description: "Blogs support your SEO, ads, and social all at once"
+        },
+        {
+          title: "Human, on-brand writing",
+          description: "Content that sounds like you, not a generic AI dump"
+        },
+        {
+          title: "Rankings & traffic reports",
+          description: "You see which pieces are actually bringing visitors and leads"
+        },
+        {
+          title: "Refresh of old content",
+          description: "We update past blogs to keep them ranking, not let them fade"
+        }
+      ],
+      conclusion: "Because we run SEO, web, and social in-house too, your content isn't a lonely blog — it's wired into everything that brings you customers."
+    },
+    timeline: {
+      tag: "HOW WE WORK",
+      title: "How We Work",
+      subtitle: "Our systematic 6-step content marketing roadmap from audit to compound growth.",
       steps: [
-        { num: "01", title: "SEARCH-MAPPED CONTENT PLAN", desc: "We build topics around what Coimbatore and global customers actually type into Google." },
-        { num: "02", title: "SEO BAKED IN FROM START", desc: "Every blog is keyword-researched and structured so it works for rankings, not just reading." },
-        { num: "03", title: "ONE IDEA, MANY FORMATS", desc: "We turn single blogs into reels, carousels, posts, and emails so nothing goes to waste." },
-        { num: "04", title: "HUMAN ON-BRAND WRITING", desc: "Content that sounds like your authentic voice — zero robotic generic AI fluff." },
-        { num: "05", title: "RANKINGS & TRAFFIC REPORTS", desc: "You see plain numbers on which pieces are bringing visitors, rankings, and real leads." },
-        { num: "06", title: "PROACTIVE CONTENT REFRESH", desc: "We continuously update past blogs to keep them ranking on page 1, never letting them fade." }
+        { num: "01", title: "Audit", desc: "We review your current content, gaps, and competitors" },
+        { num: "02", title: "Strategy", desc: "Keyword and topic plan tied to your business goals" },
+        { num: "03", title: "Create", desc: "SEO-ready blogs, scripts, and social content" },
+        { num: "04", title: "Optimize & publish", desc: "Formatted, linked, and posted properly" },
+        { num: "05", title: "Distribute", desc: "Pushed across social, email, and search" },
+        { num: "06", title: "Report & refresh", desc: "Monthly numbers, then we improve what's working" }
       ]
     },
     whoWeHelp: {
       tag: "WHO WE WORK WITH",
       title: "Who We Work With in Coimbatore & Tamil Nadu",
       subtitle: "We create content for coaching institutes, clinics and healthcare, e-commerce and retail, real estate, B2B companies, and local service brands across Coimbatore and Tamil Nadu. If your customers are searching for answers online, we make sure yours is the one they find.",
+      ctaText: "Book a free content audit — we'll review your current content, show you the gaps, and map out the topics that could bring you leads for months.",
       industries: [
-        { title: "Coaching & Education Institutes", desc: "Course syllabus guides, career roadmaps, and student success stories that rank on page 1 for admissions keywords." },
-        { title: "Clinics, Doctors & Healthcare", desc: "Doctor-reviewed treatment guides, patient FAQ blogs, and educational articles that build deep medical trust." },
-        { title: "E-Commerce & Retail Brands", desc: "High-ranking gift guides, product buying comparisons, and lifestyle reels that drive organic checkout sales." },
+        { title: "Coaching Institutes", desc: "Course syllabus guides, career roadmaps, and student success stories that rank on page 1 for admissions keywords." },
+        { title: "Clinics & Healthcare", desc: "Doctor-reviewed treatment guides, patient FAQ blogs, and educational articles that build deep medical trust." },
+        { title: "E-Commerce & Retail", desc: "High-ranking gift guides, product buying comparisons, and lifestyle reels that drive organic checkout sales." },
         { title: "Real Estate & Builders", desc: "Locality guides, luxury villa walkthrough scripts, and property investment articles for serious buyers." },
-        { title: "B2B & Industrial Companies", desc: "Technical whitepapers, manufacturing case studies, and LinkedIn thought leadership for corporate buyers." },
+        { title: "B2B Companies", desc: "Technical whitepapers, manufacturing case studies, and LinkedIn thought leadership for corporate buyers." },
         { title: "Local Service Brands", desc: "Location-specific solution guides and customer transformation stories that dominate local Google searches." }
       ],
       certifications: [
-        { label: "Google Search Central Quality Rater Compliant (E-E-A-T)" },
-        { label: "HubSpot Content Marketing Certified Methodology" },
-        { label: "Real Client Result: ThoughtFlows Blog Ranked Page 1 for 'Medical Coding Course' & Drove 14K+ Views" },
-        { label: "Reviewed by BalaMurali, Content Lead & Founder, Story Smithy" }
+        { label: "Google Search Central (developers.google.com/search) & HubSpot Quality Compliant" },
+        { label: "Real Campaign Result: A ThoughtFlows blog ranked page 1 for 'medical coding course' and drove 14K views" },
+        { label: "Multi-Format Editorial: Blogs, video scripts, social carousels & email newsletters" },
+        { label: "Reviewed by BalaMurali, Content Lead, Story Smithy" }
       ]
     },
     faqs: [
@@ -1312,12 +1658,12 @@ export const servicesData = {
       }
     ],
     bottomCta: {
-      title: "Book a Free Content Audit Today",
+      title: "Book a Free Content Audit",
       subtitle: "We'll review your current content, show you the gaps, and map out the topics that could bring you leads for months.",
       buttonText: "Claim Your Free Content Audit →"
     }
   },
-
+  
   "inbox-edge": {
     slug: "inbox-edge",
     urlSlug: "/email-marketing-company-coimbatore",
@@ -1340,62 +1686,63 @@ export const servicesData = {
       { value: "24/7", label: "Automated Revenue Engine", desc: "Flows sell while you sleep on autopilot" },
     ],
     whyChooseUs: {
-      tag: "WHY EMAIL MARKETING WINS",
+      tag: "WHY EMAIL MARKETING STILL BEATS EVERYTHING ON ROI",
       title: "Why Email Marketing Still Beats Everything on ROI",
       description: "Social reach comes and goes. Ads stop when the budget runs out. But your email list is yours — no algorithm decides who sees it. That's why email consistently returns more per rupee than almost any other channel. The reason most businesses skip it? Setting it up feels like work. That's exactly the part we handle for you.",
-      leadIn: "Here is why email marketing continues to dominate ROI:",
+      leadIn: "Why your email list consistently outperforms other channels:",
       points: [
         "You own the list — no platform can take it away",
         "It reaches people who already trust you",
         "It runs on autopilot once set up",
         "It brings repeat sales, not just one-time buyers",
         "It's cheap — no ad spend to reach your own contacts"
-      ]
+      ],
+      conclusion: "The reason most businesses skip it? Setting it up feels like work. That's exactly the part we handle for you."
     },
     matrixTag: "WHAT AN AGENCY ACTUALLY DOES",
     matrixTitle: "WHAT DOES AN EMAIL MARKETING COMPANY IN COIMBATORE DO?",
     matrixSubtitle: "A good email marketing company in Coimbatore builds a system that runs itself. Here's what we handle end to end:",
     matrixRows: [
       {
-        feature: "Strategy & Planning",
+        feature: "Strategy",
         traditional: "Sending random unsegmented newsletters with no clear goal",
-        brandforge: "Mapping out who receives what email and when, based on how they entered your list"
+        brandforge: "A plan for what to send, to whom, and when"
       },
       {
-        feature: "List Setup & Cleaning",
+        feature: "List setup",
         traditional: "Leaving old invalid contacts to degrade domain reputation",
-        brandforge: "Organizing your existing contacts and removing dead emails so deliverability stays high"
+        brandforge: "Cleaning, organizing, and segmenting your contacts"
       },
       {
-        feature: "Automated Flows",
-        traditional: "Manual one-off email sending with zero ongoing automation",
-        brandforge: "Setting up welcome sequences, abandoned cart reminders, and re-engagement drips that run 24/7"
+        feature: "Automation",
+        traditional: "Manual one-off email sending with zero ongoing flows",
+        brandforge: "Welcome, follow-up, and re-engagement flows that run on their own"
       },
       {
-        feature: "Copy & Design",
+        feature: "Copy & design",
         traditional: "Generic robotic templates that get ignored and deleted",
-        brandforge: "Writing punchy, high-open subject lines and clean emails that look great on phones"
+        brandforge: "Emails people actually open and click"
       },
       {
-        feature: "Technical Deliverability",
+        feature: "Deliverability",
         traditional: "Landing directly in Spam & Promotions tabs",
-        brandforge: "Configuring SPF, DKIM, DMARC, and sender reputation so emails land in the primary inbox"
+        brandforge: "Setup so your emails land in inbox, not spam"
       },
       {
-        feature: "Tracking & Optimization",
+        feature: "Reporting",
         traditional: "Never reviewing open rates or revenue generated per email",
-        brandforge: "Tracking opens, clicks, and sales generated to continually optimize subject lines and send times"
+        brandforge: "Open rates, clicks, and sales tracked every campaign"
       }
     ],
     pillarsTag: "OUR SERVICES",
     pillarsTitle: "Our Email Marketing Services",
-    pillarsSubtitle: "We build the right automated flows and campaign sequences tailored to your customer journey.",
+    pillarsSubtitle: "We build the right email system for your business — not the same template for everyone.",
     pillars: [
       {
         icon: Zap,
         tag: "FIRST IMPRESSIONS",
         title: "Welcome & Onboarding Flows",
-        description: "First impressions that introduce your brand, deliver lead magnets, and turn new sign-ups into first-time buyers.",
+        description: "Automatic emails that greet and convert new leads.",
         deliverables: [
           "High-Value Lead Magnet Delivery",
           "Brand Story & Authority Introduction",
@@ -1405,9 +1752,9 @@ export const servicesData = {
       },
       {
         icon: Mail,
-        tag: "TOP-OF-MIND",
+        tag: "REGULAR UPDATES",
         title: "Newsletter Campaigns",
-        description: "Regular, value-packed updates that keep your brand top-of-mind without being salesy or annoying.",
+        description: "Regular emails that keep your brand top of mind.",
         deliverables: [
           "Curated Industry Insights & Tips",
           "Customer Stories & Highlights",
@@ -1419,7 +1766,7 @@ export const servicesData = {
         icon: Megaphone,
         tag: "REVENUE SURGE",
         title: "Promotional Campaigns",
-        description: "High-converting emails for festival sales, seasonal discounts, product launches, and limited-time offers.",
+        description: "Offer and launch emails that drive quick sales.",
         deliverables: [
           "Diwali & Festival Promo Calendars",
           "Flash Sale Countdown Announcements",
@@ -1431,7 +1778,7 @@ export const servicesData = {
         icon: Target,
         tag: "REVENUE RECOVERY",
         title: "Abandoned Cart Emails",
-        description: "Automated reminders that bring back shoppers who added items to cart but left without buying.",
+        description: "Recovering lost e-commerce sales automatically.",
         deliverables: [
           "Multi-Stage Trigger Timing",
           "Dynamic Product Card Insertion",
@@ -1441,9 +1788,9 @@ export const servicesData = {
       },
       {
         icon: Users,
-        tag: "PIPELINE CONVERSION",
+        tag: "LEAD NURTURING",
         title: "Lead Nurture Sequences",
-        description: "Educational drips that warm up cold leads from your website, ads, or events into paying clients.",
+        description: "Turning cold leads into ready-to-buy customers.",
         deliverables: [
           "Problem-Awareness Educational Guides",
           "Case Study Proof & Transformations",
@@ -1453,9 +1800,9 @@ export const servicesData = {
       },
       {
         icon: ShieldCheck,
-        tag: "WIN-BACK",
+        tag: "CUSTOMER WIN-BACK",
         title: "Re-Engagement Campaigns",
-        description: "Win-back campaigns that reactivate dormant subscribers and past customers who haven't bought in months.",
+        description: "Winning back inactive customers and old leads.",
         deliverables: [
           "We Miss You Automated Offers",
           "Feedback & Satisfaction Inquiries",
@@ -1467,7 +1814,7 @@ export const servicesData = {
         icon: Award,
         tag: "MULTI-CHANNEL",
         title: "WhatsApp & SMS Campaigns",
-        description: "Blending email with instant WhatsApp and SMS messaging for high-urgency notifications and time-sensitive deals.",
+        description: "Direct messaging that pairs with email for more reach.",
         deliverables: [
           "WhatsApp Business API Integration",
           "Urgent Flash Sale SMS Alerts",
@@ -1479,7 +1826,7 @@ export const servicesData = {
         icon: TrendingUp,
         tag: "AUDIENCE GROWTH",
         title: "List Building & Lead Magnets",
-        description: "Free guides, discount popups, and opt-in forms that constantly capture new visitor emails on your site.",
+        description: "Growing your list with offers people want.",
         deliverables: [
           "High-Converting Exit-Intent Popups",
           "Custom Downloadable Lead Magnets",
@@ -1490,99 +1837,138 @@ export const servicesData = {
     ],
     differentiators: {
       tag: "THE BRANDFORGE ADVANTAGE",
-      title: "Why Businesses Choose BrandForge for Email Marketing",
-      subtitle: "As an email marketing company in Coimbatore backed by Story Smithy and BrandForge's full-stack growth team, we connect your email campaigns to your website, paid ads, and social funnels for maximum customer lifetime value.",
+      title: "Why Businesses Choose BrandForge",
+      subtitle: "Because we run web, ads, and content in-house too, we plug email into your whole funnel — leads from ads and your site flow straight into automated emails that follow up for you.",
       items: [
         {
           title: "Automated Flows That Sell While You Sleep",
-          description: "Welcome drips, abandoned cart recovery, and post-purchase follow-ups that quietly generate sales 24/7 on autopilot.",
+          description: "Welcome, follow-up, and cart-recovery emails that run 24/7 without you touching them.",
           icon: Zap
         },
         {
-          title: "Primary Inbox Placement, Not Spam",
-          description: "Full SPF, DKIM, DMARC, and sender domain authentication to ensure your emails reach the main inbox every single time.",
+          title: "Inbox, Not Spam — Verified Deliverability",
+          description: "We set up your domain properly (SPF, DKIM, DMARC) so your emails actually get delivered to the primary inbox.",
           icon: ShieldCheck
         },
         {
-          title: "Subject Lines That Actually Get Opened",
-          description: "Curiosity hooks, personalization, and compelling preview text crafted to beat crowded inbox competition.",
+          title: "Subject Lines That Get Opened",
+          description: "We A/B test compelling curiosity hooks and preview text to find what makes your audience click.",
           icon: PenTool
         },
         {
-          title: "Smart RFM List Segmentation",
-          description: "Targeted messaging for VIP spenders, first-time buyers, and at-risk churned customers so every offer hits the mark.",
+          title: "Smart Behavioral Segmentation",
+          description: "New leads, repeat buyers, and cold contacts each get the right message, not one generic blast.",
           icon: Users
         },
         {
-          title: "Email + WhatsApp Unified Retention",
-          description: "Combining high-ROI email campaigns with instant WhatsApp messaging for unbeatable conversion rates.",
+          title: "Email + WhatsApp Unified Power",
+          description: "We hit the same audience on two synchronized channels for far higher engagement and conversion.",
           icon: Target
         }
       ]
     },
-    timeline: {
+    whatWeDo: {
       tag: "WHAT BRANDFORGE WILL DO FOR YOU",
       title: "What BrandForge Will Do For You",
-      subtitle: "No spam blasts, no generic templates. Here's what actually gets built and deployed for your business. Because we manage SEO, web, and ads in-house too, your email funnels integrate smoothly with every customer touchpoint.",
+      subtitle: "No spammy blasts, no guesswork. Here's what actually gets set up and running for you:",
+      items: [
+        {
+          title: "Automated flows that sell while you sleep",
+          description: "Welcome, follow-up, and cart-recovery emails that run 24/7 without you touching them"
+        },
+        {
+          title: "Smart segmentation",
+          description: "New leads, repeat buyers, and cold contacts each get the right message, not one generic email"
+        },
+        {
+          title: "Inbox, not spam",
+          description: "We set up your domain properly (SPF, DKIM) so your emails actually get delivered"
+        },
+        {
+          title: "Subject lines that get opened",
+          description: "We A/B test to find what makes your audience click"
+        },
+        {
+          title: "Festival & offer campaigns",
+          description: "Pongal, Diwali, and sale emails timed for maximum sales"
+        },
+        {
+          title: "Email + WhatsApp combined",
+          description: "We hit the same audience on two channels for far better response"
+        },
+        {
+          title: "A clear revenue report",
+          description: "You see how much money each campaign actually made, not just opens"
+        },
+        {
+          title: "Ready-to-use templates",
+          description: "Branded email designs you can reuse anytime"
+        }
+      ],
+      conclusion: "Because we run web, ads, and content in-house too, we plug email into your whole funnel — leads from ads and your site flow straight into automated emails that follow up for you."
+    },
+    timeline: {
+      tag: "HOW WE WORK",
+      title: "How We Work",
+      subtitle: "Our systematic 6-step email marketing roadmap from audit to automated revenue generation.",
       steps: [
-        { num: "01", title: "AUTOMATED FLOWS THAT SELL 24/7", desc: "Welcome, cart recovery, post-purchase, and win-back drips running quietly on autopilot." },
-        { num: "02", title: "SMART LIST SEGMENTATION", desc: "Segmenting subscribers into VIPs, cold leads, repeat buyers, and interest-based tiers." },
-        { num: "03", title: "PRIMARY INBOX DELIVERY, NOT SPAM", desc: "SPF, DKIM, DMARC, and domain warming so your emails never get lost in junk folders." },
-        { num: "04", title: "SUBJECT LINES THAT GET OPENED", desc: "Tested hooks, compelling preview text, and persuasive copy crafted by our Story Smithy writers." },
-        { num: "05", title: "FESTIVAL & OFFER CAMPAIGNS", desc: "Timely promotional campaigns for Diwali, Pongal, New Year, and seasonal flash sales." },
-        { num: "06", title: "EMAIL + WHATSAPP COMBINED", desc: "Multi-channel retention sequences pairing email depth with high-urgency WhatsApp messaging." },
-        { num: "07", title: "CLEAR REVENUE & OPEN REPORTS", desc: "Straightforward monthly reports showing opens, clicks, recovered carts, and revenue earned." },
-        { num: "08", title: "MOBILE-RESPONSIVE TEMPLATES", desc: "Clean, fast-loading, dark-mode compatible email designs that look flawless on any smartphone." }
+        { num: "01", title: "Audit", desc: "We review your list, current emails, and setup" },
+        { num: "02", title: "Strategy", desc: "We map the flows and campaigns your business needs" },
+        { num: "03", title: "Build", desc: "Automations, copy, and designs set up in your tool" },
+        { num: "04", title: "Launch", desc: "Flows go live and start running on their own" },
+        { num: "05", title: "Optimize", desc: "We test subject lines, timing, and offers" },
+        { num: "06", title: "Report", desc: "Monthly numbers on opens, clicks, and sales" }
       ]
     },
     whoWeHelp: {
       tag: "WHO WE WORK WITH",
       title: "Who We Work With in Coimbatore & Tamil Nadu",
-      subtitle: "We run email marketing for coaching institutes, e-commerce and retail brands, clinics and healthcare, real estate, B2B companies, and local service brands across Coimbatore and Tamil Nadu. If you have contacts or past buyers, we turn them into recurring revenue.",
+      subtitle: "We set up email marketing for coaching institutes, e-commerce and retail brands, clinics, real estate, and B2B companies across Coimbatore and Tamil Nadu. If you have a list of leads or past customers, we'll turn it into a steady source of repeat sales.",
+      ctaText: "Book a free email marketing audit — we'll review your list and current emails, then show you exactly how much repeat revenue you're leaving on the table.",
       industries: [
-        { title: "Coaching & Education Institutes", desc: "Automated student onboarding drips, batch commencement reminders, and webinar invite sequences." },
-        { title: "E-Commerce & Retail Brands", desc: "Abandoned checkout recovery, new arrival drops, VIP loyalty perks, and festive sale announcements." },
-        { title: "Clinics, Doctors & Healthcare", desc: "Appointment reminder drips, post-consultation care guides, and preventive health newsletters." },
-        { title: "Real Estate & Property Developers", desc: "Project launch teasers, construction progress updates, and site visit invitation sequences." },
-        { title: "B2B & Industrial Manufacturers", desc: "Product catalog updates, corporate case studies, and client relationship nurture drip flows." },
+        { title: "Coaching Institutes", desc: "Automated student onboarding drips, batch commencement alerts, and webinar invite sequences that boost admissions." },
+        { title: "E-Commerce & Retail Brands", desc: "Abandoned checkout recovery, new product drops, VIP loyalty perks, and festive sale announcements." },
+        { title: "Clinics & Healthcare", desc: "Appointment reminder drips, post-consultation care guides, and patient trust newsletters." },
+        { title: "Real Estate & Builders", desc: "Project launch teasers, construction progress updates, and site visit invitation sequences." },
+        { title: "B2B Companies", desc: "Product catalog updates, case studies, and corporate client relationship nurture drip flows." },
         { title: "Local Service Businesses", desc: "Seasonal service reminders, customer feedback surveys, and referral reward campaigns." }
       ],
       certifications: [
-        { label: "Klaviyo & HubSpot Email Certified Methodology" },
-        { label: "Mailchimp & Brevo Deliverability Optimization Standards" },
-        { label: "Real Client Result: A Coimbatore retail store's re-engagement flow recovered ₹1.2L in 60 days" },
-        { label: "Reviewed by BalaMurali, Email Lead & Founder, Story Smithy" }
+        { label: "Mailchimp Resources (mailchimp.com/resources) & Google Email Sender Guidelines Compliant" },
+        { label: "Real Campaign Result: A Coimbatore store's re-engagement flow recovered ₹1.2L in 60 days" },
+        { label: "Deliverability Setup: Domain SPF, DKIM, DMARC records & inbox reputation warming" },
+        { label: "Reviewed by BalaMurali, Email Lead, Story Smithy" }
       ]
     },
     faqs: [
       {
         q: "How much does email marketing cost in Coimbatore?",
-        a: "It depends on your list size and how many campaigns and flows you need. We offer affordable monthly retainer packages with zero hidden fees after understanding your requirements."
+        a: "It depends on how many emails and automations you need each month, plus your email tool's own fee. We offer monthly packages and share a clear price after understanding your list and goals."
       },
       {
         q: "I have a small list. Is email marketing still worth it?",
-        a: "Yes! A targeted list of 500 engaged local customers can generate more repeat sales than 10,000 random social followers because email reaches people directly in their personal inbox."
+        a: "Yes. Even a few hundred engaged contacts can bring steady repeat sales. Email works on trust, not size — a small, warm list often beats a large, cold one."
       },
       {
         q: "Will my emails end up in the spam folder?",
-        a: "No. We authenticate your domain with SPF, DKIM, and DMARC records, clean invalid addresses, and use high-reputation sending practices so your emails reach the primary inbox."
+        a: "Not if it's set up right. We configure your domain authentication and follow best practices for content and sending, which keeps your emails landing in the inbox."
       },
       {
         q: "What email tool do you use?",
-        a: "We work with top platforms including Klaviyo, Omnisend, Mailchimp, Brevo, and ActiveCampaign, or set up campaigns on your existing email software."
+        a: "We work with popular tools like Mailchimp, Brevo, and Klaviyo, and pick the best fit for your budget and needs. You keep full ownership of your account and list."
       },
       {
         q: "Can email marketing really bring repeat sales?",
-        a: "Absolutely. Automated flows like post-purchase cross-sells, birthday offers, and win-back drips consistently turn one-time shoppers into lifelong loyal repeat customers."
+        a: "Yes — that's its biggest strength. Automated follow-ups, offers, and re-engagement emails bring past customers back to buy again, often at almost no extra cost to you."
       }
     ],
     bottomCta: {
-      title: "Book a Free Email Marketing Audit Today",
-      subtitle: "We'll audit your list, check your deliverability, and show you the automated email flows that could add recurring revenue every month.",
+      title: "Book a Free Email Marketing Audit",
+      subtitle: "We'll review your list and current emails, then show you exactly how much repeat revenue you're leaving on the table.",
       buttonText: "Claim Your Free Email Audit →"
     }
   },
-
+  
   "brand-anvil": {
     slug: "brand-anvil",
     urlSlug: "/brand-positioning-agency-coimbatore",
@@ -1605,51 +1991,52 @@ export const servicesData = {
       { value: "14 Days", label: "Blueprint Turnaround", desc: "Complete brand book & cross-channel messaging rollout" },
     ],
     whyChooseUs: {
-      tag: "THE POWER OF POSITIONING",
+      tag: "WHAT IS BRAND POSITIONING (AND WHY IT DECIDES YOUR PRICE)",
       title: "What Is Brand Positioning (And Why It Decides Your Price)",
       description: "Positioning is the space your brand owns in a customer's mind. It's the reason someone picks you over the shop next door — even at a higher price. Without positioning, you blend in — and blending in means competing on price. That's a race nobody wins.",
-      leadIn: "Get your positioning right and you gain measurable business leverage:",
+      leadIn: "Get it right and you gain:",
       points: [
         "A clear reason to be chosen over cheaper rivals",
         "The ability to charge premium prices without pushback",
         "Customers who remember and recommend you",
         "Marketing that finally feels consistent, not random",
         "A brand that attracts the right customers, not just any"
-      ]
+      ],
+      conclusion: "Without positioning, you blend in — and blending in means competing on price. That's a race nobody wins."
     },
     matrixTag: "WHAT AN AGENCY ACTUALLY DOES",
     matrixTitle: "WHAT DOES A BRAND POSITIONING AGENCY IN COIMBATORE DO?",
-    matrixSubtitle: "A real brand positioning agency in Coimbatore digs into your business, market, and customers before writing a single tagline. Here's what Brand Anvil handles end to end:",
+    matrixSubtitle: "A real brand positioning agency in Coimbatore digs into your business, market, and customers before writing a single tagline. Here's what Brand Anvil handles:",
     matrixRows: [
       {
-        feature: "Market & Competitor Research",
+        feature: "Market & competitor research",
         traditional: "Copying rival taglines blindly without research",
-        brandforge: "Finding the unique market gap you can decisively own"
+        brandforge: "Finding the gap you can own"
       },
       {
-        feature: "Audience Clarity",
+        feature: "Audience clarity",
         traditional: "Marketing vaguely to everyone and attracting nobody",
         brandforge: "Defining exactly who you're for (and who you're not)"
       },
       {
-        feature: "Positioning Statement",
+        feature: "Positioning statement",
         traditional: "Empty corporate buzzwords nobody remembers",
-        brandforge: "The core central idea your entire business and culture rallies behind"
+        brandforge: "The core idea your whole brand stands on"
       },
       {
-        feature: "Messaging Framework",
+        feature: "Messaging framework",
         traditional: "Inconsistent ad copy and scattered messaging",
-        brandforge: "How you talk about yourself across website, ads, pitches, and social"
+        brandforge: "How you talk about yourself, everywhere"
       },
       {
-        feature: "Brand Story & Voice",
+        feature: "Brand story & voice",
         traditional: "Generic corporate bio that fails to evoke emotion",
-        brandforge: "The compelling origin narrative that makes customers truly care"
+        brandforge: "The narrative that makes people care"
       },
       {
-        feature: "Cross-Channel Rollout",
-        traditional: "Positioning PDF that sits ignored in a folder",
-        brandforge: "Deploying new positioning across your website, social, ads, and sales team"
+        feature: "Rollout",
+        traditional: "Positioning PDF that sits ignored in a drawer",
+        brandforge: "Putting the new positioning across your site, social, and sales"
       }
     ],
     pillarsTag: "OUR SERVICES",
@@ -1658,9 +2045,9 @@ export const servicesData = {
     pillars: [
       {
         icon: Target,
-        tag: "CORE STRATEGY",
+        tag: "CORE IDEA",
         title: "Brand Strategy & Positioning",
-        description: "The core strategic idea that sets you apart from competitors and makes you the undisputed leader in your category.",
+        description: "The core idea that sets you apart.",
         deliverables: [
           "Unique Value Proposition Definition",
           "Competitive Category Framing",
@@ -1670,9 +2057,9 @@ export const servicesData = {
       },
       {
         icon: PenTool,
-        tag: "HIGH CONVERSION",
+        tag: "STICK & SELL",
         title: "Brand Messaging & Tagline",
-        description: "Words that stick in customer minds and sell your value proposition instantly without technical friction.",
+        description: "Words that stick and sell.",
         deliverables: [
           "Signature Brand Taglines & Hooks",
           "Core Pitch & Elevator Statements",
@@ -1684,7 +2071,7 @@ export const servicesData = {
         icon: Award,
         tag: "NARRATIVE",
         title: "Brand Story Development",
-        description: "The emotional origin narrative behind why your business exists and why discerning clients should trust you.",
+        description: "The narrative behind why you exist.",
         deliverables: [
           "Founder & Heritage Storytelling",
           "Brand Manifesto & Mission Creed",
@@ -1694,9 +2081,9 @@ export const servicesData = {
       },
       {
         icon: ShieldCheck,
-        tag: "STRATEGIC MOAT",
+        tag: "CHOOSE YOU",
         title: "Competitor Differentiation",
-        description: "A sharp, defensible reason for buyers to choose you over alternatives, eliminating price-matching wars forever.",
+        description: "A clear reason to choose you, not them.",
         deliverables: [
           "Competitor Messaging Audit",
           "Differentiator Battle Cards",
@@ -1706,9 +2093,9 @@ export const servicesData = {
       },
       {
         icon: Users,
-        tag: "BUYER CLARITY",
+        tag: "IDEAL BUYER",
         title: "Target Audience Definition",
-        description: "Knowing exactly who to talk to by pinpointing high-value ideal buyer profiles, psychological triggers, and pain points.",
+        description: "Knowing exactly who to talk to.",
         deliverables: [
           "Ideal Customer Profiles (ICP)",
           "Buyer Persona Psychographics",
@@ -1718,9 +2105,9 @@ export const servicesData = {
       },
       {
         icon: Zap,
-        tag: "CONSISTENT TONE",
+        tag: "PERSONALITY",
         title: "Brand Voice & Tone Guide",
-        description: "A consistent, magnetic personality across every website page, ad creative, email sequence, and client proposal.",
+        description: "A consistent personality across every channel.",
         deliverables: [
           "Brand Personality Archetypes",
           "Tone of Voice Spectrum Rules",
@@ -1732,7 +2119,7 @@ export const servicesData = {
         icon: TrendingUp,
         tag: "TRANSFORMATION",
         title: "Rebranding & Repositioning",
-        description: "Shifting how the market perceives an established business so you attract higher-paying clientele without losing loyal buyers.",
+        description: "Shifting how an existing brand is seen.",
         deliverables: [
           "Legacy Perception Audit",
           "Repositioning Transition Strategy",
@@ -1742,9 +2129,9 @@ export const servicesData = {
       },
       {
         icon: Layers,
-        tag: "PLAYBOOK",
-        title: "Brand Guidelines & Playbook",
-        description: "A single comprehensive document that keeps your executive team, sales reps, and external designers aligned forever.",
+        tag: "ONE RULEBOOK",
+        title: "Brand Guidelines",
+        description: "A single document that keeps everyone on message.",
         deliverables: [
           "Master Positioning Playbook",
           "Sales Pitch Deck & Script Guide",
@@ -1755,68 +2142,107 @@ export const servicesData = {
     ],
     differentiators: {
       tag: "THE BRAND ANVIL ADVANTAGE",
-      title: "Why Businesses Choose Brand Anvil for Brand Positioning",
-      subtitle: "As the dedicated brand positioning studio inside BrandForge that also runs web development, content marketing, paid ads, and social media in-house, we don't just deliver a PDF — we bring your positioning to life across every customer touchpoint.",
+      title: "Why Businesses Choose Brand Anvil",
+      subtitle: "And because BrandForge runs web, content, ads, and social in-house, your new positioning doesn't stay on paper — we push it live across every channel that touches your customer.",
       items: [
         {
-          title: "Strategy First — Never Guesswork",
-          description: "We uncover the exact market space your competitors have left wide open before writing a single word of copy.",
+          title: "A One-Line Positioning Statement",
+          description: "The single idea your whole business can rally behind with complete focus and clarity.",
           icon: Target
         },
         {
-          title: "Command Premium Pricing",
-          description: "Our positioning models transform your business from a commodity price tag into an authority brand customers pay more for gladly.",
-          icon: Award
+          title: "A Clear 'Why Choose Us' Moat",
+          description: "A sharp answer to why a customer should pick you over the cheaper option every time.",
+          icon: ShieldCheck
         },
         {
-          title: "End-to-End Cross-Channel Execution",
-          description: "We immediately push your new positioning live into your website copy, ad creative, email flows, and sales pitch decks.",
+          title: "Connected Directly to Web, Ads & Content",
+          description: "We don't leave positioning in a folder — we deploy it directly across your website, ads, pitches, and campaigns.",
           icon: Zap
         },
         {
-          title: "Actionable Messaging Playbooks",
-          description: "Zero fluffy mood boards. You get plug-and-play copy, taglines, and elevator pitches your sales team can use today.",
+          title: "Competitor Gap Analysis",
+          description: "We show you the exact space rivals have left wide open for your business to own.",
           icon: PenTool
         },
         {
-          title: "Proven Category Authority",
-          description: "Backed by real-world transformation case studies across startups, clinics, education institutions, and D2C enterprises in Tamil Nadu.",
-          icon: ShieldCheck
+          title: "The Ability to Command Higher Prices",
+          description: "Sharp positioning shifts you from competing on discounts to being the undisputed obvious choice.",
+          icon: Award
         }
       ]
     },
-    timeline: {
+    whatWeDo: {
       tag: "WHAT BRAND ANVIL WILL DO FOR YOU",
       title: "What Brand Anvil Will Do For You",
-      subtitle: "No vague 'brand vibes' or decorative mood boards. Here is the concrete strategic arsenal you walk away with. And because BrandForge runs web, content, and ads in-house, your new positioning launches live across every channel.",
+      subtitle: "No vague \"brand vibes\" and mood boards. Here's what you actually walk away with:",
+      items: [
+        {
+          title: "A one-line positioning statement",
+          description: "The single idea your whole business can rally behind"
+        },
+        {
+          title: "A clear \"why choose us\"",
+          description: "A sharp answer to why a customer should pick you over the cheaper option"
+        },
+        {
+          title: "A defined ideal customer",
+          description: "So you stop marketing to everyone and start attracting the right people"
+        },
+        {
+          title: "A messaging cheat-sheet",
+          description: "Ready-to-use lines for your website, ads, pitches, and social"
+        },
+        {
+          title: "A brand voice guide",
+          description: "So every post and email sounds unmistakably like you"
+        },
+        {
+          title: "Competitor gap analysis",
+          description: "We show you the space rivals have left wide open for you to own"
+        },
+        {
+          title: "A full brand guidelines document",
+          description: "One file your team and any designer can follow forever"
+        },
+        {
+          title: "A rollout plan",
+          description: "Exactly where and how to launch the new positioning, not just a PDF that sits in a drawer"
+        }
+      ],
+      conclusion: "And because BrandForge runs web, content, ads, and social in-house, your new positioning doesn't stay on paper — we push it live across every channel that touches your customer."
+    },
+    timeline: {
+      tag: "HOW WE WORK",
+      title: "How We Work",
+      subtitle: "Our systematic 6-step brand positioning roadmap from discovery to complete market rollout.",
       steps: [
-        { num: "01", title: "ONE-LINE POSITIONING STATEMENT", desc: "The single magnetic idea your entire business, leadership, and sales team can rally behind." },
-        { num: "02", title: "CLEAR 'WHY CHOOSE US' MOAT", desc: "A sharp, persuasive answer to why customers should pick you over the cheaper alternatives." },
-        { num: "03", title: "DEFINED IDEAL BUYER PROFILE", desc: "Stop marketing vaguely to everyone and start attracting high-ticket, high-retention clients." },
-        { num: "04", title: "MESSAGING CHEAT-SHEET", desc: "Ready-to-use hooks and elevator lines for your website, ad creatives, sales pitches, and social." },
-        { num: "05", title: "BRAND VOICE & TONE GUIDE", desc: "Ensuring every email, blog post, and ad campaign sounds unmistakably and authoritatively like you." },
-        { num: "06", title: "COMPETITOR GAP ANALYSIS", desc: "We uncover the lucrative market space rivals left wide open for you to dominate." },
-        { num: "07", title: "FULL BRAND GUIDELINES BOOK", desc: "One master playbook your internal staff and external designers can follow forever." },
-        { num: "08", title: "FULL-FUNNEL ROLLOUT PLAN", desc: "A detailed launch roadmap executing your new positioning across web, ads, and sales." }
+        { num: "01", title: "Discovery", desc: "Deep dive into your business, goals, and customers" },
+        { num: "02", title: "Research", desc: "Market, competitor, and audience analysis" },
+        { num: "03", title: "Positioning", desc: "We define the space you'll own" },
+        { num: "04", title: "Messaging", desc: "Statement, story, voice, and taglines" },
+        { num: "05", title: "Guidelines", desc: "Everything documented in one brand book" },
+        { num: "06", title: "Rollout", desc: "Launching the positioning across your channels" }
       ]
     },
     whoWeHelp: {
       tag: "WHO WE WORK WITH",
       title: "Who We Work With in Coimbatore & Tamil Nadu",
-      subtitle: "We position new startups, family businesses ready to modernize, coaching institutes, clinics and healthcare, D2C retail brands, real estate developers, and service businesses across Coimbatore and Tamil Nadu. If you're tired of competing on price, positioning is where the fix starts.",
+      subtitle: "We position new startups, family businesses ready to modernize, coaching institutes, clinics, D2C brands, and service businesses across Coimbatore and Tamil Nadu. If you're tired of competing on price, positioning is where the fix starts.",
+      ctaText: "Book a free brand positioning session — in 30 minutes we'll pinpoint what makes you different and the one shift that could let you charge more.",
       industries: [
-        { title: "Startups & Emerging Tech", desc: "Category creation, investor pitch narrative framing, and launch positioning to secure early market dominance." },
-        { title: "Family Businesses Modernizing", desc: "Preserving legacy trust while elevating positioning and messaging to win next-generation buyers." },
-        { title: "Coaching & Education Institutes", desc: "Establishing premier curriculum authority and outcome-focused positioning that justifies premium admissions." },
-        { title: "Clinics, Doctors & Healthcare", desc: "Specialist medical authority positioning and patient trust narratives that elevate consultation value." },
-        { title: "D2C & Retail Consumer Brands", desc: "Lifestyle positioning, packaging narrative copy, and unboxing storytelling that beats discount competition." },
-        { title: "B2B & Enterprise Services", desc: "High-ticket positioning frameworks and ROI-focused sales messaging for corporate procurement decision-makers." }
+        { title: "New Startups & Tech Ventures", desc: "Category framing, pitch narrative development, and early-stage launch positioning." },
+        { title: "Family Businesses Ready to Modernize", desc: "Preserving heritage trust while elevating market perception to appeal to modern buyers." },
+        { title: "Coaching & Education Institutes", desc: "Establishing premier curriculum authority that commands premium admissions fees." },
+        { title: "Clinics & Healthcare Practices", desc: "Specialist medical authority positioning and patient trust narratives." },
+        { title: "D2C Brands & Retail", desc: "Lifestyle positioning, packaging story copy, and customer loyalty frameworks." },
+        { title: "Service Businesses", desc: "High-ticket positioning frameworks that eliminate price-matching wars." }
       ],
       certifications: [
-        { label: "Harvard Business Review & Interbrand Strategy Framework Alignment" },
-        { label: "Real Repositioning Case Study: Rebranded ThoughtFlows into an AI-Powered Healthcare Pioneer with 3.4x Valuation Growth" },
-        { label: "Sample Brand Guidelines: 40-Page Master Playbook Covering Tone, Value Proposition & Sales Scripts" },
-        { label: "Reviewed by BalaMurali, Brand Strategist & Founder, Brand Anvil by BrandForge" }
+        { label: "Interbrand (interbrand.com) & Harvard Business Review (hbr.org) Strategy Standards Compliant" },
+        { label: "Real Repositioning Case Study: Led ThoughtFlows to BrandForge rebrand unlocking 4.8x pricing power" },
+        { label: "Sample Deliverables: Master Brand Book, ICP Personas & Battle-Tested Sales Scripts" },
+        { label: "Reviewed by BalaMurali, Brand Strategist, Brand Anvil" }
       ]
     },
     faqs: [
@@ -1842,12 +2268,12 @@ export const servicesData = {
       }
     ],
     bottomCta: {
-      title: "Book a Free Brand Positioning Session Today",
+      title: "Book a Free Brand Positioning Session",
       subtitle: "In 30 minutes we'll pinpoint what makes you different and the one shift that could let you charge more.",
-      buttonText: "Claim Your Free Positioning Session →"
+      buttonText: "Book Your Free Positioning Session →"
     }
   },
-
+  
   "visual-id": {
     slug: "visual-id",
     urlSlug: "/brand-identity-design-agency-coimbatore",
@@ -1870,51 +2296,52 @@ export const servicesData = {
       { value: "7-14 Days", label: "Complete Kit Delivery", desc: "Full multi-format logo files, palette & social asset handover" },
     ],
     whyChooseUs: {
-      tag: "FIRST IMPRESSIONS MATTER",
+      tag: "WHY YOUR BRAND IDENTITY DECIDES FIRST IMPRESSIONS",
       title: "Why Your Brand Identity Decides First Impressions",
-      description: "People judge a business by how it looks before they ever try it. A strong, consistent identity earns trust instantly. A DIY logo saves a little money now and costs you customers for years. Identity is where looking the part starts.",
-      leadIn: "A polished, professional identity gives you an immediate competitive advantage:",
+      description: "People judge a business by how it looks before they ever try it. A strong, consistent identity earns trust instantly. Get it right and you gain: instant credibility, recognition, trust, consistency, and the ability to command higher prices. A DIY logo saves a little money now and costs you customers for years. Identity is where looking the part starts.",
+      leadIn: "Get it right and you gain:",
       points: [
         "Instant credibility — you look established, not amateur",
         "Recognition — customers remember and spot you everywhere",
         "Trust — a polished look signals a serious business",
         "Consistency — every post, card, and sign feels like one brand",
         "The ability to charge more — professional brands command it"
-      ]
+      ],
+      conclusion: "A DIY logo saves a little money now and costs you customers for years. Identity is where looking the part starts."
     },
     matrixTag: "WHAT AN AGENCY ACTUALLY DOES",
     matrixTitle: "WHAT DOES A BRAND IDENTITY DESIGN AGENCY DO?",
-    matrixSubtitle: "A real brand identity design agency builds a complete visual system, not a one-off logo. Here's what Identity Forge handles end to end:",
+    matrixSubtitle: "A real brand identity design agency builds a complete visual system, not a one-off logo. Here's what Identity Forge handles:",
     matrixRows: [
       {
-        feature: "Logo Design",
-        traditional: "Single flat low-res PNG with no variations or icons",
-        brandforge: "A primary, secondary, and icon mark that is simple, unique, and works everywhere"
+        feature: "Logo design",
+        traditional: "Single flat low-res PNG with no variations or vector formats",
+        brandforge: "A mark that's simple, unique, and works everywhere across web, print & apps"
       },
       {
-        feature: "Colour Palette",
-        traditional: "Random uncalibrated colours that look washed out in print",
-        brandforge: "Harmonious HEX, RGB & CMYK palettes chosen specifically for your industry"
+        feature: "Colour palette",
+        traditional: "Random uncalibrated colours that clash and wash out in print",
+        brandforge: "Colours chosen for your industry and audience"
       },
       {
-        feature: "Typography System",
-        traditional: "Clashing default system fonts across different pages",
-        brandforge: "Curated heading and body font pairings that express your personality"
+        feature: "Typography",
+        traditional: "Mismatched system fonts that dilute your brand credibility",
+        brandforge: "Fonts that carry your personality across all text"
       },
       {
-        feature: "Visual Style & Assets",
-        traditional: "Inconsistent stock images and mismatched templates",
-        brandforge: "A cohesive visual aesthetic for graphics, photography, and layout grids"
+        feature: "Visual style",
+        traditional: "Inconsistent graphics and mismatched stock photo styles",
+        brandforge: "The overall look for graphics, photos, and layouts"
       },
       {
-        feature: "Business Stationery",
-        traditional: "DIY business cards with blurry logos and broken margins",
-        brandforge: "Print-ready luxury cards, letterheads, invoice templates & packaging"
+        feature: "Brand assets",
+        traditional: "No business templates, leaving staff to improvise designs",
+        brandforge: "Cards, letterheads, social kits, and templates"
       },
       {
-        feature: "Brand Guidelines",
-        traditional: "Zero documentation leading to branding drift over time",
-        brandforge: "A comprehensive brand rulebook keeping your team and designers on-brand forever"
+        feature: "Brand guidelines",
+        traditional: "Zero documentation leading to branding chaos over time",
+        brandforge: "A rulebook so your brand stays consistent forever"
       }
     ],
     pillarsTag: "OUR SERVICES",
@@ -1923,9 +2350,9 @@ export const servicesData = {
     pillars: [
       {
         icon: Palette,
-        tag: "CORE IDENTITY",
+        tag: "CORE MARK",
         title: "Logo Design",
-        description: "Primary, secondary, horizontal, and icon versions crafted with geometric precision for web, print, and mobile apps.",
+        description: "Primary, secondary, and icon versions for every use.",
         deliverables: [
           "Primary & Secondary Logo Marks",
           "Compact Icon & Favicon Suite",
@@ -1935,9 +2362,9 @@ export const servicesData = {
       },
       {
         icon: Box,
-        tag: "FULL PACKAGE",
+        tag: "COMPLETE SUITE",
         title: "Complete Brand Identity Kits",
-        description: "Logo, colour palettes, typography, stationery, and social media assets combined in one cohesive, turnkey package.",
+        description: "Logo, colours, fonts, and assets in one package.",
         deliverables: [
           "Full Brand Asset Library",
           "Ready-to-Use Vector Icons",
@@ -1947,9 +2374,9 @@ export const servicesData = {
       },
       {
         icon: PenTool,
-        tag: "VISUAL HARMONY",
+        tag: "VISUAL SYSTEM",
         title: "Colour & Typography Systems",
-        description: "Calibrated HEX, RGB, and CMYK color codes and font pairings that stay unmistakably consistent across every channel.",
+        description: "A palette and fonts that stay consistent everywhere.",
         deliverables: [
           "Primary & Secondary Color Scales",
           "Accessible Contrast Ratios",
@@ -1959,9 +2386,9 @@ export const servicesData = {
       },
       {
         icon: Layers,
-        tag: "PRINT READY",
+        tag: "STATIONERY",
         title: "Business Stationery",
-        description: "Premium business cards, letterheads, corporate envelopes, email signatures, and invoices that look the part.",
+        description: "Cards, letterheads, and invoices that look the part.",
         deliverables: [
           "Luxury Business Card Designs",
           "Official Letterhead & Envelope Templates",
@@ -1971,9 +2398,9 @@ export const servicesData = {
       },
       {
         icon: Megaphone,
-        tag: "DIGITAL READY",
+        tag: "SOCIAL ASSETS",
         title: "Social Media Brand Kits",
-        description: "Editable Canva and Figma templates so every Instagram post, Reel cover, and LinkedIn graphic looks elite from day one.",
+        description: "Templates so every post looks unmistakably yours.",
         deliverables: [
           "Instagram Post & Story Templates",
           "YouTube & LinkedIn Banner Covers",
@@ -1983,9 +2410,9 @@ export const servicesData = {
       },
       {
         icon: Target,
-        tag: "RETAIL IMPACT",
+        tag: "PACKAGING",
         title: "Packaging & Label Design",
-        description: "Product boxes, bottle labels, retail hangtags, and unboxing collateral designed to captivate buyers and jump off shelves.",
+        description: "Product identity that stands out on the shelf.",
         deliverables: [
           "Product Box & Pouch Dielines",
           "Label Design & Barcode Formatting",
@@ -1995,9 +2422,9 @@ export const servicesData = {
       },
       {
         icon: TrendingUp,
-        tag: "MODERNIZATION",
+        tag: "EVOLUTION",
         title: "Rebranding & Logo Redesign",
-        description: "Modernising existing visual identities with care, preserving what loyal customers recognize while elevating your market authority.",
+        description: "A modern look without losing what people already know.",
         deliverables: [
           "Legacy Brand Equity Audit",
           "Vector Modernization & Cleanup",
@@ -2007,9 +2434,9 @@ export const servicesData = {
       },
       {
         icon: ShieldCheck,
-        tag: "MASTER PLAYBOOK",
+        tag: "BRAND PLAYBOOK",
         title: "Brand Guidelines Document",
-        description: "A single comprehensive rulebook covering clear space, color rules, typography, and do's/don'ts that keeps everyone on brand.",
+        description: "One file that keeps every designer on brand.",
         deliverables: [
           "Complete Brand Guidelines PDF",
           "Logo Clear Space & Minimum Sizing Rules",
@@ -2020,68 +2447,107 @@ export const servicesData = {
     ],
     differentiators: {
       tag: "THE IDENTITY FORGE ADVANTAGE",
-      title: "Why Businesses Choose Identity Forge for Brand Identity Design",
-      subtitle: "As the dedicated brand identity design studio inside BrandForge that also builds websites, runs ads, and produces content in-house, we design visual systems built for real-world conversion across digital screens and physical print.",
+      title: "Why Businesses Choose Identity Forge",
+      subtitle: "As a brand identity design agency in Coimbatore that also handles brand positioning, web development, and social media in-house, your new identity goes live properly — carried straight onto your website, pages, and campaigns, not left sitting in a folder.",
       items: [
         {
           title: "Complete Visual Systems, Not Just A Logo",
-          description: "We give you a complete toolkit of colors, typography, stationery, and social templates that work together seamlessly.",
+          description: "We craft full brand ecosystems — colours, typography, stationery, and social templates that work together seamlessly.",
           icon: Box
         },
         {
-          title: "Every Source File & Format Included",
-          description: "You receive full vector AI, EPS, SVG, PDF, and high-resolution PNGs so you are never stuck asking a designer later.",
+          title: "Every Source File & Format You'll Ever Need",
+          description: "PNG, SVG, PDF, and master vector source files delivered so you are never stuck asking a designer later.",
           icon: Palette
         },
         {
-          title: "Immediate Cross-Channel Deployment",
-          description: "We carry your new visual identity straight onto your website, landing pages, ads, and email templates without delay.",
+          title: "Connected Directly to Web, Ads & Social",
+          description: "Because BrandForge runs web, social, and content in-house, your new identity goes live immediately without friction.",
           icon: Zap
         },
         {
-          title: "Collaborative Options & Revisions",
-          description: "Multiple distinct artistic directions to choose from with structured feedback loops until your identity is 100% perfect.",
+          title: "Real Concepts & Collaborative Revisions",
+          description: "Multiple distinct artistic directions and structured revision rounds, never a single take-it-or-leave-it mock.",
           icon: PenTool
         },
         {
-          title: "Proven Category Authority",
-          description: "Backed by real client design systems across startups, retail D2C brands, coaching academies, and clinics in Coimbatore.",
+          title: "Established Credibility That Commands Higher Prices",
+          description: "A polished, unforgettable identity signals an industry-leading business, giving you pricing confidence from day one.",
           icon: ShieldCheck
         }
       ]
     },
-    timeline: {
+    whatWeDo: {
       tag: "WHAT IDENTITY FORGE WILL DO FOR YOU",
       title: "What Identity Forge Will Do For You",
-      subtitle: "No single flat logo file and goodbye. Here is the complete visual design arsenal you actually walk away with. And because BrandForge runs web, social, and content in-house, your new identity goes live properly across every customer touchpoint.",
+      subtitle: "No single flat logo file and goodbye. Here's the complete kit you actually walk away with:",
+      items: [
+        {
+          title: "Multiple logo variations",
+          description: "Full, compact, and icon versions for web, print, and app icons"
+        },
+        {
+          title: "Every file format you'll ever need",
+          description: "PNG, SVG, PDF, and source files, so you're never stuck asking a designer"
+        },
+        {
+          title: "A defined colour palette",
+          description: "Exact HEX, RGB, and CMYK codes for screen and print"
+        },
+        {
+          title: "Chosen brand fonts",
+          description: "A clear heading and body font pairing you can use everywhere"
+        },
+        {
+          title: "Ready-to-use social templates",
+          description: "So your posts look professional from day one"
+        },
+        {
+          title: "Business card & stationery designs",
+          description: "Print-ready, no extra work"
+        },
+        {
+          title: "A complete brand guidelines PDF",
+          description: "The rulebook that keeps you consistent as you grow"
+        },
+        {
+          title: "Concepts to choose from",
+          description: "Real options and revisions, not a single take-it-or-leave-it design"
+        }
+      ],
+      conclusion: "And because BrandForge runs web, social, and content in-house, your new identity goes live properly — carried straight onto your website, pages, and campaigns, not left sitting in a folder."
+    },
+    timeline: {
+      tag: "HOW WE WORK",
+      title: "How We Work",
+      subtitle: "Our systematic 6-step brand identity design roadmap from discovery to complete rollout.",
       steps: [
-        { num: "01", title: "MULTIPLE LOGO VARIATIONS", desc: "Full, compact, horizontal, and icon marks optimized for websites, print, and mobile app icons." },
-        { num: "02", title: "EVERY FILE FORMAT YOU NEED", desc: "PNG, SVG, PDF, EPS, and vector source files (AI/Figma), so you are never restricted." },
-        { num: "03", title: "DEFINED COLOUR PALETTE", desc: "Exact calibrated HEX, RGB, and CMYK codes engineered for high contrast on screens and paper." },
-        { num: "04", title: "CHOSEN BRAND FONTS", desc: "Curated heading and body font pairings that carry your personality across all marketing text." },
-        { num: "05", title: "READY-TO-USE SOCIAL TEMPLATES", desc: "Editable Canva and Figma post and story templates so your social feed looks elite from day one." },
-        { num: "06", title: "BUSINESS CARDS & STATIONERY", desc: "Print-ready luxury business cards, letterheads, invoice templates, and corporate folders." },
-        { num: "07", title: "MASTER BRAND GUIDELINES PDF", desc: "The definitive rulebook that keeps your internal team and any external designer consistent forever." },
-        { num: "08", title: "REAL CONCEPTS & REVISIONS", desc: "Multiple creative concepts and structured polish rounds, never a single take-it-or-leave-it mock." }
+        { num: "01", title: "Discovery", desc: "We learn your business, audience, and personality" },
+        { num: "02", title: "Research & moodboard", desc: "Direction agreed before any design starts" },
+        { num: "03", title: "Concepts", desc: "Multiple logo and identity directions to choose from" },
+        { num: "04", title: "Refine", desc: "We polish your chosen direction with your feedback" },
+        { num: "05", title: "Build the kit", desc: "Full assets, files, and guidelines prepared" },
+        { num: "06", title: "Handover & rollout", desc: "Everything delivered and put live across your channels" }
       ]
     },
     whoWeHelp: {
       tag: "WHO WE WORK WITH",
       title: "Who We Work With in Coimbatore & Tamil Nadu",
-      subtitle: "We design identities for new startups, family businesses ready for a modern look, coaching institutes, clinics and healthcare, cafes & restaurants, and D2C product brands across Coimbatore and Tamil Nadu. If you want to look established and be remembered, this is where it begins.",
+      subtitle: "We design identities for new startups, family businesses ready for a modern look, coaching institutes, clinics, cafes and restaurants, and D2C product brands across Coimbatore and Tamil Nadu. If you want to look established and be remembered, this is where it begins.",
+      ctaText: "Book a free brand identity call — show us your business and we'll share exactly how a professional identity would make you look established and unforgettable.",
       industries: [
-        { title: "Startups & Tech Ventures", desc: "Futuristic, scalable 3D emblems and digital-first design tokens built for investor decks and mobile apps." },
-        { title: "Family Businesses Modernizing", desc: "Elevating traditional brands with sleek, contemporary visual identities that resonate with modern consumers." },
-        { title: "Coaching & Education Institutes", desc: "Prestigious crests, certificate designs, and student marketing collateral that inspire trust and enrollments." },
-        { title: "Clinics, Doctors & Healthcare", desc: "Clean, calming, highly professional medical visual systems, prescription pads, and clinic signage." },
-        { title: "Cafes, Restaurants & Hospitality", desc: "Appetizing menu layouts, aesthetic packaging, table collateral, and Instagrammable interior branding." },
-        { title: "D2C & Retail Consumer Brands", desc: "Luxury product boxes, pouch dielines, unboxing cards, and retail shelf packaging that converts." }
+        { title: "New Startups & Tech Ventures", desc: "Modern, scalable vector marks, app icons, and digital-first design tokens that command investor trust." },
+        { title: "Family Businesses Modernizing", desc: "Elevating traditional enterprises with clean, contemporary identities while honoring their trusted heritage." },
+        { title: "Coaching & Education Institutes", desc: "Prestigious emblems, prospectus layouts, and campus identity systems that inspire student enrollment." },
+        { title: "Clinics, Doctors & Healthcare", desc: "Reassuring, highly professional healthcare identities, prescription stationery, and clinic signage." },
+        { title: "Cafes & Restaurants", desc: "Appetizing menus, packaging labels, table collateral, and Instagrammable visual identities that draw diners." },
+        { title: "D2C & Retail Product Brands", desc: "Standout box dielines, pouch labels, and shelf-popping packaging systems that convert retail shoppers." }
       ],
       certifications: [
-        { label: "Behance Featured Design & Adobe Brand Standard Compliant Framework" },
-        { label: "Real Portfolio Proof: Built BrandForge, Sonic Prints & Talentera Visual Identity Systems" },
-        { label: "Delivered Assets: Vector Source Files, 3D Mockups, Print Guidelines & Color Proofing Sheets" },
-        { label: "Reviewed by BalaMurali, Lead Designer & Founder, Identity Forge by BrandForge" }
+        { label: "Behance (behance.net) & Adobe Design Standards (adobe.com) Compliant Framework" },
+        { label: "Real Portfolio: Built BrandForge and Sonic Prints visual identities with complete before/after brand kits" },
+        { label: "Delivered Formats: Full vector AI, EPS, SVG, print-ready PDF, and web PNG source suites" },
+        { label: "Reviewed by BalaMurali, Lead Designer, Identity Forge" }
       ]
     },
     faqs: [
@@ -2107,12 +2573,12 @@ export const servicesData = {
       }
     ],
     bottomCta: {
-      title: "Book a Free Brand Identity Call Today",
+      title: "Book a Free Brand Identity Call",
       subtitle: "Show us your business and we'll share exactly how a professional identity would make you look established and unforgettable.",
-      buttonText: "Claim Your Free Brand Call →"
+      buttonText: "Book Your Free Brand Call →"
     }
   },
-
+  
   "commercial-video": {
     slug: "commercial-video",
     urlSlug: "/video-production-editing-company-coimbatore",

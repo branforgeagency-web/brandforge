@@ -2,14 +2,14 @@ import type { Metadata } from "next";
 import ServiceLandingPage from "@/src/views/ServiceLandingPage";
 
 export const metadata: Metadata = {
-  title: "Best PPC Agency in Coimbatore | Paid Ads & ROAS Scaling – Brand Forge",
-  description: "Brand Forge is a top performance marketing & PPC company in Coimbatore managing Google Ads, Meta Ads, and omnichannel paid media for maximum ROAS.",
+  title: "PPC Company in Coimbatore | Google & Meta Ads | BrandForge",
+  description: "Looking for a PPC company in Coimbatore? BrandForge runs Google, Meta, YouTube & lead-gen ads that convert. Get a free ad account audit this week.",
   alternates: {
     canonical: "https://www.brandforgeagency.in/ppc-company-coimbatore",
   },
   openGraph: {
-    title: "Best PPC Agency in Coimbatore | Paid Ads & ROAS Scaling – Brand Forge",
-    description: "Brand Forge is a top performance marketing & PPC company in Coimbatore managing Google Ads, Meta Ads, and omnichannel paid media for maximum ROAS.",
+    title: "PPC Company in Coimbatore | Google & Meta Ads | BrandForge",
+    description: "Looking for a PPC company in Coimbatore? BrandForge runs Google, Meta, YouTube & lead-gen ads that convert. Get a free ad account audit this week.",
     url: "https://www.brandforgeagency.in/ppc-company-coimbatore",
   },
 };

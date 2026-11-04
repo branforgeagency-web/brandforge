@@ -19,13 +19,13 @@ export const ROUTE_SEO_MAP = {
     canonicalUrl: `${BASE_URL}/contact`,
   },
   "/seo-company-coimbatore": {
-    title: "Best SEO Company in Coimbatore | SEO & GEO Services – Brand Forge",
-    description: "Brand Forge is a trusted SEO company in Coimbatore offering SEO, GEO (Generative Engine Optimization), and local search services to rank higher on Google and AI search engines.",
+    title: "SEO Company in Coimbatore | SEO & GEO Services – Brand Forge",
+    description: "Brand Forge is a trusted SEO company in Coimbatore offering SEO, GEO (Generative Engine Optimization), and local search services to help businesses rank higher on Google and AI search engines.",
     canonicalUrl: `${BASE_URL}/seo-company-coimbatore`,
   },
   "/ppc-company-coimbatore": {
-    title: "Best PPC Agency in Coimbatore | Paid Ads & ROAS Scaling – Brand Forge",
-    description: "Brand Forge is a top performance marketing & PPC company in Coimbatore managing Google Ads, Meta Ads, and omnichannel paid media for maximum ROAS.",
+    title: "PPC Company in Coimbatore | Google & Meta Ads | BrandForge",
+    description: "Looking for a PPC company in Coimbatore? BrandForge runs Google, Meta, YouTube & lead-gen ads that convert. Get a free ad account audit this week.",
     canonicalUrl: `${BASE_URL}/ppc-company-coimbatore`,
   },
   "/website-development-company-coimbatore": {
@@ -95,7 +95,7 @@ export const ROUTE_SEO_MAP = {
   },
   "/influencer-marketing-coimbatore": {
     title: "Influencer Marketing Agency in Coimbatore | BrandForge",
-    description: "Looking for influencer marketing in Coimbatore? BrandForge finds genuine local creators, runs your campaigns end to end, and tracks every sale. Book a free call.",
+    description: "Looking for an influencer marketing agency in Coimbatore? BrandForge connects your brand with the right local creators to drive real sales. Book a free call.",
     canonicalUrl: `${BASE_URL}/influencer-marketing-coimbatore`,
   },
   "/brand-reputation-management-coimbatore": {

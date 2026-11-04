@@ -37,15 +37,19 @@ export default function SeoMontarvilleBlueprint({ timeline = [], title, subtitle
     },
   ];
 
-  const steps = (timeline && timeline.length > 0)
-    ? timeline.map((item, idx) => ({
-        step: item.step || `0${idx + 1}`,
+  const stepsSource = Array.isArray(timeline) ? timeline : (timeline?.steps || []);
+  const steps = (stepsSource && stepsSource.length > 0)
+    ? stepsSource.map((item, idx) => ({
+        step: item.step || item.num || `0${idx + 1}`,
         title: item.title,
-        description: item.description,
+        description: item.description || item.desc,
         timeline: item.timeline || `PHASE 0${idx + 1}`,
-        tasks: item.tasks || ["Milestone Deliverable Verified", "Sub-200ms Core Vitals Guard", "Bi-Weekly Reporting"],
+        tasks: item.tasks || ["Milestone Deliverable Verified", "SEO-Ready Code Guard", "Launch Quality Audit"],
       }))
     : defaultSteps;
+
+  const resolvedTitle = title || (typeof timeline === "object" && !Array.isArray(timeline) ? timeline?.title : null);
+  const resolvedSubtitle = subtitle || (typeof timeline === "object" && !Array.isArray(timeline) ? timeline?.subtitle : null);
 
   return (
     <section className="smb-blueprint-section" id="implementation-roadmap">
@@ -55,8 +59,8 @@ export default function SeoMontarvilleBlueprint({ timeline = [], title, subtitle
         {/* Header */}
         <div className="smb-header">
           <h2 className="smb-title">
-            {title ? (
-              <span>{title}</span>
+            {resolvedTitle ? (
+              <span>{resolvedTitle}</span>
             ) : (
               <>
                 The Roadmap to <span className="title-red">Execution Supremacy</span>
@@ -64,7 +68,7 @@ export default function SeoMontarvilleBlueprint({ timeline = [], title, subtitle
             )}
           </h2>
           <p className="smb-subtitle">
-            {subtitle || "A battle-tested deployment framework engineered for measurable business impact and compounding digital ROI."}
+            {resolvedSubtitle || "A battle-tested deployment framework engineered for measurable business impact and compounding digital ROI."}
           </p>
         </div>
 

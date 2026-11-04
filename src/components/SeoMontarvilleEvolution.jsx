@@ -9,6 +9,7 @@ export default function SeoMontarvilleEvolution({
   matrixTag: _matrixTag = "PARADIGM SHIFT",
   matrixTitle = "The Evolution from Traditional SEO to Generative AI Optimization",
   matrixSubtitle = "Search is no longer just typing keywords into a box. Millions of buyers now ask AI assistants for direct brand recommendations.",
+  matrixClosing,
 }) {
   const [activeFilter, setActiveFilter] = useState("all"); // "all" | "01" | "02" | "03" | "04"
   const [hoveredIdx, setHoveredIdx] = useState(null);
@@ -346,19 +347,25 @@ export default function SeoMontarvilleEvolution({
           {/* Bottom Horizon Metric Strip */}
           <div className="sme-ledger-footer">
             <div className="sme-footer-stat">
-              <span className="sme-stat-label">LEGACY GOOGLE SERP CONSTRAINTS</span>
+              <span className="sme-stat-label">LEGACY CONSTRAINTS</span>
               <p className="sme-stat-desc">
-                68% of enterprise clicks absorbed by sponsored PPC ads before prospects reach organic links.
+                Slow page loads, bloated code, and poor mobile architecture quietly lose customers every day.
               </p>
             </div>
             <div className="sme-footer-divider" />
             <div className="sme-footer-stat is-geo">
-              <span className="sme-stat-label text-red">BRANDFORGE DUAL-ENGINE GEO ADVANTAGE</span>
+              <span className="sme-stat-label text-red">BRANDFORGE STANDARD</span>
               <p className="sme-stat-desc text-white">
-                <CheckCircle2 size={13} className="text-red inline-icon" /> Verified #1 recommendation across Perplexity, ChatGPT, and Gemini knowledge graphs.
+                <CheckCircle2 size={13} className="text-red inline-icon" /> Sub-3s mobile speeds, SEO-ready structure, and mobile-first conversions from day one.
               </p>
             </div>
           </div>
+
+          {matrixClosing && (
+            <div className="sme-closing-box">
+              <p className="sme-closing-text">{matrixClosing}</p>
+            </div>
+          )}
         </div>
       </div>
     </section>
@@ -366,6 +373,20 @@ export default function SeoMontarvilleEvolution({
 }
 
 const evolutionStyles = `
+  .sme-closing-box {
+    margin-top: 28px;
+    padding: 16px 22px;
+    background: rgba(255, 24, 1, 0.06);
+    border-left: 3px solid #FF1801;
+    border-radius: 4px;
+  }
+  .sme-closing-text {
+    font-size: clamp(14px, 1.1vw, 16px);
+    font-weight: 600;
+    color: #FAFAFC;
+    margin: 0;
+    line-height: 1.5;
+  }
   /* Montarville Section Foundation (Zero Cards, Red/Black/White Only) */
   .sme-section-root {
     position: relative;

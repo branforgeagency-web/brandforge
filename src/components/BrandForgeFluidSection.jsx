@@ -228,13 +228,20 @@ export default function BrandForgeFluidSection({ _onOpenModal }) {
 
 
     let isPaused = false;
+    let isVisible = true;
     let raf = 0;
     let last = performance.now();
     let loop;
 
+    let cachedRootRect = null;
+    const updateRootRect = () => {
+      if (root) cachedRootRect = root.getBoundingClientRect();
+    };
+    updateRootRect();
+
     const mouse = { x: 0, y: 0, vx: 0, vy: 0, moved: false };
     const moveTo = (clientX, clientY) => {
-      const r = root.getBoundingClientRect();
+      const r = cachedRootRect || root.getBoundingClientRect();
       const x = (clientX - r.left) * dpr;
       const y = (clientY - r.top) * dpr;
       mouse.vx = (x - mouse.x) * CONFIG.forceStrength;
@@ -245,6 +252,7 @@ export default function BrandForgeFluidSection({ _onOpenModal }) {
     };
 
     const onPointer = (e) => {
+      if (!isVisible) return;
       moveTo(e.clientX, e.clientY);
       if (isPaused) {
         isPaused = false;
@@ -254,8 +262,8 @@ export default function BrandForgeFluidSection({ _onOpenModal }) {
       }
     };
 
-    window.addEventListener("pointermove", onPointer, { passive: true });
-    window.addEventListener("pointerdown", onPointer, { passive: true });
+    root.addEventListener("pointermove", onPointer, { passive: true });
+    root.addEventListener("pointerdown", onPointer, { passive: true });
 
     const splat = (x, y, vx, vy) => {
       set(mats.splat, {
@@ -374,7 +382,9 @@ export default function BrandForgeFluidSection({ _onOpenModal }) {
     if (typeof IntersectionObserver !== "undefined" && rootRef.current) {
       observer = new IntersectionObserver(
         ([entry]) => {
-          if (entry.isIntersecting) {
+          isVisible = entry.isIntersecting;
+          if (isVisible) {
+            updateRootRect();
             if (isPaused) {
               isPaused = false;
               last = performance.now();
@@ -383,11 +393,10 @@ export default function BrandForgeFluidSection({ _onOpenModal }) {
             }
           } else {
             isPaused = true;
-
-      cancelAnimationFrame(raf);
+            cancelAnimationFrame(raf);
           }
         },
-        { threshold: 0, rootMargin: '300px 0px' }
+        { threshold: 0, rootMargin: '100px 0px' }
       );
       observer.observe(rootRef.current);
     }
@@ -404,6 +413,7 @@ export default function BrandForgeFluidSection({ _onOpenModal }) {
     loop();
 
     const onResize = () => {
+      updateRootRect();
       const s = sizeOf();
       cssW = s.w;
       cssH = s.h;
@@ -416,8 +426,8 @@ export default function BrandForgeFluidSection({ _onOpenModal }) {
     return () => {
       if (observer) observer.disconnect();
       cancelAnimationFrame(raf);
-      window.removeEventListener("pointermove", onPointer);
-      window.removeEventListener("pointerdown", onPointer);
+      root.removeEventListener("pointermove", onPointer);
+      root.removeEventListener("pointerdown", onPointer);
       window.removeEventListener("resize", onResize);
       renderer.dispose();
       [velocity, dye, pressure].forEach((d) => {

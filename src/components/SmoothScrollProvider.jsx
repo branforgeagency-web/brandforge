@@ -13,16 +13,14 @@ export default function SmoothScrollProvider({ children }) {
 
     // Initialize Lenis smooth scrolling engine — tuned for buttery smooth, responsive 60/120fps scrolling on both desktop and mobile
     const lenis = new Lenis({
-      duration: isTouch ? 1.0 : 1.2,
+      duration: isTouch ? 0.85 : 0.95,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       orientation: "vertical",
       gestureOrientation: "vertical",
       smoothWheel: true,
-      wheelMultiplier: 0.95,
-      touchMultiplier: 1.0,
-      syncTouch: true,
-      syncTouchLerp: 0.09,
-      touchInertiaExponent: 1.6,
+      wheelMultiplier: 1.0,
+      touchMultiplier: 1.2,
+      syncTouch: false,
       infinite: false,
       autoResize: true,
     });

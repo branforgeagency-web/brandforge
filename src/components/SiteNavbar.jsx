@@ -82,15 +82,22 @@ export default function SiteNavbar({ path: propPath, navigate: propNavigate, onO
   const go = (to) => {
     if (to.startsWith("/#")) {
       const targetId = to.replace("/#", "");
+      const scrollToEl = () => {
+        const el = document.getElementById(targetId);
+        if (el) {
+          if (typeof window !== "undefined" && window.__lenis) {
+            window.__lenis.scrollTo(el, { offset: -80, duration: 0.95 });
+          } else {
+            el.scrollIntoView({ behavior: "smooth" });
+          }
+        }
+      };
+
       if (path !== "/") {
         navigate("/");
-        setTimeout(() => {
-          const el = document.getElementById(targetId);
-          if (el) el.scrollIntoView({ behavior: "smooth" });
-        }, 150);
+        setTimeout(scrollToEl, 250);
       } else {
-        const el = document.getElementById(targetId);
-        if (el) el.scrollIntoView({ behavior: "smooth" });
+        scrollToEl();
       }
     } else {
       navigate(to);

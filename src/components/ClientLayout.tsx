@@ -21,12 +21,18 @@ function LayoutInner({ children }: { children: React.ReactNode }) {
     setMounted(true);
   }, []);
 
-  // Scroll to top on route change
+  // Scroll to top on route change and refresh ScrollTrigger
   useEffect(() => {
     window.scrollTo(0, 0);
     if ((window as any).__lenis) {
       (window as any).__lenis.scrollTo(0, { immediate: true });
     }
+    const timer = setTimeout(() => {
+      if (typeof window !== "undefined" && (window as any).ScrollTrigger) {
+        (window as any).ScrollTrigger.refresh();
+      }
+    }, 80);
+    return () => clearTimeout(timer);
   }, [pathname]);
 
   return (

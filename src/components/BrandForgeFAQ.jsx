@@ -177,6 +177,7 @@ function BlackParticleGlobeCanvas({ theme }) {
     }
 
     const frame = (now) => {
+      if (!isVisible && !reduce) return;
       const t = (now - startTime) / 1000;
       const isMobile = w < 768;
       const R = (isMobile ? 0.48 : 0.58) * Math.min(w, h);
@@ -287,15 +288,30 @@ function BlackParticleGlobeCanvas({ theme }) {
         ctx.fill();
       }
 
-      if (!reduce) raf = requestAnimationFrame(frame);
+      if (!reduce && isVisible) raf = requestAnimationFrame(frame);
     };
+
+    let isVisible = false;
+    let io = null;
+    if (typeof IntersectionObserver !== "undefined" && canvas.parentElement) {
+      io = new IntersectionObserver(([entry]) => {
+        isVisible = entry.isIntersecting;
+        if (isVisible && !reduce) {
+          cancelAnimationFrame(raf);
+          raf = requestAnimationFrame(frame);
+        } else {
+          cancelAnimationFrame(raf);
+        }
+      }, { threshold: 0.05 });
+      io.observe(canvas.parentElement);
+    }
 
     resize();
     const ro = new ResizeObserver(resize);
     ro.observe(canvas.parentElement);
-    if (!reduce) raf = requestAnimationFrame(frame);
 
     return () => {
+      if (io) io.disconnect();
       cancelAnimationFrame(raf);
       ro.disconnect();
       canvas.removeEventListener("pointermove", onMove);

@@ -172,8 +172,17 @@ function ParticleCanvas() {
       animId = requestAnimationFrame(animate);
     };
 
+    const parent = canvas.parentElement;
+    let cachedParentRect = null;
+    const updateParentRect = () => {
+      if (parent) cachedParentRect = parent.getBoundingClientRect();
+    };
+    updateParentRect();
+
     const onMove = e => {
-      const rect = canvas.parentElement.getBoundingClientRect();
+      if (isPaused) return;
+      const rect = cachedParentRect || (parent ? parent.getBoundingClientRect() : null);
+      if (!rect) return;
       mouse.x = e.clientX - rect.left;
       mouse.y = e.clientY - rect.top;
     };
@@ -182,35 +191,42 @@ function ParticleCanvas() {
     resize();
     const layoutTimer = setTimeout(resize, 300);
     let io;
-    if (typeof IntersectionObserver !== "undefined" && canvas.parentElement) {
+    if (typeof IntersectionObserver !== "undefined" && parent) {
       io = new IntersectionObserver(([entry]) => {
         if (entry.isIntersecting) {
+          updateParentRect();
           if (isPaused) {
             isPaused = false;
             animId = requestAnimationFrame(animate);
           }
         } else {
           isPaused = true;
-          if (io) io.disconnect();
-      cancelAnimationFrame(animId);
+          cancelAnimationFrame(animId);
         }
       }, { threshold: 0.05 });
-      io.observe(canvas.parentElement);
+      io.observe(parent);
     }
     animate();
 
-    const ro = new ResizeObserver(resize);
-    ro.observe(canvas.parentElement);
-    window.addEventListener("mousemove", onMove);
-    document.addEventListener("mouseleave", onLeave);
+    const ro = new ResizeObserver(() => {
+      updateParentRect();
+      resize();
+    });
+    if (parent) {
+      ro.observe(parent);
+      parent.addEventListener("mousemove", onMove, { passive: true });
+      parent.addEventListener("mouseleave", onLeave, { passive: true });
+    }
 
     return () => {
       if (io) io.disconnect();
       cancelAnimationFrame(animId);
       clearTimeout(layoutTimer);
       ro.disconnect();
-      window.removeEventListener("mousemove", onMove);
-      document.removeEventListener("mouseleave", onLeave);
+      if (parent) {
+        parent.removeEventListener("mousemove", onMove);
+        parent.removeEventListener("mouseleave", onLeave);
+      }
     };
   }, []);
 

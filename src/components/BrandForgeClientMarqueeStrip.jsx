@@ -106,6 +106,7 @@ const styles = `
     align-items: center;
     gap: clamp(40px, 5vw, 75px);
     width: max-content;
+    will-change: transform;
     animation: bfMarqueeLoop 26s linear infinite;
   }
 
@@ -114,8 +115,8 @@ const styles = `
   }
 
   @keyframes bfMarqueeLoop {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(-50%); }
+    0% { transform: translate3d(0, 0, 0); }
+    100% { transform: translate3d(-50%, 0, 0); }
   }
 
   .bf-marquee-item {

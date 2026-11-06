@@ -477,3 +477,34 @@ body {
     display: none !important;
   }
 }
+
+/* ==========================================================================
+   OFF-SCREEN CSS CONTAINMENT (HIGH PERFORMANCE DOM RENDERING)
+   Skips rendering and style/layout recalculations for non-hero off-screen DOM nodes.
+   ========================================================================== */
+.cv-auto-section {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 850px;
+}
+
+#about-us,
+.bf-trust-strip-root,
+#process-board,
+#gallery,
+#client-marquee,
+#testimonials,
+#faq,
+.bf-footer-root,
+.sm-what-we-do-root,
+.sm-deliverables-root,
+.sm-story-root,
+.sm-evolution-root,
+.sm-pillars-root,
+.sm-blueprint-root,
+.sm-diff-root,
+.sm-faq-root,
+.sm-related-root,
+.sm-bottom-cta-root {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 850px;
+}

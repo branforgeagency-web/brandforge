@@ -195,6 +195,7 @@ export default function KexsioCanvasBackground({ showOverlay = true, opacity = 1
     };
 
     const handleMouseMove = (event) => {
+      if (!isVisible) return;
       const rect = canvas.getBoundingClientRect();
       if (
         event.clientY >= rect.top &&

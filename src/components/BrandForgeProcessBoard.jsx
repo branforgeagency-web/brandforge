@@ -3,6 +3,7 @@
 import { getStorageUrl } from "../utils/storageAsset";
 import React, { useRef, useEffect } from "react";
 import { motion, useScroll, useMotionValueEvent } from "framer-motion";
+import { Compass, Layers, Sparkles, Gauge, BarChart3 } from "lucide-react";
 
 /* ─── BrandForge particle colours ─── */
 const PARTICLE_COLORS = [
@@ -15,47 +16,62 @@ const PARTICLE_COLORS = [
 const STEPS = [
   {
     number: "01",
+    eyebrow: "DISCOVERY",
     title: "Discovery & Deep Dive",
     description:
       "We start by listening. We dig into your goals, your audience, your competition, and where you stand online right now — so we know exactly what we're working with.",
+    tags: ["Audience Research", "Competitor Audit"],
+    icon: Compass,
     accent: "red",
   },
   {
     number: "02",
+    eyebrow: "BLUEPRINT",
     title: "Strategy & Blueprinting",
     description:
       "No templates. We build a data-backed digital marketing plan across SEO, paid ads, content, and social, mapped to your actual ROI targets and timeline.",
-    accent: "neutral",
+    tags: ["Channel Architecture", "ROI Roadmap"],
+    icon: Layers,
+    accent: "dark",
   },
   {
     number: "03",
+    eyebrow: "PRODUCTION",
     title: "Creative Execution & Launch",
     description:
       "Our designers, writers, and media buyers turn the plan into high-converting campaigns and creative, then ship it live across every platform that matters.",
+    tags: ["Ad Creative", "Full-Funnel Launch"],
+    icon: Sparkles,
     accent: "red",
   },
   {
     number: "04",
+    eyebrow: "PERFORMANCE",
     title: "Optimization & Scaling",
     description:
       "We watch the live numbers, run A/B tests, and tune bids and messaging to bring acquisition costs down and ROAS up.",
-    accent: "neutral",
+    tags: ["A/B Experimentation", "ROAS Scaling"],
+    icon: Gauge,
+    accent: "dark",
   },
   {
     number: "05",
+    eyebrow: "ANALYTICS",
     title: "Growth & Reporting",
     description:
       "You always know where things stand. Clear reports and regular reviews keep you on top of wins, insights, and what's next.",
+    tags: ["Live Dashboards", "Executive Reviews"],
+    icon: BarChart3,
     accent: "red",
   },
 ];
 
 const DESKTOP_PLACEMENTS = [
-  { left: "-2%",  top: "0px",   rotate: "7deg"  },
-  { right: "-2%", top: "200px", rotate: "-7deg" },
-  { left: "-2%",  top: "480px", rotate: "7deg"  },
-  { right: "-2%", top: "700px", rotate: "-6deg" },
-  { left: "-2%",  top: "980px", rotate: "7deg"  },
+  { left: "0%",   top: "0px"   },
+  { right: "0%",  top: "210px" },
+  { left: "0%",   top: "490px" },
+  { right: "0%",  top: "710px" },
+  { left: "0%",   top: "980px" },
 ];
 
 const BOARD_HEIGHT = 1320;
@@ -165,7 +181,7 @@ function ParticleCanvas() {
     const animate = () => {
       if (isPaused) return;
       ctx.clearRect(0, 0, W, H);
-      ctx.fillStyle = "#060509";
+      ctx.fillStyle = "#000000";
       ctx.fillRect(0, 0, W, H);
       particles.forEach(p => p.update());
       connect();
@@ -173,16 +189,9 @@ function ParticleCanvas() {
     };
 
     const parent = canvas.parentElement;
-    let cachedParentRect = null;
-    const updateParentRect = () => {
-      if (parent) cachedParentRect = parent.getBoundingClientRect();
-    };
-    updateParentRect();
-
-    const onMove = e => {
-      if (isPaused) return;
-      const rect = cachedParentRect || (parent ? parent.getBoundingClientRect() : null);
-      if (!rect) return;
+    const onMove = (e) => {
+      if (isPaused || !parent) return;
+      const rect = parent.getBoundingClientRect();
       mouse.x = e.clientX - rect.left;
       mouse.y = e.clientY - rect.top;
     };
@@ -194,7 +203,6 @@ function ParticleCanvas() {
     if (typeof IntersectionObserver !== "undefined" && parent) {
       io = new IntersectionObserver(([entry]) => {
         if (entry.isIntersecting) {
-          updateParentRect();
           if (isPaused) {
             isPaused = false;
             animId = requestAnimationFrame(animate);
@@ -209,7 +217,6 @@ function ParticleCanvas() {
     animate();
 
     const ro = new ResizeObserver(() => {
-      updateParentRect();
       resize();
     });
     if (parent) {
@@ -243,121 +250,214 @@ function ParticleCanvas() {
   );
 }
 
-/* ─── Pin Icon ─── */
-function PinIcon({ color }) {
-  return (
-    <svg
-      aria-hidden="true"
-      viewBox="0 0 24 24"
-      style={{
-        width: 44,
-        height: 44,
-        fill: color,
-        display: "block",
-      }}
-    >
-      <path d="M16 3a1 1 0 0 1 .117 1.993L16 5v4.764l1.894 3.789c.054.108.088.22.1.331L18 14v2a1 1 0 0 1-.883.993L17 17h-4v4a1 1 0 0 1-1.993.117L11 21v-4H7a1 1 0 0 1-.993-.883L6 16v-2c0-.117.02-.23.06-.34l.046-.107L8 9.762V5a1 1 0 0 1-.117-1.993L8 3h8Z" />
-    </svg>
-  );
-}
-
-/* ─── Process Card ─── */
+/* ─── Process Card (Editorial Studio Aesthetic matching Service Cards) ─── */
 function ProcessCard({ step, index, placement, isMobile }) {
   const isRed = step.accent === "red";
-  const isLeft = index % 2 === 0;
+  const Icon = step.icon;
 
   const cardStyle = isMobile
-    ? { position: "relative", width: "100%", marginBottom: 28 }
+    ? { position: "relative", width: "100%", marginBottom: 24 }
     : {
         position: "absolute",
-        width: 320,
+        width: 390,
         ...placement,
-        transform: `rotate(${placement.rotate})`,
         zIndex: 10,
-        transition: "transform 0.3s ease",
       };
 
   return (
     <motion.article
       style={cardStyle}
-      initial={{ opacity: 0, y: 40 }}
+      initial={{ opacity: 0, y: 36 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: false, amount: 0.3 }}
-      transition={{ duration: 0.6, delay: index * 0.1, ease: [0.16, 1, 0.3, 1] }}
-      whileHover={!isMobile ? { scale: 1.06, zIndex: 30, rotate: 0 } : {}}
+      viewport={{ once: false, amount: 0.25 }}
+      transition={{ duration: 0.55, delay: index * 0.08, ease: [0.16, 1, 0.3, 1] }}
+      whileHover={!isMobile ? { scale: 1.03, y: -6, zIndex: 30 } : {}}
     >
-      <div style={{
-        borderRadius: 24,
-        border: isRed ? "1px solid rgba(255,255,255,0.15)" : "1px solid #e5e7eb",
-        background: isRed ? "#FF1801" : "#FFFFFF",
-        padding: "12px 10px 10px",
-        boxShadow: isRed ? "0 8px 32px rgba(255, 24, 1,0.3)" : "0 8px 24px rgba(0,0,0,0.5)",
-        cursor: "default",
-        position: "relative",
-      }}>
-        {/* ANIMATED PUSH PIN DROPPING & PINNING INTO TOP-LEFT OR TOP-RIGHT CORNER ON SCROLL */}
-        <motion.div
-          initial={{ opacity: 0, y: -65, scale: 1.4 }}
-          whileInView={{ opacity: 1, y: 0, scale: 1 }}
-          viewport={{ once: false, amount: 0.3 }}
-          transition={{
-            duration: 1.25,
-            delay: index * 0.2 + 0.35,
-            ease: [0.16, 1, 0.3, 1],
-          }}
-          style={{
-            display: "flex",
-            justifyContent: isLeft ? "flex-start" : "flex-end",
-            width: "100%",
-            marginTop: -22,
-            marginBottom: 4,
-            paddingLeft: isLeft ? 12 : 0,
-            paddingRight: !isLeft ? 12 : 0,
-            transform: isLeft ? "rotate(-10deg)" : "rotate(10deg)",
-          }}
-        >
-          <PinIcon color={isRed ? "#FFFFFF" : "#FF1801"} />
-        </motion.div>
+      <div
+        style={{
+          position: "relative",
+          overflow: "hidden",
+          borderRadius: 20,
+          background: isRed
+            ? "linear-gradient(135deg, #FF1801 0%, #C40F00 100%)"
+            : "#000000",
+          border: "1.5px solid rgba(255, 255, 255, 0.9)",
+          padding: "22px 24px 20px",
+          boxShadow: "none",
+          cursor: "default",
+        }}
+      >
+        <div style={{ position: "relative", zIndex: 1 }}>
+          {/* TOP BAR: ICON CAPSULE PILL + CATEGORY EYEBROW */}
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "space-between",
+              marginBottom: 16,
+            }}
+          >
+            <span
+              style={{
+                display: "inline-flex",
+                alignItems: "center",
+                justifyContent: "center",
+                width: 48,
+                height: 26,
+                borderRadius: 999,
+                background: "transparent",
+                border: isRed
+                  ? "1px solid rgba(255, 255, 255, 0.32)"
+                  : "1px solid rgba(255, 24, 1, 0.42)",
+                color: isRed ? "#FFFFFF" : "#FF1801",
+              }}
+            >
+              {Icon && <Icon size={14} strokeWidth={2.2} />}
+            </span>
 
-        <div style={{
-          borderRadius: 16,
-          border: isRed ? "1px solid #f3f4f6" : "1px solid rgba(255, 24, 1,0.2)",
-          background: isRed ? "#FFFFFF" : "#FF1801",
-          padding: "20px 18px 24px",
-        }}>
-          <span style={{
-            display: "block",
-            fontFamily: '"Comic Sans MS", "Chalkboard SE", cursive',
-            fontSize: "2.8rem",
-            lineHeight: 1,
-            fontWeight: 900,
-            color: isRed ? "#FF1801" : "#FFFFFF",
-            marginBottom: 14,
-          }}>
-            {step.number}
-          </span>
+            <span
+              style={{
+                fontFamily: '"JetBrains Mono", monospace',
+                fontSize: "0.68rem",
+                fontWeight: 700,
+                letterSpacing: "0.14em",
+                textTransform: "uppercase",
+                color: isRed ? "rgba(255, 255, 255, 0.9)" : "#FF1801",
+              }}
+            >
+              {step.eyebrow}
+            </span>
+          </div>
 
-          <h3 style={{
-            fontFamily: "'Outfit', 'Inter', sans-serif",
-            fontSize: "1.2rem",
-            fontWeight: 800,
-            lineHeight: 1.2,
-            color: isRed ? "#111827" : "#FFFFFF",
-            marginBottom: 10,
-            letterSpacing: "-0.02em",
-          }}>
+          {/* UPPERCASE EDITORIAL HEADLINE */}
+          <h3
+            style={{
+              fontFamily: '"Outfit", sans-serif',
+              fontSize: "clamp(1.28rem, 1.5vw, 1.5rem)",
+              fontWeight: 900,
+              lineHeight: 1.05,
+              letterSpacing: "-0.025em",
+              textTransform: "uppercase",
+              color: "#FFFFFF",
+              margin: "0 0 10px",
+            }}
+          >
             {step.title}
           </h3>
 
-          <p style={{
-            fontFamily: "'Inter', sans-serif",
-            fontSize: "0.875rem",
-            lineHeight: 1.65,
-            color: isRed ? "#6b7280" : "rgba(255,255,255,0.8)",
-            margin: 0,
-          }}>
+          {/* CLEAN DESCRIPTION */}
+          <p
+            style={{
+              fontFamily: '"Plus Jakarta Sans", sans-serif',
+              fontSize: "0.84rem",
+              fontWeight: 500,
+              lineHeight: 1.52,
+              color: isRed
+                ? "rgba(255, 255, 255, 0.9)"
+                : "rgba(255, 255, 255, 0.78)",
+              margin: "0 0 18px",
+            }}
+          >
             {step.description}
           </p>
+
+          {/* BOTTOM ROW: DELIVERABLE PILLS + RINGED INDEX */}
+          <div
+            style={{
+              display: "flex",
+              alignItems: "flex-end",
+              justifyContent: "space-between",
+              gap: 12,
+            }}
+          >
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "flex-start",
+                gap: 6,
+              }}
+            >
+              {step.tags.map((tag) => (
+                <span
+                  key={tag}
+                  style={{
+                    display: "inline-flex",
+                    alignItems: "center",
+                    gap: 7,
+                    fontFamily: '"Plus Jakarta Sans", sans-serif',
+                    fontSize: "0.75rem",
+                    fontWeight: 600,
+                    color: isRed
+                      ? "rgba(255, 255, 255, 0.92)"
+                      : "rgba(255, 255, 255, 0.85)",
+                    whiteSpace: "nowrap",
+                  }}
+                >
+                  <span
+                    style={{
+                      width: 5,
+                      height: 5,
+                      borderRadius: "50%",
+                      background: isRed ? "#FFFFFF" : "#FF1801",
+                      flexShrink: 0,
+                    }}
+                  />
+                  {tag}
+                </span>
+              ))}
+            </div>
+
+            <div
+              style={{
+                position: "relative",
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "flex-end",
+                flexShrink: 0,
+              }}
+            >
+              <span
+                aria-hidden="true"
+                style={{
+                  position: "absolute",
+                  right: -4,
+                  top: -8,
+                  width: 52,
+                  height: 52,
+                  borderRadius: "50%",
+                  border: isRed
+                    ? "1px solid rgba(255, 255, 255, 0.2)"
+                    : "1px solid rgba(255, 24, 1, 0.24)",
+                  pointerEvents: "none",
+                }}
+              />
+              <span
+                style={{
+                  fontFamily: '"Outfit", sans-serif',
+                  fontSize: "2.35rem",
+                  fontWeight: 900,
+                  lineHeight: 0.9,
+                  letterSpacing: "-0.04em",
+                  color: isRed ? "#FFFFFF" : "#FF1801",
+                }}
+              >
+                {step.number}
+              </span>
+              <span
+                style={{
+                  marginTop: 5,
+                  fontFamily: '"JetBrains Mono", monospace',
+                  fontSize: "0.62rem",
+                  fontWeight: 800,
+                  letterSpacing: "0.1em",
+                  color: "#FFFFFF",
+                }}
+              >
+                STEP →
+              </span>
+            </div>
+          </div>
         </div>
       </div>
     </motion.article>
@@ -425,18 +525,6 @@ export default function BrandForgeProcessBoard() {
     }}>
       <ParticleCanvas />
 
-      <div aria-hidden="true" style={{
-        position: "absolute", inset: 0, zIndex: 1, pointerEvents: "none",
-        background: "radial-gradient(circle at center, transparent 10%, rgba(0,0,0,0.25) 55%, rgba(0,0,0,0.7) 100%)",
-      }} />
-
-      <div aria-hidden="true" style={{
-        position: "absolute", top: "40%", right: -100, zIndex: 1,
-        width: 600, height: 600, borderRadius: "50%",
-        background: "radial-gradient(circle, rgba(255, 24, 1,0.1) 0%, transparent 70%)",
-        filter: "blur(80px)", pointerEvents: "none",
-      }} />
-
       <div style={{ position: "relative", zIndex: 2, maxWidth: 1100, margin: "0 auto" }}>
 
         <motion.div
@@ -446,28 +534,43 @@ export default function BrandForgeProcessBoard() {
           viewport={{ once: false, amount: 0.5 }}
           transition={{ duration: 0.8 }}
         >
+          <span style={{
+            display: "inline-block",
+            fontFamily: '"JetBrains Mono", monospace',
+            fontSize: "0.75rem",
+            fontWeight: 700,
+            letterSpacing: "0.22em",
+            textTransform: "uppercase",
+            color: "#FF1801",
+            marginBottom: 12,
+          }}>
+            OUR METHODOLOGY · 5-STEP WORKFLOW
+          </span>
+
           <h2 style={{
-            fontFamily: "'Outfit', 'Inter', sans-serif",
+            fontFamily: '"Outfit", sans-serif',
             fontSize: "clamp(2.4rem, 5vw, 4.2rem)",
             fontWeight: 900,
-            lineHeight: 1.05,
-            letterSpacing: "-0.04em",
+            lineHeight: 1.0,
+            letterSpacing: "-0.035em",
+            textTransform: "uppercase",
             color: "#FFFFFF",
-            margin: "0 0 20px",
+            margin: "0 0 18px",
           }}>
             How We Work at{" "}
             <span style={{ color: "#FF1801" }}>BrandForge</span>
           </h2>
 
           <p style={{
-            fontFamily: "'Inter', sans-serif",
-            fontSize: "clamp(0.95rem, 1.2vw, 1.1rem)",
-            color: "rgba(255,255,255,0.5)",
-            lineHeight: 1.7,
+            fontFamily: '"Plus Jakarta Sans", sans-serif',
+            fontSize: "clamp(0.95rem, 1.15vw, 1.08rem)",
+            fontWeight: 500,
+            color: "rgba(255,255,255,0.62)",
+            lineHeight: 1.65,
             maxWidth: 560,
             margin: "0 auto",
           }}>
-            Real digital marketing growth isn't luck. It comes from a tested process that turns your vision into results you can measure.
+            Real digital marketing growth isn&apos;t luck. It comes from a tested process that turns your vision into results you can measure.
           </p>
         </motion.div>
 

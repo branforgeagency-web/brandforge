@@ -233,19 +233,38 @@ export default function BrandForgeFluidSection({ _onOpenModal }) {
     let last = performance.now();
     let loop;
 
-    let cachedRootRect = null;
-    const updateRootRect = () => {
-      if (root) cachedRootRect = root.getBoundingClientRect();
-    };
-    updateRootRect();
-
-    const mouse = { x: 0, y: 0, vx: 0, vy: 0, moved: false };
+    const mouse = { x: 0, y: 0, vx: 0, vy: 0, moved: false, hasPrev: false };
     const moveTo = (clientX, clientY) => {
-      const r = cachedRootRect || root.getBoundingClientRect();
+      const r = root.getBoundingClientRect();
+      if (
+        r.width <= 0 ||
+        r.height <= 0 ||
+        clientX < r.left ||
+        clientX > r.right ||
+        clientY < r.top ||
+        clientY > r.bottom
+      ) {
+        return;
+      }
+      if (Math.abs(r.width - cssW) > 2 || Math.abs(r.height - cssH) > 2) {
+        cssW = r.width;
+        cssH = r.height;
+        renderer.setSize(cssW, cssH, false);
+        width = cssW * dpr;
+        height = cssH * dpr;
+      }
       const x = (clientX - r.left) * dpr;
       const y = (clientY - r.top) * dpr;
-      mouse.vx = (x - mouse.x) * CONFIG.forceStrength;
-      mouse.vy = (y - mouse.y) * CONFIG.forceStrength;
+      if (!mouse.hasPrev) {
+        mouse.x = x;
+        mouse.y = y;
+        mouse.vx = 0;
+        mouse.vy = 0;
+        mouse.hasPrev = true;
+        return;
+      }
+      mouse.vx = Math.max(-180, Math.min(180, (x - mouse.x) * CONFIG.forceStrength));
+      mouse.vy = Math.max(-180, Math.min(180, (y - mouse.y) * CONFIG.forceStrength));
       mouse.x = x;
       mouse.y = y;
       mouse.moved = true;
@@ -262,8 +281,13 @@ export default function BrandForgeFluidSection({ _onOpenModal }) {
       }
     };
 
-    root.addEventListener("pointermove", onPointer, { passive: true });
-    root.addEventListener("pointerdown", onPointer, { passive: true });
+    const onPointerLeave = () => {
+      mouse.hasPrev = false;
+    };
+
+    window.addEventListener("pointermove", onPointer, { passive: true });
+    window.addEventListener("pointerdown", onPointer, { passive: true });
+    root.addEventListener("pointerleave", onPointerLeave, { passive: true });
 
     const splat = (x, y, vx, vy) => {
       set(mats.splat, {
@@ -384,19 +408,20 @@ export default function BrandForgeFluidSection({ _onOpenModal }) {
         ([entry]) => {
           isVisible = entry.isIntersecting;
           if (isVisible) {
-            updateRootRect();
             if (isPaused) {
               isPaused = false;
+              ambientTimer = 1.1;
               last = performance.now();
               cancelAnimationFrame(raf);
               raf = requestAnimationFrame(loop);
             }
           } else {
             isPaused = true;
+            mouse.hasPrev = false;
             cancelAnimationFrame(raf);
           }
         },
-        { threshold: 0, rootMargin: '100px 0px' }
+        { threshold: 0, rootMargin: "150px 0px" }
       );
       observer.observe(rootRef.current);
     }
@@ -413,7 +438,6 @@ export default function BrandForgeFluidSection({ _onOpenModal }) {
     loop();
 
     const onResize = () => {
-      updateRootRect();
       const s = sizeOf();
       cssW = s.w;
       cssH = s.h;
@@ -426,8 +450,9 @@ export default function BrandForgeFluidSection({ _onOpenModal }) {
     return () => {
       if (observer) observer.disconnect();
       cancelAnimationFrame(raf);
-      root.removeEventListener("pointermove", onPointer);
-      root.removeEventListener("pointerdown", onPointer);
+      window.removeEventListener("pointermove", onPointer);
+      window.removeEventListener("pointerdown", onPointer);
+      root.removeEventListener("pointerleave", onPointerLeave);
       window.removeEventListener("resize", onResize);
       renderer.dispose();
       [velocity, dye, pressure].forEach((d) => {

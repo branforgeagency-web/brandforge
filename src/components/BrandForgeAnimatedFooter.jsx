@@ -271,7 +271,7 @@ export default function BrandForgeAnimatedFooter({ onOpenModal }) {
               <a href="https://www.instagram.com/the_brandforge_digital?igsi=YjR1N3prdzJocTdx" target="_blank" rel="noreferrer" className="social-icon-btn" aria-label="Instagram">
                 <InstagramIcon />
               </a>
-              <a href="https://wa.me/919384576852" target="_blank" rel="noreferrer" className="social-icon-btn" aria-label="WhatsApp">
+              <a href="https://wa.me/918122241364" target="_blank" rel="noreferrer" className="social-icon-btn" aria-label="WhatsApp">
                 <WhatsappIcon />
               </a>
               <a href="mailto:info@brandforgeagency.in" className="social-icon-btn" aria-label="Email Us">
@@ -281,9 +281,9 @@ export default function BrandForgeAnimatedFooter({ onOpenModal }) {
 
             <ul className="footer-link-list" style={{ marginTop: "16px" }}>
               <li><a href="https://www.instagram.com/the_brandforge_digital?igsi=YjR1N3prdzJocTdx" target="_blank" rel="noreferrer">INSTAGRAM ↗</a></li>
-              <li><a href="https://wa.me/919384576852" target="_blank" rel="noreferrer">WHATSAPP ↗</a></li>
+              <li><a href="https://wa.me/918122241364" target="_blank" rel="noreferrer">WHATSAPP ↗</a></li>
               <li><a href="mailto:info@brandforgeagency.in">EMAIL US ↗</a></li>
-              <li><a href="tel:+919384576852">CALL NOW ↗</a></li>
+              <li><a href="tel:+918122241364">CALL NOW ↗</a></li>
             </ul>
           </motion.div>
 

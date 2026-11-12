@@ -36,9 +36,9 @@ const FEATURES = [
 const CONTACT_INFO = [
   {
     icon: Phone,
-    label: "+91 93845 76852",
+    label: "+91 81222 41364",
     subtext: "Call / WhatsApp Direct",
-    href: "tel:+919384576852",
+    href: "tel:+918122241364",
   },
   {
     icon: Mail,

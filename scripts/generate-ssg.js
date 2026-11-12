@@ -305,7 +305,7 @@ function generateJsonLd(config, canonicalUrl) {
     url: BASE_URL,
     logo: `${BASE_URL}/brandforge-logo.png`,
     description: "High-Velocity Digital Growth, 3D Web Development, and AI Search Optimization Agency in Coimbatore.",
-    telephone: "+919384576852",
+    telephone: "+918122241364",
     email: "info@brandforgeagency.in",
     address: {
       "@type": "PostalAddress",
